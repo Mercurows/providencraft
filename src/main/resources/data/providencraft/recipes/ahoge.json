@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " x ",
+    " ax",
+    " x "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:red_wool"
+    },
+    "a":
+    {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result":
+  {
+    "item": "providencraft:red_ahoge",
+    "count": 1
+  }
+}
