@@ -10,5 +10,5 @@ import tech.lq0.providencraft.effect.BlessOfDarkElf;
 public class EffectInit {
     public static final DeferredRegister<Effect> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, ExampleMod.MOD_ID);
 
-    public static final RegistryObject<Effect> blessOfDarkElf = POTIONS.register("bless_of_dark_elf", BlessOfDarkElf::new);
+    public static final RegistryObject<Effect> BLESS_OF_DARK_ELF = POTIONS.register("bless_of_dark_elf", BlessOfDarkElf::new);
 }

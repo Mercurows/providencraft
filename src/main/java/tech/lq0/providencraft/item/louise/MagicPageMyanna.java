@@ -1,15 +1,12 @@
 package tech.lq0.providencraft.item.louise;
 
-import net.minecraft.client.gui.fonts.TexturedGlyph;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import tech.lq0.providencraft.ModGroup;
-import tech.lq0.providencraft.effect.BlessOfDarkElf;
 import tech.lq0.providencraft.init.EffectInit;
 
 public class MagicPageMyanna extends Item {
@@ -22,7 +19,7 @@ public class MagicPageMyanna extends Item {
         ItemStack heldItem = player.getHeldItem(hand);
 
         if(!world.isRemote){
-            player.addPotionEffect(new EffectInstance(EffectInit.blessOfDarkElf.get(),600,1));
+            player.addPotionEffect(new EffectInstance(EffectInit.BLESS_OF_DARK_ELF.get(),600,1));
             player.getCooldownTracker().setCooldown(heldItem.getItem(),2400);
             world.playSound(null,player.getPosX(),player.getPosY(),player.getPosZ(),
                     SoundEvents.ENTITY_PLAYER_LEVELUP, SoundCategory.NEUTRAL,0.5f,0.4f);

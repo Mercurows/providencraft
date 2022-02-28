@@ -15,6 +15,5 @@ import java.util.Properties;
 public class PotionInit {
     public static final DeferredRegister<Potion> POTION_TYPES = DeferredRegister.create(ForgeRegistries.POTION_TYPES, ExampleMod.MOD_ID);
 
-    public static final RegistryObject<Potion> dark_elf_potion = POTION_TYPES.register("dark_elf_potion", DarkElfPotion::new);
-    //()->new Potion(new EffectInstance(EffectInit.blessOfDarkElf.get(),3600))
+    public static final RegistryObject<Potion> DARK_ELF_POTION = POTION_TYPES.register("dark_elf_potion",DarkElfPotion::new);
 }

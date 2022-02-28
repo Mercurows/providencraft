@@ -16,6 +16,9 @@ import java.util.function.Supplier;
 public enum ModArmorMaterial implements IArmorMaterial {
     CHIRAM("chiram",35, new int[]{2, 8, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 5.0F, 0.3F, () -> {
         return Ingredient.fromItems(Items.IRON_BLOCK);
+    }),
+    RED_AHOGE("red_ahoge",18, new int[]{3, 5, 5, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+        return Ingredient.fromItems(ItemInit.RED_AHOGE.get());
     });
 
 

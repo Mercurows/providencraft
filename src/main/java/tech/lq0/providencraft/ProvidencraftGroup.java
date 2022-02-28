@@ -11,6 +11,6 @@ public class ProvidencraftGroup extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ItemInit.red_ahoge.get());
+        return new ItemStack(ItemInit.RED_AHOGE.get());
     }
 }

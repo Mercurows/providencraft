@@ -14,7 +14,7 @@ public class DarkElfReg {
     @SubscribeEvent
     public static void onLivineHurt(LivingHurtEvent event){
         DamageSource source = event.getSource();
-        Effect effect = EffectInit.blessOfDarkElf.get();
+        Effect effect = EffectInit.BLESS_OF_DARK_ELF.get();
         LivingEntity entity = event.getEntityLiving();
 
         if(source.getDamageType().equals("inFire")||source.getDamageType().equals("onFire")){
