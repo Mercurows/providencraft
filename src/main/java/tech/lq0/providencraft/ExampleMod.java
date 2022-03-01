@@ -13,6 +13,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tech.lq0.providencraft.init.EffectInit;
+import tech.lq0.providencraft.init.EnchantInit;
 import tech.lq0.providencraft.init.ItemInit;
 import tech.lq0.providencraft.init.PotionInit;
 
@@ -34,6 +35,7 @@ public class ExampleMod {
         ItemInit.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EffectInit.POTIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
         PotionInit.POTION_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EnchantInit.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

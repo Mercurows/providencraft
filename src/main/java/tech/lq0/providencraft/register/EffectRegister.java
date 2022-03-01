@@ -10,14 +10,14 @@ import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.init.EffectInit;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class DarkElfReg {
+public class EffectRegister {
     @SubscribeEvent
-    public static void onLivineHurt(LivingHurtEvent event){
+    public static void onLivingHurt(LivingHurtEvent event){
         DamageSource source = event.getSource();
         Effect effect = EffectInit.BLESS_OF_DARK_ELF.get();
         LivingEntity entity = event.getEntityLiving();
 
-        if(source.getDamageType().equals("inFire")||source.getDamageType().equals("onFire")){
+        if(source.getDamageType().equals("inFire")||source.getDamageType().equals("lava")){
             if(entity.isPotionActive(effect)){
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect);
                 int level = effectInstance.getAmplifier();
@@ -26,8 +26,6 @@ public class DarkElfReg {
                 }
             }
         }
-
     }
 
-   // entity.setGlowing(true);
 }
