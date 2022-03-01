@@ -18,7 +18,6 @@ import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.init.EnchantInit;
 import tech.lq0.providencraft.init.ItemInit;
 
-import java.util.Iterator;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EnchantRegister {
