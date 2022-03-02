@@ -2,10 +2,8 @@ package tech.lq0.providencraft.item.madoka;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import tech.lq0.providencraft.ModArmorMaterial;
-import tech.lq0.providencraft.ModGroup;
-import tech.lq0.providencraft.init.ItemInit;
+import tech.lq0.providencraft.tiers.ModArmorMaterial;
+import tech.lq0.providencraft.group.ModGroup;
 
 public class RedAhogeHelmet extends ArmorItem{
     public RedAhogeHelmet(){

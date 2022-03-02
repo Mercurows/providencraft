@@ -1,4 +1,4 @@
-package tech.lq0.providencraft;
+package tech.lq0.providencraft.group;
 
 import net.minecraft.item.ItemGroup;
 

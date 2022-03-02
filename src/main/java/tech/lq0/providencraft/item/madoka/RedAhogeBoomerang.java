@@ -1,6 +1,5 @@
 package tech.lq0.providencraft.item.madoka;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.*;
@@ -8,9 +7,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import org.lwjgl.system.CallbackI;
-import tech.lq0.providencraft.ModGroup;
-import tech.lq0.providencraft.ModItemTier;
+import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.tiers.ModItemTier;
 
 public class RedAhogeBoomerang extends SwordItem {
     @Override

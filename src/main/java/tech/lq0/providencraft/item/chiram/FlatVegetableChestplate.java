@@ -2,8 +2,8 @@ package tech.lq0.providencraft.item.chiram;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
-import tech.lq0.providencraft.ModArmorMaterial;
-import tech.lq0.providencraft.ModGroup;
+import tech.lq0.providencraft.tiers.ModArmorMaterial;
+import tech.lq0.providencraft.group.ModGroup;
 
 public class FlatVegetableChestplate extends ArmorItem {
     public FlatVegetableChestplate(){

@@ -1,4 +1,4 @@
-package tech.lq0.providencraft;
+package tech.lq0.providencraft.tiers;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;

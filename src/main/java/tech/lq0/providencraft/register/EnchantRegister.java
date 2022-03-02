@@ -25,6 +25,7 @@ public class EnchantRegister {
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event){
         Entity entity = event.getSource().getImmediateSource();
+        int times = 2;
         if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack heldItem = player.getHeldItemMainhand();
@@ -34,14 +35,16 @@ public class EnchantRegister {
                 ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
                 if (!helmet.equals(null)) {
                     if (!helmet.isEmpty()&&helmet.getItem().equals(ItemInit.RED_AHOGE_HELMET.get())) {
-                        player.setHealth(player.getHealth() + level * 3.0f > player.getMaxHealth()?
-                                player.getMaxHealth():player.getHealth() + level * 3.0f );
-                    } else {
-                        player.setHealth(player.getHealth() + level * 2.0f > player.getMaxHealth()?
-                                player.getMaxHealth():player.getHealth() + level * 2.0f );
+                        times++;
                     }
                 }
+                if(heldItem.getItem().equals(ItemInit.RED_AHOGE_SWORD.get())||
+                        heldItem.getItem().equals(ItemInit.RED_AHOGE_BOOMERANG.get())){
+                    times++;
+                }
             }
+            player.setHealth(player.getHealth() + level * times > player.getMaxHealth()?
+                    player.getMaxHealth():player.getHealth() + level * times );
         }
     }
 }

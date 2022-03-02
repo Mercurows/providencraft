@@ -1,13 +1,8 @@
 package tech.lq0.providencraft.item.madoka;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import tech.lq0.providencraft.ModGroup;
-import tech.lq0.providencraft.ModItemTier;
-import tech.lq0.providencraft.init.EffectInit;
+import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.tiers.ModItemTier;
 
 public class RedAhogeSword extends SwordItem {
     public RedAhogeSword() {

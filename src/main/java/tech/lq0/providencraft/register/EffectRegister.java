@@ -14,33 +14,40 @@ import tech.lq0.providencraft.init.EffectInit;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EffectRegister {
 
-    //暗精灵祝福 抗火
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         DamageSource source = event.getSource();
-        Effect effect = EffectInit.BLESS_OF_DARK_ELF.get();
+        Effect effect_bless = EffectInit.BLESS_OF_DARK_ELF.get();
+        Effect effect_curse = EffectInit.CURSE_OF_SERPENT.get();
         LivingEntity entity = event.getEntityLiving();
 
         if (source.getDamageType().equals("inFire") || source.getDamageType().equals("onFire") || source.getDamageType().equals("lava")) {
-            if (entity.isPotionActive(effect)) {
-                EffectInstance effectInstance = entity.getActivePotionEffect(effect);
+            if (entity.isPotionActive(effect_bless)) {
+                EffectInstance effectInstance = entity.getActivePotionEffect(effect_bless);
                 int level = effectInstance.getAmplifier();
                 if (level >= 0) {
                     event.setCanceled(true);
                 }
             }
-        } else {
-            if (entity.isPotionActive(effect)) {
-                EffectInstance effectInstance = entity.getActivePotionEffect(effect);
+        } else if(!source.isExplosion()){
+            if (entity.isPotionActive(effect_bless)) {
+                EffectInstance effectInstance = entity.getActivePotionEffect(effect_bless);
                 int level = effectInstance.getAmplifier();
                 if (level >= 10) {
                     event.setAmount(0);
                 } else {
-                    event.setAmount(event.getAmount() * (10 - level) / 10);
+                    event.setAmount(event.getAmount() * (10 - level) / 10.0f);
                 }
             }
         }
 
+        if(source.isExplosion()){
+            if(entity.isPotionActive(effect_curse)){
+                EffectInstance effectInstance = entity.getActivePotionEffect(effect_curse);
+                int level = effectInstance.getAmplifier();
+                event.setAmount(event.getAmount()*(1+level));
+            }
+        }
     }
 
 

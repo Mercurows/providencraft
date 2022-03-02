@@ -12,6 +12,7 @@ import tech.lq0.providencraft.item.madoka.RedAhoge;
 import tech.lq0.providencraft.item.madoka.RedAhogeBoomerang;
 import tech.lq0.providencraft.item.madoka.RedAhogeHelmet;
 import tech.lq0.providencraft.item.madoka.RedAhogeSword;
+import tech.lq0.providencraft.item.shirako.Fetuozi;
 import tech.lq0.providencraft.item.shirako.MomoDaifuku;
 
 public class ItemInit {
@@ -25,4 +26,5 @@ public class ItemInit {
     public static final RegistryObject<Item> MAGIC_PAGE_MYANNA = ITEMS.register("magic_page_myanna", MagicPageMyanna::new);
     public static final RegistryObject<Item> FLAT_VEGETABLE_CHESTPLATE = ITEMS.register("flat_vegetable_chestplate", FlatVegetableChestplate::new);
     public static final RegistryObject<Item> MOMO_DAIFUKU = ITEMS.register("momo_daifuku", MomoDaifuku::new);
+    public static final RegistryObject<Item> FETUOZI = ITEMS.register("fetuozi", Fetuozi::new);
 }

@@ -3,6 +3,12 @@
   "item.providencraft.red_ahoge": "Red Ahoge",
   "item.providencraft.red_ahoge_sword": "Red Ahoge Sword",
   "item.providencraft.red_ahoge_boomerang": "Red Ahoge Boomerang",
+  "item.providencraft.red_ahoge_helmet":"Red Ahoge Helmet",
   "item.providencraft.lucia_rice_cake": "Lucia Rice Cake",
-  "item.providencraft.magic_page_myanna": "Magic Page \"Myanna\""
+  "item.providencraft.magic_page_myanna": "Magic Page \"Myanna\"",
+  "effect.providencraft.bless_of_dark_elf": "Bless of Dark Elf",
+  "item.providencraft.flat_vegetable_chestplate": "Chopping Board",
+  "enchantment.providencraft.ahoge_parasitic": "Ahoge Parasitic",
+  "item.providencraft.momo_daifuku": "Momo Daifuku",
+  "effect.providencraft.curse_of_serpent": "Curse of Serpent"
 }

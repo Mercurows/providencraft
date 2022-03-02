@@ -33,7 +33,7 @@ public class ExampleMod {
         MinecraftForge.EVENT_BUS.register(this);
 
         ItemInit.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EffectInit.POTIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EffectInit.EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         PotionInit.POTION_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         EnchantInit.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
