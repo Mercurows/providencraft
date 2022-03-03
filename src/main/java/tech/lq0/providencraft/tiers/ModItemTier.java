@@ -3,13 +3,13 @@ package tech.lq0.providencraft.tiers;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
-import tech.lq0.providencraft.init.ItemInit;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import java.util.function.Supplier;
 
 public enum ModItemTier implements IItemTier {
     RED_AHOGE(2,1221,7.0F,2.0F,14,
-            ()->{return Ingredient.fromItems(ItemInit.RED_AHOGE.get());
+            ()->{return Ingredient.fromItems(ItemRegistry.RED_AHOGE.get());
     });
 
     private final int harvestLevel;

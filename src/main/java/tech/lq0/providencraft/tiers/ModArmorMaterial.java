@@ -9,7 +9,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tech.lq0.providencraft.init.ItemInit;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import java.util.function.Supplier;
 
@@ -18,7 +18,7 @@ public enum ModArmorMaterial implements IArmorMaterial {
         return Ingredient.fromItems(Items.IRON_BLOCK);
     }),
     RED_AHOGE("red_ahoge",18, new int[]{3, 5, 5, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(ItemInit.RED_AHOGE.get());
+        return Ingredient.fromItems(ItemRegistry.RED_AHOGE.get());
     });
 
 

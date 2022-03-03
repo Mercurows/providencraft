@@ -1,6 +1,7 @@
 package tech.lq0.providencraft;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.audio.Sound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -12,10 +13,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import tech.lq0.providencraft.init.EffectInit;
-import tech.lq0.providencraft.init.EnchantInit;
-import tech.lq0.providencraft.init.ItemInit;
-import tech.lq0.providencraft.init.PotionInit;
+import tech.lq0.providencraft.init.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("providencraft")
@@ -32,10 +30,11 @@ public class ExampleMod {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        ItemInit.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EffectInit.EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        PotionInit.POTION_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EnchantInit.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ItemRegistry.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EffectRegistry.EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        PotionRegistry.POTION_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EnchantRegistry.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        SoundRegistry.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

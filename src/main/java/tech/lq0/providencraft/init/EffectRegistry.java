@@ -8,7 +8,7 @@ import tech.lq0.providencraft.ExampleMod;
 import tech.lq0.providencraft.effect.BlessOfDarkElf;
 import tech.lq0.providencraft.effect.CurseOfSerpent;
 
-public class EffectInit {
+public class EffectRegistry {
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, ExampleMod.MOD_ID);
 
     public static final RegistryObject<Effect> BLESS_OF_DARK_ELF = EFFECTS.register("bless_of_dark_elf", BlessOfDarkElf::new);

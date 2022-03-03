@@ -4,12 +4,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import tech.lq0.providencraft.init.EffectInit;
+import tech.lq0.providencraft.init.EffectRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EffectRegister {
@@ -17,8 +15,8 @@ public class EffectRegister {
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         DamageSource source = event.getSource();
-        Effect effect_bless = EffectInit.BLESS_OF_DARK_ELF.get();
-        Effect effect_curse = EffectInit.CURSE_OF_SERPENT.get();
+        Effect effect_bless = EffectRegistry.BLESS_OF_DARK_ELF.get();
+        Effect effect_curse = EffectRegistry.CURSE_OF_SERPENT.get();
         LivingEntity entity = event.getEntityLiving();
 
         if (source.getDamageType().equals("inFire") || source.getDamageType().equals("onFire") || source.getDamageType().equals("lava")) {

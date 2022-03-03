@@ -2,7 +2,7 @@ package tech.lq0.providencraft.group;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import tech.lq0.providencraft.init.ItemInit;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 public class ProvidencraftGroup extends ItemGroup {
     public ProvidencraftGroup(){
@@ -11,6 +11,6 @@ public class ProvidencraftGroup extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ItemInit.RED_AHOGE.get());
+        return new ItemStack(ItemRegistry.RED_AHOGE.get());
     }
 }

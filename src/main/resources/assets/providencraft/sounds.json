@@ -1,0 +1,12 @@
+{
+  "myanna": {
+    "subtitle": "call_myanna",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:myanna",
+        "stream": true
+      }
+    ]
+  }
+}
