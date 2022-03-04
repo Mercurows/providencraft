@@ -1,7 +1,6 @@
 package tech.lq0.providencraft;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.audio.Sound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,12 +16,12 @@ import tech.lq0.providencraft.init.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("providencraft")
-public class ExampleMod {
+public class Utils {
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "providencraft";
 
-    public ExampleMod() {
+    public Utils() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);

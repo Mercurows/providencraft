@@ -8,7 +8,9 @@
   "item.providencraft.magic_book_myanna": "魔法书“玛安娜”",
   "effect.providencraft.bless_of_dark_elf": "暗精灵的祝福",
   "item.providencraft.flat_vegetable_chestplate": "菜板",
+  "item.providencraft.steel_plate": "钢板",
   "enchantment.providencraft.ahoge_parasitic": "呆毛寄生",
+  "enchantment.providencraft.uni_husk": "海胆外壳",
   "item.providencraft.momo_daifuku": "桃大福",
   "effect.providencraft.curse_of_serpent": "蛇神诅咒",
   "item.providencraft.fetuozi": "铁坨子",
@@ -32,5 +34,7 @@
   "magic_book_myanna_plus_func1": "右键可以呼叫玛安娜获得强大的祝福，冷却时间180秒",
   "magic_book_myanna_plus_func2": "有30%的概率会受到诅咒!",
   "item.providencraft.magic_book_myanna_plus": "禁忌魔法书“玛安娜”",
-  "be_cursed": "你被蛇神诅咒了!"
+  "be_cursed": "你被蛇神诅咒了!",
+  "steel_plate_des1": "普罗XX某位女仆长携带的强化版防具，非常平，非常厚，非常沉",
+  "steel_plate_des2": "正常人应该都不会做这种东西吧"
 }

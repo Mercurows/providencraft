@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ppp",
+    "xax",
+    "xxx"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "x":
+    {
+      "item": "minecraft:obsidian"
+    },
+    "a":
+    {
+      "item": "providencraft:flat_vegetable_chestplate"
+    }
+  },
+  "result":
+  {
+    "item": "providencraft:steel_plate",
+    "count": 1
+  }
+}

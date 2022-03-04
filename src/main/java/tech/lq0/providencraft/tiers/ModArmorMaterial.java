@@ -14,7 +14,10 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements IArmorMaterial {
-    CHIRAM("chiram",35, new int[]{2, 8, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 5.0F, 0.3F, () -> {
+    CHIRAM("chiram",25, new int[]{2, 8, 8, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.0F, 0.3F, () -> {
+        return Ingredient.fromItems(Items.IRON_INGOT);
+    }),
+    CHIRAM_PLUS("chiram_plus",35, new int[]{1, 1, 12, 1}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 5.0F, 0.4F, () -> {
         return Ingredient.fromItems(Items.IRON_BLOCK);
     }),
     RED_AHOGE("red_ahoge",18, new int[]{3, 5, 5, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {

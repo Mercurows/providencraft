@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " xy",
+    "xax",
+    "sss"
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:pink_dye"
+    },
+    "a":
+    {
+      "item": "minecraft:wheat"
+    },
+    "y":
+    {
+      "item": "minecraft:yellow_dye"
+    },
+    "s":
+    {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "result":
+  {
+    "item": "providencraft:momo_daifuku",
+    "count": 4
+  }
+}

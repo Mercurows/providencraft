@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ppp",
+    "xax",
+    "xxx"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "tag": "minecraft:planks"
+    },
+    "x":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "a":
+    {
+      "item": "minecraft:iron_chestplate"
+    }
+  },
+  "result":
+  {
+    "item": "providencraft:flat_vegetable_chestplate",
+    "count": 1
+  }
+}

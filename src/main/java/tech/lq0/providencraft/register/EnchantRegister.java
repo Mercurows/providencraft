@@ -2,10 +2,14 @@ package tech.lq0.providencraft.register;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.init.EnchantRegistry;
@@ -37,6 +41,23 @@ public class EnchantRegister {
                 }
             }
             player.heal(level * times);
+        }
+    }
+
+    //海胆外壳附魔
+    @SubscribeEvent
+    public static void onLivingHurt(LivingHurtEvent event){
+        Entity entity = event.getEntity();
+        Entity entityAttack = event.getSource().getImmediateSource();
+        if(entity instanceof PlayerEntity&&!entity.world.isRemote()){
+            LivingEntity livingEntity = (LivingEntity) entityAttack;
+            PlayerEntity player = (PlayerEntity) entity;
+            ItemStack armor = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
+            int level = EnchantmentHelper.getEnchantmentLevel(EnchantRegistry.UNI_HUSK.get(),armor);
+
+            if(level>0&&!(livingEntity instanceof PlayerEntity)){
+                livingEntity.addPotionEffect(new EffectInstance(Effects.POISON,100,level+1));
+            }
         }
     }
 }

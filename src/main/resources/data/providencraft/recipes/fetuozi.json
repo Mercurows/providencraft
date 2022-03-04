@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " x ",
+    "xax",
+    " y "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "minecraft:iron_block"
+    },
+    "a":
+    {
+      "item": "minecraft:netherite_block"
+    },
+    "y":
+    {
+      "item": "minecraft:iron_sword"
+    }
+  },
+  "result":
+  {
+    "item": "providencraft:fetuozi",
+    "count": 1
+  }
+}
