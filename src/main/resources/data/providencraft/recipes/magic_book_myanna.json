@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " p ",
+    "xax",
+    "gyg"
+  ],
+  "key":
+  {
+    "p":
+    {
+      "item": "providencraft:white_double_ahoge"
+    },
+    "x":
+    {
+      "item": "minecraft:diamond"
+    },
+    "a":
+    {
+      "item": "providencraft:magic_book"
+    },
+    "y":
+    {
+      "item": "minecraft:coal_block"
+    },
+    "g":
+    {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result":
+  {
+    "item": "providencraft:magic_book_myanna",
+    "count": 1
+  }
+}

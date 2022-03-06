@@ -34,6 +34,7 @@ public class Utils {
         PotionRegistry.POTION_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         EnchantRegistry.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         SoundRegistry.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EntityRegistry.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

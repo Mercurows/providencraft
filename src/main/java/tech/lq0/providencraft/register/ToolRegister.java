@@ -14,6 +14,7 @@ import tech.lq0.providencraft.init.ItemRegistry;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ToolRegister {
 
+    //铁坨子的击退效果
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event){
         LivingEntity entity = event.getEntityLiving();
@@ -23,8 +24,7 @@ public class ToolRegister {
             PlayerEntity player = (PlayerEntity) entityP;
             ItemStack heldItem = player.getHeldItemMainhand();
             if (heldItem.getItem().equals(ItemRegistry.FETUOZI.get())) {
-                //目前无法使用
-                //entity.setMotion();
+                entity.applyKnockback(10.0f,player.getPosX()-entity.getPosX(),player.getPosZ()-entity.getPosZ());
             }
         }
     }

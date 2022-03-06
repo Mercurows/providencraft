@@ -2,80 +2,55 @@ package tech.lq0.providencraft.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.BlazeEntity;
-import net.minecraft.entity.projectile.ProjectileItemEntity;
-import net.minecraft.entity.projectile.SnowballEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ItemParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.IPacket;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.network.NetworkHooks;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class AhogeBoomerangEntity extends ProjectileItemEntity {
-    public AhogeBoomerangEntity(EntityType<? extends AhogeBoomerangEntity> p_i50159_1_, World p_i50159_2_) {
-        super(p_i50159_1_, p_i50159_2_);
-    }
 
-    public AhogeBoomerangEntity(World worldIn, LivingEntity throwerIn) {
-        super(EntityType.SNOWBALL, throwerIn, worldIn);
-    }
+public class AhogeBoomerangEntity extends Entity {
+   private Logger logger = LogManager.getLogger();
+   private static final DataParameter<Integer> COUNTER = EntityDataManager.createKey(AhogeBoomerangEntity.class, DataSerializers.VARINT);
 
-    public AhogeBoomerangEntity(World worldIn, double x, double y, double z) {
-        super(EntityType.SNOWBALL, x, y, z, worldIn);
-    }
+   public AhogeBoomerangEntity(EntityType<?> entityTypeIn, World worldIn) {
+      super(entityTypeIn, worldIn);
+   }
 
-    protected Item getDefaultItem() {
-        return Items.SNOWBALL;
-    }
+   @Override
+   protected void registerData() {
+      this.dataManager.register(COUNTER, 0);
+   }
 
-    @OnlyIn(Dist.CLIENT)
-    private IParticleData makeParticle() {
-        ItemStack itemstack = this.func_213882_k();
-        return (IParticleData)(itemstack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemstack));
-    }
+   @Override
+   protected void readAdditional(CompoundNBT compound) {
+      this.dataManager.set(COUNTER, compound.getInt("counter"));
+   }
 
-    /**
-     * Handler for {@link World#setEntityState}
-     */
-    @OnlyIn(Dist.CLIENT)
-    public void handleStatusUpdate(byte id) {
-        if (id == 3) {
-            IParticleData iparticledata = this.makeParticle();
+   @Override
+   protected void writeAdditional(CompoundNBT compound) {
+      compound.putInt("counter", this.dataManager.get(COUNTER));
+   }
 
-            for(int i = 0; i < 8; ++i) {
-                this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
-            }
-        }
+   @Override
+   public void tick() {
+      if (world.isRemote) {
+         logger.info(this.dataManager.get(COUNTER));
+      }
+      if (!world.isRemote) {
+         logger.info(this.dataManager.get(COUNTER));
+         this.dataManager.set(COUNTER, this.dataManager.get(COUNTER) + 1);
+      }
+      super.tick();
+   }
 
-    }
+   @Override
+   public IPacket<?> createSpawnPacket() {
+      return NetworkHooks.getEntitySpawningPacket(this);
+   }
 
-    /**
-     * Called when the arrow hits an entity
-     */
-    protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
-        super.onEntityHit(p_213868_1_);
-        Entity entity = p_213868_1_.getEntity();
-        int i = entity instanceof BlazeEntity ? 3 : 0;
-        entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)i);
-    }
-
-    /**
-     * Called when this EntityFireball hits a block or entity.
-     */
-    protected void onImpact(RayTraceResult result) {
-        super.onImpact(result);
-        if (!this.world.isRemote) {
-            this.world.setEntityState(this, (byte)3);
-            this.remove();
-        }
-
-    }
 }
