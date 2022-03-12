@@ -45,5 +45,8 @@
   "magic_book_des": "普罗维登的绿色蛇蛇手持的魔法书",
   "item.providencraft.yagi_staff_card": "员工卡",
   "yagi_staff_card_des1": "黑心公司八木百货的员工卡",
-  "yagi_staff_card_des2": "拿着它就能获得强大的力量，但需要一点点代价"
+  "yagi_staff_card_des2": "拿着它就能获得强大的力量，但需要一点点代价",
+  "entity.minecraft.villager.providencraft.elifaus": "鳄梨法乌斯",
+  "entity.minecraft.villager.providencraft.ruozhi": "若芖",
+  "block.providencraft.red_ahoge_block":"红色呆毛块"
 }

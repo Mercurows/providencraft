@@ -1,10 +1,12 @@
 package tech.lq0.providencraft.init;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
+import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.chiram.SteelPlate;
 import tech.lq0.providencraft.item.louise.*;
@@ -20,6 +22,7 @@ import tech.lq0.providencraft.item.shirako.MomoDaifuku;
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Utils.MOD_ID);
 
+    //items
     public static final RegistryObject<Item> RED_AHOGE = ITEMS.register("red_ahoge", RedAhoge::new);
     public static final RegistryObject<Item> RED_AHOGE_SWORD = ITEMS.register("red_ahoge_sword", RedAhogeSword::new);
     public static final RegistryObject<Item> RED_AHOGE_BOOMERANG = ITEMS.register("red_ahoge_boomerang", RedAhogeBoomerang::new);
@@ -35,4 +38,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> WHITE_AHOGE = ITEMS.register("white_ahoge", WhiteAhoge::new);
     public static final RegistryObject<Item> WHITE_DOUBLE_AHOGE = ITEMS.register("white_double_ahoge", WhiteDoubleAhoge::new);
     public static final RegistryObject<Item> YAGI_STAFF_CARD = ITEMS.register("yagi_staff_card", YagiStaffCard::new);
+
+    //blocks
+    public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",
+            ()->new BlockItem(BlockRegistry.RED_AHOGE_BLOCK.get(),new Item.Properties().group(ModGroup.itemgroup)));
 }

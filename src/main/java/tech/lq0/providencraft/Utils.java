@@ -35,6 +35,9 @@ public class Utils {
         EnchantRegistry.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
         SoundRegistry.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
         EntityRegistry.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        VillagerInit.POINTS_OF_INTEREST.register(FMLJavaModLoadingContext.get().getModEventBus());
+        VillagerInit.PROFESSIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {
