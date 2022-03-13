@@ -20,7 +20,7 @@
   "red_ahoge_sword_des3": "拥有强大的攻击力",
   "red_ahoge_boomerang_des": "拥有不错的攻击力和攻击速度",
   "red_ahoge_sword_des4": "但是为什么大学生会随身佩戴武器呢",
-  "red_ahoge_boomerang_func": "右键可以发射一个红色呆毛回旋镖，消耗5点耐久",
+  "red_ahoge_boomerang_func": "右键可以发射一个红色呆毛回旋镖，可以造成10点伤害，消耗5点耐久",
   "fetuozi_des": "一坨子把臭DD打飞十米",
   "red_ahoge_helmet_des1": "普罗维登的某位普通女大学生的同款头盔",
   "red_ahoge_helmet_des2": "用蕴含神秘力量的红色呆毛打造而成",
@@ -48,5 +48,7 @@
   "yagi_staff_card_des2": "拿着它就能获得强大的力量，但需要一点点代价",
   "entity.minecraft.villager.providencraft.elifaus": "鳄梨法乌斯",
   "entity.minecraft.villager.providencraft.ruozhi": "若芖",
-  "block.providencraft.red_ahoge_block":"红色呆毛块"
+  "block.providencraft.red_ahoge_block":"红色呆毛块",
+  "lucia_rice_cake_des1": "普罗维登大猛一洛汐亚·卡文迪许指定食品，品质保障，值得信赖",
+  "lucia_rice_cake_des2": "和真华一样软，和汐亚一样甜"
 }

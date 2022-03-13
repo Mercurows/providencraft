@@ -1,13 +1,10 @@
 package tech.lq0.providencraft.item.madoka;
 
-import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.SnowballEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -17,6 +14,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tiers.ModItemTier;
 
@@ -29,9 +27,9 @@ public class RedAhogeBoomerang extends SwordItem {
         ItemStack item = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote()){
             if(item.getDamage()<item.getMaxDamage() - 5) {
-                SnowballEntity snowball = new SnowballEntity(worldIn, playerIn);
-                snowball.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 1.5f, 1.0f);
-                worldIn.addEntity(snowball);
+                AhogeBoomerangEntity ahogeBoomerangEntity = new AhogeBoomerangEntity(worldIn,playerIn);
+                ahogeBoomerangEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+                worldIn.addEntity(ahogeBoomerangEntity);
                 item.setDamage(item.getDamage() + 5);
                 playerIn.getCooldownTracker().setCooldown(item.getItem(), 40);
             }
@@ -52,6 +50,5 @@ public class RedAhogeBoomerang extends SwordItem {
         tooltip.add((new TranslationTextComponent("red_ahoge_boomerang_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("red_ahoge_sword_des4")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
     }
-
 
 }
