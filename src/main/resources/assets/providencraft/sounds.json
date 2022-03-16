@@ -8,5 +8,15 @@
         "stream": true
       }
     ]
+  },
+  "haiplate": {
+    "subtitle": "haiplate_invoke",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:haiplate",
+        "stream": true
+      }
+    ]
   }
 }
