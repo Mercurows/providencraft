@@ -22,6 +22,9 @@ public enum ModArmorMaterial implements IArmorMaterial {
     }),
     RED_AHOGE("red_ahoge",18, new int[]{3, 5, 5, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.fromItems(ItemRegistry.RED_AHOGE.get());
+    }),
+    CRYSTAL("crystal",22,new int[]{4,5,4,2},20,SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,0.0F,0.0F,()->{
+        return Ingredient.fromItems(Items.EMERALD);
     });
 
 

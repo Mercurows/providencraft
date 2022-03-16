@@ -11,4 +11,5 @@ public class SoundRegistry {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Utils.MOD_ID);
 
     public static final RegistryObject<SoundEvent> MYANNA = SOUNDS.register("myanna", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID,"myanna")));
+    public static final RegistryObject<SoundEvent> HAIPLATE = SOUNDS.register("haiplate",() ->new SoundEvent(new ResourceLocation(Utils.MOD_ID,"haiplate")));
 }
