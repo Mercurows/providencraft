@@ -1,6 +1,8 @@
 package tech.lq0.providencraft.register;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.DamageSource;
@@ -27,7 +29,7 @@ public class EffectRegister {
                     event.setCanceled(true);
                 }
             }
-        } else if(!source.isExplosion()){
+        } else if (!source.isExplosion() || !source.isProjectile()) {
             if (entity.isPotionActive(effect_bless)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_bless);
                 int level = effectInstance.getAmplifier();
@@ -39,11 +41,11 @@ public class EffectRegister {
             }
         }
 
-        if(source.isExplosion()){
-            if(entity.isPotionActive(effect_curse)){
+        if (source.isExplosion()) {
+            if (entity.isPotionActive(effect_curse)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_curse);
                 int level = effectInstance.getAmplifier();
-                event.setAmount(event.getAmount()*(1+level));
+                event.setAmount(event.getAmount() * (1 + level));
             }
         }
     }

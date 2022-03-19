@@ -4,6 +4,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class MagicBookMyannaPlus extends Item {
     public MagicBookMyannaPlus() {
-        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).isImmuneToFire());
+        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).isImmuneToFire().rarity(Rarity.EPIC));
     }
 
     @Override

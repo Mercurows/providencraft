@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:cake"
+  },
+  "result": "providencraft:lava_cake",
+  "experience": 2.00,
+  "cookingtime": 300
+}

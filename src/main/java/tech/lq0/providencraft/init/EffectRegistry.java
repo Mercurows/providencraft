@@ -5,6 +5,8 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
+import tech.lq0.providencraft.effect.BigFierceOne;
+import tech.lq0.providencraft.effect.BigMoeOne;
 import tech.lq0.providencraft.effect.BlessOfDarkElf;
 import tech.lq0.providencraft.effect.CurseOfSerpent;
 
@@ -13,4 +15,6 @@ public class EffectRegistry {
 
     public static final RegistryObject<Effect> BLESS_OF_DARK_ELF = EFFECTS.register("bless_of_dark_elf", BlessOfDarkElf::new);
     public static final RegistryObject<Effect> CURSE_OF_SERPENT = EFFECTS.register("curse_of_serpent", CurseOfSerpent::new);
+    public static final RegistryObject<Effect> BIG_FIERCE_ONE = EFFECTS.register("big_fierce_one", BigFierceOne::new);
+    public static final RegistryObject<Effect> BIG_MOE_ONE = EFFECTS.register("big_moe_one", BigMoeOne::new);
 }

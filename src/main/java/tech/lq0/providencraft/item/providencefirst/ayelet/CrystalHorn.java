@@ -9,6 +9,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -21,10 +22,12 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
-import tech.lq0.providencraft.models.AhogeHelmetModel;
 import tech.lq0.providencraft.models.CrystalHornModel;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
 import tech.lq0.providencraft.tools.ItemNBTTool;
@@ -33,6 +36,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CrystalHorn extends ArmorItem {
     public static final String TAG_NIGHT = "isnight";
 
@@ -92,4 +96,22 @@ public class CrystalHorn extends ArmorItem {
         tooltip.add((new TranslationTextComponent("crystal_horn_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crystal_horn_des3")).mergeStyle(TextFormatting.RED));
     }
+
+    //对牛特攻
+    @SubscribeEvent
+    public static void onLivingHurt(LivingHurtEvent event){
+        LivingEntity entity = event.getEntityLiving();
+
+        Entity entityP = event.getSource().getImmediateSource();
+        if (entityP instanceof PlayerEntity && !entityP.world.isRemote()) {
+            PlayerEntity player = (PlayerEntity) entityP;
+            ItemStack item = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+            if (item.getItem().equals(ItemRegistry.CRYSTAL_HORN.get())) {
+                if(entity instanceof CowEntity|| entity.getUniqueID().equals("1e10b6810052495bb7a93c0c5fc35552")){
+                    event.setAmount(event.getAmount() + 200);
+                }
+            }
+        }
+    }
+
 }

@@ -9,6 +9,7 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -24,7 +25,7 @@ import java.util.UUID;
 
 public class YagiStaffCard extends Item {
     public YagiStaffCard(){
-        super(new Properties().maxStackSize(1).group(ModGroup.itemgroup));
+        super(new Properties().maxStackSize(1).group(ModGroup.itemgroup).rarity(Rarity.RARE));
     }
 
     @OnlyIn(Dist.CLIENT)

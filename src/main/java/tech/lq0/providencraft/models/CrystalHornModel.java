@@ -22,11 +22,11 @@ public class CrystalHornModel<T extends LivingEntity> extends BipedModel<T> {
 		textureHeight = 64;
 
 		bone = new ModelRenderer(this);
-		bone.setRotationPoint(3.0F, -4.0F, 0.0F);
+		bone.setRotationPoint(0.0F, 0.0F, 0.0F);
 		
 
 		bone2 = new ModelRenderer(this);
-		bone2.setRotationPoint(-1.0F, 0.0F, 0.0F);
+		bone2.setRotationPoint(1.0F, -4.0F, 0.0F);
 		bone.addChild(bone2);
 		bone2.setTextureOffset(12, 2).addBox(2.0F, -3.0F, -2.0F, 3.0F, 3.0F, 4.0F, 0.0F, false);
 		bone2.setTextureOffset(28, 31).addBox(5.0F, -4.0F, -2.0F, 1.0F, 3.0F, 4.0F, 0.0F, false);
@@ -42,7 +42,7 @@ public class CrystalHornModel<T extends LivingEntity> extends BipedModel<T> {
 		bone2.setTextureOffset(18, 34).addBox(2.0F, -17.0F, -1.0F, 1.0F, 3.0F, 2.0F, 0.0F, false);
 
 		bone3 = new ModelRenderer(this);
-		bone3.setRotationPoint(-5.0F, 0.0F, 0.0F);
+		bone3.setRotationPoint(-1.0F, -4.0F, 0.0F);
 		bone.addChild(bone3);
 		bone3.setTextureOffset(0, 12).addBox(-5.0F, -3.0F, -2.0F, 3.0F, 3.0F, 4.0F, 0.0F, false);
 		bone3.setTextureOffset(22, 28).addBox(-6.0F, -4.0F, -2.0F, 1.0F, 3.0F, 4.0F, 0.0F, false);
@@ -59,18 +59,13 @@ public class CrystalHornModel<T extends LivingEntity> extends BipedModel<T> {
 	}
 
 	@Override
-	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		//previously the render function, render code was moved to a method below
+	public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+
 	}
 
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+		bone.copyModelAngles(this.bipedHead);
 		bone.render(matrixStack, buffer, packedLight, packedOverlay);
-	}
-
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
 	}
 }

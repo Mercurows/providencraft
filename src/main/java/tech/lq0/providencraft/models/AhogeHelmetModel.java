@@ -23,7 +23,7 @@ public class AhogeHelmetModel<T extends LivingEntity> extends BipedModel<T> {
 		textureHeight = 64;
 
 		main = new ModelRenderer(this);
-		main.setRotationPoint(0.0F, -24.0F, 0.0F);
+		main.setRotationPoint(0.0F, 0.0F, 0.0F);
 
 		bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(0.0F, -6.0F, 0.0F);
@@ -41,12 +41,8 @@ public class AhogeHelmetModel<T extends LivingEntity> extends BipedModel<T> {
 
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		bone2.render(matrixStack, buffer, packedLight, packedOverlay);
+		this.main.copyModelAngles(this.bipedHead);
+		main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
-	}
 }

@@ -1,0 +1,77 @@
+{
+    "credit": "Made with Blockbench",
+    "texture_size": [64, 64],
+    "textures": {
+        "0": "providencraft:item/machete_model_texture"
+    },
+    "elements": [
+        {
+            "from": [7, 0, -1],
+            "to": [8, 4, 16],
+            "rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -6]},
+            "faces": {
+                "north": {"uv": [4.25, 4.25, 4.5, 5.25], "texture": "#0"},
+                "east": {"uv": [0, 4.25, 4.25, 5.25], "texture": "#0"},
+                "south": {"uv": [8.75, 4.25, 9, 5.25], "texture": "#0"},
+                "west": {"uv": [4.5, 4.25, 8.75, 5.25], "texture": "#0"},
+                "up": {"uv": [4.5, 4.25, 4.25, 0], "texture": "#0"},
+                "down": {"uv": [4.75, 0, 4.5, 4.25], "texture": "#0"}
+            }
+        },
+        {
+            "from": [7, 3, 16],
+            "to": [8, 4, 23],
+            "rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -6]},
+            "faces": {
+                "north": {"uv": [1.75, 1.75, 2, 2], "texture": "#0"},
+                "east": {"uv": [0, 1.75, 1.75, 2], "texture": "#0"},
+                "south": {"uv": [3.75, 1.75, 4, 2], "texture": "#0"},
+                "west": {"uv": [2, 1.75, 3.75, 2], "texture": "#0"},
+                "up": {"uv": [2, 1.75, 1.75, 0], "texture": "#0"},
+                "down": {"uv": [2.25, 0, 2, 1.75], "texture": "#0"}
+            }
+        }
+    ],
+    "display": {
+        "thirdperson_righthand": {
+            "rotation": [93, 0, 0],
+            "translation": [0.75, 12, 6.75]
+        },
+        "thirdperson_lefthand": {
+            "rotation": [93, 0, 0],
+            "translation": [0, 10.5, 6.75]
+        },
+        "firstperson_righthand": {
+            "rotation": [64.25, 0, 0],
+            "translation": [0.5, 11.75, 2.5]
+        },
+        "firstperson_lefthand": {
+            "rotation": [64.75, 0, 0],
+            "translation": [0, 12, 2]
+        },
+        "ground": {
+            "translation": [0, 4.75, 0]
+        },
+        "gui": {
+            "rotation": [90, -42.5, 90],
+            "translation": [-2, 4.5, 0],
+            "scale": [0.8, 0.8, 0.8]
+        },
+        "head": {
+            "rotation": [87.69, -63.94, 87.95],
+            "translation": [-7.75, 14.25, 0]
+        },
+        "fixed": {
+            "rotation": [90, -39, 90],
+            "translation": [-2.75, 5, 0]
+        }
+    },
+    "groups": [
+        {
+            "name": "bone",
+            "origin": [0, 0, -6],
+            "color": 0,
+            "children": [0, 1]
+        }
+    ]
+}

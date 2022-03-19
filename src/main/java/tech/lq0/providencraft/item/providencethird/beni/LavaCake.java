@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.item.magicros.chiram;
+package tech.lq0.providencraft.item.providencethird.beni;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -17,25 +18,20 @@ import tech.lq0.providencraft.group.ModGroup;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class LotusPotato extends Item {
-    private static final Food food = (new Food.Builder()).saturation(8.0f).hunger(6).build();
-    public LotusPotato(){
-        super(new Properties().food(food).group(ModGroup.itemgroup));
+public class LavaCake extends Item {
+    private static final Food food = (new Food.Builder()).saturation(30.0f).hunger(20).build();
+    public LavaCake(){
+        super(new Properties().food(food).maxStackSize(1).group(ModGroup.itemgroup).rarity(Rarity.RARE));
     }
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        if(entityLiving instanceof PlayerEntity&&!worldIn.isRemote){
+        if(entityLiving instanceof PlayerEntity &&!worldIn.isRemote){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            if(player.getHealth()<=player.getMaxHealth()-6){
-                player.heal(4.0f);
-            }else{
-                float finalHealth = 6.0f - (player.getHealth()+4.0f) % player.getMaxHealth();
-                player.setHealth(finalHealth < 2 ? 2 : finalHealth);
-            }
+            player.setHealth(player.getHealth() - 20.0f);
             if(!player.isAlive()){
-                player.sendStatusMessage(new TranslationTextComponent("death.lotus_potato", entityLiving.getDisplayName()),false);
+                player.sendStatusMessage(new TranslationTextComponent("death.lava_cake", entityLiving.getDisplayName()),false);
             }
         }
         return itemStack;
@@ -43,8 +39,7 @@ public class LotusPotato extends Item {
 
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("lotus_potato_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("lotus_potato_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("lava_cake_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("lava_cake_warn")).mergeStyle(TextFormatting.RED));
     }
-
 }
