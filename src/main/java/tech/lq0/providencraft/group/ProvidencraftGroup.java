@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import tech.lq0.providencraft.init.ItemRegistry;
 
 public class ProvidencraftGroup extends ItemGroup {
-    public ProvidencraftGroup(){
+    public ProvidencraftGroup() {
         super("Providencraft Items");
     }
 

@@ -1,24 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     " x ",
     " a ",
     " x "
   ],
-  "key":
-  {
-    "x":
-    {
+  "key": {
+    "x": {
       "item": "providencraft:red_ahoge"
     },
-    "a":
-    {
+    "a": {
       "item": "minecraft:iron_ingot"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "providencraft:red_ahoge_boomerang",
     "count": 1
   }

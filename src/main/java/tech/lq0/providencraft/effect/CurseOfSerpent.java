@@ -4,7 +4,7 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 
 public class CurseOfSerpent extends Effect {
-    public CurseOfSerpent(){
-        super(EffectType.HARMFUL,7324312);
+    public CurseOfSerpent() {
+        super(EffectType.HARMFUL, 7324312);
     }
 }

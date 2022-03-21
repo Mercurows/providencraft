@@ -6,7 +6,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.init.VillagerInit;
 
-@Mod.EventBusSubscriber(modid = Utils.MOD_ID,bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Utils.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class VillagerEvent {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {

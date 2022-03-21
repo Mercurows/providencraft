@@ -6,7 +6,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -29,16 +32,16 @@ public class MagicBookMyanna extends Item {
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getHeldItem(hand);
 
-        if(!world.isRemote){
-            player.addPotionEffect(new EffectInstance(EffectRegistry.BLESS_OF_DARK_ELF.get(),600,1));
-            player.addPotionEffect(new EffectInstance(Effects.REGENERATION,600,1));
-            player.addPotionEffect(new EffectInstance(Effects.STRENGTH,600,1));
-            player.getCooldownTracker().setCooldown(heldItem.getItem(),2400);
+        if (!world.isRemote) {
+            player.addPotionEffect(new EffectInstance(EffectRegistry.BLESS_OF_DARK_ELF.get(), 600, 1));
+            player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 600, 1));
+            player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 600, 1));
+            player.getCooldownTracker().setCooldown(heldItem.getItem(), 2400);
         }
-        world.playSound(player,player.getPosition(),
-                SoundRegistry.MYANNA.get(), SoundCategory.AMBIENT,0.5f,1f);
+        world.playSound(player, player.getPosition(),
+                SoundRegistry.MYANNA.get(), SoundCategory.AMBIENT, 0.5f, 1f);
 
-        return new ActionResult<>(ActionResultType.SUCCESS,heldItem);
+        return new ActionResult<>(ActionResultType.SUCCESS, heldItem);
     }
 
     @OnlyIn(Dist.CLIENT)

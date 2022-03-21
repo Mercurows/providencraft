@@ -11,15 +11,15 @@ public class UniHusk extends Enchantment {
         super(Rarity.RARE, EnchantmentType.ARMOR_CHEST, CHEST);
     }
 
-    public int getMinEnchantability(int level){
-        return 8+6*level;
+    public int getMinEnchantability(int level) {
+        return 8 + 6 * level;
     }
 
-    public int getMaxEnchantability(int level){
-        return super.getMinEnchantability(level)+20;
+    public int getMaxEnchantability(int level) {
+        return super.getMinEnchantability(level) + 20;
     }
 
-    public int getMaxLevel(){
+    public int getMaxLevel() {
         return 3;
     }
 }

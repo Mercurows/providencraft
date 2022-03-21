@@ -21,7 +21,7 @@ import tech.lq0.providencraft.init.ItemRegistry;
 public class EnchantRegister {
     //呆毛寄生附魔
     @SubscribeEvent
-    public static void onLivingDeath(LivingDeathEvent event){
+    public static void onLivingDeath(LivingDeathEvent event) {
         Entity entity = event.getSource().getImmediateSource();
         int times = 2;
         if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
@@ -31,11 +31,11 @@ public class EnchantRegister {
 
             if (player.getHealth() < player.getMaxHealth()) {
                 ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-                if (!helmet.isEmpty()&&helmet.getItem().equals(ItemRegistry.RED_AHOGE_HELMET.get())) {
+                if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.RED_AHOGE_HELMET.get())) {
                     times++;
                 }
-                if(heldItem.getItem().equals(ItemRegistry.RED_AHOGE_SWORD.get())||
-                        heldItem.getItem().equals(ItemRegistry.RED_AHOGE_BOOMERANG.get())){
+                if (heldItem.getItem().equals(ItemRegistry.RED_AHOGE_SWORD.get()) ||
+                        heldItem.getItem().equals(ItemRegistry.RED_AHOGE_BOOMERANG.get())) {
                     times++;
                 }
             }
@@ -45,11 +45,11 @@ public class EnchantRegister {
 
     //海胆外壳附魔
     @SubscribeEvent
-    public static void onLivingHurt(LivingHurtEvent event){
+    public static void onLivingHurt(LivingHurtEvent event) {
         Entity entity = event.getEntity();
         Entity entityAttack = event.getSource().getImmediateSource();
-        if(entity instanceof PlayerEntity&&!entity.world.isRemote()){
-            if(!(entityAttack instanceof ProjectileEntity)) {
+        if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
+            if (!(entityAttack instanceof ProjectileEntity)) {
                 LivingEntity livingEntity = (LivingEntity) entityAttack;
                 PlayerEntity player = (PlayerEntity) entity;
                 ItemStack armor = player.getItemStackFromSlot(EquipmentSlotType.CHEST);

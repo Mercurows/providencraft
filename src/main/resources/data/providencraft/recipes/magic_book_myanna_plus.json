@@ -1,36 +1,28 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "xpx",
     "bab",
     "gpg"
   ],
-  "key":
-  {
-    "p":
-    {
+  "key": {
+    "p": {
       "item": "minecraft:nether_star"
     },
-    "x":
-    {
+    "x": {
       "item": "minecraft:diamond"
     },
-    "a":
-    {
+    "a": {
       "item": "providencraft:magic_book_myanna"
     },
-    "b":
-    {
+    "b": {
       "item": "minecraft:redstone"
     },
-    "g":
-    {
+    "g": {
       "item": "minecraft:emerald"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "providencraft:magic_book_myanna_plus",
     "count": 1
   }

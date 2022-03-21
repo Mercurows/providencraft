@@ -2,6 +2,8 @@ package tech.lq0.providencraft.init;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -16,8 +18,6 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
@@ -29,72 +29,72 @@ public class VillagerInit {
     public static final DeferredRegister<VillagerProfession> PROFESSIONS = DeferredRegister.create(ForgeRegistries.PROFESSIONS, MOD_ID);
 
     //Elifaus
-    public static final RegistryObject<PointOfInterestType> ELIFAUS_POI= POINTS_OF_INTEREST.register(
-            "elifaus",()-> new PointOfInterestType("elifaus",PointOfInterestType.getAllStates(Blocks.DIAMOND_BLOCK),1,1)
+    public static final RegistryObject<PointOfInterestType> ELIFAUS_POI = POINTS_OF_INTEREST.register(
+            "elifaus", () -> new PointOfInterestType("elifaus", PointOfInterestType.getAllStates(Blocks.DIAMOND_BLOCK), 1, 1)
     );
 
     public static final RegistryObject<VillagerProfession> ELIFAUS = PROFESSIONS.register(
-            "elifaus",()->new VillagerProfession("elifaus",ELIFAUS_POI.get(),ImmutableSet.of(),ImmutableSet.of(),null));
+            "elifaus", () -> new VillagerProfession("elifaus", ELIFAUS_POI.get(), ImmutableSet.of(), ImmutableSet.of(), null));
 
-    public static void registerElifausPOI(){
+    public static void registerElifausPOI() {
         try {
-            ObfuscationReflectionHelper.findMethod(PointOfInterestType.class,"registerBlockStates",PointOfInterestType.class).invoke(null,ELIFAUS_POI.get());
-        }catch (InvocationTargetException | IllegalAccessException e){
+            ObfuscationReflectionHelper.findMethod(PointOfInterestType.class, "registerBlockStates", PointOfInterestType.class).invoke(null, ELIFAUS_POI.get());
+        } catch (InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
 
     //Ruozhi
-    public static final RegistryObject<PointOfInterestType> RUOZHI_POI= POINTS_OF_INTEREST.register(
-            "ruozhi",()-> new PointOfInterestType("ruozhi",PointOfInterestType.getAllStates(Blocks.PUMPKIN),1,1)
+    public static final RegistryObject<PointOfInterestType> RUOZHI_POI = POINTS_OF_INTEREST.register(
+            "ruozhi", () -> new PointOfInterestType("ruozhi", PointOfInterestType.getAllStates(Blocks.PUMPKIN), 1, 1)
     );
 
     public static final RegistryObject<VillagerProfession> RUOZHI = PROFESSIONS.register(
-            "ruozhi",()->new VillagerProfession("ruozhi",RUOZHI_POI.get(),ImmutableSet.of(),ImmutableSet.of(),null));
+            "ruozhi", () -> new VillagerProfession("ruozhi", RUOZHI_POI.get(), ImmutableSet.of(), ImmutableSet.of(), null));
 
-    public static void registerRuozhiPOI(){
+    public static void registerRuozhiPOI() {
         try {
-            ObfuscationReflectionHelper.findMethod(PointOfInterestType.class,"registerBlockStates",PointOfInterestType.class).invoke(null,RUOZHI_POI.get());
-        }catch (InvocationTargetException | IllegalAccessException e){
+            ObfuscationReflectionHelper.findMethod(PointOfInterestType.class, "registerBlockStates", PointOfInterestType.class).invoke(null, RUOZHI_POI.get());
+        } catch (InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
 
-    public static void fillTradeData(){
+    public static void fillTradeData() {
         VillagerTrades.ITrade[] elifausLevel1 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.RED_AHOGE.get(),8,1,5,5),
-                new ItemsForEmeraldsTrade(ItemRegistry.WHITE_AHOGE.get(),8,1,5,5)
+                new ItemsForEmeraldsTrade(ItemRegistry.RED_AHOGE.get(), 8, 1, 5, 5),
+                new ItemsForEmeraldsTrade(ItemRegistry.WHITE_AHOGE.get(), 8, 1, 5, 5)
         };
         VillagerTrades.ITrade[] elifausLevel2 = new VillagerTrades.ITrade[]{
-                new EmeraldForItemsTrade(ItemRegistry.MOMO_DAIFUKU.get(),4,8,2),
-                new ItemsForEmeraldsTrade(ItemRegistry.LUCIA_RICE_CAKE.get(),2,5,4,2)
+                new EmeraldForItemsTrade(ItemRegistry.MOMO_DAIFUKU.get(), 4, 8, 2),
+                new ItemsForEmeraldsTrade(ItemRegistry.LUCIA_RICE_CAKE.get(), 2, 5, 4, 2)
         };
         VillagerTrades.ITrade[] elifausLevel3 = new VillagerTrades.ITrade[]{
-                new EmeraldForItemsTrade(ItemRegistry.MAGIC_BOOK.get(),1,4,5)
+                new EmeraldForItemsTrade(ItemRegistry.MAGIC_BOOK.get(), 1, 4, 5)
         };
         VillagerTrades.ITrade[] elifausLevel4 = new VillagerTrades.ITrade[]{
                 new ItemsForEmeraldsTrade(ItemRegistry.FLAT_VEGETABLE_CHESTPLATE.get(), 35, 1, 1, 20)
         };
         VillagerTrades.ITrade[] elifausLevel5 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.YAGI_STAFF_CARD.get(),45,1,1,20)
+                new ItemsForEmeraldsTrade(ItemRegistry.YAGI_STAFF_CARD.get(), 45, 1, 1, 20)
         };
 
         VillagerTrades.VILLAGER_DEFAULT_TRADES.put(ELIFAUS.get(),
-                gatAsIntMap(ImmutableMap.of(1,elifausLevel1,2,elifausLevel2,3,elifausLevel3,4,elifausLevel4,5,elifausLevel5)));
+                gatAsIntMap(ImmutableMap.of(1, elifausLevel1, 2, elifausLevel2, 3, elifausLevel3, 4, elifausLevel4, 5, elifausLevel5)));
 
         VillagerTrades.ITrade[] ruozhiLevel1 = new VillagerTrades.ITrade[]{
-                new EmeraldForItemsTrade(Blocks.PUMPKIN.asItem(),10,10,1)
+                new EmeraldForItemsTrade(Blocks.PUMPKIN.asItem(), 10, 10, 1)
         };
 
         VillagerTrades.VILLAGER_DEFAULT_TRADES.put(RUOZHI.get(),
-                gatAsIntMap(ImmutableMap.of(1,ruozhiLevel1)));
+                gatAsIntMap(ImmutableMap.of(1, ruozhiLevel1)));
     }
 
     private static Int2ObjectMap<VillagerTrades.ITrade[]> gatAsIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> p_221238_0_) {
         return new Int2ObjectOpenHashMap<>(p_221238_0_);
     }
 
-    static class EmeraldForItemsTrade implements VillagerTrades.ITrade{
+    static class EmeraldForItemsTrade implements VillagerTrades.ITrade {
         private final Item tradeItem;
         private final int count;
         private final int maxUses;
@@ -110,7 +110,7 @@ public class VillagerInit {
         }
 
         public EmeraldForItemsTrade(Item tradeItemIn, int countIn, int maxUsesIn, int xpValueIn) {
-            this(new ItemStack(tradeItemIn),countIn,maxUsesIn,xpValueIn);
+            this(new ItemStack(tradeItemIn), countIn, maxUsesIn, xpValueIn);
         }
 
         @Override

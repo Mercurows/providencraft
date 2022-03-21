@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class YagiStaffCard extends Item {
-    public YagiStaffCard(){
+    public YagiStaffCard() {
         super(new Properties().maxStackSize(1).group(ModGroup.itemgroup).rarity(Rarity.RARE));
     }
 
@@ -35,15 +35,15 @@ public class YagiStaffCard extends Item {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot,ItemStack stack) {
-        Multimap<Attribute,AttributeModifier> map = super.getAttributeModifiers(equipmentSlot,stack);
-        UUID uuid = new UUID(ItemRegistry.YAGI_STAFF_CARD.hashCode()+equipmentSlot.toString().hashCode(),0);
-        if(equipmentSlot == EquipmentSlotType.OFFHAND){
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot, stack);
+        UUID uuid = new UUID(ItemRegistry.YAGI_STAFF_CARD.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        if (equipmentSlot == EquipmentSlotType.OFFHAND) {
             map = HashMultimap.create(map);
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid,"yagi staff card modifier",-6.0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "yagi staff card modifier", -6.0, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid,"yagi staff card modifier 2",6.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "yagi staff card modifier 2", 6.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }

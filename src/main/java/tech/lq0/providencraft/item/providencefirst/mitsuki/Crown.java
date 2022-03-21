@@ -10,7 +10,6 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
@@ -19,7 +18,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,8 +31,8 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Crown extends ArmorItem {
-    public Crown(){
-        super(ArmorMaterial.IRON, EquipmentSlotType.HEAD,new Properties().defaultMaxDamage(921).group(ModGroup.itemgroup));
+    public Crown() {
+        super(ArmorMaterial.IRON, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(921).group(ModGroup.itemgroup));
     }
 
     @Nullable
@@ -56,17 +54,17 @@ public class Crown extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void CrownEffect(AttackEntityEvent event){
+    public static void CrownEffect(AttackEntityEvent event) {
         LivingEntity entity = event.getEntityLiving();
         Entity target = event.getTarget();
-        if(entity instanceof PlayerEntity&&!entity.world.isRemote){
+        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-            if (!helmet.isEmpty()&&helmet.getItem().equals(ItemRegistry.CROWN.get())) {
+            if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.CROWN.get())) {
                 player.heal(0.5f);
-                if(!(target instanceof ProjectileEntity)){
+                if (!(target instanceof ProjectileEntity)) {
                     LivingEntity entityT = (LivingEntity) target;
-                    entityT.addPotionEffect(new EffectInstance(Effects.WITHER,60,0));
+                    entityT.addPotionEffect(new EffectInstance(Effects.WITHER, 60, 0));
                 }
             }
         }

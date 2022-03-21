@@ -1,24 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     " x ",
     " x ",
     " a "
   ],
-  "key":
-  {
-    "x":
-    {
+  "key": {
+    "x": {
       "item": "providencraft:red_ahoge"
     },
-    "a":
-    {
+    "a": {
       "item": "minecraft:stick"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "providencraft:red_ahoge_sword",
     "count": 1
   }

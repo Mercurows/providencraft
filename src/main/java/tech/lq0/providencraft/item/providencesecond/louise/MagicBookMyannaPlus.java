@@ -33,23 +33,23 @@ public class MagicBookMyannaPlus extends Item {
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getHeldItem(hand);
 
-        if(!world.isRemote){
-            player.addPotionEffect(new EffectInstance(EffectRegistry.BLESS_OF_DARK_ELF.get(),600,4));
-            player.addPotionEffect(new EffectInstance(Effects.REGENERATION,600,2));
-            player.addPotionEffect(new EffectInstance(Effects.STRENGTH,600,2));
+        if (!world.isRemote) {
+            player.addPotionEffect(new EffectInstance(EffectRegistry.BLESS_OF_DARK_ELF.get(), 600, 4));
+            player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 600, 2));
+            player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 600, 2));
 
-            int random = (int)(Math.random()*10+1);
-            if(random<=3){
-                player.addPotionEffect(new EffectInstance(EffectRegistry.CURSE_OF_SERPENT.get(),600,2));
-                player.sendStatusMessage(new TranslationTextComponent("be_cursed").mergeStyle(TextFormatting.RED),false);
+            int random = (int) (Math.random() * 10 + 1);
+            if (random <= 3) {
+                player.addPotionEffect(new EffectInstance(EffectRegistry.CURSE_OF_SERPENT.get(), 600, 2));
+                player.sendStatusMessage(new TranslationTextComponent("be_cursed").mergeStyle(TextFormatting.RED), false);
             }
 
-            player.getCooldownTracker().setCooldown(heldItem.getItem(),3600);
+            player.getCooldownTracker().setCooldown(heldItem.getItem(), 3600);
         }
-        world.playSound(player,player.getPosition(),
-                SoundRegistry.MYANNA.get(), SoundCategory.AMBIENT,0.8f,1.1f);
+        world.playSound(player, player.getPosition(),
+                SoundRegistry.MYANNA.get(), SoundCategory.AMBIENT, 0.8f, 1.1f);
 
-        return new ActionResult<>(ActionResultType.SUCCESS,heldItem);
+        return new ActionResult<>(ActionResultType.SUCCESS, heldItem);
     }
 
     @OnlyIn(Dist.CLIENT)

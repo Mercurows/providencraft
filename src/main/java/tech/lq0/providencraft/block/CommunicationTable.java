@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 public class CommunicationTable extends Block {
-    public CommunicationTable(){
+    public CommunicationTable() {
         super(Properties.create(Material.WOOD).hardnessAndResistance(2));
     }
 }

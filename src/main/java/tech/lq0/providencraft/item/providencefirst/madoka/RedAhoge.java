@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class RedAhoge extends Item {
-    public RedAhoge(){
+    public RedAhoge() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

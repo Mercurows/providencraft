@@ -2,17 +2,22 @@ package tech.lq0.providencraft.init;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.PotionItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
 import tech.lq0.providencraft.item.magicros.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.magicros.chiram.LotusPotato;
 import tech.lq0.providencraft.item.magicros.chiram.SteelPlate;
 import tech.lq0.providencraft.item.magicros.haine.HaiPlate;
+import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
+import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
+import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
+import tech.lq0.providencraft.item.providencefirst.madoka.RedAhoge;
+import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeBoomerang;
+import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeHelmet;
+import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeSword;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
@@ -22,20 +27,16 @@ import tech.lq0.providencraft.item.providencesecond.lecia.ElectricHorn;
 import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigMoeOnePotion;
 import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhoge;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeBoomerang;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeHelmet;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeSword;
 import tech.lq0.providencraft.item.providencesecond.mojuko.YagiStaffCard;
-import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
-import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
 import tech.lq0.providencraft.item.providencethird.beni.LavaCake;
 
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Utils.MOD_ID);
 
     //ITEMS
-    /**1st**/
+    /**
+     * 1st
+     **/
     //madoka
     public static final RegistryObject<Item> RED_AHOGE = ITEMS.register("red_ahoge", RedAhoge::new);
     public static final RegistryObject<Item> RED_AHOGE_SWORD = ITEMS.register("red_ahoge_sword", RedAhogeSword::new);
@@ -58,7 +59,9 @@ public class ItemRegistry {
     //usa
     public static final RegistryObject<Item> PLUNGER = ITEMS.register("plunger", Plunger::new);
 
-    /**2nd**/
+    /**
+     * 2nd
+     **/
     //lucia
     public static final RegistryObject<Item> LUCIA_RICE_CAKE = ITEMS.register("lucia_rice_cake", LuciaRiceCake::new);
     public static final RegistryObject<Item> BIG_MOE_ONE_POTION = ITEMS.register("big_moe_one_potion", BigMoeOnePotion::new);
@@ -76,7 +79,9 @@ public class ItemRegistry {
     //lecia
     public static final RegistryObject<Item> ELECTRIC_HORN = ITEMS.register("electric_horn", ElectricHorn::new);
 
-    /**magicros**/
+    /**
+     * magicros
+     **/
     //chiram
     public static final RegistryObject<Item> FLAT_VEGETABLE_CHESTPLATE = ITEMS.register("flat_vegetable_chestplate", FlatVegetableChestplate::new);
     public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate", SteelPlate::new);
@@ -86,22 +91,24 @@ public class ItemRegistry {
     public static final RegistryObject<Item> HAI_PLATE = ITEMS.register("hai_plate", HaiPlate::new);
 
 
-    /**POI**/
+    /**
+     * POI
+     **/
     //shirako
     public static final RegistryObject<Item> MOMO_DAIFUKU = ITEMS.register("momo_daifuku", MomoDaifuku::new);
     public static final RegistryObject<Item> FETUOZI = ITEMS.register("fetuozi", Fetuozi::new);
 
 
-    /**3rd**/
+    /**
+     * 3rd
+     **/
     //beni
     public static final RegistryObject<Item> LAVA_CAKE = ITEMS.register("lava_cake", LavaCake::new);
 
 
-
-
     //BLOCKS
     public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",
-            ()->new BlockItem(BlockRegistry.RED_AHOGE_BLOCK.get(),new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.RED_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.itemgroup)));
     public static final RegistryObject<Item> COMMUNICATION_TABLE = ITEMS.register("communication_table",
-            ()->new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(),new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.itemgroup)));
 }

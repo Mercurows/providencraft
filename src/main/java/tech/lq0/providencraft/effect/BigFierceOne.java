@@ -3,11 +3,8 @@ package tech.lq0.providencraft.effect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,17 +12,17 @@ import tech.lq0.providencraft.init.EffectRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class BigFierceOne extends Effect {
-    public BigFierceOne(){
-        super(EffectType.BENEFICIAL,9871020);
+    public BigFierceOne() {
+        super(EffectType.BENEFICIAL, 9871020);
     }
 
     @SubscribeEvent
-    public static void effects(AttackEntityEvent event){
+    public static void effects(AttackEntityEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
         Entity target = event.getTarget();
-        if(livingEntity instanceof PlayerEntity&&!livingEntity.world.isRemote){
+        if (livingEntity instanceof PlayerEntity && !livingEntity.world.isRemote) {
             PlayerEntity player = (PlayerEntity) livingEntity;
-            if(player.isPotionActive(EffectRegistry.BIG_FIERCE_ONE.get())) {
+            if (player.isPotionActive(EffectRegistry.BIG_FIERCE_ONE.get())) {
                 int level = player.getActivePotionEffect(EffectRegistry.BIG_FIERCE_ONE.get()).getAmplifier();
                 target.setFire(level * 5);
                 target.setGlowing(true);

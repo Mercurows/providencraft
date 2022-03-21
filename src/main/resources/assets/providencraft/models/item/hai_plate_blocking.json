@@ -1,25 +1,65 @@
 {
-	"parent": "providencraft:item/hai_plate",
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [64, -20.71, -0.92],
-			"translation": [1.25, 0.5, 0.75]
-		},
-		"thirdperson_lefthand": {
-			"rotation": [61.53, -16.25, -1.69],
-			"translation": [1.5, 0, 0.25]
-		},
-		"firstperson_righthand": {
-			"rotation": [6.12, 2.91, 24.47],
-			"translation": [-2, 0, 1.75]
-		},
-		"firstperson_lefthand": {
-			"rotation": [9.85, -1.91, 14],
-			"translation": [-1.5, 1, 2.25]
-		},
-		"gui": {
-			"rotation": [173.94, 46.87, -173.27],
-			"scale": [0.88, 0.88, 0.88]
-		}
-	}
+  "parent": "providencraft:item/hai_plate",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        64,
+        -20.71,
+        -0.92
+      ],
+      "translation": [
+        1.25,
+        0.5,
+        0.75
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        61.53,
+        -16.25,
+        -1.69
+      ],
+      "translation": [
+        1.5,
+        0,
+        0.25
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        6.12,
+        2.91,
+        24.47
+      ],
+      "translation": [
+        -2,
+        0,
+        1.75
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        9.85,
+        -1.91,
+        14
+      ],
+      "translation": [
+        -1.5,
+        1,
+        2.25
+      ]
+    },
+    "gui": {
+      "rotation": [
+        173.94,
+        46.87,
+        -173.27
+      ],
+      "scale": [
+        0.88,
+        0.88,
+        0.88
+      ]
+    }
+  }
 }

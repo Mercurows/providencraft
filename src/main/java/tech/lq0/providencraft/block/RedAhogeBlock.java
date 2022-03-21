@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
 public class RedAhogeBlock extends Block {
-    public RedAhogeBlock(){
+    public RedAhogeBlock() {
         super(Properties.create(Material.IRON).hardnessAndResistance(3));
     }
 }

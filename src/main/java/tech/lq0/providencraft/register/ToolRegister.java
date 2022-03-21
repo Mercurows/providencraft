@@ -14,7 +14,7 @@ public class ToolRegister {
 
     //铁坨子的击退效果
     @SubscribeEvent
-    public static void onLivingHurt(LivingHurtEvent event){
+    public static void onLivingHurt(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
 
         Entity entityP = event.getSource().getImmediateSource();
@@ -22,7 +22,7 @@ public class ToolRegister {
             PlayerEntity player = (PlayerEntity) entityP;
             ItemStack heldItem = player.getHeldItemMainhand();
             if (heldItem.getItem().equals(ItemRegistry.FETUOZI.get())) {
-                entity.applyKnockback(10.0f,player.getPosX()-entity.getPosX(),player.getPosZ()-entity.getPosZ());
+                entity.applyKnockback(10.0f, player.getPosX() - entity.getPosX(), player.getPosZ() - entity.getPosZ());
             }
         }
     }

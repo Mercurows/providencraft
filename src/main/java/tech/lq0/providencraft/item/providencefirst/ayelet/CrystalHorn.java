@@ -40,14 +40,14 @@ import java.util.UUID;
 public class CrystalHorn extends ArmorItem {
     public static final String TAG_NIGHT = "isnight";
 
-    public CrystalHorn(){
-        super(ModArmorMaterial.CRYSTAL, EquipmentSlotType.HEAD,new Properties().group(ModGroup.itemgroup));
+    public CrystalHorn() {
+        super(ModArmorMaterial.CRYSTAL, EquipmentSlotType.HEAD, new Properties().group(ModGroup.itemgroup));
     }
 
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
-        return (A) new CrystalHornModel<>(1.0F,slot,entityLiving);
+        return (A) new CrystalHornModel<>(1.0F, slot, entityLiving);
     }
 
     @Nullable
@@ -57,18 +57,18 @@ public class CrystalHorn extends ArmorItem {
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot,ItemStack stack) {
-        Multimap<Attribute,AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
-        UUID uuid = new UUID(ItemRegistry.CRYSTAL_HORN.hashCode()+equipmentSlot.toString().hashCode(),0);
-        if(equipmentSlot == getEquipmentSlot()){
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
+        UUID uuid = new UUID(ItemRegistry.CRYSTAL_HORN.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             boolean night = ItemNBTTool.getBoolean(stack, TAG_NIGHT, false);
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid,"crystal horn modifier",night ? 6.0 : 0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "crystal horn modifier", night ? 6.0 : 0, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid,"crystal horn modifier",night ? 4.0 : 0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "crystal horn modifier", night ? 4.0 : 0, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid,"crystal horn modifier",night ? 0.2 : 0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "crystal horn modifier", night ? 0.2 : 0, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
@@ -76,17 +76,17 @@ public class CrystalHorn extends ArmorItem {
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         super.onArmorTick(stack, world, player);
-        if(!world.isDaytime()){
-            ItemNBTTool.setBoolean(stack,TAG_NIGHT,true);
+        if (!world.isDaytime()) {
+            ItemNBTTool.setBoolean(stack, TAG_NIGHT, true);
             player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 400, 0));
-        }else{
-            ItemNBTTool.setBoolean(stack,TAG_NIGHT,false);
+        } else {
+            ItemNBTTool.setBoolean(stack, TAG_NIGHT, false);
         }
 
-        if(player.isSleeping()){
-            player.addPotionEffect(new EffectInstance(Effects.WEAKNESS,12000,2));
-            player.addPotionEffect(new EffectInstance(Effects.SLOWNESS,12000,2));
-            player.addPotionEffect(new EffectInstance(Effects.BLINDNESS,12000,2));
+        if (player.isSleeping()) {
+            player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 12000, 2));
+            player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 12000, 2));
+            player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 12000, 2));
         }
     }
 
@@ -99,7 +99,7 @@ public class CrystalHorn extends ArmorItem {
 
     //对牛特攻
     @SubscribeEvent
-    public static void onLivingHurt(LivingHurtEvent event){
+    public static void onLivingHurt(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
 
         Entity entityP = event.getSource().getImmediateSource();
@@ -107,7 +107,7 @@ public class CrystalHorn extends ArmorItem {
             PlayerEntity player = (PlayerEntity) entityP;
             ItemStack item = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (item.getItem().equals(ItemRegistry.CRYSTAL_HORN.get())) {
-                if(entity instanceof CowEntity|| entity.getUniqueID().equals("1e10b6810052495bb7a93c0c5fc35552")){
+                if (entity instanceof CowEntity || entity.getUniqueID().equals("1e10b6810052495bb7a93c0c5fc35552")) {
                     event.setAmount(event.getAmount() + 200);
                 }
             }

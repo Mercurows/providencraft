@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class SteelPlate extends ArmorItem {
-    public SteelPlate(){
-        super(ModArmorMaterial.CHIRAM_PLUS, EquipmentSlotType.CHEST,new Properties().defaultMaxDamage(1310).group(ModGroup.itemgroup));
+    public SteelPlate() {
+        super(ModArmorMaterial.CHIRAM_PLUS, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(1310).group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -36,12 +36,12 @@ public class SteelPlate extends ArmorItem {
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-        Multimap<Attribute,AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
-        UUID uuid = new UUID(ItemRegistry.STEEL_PLATE.hashCode()+equipmentSlot.toString().hashCode(),0);
-        if(equipmentSlot == getEquipmentSlot()){
+        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
+        UUID uuid = new UUID(ItemRegistry.STEEL_PLATE.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid,"flat vegetable chestplate modifier",-0.05f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.05f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }

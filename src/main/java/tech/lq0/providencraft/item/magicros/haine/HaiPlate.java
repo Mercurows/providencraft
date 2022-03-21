@@ -18,14 +18,13 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.SoundRegistry;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class HaiPlate extends ShieldItem{
+public class HaiPlate extends ShieldItem {
     public HaiPlate() {
         super(new Properties().maxDamage(401).group(ModGroup.itemgroup));
         DispenserBlock.registerDispenseBehavior(this, ArmorItem.DISPENSER_BEHAVIOR);
@@ -35,12 +34,12 @@ public class HaiPlate extends ShieldItem{
         ItemStack itemstack = playerIn.getHeldItem(handIn);
 
         playerIn.setActiveHand(handIn);
-        if(playerIn.isSneaking()&&itemstack.getDamage()<itemstack.getMaxDamage()-80){
-            playerIn.addPotionEffect(new EffectInstance(Effects.RESISTANCE,200,10));
-            itemstack.setDamage(itemstack.getDamage()+80);
-            playerIn.getCooldownTracker().setCooldown(itemstack.getItem(),220);
-            worldIn.playSound(playerIn,playerIn.getPosition(),
-                    SoundRegistry.HAIPLATE.get(), SoundCategory.AMBIENT,0.5f,1f);
+        if (playerIn.isSneaking() && itemstack.getDamage() < itemstack.getMaxDamage() - 80) {
+            playerIn.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 200, 10));
+            itemstack.setDamage(itemstack.getDamage() + 80);
+            playerIn.getCooldownTracker().setCooldown(itemstack.getItem(), 220);
+            worldIn.playSound(playerIn, playerIn.getPosition(),
+                    SoundRegistry.HAIPLATE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
         }
 
         return ActionResult.resultConsume(itemstack);

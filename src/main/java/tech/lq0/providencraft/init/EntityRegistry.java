@@ -13,6 +13,6 @@ public class EntityRegistry {
 
     public static final RegistryObject<EntityType<AhogeBoomerangEntity>> AHOGE_BOOMERANG_ENTITY =
             ENTITY_TYPES.register("ahoge_boomerang",
-                    ()->EntityType.Builder.<AhogeBoomerangEntity>create(AhogeBoomerangEntity::new, EntityClassification.MISC).size(0.8f,0.3f).build("ahoge_boomerang"));
+                    () -> EntityType.Builder.<AhogeBoomerangEntity>create(AhogeBoomerangEntity::new, EntityClassification.MISC).size(0.8f, 0.3f).build("ahoge_boomerang"));
 
 }

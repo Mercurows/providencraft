@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "ingredients":
-  [
+  "ingredients": [
     {
       "item": "minecraft:sugar"
     },
@@ -12,8 +11,7 @@
       "item": "minecraft:milk_bucket"
     }
   ],
-  "result":
-  {
+  "result": {
     "item": "providencraft:lucia_rice_cake",
     "count": 2
   }

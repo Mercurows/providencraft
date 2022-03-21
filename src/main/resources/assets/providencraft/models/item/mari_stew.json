@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "providencraft:item/mari_stew"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "providencraft:item/mari_stew"
+  }
 }

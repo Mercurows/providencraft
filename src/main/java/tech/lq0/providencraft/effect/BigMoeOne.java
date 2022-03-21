@@ -13,19 +13,19 @@ import tech.lq0.providencraft.init.ItemRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class BigMoeOne extends Effect {
-    public BigMoeOne(){
-        super(EffectType.HARMFUL,15984600);
+    public BigMoeOne() {
+        super(EffectType.HARMFUL, 15984600);
     }
 
     @SubscribeEvent
-    public static void effects(LivingHurtEvent event){
+    public static void effects(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
         Effect effect = EffectRegistry.BIG_MOE_ONE.get();
-        if(entity.isPotionActive(effect)){
+        if (entity.isPotionActive(effect)) {
             ItemStack helmet = entity.getItemStackFromSlot(EquipmentSlotType.HEAD);
-            if (!helmet.isEmpty()&&helmet.getItem().equals(ItemRegistry.RED_AHOGE_HELMET.get())) {
+            if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.RED_AHOGE_HELMET.get())) {
                 event.setAmount(event.getAmount() * 0.8f);
-            }else{
+            } else {
                 event.setAmount(event.getAmount() * 1.5f);
             }
         }

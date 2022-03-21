@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "ingredients":
-  [
+  "ingredients": [
     {
       "item": "providencraft:white_ahoge"
     },
@@ -12,8 +11,7 @@
       "item": "providencraft:white_ahoge"
     }
   ],
-  "result":
-  {
+  "result": {
     "item": "providencraft:white_double_ahoge",
     "count": 1
   }

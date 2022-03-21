@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class WhiteDoubleAhoge extends Item {
-    public WhiteDoubleAhoge(){
+    public WhiteDoubleAhoge() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

@@ -20,18 +20,19 @@ import java.util.List;
 
 public class LavaCake extends Item {
     private static final Food food = (new Food.Builder()).saturation(30.0f).hunger(20).build();
-    public LavaCake(){
+
+    public LavaCake() {
         super(new Properties().food(food).maxStackSize(1).group(ModGroup.itemgroup).rarity(Rarity.RARE));
     }
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        if(entityLiving instanceof PlayerEntity &&!worldIn.isRemote){
+        if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             player.setHealth(player.getHealth() - 20.0f);
-            if(!player.isAlive()){
-                player.sendStatusMessage(new TranslationTextComponent("death.lava_cake", entityLiving.getDisplayName()),false);
+            if (!player.isAlive()) {
+                player.sendStatusMessage(new TranslationTextComponent("death.lava_cake", entityLiving.getDisplayName()), false);
             }
         }
         return itemStack;

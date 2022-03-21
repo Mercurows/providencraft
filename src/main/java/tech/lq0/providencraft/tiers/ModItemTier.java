@@ -8,9 +8,10 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import java.util.function.Supplier;
 
 public enum ModItemTier implements IItemTier {
-    RED_AHOGE(2,1221,7.0F,2.0F,14,
-            ()->{return Ingredient.fromItems(ItemRegistry.RED_AHOGE.get());
-    });
+    RED_AHOGE(2, 1221, 7.0F, 2.0F, 14,
+            () -> {
+                return Ingredient.fromItems(ItemRegistry.RED_AHOGE.get());
+            });
 
     private final int harvestLevel;
     private final int maxUses;

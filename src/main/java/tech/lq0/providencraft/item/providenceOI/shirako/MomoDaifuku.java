@@ -2,7 +2,6 @@ package tech.lq0.providencraft.item.providenceOI.shirako;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -22,7 +21,8 @@ import java.util.List;
 
 public class MomoDaifuku extends Item {
     private static final Food food = (new Food.Builder()).saturation(5).hunger(6).build();
-    public MomoDaifuku(){
+
+    public MomoDaifuku() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
     }
 
@@ -36,13 +36,13 @@ public class MomoDaifuku extends Item {
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        if(entityLiving instanceof PlayerEntity &&!worldIn.isRemote){
+        if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
-            player.addPotionEffect(new EffectInstance(Effects.LEVITATION,40,0));
-            int random = (int) (Math.random()*99+1);
-            if(random>90){
+            player.addPotionEffect(new EffectInstance(Effects.LEVITATION, 40, 0));
+            int random = (int) (Math.random() * 99 + 1);
+            if (random > 90) {
                 player.setFire(10);
-                player.sendStatusMessage(new TranslationTextComponent("momo_daifuku_fire").mergeStyle(TextFormatting.RED),false);
+                player.sendStatusMessage(new TranslationTextComponent("momo_daifuku_fire").mergeStyle(TextFormatting.RED), false);
             }
 
         }

@@ -19,23 +19,24 @@ import java.util.List;
 
 public class LotusPotato extends Item {
     private static final Food food = (new Food.Builder()).saturation(8.0f).hunger(6).build();
-    public LotusPotato(){
+
+    public LotusPotato() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
     }
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        if(entityLiving instanceof PlayerEntity&&!worldIn.isRemote){
+        if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
-            if(player.getHealth()<=player.getMaxHealth()-6){
+            if (player.getHealth() <= player.getMaxHealth() - 6) {
                 player.heal(4.0f);
-            }else{
-                float finalHealth = 6.0f - (player.getHealth()+4.0f) % player.getMaxHealth();
+            } else {
+                float finalHealth = 6.0f - (player.getHealth() + 4.0f) % player.getMaxHealth();
                 player.setHealth(finalHealth < 2 ? 2 : finalHealth);
             }
-            if(!player.isAlive()){
-                player.sendStatusMessage(new TranslationTextComponent("death.lotus_potato", entityLiving.getDisplayName()),false);
+            if (!player.isAlive()) {
+                player.sendStatusMessage(new TranslationTextComponent("death.lotus_potato", entityLiving.getDisplayName()), false);
             }
         }
         return itemStack;

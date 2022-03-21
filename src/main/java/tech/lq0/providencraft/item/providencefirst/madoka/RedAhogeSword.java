@@ -16,7 +16,7 @@ import tech.lq0.providencraft.tiers.ModItemTier;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class RedAhogeSword extends SwordItem{
+public class RedAhogeSword extends SwordItem {
     public RedAhogeSword() {
         super(ModItemTier.RED_AHOGE, 4, -2.4f, new Item.Properties().group(ModGroup.itemgroup));
     }

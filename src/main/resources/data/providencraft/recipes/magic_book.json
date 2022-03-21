@@ -1,28 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     " y ",
     "xay",
     " x "
   ],
-  "key":
-  {
-    "x":
-    {
+  "key": {
+    "x": {
       "item": "minecraft:iron_ingot"
     },
-    "a":
-    {
+    "a": {
       "item": "minecraft:book"
     },
-    "y":
-    {
+    "y": {
       "item": "minecraft:gold_ingot"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "providencraft:magic_book",
     "count": 1
   }
