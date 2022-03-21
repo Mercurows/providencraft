@@ -38,6 +38,7 @@ public class Utils {
         VillagerInit.POINTS_OF_INTEREST.register(FMLJavaModLoadingContext.get().getModEventBus());
         VillagerInit.PROFESSIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AttributeRegistry.ATTRIBUTES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {

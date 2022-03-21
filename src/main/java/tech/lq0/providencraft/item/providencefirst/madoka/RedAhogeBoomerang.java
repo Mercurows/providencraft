@@ -26,12 +26,12 @@ public class RedAhogeBoomerang extends SwordItem {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
         if (!worldIn.isRemote()) {
-            if (item.getDamage() < item.getMaxDamage() - 5) {
+            if (item.getDamage() < item.getMaxDamage() - 3) {
                 AhogeBoomerangEntity ahogeBoomerangEntity = new AhogeBoomerangEntity(worldIn, playerIn);
                 ahogeBoomerangEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
                 worldIn.addEntity(ahogeBoomerangEntity);
-                item.setDamage(item.getDamage() + 5);
-                playerIn.getCooldownTracker().setCooldown(item.getItem(), 40);
+                item.setDamage(item.getDamage() + 3);
+                playerIn.getCooldownTracker().setCooldown(item.getItem(), 20);
             }
         }
 

@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.item.donate.DonateItemExample;
 import tech.lq0.providencraft.item.magicros.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.magicros.chiram.LotusPotato;
 import tech.lq0.providencraft.item.magicros.chiram.SteelPlate;
@@ -14,10 +15,7 @@ import tech.lq0.providencraft.item.magicros.haine.HaiPlate;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhoge;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeBoomerang;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeHelmet;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeSword;
+import tech.lq0.providencraft.item.providencefirst.madoka.*;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
@@ -105,6 +103,11 @@ public class ItemRegistry {
     //beni
     public static final RegistryObject<Item> LAVA_CAKE = ITEMS.register("lava_cake", LavaCake::new);
 
+
+    /**
+     * donate
+     */
+    public static final RegistryObject<Item> DONATE_ITEM_EXAMPLE = ITEMS.register("donate_item_example", DonateItemExample::new);
 
     //BLOCKS
     public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",

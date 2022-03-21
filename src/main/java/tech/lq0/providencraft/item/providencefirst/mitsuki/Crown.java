@@ -62,7 +62,7 @@ public class Crown extends ArmorItem {
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.CROWN.get())) {
                 player.heal(0.5f);
-                if (!(target instanceof ProjectileEntity)) {
+                if (target instanceof LivingEntity) {
                     LivingEntity entityT = (LivingEntity) target;
                     entityT.addPotionEffect(new EffectInstance(Effects.WITHER, 60, 0));
                 }

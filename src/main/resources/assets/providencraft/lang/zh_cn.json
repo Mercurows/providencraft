@@ -20,7 +20,7 @@
   "red_ahoge_sword_des3": "拥有强大的攻击力",
   "red_ahoge_boomerang_des": "拥有不错的攻击力和攻击速度",
   "red_ahoge_sword_des4": "但是为什么大学生会随身佩戴武器呢",
-  "red_ahoge_boomerang_func": "右键可以发射一个红色呆毛回旋镖，可以造成10点伤害，消耗5点耐久",
+  "red_ahoge_boomerang_func": "右键可以发射一个红色呆毛回旋镖，可以造成10点伤害，消耗3点耐久",
   "fetuozi_des": "一坨子把臭DD打飞十米",
   "red_ahoge_helmet_des1": "普罗维登的某位普通女大学生的同款头盔",
   "red_ahoge_helmet_des2": "用蕴含神秘力量的红色呆毛打造而成",
@@ -92,5 +92,10 @@
   "crown_des2": "戴上后会获得神秘力量",
   "item.providencraft.banana_milk": "香蕉牛奶",
   "block.providencraft.communication_table": "异次元通信交流桌",
-  "item.providencraft.plunger": "胡桃搋子"
+  "item.providencraft.plunger": "胡桃搋子",
+  "itemGroup.Providencraft Donate Items": "普罗维登Mod捐赠者物品栏",
+  "donate_item_example_des": "因为没有捐赠者，所以没有物品",
+  "item.providencraft.donate_item_example": "捐赠者物品示例",
+  "plunger_des1": "堕堕天使的马桶搋子",
+  "plunger_des2": "右键似乎可以丢出去"
 }
