@@ -33,6 +33,7 @@ import tech.lq0.providencraft.tiers.ModArmorMaterial;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
@@ -91,6 +92,7 @@ public class CrystalHorn extends ArmorItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("crystal_horn_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crystal_horn_des2")).mergeStyle(TextFormatting.GRAY));
@@ -107,7 +109,7 @@ public class CrystalHorn extends ArmorItem {
             PlayerEntity player = (PlayerEntity) entityP;
             ItemStack item = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (item.getItem().equals(ItemRegistry.CRYSTAL_HORN.get())) {
-                if (entity instanceof CowEntity || entity.getUniqueID().equals("1e10b6810052495bb7a93c0c5fc35552")) {
+                if (entity instanceof CowEntity || entity.getUniqueID().toString().equals("1e10b6810052495bb7a93c0c5fc35552")) {
                     event.setAmount(event.getAmount() + 200);
                 }
             }
