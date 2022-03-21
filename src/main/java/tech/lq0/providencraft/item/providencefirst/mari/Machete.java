@@ -16,6 +16,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class Machete extends SwordItem {
@@ -24,6 +25,7 @@ public class Machete extends SwordItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 6));
         attacker.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 40, 4));
@@ -31,6 +33,7 @@ public class Machete extends SwordItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("machete_des")).mergeStyle(TextFormatting.GRAY));
     }

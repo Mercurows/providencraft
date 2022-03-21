@@ -11,6 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.init.ItemRegistry;
 
+import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements IArmorMaterial {
@@ -61,15 +62,18 @@ public enum ModArmorMaterial implements IArmorMaterial {
         return this.enchantability;
     }
 
+    @Nonnull
     public SoundEvent getSoundEvent() {
         return this.soundEvent;
     }
 
+    @Nonnull
     public Ingredient getRepairMaterial() {
         return this.repairMaterial.getValue();
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Nonnull
     public String getName() {
         return this.name;
     }

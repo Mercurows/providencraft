@@ -14,7 +14,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class LotusPotato extends Item {
@@ -25,6 +27,8 @@ public class LotusPotato extends Item {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
@@ -43,6 +47,7 @@ public class LotusPotato extends Item {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("lotus_potato_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("lotus_potato_warn")).mergeStyle(TextFormatting.RED));

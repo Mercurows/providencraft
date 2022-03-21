@@ -56,6 +56,7 @@ public class EnchantRegister {
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantRegistry.UNI_HUSK.get(), armor);
 
                 if (level > 0 && !(livingEntity instanceof PlayerEntity)) {
+                    assert livingEntity != null;
                     livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 100, level + 1));
                 }
             }

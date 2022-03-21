@@ -17,7 +17,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.PlungerEntity;
 import tech.lq0.providencraft.group.ModGroup;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class Plunger extends SwordItem {
@@ -26,12 +28,15 @@ public class Plunger extends SwordItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("plunger_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("plunger_des2")).mergeStyle(TextFormatting.GRAY));
     }
 
     @Override
+    @Nonnull
+    @ParametersAreNonnullByDefault
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
         if (!worldIn.isRemote()) {

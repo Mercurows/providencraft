@@ -19,7 +19,9 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,12 +31,15 @@ public class SteelPlate extends ArmorItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("steel_plate_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("steel_plate_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
         UUID uuid = new UUID(ItemRegistry.STEEL_PLATE.hashCode() + equipmentSlot.toString().hashCode(), 0);

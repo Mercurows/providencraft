@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
@@ -114,6 +115,7 @@ public class VillagerInit {
         }
 
         @Override
+        @ParametersAreNonnullByDefault
         public MerchantOffer getOffer(Entity trader, Random rand) {
             ItemStack itemstack = new ItemStack(this.tradeItem, this.count);
             return new MerchantOffer(itemstack, new ItemStack(Items.EMERALD), this.maxUses, this.xpValue, this.priceMultiplier);
@@ -153,6 +155,7 @@ public class VillagerInit {
             this.priceMultiplier = priceMultiplier;
         }
 
+        @ParametersAreNonnullByDefault
         public MerchantOffer getOffer(Entity trader, Random rand) {
             return new MerchantOffer(new ItemStack(Items.EMERALD, this.emeraldCount), new ItemStack(this.sellingItem.getItem(), this.sellingItemCount), this.maxUses, this.xpValue, this.priceMultiplier);
         }

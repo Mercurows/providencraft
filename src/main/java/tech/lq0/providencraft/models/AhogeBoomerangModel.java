@@ -9,10 +9,10 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class AhogeBoomerangModel extends EntityModel<AhogeBoomerangEntity> {
     private final ModelRenderer bb_main;
-    private final ModelRenderer bone;
-    private final ModelRenderer bone2;
 
     public AhogeBoomerangModel() {
         textureWidth = 64;
@@ -22,7 +22,7 @@ public class AhogeBoomerangModel extends EntityModel<AhogeBoomerangEntity> {
         bb_main.setRotationPoint(0.0F, 24.0F, 0.0F);
 
 
-        bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
         bone.setRotationPoint(8.0F, 0.0F, -8.0F);
         bb_main.addChild(bone);
         bone.setTextureOffset(30, 27).addBox(-10.0F, -1.0F, 6.0F, 1.0F, 1.0F, 4.0F, 0.0F, false);
@@ -39,7 +39,7 @@ public class AhogeBoomerangModel extends EntityModel<AhogeBoomerangEntity> {
         bone.setTextureOffset(11, 8).addBox(-10.0F, -1.0F, 10.0F, 1.0F, 1.0F, 6.0F, 0.0F, false);
         bone.setTextureOffset(0, 16).addBox(-9.0F, -1.0F, 12.0F, 3.0F, 1.0F, 4.0F, 0.0F, false);
 
-        bone2 = new ModelRenderer(this);
+        ModelRenderer bone2 = new ModelRenderer(this);
         bone2.setRotationPoint(8.0F, 0.0F, -8.0F);
         bb_main.addChild(bone2);
         bone2.setTextureOffset(24, 26).addBox(-7.0F, -1.0F, 6.0F, 1.0F, 1.0F, 4.0F, 0.0F, false);
@@ -58,6 +58,7 @@ public class AhogeBoomerangModel extends EntityModel<AhogeBoomerangEntity> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void setRotationAngles(AhogeBoomerangEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         bb_main.rotateAngleX = limbSwing;
         bb_main.rotateAngleY = netHeadYaw;
@@ -65,6 +66,7 @@ public class AhogeBoomerangModel extends EntityModel<AhogeBoomerangEntity> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
     }

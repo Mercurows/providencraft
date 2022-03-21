@@ -19,7 +19,9 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,11 +31,14 @@ public class FlatVegetableChestplate extends ArmorItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("vegetable_chestplate_des")).mergeStyle(TextFormatting.GRAY));
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
         UUID uuid = new UUID(ItemRegistry.FLAT_VEGETABLE_CHESTPLATE.hashCode() + equipmentSlot.toString().hashCode(), 0);

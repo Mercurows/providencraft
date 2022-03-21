@@ -9,6 +9,8 @@ import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import tech.lq0.providencraft.entity.PlungerEntity;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class PlungerEntityModel extends EntityModel<PlungerEntity> {
 	private final ModelRenderer group2;
 	private final ModelRenderer group;
@@ -55,11 +57,13 @@ public class PlungerEntityModel extends EntityModel<PlungerEntity> {
 	}
 
 	@Override
+	@ParametersAreNonnullByDefault
 	public void setRotationAngles(PlungerEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 		//previously the render function, render code was moved to a method below
 	}
 
 	@Override
+	@ParametersAreNonnullByDefault
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		group2.render(matrixStack, buffer, packedLight, packedOverlay);
 	}

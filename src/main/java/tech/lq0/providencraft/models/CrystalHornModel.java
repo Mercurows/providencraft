@@ -10,6 +10,8 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class CrystalHornModel<T extends LivingEntity> extends BipedModel<T> {
     private final ModelRenderer bone;
     private final ModelRenderer bone2;
@@ -58,11 +60,13 @@ public class CrystalHornModel<T extends LivingEntity> extends BipedModel<T> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         bone.copyModelAngles(this.bipedHead);
         bone.render(matrixStack, buffer, packedLight, packedOverlay);

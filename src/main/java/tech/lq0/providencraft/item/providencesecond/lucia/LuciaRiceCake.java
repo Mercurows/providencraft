@@ -13,6 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class LuciaRiceCake extends Item {
@@ -23,6 +24,7 @@ public class LuciaRiceCake extends Item {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("lucia_rice_cake_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("lucia_rice_cake_des2")).mergeStyle(TextFormatting.GRAY));

@@ -5,6 +5,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
 import tech.lq0.providencraft.init.ItemRegistry;
 
+import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public enum ModItemTier implements IItemTier {
@@ -55,6 +56,7 @@ public enum ModItemTier implements IItemTier {
     }
 
     @Override
+    @Nonnull
     public Ingredient getRepairMaterial() {
         return this.repairMaterial.getValue();
     }

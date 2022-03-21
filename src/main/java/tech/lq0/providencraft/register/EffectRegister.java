@@ -22,6 +22,7 @@ public class EffectRegister {
         if (source.getDamageType().equals("inFire") || source.getDamageType().equals("onFire") || source.getDamageType().equals("lava")) {
             if (entity.isPotionActive(effect_bless)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_bless);
+                assert effectInstance != null;
                 int level = effectInstance.getAmplifier();
                 if (level >= 0) {
                     event.setCanceled(true);
@@ -30,6 +31,7 @@ public class EffectRegister {
         } else if (!source.isExplosion() || !source.isProjectile()) {
             if (entity.isPotionActive(effect_bless)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_bless);
+                assert effectInstance != null;
                 int level = effectInstance.getAmplifier();
                 if (level >= 10) {
                     event.setAmount(0);
@@ -42,6 +44,7 @@ public class EffectRegister {
         if (source.isExplosion()) {
             if (entity.isPotionActive(effect_curse)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_curse);
+                assert effectInstance != null;
                 int level = effectInstance.getAmplifier();
                 event.setAmount(event.getAmount() * (1 + level));
             }

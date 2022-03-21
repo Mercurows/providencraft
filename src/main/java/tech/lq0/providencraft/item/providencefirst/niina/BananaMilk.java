@@ -6,6 +6,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import tech.lq0.providencraft.group.ModGroup;
 
+import javax.annotation.Nonnull;
+
 public class BananaMilk extends Item {
     private static final Food food = (new Food.Builder()).saturation(5.0f).hunger(4).build();
 
@@ -14,6 +16,7 @@ public class BananaMilk extends Item {
     }
 
     @Override
+    @Nonnull
     public SoundEvent getEatSound() {
         return SoundEvents.ENTITY_GENERIC_DRINK;
     }

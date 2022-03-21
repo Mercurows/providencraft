@@ -21,7 +21,9 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.init.SoundRegistry;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MagicBookMyannaPlus extends Item {
@@ -30,6 +32,8 @@ public class MagicBookMyannaPlus extends Item {
     }
 
     @Override
+    @Nonnull
+    @ParametersAreNonnullByDefault
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getHeldItem(hand);
 
@@ -53,6 +57,7 @@ public class MagicBookMyannaPlus extends Item {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_func1")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_des")).mergeStyle(TextFormatting.GRAY));

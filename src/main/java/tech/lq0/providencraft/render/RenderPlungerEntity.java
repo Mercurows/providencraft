@@ -11,10 +11,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
 import tech.lq0.providencraft.Utils;
-import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
 import tech.lq0.providencraft.entity.PlungerEntity;
-import tech.lq0.providencraft.models.AhogeBoomerangModel;
 import tech.lq0.providencraft.models.PlungerEntityModel;
+
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class RenderPlungerEntity extends EntityRenderer<PlungerEntity> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(Utils.MOD_ID, "textures/entity/plunger_entity_texture.png");
@@ -26,6 +27,7 @@ public class RenderPlungerEntity extends EntityRenderer<PlungerEntity> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void render(PlungerEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         matrixStackIn.push();
@@ -42,6 +44,8 @@ public class RenderPlungerEntity extends EntityRenderer<PlungerEntity> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ResourceLocation getEntityTexture(PlungerEntity entity) {
         return TEXTURE;
     }

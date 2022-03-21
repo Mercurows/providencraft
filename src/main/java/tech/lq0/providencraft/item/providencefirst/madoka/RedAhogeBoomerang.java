@@ -18,11 +18,15 @@ import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tiers.ModItemTier;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class RedAhogeBoomerang extends SwordItem {
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
         if (!worldIn.isRemote()) {
@@ -43,6 +47,7 @@ public class RedAhogeBoomerang extends SwordItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("red_ahoge_boomerang_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("red_ahoge_sword_des1")).mergeStyle(TextFormatting.GRAY));

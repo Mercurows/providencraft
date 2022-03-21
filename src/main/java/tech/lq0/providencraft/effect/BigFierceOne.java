@@ -10,6 +10,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.init.EffectRegistry;
 
+import java.util.Objects;
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class BigFierceOne extends Effect {
     public BigFierceOne() {
@@ -23,7 +25,7 @@ public class BigFierceOne extends Effect {
         if (livingEntity instanceof PlayerEntity && !livingEntity.world.isRemote) {
             PlayerEntity player = (PlayerEntity) livingEntity;
             if (player.isPotionActive(EffectRegistry.BIG_FIERCE_ONE.get())) {
-                int level = player.getActivePotionEffect(EffectRegistry.BIG_FIERCE_ONE.get()).getAmplifier();
+                int level = Objects.requireNonNull(player.getActivePotionEffect(EffectRegistry.BIG_FIERCE_ONE.get())).getAmplifier();
                 target.setFire(level * 5);
                 target.setGlowing(true);
                 if (target.isAlive()) {

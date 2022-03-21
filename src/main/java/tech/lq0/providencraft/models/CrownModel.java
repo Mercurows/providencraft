@@ -9,6 +9,8 @@ import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.LivingEntity;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class CrownModel<T extends LivingEntity> extends BipedModel<T> {
     private final ModelRenderer main;
     private final ModelRenderer cross;
@@ -323,6 +325,7 @@ public class CrownModel<T extends LivingEntity> extends BipedModel<T> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         this.main.copyModelAngles(this.bipedHead);
         main.render(matrixStack, buffer, packedLight, packedOverlay);
@@ -335,6 +338,7 @@ public class CrownModel<T extends LivingEntity> extends BipedModel<T> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
     }
 }

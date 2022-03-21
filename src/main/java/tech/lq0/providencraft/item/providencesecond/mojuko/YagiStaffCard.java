@@ -20,6 +20,7 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +30,7 @@ public class YagiStaffCard extends Item {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("yagi_staff_card_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("yagi_staff_card_des2")).mergeStyle(TextFormatting.GRAY));

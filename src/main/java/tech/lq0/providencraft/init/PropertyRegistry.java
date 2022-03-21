@@ -12,9 +12,7 @@ import tech.lq0.providencraft.Utils;
 public class PropertyRegistry {
     @SubscribeEvent
     public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            ItemModelsProperties.registerProperty(ItemRegistry.HAI_PLATE.get(), new ResourceLocation(Utils.MOD_ID, "blocking"), (itemStack, clientWorld, livingEntity) ->
-                    livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F);
-        });
+        event.enqueueWork(() -> ItemModelsProperties.registerProperty(ItemRegistry.HAI_PLATE.get(), new ResourceLocation(Utils.MOD_ID, "blocking"), (itemStack, clientWorld, livingEntity) ->
+                livingEntity != null && livingEntity.isHandActive() && livingEntity.getActiveItemStack() == itemStack ? 1.0F : 0.0F));
     }
 }

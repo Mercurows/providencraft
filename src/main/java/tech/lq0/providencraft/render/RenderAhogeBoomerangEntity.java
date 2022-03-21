@@ -13,6 +13,9 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
 import tech.lq0.providencraft.models.AhogeBoomerangModel;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class RenderAhogeBoomerangEntity extends EntityRenderer<AhogeBoomerangEntity> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(Utils.MOD_ID, "textures/entity/ahoge_boomerang_texture.png");
     private final EntityModel<AhogeBoomerangEntity> ahogeBoomerangEntityModel;
@@ -23,6 +26,7 @@ public class RenderAhogeBoomerangEntity extends EntityRenderer<AhogeBoomerangEnt
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void render(AhogeBoomerangEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         matrixStackIn.push();
@@ -34,6 +38,8 @@ public class RenderAhogeBoomerangEntity extends EntityRenderer<AhogeBoomerangEnt
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ResourceLocation getEntityTexture(AhogeBoomerangEntity entity) {
         return TEXTURE;
     }

@@ -24,7 +24,9 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.AhogeHelmetModel;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +48,7 @@ public class RedAhogeHelmet extends ArmorItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("red_ahoge_helmet_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("red_ahoge_helmet_des2")).mergeStyle(TextFormatting.GRAY));
@@ -53,6 +56,8 @@ public class RedAhogeHelmet extends ArmorItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
         UUID uuid = new UUID(ItemRegistry.RED_AHOGE_HELMET.hashCode() + equipmentSlot.toString().hashCode(), 0);

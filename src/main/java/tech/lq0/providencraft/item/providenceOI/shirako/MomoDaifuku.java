@@ -16,7 +16,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MomoDaifuku extends Item {
@@ -27,6 +29,7 @@ public class MomoDaifuku extends Item {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("momo_daifuku_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("momo_daifuku_des2")).mergeStyle(TextFormatting.GRAY));
@@ -34,6 +37,8 @@ public class MomoDaifuku extends Item {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {

@@ -5,7 +5,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -27,6 +26,7 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.CrownModel;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -48,6 +48,7 @@ public class Crown extends ArmorItem {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("crown_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crown_des2")).mergeStyle(TextFormatting.GRAY));
@@ -71,6 +72,7 @@ public class Crown extends ArmorItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return false;
     }

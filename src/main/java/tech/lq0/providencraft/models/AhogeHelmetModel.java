@@ -12,10 +12,11 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 @OnlyIn(Dist.CLIENT)
 public class AhogeHelmetModel<T extends LivingEntity> extends BipedModel<T> {
     private final ModelRenderer main;
-    private final ModelRenderer bone2;
 
     public AhogeHelmetModel(float modelSize, EquipmentSlotType slot, LivingEntity entity) {
         super(modelSize, 0.0f, 64, 64);
@@ -25,7 +26,7 @@ public class AhogeHelmetModel<T extends LivingEntity> extends BipedModel<T> {
         main = new ModelRenderer(this);
         main.setRotationPoint(0.0F, 0.0F, 0.0F);
 
-        bone2 = new ModelRenderer(this);
+        ModelRenderer bone2 = new ModelRenderer(this);
         bone2.setRotationPoint(0.0F, -6.0F, 0.0F);
         main.addChild(bone2);
         bone2.setTextureOffset(0, 25).addBox(-2.0F, -3.0F, -1.0F, 3.0F, 1.0F, 2.0F, 0.0F, false);
@@ -40,6 +41,7 @@ public class AhogeHelmetModel<T extends LivingEntity> extends BipedModel<T> {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         this.main.copyModelAngles(this.bipedHead);
         main.render(matrixStack, buffer, packedLight, packedOverlay);
