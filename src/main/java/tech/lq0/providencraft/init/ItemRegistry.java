@@ -26,6 +26,7 @@ import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigMoeOnePotion;
 import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
 import tech.lq0.providencraft.item.providencesecond.mojuko.YagiStaffCard;
+import tech.lq0.providencraft.item.providencesecond.satou.SatouKnife;
 import tech.lq0.providencraft.item.providencethird.beni.LavaCake;
 
 public class ItemRegistry {
@@ -76,6 +77,9 @@ public class ItemRegistry {
 
     //lecia
     public static final RegistryObject<Item> ELECTRIC_HORN = ITEMS.register("electric_horn", ElectricHorn::new);
+
+    //satou
+    public static final RegistryObject<Item> SATOU_KNIFE = ITEMS.register("satou_knife", SatouKnife::new);
 
     /**
      * magicros
