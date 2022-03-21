@@ -36,7 +36,9 @@ public class HaiPlate extends ShieldItem {
         playerIn.setActiveHand(handIn);
         if (playerIn.isSneaking() && itemstack.getDamage() < itemstack.getMaxDamage() - 80) {
             playerIn.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 200, 10));
-            itemstack.setDamage(itemstack.getDamage() + 80);
+            if (!playerIn.isCreative()) {
+                itemstack.setDamage(itemstack.getDamage() + 80);
+            }
             playerIn.getCooldownTracker().setCooldown(itemstack.getItem(), 220);
             worldIn.playSound(playerIn, playerIn.getPosition(),
                     SoundRegistry.HAIPLATE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
