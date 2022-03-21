@@ -97,5 +97,6 @@
   "donate_item_example_des": "因为没有捐赠者，所以没有物品",
   "item.providencraft.donate_item_example": "捐赠者物品示例",
   "plunger_des1": "堕堕天使的马桶搋子",
-  "plunger_des2": "右键似乎可以丢出去"
+  "plunger_des2": "右键似乎可以丢出去",
+  "attribute.attack_cow": "对牛伤害"
 }

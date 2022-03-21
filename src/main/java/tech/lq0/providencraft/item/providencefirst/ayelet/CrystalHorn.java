@@ -27,6 +27,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.AttributeRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.CrystalHornModel;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
@@ -68,8 +69,10 @@ public class CrystalHorn extends ArmorItem {
                     new AttributeModifier(uuid, "crystal horn modifier", night ? 6.0 : 0, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(uuid, "crystal horn modifier", night ? 4.0 : 0, AttributeModifier.Operation.ADDITION));
-            map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "crystal horn modifier", night ? 0.2 : 0, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.ATTACK_SPEED,
+                    new AttributeModifier(uuid, "crystal horn modifier", night ? 2.0 : 0, AttributeModifier.Operation.ADDITION));
+            map.put(AttributeRegistry.ATTACK_COW.get(),
+                    new AttributeModifier(uuid, "crystal horn modifier", 200.0D, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
