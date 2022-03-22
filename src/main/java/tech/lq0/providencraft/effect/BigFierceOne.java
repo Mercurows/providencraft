@@ -22,7 +22,7 @@ public class BigFierceOne extends Effect {
     public static void effects(AttackEntityEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
         Entity target = event.getTarget();
-        if (livingEntity instanceof PlayerEntity && !livingEntity.world.isRemote) {
+        if (livingEntity instanceof PlayerEntity && !livingEntity.world.isRemote && target instanceof LivingEntity) {
             PlayerEntity player = (PlayerEntity) livingEntity;
             if (player.isPotionActive(EffectRegistry.BIG_FIERCE_ONE.get())) {
                 int level = Objects.requireNonNull(player.getActivePotionEffect(EffectRegistry.BIG_FIERCE_ONE.get())).getAmplifier();
