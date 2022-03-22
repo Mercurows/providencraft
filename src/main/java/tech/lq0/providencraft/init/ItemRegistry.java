@@ -118,4 +118,6 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.RED_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.itemgroup)));
     public static final RegistryObject<Item> COMMUNICATION_TABLE = ITEMS.register("communication_table",
             () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.itemgroup)));
+    public static final RegistryObject<Item> PORCELAIN_THRONE = ITEMS.register("porcelain_throne",
+            () -> new BlockItem(BlockRegistry.PORCELAIN_THRONE.get(), new Item.Properties().group(ModGroup.itemgroup)));
 }
