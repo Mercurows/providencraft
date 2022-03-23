@@ -101,5 +101,7 @@
   "attribute.attack_cow": "对牛伤害",
   "item.providencraft.satou_knife": "糖刀",
   "item.providencraft.electric_horn": "电子龙角",
-  "block.providencraft.porcelain_throne": "白瓷王座"
+  "block.providencraft.porcelain_throne": "白瓷王座",
+  "satou_knife_des": "佐藤砂糖的小刀",
+  "satou_knife_func": "潜行时可以进行暗杀"
 }

@@ -31,7 +31,7 @@ public class VillagerInit {
 
     //Elifaus
     public static final RegistryObject<PointOfInterestType> ELIFAUS_POI = POINTS_OF_INTEREST.register(
-            "elifaus", () -> new PointOfInterestType("elifaus", PointOfInterestType.getAllStates(Blocks.DIAMOND_BLOCK), 1, 1)
+            "elifaus", () -> new PointOfInterestType("elifaus", PointOfInterestType.getAllStates(BlockRegistry.PORCELAIN_THRONE.get()), 1, 1)
     );
 
     public static final RegistryObject<VillagerProfession> ELIFAUS = PROFESSIONS.register(
@@ -47,7 +47,7 @@ public class VillagerInit {
 
     //Ruozhi
     public static final RegistryObject<PointOfInterestType> RUOZHI_POI = POINTS_OF_INTEREST.register(
-            "ruozhi", () -> new PointOfInterestType("ruozhi", PointOfInterestType.getAllStates(Blocks.PUMPKIN), 1, 1)
+            "ruozhi", () -> new PointOfInterestType("ruozhi", PointOfInterestType.getAllStates(BlockRegistry.COMMUNICATION_TABLE.get()), 1, 1)
     );
 
     public static final RegistryObject<VillagerProfession> RUOZHI = PROFESSIONS.register(
