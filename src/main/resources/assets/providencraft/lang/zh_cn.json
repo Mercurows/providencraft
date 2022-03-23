@@ -103,5 +103,11 @@
   "item.providencraft.electric_horn": "电子龙角",
   "block.providencraft.porcelain_throne": "白瓷王座",
   "satou_knife_des": "佐藤砂糖的小刀",
-  "satou_knife_func": "潜行时可以进行暗杀"
+  "satou_knife_func": "潜行时可以进行暗杀",
+  "item.providencraft.atsuishio": "一罐盐",
+  "donate_item_des": "--==赞助者物品==--",
+  "atsuishio_des": "神秘赞助者物品，太烧了",
+  "item.providencraft.little_potato": "小土豆",
+  "little_potato_des": "一般路过小土豆，可以直接吃哟，114，514",
+  "little_potato_eaten": "片已剪好，轴已打完"
 }
