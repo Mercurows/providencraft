@@ -1,6 +1,7 @@
 package tech.lq0.providencraft.tiers;
 
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
 import tech.lq0.providencraft.init.ItemRegistry;
@@ -12,6 +13,10 @@ public enum ModItemTier implements IItemTier {
     RED_AHOGE(2, 1221, 7.0F, 2.0F, 14,
             () -> {
                 return Ingredient.fromItems(ItemRegistry.RED_AHOGE.get());
+            }),
+    DARK_ELF(4,39,50.0F,1.0F,20,
+            () ->{
+                return Ingredient.fromItems(ItemRegistry.WHITE_AHOGE.get());
             });
 
     private final int harvestLevel;
