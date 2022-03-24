@@ -110,5 +110,7 @@
   "item.providencraft.little_potato": "小土豆",
   "little_potato_des": "一般路过小土豆，可以直接吃哟，114，514",
   "little_potato_eaten": "片已剪好，轴已打完",
-  "item.providencraft.mountain_destroyer": "群峦毁灭者"
+  "item.providencraft.mountain_destroyer": "群峦毁灭者",
+  "item.providencraft.empty_jar": "空罐子",
+  "empty_jar_des": "一个空罐子，还是很烧"
 }

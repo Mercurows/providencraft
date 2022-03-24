@@ -9,6 +9,7 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.donate.AtsuiShio;
 import tech.lq0.providencraft.item.donate.DonateItemExample;
+import tech.lq0.providencraft.item.donate.EmptyJar;
 import tech.lq0.providencraft.item.donate.LittlePotato;
 import tech.lq0.providencraft.item.magicros.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.magicros.chiram.LotusPotato;
@@ -119,6 +120,7 @@ public class ItemRegistry {
      */
     public static final RegistryObject<Item> DONATE_ITEM_EXAMPLE = ITEMS.register("donate_item_example", DonateItemExample::new);
     public static final RegistryObject<Item> ATSUISHIO = ITEMS.register("atsuishio", AtsuiShio::new);
+    public static final RegistryObject<Item> EMPTY_JAR = ITEMS.register("empty_jar", EmptyJar::new);
     public static final RegistryObject<Item> LITTLE_POTATO = ITEMS.register("little_potato", LittlePotato::new);
 
 
