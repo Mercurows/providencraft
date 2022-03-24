@@ -19,12 +19,17 @@ import java.util.List;
 
 public class Fetuozi extends SwordItem {
     public Fetuozi() {
-        super(ItemTier.NETHERITE, 15, -3.0f, new Item.Properties().maxDamage(1145).group(ModGroup.itemgroup));
+        super(ItemTier.NETHERITE, 13, -3.0f, new Item.Properties().maxDamage(11451).group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("fetuozi_des")).mergeStyle(TextFormatting.GRAY));
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return false;
     }
 }
