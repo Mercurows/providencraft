@@ -15,10 +15,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.tools.RandomTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Objects;
 
 public class Lollipop extends Item {
     public static final Food food = (new Food.Builder()).saturation(6.0f).hunger(4).setAlwaysEdible().build();
@@ -42,6 +44,38 @@ public class Lollipop extends Item {
             player.addPotionEffect(new EffectInstance(Effects.SPEED,340,2));
             player.addPotionEffect(new EffectInstance(Effects.HASTE,340,2));
             player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST,340,2));
+
+            Thread t = new Thread(() ->{
+                try {
+                    Thread.sleep(17000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                int[] num = RandomTool.getRandom(1,5,2);
+                for(int i = 0;i < 2;i++){
+                    switch (Objects.requireNonNull(num)[i]){
+                        case 0:
+                            player.addPotionEffect(new EffectInstance(Effects.WEAKNESS,100,1));
+                            break;
+                        case 1:
+                            player.addPotionEffect(new EffectInstance(Effects.BLINDNESS,100,1));
+                            break;
+                        case 2:
+                            player.addPotionEffect(new EffectInstance(Effects.SLOWNESS,100,1));
+                            break;
+                        case 3:
+                            player.addPotionEffect(new EffectInstance(Effects.WITHER,100,1));
+                            break;
+                        case 4:
+                            player.addPotionEffect(new EffectInstance(Effects.NAUSEA,100,1));
+                            break;
+                    }
+                }
+
+            });
+            t.start();
+
+
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

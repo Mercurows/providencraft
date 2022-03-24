@@ -3,6 +3,7 @@ package tech.lq0.providencraft.item.donate;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -14,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -38,7 +40,16 @@ public class AtsuiShio extends Item {
     @ParametersAreNonnullByDefault
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        return stack;
+        ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
+        if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
+            PlayerEntity player = (PlayerEntity) entityLiving;
+            if (player.isCreative()) {
+                return itemStack;
+            } else {
+                return ItemRegistry.EMPTY_JAR.get().getDefaultInstance();
+            }
+        }
+        return itemStack;
     }
 
     @Override
