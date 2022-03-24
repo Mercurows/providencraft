@@ -20,7 +20,6 @@ public class AtsuiShioRegister {
         if(livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
             if(!player.world.isRemote && itemStack.getItem().equals(ItemRegistry.ATSUISHIO.get())){
-                event.setDuration(2);
                 player.addTag(TAG_BURN);
             }
         }
