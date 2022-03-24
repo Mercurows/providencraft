@@ -112,5 +112,7 @@
   "little_potato_eaten": "片已剪好，轴已打完",
   "item.providencraft.mountain_destroyer": "群峦毁灭者",
   "item.providencraft.empty_jar": "空罐子",
-  "empty_jar_des": "一个空罐子，还是很烧"
+  "empty_jar_des": "一个空罐子，还是很烧",
+  "lollipop_des": "吃了以后会无敌一段时间",
+  "item.providencraft.lollipop": "棒棒糖"
 }
