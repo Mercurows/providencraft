@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:magic_book_myanna"
+    },
+    "title": {
+      "translate": "providencraft.advancement.magic_book_myanna"
+    },
+    "description": {
+      "translate": "providencraft.advancement.magic_book_myanna_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/magic_book",
+  "criteria": {
+    "magic_book_myanna": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:magic_book_myanna"
+          }
+        ]
+      }
+    }
+  }
+}

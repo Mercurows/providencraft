@@ -116,5 +116,19 @@
   "lollipop_des": "吃了以后会无敌一段时间",
   "item.providencraft.lollipop": "棒棒糖",
   "lollipop_nothing": "无敌时间结束了，还好无事发生",
-  "death.lollipop": "%1$s承受了无敌的代价"
+  "death.lollipop": "%1$s承受了无敌的代价",
+
+
+  "providencraft.advancement.root": "Providencraft",
+  "providencraft.advancement.root_des": "欢迎来到普罗维登",
+  "providencraft.advancement.white_double_ahoge": "白色双呆毛",
+  "providencraft.advancement.white_double_ahoge_des": "呆毛...变异了?",
+  "providencraft.advancement.eat_momo_daifuku": "被...被吃掉了",
+  "providencraft.advancement.eat_momo_daifuku_des": "我会吞噬你的灵魂，咀嚼，毁灭",
+  "providencraft.advancement.magic_book": "魔法蛇蛇入门",
+  "providencraft.advancement.magic_book_des": "合成一本魔法书",
+  "providencraft.advancement.magic_book_myanna": "玛-安-娜-",
+  "providencraft.advancement.magic_book_myanna_des": "随时随地获得暗精灵的祝福",
+  "providencraft.advancement.magic_book_myanna_plus": "大召唤术",
+  "providencraft.advancement.magic_book_myanna_plus_des": "获得诅咒的力量"
 }

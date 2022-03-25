@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:magic_book"
+    },
+    "title": {
+      "translate": "providencraft.advancement.magic_book"
+    },
+    "description": {
+      "translate": "providencraft.advancement.magic_book_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/white_double_ahoge",
+  "criteria": {
+    "magic_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:magic_book"
+          }
+        ]
+      }
+    }
+  }
+}

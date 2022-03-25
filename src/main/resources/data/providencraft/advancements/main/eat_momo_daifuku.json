@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:momo_daifuku"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_momo_daifuku"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_momo_daifuku_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "eat_momo_daifuku": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:momo_daifuku"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:white_double_ahoge"
+    },
+    "title": {
+      "translate": "providencraft.advancement.white_double_ahoge"
+    },
+    "description": {
+      "translate": "providencraft.advancement.white_double_ahoge_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "white_double_ahoge": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:white_double_ahoge"
+          }
+        ]
+      }
+    }
+  }
+}

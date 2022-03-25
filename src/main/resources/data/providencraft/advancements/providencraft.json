@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:red_ahoge"
+    },
+    "title": {
+      "translate": "providencraft.advancement.root"
+    },
+    "description": {
+      "translate": "providencraft.advancement.root_des"
+    },
+    "background": "providencraft:textures/background.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "red_ahoge": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:red_ahoge"
+          }
+        ]
+      }
+    }
+  }
+}
