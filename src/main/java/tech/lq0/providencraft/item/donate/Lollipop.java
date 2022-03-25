@@ -51,25 +51,37 @@ public class Lollipop extends Item {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                int[] num = RandomTool.getRandom(1,5,2);
-                for(int i = 0;i < 2;i++){
-                    switch (Objects.requireNonNull(num)[i]){
-                        case 0:
-                            player.addPotionEffect(new EffectInstance(Effects.WEAKNESS,100,1));
-                            break;
-                        case 1:
-                            player.addPotionEffect(new EffectInstance(Effects.BLINDNESS,100,1));
-                            break;
-                        case 2:
-                            player.addPotionEffect(new EffectInstance(Effects.SLOWNESS,100,1));
-                            break;
-                        case 3:
-                            player.addPotionEffect(new EffectInstance(Effects.WITHER,100,1));
-                            break;
-                        case 4:
-                            player.addPotionEffect(new EffectInstance(Effects.NAUSEA,100,1));
-                            break;
+
+                int random = (int) (Math.random() * 99 + 1);
+                if(random > 30){
+                    player.sendStatusMessage(new TranslationTextComponent("lollipop_nothing").mergeStyle(TextFormatting.GRAY), false);
+                }else if(random > 5) {
+                    int[] num = RandomTool.getRandom(1, 5, 2);
+                    for (int i = 0; i < 2; i++) {
+                        switch (Objects.requireNonNull(num)[i]) {
+                            case 0:
+                                player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 100, 1));
+                                break;
+                            case 1:
+                                player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 100, 1));
+                                break;
+                            case 2:
+                                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 100, 1));
+                                break;
+                            case 3:
+                                player.addPotionEffect(new EffectInstance(Effects.WITHER, 100, 1));
+                                break;
+                            case 4:
+                                player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 100, 1));
+                                break;
+                        }
                     }
+                }else{
+                    player.setHealth(player.getHealth() - 30);
+                }
+
+                if(!player.isAlive()){
+                    player.sendStatusMessage(new TranslationTextComponent("death.lollipop", entityLiving.getDisplayName()), false);
                 }
 
             });
