@@ -1,26 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:momo_daifuku"
+      "item": "providencraft:lucia_rice_cake"
     },
     "title": {
-      "translate": "providencraft.advancement.eat_momo_daifuku"
+      "translate": "providencraft.advancement.eat_lucia_rice_cake"
     },
     "description": {
-      "translate": "providencraft.advancement.eat_momo_daifuku_des"
+      "translate": "providencraft.advancement.eat_lucia_rice_cake_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/eat_lucia_rice_cake",
+  "parent": "providencraft:providencraft",
   "criteria": {
-    "eat_momo_daifuku": {
+    "eat_lucia_rice_cake": {
       "trigger": "minecraft:consume_item",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:momo_daifuku"
+            "item":"providencraft:lucia_rice_cake"
           }
         ]
       }

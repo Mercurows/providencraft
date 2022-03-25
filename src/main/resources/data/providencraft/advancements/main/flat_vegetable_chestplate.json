@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:flat_vegetable_chestplate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.flat_vegetable_chestplate"
+    },
+    "description": {
+      "translate": "providencraft.advancement.flat_vegetable_chestplate_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "flat_vegetable_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:flat_vegetable_chestplate"
+          }
+        ]
+      }
+    }
+  }
+}

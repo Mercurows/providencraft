@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:steel_plate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.steel_plate"
+    },
+    "description": {
+      "translate": "providencraft.advancement.steel_plate_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/flat_vegetable_chestplate",
+  "criteria": {
+    "steel_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:steel_plate"
+          }
+        ]
+      }
+    }
+  }
+}

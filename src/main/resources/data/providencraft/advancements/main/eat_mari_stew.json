@@ -1,26 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:momo_daifuku"
+      "item": "providencraft:mari_stew"
     },
     "title": {
-      "translate": "providencraft.advancement.eat_momo_daifuku"
+      "translate": "providencraft.advancement.eat_mari_stew"
     },
     "description": {
-      "translate": "providencraft.advancement.eat_momo_daifuku_des"
+      "translate": "providencraft.advancement.eat_mari_stew_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/eat_lucia_rice_cake",
+  "parent": "providencraft:main/eat_lotus_potato",
   "criteria": {
-    "eat_momo_daifuku": {
+    "eat_mari_stew": {
       "trigger": "minecraft:consume_item",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:momo_daifuku"
+            "item":"providencraft:mari_stew"
           }
         ]
       }

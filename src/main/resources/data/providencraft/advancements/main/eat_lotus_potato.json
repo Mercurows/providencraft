@@ -1,26 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:momo_daifuku"
+      "item": "providencraft:lotus_potato"
     },
     "title": {
-      "translate": "providencraft.advancement.eat_momo_daifuku"
+      "translate": "providencraft.advancement.eat_lotus_potato"
     },
     "description": {
-      "translate": "providencraft.advancement.eat_momo_daifuku_des"
+      "translate": "providencraft.advancement.eat_lotus_potato_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/eat_lucia_rice_cake",
+  "parent": "providencraft:main/eat_momo_daifuku",
   "criteria": {
-    "eat_momo_daifuku": {
+    "eat_lotus_potato": {
       "trigger": "minecraft:consume_item",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:momo_daifuku"
+            "item":"providencraft:lotus_potato"
           }
         ]
       }
