@@ -18,11 +18,9 @@
     "eat_lotus_potato": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "items":[
-          {
+        "item": {
             "item":"providencraft:lotus_potato"
-          }
-        ]
+        }
       }
     }
   }

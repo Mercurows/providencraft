@@ -18,11 +18,9 @@
     "eat_mari_stew": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "items":[
-          {
+        "item": {
             "item":"providencraft:mari_stew"
-          }
-        ]
+        }
       }
     }
   }

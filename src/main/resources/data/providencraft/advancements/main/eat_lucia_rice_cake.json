@@ -18,11 +18,9 @@
     "eat_lucia_rice_cake": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "items":[
-          {
+        "item": {
             "item":"providencraft:lucia_rice_cake"
-          }
-        ]
+        }
       }
     }
   }

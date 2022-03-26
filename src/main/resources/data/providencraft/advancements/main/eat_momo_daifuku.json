@@ -18,11 +18,9 @@
     "eat_momo_daifuku": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "items":[
-          {
+        "item": {
             "item":"providencraft:momo_daifuku"
-          }
-        ]
+        }
       }
     }
   }

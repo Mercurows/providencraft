@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:lava_cake"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_lava_cake"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_lava_cake_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "challenge",
+    "hidden": true
+  },
+  "parent": "providencraft:main/eat_mari_stew",
+  "criteria": {
+    "eat_lava_cake": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:lava_cake"
+        }
+      }
+    }
+  }
+}
