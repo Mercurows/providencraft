@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  a",
+    "aya",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:quartz"
+    },
+    "y": {
+      "item": "minecraft:cauldron"
+    }
+  },
+  "result": {
+    "item": "providencraft:porcelain_throne",
+    "count": 1
+  }
+}

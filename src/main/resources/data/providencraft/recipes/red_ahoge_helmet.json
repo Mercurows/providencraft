@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    "aya",
+    "aha"
+  ],
+  "key": {
+    "x": {
+      "item": "providencraft:red_ahoge"
+    },
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "y": {
+      "item": "minecraft:red_wool"
+    },
+    "h": {
+      "item": "minecraft:iron_helmet"
+    }
+  },
+  "result": {
+    "item": "providencraft:red_ahoge_helmet",
+    "count": 1
+  }
+}
