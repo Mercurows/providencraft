@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:hai_plate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.parallel_plate_capacitor"
+    },
+    "description": {
+      "translate": "providencraft.advancement.parallel_plate_capacitor_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/flat_vegetable_chestplate",
+  "criteria": {
+    "parallel_plate_capacitor_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:flat_vegetable_chestplate"
+          }
+        ]
+      }
+    },
+    "parallel_plate_capacitor_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:hai_plate"
+          }
+        ]
+      }
+    }
+  }
+}
