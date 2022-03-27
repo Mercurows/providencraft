@@ -2,11 +2,12 @@ package tech.lq0.providencraft.item.donate;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -15,7 +16,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -35,5 +35,13 @@ public class EmptyJar extends Item {
     @Override
     public boolean canEquip(ItemStack stack, EquipmentSlotType armorType, Entity entity) {
         return armorType == EquipmentSlotType.HEAD;
+    }
+
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        super.onArmorTick(stack, world, player);
+        if(!world.isRemote){
+            player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE,40,0));
+        }
     }
 }

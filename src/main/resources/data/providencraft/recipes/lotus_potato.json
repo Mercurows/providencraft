@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " c ",
+    " b ",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:lily_pad"
+    },
+    "b":{
+      "item": "minecraft:potato"
+    },
+    "c":{
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "result": {
+    "item": "providencraft:lotus_potato",
+    "count": 1
+  }
+}

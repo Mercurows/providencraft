@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:potato"
+    },
+    "b": {
+      "item": "minecraft:baked_potato"
+    }
+  },
+  "result": {
+    "item": "providencraft:little_potato",
+    "count": 1
+  }
+}
