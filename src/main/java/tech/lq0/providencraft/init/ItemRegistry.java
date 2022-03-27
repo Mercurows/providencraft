@@ -15,6 +15,8 @@ import tech.lq0.providencraft.item.magicros.haine.HaiPlate;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
+import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
+import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
 import tech.lq0.providencraft.item.providencefirst.madoka.*;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
@@ -61,6 +63,10 @@ public class ItemRegistry {
 
     //myanna
     public static final RegistryObject<Item> MOUNTAIN_DESTROYER = ITEMS.register("mountain_destroyer", MountainDestroyer::new);
+
+    //haya
+    //public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
+    public static final RegistryObject<Item> BIG_SPOON = ITEMS.register("big_spoon", BigSpoon::new);
 
     /**
      * 2nd
