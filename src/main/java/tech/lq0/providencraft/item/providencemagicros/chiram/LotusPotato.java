@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.item.magicros.chiram;
+package tech.lq0.providencraft.item.providencemagicros.chiram;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;

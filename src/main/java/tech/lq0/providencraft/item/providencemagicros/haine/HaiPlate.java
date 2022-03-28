@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.item.magicros.haine;
+package tech.lq0.providencraft.item.providencemagicros.haine;
 
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.util.ITooltipFlag;

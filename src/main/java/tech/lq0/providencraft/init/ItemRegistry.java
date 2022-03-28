@@ -8,16 +8,17 @@ import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.donate.*;
-import tech.lq0.providencraft.item.magicros.chiram.FlatVegetableChestplate;
-import tech.lq0.providencraft.item.magicros.chiram.LotusPotato;
-import tech.lq0.providencraft.item.magicros.chiram.SteelPlate;
-import tech.lq0.providencraft.item.magicros.haine.HaiPlate;
-import tech.lq0.providencraft.item.magicros.keroro.RedNose;
+import tech.lq0.providencraft.item.others.MMAStew;
+import tech.lq0.providencraft.item.others.MVAStew;
+import tech.lq0.providencraft.item.providencemagicros.chiram.FlatVegetableChestplate;
+import tech.lq0.providencraft.item.providencemagicros.chiram.LotusPotato;
+import tech.lq0.providencraft.item.providencemagicros.chiram.SteelPlate;
+import tech.lq0.providencraft.item.providencemagicros.haine.HaiPlate;
+import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
 import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
-import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
 import tech.lq0.providencraft.item.providencefirst.madoka.*;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
@@ -106,6 +107,8 @@ public class ItemRegistry {
     //keroro
     public static final RegistryObject<Item> RED_NOSE = ITEMS.register("red_nose", RedNose::new);
 
+    //hoshimiya
+
     /**
      * POI
      **/
@@ -120,6 +123,12 @@ public class ItemRegistry {
     //beni
     public static final RegistryObject<Item> LAVA_CAKE = ITEMS.register("lava_cake", LavaCake::new);
 
+
+    /**
+     * others
+     */
+    public static final RegistryObject<Item> MMA_STEW = ITEMS.register("mma_stew", MMAStew::new);
+    public static final RegistryObject<Item> MVA_STEW = ITEMS.register("mva_stew", MVAStew::new);
 
     /**
      * donate

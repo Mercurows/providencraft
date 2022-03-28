@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.item.magicros.chiram;
+package tech.lq0.providencraft.item.providencemagicros.chiram;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -25,16 +25,15 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
-public class SteelPlate extends ArmorItem {
-    public SteelPlate() {
-        super(ModArmorMaterial.CHIRAM_PLUS, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(1310).group(ModGroup.itemgroup));
+public class FlatVegetableChestplate extends ArmorItem {
+    public FlatVegetableChestplate() {
+        super(ModArmorMaterial.CHIRAM, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(514).isImmuneToFire().group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("steel_plate_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("steel_plate_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+        tooltip.add((new TranslationTextComponent("vegetable_chestplate_des")).mergeStyle(TextFormatting.GRAY));
     }
 
     @Override
@@ -42,11 +41,11 @@ public class SteelPlate extends ArmorItem {
     @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
-        UUID uuid = new UUID(ItemRegistry.STEEL_PLATE.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        UUID uuid = new UUID(ItemRegistry.FLAT_VEGETABLE_CHESTPLATE.hashCode() + equipmentSlot.toString().hashCode(), 0);
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.05f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.03f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
