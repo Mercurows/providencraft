@@ -12,6 +12,7 @@ import tech.lq0.providencraft.item.magicros.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.magicros.chiram.LotusPotato;
 import tech.lq0.providencraft.item.magicros.chiram.SteelPlate;
 import tech.lq0.providencraft.item.magicros.haine.HaiPlate;
+import tech.lq0.providencraft.item.magicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
@@ -102,6 +103,8 @@ public class ItemRegistry {
     //haine
     public static final RegistryObject<Item> HAI_PLATE = ITEMS.register("hai_plate", HaiPlate::new);
 
+    //keroro
+    public static final RegistryObject<Item> RED_NOSE = ITEMS.register("red_nose", RedNose::new);
 
     /**
      * POI
