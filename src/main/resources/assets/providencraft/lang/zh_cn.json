@@ -129,6 +129,10 @@
   "crystal_ball_weather_clear": "现在的天气是：晴朗",
   "crystal_ball_des": "倾澜送给阿颜的没有什么用的水晶球",
   "crystal_ball_func": "右键使用可以获取当前天气",
+  "frog_leg_des1": "美蛙少女腿，吃了之后可以跳得很高",
+  "frog_leg_des2": "\"蛙吹Keroro很香，煮了更香 ——星宫颜留\" ——倾澜vegetable",
+  "item.providencraft.enchanted_crystal_ball": "附魔水晶球",
+  "enchanted_crystal_ball_des": "注入魔力的水晶球，貌似有点用了",
 
 
   "providencraft.advancement.root": "Providencraft",

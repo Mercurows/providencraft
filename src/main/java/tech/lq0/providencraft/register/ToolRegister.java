@@ -12,7 +12,6 @@ import tech.lq0.providencraft.init.ItemRegistry;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ToolRegister {
 
-    //铁坨子的击退效果
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();

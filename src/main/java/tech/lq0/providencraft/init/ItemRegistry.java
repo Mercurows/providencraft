@@ -15,6 +15,7 @@ import tech.lq0.providencraft.item.providencemagicros.chiram.LotusPotato;
 import tech.lq0.providencraft.item.providencemagicros.chiram.SteelPlate;
 import tech.lq0.providencraft.item.providencemagicros.haine.HaiPlate;
 import tech.lq0.providencraft.item.providencemagicros.hoshimiya.CrystalBall;
+import tech.lq0.providencraft.item.providencemagicros.hoshimiya.EnchantedCrystalBall;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogLeg;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
@@ -112,6 +113,7 @@ public class ItemRegistry {
 
     //hoshimiya
     public static final RegistryObject<Item> CRYSTAL_BALL = ITEMS.register("crystal_ball", CrystalBall::new);
+    public static final RegistryObject<Item> ENCHANTED_CRYSTAL_BALL = ITEMS.register("enchanted_crystal_ball", EnchantedCrystalBall::new);
 
     /**
      * POI
