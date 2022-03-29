@@ -53,7 +53,7 @@
   "entity.minecraft.villager.providencraft.ruozhi": "若芖",
   "block.providencraft.red_ahoge_block": "红色呆毛块",
   "lucia_rice_cake_des1": "普罗维登大猛一洛汐亚·卡文迪许指定食品，品质保障，值得信赖",
-  "lucia_rice_cake_des2": "和真华一样软，和汐亚一样甜",
+  "lucia_rice_cake_des2": "和真华一样软，像汐亚一样甜",
   "item.providencraft.hai_plate": "灰板",
   "hai_plate_func": "潜行时按下右键可以无敌10秒，冷却时间11秒，消耗80点耐久",
   "hai_plate_des1": "普罗维登某位天使猫猫身边的浮游盾，虽然脱离猫猫的控制后不再具备飞行能力，但也坚不可摧",
@@ -122,6 +122,13 @@
   "item.providencraft.red_nose": "红鼻子",
   "item.providencraft.mma_stew": "真牛蛙煲",
   "item.providencraft.mva_stew": "真菜蛙煲",
+  "item.providencraft.crystal_ball": "水晶球",
+  "item.providencraft.frog_leg": "蛙腿",
+  "crystal_ball_weather_rain": "现在的天气是：下雨",
+  "crystal_ball_weather_thunder": "现在的天气是：雷暴",
+  "crystal_ball_weather_clear": "现在的天气是：晴朗",
+  "crystal_ball_des": "倾澜送给阿颜的没有什么用的水晶球",
+  "crystal_ball_func": "右键使用可以获取当前天气",
 
 
   "providencraft.advancement.root": "Providencraft",

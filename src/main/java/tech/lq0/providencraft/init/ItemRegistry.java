@@ -14,6 +14,8 @@ import tech.lq0.providencraft.item.providencemagicros.chiram.FlatVegetableChestp
 import tech.lq0.providencraft.item.providencemagicros.chiram.LotusPotato;
 import tech.lq0.providencraft.item.providencemagicros.chiram.SteelPlate;
 import tech.lq0.providencraft.item.providencemagicros.haine.HaiPlate;
+import tech.lq0.providencraft.item.providencemagicros.hoshimiya.CrystalBall;
+import tech.lq0.providencraft.item.providencemagicros.keroro.FrogLeg;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
@@ -106,8 +108,10 @@ public class ItemRegistry {
 
     //keroro
     public static final RegistryObject<Item> RED_NOSE = ITEMS.register("red_nose", RedNose::new);
+    public static final RegistryObject<Item> FROG_LEG = ITEMS.register("frog_leg", FrogLeg::new);
 
     //hoshimiya
+    public static final RegistryObject<Item> CRYSTAL_BALL = ITEMS.register("crystal_ball", CrystalBall::new);
 
     /**
      * POI
