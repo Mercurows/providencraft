@@ -13,10 +13,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.UUID;
 
 public class LittlePotato extends Item {
     public static final Food food = (new Food.Builder()).saturation(20.0f).hunger(20).build();
@@ -33,9 +35,10 @@ public class LittlePotato extends Item {
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+        UUID uuid = new UUID(ItemRegistry.LITTLE_POTATO.hashCode(),0);
         if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            player.sendStatusMessage(new TranslationTextComponent("little_potato_eaten").mergeStyle(TextFormatting.WHITE), false);
+            player.sendMessage(new TranslationTextComponent("little_potato_eaten").mergeStyle(TextFormatting.WHITE), uuid);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

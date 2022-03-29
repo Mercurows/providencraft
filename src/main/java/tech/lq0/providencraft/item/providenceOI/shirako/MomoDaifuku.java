@@ -15,11 +15,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.UUID;
 
 public class MomoDaifuku extends Item {
     private static final Food food = (new Food.Builder()).saturation(5).hunger(6).build();
@@ -41,13 +43,14 @@ public class MomoDaifuku extends Item {
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
+        UUID uuid = new UUID(ItemRegistry.MOMO_DAIFUKU.hashCode(),0);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             player.addPotionEffect(new EffectInstance(Effects.LEVITATION, 40, 0));
             int random = (int) (Math.random() * 99 + 1);
             if (random > 90) {
                 player.setFire(10);
-                player.sendStatusMessage(new TranslationTextComponent("momo_daifuku_fire").mergeStyle(TextFormatting.RED), false);
+                player.sendMessage(new TranslationTextComponent("momo_daifuku_fire").mergeStyle(TextFormatting.RED), uuid);
             }
 
         }

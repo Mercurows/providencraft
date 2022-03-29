@@ -16,11 +16,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.UUID;
 
 public class MariStew extends Item {
     private static final Food food = (new Food.Builder()).saturation(12.0f).hunger(10).build();
@@ -34,6 +36,7 @@ public class MariStew extends Item {
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
+        UUID uuid = new UUID(ItemRegistry.MARI_STEW.hashCode(),0);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             int random = (int) (Math.random() * 99 + 1);
@@ -43,7 +46,7 @@ public class MariStew extends Item {
             } else if (random > 90) {
                 //5%回血
                 player.heal(20.0f);
-                player.sendStatusMessage(new TranslationTextComponent("mari_stew_heal").mergeStyle(TextFormatting.GOLD), false);
+                player.sendMessage(new TranslationTextComponent("mari_stew_heal").mergeStyle(TextFormatting.GOLD), uuid);
             } else if (random > 70) {
                 //20%中毒
                 player.addPotionEffect(new EffectInstance(Effects.POISON, 200, 1));
@@ -52,7 +55,7 @@ public class MariStew extends Item {
                 player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 400, 1));
             } else {
                 //40%无事发生
-                player.sendStatusMessage(new TranslationTextComponent("mari_stew_nothing").mergeStyle(TextFormatting.GRAY), false);
+                player.sendMessage(new TranslationTextComponent("mari_stew_nothing").mergeStyle(TextFormatting.GRAY), uuid);
             }
 
             if (!player.isAlive()) {

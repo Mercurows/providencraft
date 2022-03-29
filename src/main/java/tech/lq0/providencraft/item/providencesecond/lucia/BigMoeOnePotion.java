@@ -18,11 +18,13 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.UUID;
 
 public class BigMoeOnePotion extends Item {
     private static final Food food = (new Food.Builder()).saturation(0).hunger(0).setAlwaysEdible().build();
@@ -36,15 +38,16 @@ public class BigMoeOnePotion extends Item {
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
+        UUID uuid = new UUID(ItemRegistry.BIG_MOE_ONE_POTION.hashCode(),0);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             int random = (int) (Math.random() * 99 + 1);
             if (random > 10) {
                 player.addPotionEffect(new EffectInstance(EffectRegistry.BIG_FIERCE_ONE.get(), 3600, 2));
-                player.sendStatusMessage(new TranslationTextComponent("big_moe_one_potion_fierce").mergeStyle(TextFormatting.GOLD), false);
+                player.sendMessage(new TranslationTextComponent("big_moe_one_potion_fierce").mergeStyle(TextFormatting.GOLD), uuid);
             } else {
                 player.addPotionEffect(new EffectInstance(EffectRegistry.BIG_MOE_ONE.get(), 3600, 0));
-                player.sendStatusMessage(new TranslationTextComponent("big_moe_one_potion_moe").mergeStyle(TextFormatting.LIGHT_PURPLE), false);
+                player.sendMessage(new TranslationTextComponent("big_moe_one_potion_moe").mergeStyle(TextFormatting.LIGHT_PURPLE), uuid);
             }
 
             if (player.isCreative()) {
