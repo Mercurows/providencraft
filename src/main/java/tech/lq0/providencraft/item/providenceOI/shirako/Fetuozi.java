@@ -1,6 +1,7 @@
 package tech.lq0.providencraft.item.providenceOI.shirako;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -28,5 +29,11 @@ public class Fetuozi extends SwordItem {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return false;
+    }
+
+    @Override
+    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        target.applyKnockback(10.0f,attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
+        return super.hitEntity(stack, target, attacker);
     }
 }
