@@ -10,6 +10,7 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
+import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencemagicros.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.providencemagicros.chiram.LotusPotato;
 import tech.lq0.providencraft.item.providencemagicros.chiram.SteelPlate;
@@ -72,6 +73,9 @@ public class ItemRegistry {
     //haya
     //public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
     public static final RegistryObject<Item> BIG_SPOON = ITEMS.register("big_spoon", BigSpoon::new);
+
+    //akumaria
+    public static final RegistryObject<Item> PLATE = ITEMS.register("plate", Plate::new);
 
     /**
      * 2nd
