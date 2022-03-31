@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:lucia_rice_cake"
+      "item": "providencraft:plate"
     },
     "title": {
       "translate": "providencraft.advancement.leave_providence"
@@ -11,19 +11,17 @@
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": true,
+    "frame": "goal"
   },
   "parent": "providencraft:providencraft",
   "criteria": {
     "leave_providence": {
       "trigger": "minecraft:item_durability_changed",
       "conditions": {
-        "delta": -2,
+        "durability": 0,
         "item": {
-          "item":"providencraft:plate",
-          "durability": {
-            "max": 1
-          }
+          "item":"providencraft:plate"
         }
       }
     }
