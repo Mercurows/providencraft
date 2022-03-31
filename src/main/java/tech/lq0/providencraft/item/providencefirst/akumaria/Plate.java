@@ -38,9 +38,7 @@ public class Plate extends Item {
                 ItemStack plate = player.getHeldItemOffhand();
                 if(event.getAmount() >= 10){
                     event.setAmount(1);
-                    plate.damageItem(1, player, (playerEntity)->{
-                        playerEntity.sendBreakAnimation(EquipmentSlotType.OFFHAND);
-                    });
+                    plate.damageItem(1, player, (playerEntity)-> playerEntity.sendBreakAnimation(EquipmentSlotType.OFFHAND));
                 }
             }
         }

@@ -10,7 +10,9 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
+import tech.lq0.providencraft.item.providenceOI.yyky.LunaticBow;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
+import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
 import tech.lq0.providencraft.item.providencemagicros.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.providencemagicros.chiram.LotusPotato;
 import tech.lq0.providencraft.item.providencemagicros.chiram.SteelPlate;
@@ -35,6 +37,7 @@ import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigMoeOnePotion;
 import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
 import tech.lq0.providencraft.item.providencesecond.mojuko.YagiStaffCard;
+import tech.lq0.providencraft.item.providencesecond.mumu.AyeletMask;
 import tech.lq0.providencraft.item.providencesecond.satou.SatouKnife;
 import tech.lq0.providencraft.item.providencethird.beni.LavaCake;
 
@@ -77,6 +80,9 @@ public class ItemRegistry {
     //akumaria
     public static final RegistryObject<Item> PLATE = ITEMS.register("plate", Plate::new);
 
+    //unia
+    public static final RegistryObject<Item> TARO_ICE_CREAM = ITEMS.register("taro_ice_cream", TaroIceCream::new);
+
     /**
      * 2nd
      **/
@@ -99,6 +105,9 @@ public class ItemRegistry {
 
     //satou
     public static final RegistryObject<Item> SATOU_KNIFE = ITEMS.register("satou_knife", SatouKnife::new);
+
+    //mumu
+    public static final RegistryObject<Item> AYELET_MASK = ITEMS.register("ayelet_mask", AyeletMask::new);
 
     /**
      * magicros
@@ -126,6 +135,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MOMO_DAIFUKU = ITEMS.register("momo_daifuku", MomoDaifuku::new);
     public static final RegistryObject<Item> FETUOZI = ITEMS.register("fetuozi", Fetuozi::new);
 
+    //yyky
+    public static final RegistryObject<Item> LUNATIC_BOW = ITEMS.register("lunatic_bow", LunaticBow::new);
 
     /**
      * 3rd
