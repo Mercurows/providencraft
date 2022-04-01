@@ -24,7 +24,7 @@ public class RedNoseModel<T extends LivingEntity> extends BipedModel<T> {
 		main.setRotationPoint(0.0F, 0.0F, 0.0F);
 
 		bone = new ModelRenderer(this);
-		bone.setRotationPoint(0.0F, -2.0F, -5.0F);
+		bone.setRotationPoint(0.0F, -1.0F, -5.0F);
 		main.addChild(bone);
 		bone.setTextureOffset(0, 0).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
 	}
