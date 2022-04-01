@@ -33,7 +33,9 @@ public class Lollipop extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("lollipop_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("lollipop_des1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("lollipop_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("lollipop_des3")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
         tooltip.add((new TranslationTextComponent("donate_item_des")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
     }
 
@@ -44,7 +46,7 @@ public class Lollipop extends Item {
             PlayerEntity player = (PlayerEntity) entityLiving;
             player.addPotionEffect(new EffectInstance(Effects.RESISTANCE,340,9));
             player.addPotionEffect(new EffectInstance(Effects.GLOWING,340,0));
-            player.addPotionEffect(new EffectInstance(Effects.SPEED,340,2));
+            player.addPotionEffect(new EffectInstance(Effects.SPEED,340,4));
             player.addPotionEffect(new EffectInstance(Effects.HASTE,340,2));
             player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST,340,2));
 
@@ -56,9 +58,9 @@ public class Lollipop extends Item {
                 }
 
                 int random = (int) (Math.random() * 99 + 1);
-                if(random > 30){
+                if(random > 70){
                     player.sendMessage(new TranslationTextComponent("lollipop_nothing").mergeStyle(TextFormatting.GRAY), uuid);
-                }else if(random > 5) {
+                }else if(random > 20) {
                     int[] num = RandomTool.getRandom(1, 5, 2);
                     for (int i = 0; i < 2; i++) {
                         switch (Objects.requireNonNull(num)[i]) {
@@ -84,7 +86,7 @@ public class Lollipop extends Item {
                 }
 
                 if(!player.isAlive()){
-                    player.sendStatusMessage(new TranslationTextComponent("death.lollipop", entityLiving.getDisplayName()), false);
+                    player.sendStatusMessage(new TranslationTextComponent("death.lollipop"), false);
                 }
 
             });

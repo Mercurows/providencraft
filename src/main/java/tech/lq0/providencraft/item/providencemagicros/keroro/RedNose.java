@@ -54,16 +54,16 @@ public class RedNose extends ArmorItem {
         LivingEntity livingEntity = event.getEntityLiving();
         if(livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
-            if(!player.world.isRemote){
-                ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-                if(itemStack.getItem().equals(ItemRegistry.RED_NOSE.get())){
+            ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+            if(itemStack.getItem().equals(ItemRegistry.RED_NOSE.get())){
+                if(!player.world.isRemote){
                     player.addPotionEffect(new EffectInstance(Effects.SPEED, 100, 1));
                     itemStack.damageItem(1,player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.HEAD));
-
                 }
+                player.world.playSound(player, player.getPosition(),
+                        SoundRegistry.KERORO_SNEEZE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
             }
-            player.world.playSound(player, player.getPosition(),
-                    SoundRegistry.KERORO_SNEEZE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
+
         }
     }
 
