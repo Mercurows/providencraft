@@ -18,5 +18,15 @@
         "stream": true
       }
     ]
+  },
+  "keroro_sneeze": {
+    "subtitle": "keroro_sneeze",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:red_nose_voice",
+        "stream": true
+      }
+    ]
   }
 }
