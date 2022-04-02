@@ -18,7 +18,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.Utils;
@@ -50,7 +50,7 @@ public class RedNose extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void Event(LivingEvent.LivingJumpEvent event){
+    public static void Event(LivingAttackEvent event){
         LivingEntity livingEntity = event.getEntityLiving();
         if(livingEntity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) livingEntity;
