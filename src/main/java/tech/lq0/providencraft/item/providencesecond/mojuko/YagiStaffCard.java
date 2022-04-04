@@ -43,9 +43,9 @@ public class YagiStaffCard extends Item {
         if (equipmentSlot == EquipmentSlotType.OFFHAND) {
             map = HashMultimap.create(map);
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "yagi staff card modifier", -6.0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "yagi staff card modifier", -0.5f, AttributeModifier.Operation.MULTIPLY_BASE));
             map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid, "yagi staff card modifier 2", 6.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "yagi staff card modifier", 6.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }

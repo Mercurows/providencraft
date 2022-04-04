@@ -1,9 +1,15 @@
 package tech.lq0.providencraft.item.providenceOI.yyky;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -14,14 +20,22 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.LunaticBowModel;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class LunaticBow extends ArmorItem {
     public LunaticBow(){
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(928).setNoRepair().group(ModGroup.itemgroup));
@@ -49,5 +63,45 @@ public class LunaticBow extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("lunatic_bow_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("lunatic_bow_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+    }
+
+    @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
+        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
+        UUID uuid = new UUID(ItemRegistry.LUNATIC_BOW.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        if (equipmentSlot == getEquipmentSlot()) {
+            map = HashMultimap.create(map);
+            map.put(Attributes.ATTACK_SPEED,
+                    new AttributeModifier(uuid, "lunatic bow modifier", 1.0, AttributeModifier.Operation.MULTIPLY_BASE));
+            map.put(Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(uuid, "lunatic bow modifier", 0.5, AttributeModifier.Operation.MULTIPLY_BASE));
+        }
+        return map;
+    }
+
+    @SubscribeEvent
+    public static void BowEffect(AttackEntityEvent event) {
+        LivingEntity entity = event.getEntityLiving();
+        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+            PlayerEntity player = (PlayerEntity) entity;
+            ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+            if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.LUNATIC_BOW.get())) {
+                player.setFire(1);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void BowEffect2(LivingDeathEvent event) {
+        Entity entity = event.getSource().getImmediateSource();
+        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+            PlayerEntity player = (PlayerEntity) entity;
+            ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+            if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.LUNATIC_BOW.get())) {
+                player.heal(4.0f);
+            }
+        }
     }
 }

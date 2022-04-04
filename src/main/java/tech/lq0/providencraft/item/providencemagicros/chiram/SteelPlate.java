@@ -46,7 +46,7 @@ public class SteelPlate extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.05f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.5f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
