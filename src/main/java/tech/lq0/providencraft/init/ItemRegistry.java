@@ -164,6 +164,8 @@ public class ItemRegistry {
     //BLOCKS
     public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",
             () -> new BlockItem(BlockRegistry.RED_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.itemgroup)));
+    public static final RegistryObject<Item> WHITE_AHOGE_BLOCK = ITEMS.register("white_ahoge_block",
+            () -> new BlockItem(BlockRegistry.WHITE_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.itemgroup)));
     public static final RegistryObject<Item> COMMUNICATION_TABLE = ITEMS.register("communication_table",
             () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.itemgroup)));
     public static final RegistryObject<Item> PORCELAIN_THRONE = ITEMS.register("porcelain_throne",

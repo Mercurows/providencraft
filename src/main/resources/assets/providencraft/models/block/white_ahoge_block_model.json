@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "providencraft:block/white_ahoge_block_texture"
+  }
+}

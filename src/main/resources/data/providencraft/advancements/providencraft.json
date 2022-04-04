@@ -9,7 +9,7 @@
     "description": {
       "translate": "providencraft.advancement.root_des"
     },
-    "background": "providencraft:textures/background.png",
+    "background": "providencraft:textures/block/white_ahoge_block_texture.png",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
