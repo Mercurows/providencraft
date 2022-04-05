@@ -12,6 +12,7 @@ import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.providenceOI.yyky.LunaticBow;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
+import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
 import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
 import tech.lq0.providencraft.item.providencemagicros.chiram.FlatVegetableChestplate;
 import tech.lq0.providencraft.item.providencemagicros.chiram.LotusPotato;
@@ -74,7 +75,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MOUNTAIN_DESTROYER = ITEMS.register("mountain_destroyer", MountainDestroyer::new);
 
     //haya
-    //public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
+    public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
     public static final RegistryObject<Item> BIG_SPOON = ITEMS.register("big_spoon", BigSpoon::new);
 
     //akumaria
