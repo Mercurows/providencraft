@@ -12,4 +12,6 @@ public class AttributeRegistry {
 
     public static final RegistryObject<Attribute> ATTACK_COW = ATTRIBUTES.register("attack_cow",
             () -> (new RangedAttribute("attribute.attack_cow", 0.0D, 0.0D, 200.0D)).setShouldWatch(true));
+    public static final RegistryObject<Attribute> ATTACK_COPPER = ATTRIBUTES.register("attack_copper",
+            () -> (new RangedAttribute("attribute.attack_copper", 0.0D, 0.0D, 200.0D)).setShouldWatch(true));
 }

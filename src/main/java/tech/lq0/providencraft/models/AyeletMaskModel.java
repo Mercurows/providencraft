@@ -21,7 +21,7 @@ public class AyeletMaskModel<T extends LivingEntity> extends BipedModel<T> {
 		textureHeight = 32;
 
 		main = new ModelRenderer(this);
-		main.setRotationPoint(0.0F, 24.0F, 0.0F);
+		main.setRotationPoint(0.0F, 23.0F, 0.0F);
 		
 
 		bone = new ModelRenderer(this);
@@ -32,6 +32,7 @@ public class AyeletMaskModel<T extends LivingEntity> extends BipedModel<T> {
 		bone.setTextureOffset(0, 0).addBox(-5.0F, -2.0F, -5.0F, 1.0F, 1.0F, 10.0F, 0.0F, false);
 		bone.setTextureOffset(12, 4).addBox(-4.0F, -2.0F, 4.0F, 8.0F, 1.0F, 1.0F, 0.0F, false);
 		bone.setTextureOffset(12, 6).addBox(-3.0F, -4.0F, -5.0F, 6.0F, 1.0F, 1.0F, 0.0F, false);
+		bone.setTextureOffset(12, 6).addBox(-3.0F, 0.0F, -5.0F, 6.0F, 1.0F, 1.0F, 0.0F, false);
 	}
 
 	@Override
