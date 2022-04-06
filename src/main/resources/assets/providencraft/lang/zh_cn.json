@@ -162,11 +162,14 @@
   "ct_message_1": "Eli,Eli是给",
   "ct_message_2": "喜报：java.lang.NullPointerException",
   "ct_message_3": "喜报：java.lang.StackOverflowError",
-  "ct_message_4": "<若芖> 逐梦逐梦逐梦v~圈~ 我们 是纯洁纯洁纯洁的少年 逐梦逐梦逐梦v圈圈圈圈圈圈",
+  "ct_message_4": "<若芖> 我是弯的 但是屏幕是直的",
   "ct_message_5": "<若芖> 给我个管理权限我立马@所有人叫爹",
   "ct_message_default": "<若芖> 弱智无形的大手从精神病院里掌控着一切",
   "communication_table_des1": "艾恩科技集团专利产品",
   "communication_table_des2": "据说可以建立主世界与普罗维登岛的连接",
+  "red_ahoge_block_des": "由红色呆毛制成的方块",
+  "white_ahoge_block_des": "由白色呆毛制成的方块",
+  "porcelain_throne_des": "鳄梨法乌斯的专属宝座",
 
 
   "providencraft.advancement.root": "Providencraft",
