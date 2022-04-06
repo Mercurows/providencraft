@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "up": "providencraft:block/communication_table_top",
+    "down": "providencraft:block/communication_table_underside",
+    "west": "providencraft:block/communication_table_side",
+    "east": "providencraft:block/communication_table_side",
+    "north": "providencraft:block/communication_table_side",
+    "south": "providencraft:block/communication_table_side",
+    "particle": "providencraft:block/communication_table_side"
+  }
+}

@@ -159,6 +159,14 @@
   "ayelet_mask_des1": "原野牟牟珍藏的面具",
   "ayelet_mask_des2": "阿——伊——蕾——特——",
   "attribute.attack_copper": "对铜伤害",
+  "ct_message_1": "Eli,Eli是给",
+  "ct_message_2": "喜报：java.lang.NullPointerException",
+  "ct_message_3": "喜报：java.lang.StackOverflowError",
+  "ct_message_4": "<若芖> 逐梦逐梦逐梦v~圈~ 我们 是纯洁纯洁纯洁的少年 逐梦逐梦逐梦v圈圈圈圈圈圈",
+  "ct_message_5": "<若芖> 给我个管理权限我立马@所有人叫爹",
+  "ct_message_default": "<若芖> 弱智无形的大手从精神病院里掌控着一切",
+  "communication_table_des1": "艾恩科技集团专利产品",
+  "communication_table_des2": "据说可以建立主世界与普罗维登岛的连接",
 
 
   "providencraft.advancement.root": "Providencraft",
