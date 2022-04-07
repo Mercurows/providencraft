@@ -170,6 +170,12 @@
   "red_ahoge_block_des": "由红色呆毛制成的方块",
   "white_ahoge_block_des": "由白色呆毛制成的方块",
   "porcelain_throne_des": "鳄梨法乌斯的专属宝座",
+  "electric_horn_enable": "雷击功能已启用",
+  "electric_horn_disable": "雷击功能已停用",
+  "electric_horn_func": "潜行时拿着该物品按下右键可以切换模式",
+  "electric_horn_des1": "普罗维登唯一指定清楚系少女的机械角",
+  "electric_horn_des2": "可以释放强大的闪电",
+  "electric_horn_warn": "请勿在室内及易燃易爆品周围使用!",
 
 
   "providencraft.advancement.root": "Providencraft",
