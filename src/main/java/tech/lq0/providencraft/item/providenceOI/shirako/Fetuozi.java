@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Fetuozi extends SwordItem {
     public Fetuozi() {
-        super(ItemTier.NETHERITE, 13, -3.0f, new Item.Properties().maxDamage(11451).rarity(Rarity.RARE).group(ModGroup.itemgroup));
+        super(ItemTier.NETHERITE, 13, -3.0f, new Item.Properties().maxDamage(11451).rarity(Rarity.RARE).isImmuneToFire().group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
