@@ -32,7 +32,7 @@ public class SatouKnife extends SwordItem {
         if(attacker instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) attacker;
             if(player.isSneaking() && !player.isCreative() && stack.getDamage() < stack.getMaxDamage() - 10){
-                stack.setDamage(stack.getDamage() + 10);
+                stack.damageItem(10, player, (playerEntity) -> playerEntity.sendBreakAnimation(player.getActiveHand()));
                 player.heal(2.0f);
             }
         }

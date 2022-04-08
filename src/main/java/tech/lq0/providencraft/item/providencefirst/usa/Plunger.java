@@ -43,7 +43,7 @@ public class Plunger extends SwordItem {
                 PlungerEntity plungerEntity = new PlungerEntity(worldIn, playerIn);
                 plungerEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 4.0f, 0.2f);
                 worldIn.addEntity(plungerEntity);
-                item.setDamage(item.getDamage() + 1);
+                item.damageItem(1, playerIn, (playerEntity) -> playerEntity.sendBreakAnimation(handIn));
                 playerIn.getCooldownTracker().setCooldown(item.getItem(), 10);
             }
         }

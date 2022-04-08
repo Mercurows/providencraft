@@ -33,7 +33,7 @@ public class RedAhogeBoomerang extends SwordItem {
                 AhogeBoomerangEntity ahogeBoomerangEntity = new AhogeBoomerangEntity(worldIn, playerIn);
                 ahogeBoomerangEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
                 worldIn.addEntity(ahogeBoomerangEntity);
-                item.setDamage(item.getDamage() + 3);
+                item.damageItem(3, playerIn, (playerEntity) -> playerEntity.sendBreakAnimation(handIn));
                 playerIn.getCooldownTracker().setCooldown(item.getItem(), 20);
             }
         }
