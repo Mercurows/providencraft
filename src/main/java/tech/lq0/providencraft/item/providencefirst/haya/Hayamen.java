@@ -35,7 +35,9 @@ public class Hayamen extends ShieldItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add((new TranslationTextComponent("hayamen_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("hayamen_des1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("hayamen_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
     }
 
     @Nonnull
