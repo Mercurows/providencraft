@@ -10,6 +10,7 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
+import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.yyky.LunaticBow;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
@@ -138,6 +139,9 @@ public class ItemRegistry {
 
     //yyky
     public static final RegistryObject<Item> LUNATIC_BOW = ITEMS.register("lunatic_bow", LunaticBow::new);
+
+    //miya
+    public static final RegistryObject<Item> TAIL_PEN = ITEMS.register("tail_pen", TailPen::new);
 
     /**
      * 3rd
