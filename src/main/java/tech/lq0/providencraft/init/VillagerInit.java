@@ -63,32 +63,56 @@ public class VillagerInit {
 
     public static void fillTradeData() {
         VillagerTrades.ITrade[] elifausLevel1 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.RED_AHOGE.get(), 8, 1, 5, 5),
-                new ItemsForEmeraldsTrade(ItemRegistry.WHITE_AHOGE.get(), 8, 1, 5, 5)
+                new EmeraldForItemsTrade(ItemRegistry.RED_AHOGE.get(), 6, 10, 2),
+                new EmeraldForItemsTrade(ItemRegistry.WHITE_AHOGE.get(), 6, 10, 2),
+                new ItemsForEmeraldsTrade(Items.APPLE, 1, 4, 10, 2)
         };
         VillagerTrades.ITrade[] elifausLevel2 = new VillagerTrades.ITrade[]{
                 new EmeraldForItemsTrade(ItemRegistry.MOMO_DAIFUKU.get(), 4, 8, 2),
-                new ItemsForEmeraldsTrade(ItemRegistry.LUCIA_RICE_CAKE.get(), 2, 5, 4, 2)
+                new ItemsForEmeraldsTrade(ItemRegistry.LUCIA_RICE_CAKE.get(), 2, 5, 4, 2),
+                new ItemsForEmeraldsTrade(Items.CAKE, 3, 1, 2)
         };
         VillagerTrades.ITrade[] elifausLevel3 = new VillagerTrades.ITrade[]{
-                new EmeraldForItemsTrade(ItemRegistry.MAGIC_BOOK.get(), 1, 4, 5)
+                new ItemsForEmeraldsTrade(ItemRegistry.WHITE_DOUBLE_AHOGE.get(), 5, 1, 6, 4),
+                new EmeraldForItemsTrade(ItemRegistry.MAGIC_BOOK.get(), 1, 4, 5),
+                new ItemsForEmeraldsTrade(ItemRegistry.BANANA_MILK.get(), 2, 3, 1)
         };
         VillagerTrades.ITrade[] elifausLevel4 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.FLAT_VEGETABLE_CHESTPLATE.get(), 35, 1, 1, 20)
+                new ItemsForEmeraldsTrade(ItemRegistry.FLAT_VEGETABLE_CHESTPLATE.get(), 30, 1, 1, 10),
+                new EmeraldForItemsTrade(ItemRegistry.LOTUS_POTATO.get(), 3, 10, 2),
+                new ItemsForEmeraldsTrade(ItemRegistry.FROG_LEG.get(), 3, 2, 2)
         };
         VillagerTrades.ITrade[] elifausLevel5 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.YAGI_STAFF_CARD.get(), 45, 1, 1, 20)
+                new ItemsForEmeraldsTrade(ItemRegistry.YAGI_STAFF_CARD.get(), 40, 1, 1, 20),
+                new ItemsForEmeraldsTrade(ItemRegistry.TARO_ICE_CREAM.get(), 4, 1, 5)
         };
 
         VillagerTrades.VILLAGER_DEFAULT_TRADES.put(ELIFAUS.get(),
                 gatAsIntMap(ImmutableMap.of(1, elifausLevel1, 2, elifausLevel2, 3, elifausLevel3, 4, elifausLevel4, 5, elifausLevel5)));
 
         VillagerTrades.ITrade[] ruozhiLevel1 = new VillagerTrades.ITrade[]{
-                new EmeraldForItemsTrade(Blocks.PUMPKIN.asItem(), 10, 10, 1)
+                new EmeraldForItemsTrade(Items.IRON_INGOT, 6, 10, 1),
+                new EmeraldForItemsTrade(Blocks.PUMPKIN.asItem(), 8, 10, 1),
+                new ItemsForEmeraldsTrade(Items.PUMPKIN_PIE, 5, 2, 1)
+        };
+        VillagerTrades.ITrade[] ruozhiLevel2 = new VillagerTrades.ITrade[]{
+                new EmeraldForItemsTrade(Items.REDSTONE, 15, 10, 1),
+                new ItemsForEmeraldsTrade(Items.STICKY_PISTON, 7, 1, 1)
+        };
+        VillagerTrades.ITrade[] ruozhiLevel3 = new VillagerTrades.ITrade[]{
+                new EmeraldForItemsTrade(ItemRegistry.LAVA_CAKE.get(), 1, 1, 10),
+                new ItemsForEmeraldsTrade(ItemRegistry.PORCELAIN_THRONE.get(), 8, 1, 3)
+        };
+        VillagerTrades.ITrade[] ruozhiLevel4 = new VillagerTrades.ITrade[]{
+                new ItemsForEmeraldsTrade(ItemRegistry.MOUNTAIN_DESTROYER.get(), 50, 1, 1, 30),
+                new EmeraldForItemsTrade(Items.SMOOTH_STONE, 10, 20, 1)
+        };
+        VillagerTrades.ITrade[] ruozhiLevel5 = new VillagerTrades.ITrade[]{
+                new ItemsForEmeraldsTrade(ItemRegistry.ELECTRIC_HORN.get(), 50, 1, 1, 35)
         };
 
         VillagerTrades.VILLAGER_DEFAULT_TRADES.put(RUOZHI.get(),
-                gatAsIntMap(ImmutableMap.of(1, ruozhiLevel1)));
+                gatAsIntMap(ImmutableMap.of(1, ruozhiLevel1, 2, ruozhiLevel2, 3, ruozhiLevel3, 4, ruozhiLevel4, 5, ruozhiLevel5)));
     }
 
     private static Int2ObjectMap<VillagerTrades.ITrade[]> gatAsIntMap(ImmutableMap<Integer, VillagerTrades.ITrade[]> p_221238_0_) {
