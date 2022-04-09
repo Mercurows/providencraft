@@ -106,4 +106,14 @@ public class MountainDestroyer extends PickaxeItem {
         tooltip.add((new TranslationTextComponent("mountain_destroyer_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("mountain_destroyer_des2")).mergeStyle(TextFormatting.GRAY));
     }
+
+    @Override
+    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
+        return true;
+    }
+
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged && !oldStack.equals(newStack);
+    }
 }
