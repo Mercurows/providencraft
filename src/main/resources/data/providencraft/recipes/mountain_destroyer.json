@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "aca",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "b": {
+      "item": "minecraft:iron_block"
+    },
+    "c": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:mountain_destroyer",
+    "count": 1
+  }
+}

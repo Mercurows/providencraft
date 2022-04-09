@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:red_wool"
+    },
+    "b": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:red_nose",
+    "count": 1
+  }
+}

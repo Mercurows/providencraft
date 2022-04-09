@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " a ",
+    " b ",
+    " b "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:pink_wool"
+    },
+    "b": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:plunger",
+    "count": 1
+  }
+}

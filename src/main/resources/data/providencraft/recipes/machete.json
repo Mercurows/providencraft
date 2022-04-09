@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  b",
+    " bc",
+    "ac "
+  ],
+  "key": {
+    "a": {
+      "tag": "minecraft:logs"
+    },
+    "b": {
+      "item": "minecraft:iron_block"
+    },
+    "c": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:machete",
+    "count": 1
+  }
+}
