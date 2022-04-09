@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ac ",
+    "aba",
+    " da"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:gray_wool"
+    },
+    "b": {
+      "item": "minecraft:white_wool"
+    },
+    "c": {
+      "item": "minecraft:daylight_detector"
+    },
+    "d": {
+      "item": "minecraft:nautilus_shell"
+    }
+  },
+  "result": {
+    "item": "providencraft:lunatic_bow",
+    "count": 1
+  }
+}

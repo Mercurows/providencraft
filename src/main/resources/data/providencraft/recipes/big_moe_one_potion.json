@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "providencraft:lucia_rice_cake"
+    },
+    {
+      "item": "providencraft:lucia_rice_cake"
+    }
+  ],
+  "result": {
+    "item": "providencraft:big_moe_one_potion",
+    "count": 1
+  }
+}

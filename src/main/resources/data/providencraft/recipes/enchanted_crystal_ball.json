@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "providencraft:crystal_ball"
+  },
+  "addition": {
+    "item": "minecraft:nether_star"
+  },
+  "result": {
+    "item": "providencraft:enchanted_crystal_ball",
+    "count": 1
+  }
+}
