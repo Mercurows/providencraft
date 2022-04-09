@@ -16,7 +16,9 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class CommunicationTable extends Block {
@@ -25,10 +27,12 @@ public class CommunicationTable extends Block {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if(!worldIn.isRemote && handIn == Hand.MAIN_HAND){
+        if (!worldIn.isRemote && handIn == Hand.MAIN_HAND) {
             int random = (int) (Math.random() * 6 + 1);
-            switch (random){
+            switch (random) {
                 case 1:
                     player.sendStatusMessage(new TranslationTextComponent("ct_message_1"), false);
                     break;
@@ -53,6 +57,7 @@ public class CommunicationTable extends Block {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("communication_table_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("communication_table_des2")).mergeStyle(TextFormatting.GRAY));

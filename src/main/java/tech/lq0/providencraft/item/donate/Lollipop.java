@@ -18,6 +18,7 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.RandomTool;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -26,7 +27,8 @@ import java.util.UUID;
 
 public class Lollipop extends Item {
     public static final Food food = (new Food.Builder()).saturation(6.0f).hunger(4).setAlwaysEdible().build();
-    public Lollipop(){
+
+    public Lollipop() {
         super(new Properties().food(food).isImmuneToFire().group(ModGroup.donategroup));
     }
 
@@ -40,17 +42,19 @@ public class Lollipop extends Item {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        UUID uuid = new UUID(ItemRegistry.LOLLIPOP.hashCode(),0);
-        if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
+        UUID uuid = new UUID(ItemRegistry.LOLLIPOP.hashCode(), 0);
+        if (!worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
-            player.addPotionEffect(new EffectInstance(Effects.RESISTANCE,340,9));
-            player.addPotionEffect(new EffectInstance(Effects.GLOWING,340,0));
-            player.addPotionEffect(new EffectInstance(Effects.SPEED,340,4));
-            player.addPotionEffect(new EffectInstance(Effects.HASTE,340,2));
-            player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST,340,2));
+            player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 340, 9));
+            player.addPotionEffect(new EffectInstance(Effects.GLOWING, 340, 0));
+            player.addPotionEffect(new EffectInstance(Effects.SPEED, 340, 4));
+            player.addPotionEffect(new EffectInstance(Effects.HASTE, 340, 2));
+            player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 340, 2));
 
-            Thread t = new Thread(() ->{
+            Thread t = new Thread(() -> {
                 try {
                     Thread.sleep(17000);
                 } catch (InterruptedException e) {
@@ -58,9 +62,9 @@ public class Lollipop extends Item {
                 }
 
                 int random = (int) (Math.random() * 99 + 1);
-                if(random > 70){
+                if (random > 70) {
                     player.sendMessage(new TranslationTextComponent("lollipop_nothing").mergeStyle(TextFormatting.GRAY), uuid);
-                }else if(random > 20) {
+                } else if (random > 20) {
                     int[] num = RandomTool.getRandom(1, 5, 2);
                     for (int i = 0; i < 2; i++) {
                         switch (Objects.requireNonNull(num)[i]) {
@@ -81,11 +85,11 @@ public class Lollipop extends Item {
                                 break;
                         }
                     }
-                }else{
+                } else {
                     player.setHealth(player.getHealth() - 30);
                 }
 
-                if(!player.isAlive()){
+                if (!player.isAlive()) {
                     player.sendStatusMessage(new TranslationTextComponent("death.lollipop"), false);
                 }
 

@@ -22,15 +22,16 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class BigSpoon extends SwordItem {
-    public BigSpoon(){
+    public BigSpoon() {
         super(ItemTier.IRON, 8, -3.2f, new Item.Properties().defaultMaxDamage(1108).group(ModGroup.itemgroup));
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if(attacker instanceof PlayerEntity){
+        if (attacker instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) attacker;
-            if(!player.world.isRemote && stack.getDamage() < stack.getMaxDamage() - 10 && !player.isCreative()){
+            if (!player.world.isRemote && stack.getDamage() < stack.getMaxDamage() - 10 && !player.isCreative()) {
                 player.addPotionEffect(new EffectInstance(Effects.SATURATION, 20, 0));
                 stack.setDamage(stack.getDamage() + 10);
             }

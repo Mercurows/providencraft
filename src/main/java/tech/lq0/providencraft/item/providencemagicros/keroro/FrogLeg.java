@@ -21,9 +21,9 @@ import java.util.List;
 public class FrogLeg extends Item {
     //蛙腿——食物
     private static final Food food = (new Food.Builder()).saturation(4).hunger(5).
-            effect(new EffectInstance(Effects.JUMP_BOOST,200,3),1.0f).build();
+            effect(new EffectInstance(Effects.JUMP_BOOST, 200, 3), 1.0f).build();
 
-    public FrogLeg(){
+    public FrogLeg() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
     }
 

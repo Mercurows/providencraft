@@ -37,7 +37,7 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class LunaticBow extends ArmorItem {
-    public LunaticBow(){
+    public LunaticBow() {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(928).setNoRepair().group(ModGroup.itemgroup));
     }
 
@@ -54,6 +54,7 @@ public class LunaticBow extends ArmorItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return false;
     }

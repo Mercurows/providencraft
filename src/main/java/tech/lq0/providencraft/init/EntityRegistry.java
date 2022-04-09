@@ -17,6 +17,6 @@ public class EntityRegistry {
                     () -> EntityType.Builder.<AhogeBoomerangEntity>create(AhogeBoomerangEntity::new, EntityClassification.MISC).size(0.8f, 0.3f).build("ahoge_boomerang"));
     public static final RegistryObject<EntityType<PlungerEntity>> PLUNGER_ENTITY =
             ENTITY_TYPES.register("plunger_entity",
-                    () -> EntityType.Builder.<PlungerEntity>create(PlungerEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("plunger_entity"));
+                    () -> EntityType.Builder.<PlungerEntity>create(PlungerEntity::new, EntityClassification.MISC).size(0.3f, 0.3f).build("plunger_entity"));
 
 }

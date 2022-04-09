@@ -24,21 +24,21 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Plate extends Item {
-    public Plate(){
+    public Plate() {
         super(new Properties().maxStackSize(1).defaultMaxDamage(10).group(ModGroup.itemgroup));
     }
 
     @SubscribeEvent
-    public static void Effect(LivingHurtEvent event){
+    public static void Effect(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if(entity instanceof PlayerEntity){
+        if (entity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack itemStack = ItemRegistry.PLATE.get().getDefaultInstance();
-            if(player.getHeldItemOffhand().getItem().equals(itemStack.getItem())){
+            if (player.getHeldItemOffhand().getItem().equals(itemStack.getItem())) {
                 ItemStack plate = player.getHeldItemOffhand();
-                if(event.getAmount() >= 10){
+                if (event.getAmount() >= 10) {
                     event.setAmount(1);
-                    plate.damageItem(1, player, (playerEntity)-> playerEntity.sendBreakAnimation(EquipmentSlotType.OFFHAND));
+                    plate.damageItem(1, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.OFFHAND));
                 }
             }
         }

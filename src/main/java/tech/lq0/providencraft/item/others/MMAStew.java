@@ -24,7 +24,7 @@ public class MMAStew extends Item {
     private static final Food food = (new Food.Builder()).saturation(10).hunger(12).
             effect(new EffectInstance(Effects.STRENGTH, 3600, 1), 1.0f).build();
 
-    public MMAStew(){
+    public MMAStew() {
         super(new Properties().food(food).maxStackSize(1).group(ModGroup.itemgroup));
     }
 

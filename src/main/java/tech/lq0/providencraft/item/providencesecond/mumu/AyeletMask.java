@@ -38,7 +38,7 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AyeletMask extends ArmorItem {
-    public AyeletMask(){
+    public AyeletMask() {
         super(ModArmorMaterial.CRYSTAL, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(515).setNoRepair().group(ModGroup.itemgroup));
     }
 
@@ -87,9 +87,9 @@ public class AyeletMask extends ArmorItem {
             PlayerEntity player = (PlayerEntity) entityP;
             ItemStack item = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (item.getItem().equals(ItemRegistry.AYELET_MASK.get())) {
-                if (entity instanceof CowEntity || entity.getUniqueID().toString().equals("1e10b6810052495bb7a93c0c5fc35552")){
+                if (entity instanceof CowEntity || entity.getUniqueID().toString().equals("1e10b6810052495bb7a93c0c5fc35552")) {
                     event.setAmount(0);
-                }else if (entity instanceof AnimalEntity && entity.isChild()) {
+                } else if (entity instanceof AnimalEntity && entity.isChild()) {
                     event.setAmount(event.getAmount() + 200);
                 }
             }

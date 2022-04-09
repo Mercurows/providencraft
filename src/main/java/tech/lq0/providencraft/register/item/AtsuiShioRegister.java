@@ -14,24 +14,24 @@ public class AtsuiShioRegister {
     public static final String TAG_BURN = "burning";
 
     @SubscribeEvent
-    public static void SetBurning(LivingEntityUseItemEvent.Finish event){
+    public static void SetBurning(LivingEntityUseItemEvent.Finish event) {
         LivingEntity livingEntity = event.getEntityLiving();
         ItemStack itemStack = event.getItem();
-        if(livingEntity instanceof PlayerEntity){
+        if (livingEntity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) livingEntity;
-            if(!player.world.isRemote && itemStack.getItem().equals(ItemRegistry.ATSUISHIO.get())){
+            if (!player.world.isRemote && itemStack.getItem().equals(ItemRegistry.ATSUISHIO.get())) {
                 player.addTag(TAG_BURN);
             }
         }
     }
 
     @SubscribeEvent
-    public static void DoBurning(TickEvent.PlayerTickEvent event){
+    public static void DoBurning(TickEvent.PlayerTickEvent event) {
         PlayerEntity player = event.player;
-        if(!player.world.isRemote && player.getTags().contains(TAG_BURN)){
+        if (!player.world.isRemote && player.getTags().contains(TAG_BURN)) {
             player.setFire(1);
         }
-        if(!player.isAlive()){
+        if (!player.isAlive()) {
             player.removeTag(TAG_BURN);
         }
     }

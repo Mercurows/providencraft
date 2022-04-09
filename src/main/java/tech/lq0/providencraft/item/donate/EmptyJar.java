@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class EmptyJar extends Item {
-    public EmptyJar(){
+    public EmptyJar() {
         super(new Properties().maxStackSize(1).group(ModGroup.donategroup));
     }
 
@@ -47,14 +47,14 @@ public class EmptyJar extends Item {
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         super.onArmorTick(stack, world, player);
-        if(!world.isRemote){
-            player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE,40,0));
+        if (!world.isRemote) {
+            player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 40, 0));
         }
     }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot, ItemStack stack) {
-        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(slot,stack);
+        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(slot, stack);
         UUID uuid = new UUID(ItemRegistry.EMPTY_JAR.hashCode() + slot.toString().hashCode(), 0);
         if (slot == EquipmentSlotType.HEAD) {
             map = HashMultimap.create(map);

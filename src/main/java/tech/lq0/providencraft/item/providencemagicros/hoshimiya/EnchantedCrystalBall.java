@@ -19,25 +19,28 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
 public class EnchantedCrystalBall extends Item {
-    public EnchantedCrystalBall(){
+    public EnchantedCrystalBall() {
         super(new Properties().maxStackSize(1).rarity(Rarity.UNCOMMON).group(ModGroup.itemgroup));
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         UUID uuid = new UUID(ItemRegistry.ENCHANTED_CRYSTAL_BALL.hashCode(), 0);
-        if(!worldIn.isRemote){
-            if(worldIn.isThundering()){
+        if (!worldIn.isRemote) {
+            if (worldIn.isThundering()) {
                 playerIn.sendMessage(new TranslationTextComponent("crystal_ball_weather_thunder").mergeStyle(TextFormatting.YELLOW), uuid);
-            }else if(worldIn.isRaining()){
+            } else if (worldIn.isRaining()) {
                 playerIn.sendMessage(new TranslationTextComponent("crystal_ball_weather_rain").mergeStyle(TextFormatting.AQUA), uuid);
-            }else{
+            } else {
                 playerIn.sendMessage(new TranslationTextComponent("crystal_ball_weather_clear").mergeStyle(TextFormatting.GREEN), uuid);
             }
         }
@@ -45,18 +48,19 @@ public class EnchantedCrystalBall extends Item {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
+        if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity playerIn = (PlayerEntity) entityIn;
-            if(worldIn.isThundering()){
-                playerIn.addPotionEffect(new EffectInstance(Effects.STRENGTH,160,2));
-                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE,160,1));
-                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED,160,0));
-            }else if(worldIn.isRaining()){
-                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE,160,1));
-                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED,160,0));
-            }else{
-                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED,160,0));
+            if (worldIn.isThundering()) {
+                playerIn.addPotionEffect(new EffectInstance(Effects.STRENGTH, 160, 2));
+                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 160, 1));
+                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 0));
+            } else if (worldIn.isRaining()) {
+                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 160, 1));
+                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 0));
+            } else {
+                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 0));
             }
         }
     }

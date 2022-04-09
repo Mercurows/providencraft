@@ -33,6 +33,7 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.ElectricHornModel;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -67,13 +68,15 @@ public class ElectricHorn extends ArmorItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if(!worldIn.isRemote && playerIn.isSneaking()){
+        if (!worldIn.isRemote && playerIn.isSneaking()) {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_ABLE, false);
             ItemNBTTool.setBoolean(stack, TAG_ABLE, !flag);
             playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("electric_horn_enable") :
-                            new TranslationTextComponent("electric_horn_disable"), false);
+                    new TranslationTextComponent("electric_horn_disable"), false);
 
         }
         return ActionResult.resultFail(stack);
@@ -91,7 +94,7 @@ public class ElectricHorn extends ArmorItem {
                 LightningBoltEntity lightningboltentity = EntityType.LIGHTNING_BOLT.create(player.world);
                 assert lightningboltentity != null;
                 lightningboltentity.moveForced(Vector3d.copyCenteredHorizontally(entity.getPosition()));
-                lightningboltentity.setCaster(player instanceof ServerPlayerEntity ? (ServerPlayerEntity)player : null);
+                lightningboltentity.setCaster(player instanceof ServerPlayerEntity ? (ServerPlayerEntity) player : null);
                 player.world.addEntity(lightningboltentity);
 
                 item.damageItem(10, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.HEAD));
@@ -100,14 +103,14 @@ public class ElectricHorn extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void Effect(LivingHurtEvent event){
+    public static void Effect(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
         DamageSource damageSource = event.getSource();
-        if(entity instanceof PlayerEntity){
+        if (entity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack item = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-            if(item.getItem().equals(ItemRegistry.ELECTRIC_HORN.get()) && damageSource.damageType.equals("lightningBolt")
-                    && ItemNBTTool.getBoolean(item, TAG_ABLE, false)){
+            if (item.getItem().equals(ItemRegistry.ELECTRIC_HORN.get()) && damageSource.damageType.equals("lightningBolt")
+                    && ItemNBTTool.getBoolean(item, TAG_ABLE, false)) {
                 event.setCanceled(true);
                 player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 100, 1));
             }

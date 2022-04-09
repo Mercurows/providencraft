@@ -27,13 +27,15 @@ public class Fetuozi extends SwordItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return false;
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        target.applyKnockback(10.0f,attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
+        target.applyKnockback(10.0f, attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
         return super.hitEntity(stack, target, attacker);
     }
 }

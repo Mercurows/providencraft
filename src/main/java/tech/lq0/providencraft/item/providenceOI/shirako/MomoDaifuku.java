@@ -43,7 +43,7 @@ public class MomoDaifuku extends Item {
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        UUID uuid = new UUID(ItemRegistry.MOMO_DAIFUKU.hashCode(),0);
+        UUID uuid = new UUID(ItemRegistry.MOMO_DAIFUKU.hashCode(), 0);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             player.addPotionEffect(new EffectInstance(Effects.LEVITATION, 40, 0));

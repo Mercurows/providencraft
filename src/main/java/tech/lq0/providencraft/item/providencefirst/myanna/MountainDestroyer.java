@@ -28,6 +28,7 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModItemTier;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -86,6 +87,8 @@ public class MountainDestroyer extends PickaxeItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
         UUID uuid = new UUID(ItemRegistry.TAIL_PEN.hashCode() + equipmentSlot.toString().hashCode(), 0);

@@ -33,7 +33,7 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RedNose extends ArmorItem {
-    public RedNose(){
+    public RedNose() {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(302).setNoRepair().group(ModGroup.itemgroup));
     }
 
@@ -50,15 +50,15 @@ public class RedNose extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void Event(LivingAttackEvent event){
+    public static void Event(LivingAttackEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
-        if(livingEntity instanceof PlayerEntity){
+        if (livingEntity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) livingEntity;
             ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-            if(itemStack.getItem().equals(ItemRegistry.RED_NOSE.get())){
-                if(!player.world.isRemote){
+            if (itemStack.getItem().equals(ItemRegistry.RED_NOSE.get())) {
+                if (!player.world.isRemote) {
                     player.addPotionEffect(new EffectInstance(Effects.SPEED, 100, 1));
-                    itemStack.damageItem(1,player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.HEAD));
+                    itemStack.damageItem(1, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.HEAD));
                 }
                 player.world.playSound(player, player.getPosition(),
                         SoundRegistry.KERORO_SNEEZE.get(), SoundCategory.AMBIENT, 0.5f, 1f);

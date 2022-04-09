@@ -19,13 +19,15 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class PorcelainThrone extends Block {
     private static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
-    public PorcelainThrone(){
+    public PorcelainThrone() {
         super(Properties.create(Material.CLAY).hardnessAndResistance(2).notSolid());
         this.setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH));
     }
@@ -42,11 +44,14 @@ public class PorcelainThrone extends Block {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    @Nonnull
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return VoxelShapes.or(Block.makeCuboidShape(3,0,3,13,7,13));
+        return VoxelShapes.or(Block.makeCuboidShape(3, 0, 3, 13, 7, 13));
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("porcelain_throne_des")).mergeStyle(TextFormatting.GRAY));
     }

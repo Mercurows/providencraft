@@ -38,7 +38,7 @@ public class BigMoeOnePotion extends Item {
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
-        UUID uuid = new UUID(ItemRegistry.BIG_MOE_ONE_POTION.hashCode(),0);
+        UUID uuid = new UUID(ItemRegistry.BIG_MOE_ONE_POTION.hashCode(), 0);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             int random = (int) (Math.random() * 99 + 1);

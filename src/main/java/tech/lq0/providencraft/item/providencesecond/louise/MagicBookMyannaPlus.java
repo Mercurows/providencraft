@@ -38,7 +38,7 @@ public class MagicBookMyannaPlus extends Item {
     @ParametersAreNonnullByDefault
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getHeldItem(hand);
-        UUID uuid = new UUID(ItemRegistry.MAGIC_BOOK_MYANNA_PLUS.hashCode(),0);
+        UUID uuid = new UUID(ItemRegistry.MAGIC_BOOK_MYANNA_PLUS.hashCode(), 0);
         if (!world.isRemote) {
             player.addPotionEffect(new EffectInstance(EffectRegistry.BLESS_OF_DARK_ELF.get(), 600, 4));
             player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 600, 2));

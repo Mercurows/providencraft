@@ -10,6 +10,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class RedAhogeBlock extends Block {
@@ -18,6 +19,7 @@ public class RedAhogeBlock extends Block {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("red_ahoge_block_des")).mergeStyle(TextFormatting.GRAY));
     }
