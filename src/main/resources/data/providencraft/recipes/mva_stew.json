@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "providencraft:red_ahoge"
+    },
+    {
+      "item": "providencraft:lotus_potato"
+    },
+    {
+      "item": "providencraft:frog_leg"
+    }
+  ],
+  "result": {
+    "item": "providencraft:mva_stew",
+    "count": 1
+  }
+}

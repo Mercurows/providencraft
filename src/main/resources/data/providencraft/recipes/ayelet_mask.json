@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bdb",
+    "cbc",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:leather"
+    },
+    "b": {
+      "item": "minecraft:white_wool"
+    },
+    "c": {
+      "item": "minecraft:black_wool"
+    },
+    "d": {
+      "item": "minecraft:light_blue_wool"
+    }
+  },
+  "result": {
+    "item": "providencraft:ayelet_mask",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    " c ",
+    " c "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:bowl"
+    },
+    "c": {
+      "item": "minecraft:quartz_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:big_spoon",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:quartz_block"
+    },
+    "b": {
+      "item": "minecraft:totem_of_undying"
+    }
+  },
+  "result": {
+    "item": "providencraft:plate",
+    "count": 1
+  }
+}

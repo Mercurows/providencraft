@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "bdb",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:light_blue_wool"
+    },
+    "c": {
+      "item": "minecraft:light_gray_wool"
+    },
+    "d": {
+      "item": "minecraft:shield"
+    }
+  },
+  "result": {
+    "item": "providencraft:hai_plate",
+    "count": 1
+  }
+}

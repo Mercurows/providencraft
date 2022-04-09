@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aba",
+    "cdc",
+    "eee"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:stone_bricks"
+    },
+    "b": {
+      "item": "minecraft:diamond_block"
+    },
+    "c": {
+      "item": "minecraft:iron_block"
+    },
+    "d": {
+      "item": "minecraft:iron_door"
+    },
+    "e": {
+      "item": "minecraft:purpur_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:hayamen",
+    "count": 1
+  }
+}

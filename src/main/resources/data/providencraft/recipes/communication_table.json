@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aa ",
+    "bb ",
+    "bb "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:smooth_stone"
+    }
+  },
+  "result": {
+    "item": "providencraft:communication_table",
+    "count": 1
+  }
+}

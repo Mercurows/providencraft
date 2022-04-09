@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "providencraft:red_ahoge"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "providencraft:frog_leg"
+    }
+  ],
+  "result": {
+    "item": "providencraft:mma_stew",
+    "count": 1
+  }
+}
