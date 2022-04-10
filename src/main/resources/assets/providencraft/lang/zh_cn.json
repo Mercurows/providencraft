@@ -184,7 +184,8 @@
   "tail_pen_des2": "可以让敌人变得五颜六色",
   "mountain_destroyer_des1": "新世界理工学院机械研究所的最新研究成果",
   "mountain_destroyer_des2": "一切石头在它面前都是渣渣",
-
+  "mountain_destroyer_enable": "已启用3x3挖掘",
+  "mountain_destroyer_disable": "已禁用3x3挖掘",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "欢迎来到普罗维登",
