@@ -36,7 +36,7 @@ authors="Light_Quanta,有点白的黑米饭" #optional
 description='''
 Providence企划同人Minecraft Mod, 马上就做完了
 
-翻译协力:勇气
+翻译协力:勇气之赤
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
