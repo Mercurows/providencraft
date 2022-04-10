@@ -50,8 +50,9 @@ public class MountainDestroyer extends PickaxeItem {
     @Override
     @ParametersAreNonnullByDefault
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
-        if (state.getMaterial() == Material.ROCK && !worldIn.isRemote) {
-            stack.setDamage(stack.getDamage() > 0 ? stack.getDamage() - 1 : 0);
+        if (state.getMaterial() == Material.ROCK && !worldIn.isRemote && entityLiving instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) entityLiving;
+            stack.damageItem(-1, player, (playerEntity) -> playerEntity.sendBreakAnimation(player.getActiveHand()));
 
             if (pos.getY() == entityLiving.getPosY() && stack.canHarvestBlock(worldIn.getBlockState(pos.add(0, 1, 0)))) {
                 BlockPos newPos = pos.add(0, 1, 0);
@@ -62,10 +63,7 @@ public class MountainDestroyer extends PickaxeItem {
 
                 worldIn.destroyBlock(newPos, false);
 
-                if (entityLiving instanceof PlayerEntity) {
-                    PlayerEntity player = (PlayerEntity) entityLiving;
-                    player.addStat(Stats.BLOCK_MINED.get(state.getBlock()), 1);
-                }
+                player.addStat(Stats.BLOCK_MINED.get(state.getBlock()), 1);
             }
             if (pos.getY() == entityLiving.getPosY() + 1 && stack.canHarvestBlock(worldIn.getBlockState(pos.add(0, -1, 0)))) {
                 BlockPos newPos = pos.add(0, -1, 0);
@@ -76,10 +74,7 @@ public class MountainDestroyer extends PickaxeItem {
 
                 worldIn.destroyBlock(newPos, false);
 
-                if (entityLiving instanceof PlayerEntity) {
-                    PlayerEntity player = (PlayerEntity) entityLiving;
-                    player.addStat(Stats.BLOCK_MINED.get(state.getBlock()), 1);
-                }
+                player.addStat(Stats.BLOCK_MINED.get(state.getBlock()), 1);
             }
             return true;
         }
