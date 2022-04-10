@@ -34,7 +34,9 @@ credits="Thanks for this example mod goes to Java" #optional
 authors="Light_Quanta,有点白的黑米饭" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Providence企划同人Minecraft Mod, 作者绝赞摸鱼中!
+Providence企划同人Minecraft Mod, 马上就做完了
+
+翻译协力:勇气
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
