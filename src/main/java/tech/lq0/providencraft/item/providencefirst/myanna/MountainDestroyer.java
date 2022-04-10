@@ -40,7 +40,7 @@ import java.util.UUID;
 
 public class MountainDestroyer extends PickaxeItem {
 
-    public static final String TAG_MULTIMINE = "mulitmine";
+    public static final String TAG_MULTIMINE = "multimine";
 
     public MountainDestroyer() {
         super(ModItemTier.DARK_ELF, 6, -3f, (new Properties()).defaultMaxDamage(39).rarity(Rarity.EPIC)
@@ -48,10 +48,16 @@ public class MountainDestroyer extends PickaxeItem {
     }
 
     @Override
+    public boolean canHarvestBlock(BlockState blockIn) {
+        Material material = blockIn.getMaterial();
+        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC);
+    }
+
+    @Override
     @ParametersAreNonnullByDefault
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         Material material = state.getMaterial();
-        return material != Material.ROCK ? super.getDestroySpeed(stack, state) : this.efficiency;
+        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC) ? this.efficiency : super.getDestroySpeed(stack, state);
     }
 
     @Override
@@ -72,7 +78,9 @@ public class MountainDestroyer extends PickaxeItem {
     @Override
     @ParametersAreNonnullByDefault
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
-        if (state.getMaterial() == Material.ROCK && !worldIn.isRemote && entityLiving instanceof PlayerEntity) {
+        if ((state.getMaterial() == Material.ROCK || state.getMaterial() == Material.EARTH ||
+                state.getMaterial() == Material.SAND || state.getMaterial() == Material.ORGANIC)
+                && !worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             stack.damageItem(-1, player, (playerEntity) -> playerEntity.sendBreakAnimation(player.getActiveHand()));
 
@@ -80,7 +88,8 @@ public class MountainDestroyer extends PickaxeItem {
                 ArrayList<BlockPos> posList = new ArrayList<>();
                 if (pos.getY() - entityLiving.getPosY() <= 2 && pos.getY() - entityLiving.getPosY() >= 0) {
                     BlockPos basePos = new BlockPos(pos.getX(), entityLiving.getPosY(), pos.getZ());
-                    if ((player.rotationYaw >= 45.0f && player.rotationYaw <= 135.0f) || (player.rotationYaw >= 225.0f && player.rotationYaw <= 315.0f)) {
+                    float yaw = Math.abs(player.rotationYaw);
+                    if ((yaw >= 45.0f && yaw <= 135.0f) || (yaw >= 225.0f && yaw <= 315.0f)) {
                         //x-facing
                         posList.add(basePos.add(0, 0, 0));
                         posList.add(basePos.add(0, 0, -1));
