@@ -13,13 +13,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
-import java.util.UUID;
 
 public class CrystalBall extends Item {
     public CrystalBall() {
@@ -30,14 +28,13 @@ public class CrystalBall extends Item {
     @ParametersAreNonnullByDefault
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        UUID uuid = new UUID(ItemRegistry.CRYSTAL_BALL.hashCode(), 0);
         if (!worldIn.isRemote) {
             if (worldIn.isThundering()) {
-                playerIn.sendMessage(new TranslationTextComponent("crystal_ball_weather_thunder").mergeStyle(TextFormatting.YELLOW), uuid);
+                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_thunder").mergeStyle(TextFormatting.YELLOW), false);
             } else if (worldIn.isRaining()) {
-                playerIn.sendMessage(new TranslationTextComponent("crystal_ball_weather_rain").mergeStyle(TextFormatting.AQUA), uuid);
+                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_rain").mergeStyle(TextFormatting.AQUA), false);
             } else {
-                playerIn.sendMessage(new TranslationTextComponent("crystal_ball_weather_clear").mergeStyle(TextFormatting.GREEN), uuid);
+                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_clear").mergeStyle(TextFormatting.GREEN), false);
             }
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);

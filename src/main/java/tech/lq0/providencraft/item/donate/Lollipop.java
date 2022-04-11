@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.RandomTool;
 
 import javax.annotation.Nonnull;
@@ -23,7 +22,6 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Lollipop extends Item {
     public static final Food food = (new Food.Builder()).saturation(6.0f).hunger(4).setAlwaysEdible().build();
@@ -45,7 +43,6 @@ public class Lollipop extends Item {
     @ParametersAreNonnullByDefault
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        UUID uuid = new UUID(ItemRegistry.LOLLIPOP.hashCode(), 0);
         if (!worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 340, 9));
@@ -63,7 +60,7 @@ public class Lollipop extends Item {
 
                 int random = (int) (Math.random() * 99 + 1);
                 if (random > 70) {
-                    player.sendMessage(new TranslationTextComponent("lollipop_nothing").mergeStyle(TextFormatting.GRAY), uuid);
+                    player.sendStatusMessage(new TranslationTextComponent("lollipop_nothing").mergeStyle(TextFormatting.GRAY), false);
                 } else if (random > 20) {
                     int[] num = RandomTool.getRandom(1, 5, 2);
                     for (int i = 0; i < 2; i++) {

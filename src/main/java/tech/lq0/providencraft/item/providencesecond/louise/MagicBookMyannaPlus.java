@@ -19,14 +19,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
-import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.init.SoundRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
-import java.util.UUID;
 
 public class MagicBookMyannaPlus extends Item {
     public MagicBookMyannaPlus() {
@@ -38,7 +36,6 @@ public class MagicBookMyannaPlus extends Item {
     @ParametersAreNonnullByDefault
     public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getHeldItem(hand);
-        UUID uuid = new UUID(ItemRegistry.MAGIC_BOOK_MYANNA_PLUS.hashCode(), 0);
         if (!world.isRemote) {
             player.addPotionEffect(new EffectInstance(EffectRegistry.BLESS_OF_DARK_ELF.get(), 600, 4));
             player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 600, 2));
@@ -47,7 +44,7 @@ public class MagicBookMyannaPlus extends Item {
             int random = (int) (Math.random() * 10 + 1);
             if (random <= 3) {
                 player.addPotionEffect(new EffectInstance(EffectRegistry.CURSE_OF_SERPENT.get(), 600, 2));
-                player.sendMessage(new TranslationTextComponent("be_cursed").mergeStyle(TextFormatting.RED), uuid);
+                player.sendStatusMessage(new TranslationTextComponent("be_cursed").mergeStyle(TextFormatting.RED), false);
             }
 
             player.getCooldownTracker().setCooldown(heldItem.getItem(), 3600);
