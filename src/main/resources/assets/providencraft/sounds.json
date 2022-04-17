@@ -28,5 +28,15 @@
         "stream": true
       }
     ]
+  },
+  "blade": {
+    "subtitle": "blade",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:blade",
+        "stream": true
+      }
+    ]
   }
 }

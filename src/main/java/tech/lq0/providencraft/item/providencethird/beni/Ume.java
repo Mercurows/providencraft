@@ -12,6 +12,7 @@ import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -20,6 +21,7 @@ import net.minecraftforge.common.MinecraftForge;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 
 import javax.annotation.Nonnull;
@@ -62,9 +64,16 @@ public class Ume extends SwordItem {
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if (!worldIn.isRemote && handIn == Hand.MAIN_HAND) {
-            boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
-            ItemNBTTool.setBoolean(stack, TAG_INVOKE, !flag);
+
+        if (handIn == Hand.MAIN_HAND) {
+            if(!ItemNBTTool.getBoolean(stack, TAG_INVOKE, false)) {
+                worldIn.playSound(playerIn, playerIn.getPosition(),
+                        SoundRegistry.BLADE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
+            }
+            if(!worldIn.isRemote) {
+                boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
+                ItemNBTTool.setBoolean(stack, TAG_INVOKE, !flag);
+            }
         }
         return ActionResult.resultFail(stack);
     }
