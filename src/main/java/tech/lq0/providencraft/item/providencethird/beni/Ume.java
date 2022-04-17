@@ -2,6 +2,7 @@ package tech.lq0.providencraft.item.providencethird.beni;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -11,6 +12,9 @@ import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import tech.lq0.providencraft.Utils;
@@ -19,7 +23,9 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 import java.util.UUID;
 
 public class Ume extends SwordItem {
@@ -66,5 +72,12 @@ public class Ume extends SwordItem {
     @Override
     public boolean isDamageable(ItemStack stack) {
         return false;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add((new TranslationTextComponent("ume_func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("ume_des1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("ume_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
     }
 }
