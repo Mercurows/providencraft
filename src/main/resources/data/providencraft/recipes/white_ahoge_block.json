@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "providencraft:white_ahoge"
+    }
+  },
+  "result": {
+    "item": "providencraft:white_ahoge_block",
+    "count": 1
+  }
+}

@@ -65,6 +65,7 @@ public class ShuraChin extends SwordItem {
                     }
                 }
                 playerIn.spawnSweepParticles();
+                playerIn.getCooldownTracker().setCooldown(stack.getItem(), 40);
 
                 worldIn.playSound(playerIn, playerIn.getPosition(),
                         SoundRegistry.BLADE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
