@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.SquidEntity;
@@ -20,10 +21,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -44,7 +43,7 @@ import java.util.UUID;
 public class ShuraChin extends SwordItem {
     public static final String TAG_INVOKE = "invoke";
 
-    public ShuraChin(){
+    public ShuraChin() {
         super(ItemTier.IRON, -2, -1.5f, new Properties().rarity(Rarity.UNCOMMON).group(ModGroup.itemgroup).
                 setNoRepair().maxDamage(1442));
         ItemModelsProperties.registerProperty(this, new ResourceLocation(Utils.MOD_ID, "shurachin_invoke"),
@@ -58,11 +57,19 @@ public class ShuraChin extends SwordItem {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if (handIn == Hand.MAIN_HAND) {
-            if(!ItemNBTTool.getBoolean(stack, TAG_INVOKE, false)) {
+            if (!ItemNBTTool.getBoolean(stack, TAG_INVOKE, false)) {
+                for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, playerIn.getBoundingBox().grow(2.0D, 0.5D, 2.0D))) {
+                    if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity) && (!(livingentity instanceof ArmorStandEntity) || !((ArmorStandEntity) livingentity).hasMarker()) && playerIn.getDistanceSq(livingentity) < 9.0D) {
+                        livingentity.applyKnockback(0.6F, MathHelper.sin(playerIn.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(playerIn.rotationYaw * ((float) Math.PI / 180F)));
+                        livingentity.attackEntityFrom(DamageSource.causePlayerDamage(playerIn), 13);
+                    }
+                }
+                playerIn.spawnSweepParticles();
+
                 worldIn.playSound(playerIn, playerIn.getPosition(),
                         SoundRegistry.BLADE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
             }
-            if(!worldIn.isRemote) {
+            if (!worldIn.isRemote) {
                 boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
                 ItemNBTTool.setBoolean(stack, TAG_INVOKE, !flag);
             }
@@ -90,11 +97,12 @@ public class ShuraChin extends SwordItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
+        if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
-            if(player.getHeldItemOffhand().getItem().equals(ItemRegistry.UME.get()) &&
-                    player.getHeldItemMainhand().getItem().equals(ItemRegistry.SHURA_CHIN.get())){
+            if (player.getHeldItemOffhand().getItem().equals(ItemRegistry.UME.get()) &&
+                    player.getHeldItemMainhand().getItem().equals(ItemRegistry.SHURA_CHIN.get())) {
                 player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 300, 1));
                 player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 1));
             }
@@ -102,16 +110,18 @@ public class ShuraChin extends SwordItem {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if(target instanceof SalmonEntity || target instanceof SquidEntity || target instanceof GuardianEntity ||
+        if (target instanceof SalmonEntity || target instanceof SquidEntity || target instanceof GuardianEntity ||
                 target instanceof CodEntity || target instanceof PufferfishEntity || target instanceof TropicalFishEntity ||
-        target instanceof ChickenEntity){
+                target instanceof ChickenEntity) {
             attacker.addPotionEffect(new EffectInstance(Effects.SATURATION, 100, 1));
         }
         return super.hitEntity(stack, target, attacker);
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("ume_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("shurachin_des1")).mergeStyle(TextFormatting.GRAY));
