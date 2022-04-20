@@ -50,9 +50,6 @@ public class Ume extends SwordItem {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
             map.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(uuid, "ume modifier", flag ? 5.0f : 0.0f, AttributeModifier.Operation.ADDITION));
-            map.put(net.minecraftforge.common.ForgeMod.REACH_DISTANCE.get(),
-                    new AttributeModifier(uuid,"reach distance",100,AttributeModifier.Operation.ADDITION)
-                    );
         }else if (equipmentSlot == EquipmentSlotType.OFFHAND) {
             map = HashMultimap.create(map);
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
