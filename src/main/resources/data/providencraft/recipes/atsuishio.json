@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " r ",
+    "bab",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:blaze_powder"
+    },
+    "b": {
+      "item": "minecraft:glass_pane"
+    },
+    "r": {
+      "item": "minecraft:red_concrete"
+    }
+  },
+  "result": {
+    "item": "providencraft:atsuishio",
+    "count": 1
+  }
+}
