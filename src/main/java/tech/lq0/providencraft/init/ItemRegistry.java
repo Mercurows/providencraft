@@ -47,6 +47,7 @@ import tech.lq0.providencraft.item.providencesecond.satou.SatouKnife;
 import tech.lq0.providencraft.item.providencethird.beni.LavaCake;
 import tech.lq0.providencraft.item.providencethird.beni.ShuraChin;
 import tech.lq0.providencraft.item.providencethird.beni.Ume;
+import tech.lq0.providencraft.item.providencethird.hiru.HiruHead;
 
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Utils.MOD_ID);
@@ -155,6 +156,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LAVA_CAKE = ITEMS.register("lava_cake", LavaCake::new);
     public static final RegistryObject<Item> SHURA_CHIN = ITEMS.register("shura_chin", ShuraChin::new);
     public static final RegistryObject<Item> UME = ITEMS.register("ume", Ume::new);
+
+    //hiru
+    public static final RegistryObject<Item> HIRU_HEAD = ITEMS.register("hiru_head", HiruHead::new);
 
 
     /**
