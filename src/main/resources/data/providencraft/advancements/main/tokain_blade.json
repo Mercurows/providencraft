@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:shura_chin"
+    },
+    "title": {
+      "translate": "providencraft.advancement.tokain_blade"
+    },
+    "description": {
+      "translate": "providencraft.advancement.tokain_blade_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "tokain_blade_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:shura_chin"
+          }
+        ]
+      }
+    },
+    "tokain_blade_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:ume"
+          }
+        ]
+      }
+    }
+  }
+}

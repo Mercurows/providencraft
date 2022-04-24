@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:hiru_head"
+    },
+    "title": {
+      "translate": "providencraft.advancement.hiru_head"
+    },
+    "description": {
+      "translate": "providencraft.advancement.hiru_head_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/tokain_blade",
+  "criteria": {
+    "hiru_head": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:hiru_head"
+          }
+        ]
+      }
+    }
+  }
+}
