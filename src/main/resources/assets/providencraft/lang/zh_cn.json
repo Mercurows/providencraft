@@ -195,6 +195,7 @@
   "shurachin_des2": "据说可以用来切寿司",
   "blade": "拔刀",
   "item.providencraft.hiru_head": "灯瑠头",
+  "hiru_head_des": "不明生物灯瑠hiru的头，好大啊",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "欢迎来到普罗维登",
@@ -225,5 +226,9 @@
   "providencraft.advancement.leave_providence": "离普！！",
   "providencraft.advancement.leave_providence_des": "毁坏普罗维登岛的公物",
   "providencraft.advancement.fetuozi": "人是铁，饭是钢",
-  "providencraft.advancement.fetuozi_des": "饿了吗，饿了吃我一坨子"
+  "providencraft.advancement.fetuozi_des": "饿了吗，饿了吃我一坨子",
+  "providencraft.advancement.red_ahoge_weapon_master": "红色军械库",
+  "providencraft.advancement.red_ahoge_weapon_master_des": "集齐红色呆毛武器",
+  "providencraft.advancement.red_ahoge_helmet": "真华化身",
+  "providencraft.advancement.red_ahoge_helmet_des": "呆毛赐予我力量"
 }

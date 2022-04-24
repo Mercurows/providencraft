@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:red_ahoge_boomerang"
+    },
+    "title": {
+      "translate": "providencraft.advancement.red_ahoge_weapon_master"
+    },
+    "description": {
+      "translate": "providencraft.advancement.red_ahoge_weapon_master_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "red_ahoge_weapon_master_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:red_ahoge_sword"
+          }
+        ]
+      }
+    },
+    "red_ahoge_weapon_master_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:red_ahoge_boomerang"
+          }
+        ]
+      }
+    }
+  }
+}

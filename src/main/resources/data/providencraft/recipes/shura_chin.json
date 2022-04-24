@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "baf",
+    "lca",
+    "llb"
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:netherite_sword"
+    },
+    "l": {
+      "tag": "minecraft:logs"
+    },
+    "a": {
+      "item": "minecraft:gold_ingot"
+    },
+    "f": {
+      "item": "minecraft:salmon"
+    },
+    "b": {
+      "item": "minecraft:poppy"
+    }
+  },
+  "result": {
+    "item": "providencraft:shura_chin",
+    "count": 1
+  }
+}

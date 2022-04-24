@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " pb",
+    "acp",
+    "la "
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:iron_sword"
+    },
+    "l": {
+      "tag": "minecraft:logs"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    },
+    "a": {
+      "item": "minecraft:gold_ingot"
+    },
+    "b": {
+      "item": "minecraft:poppy"
+    }
+  },
+  "result": {
+    "item": "providencraft:ume",
+    "count": 1
+  }
+}

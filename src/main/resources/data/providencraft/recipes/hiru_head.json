@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppl",
+    "pcp",
+    "ppp"
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:cornflower"
+    },
+    "p": {
+      "item": "minecraft:pink_wool"
+    },
+    "l": {
+      "item": "minecraft:light_blue_wool"
+    }
+  },
+  "result": {
+    "item": "providencraft:hiru_head",
+    "count": 1
+  }
+}
