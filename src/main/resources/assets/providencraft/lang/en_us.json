@@ -196,6 +196,9 @@
   "blade": "拔刀",
   "item.providencraft.hiru_head": "Hiru's Head",
   "hiru_head_des": "不明生物灯瑠hiru的头，好大啊",
+  "item.providencraft.reina_wings": "Reina's Wings",
+  "reina_wings_des1": "怜奈露西耶的翅膀，很香",
+  "reina_wings_des2": "装备后每30秒会恢复全部饥饿值",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "Welcome to Providence",

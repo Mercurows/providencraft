@@ -116,7 +116,7 @@ public class ShuraChin extends SwordItem {
         if (target instanceof SalmonEntity || target instanceof SquidEntity || target instanceof GuardianEntity ||
                 target instanceof CodEntity || target instanceof PufferfishEntity || target instanceof TropicalFishEntity ||
                 target instanceof ChickenEntity) {
-            attacker.addPotionEffect(new EffectInstance(Effects.SATURATION, 100, 1));
+            attacker.addPotionEffect(new EffectInstance(Effects.SATURATION, 20, 0));
         }
         return super.hitEntity(stack, target, attacker);
     }
