@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.tools.RandomTool;
 
 import javax.annotation.Nonnull;
@@ -83,11 +84,7 @@ public class Lollipop extends Item {
                         }
                     }
                 } else {
-                    player.setHealth(player.getHealth() - 30);
-                }
-
-                if (!player.isAlive()) {
-                    player.sendStatusMessage(new TranslationTextComponent("death.lollipop"), false);
+                    player.attackEntityFrom(DamageSourceRegistry.EMO, 30.0f);
                 }
 
             });

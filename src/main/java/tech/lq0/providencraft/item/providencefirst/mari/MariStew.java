@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.DamageSourceRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -39,7 +40,7 @@ public class MariStew extends Item {
             int random = (int) (Math.random() * 99 + 1);
             if (random > 95) {
                 //5%去世
-                player.setHealth(player.getHealth() - 20.0f);
+                player.attackEntityFrom(DamageSourceRegistry.MARI_FOOD, 20.0f);
             } else if (random > 90) {
                 //5%回血
                 player.heal(20.0f);
@@ -53,10 +54,6 @@ public class MariStew extends Item {
             } else {
                 //40%无事发生
                 player.sendStatusMessage(new TranslationTextComponent("mari_stew_nothing").mergeStyle(TextFormatting.GRAY), false);
-            }
-
-            if (!player.isAlive()) {
-                player.sendStatusMessage(new TranslationTextComponent("death.mari_stew", entityLiving.getDisplayName()), false);
             }
 
             if (player.isCreative()) {

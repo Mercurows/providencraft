@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.DamageSourceRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -34,10 +35,7 @@ public class LavaCake extends Item {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
-            player.setHealth(player.getHealth() - 20.0f);
-            if (!player.isAlive()) {
-                player.sendStatusMessage(new TranslationTextComponent("death.lava_cake", entityLiving.getDisplayName()), false);
-            }
+            player.attackEntityFrom(DamageSourceRegistry.BENI_CAKE, 20.0f);
         }
         return itemStack;
     }

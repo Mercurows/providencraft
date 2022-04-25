@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.DamageSourceRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -36,11 +37,9 @@ public class LotusPotato extends Item {
             if (player.getHealth() <= player.getMaxHealth() - 6) {
                 player.heal(4.0f);
             } else {
-                float finalHealth = 6.0f - (player.getHealth() + 4.0f) % player.getMaxHealth();
-                player.setHealth(finalHealth < 2 ? 2 : finalHealth);
-            }
-            if (!player.isAlive()) {
-                player.sendStatusMessage(new TranslationTextComponent("death.lotus_potato", entityLiving.getDisplayName()), false);
+                float index = player.getMaxHealth() - player.getHealth();
+                float finalHealth = 18.0f - index * 2;
+                player.attackEntityFrom(DamageSourceRegistry.LOTUS, finalHealth);
             }
         }
         return itemStack;
