@@ -141,7 +141,7 @@
   "item.providencraft.taro_ice_cream": "香芋冰淇淋",
   "item.providencraft.lunatic_bow": "空夜结",
   "item.providencraft.ayelet_mask": "阿伊蕾特面具",
-  "taro_ice_cream_des1": "普罗维登妖精王冷饮厂™出品",
+  "taro_ice_cream_des1": "普罗维登冷饮厂™出品",
   "taro_ice_cream_des2": "海胆风味香芋冰淇淋，真的很凉！",
   "keroro_sneeze": "蛙吹:打喷嚏",
   "red_nose_des1": "蛙吹克罗罗的红鼻子",
@@ -199,6 +199,9 @@
   "item.providencraft.reina_wings": "怜奈之翼",
   "reina_wings_des1": "怜奈露西耶的翅膀，很香",
   "reina_wings_des2": "装备后每30秒会恢复全部饥饿值",
+  "item.providencraft.fox_ice_cream": "狐雪糕",
+  "fox_ice_cream_des1": "普罗维登冷饮厂™出品",
+  "fox_ice_cream_des2": "清楚狐仙的同款雪糕，嘿嘿嘿",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "欢迎来到普罗维登",
