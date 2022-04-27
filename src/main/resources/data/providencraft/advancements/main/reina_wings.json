@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:reina_wings"
+    },
+    "title": {
+      "translate": "providencraft.advancement.reina_wings"
+    },
+    "description": {
+      "translate": "providencraft.advancement.reina_wings_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/hiru_head",
+  "criteria": {
+    "reina_wings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:reina_wings"
+          }
+        ]
+      }
+    }
+  }
+}

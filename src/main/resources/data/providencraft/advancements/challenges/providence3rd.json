@@ -1,0 +1,48 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:shura_chin"
+    },
+    "title": {
+      "translate": "providencraft.advancement.providence3rd"
+    },
+    "description": {
+      "translate": "providencraft.advancement.providence3rd_des"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "providencraft:main/reina_wings",
+  "criteria": {
+    "providence3rd": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "providencraft:fox_ice_cream",
+            "count": {
+              "min": 32
+            }
+          },
+          {
+            "item": "providencraft:shura_chin"
+          },
+          {
+            "item": "providencraft:ume"
+          },
+          {
+            "item": "providencraft:hiru_head"
+          },
+          {
+            "item": "providencraft:reina_wings"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

@@ -1,7 +1,8 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:shura_chin"
+      "item": "providencraft:ume",
+      "nbt": "{invoke:1}"
     },
     "title": {
       "translate": "providencraft.advancement.tokain_blade"
@@ -13,7 +14,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:providencraft",
+  "parent": "providencraft:main/fox_ice_cream",
   "criteria": {
     "tokain_blade_1": {
       "trigger": "minecraft:inventory_changed",

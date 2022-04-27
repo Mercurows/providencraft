@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:fox_ice_cream"
+    },
+    "title": {
+      "translate": "providencraft.advancement.fox_ice_cream"
+    },
+    "description": {
+      "translate": "providencraft.advancement.fox_ice_cream_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "fox_ice_cream": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:fox_ice_cream"
+          }
+        ]
+      }
+    }
+  }
+}

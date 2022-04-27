@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:magic_book_myanna_plus"
+      "item": "providencraft:mountain_destroyer"
     },
     "title": {
-      "translate": "providencraft.advancement.magic_book_myanna_plus"
+      "translate": "providencraft.advancement.mountain_destroyer"
     },
     "description": {
-      "translate": "providencraft.advancement.magic_book_myanna_plus_des"
+      "translate": "providencraft.advancement.mountain_destroyer_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
@@ -16,12 +16,12 @@
   },
   "parent": "providencraft:main/magic_book_myanna",
   "criteria": {
-    "magic_book_myanna_plus": {
+    "mountain_destroyer": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:magic_book_myanna_plus"
+            "item":"providencraft:mountain_destroyer"
           }
         ]
       }
