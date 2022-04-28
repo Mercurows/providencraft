@@ -37,6 +37,7 @@ public class Utils {
         VillagerInit.PROFESSIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         AttributeRegistry.ATTRIBUTES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ParticleRegistry.PARTICLE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event) {
