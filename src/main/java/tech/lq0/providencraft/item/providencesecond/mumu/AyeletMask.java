@@ -77,7 +77,6 @@ public class AyeletMask extends ArmorItem {
         return map;
     }
 
-    //对幼年生物特攻
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
