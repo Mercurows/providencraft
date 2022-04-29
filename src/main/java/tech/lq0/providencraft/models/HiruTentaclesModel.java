@@ -92,7 +92,7 @@ public class HiruTentaclesModel<T extends LivingEntity> extends BipedModel<T> {
 		
 
 		ttc1_1 = new ModelRenderer(this);
-		ttc1_1.setRotationPoint(-2.0F, -3.0F, 2.5F);
+		ttc1_1.setRotationPoint(-2.0F, 22.0F, 2.5F);
 		main.addChild(ttc1_1);
 		
 
@@ -194,7 +194,7 @@ public class HiruTentaclesModel<T extends LivingEntity> extends BipedModel<T> {
 		cube_r16.setTextureOffset(8, 2).addBox(0.5F, -1.0F, -1.0F, 3.0F, 2.0F, 2.0F, 0.0F, false);
 
 		ttc1_2 = new ModelRenderer(this);
-		ttc1_2.setRotationPoint(2.0F, -3.0F, 2.5F);
+		ttc1_2.setRotationPoint(2.0F, 22.0F, 2.5F);
 		main.addChild(ttc1_2);
 		
 
@@ -296,7 +296,7 @@ public class HiruTentaclesModel<T extends LivingEntity> extends BipedModel<T> {
 		cube_r32.setTextureOffset(0, 8).addBox(-3.5F, -1.0F, -1.0F, 3.0F, 2.0F, 2.0F, 0.0F, false);
 
 		ttc2_1 = new ModelRenderer(this);
-		ttc2_1.setRotationPoint(-3.685F, -15.615F, 3.0F);
+		ttc2_1.setRotationPoint(-3.685F, 10.615F, 3.0F);
 		main.addChild(ttc2_1);
 		setRotationAngle(ttc2_1, 0.0F, -0.2182F, 0.0F);
 		ttc2_1.setTextureOffset(16, 0).addBox(0.1518F, -1.1226F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
@@ -399,7 +399,7 @@ public class HiruTentaclesModel<T extends LivingEntity> extends BipedModel<T> {
 		cube_r48.setTextureOffset(0, 4).addBox(-1.5F, -1.5F, -1.0F, 3.0F, 2.0F, 2.0F, 0.0F, false);
 
 		ttc2_2 = new ModelRenderer(this);
-		ttc2_2.setRotationPoint(3.685F, -15.615F, 3.0F);
+		ttc2_2.setRotationPoint(3.685F, 10.615F, 3.0F);
 		main.addChild(ttc2_2);
 		setRotationAngle(ttc2_2, 0.0F, 0.2182F, 0.0F);
 		ttc2_2.setTextureOffset(8, 6).addBox(-2.1518F, -1.1226F, -1.0F, 2.0F, 2.0F, 2.0F, 0.0F, false);
@@ -509,6 +509,7 @@ public class HiruTentaclesModel<T extends LivingEntity> extends BipedModel<T> {
 
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+		main.copyModelAngles(this.bipedBody);
 		main.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 

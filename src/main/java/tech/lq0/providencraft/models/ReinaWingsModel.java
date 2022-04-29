@@ -56,7 +56,7 @@ public class ReinaWingsModel<T extends LivingEntity> extends BipedModel<T> {
 		
 
 		wing1 = new ModelRenderer(this);
-		wing1.setRotationPoint(2.25F, -10.0F, 3.5F);
+		wing1.setRotationPoint(2.25F, 13.0F, 3.5F);
 		main.addChild(wing1);
 		
 
@@ -151,7 +151,7 @@ public class ReinaWingsModel<T extends LivingEntity> extends BipedModel<T> {
 		cube_r15.setTextureOffset(23, 19).addBox(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F, 0.0F, false);
 
 		wing2 = new ModelRenderer(this);
-		wing2.setRotationPoint(-2.25F, -10.0F, 3.5F);
+		wing2.setRotationPoint(-2.25F, 13.0F, 3.5F);
 		main.addChild(wing2);
 		
 
@@ -253,6 +253,7 @@ public class ReinaWingsModel<T extends LivingEntity> extends BipedModel<T> {
 
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+		main.copyModelAngles(this.bipedBody);
 		main.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
