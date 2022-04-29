@@ -20,6 +20,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
@@ -37,6 +39,7 @@ public class ReinaWings extends ArmorItem {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(627).setNoRepair().group(ModGroup.itemgroup));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {

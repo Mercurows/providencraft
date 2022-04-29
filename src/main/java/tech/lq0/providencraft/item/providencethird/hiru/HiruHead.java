@@ -38,6 +38,7 @@ public class HiruHead extends ArmorItem {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().maxDamage(913).setNoRepair().group(ModGroup.itemgroup));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {

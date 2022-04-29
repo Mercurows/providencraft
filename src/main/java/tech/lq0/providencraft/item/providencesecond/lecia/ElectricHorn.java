@@ -46,6 +46,7 @@ public class ElectricHorn extends ArmorItem {
         super(ArmorMaterial.DIAMOND, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(1145).group(ModGroup.itemgroup).setNoRepair());
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {

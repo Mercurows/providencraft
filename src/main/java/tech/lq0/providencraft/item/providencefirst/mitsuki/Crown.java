@@ -35,6 +35,7 @@ public class Crown extends ArmorItem {
         super(ArmorMaterial.IRON, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(921).group(ModGroup.itemgroup));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {

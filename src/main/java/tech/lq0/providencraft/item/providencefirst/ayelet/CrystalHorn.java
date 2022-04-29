@@ -46,6 +46,7 @@ public class CrystalHorn extends ArmorItem {
         super(ModArmorMaterial.CRYSTAL, EquipmentSlotType.HEAD, new Properties().group(ModGroup.itemgroup));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {

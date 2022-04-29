@@ -36,9 +36,6 @@ public class Ume extends SwordItem {
     public Ume(){
         super(ItemTier.IRON, -2, -1.0f, new Properties().group(ModGroup.itemgroup).
                 setNoRepair().defaultMaxDamage(721).rarity(Rarity.UNCOMMON));
-        ItemModelsProperties.registerProperty(this, new ResourceLocation(Utils.MOD_ID, "ume_invoke"),
-                (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F);
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
@@ -63,6 +60,9 @@ public class Ume extends SwordItem {
     @ParametersAreNonnullByDefault
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemModelsProperties.registerProperty(this, new ResourceLocation(Utils.MOD_ID, "ume_invoke"),
+                (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F);
+        MinecraftForge.EVENT_BUS.register(this);
         ItemStack stack = playerIn.getHeldItem(handIn);
 
         if (handIn == Hand.MAIN_HAND) {

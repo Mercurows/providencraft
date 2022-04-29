@@ -35,6 +35,7 @@ public class RedAhogeHelmet extends ArmorItem {
         super(ModArmorMaterial.RED_AHOGE, EquipmentSlotType.HEAD, new Properties().group(ModGroup.itemgroup));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {

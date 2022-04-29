@@ -46,15 +46,15 @@ public class ShuraChin extends SwordItem {
     public ShuraChin() {
         super(ItemTier.IRON, -2, -1.5f, new Properties().rarity(Rarity.UNCOMMON).group(ModGroup.itemgroup).
                 setNoRepair().maxDamage(1442));
-        ItemModelsProperties.registerProperty(this, new ResourceLocation(Utils.MOD_ID, "shurachin_invoke"),
-                (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F);
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
     @ParametersAreNonnullByDefault
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemModelsProperties.registerProperty(this, new ResourceLocation(Utils.MOD_ID, "shurachin_invoke"),
+                (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F);
+        MinecraftForge.EVENT_BUS.register(this);
         ItemStack stack = playerIn.getHeldItem(handIn);
         if (handIn == Hand.MAIN_HAND) {
             if (!ItemNBTTool.getBoolean(stack, TAG_INVOKE, false)) {

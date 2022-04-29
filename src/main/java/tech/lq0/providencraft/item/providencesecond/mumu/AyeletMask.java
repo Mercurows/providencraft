@@ -42,6 +42,7 @@ public class AyeletMask extends ArmorItem {
         super(ModArmorMaterial.CRYSTAL, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(515).setNoRepair().group(ModGroup.itemgroup));
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
