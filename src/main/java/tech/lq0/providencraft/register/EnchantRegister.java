@@ -4,7 +4,6 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
@@ -47,14 +46,13 @@ public class EnchantRegister {
         Entity entity = event.getEntity();
         Entity entityAttack = event.getSource().getImmediateSource();
         if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
-            if (!(entityAttack instanceof ProjectileEntity)) {
+            if (entityAttack instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entityAttack;
                 PlayerEntity player = (PlayerEntity) entity;
                 ItemStack armor = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
                 int level = EnchantmentHelper.getEnchantmentLevel(EnchantRegistry.UNI_HUSK.get(), armor);
 
-                if (level > 0 && !(livingEntity instanceof PlayerEntity)) {
-                    assert livingEntity != null;
+                if (level > 0) {
                     livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 100, level + 1));
                 }
             }

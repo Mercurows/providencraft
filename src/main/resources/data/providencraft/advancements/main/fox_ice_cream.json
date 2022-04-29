@@ -18,11 +18,10 @@
     "fox_ice_cream": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "items":[
-          {
-            "item":"providencraft:fox_ice_cream"
-          }
-        ]
+        "item":
+        {
+          "item":"providencraft:fox_ice_cream"
+        }
       }
     }
   }

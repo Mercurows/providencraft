@@ -17,7 +17,10 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
@@ -30,6 +33,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class Ume extends SwordItem {
     public static final String TAG_INVOKE = "invoke";
 
@@ -56,13 +60,18 @@ public class Ume extends SwordItem {
         return map;
     }
 
+    @SubscribeEvent
+    public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
+        event.enqueueWork(() ->
+                ItemModelsProperties.registerProperty(ItemRegistry.UME.get(), new ResourceLocation(Utils.MOD_ID, "ume_invoke"),
+                        (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F)
+        );
+    }
+
     @Override
     @ParametersAreNonnullByDefault
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemModelsProperties.registerProperty(this, new ResourceLocation(Utils.MOD_ID, "ume_invoke"),
-                (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F);
-        MinecraftForge.EVENT_BUS.register(this);
         ItemStack stack = playerIn.getHeldItem(handIn);
 
         if (handIn == Hand.MAIN_HAND) {
