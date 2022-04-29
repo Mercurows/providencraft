@@ -107,7 +107,7 @@ public class HiruTentacles extends ArmorItem {
         }
     }
 
-    @Override
+    @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("hiru_tentacles_func")).mergeStyle(TextFormatting.AQUA));
