@@ -3,7 +3,6 @@ package tech.lq0.providencraft.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -29,17 +28,13 @@ public class BlessOfDarkElf extends Effect {
             PlayerEntity player = (PlayerEntity) entity;
             if (player.isPotionActive(effect_bless)) {
                 int level = Objects.requireNonNull(player.getActivePotionEffect(effect_bless)).getAmplifier();
-                if (source.getDamageType().equals("inFire") || source.getDamageType().equals("onFire")
-                        || source.getDamageType().equals("lava")) {
-                    if (level >= 0) {
-                        event.setAmount(0);
-                    }
-                }else if (!source.isExplosion() || !source.isProjectile()) {
-                    if (level >= 10) {
-                        event.setAmount(0);
-                    } else {
-                        event.setAmount(event.getAmount() * (10 - level) / 10.0f);
-                    }
+                if (source.isFireDamage() || source.getDamageType().equals("lava")) {
+                    event.setAmount(0);
+                }else if (source.isExplosion()) {
+                    event.setAmount(event.getAmount());
+                }else{
+                    int num = (level + 1) * 2;
+                    event.setAmount(event.getAmount() > num ? event.getAmount() - num : 0);
                 }
             }
         }
