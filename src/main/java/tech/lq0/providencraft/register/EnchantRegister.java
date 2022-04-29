@@ -19,7 +19,6 @@ import tech.lq0.providencraft.init.ItemRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EnchantRegister {
-    //呆毛寄生附魔
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         Entity entity = event.getSource().getImmediateSource();
@@ -43,7 +42,6 @@ public class EnchantRegister {
         }
     }
 
-    //海胆外壳附魔
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         Entity entity = event.getEntity();

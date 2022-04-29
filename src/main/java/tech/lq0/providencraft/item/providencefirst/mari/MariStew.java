@@ -39,20 +39,15 @@ public class MariStew extends Item {
             PlayerEntity player = (PlayerEntity) entityLiving;
             int random = (int) (Math.random() * 99 + 1);
             if (random > 95) {
-                //5%去世
                 player.attackEntityFrom(DamageSourceRegistry.MARI_FOOD, 20.0f);
             } else if (random > 90) {
-                //5%回血
                 player.heal(20.0f);
                 player.sendStatusMessage(new TranslationTextComponent("mari_stew_heal").mergeStyle(TextFormatting.GOLD), false);
             } else if (random > 70) {
-                //20%中毒
                 player.addPotionEffect(new EffectInstance(Effects.POISON, 200, 1));
             } else if (random > 40) {
-                //30%反胃
                 player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 400, 1));
             } else {
-                //40%无事发生
                 player.sendStatusMessage(new TranslationTextComponent("mari_stew_nothing").mergeStyle(TextFormatting.GRAY), false);
             }
 

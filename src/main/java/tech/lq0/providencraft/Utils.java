@@ -3,6 +3,7 @@ package tech.lq0.providencraft;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -20,24 +21,26 @@ public class Utils {
     public static final String MOD_ID = "providencraft";
 
     public Utils() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+       // FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+       // FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        ItemRegistry.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EffectRegistry.EFFECTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        PotionRegistry.POTION_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EnchantRegistry.ENCHANTMENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        SoundRegistry.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EntityRegistry.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        VillagerInit.POINTS_OF_INTEREST.register(FMLJavaModLoadingContext.get().getModEventBus());
-        VillagerInit.PROFESSIONS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        AttributeRegistry.ATTRIBUTES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ParticleRegistry.PARTICLE_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ItemRegistry.ITEMS.register(eventBus);
+        EffectRegistry.EFFECTS.register(eventBus);
+        PotionRegistry.POTION_TYPES.register(eventBus);
+        EnchantRegistry.ENCHANTMENTS.register(eventBus);
+        SoundRegistry.SOUNDS.register(eventBus);
+        EntityRegistry.ENTITY_TYPES.register(eventBus);
+        VillagerInit.POINTS_OF_INTEREST.register(eventBus);
+        VillagerInit.PROFESSIONS.register(eventBus);
+        BlockRegistry.BLOCKS.register(eventBus);
+        AttributeRegistry.ATTRIBUTES.register(eventBus);
+        ParticleRegistry.PARTICLE_TYPES.register(eventBus);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -67,12 +70,12 @@ public class Utils {
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            //LOGGER.info("HELLO from Register Block");
-        }
-    }
+//    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+//    public static class RegistryEvents {
+//        @SubscribeEvent
+//        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+//            // register a new block here
+//            //LOGGER.info("HELLO from Register Block");
+//        }
+//    }
 }

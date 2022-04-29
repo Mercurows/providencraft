@@ -20,7 +20,7 @@ import java.util.List;
 
 public class MVAStew extends Item {
     //MVA means Madoka Vegetable Asui
-    //真菜蛙
+
     private static final Food food = (new Food.Builder()).saturation(8).hunger(10).
             effect(new EffectInstance(Effects.RESISTANCE, 2400, 1), 1.0f).build();
 

@@ -20,7 +20,7 @@ import java.util.List;
 
 public class MMAStew extends Item {
     //MMA means Madoka Mumu Asui
-    //真牛蛙
+
     private static final Food food = (new Food.Builder()).saturation(10).hunger(12).
             effect(new EffectInstance(Effects.STRENGTH, 3600, 1), 1.0f).build();
 

@@ -55,6 +55,6 @@ Providence企划同人Minecraft Mod, 马上就做完了
     modId="minecraft"
     mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-    versionRange="[1.17.1,1.18)"
+    versionRange="[1.16.5,1.18)"
     ordering="NONE"
     side="BOTH"
