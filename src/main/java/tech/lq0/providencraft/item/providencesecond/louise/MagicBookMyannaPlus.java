@@ -46,9 +46,9 @@ public class MagicBookMyannaPlus extends Item {
                 player.addPotionEffect(new EffectInstance(EffectRegistry.CURSE_OF_SERPENT.get(), 600, 2));
                 player.sendStatusMessage(new TranslationTextComponent("be_cursed").mergeStyle(TextFormatting.RED), false);
             }
-
-            player.getCooldownTracker().setCooldown(heldItem.getItem(), 3600);
         }
+
+        player.getCooldownTracker().setCooldown(heldItem.getItem(), 3600);
         world.playSound(player, player.getPosition(),
                 SoundRegistry.MYANNA.get(), SoundCategory.AMBIENT, 0.8f, 1.1f);
 

@@ -22,21 +22,23 @@ public class EffectRegister {
         if (source.getDamageType().equals("inFire") || source.getDamageType().equals("onFire") || source.getDamageType().equals("lava")) {
             if (entity.isPotionActive(effect_bless)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_bless);
-                assert effectInstance != null;
-                int level = effectInstance.getAmplifier();
-                if (level >= 0) {
-                    event.setCanceled(true);
+                if(effectInstance != null) {
+                    int level = effectInstance.getAmplifier();
+                    if (level >= 0) {
+                        event.setCanceled(true);
+                    }
                 }
             }
         } else if (!source.isExplosion() || !source.isProjectile()) {
             if (entity.isPotionActive(effect_bless)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_bless);
-                assert effectInstance != null;
-                int level = effectInstance.getAmplifier();
-                if (level >= 10) {
-                    event.setAmount(0);
-                } else {
-                    event.setAmount(event.getAmount() * (10 - level) / 10.0f);
+                if(effectInstance != null) {
+                    int level = effectInstance.getAmplifier();
+                    if (level >= 10) {
+                        event.setAmount(0);
+                    } else {
+                        event.setAmount(event.getAmount() * (10 - level) / 10.0f);
+                    }
                 }
             }
         }
@@ -44,9 +46,10 @@ public class EffectRegister {
         if (source.isExplosion()) {
             if (entity.isPotionActive(effect_curse)) {
                 EffectInstance effectInstance = entity.getActivePotionEffect(effect_curse);
-                assert effectInstance != null;
-                int level = effectInstance.getAmplifier();
-                event.setAmount(event.getAmount() * (1 + level));
+                if(effectInstance != null) {
+                    int level = effectInstance.getAmplifier();
+                    event.setAmount(event.getAmount() * (1 + level));
+                }
             }
         }
     }

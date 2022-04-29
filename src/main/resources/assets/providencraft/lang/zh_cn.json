@@ -203,6 +203,9 @@
   "fox_ice_cream_des1": "普罗维登冷饮厂™出品",
   "fox_ice_cream_des2": "清楚狐仙的同款雪糕，嘿嘿嘿",
   "item.providencraft.hiru_tentacles": "神秘触手",
+  "hiru_tentacles_func": "被攻击时会释放触手攻击敌人，并造成缓慢效果",
+  "hiru_tentacles_des1": "不明生物灯瑠hiru的触手",
+  "hiru_tentacles_des2": "拿来凉拌应该会很好吃",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "欢迎来到普罗维登",

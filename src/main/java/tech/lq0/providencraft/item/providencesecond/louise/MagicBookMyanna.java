@@ -40,8 +40,8 @@ public class MagicBookMyanna extends Item {
             player.addPotionEffect(new EffectInstance(EffectRegistry.BLESS_OF_DARK_ELF.get(), 600, 1));
             player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 600, 1));
             player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 600, 1));
-            player.getCooldownTracker().setCooldown(heldItem.getItem(), 2400);
         }
+        player.getCooldownTracker().setCooldown(heldItem.getItem(), 2400);
         world.playSound(player, player.getPosition(),
                 SoundRegistry.MYANNA.get(), SoundCategory.AMBIENT, 0.5f, 1f);
 
