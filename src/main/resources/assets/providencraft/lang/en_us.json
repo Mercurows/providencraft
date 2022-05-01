@@ -201,11 +201,11 @@
   "reina_wings_des2": "Equip to restore hunger each 30s",
   "item.providencraft.fox_ice_cream": "Fox Ice Cream",
   "fox_ice_cream_des1": "Production of Providence beverage factory",
-  "fox_ice_cream_des2": "清楚狐仙的同款雪糕，嘿嘿嘿",
+  "fox_ice_cream_des2": "Same ice cream as Innocent Fox, PRPRPR",
   "item.providencraft.hiru_tentacles": "Mysterious Tentacles",
-  "hiru_tentacles_func": "被攻击时会释放触手攻击敌人，并造成缓慢效果",
+  "hiru_tentacles_func": "Summon tentacles to slow and damage enemies when attacked",
   "hiru_tentacles_des1": "Tentacles of mystical creature named Hiru",
-  "hiru_tentacles_des2": "拿来凉拌应该会很好吃",
+  "hiru_tentacles_des2": "Maybe tasty with salad",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "Welcome to Providence",
@@ -246,11 +246,11 @@
   "providencraft.advancement.tokain_blade": "Sushi Master",
   "providencraft.advancement.tokain_blade_des": "Collect SHURACHIN and UME",
   "providencraft.advancement.fox_ice_cream": "Ice Cream Fox",
-  "providencraft.advancement.fox_ice_cream_des": "你有什么愿望？",
-  "providencraft.advancement.reina_wings": "打工时间到",
-  "providencraft.advancement.reina_wings_des": "这是什么鸟人",
-  "providencraft.advancement.providence3rd": "普罗维登三期生",
-  "providencraft.advancement.providence3rd_des": "关注列表喜加四",
-  "providencraft.advancement.mountain_destroyer": "毁天灭地",
-  "providencraft.advancement.mountain_destroyer_des": "\"谢了兄弟\""
+  "providencraft.advancement.fox_ice_cream_des": "Do you have any wishes?",
+  "providencraft.advancement.reina_wings": "Working Time",
+  "providencraft.advancement.reina_wings_des": "What bird-man is it",
+  "providencraft.advancement.providence3rd": "3rd Period Members of Providence",
+  "providencraft.advancement.providence3rd_des": "Subscription +4",
+  "providencraft.advancement.mountain_destroyer": "DOOM!",
+  "providencraft.advancement.mountain_destroyer_des": "\"Thanks bro\""
 }

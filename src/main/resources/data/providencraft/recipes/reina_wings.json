@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bab",
+    "pap",
+    "   "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:white_wool"
+    },
+    "p": {
+      "item": "minecraft:pink_wool"
+    }
+  },
+  "result": {
+    "item": "providencraft:reina_wings",
+    "count": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "lll",
+    "ana",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:diamond"
+    },
+    "b": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "n": {
+      "item": "minecraft:nether_star"
+    },
+    "l": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "providencraft:hiru_tentacles",
+    "count": 1
+  }
+}
