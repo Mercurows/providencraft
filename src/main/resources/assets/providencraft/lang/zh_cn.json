@@ -206,6 +206,12 @@
   "hiru_tentacles_func": "被攻击时会释放触手攻击敌人，并造成缓慢效果",
   "hiru_tentacles_des1": "不明生物灯瑠hiru的触手",
   "hiru_tentacles_des2": "拿来凉拌应该会很好吃",
+  "item.providencraft.bolster": "抱枕",
+  "item.providencraft.chiram_lantern": "提灯",
+  "item.providencraft.cloud_key": "云朵钥匙",
+  "item.providencraft.marshaimallow": "棉灰糖",
+  "item.providencraft.succubus_tail": "魅魔之尾",
+  "item.providencraft.frog_crown": "青蛙皇冠",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "欢迎来到普罗维登",
