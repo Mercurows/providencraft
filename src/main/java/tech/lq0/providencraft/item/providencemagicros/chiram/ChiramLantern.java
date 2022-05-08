@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
@@ -22,7 +23,7 @@ import java.util.List;
 
 public class ChiramLantern extends Item {
     public ChiramLantern(){
-        super(new Properties().maxStackSize(1).group(ModGroup.itemgroup).isImmuneToFire());
+        super(new Properties().maxStackSize(1).group(ModGroup.itemgroup).isImmuneToFire().rarity(Rarity.UNCOMMON));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -35,6 +36,7 @@ public class ChiramLantern extends Item {
     @Override
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         target.setFire(5);
+        target.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 100, 0));
         return super.hitEntity(stack, target, attacker);
     }
 

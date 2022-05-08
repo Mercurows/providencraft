@@ -114,8 +114,8 @@ public class ShuraChin extends SwordItem {
             PlayerEntity player = (PlayerEntity) entityIn;
             if (player.getHeldItemOffhand().getItem().equals(ItemRegistry.UME.get()) &&
                     player.getHeldItemMainhand().getItem().equals(ItemRegistry.SHURA_CHIN.get())) {
-                player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 300, 1));
-                player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 1));
+                player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 300, 1, true, false));
+                player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 1, true, false));
             }
         }
     }
