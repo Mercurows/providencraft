@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -42,13 +43,15 @@ public class ChiramLantern extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(entityIn instanceof PlayerEntity && isSelected){
+        if(entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
-            if(worldIn.getLight(player.getPosition()) <= 5){
-                player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 300, 0));
-                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 1));
-                player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0));
-                player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0));
+            if (player.getHeldItemOffhand().getItem().equals(ItemRegistry.CHIRAM_LANTERN.get()) || player.getHeldItemMainhand().getItem().equals(ItemRegistry.CHIRAM_LANTERN.get())) {
+                if (worldIn.getLight(player.getPosition()) <= 5) {
+                    player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 300, 0));
+                    player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 1));
+                    player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0));
+                    player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0));
+                }
             }
         }
     }
