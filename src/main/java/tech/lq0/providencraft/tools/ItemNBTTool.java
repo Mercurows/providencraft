@@ -2,6 +2,7 @@ package tech.lq0.providencraft.tools;
 
 import net.minecraft.item.ItemStack;
 
+//from Botania
 public final class ItemNBTTool {
     public static void setBoolean(ItemStack stack, String tag, boolean b) {
         stack.getOrCreateTag().putBoolean(tag, b);

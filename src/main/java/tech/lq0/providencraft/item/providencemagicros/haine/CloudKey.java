@@ -35,7 +35,7 @@ public class CloudKey extends Item {
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         if(entityIn instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityIn;
-            player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 3, true, false));
+            player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 2, true, false));
             player.addPotionEffect(new EffectInstance(Effects.HASTE, 300,0,true,false));
         }
         super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
