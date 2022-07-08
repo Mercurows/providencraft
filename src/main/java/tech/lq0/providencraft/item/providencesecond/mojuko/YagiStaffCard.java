@@ -34,6 +34,7 @@ public class YagiStaffCard extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("yagi_staff_card_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("yagi_staff_card_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

@@ -37,6 +37,7 @@ public class BananaMilk extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("banana_milk_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("banana_milk_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 
 }

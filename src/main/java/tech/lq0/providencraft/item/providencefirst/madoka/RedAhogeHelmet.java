@@ -54,6 +54,7 @@ public class RedAhogeHelmet extends ArmorItem {
         tooltip.add((new TranslationTextComponent("red_ahoge_helmet_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("red_ahoge_helmet_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("red_ahoge_helmet_des3")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

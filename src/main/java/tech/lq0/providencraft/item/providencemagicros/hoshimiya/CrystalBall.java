@@ -45,5 +45,6 @@ public class CrystalBall extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("crystal_ball_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("crystal_ball_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_magicros")).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 }

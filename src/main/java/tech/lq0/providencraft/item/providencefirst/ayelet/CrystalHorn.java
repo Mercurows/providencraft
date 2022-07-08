@@ -101,6 +101,7 @@ public class CrystalHorn extends ArmorItem {
         tooltip.add((new TranslationTextComponent("crystal_horn_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crystal_horn_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crystal_horn_des3")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 
     //对牛特攻

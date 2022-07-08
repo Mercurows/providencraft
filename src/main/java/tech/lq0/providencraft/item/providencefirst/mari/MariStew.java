@@ -65,5 +65,6 @@ public class MariStew extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("mari_stew_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("mari_stew_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 }

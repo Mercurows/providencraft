@@ -34,6 +34,7 @@ public class Bolster extends SwordItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("bolster_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("bolster_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_magicros")).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

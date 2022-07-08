@@ -84,5 +84,6 @@ public class ReinaWings extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("reina_wings_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("reina_wings_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_third")).mergeStyle(TextFormatting.DARK_AQUA).mergeStyle(TextFormatting.BOLD));
     }
 }

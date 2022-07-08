@@ -24,5 +24,6 @@ public class WhiteDoubleAhoge extends Item {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("white_double_ahoge_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 }

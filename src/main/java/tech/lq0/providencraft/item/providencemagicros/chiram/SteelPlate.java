@@ -35,6 +35,7 @@ public class SteelPlate extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("steel_plate_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("steel_plate_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+        tooltip.add((new TranslationTextComponent("description_magicros")).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

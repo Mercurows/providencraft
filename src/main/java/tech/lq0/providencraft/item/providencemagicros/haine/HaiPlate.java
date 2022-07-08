@@ -60,6 +60,7 @@ public class HaiPlate extends ShieldItem {
         tooltip.add((new TranslationTextComponent("hai_plate_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("hai_plate_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("hai_plate_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("description_magicros")).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 
 

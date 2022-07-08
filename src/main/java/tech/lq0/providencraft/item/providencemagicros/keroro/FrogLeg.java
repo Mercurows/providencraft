@@ -32,5 +32,6 @@ public class FrogLeg extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("frog_leg_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("frog_leg_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_magicros")).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 }

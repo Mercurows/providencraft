@@ -30,6 +30,7 @@ public class Plunger extends SwordItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("plunger_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("plunger_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_zero")).mergeStyle(TextFormatting.LIGHT_PURPLE).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

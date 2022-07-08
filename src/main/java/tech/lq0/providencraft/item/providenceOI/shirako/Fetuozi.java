@@ -24,6 +24,7 @@ public class Fetuozi extends SwordItem {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("fetuozi_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

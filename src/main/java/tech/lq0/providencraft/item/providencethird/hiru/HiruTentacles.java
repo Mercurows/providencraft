@@ -113,6 +113,7 @@ public class HiruTentacles extends ArmorItem {
         tooltip.add((new TranslationTextComponent("hiru_tentacles_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("hiru_tentacles_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("hiru_tentacles_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+        tooltip.add((new TranslationTextComponent("description_third")).mergeStyle(TextFormatting.DARK_AQUA).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

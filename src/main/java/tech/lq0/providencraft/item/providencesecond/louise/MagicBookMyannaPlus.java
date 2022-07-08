@@ -61,5 +61,6 @@ public class MagicBookMyannaPlus extends Item {
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_func1")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_func2")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 }

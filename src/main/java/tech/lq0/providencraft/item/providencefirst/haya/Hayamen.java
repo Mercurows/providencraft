@@ -36,6 +36,7 @@ public class Hayamen extends ShieldItem {
         tooltip.add((new TranslationTextComponent("hayamen_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("hayamen_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("hayamen_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 
     @Nonnull

@@ -47,7 +47,7 @@
   "item.providencraft.magic_book": "魔法书",
   "magic_book_des": "普罗维登的绿色蛇蛇手持的魔法书",
   "item.providencraft.yagi_staff_card": "员工卡",
-  "yagi_staff_card_des1": "黑心公司八木百货的员工卡",
+  "yagi_staff_card_des1": "八木百货无限会社的员工卡",
   "yagi_staff_card_des2": "拿着它就能获得强大的力量，但需要一点点代价",
   "entity.minecraft.villager.providencraft.elifaus": "鳄梨法乌斯",
   "entity.minecraft.villager.providencraft.ruozhi": "若芖",
@@ -224,6 +224,13 @@
   "frog_crown_des2": "但是戴上后就不会游泳了(悲)",
   "succubus_tail_des1": "魅魔星宫颜的尾巴",
   "succubus_tail_des2": "可以汲取生命的力量",
+
+  "description_zero": "===普罗维登零期生物品===",
+  "description_first": "===普罗维登一期生物品===",
+  "description_second": "===普罗维登二期生物品===",
+  "description_magicros": "===普罗维登Magicros组物品===",
+  "description_third": "===普罗维登三期生物品===",
+  "description_poi": "===普罗维登OI物品===",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "欢迎来到普罗维登",

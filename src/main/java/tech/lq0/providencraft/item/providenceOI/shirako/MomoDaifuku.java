@@ -34,6 +34,7 @@ public class MomoDaifuku extends Item {
         tooltip.add((new TranslationTextComponent("momo_daifuku_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("momo_daifuku_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("momo_daifuku_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

@@ -31,5 +31,6 @@ public class TaroIceCream extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("taro_ice_cream_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("taro_ice_cream_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 }

@@ -164,6 +164,7 @@ public class MountainDestroyer extends PickaxeItem {
             worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("mountain_destroyer_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("mountain_destroyer_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

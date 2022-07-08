@@ -53,6 +53,7 @@ public class MagicBookMyanna extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("magic_book_myanna_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("magic_book_myanna_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 
 

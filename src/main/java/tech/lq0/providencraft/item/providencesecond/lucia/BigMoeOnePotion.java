@@ -68,5 +68,6 @@ public class BigMoeOnePotion extends Item {
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_warn")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 }

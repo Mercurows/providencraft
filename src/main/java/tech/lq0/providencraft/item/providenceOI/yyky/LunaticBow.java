@@ -65,6 +65,7 @@ public class LunaticBow extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("lunatic_bow_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("lunatic_bow_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+        tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

@@ -64,5 +64,6 @@ public class SatouKnife extends SwordItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("satou_knife_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("satou_knife_func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 }

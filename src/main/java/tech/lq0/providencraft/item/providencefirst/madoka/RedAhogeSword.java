@@ -29,5 +29,6 @@ public class RedAhogeSword extends SwordItem {
         tooltip.add((new TranslationTextComponent("red_ahoge_sword_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("red_ahoge_sword_des3")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("red_ahoge_sword_des4")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
     }
 }

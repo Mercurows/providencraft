@@ -28,5 +28,6 @@ public class FoxIceCream extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("fox_ice_cream_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("fox_ice_cream_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_third")).mergeStyle(TextFormatting.DARK_AQUA).mergeStyle(TextFormatting.BOLD));
     }
 }

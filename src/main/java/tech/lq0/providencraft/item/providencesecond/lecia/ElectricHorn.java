@@ -66,6 +66,7 @@ public class ElectricHorn extends ArmorItem {
         tooltip.add((new TranslationTextComponent("electric_horn_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("electric_horn_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("electric_horn_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

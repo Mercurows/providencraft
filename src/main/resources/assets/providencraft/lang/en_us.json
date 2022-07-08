@@ -149,7 +149,7 @@
   "block.providencraft.white_ahoge_block": "White Ahoge Block",
   "banana_milk_des1": "Production of Providence Niina beverage factory",
   "banana_milk_des2": "Named banana milk, but BL taste within",
-  "lunatic_bow_des1": "YYKY's bow",
+  "lunatic_bow_des1": "Akatsuki Sorayo's bow",
   "lunatic_bow_des2": "Maybe get mad wearing it",
   "item.providencraft.hayamen": "Hayamen",
   "mma_stew_des1": "Madoka, Mumu, Keroro cooks it together",
@@ -224,6 +224,13 @@
   "frog_crown_des2": "但是戴上后就不会游泳了(悲)",
   "succubus_tail_des1": "魅魔星宫颜的尾巴",
   "succubus_tail_des2": "可以汲取生命的力量",
+
+  "description_zero": "===Providence 0th Gen Item===",
+  "description_first": "===Providence 1st Gen Item===",
+  "description_second": "===Providence 2nd Gen Item===",
+  "description_magicros": "===Providence Magicros Item===",
+  "description_third": "===Providence 3rd Gen Item===",
+  "description_poi": "===Providence OI Item===",
 
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "Welcome to Providence",

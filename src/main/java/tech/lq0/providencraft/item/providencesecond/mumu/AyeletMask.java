@@ -60,6 +60,7 @@ public class AyeletMask extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("ayelet_mask_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("ayelet_mask_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

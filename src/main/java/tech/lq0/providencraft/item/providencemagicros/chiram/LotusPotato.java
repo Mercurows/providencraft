@@ -50,6 +50,7 @@ public class LotusPotato extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("lotus_potato_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("lotus_potato_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("description_magicros")).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 
 }
