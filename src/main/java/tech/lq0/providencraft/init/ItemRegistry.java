@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolHelmet;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
@@ -193,6 +194,11 @@ public class ItemRegistry {
     public static final RegistryObject<Item> EMPTY_JAR = ITEMS.register("empty_jar", EmptyJar::new);
     public static final RegistryObject<Item> LITTLE_POTATO = ITEMS.register("little_potato", LittlePotato::new);
     public static final RegistryObject<Item> LOLLIPOP = ITEMS.register("lollipop", Lollipop::new);
+
+    /**
+     * costume
+     */
+    public static final RegistryObject<Item> CHIRAM_IDOL_HELMET = ITEMS.register("chiram_idol_helmet", ChiramIdolHelmet::new);
 
 
     //BLOCKS

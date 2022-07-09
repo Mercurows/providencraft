@@ -224,6 +224,12 @@
   "frog_crown_des2": "但是戴上后就不会游泳了(悲)",
   "succubus_tail_des1": "魅魔星宫颜的尾巴",
   "succubus_tail_des2": "可以汲取生命的力量",
+  "itemGroup.Providencraft Costumes": "Providencraft Costumes Inventory",
+  "item.providencraft.chiram_idol_helmet": "Chiram Idol Costume (Helmet)",
+  "item.providencraft.chiram_idol_chestplate": "Chiram Idol Costume (Chestplate)",
+  "item.providencraft.chiram_idol_leggings": "Chiram Idol Costume (Leggings)",
+  "item.providencraft.chiram_idol_boots": "Chiram Idol Costume (Boots)",
+  "chiram_idol_costume_des": "Incarnated by Chiram",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
