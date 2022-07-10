@@ -14,6 +14,6 @@ public class ProvidencraftCostumeGroup extends ItemGroup {
     @Override
     @Nonnull
     public ItemStack createIcon() {
-        return new ItemStack(ItemRegistry.STEEL_PLATE.get());
+        return new ItemStack(ItemRegistry.CHIRAM_IDOL_HELMET.get());
     }
 }

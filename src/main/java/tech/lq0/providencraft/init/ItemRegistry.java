@@ -7,8 +7,12 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
+import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolHelmet;
+import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolLeggings;
 import tech.lq0.providencraft.item.donate.*;
+import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
@@ -199,7 +203,14 @@ public class ItemRegistry {
      * costume
      */
     public static final RegistryObject<Item> CHIRAM_IDOL_HELMET = ITEMS.register("chiram_idol_helmet", ChiramIdolHelmet::new);
+    public static final RegistryObject<Item> CHIRAM_IDOL_CHESTPLATE = ITEMS.register("chiram_idol_chestplate", ChiramIdolChestplate::new);
+    public static final RegistryObject<Item> CHIRAM_IDOL_LEGGINGS = ITEMS.register("chiram_idol_leggings", ChiramIdolLeggings::new);
+    public static final RegistryObject<Item> CHIRAM_IDOL_BOOTS = ITEMS.register("chiram_idol_boots", ChiramIdolBoots::new);
 
+    /**
+     * material
+     */
+    public static final RegistryObject<Item> IDOL_CLOTH = ITEMS.register("idol_cloth", IdolCloth::new);
 
     //BLOCKS
     public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",

@@ -19,7 +19,7 @@ public enum ModArmorMaterial implements IArmorMaterial {
     CHIRAM_PLUS("chiram_plus", 35, new int[]{1, 1, 12, 1}, 25, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 5.0F, 0.4F, () -> Ingredient.fromItems(Items.IRON_BLOCK)),
     RED_AHOGE("red_ahoge", 18, new int[]{3, 5, 5, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.fromItems(ItemRegistry.RED_AHOGE.get())),
     CRYSTAL("crystal", 22, new int[]{4, 5, 4, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.fromItems(Items.EMERALD)),
-    IDOL_COSTUME("idol_costume", 15, new int[]{3, 5, 3, 2}, 18, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.fromItems(Items.LEATHER));
+    IDOL_COSTUME("idol_costume", 15, new int[]{2, 3, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.fromItems(ItemRegistry.IDOL_CLOTH.get()));
 
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
