@@ -227,9 +227,10 @@
   "itemGroup.Providencraft Costumes": "Providencraft Costumes Inventory",
   "item.providencraft.chiram_idol_helmet": "Chiram Idol Costume (Helmet)",
   "item.providencraft.chiram_idol_chestplate": "Chiram Idol Costume (Chestplate)",
-  "item.providencraft.chiram_idol_leggings": "Chiram Idol Costume (Leggings)",
   "item.providencraft.chiram_idol_boots": "Chiram Idol Costume (Boots)",
   "chiram_idol_costume_des": "Incarnated by Chiram",
+  "item.providencraft.idol_cloth": "Cloth of Idol Costume",
+  "idol_cloth_des": "蕴含神秘魔力的布料，用于缝制偶像装",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",

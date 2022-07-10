@@ -227,9 +227,10 @@
   "itemGroup.Providencraft Costumes": "普罗维登Mod时装栏",
   "item.providencraft.chiram_idol_helmet": "倾澜偶像装(头盔)",
   "item.providencraft.chiram_idol_chestplate": "倾澜偶像装(胸甲)",
-  "item.providencraft.chiram_idol_leggings": "倾澜偶像装(护腿)",
   "item.providencraft.chiram_idol_boots": "倾澜偶像装(靴子)",
   "chiram_idol_costume_des": "化身菜板",
+  "item.providencraft.idol_cloth": "偶像装布料",
+  "idol_cloth_des": "蕴含神秘魔力的布料，用于缝制偶像装",
 
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",
