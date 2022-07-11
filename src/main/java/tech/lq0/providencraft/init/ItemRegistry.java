@@ -10,6 +10,9 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolHelmet;
+import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolBoots;
+import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolChestplate;
+import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolHelmet;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
@@ -204,6 +207,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CHIRAM_IDOL_HELMET = ITEMS.register("chiram_idol_helmet", ChiramIdolHelmet::new);
     public static final RegistryObject<Item> CHIRAM_IDOL_CHESTPLATE = ITEMS.register("chiram_idol_chestplate", ChiramIdolChestplate::new);
     public static final RegistryObject<Item> CHIRAM_IDOL_BOOTS = ITEMS.register("chiram_idol_boots", ChiramIdolBoots::new);
+    public static final RegistryObject<Item> HAINE_IDOL_HELMET = ITEMS.register("haine_idol_helmet", HaineIdolHelmet::new);
+    public static final RegistryObject<Item> HAINE_IDOL_CHESTPLATE = ITEMS.register("haine_idol_chestplate", HaineIdolChestplate::new);
+    public static final RegistryObject<Item> HAINE_IDOL_BOOTS = ITEMS.register("haine_idol_boots", HaineIdolBoots::new);
 
     /**
      * material
