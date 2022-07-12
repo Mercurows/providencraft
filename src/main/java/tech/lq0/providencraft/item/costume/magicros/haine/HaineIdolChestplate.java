@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.models.ChiramIdolBootsModel;
+import tech.lq0.providencraft.models.HaineIdolChestplateModel;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
 
 import javax.annotation.Nullable;
@@ -31,19 +31,19 @@ public class HaineIdolChestplate extends ArmorItem {
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
-        return (A) new ChiramIdolBootsModel<>();
+        return (A) new HaineIdolChestplateModel<>();
     }
 
     @Nullable
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
-        return Utils.MOD_ID + ":textures/models/costume/chiram_idol_boots_texture.png";
+        return Utils.MOD_ID + ":textures/models/costume/haine_idol_chestplate_texture.png";
     }
 
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("chiram_idol_costume_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("haine_idol_costume_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("description_magicros")).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 }
