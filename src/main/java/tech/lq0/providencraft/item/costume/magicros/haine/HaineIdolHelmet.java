@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.models.ChiramIdolBootsModel;
+import tech.lq0.providencraft.models.HaineIdolHelmetModel;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
 
 import javax.annotation.Nullable;
@@ -31,13 +31,13 @@ public class HaineIdolHelmet extends ArmorItem {
     @Nullable
     @Override
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
-        return (A) new ChiramIdolBootsModel<>();
+        return (A) new HaineIdolHelmetModel<>();
     }
 
     @Nullable
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
-        return Utils.MOD_ID + ":textures/models/costume/chiram_idol_boots_texture.png";
+        return Utils.MOD_ID + ":textures/models/costume/haine_idol_helmet_texture.png";
     }
 
     @OnlyIn(Dist.CLIENT)
