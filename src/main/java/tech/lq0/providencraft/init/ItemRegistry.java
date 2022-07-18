@@ -13,6 +13,7 @@ import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolHelmet;
 import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolHelmet;
+import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
 import tech.lq0.providencraft.item.donate.*;
@@ -214,6 +215,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> HAINE_IDOL_BOOTS = ITEMS.register("haine_idol_boots", HaineIdolBoots::new);
     public static final RegistryObject<Item> KERORO_IDOL_HELMET = ITEMS.register("keroro_idol_helmet", KeroroIdolHelmet::new);
     public static final RegistryObject<Item> KERORO_IDOL_CHESTPLATE = ITEMS.register("keroro_idol_chestplate", KeroroIdolChestplate::new);
+    public static final RegistryObject<Item> KERORO_IDOL_BOOTS = ITEMS.register("keroro_idol_boots", KeroroIdolBoots::new);
 
     /**
      * material
