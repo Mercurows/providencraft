@@ -14,6 +14,7 @@ import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.haine.HaineIdolHelmet;
 import tech.lq0.providencraft.item.costume.magicros.hoshimiya.EkiraIdolChestplate;
+import tech.lq0.providencraft.item.costume.magicros.hoshimiya.EkiraIdolHelmet;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
@@ -217,6 +218,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> KERORO_IDOL_HELMET = ITEMS.register("keroro_idol_helmet", KeroroIdolHelmet::new);
     public static final RegistryObject<Item> KERORO_IDOL_CHESTPLATE = ITEMS.register("keroro_idol_chestplate", KeroroIdolChestplate::new);
     public static final RegistryObject<Item> KERORO_IDOL_BOOTS = ITEMS.register("keroro_idol_boots", KeroroIdolBoots::new);
+    public static final RegistryObject<Item> EKIRA_IDOL_HELMET = ITEMS.register("ekira_idol_helmet", EkiraIdolHelmet::new);
     public static final RegistryObject<Item> EKIRA_IDOL_CHESTPLATE = ITEMS.register("ekira_idol_chestplate", EkiraIdolChestplate::new);
 
     /**
