@@ -219,10 +219,10 @@
   "bolster_des1": "管家倾澜的抱枕",
   "bolster_des2": "软绵绵的，但是打人很疼",
   "cloud_key_des1": "海芭拉海涅的饰品，一个钥匙",
-  "cloud_key_des2": "放在背包中会有神秘效果",
+  "cloud_key_des2": "携带时会有神秘效果",
   "frog_crown_des1": "蛙吹克罗罗的皇冠，适合雨天散步时佩戴",
   "frog_crown_des2": "但是戴上后就不会游泳了(悲)",
-  "succubus_tail_des1": "魅魔星宫颜的尾巴",
+  "succubus_tail_des1": "星宫颜的模拟魅魔尾巴",
   "succubus_tail_des2": "可以汲取生命的力量",
   "itemGroup.Providencraft Costumes": "普罗维登Mod时装栏",
   "item.providencraft.chiram_idol_helmet": "倾澜偶像装(头饰)",
@@ -296,5 +296,13 @@
   "providencraft.advancement.providence3rd": "普罗维登三期生",
   "providencraft.advancement.providence3rd_des": "关注列表喜加四",
   "providencraft.advancement.mountain_destroyer": "毁天灭地",
-  "providencraft.advancement.mountain_destroyer_des": "\"谢了兄弟\""
+  "providencraft.advancement.mountain_destroyer_des": "\"谢了兄弟\"",
+  "providencraft.advancement.frog_crown": "雨中蹒跚之意",
+  "providencraft.advancement.frog_crown_des": "\"I'm shuffling through the rain, かけ巡る\"",
+  "providencraft.advancement.eat_marshaimallow": "喵哈喽!",
+  "providencraft.advancement.eat_marshaimallow_des": "吃掉可爱的棉灰糖",
+  "providencraft.advancement.cloud_key": "云端连结",
+  "providencraft.advancement.cloud_key_des": "获得来自天界的力量",
+  "providencraft.advancement.succubus_tail": "星之魅魔",
+  "providencraft.advancement.succubus_tail_des": "染上魅魔的颜色"
 }

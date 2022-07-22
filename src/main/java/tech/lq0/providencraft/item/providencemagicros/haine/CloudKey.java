@@ -4,6 +4,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -28,14 +29,14 @@ import java.util.List;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CloudKey extends Item {
     public CloudKey(){
-        super(new Properties().maxStackSize(1).rarity(Rarity.EPIC).group(ModGroup.itemgroup));
+        super(new Properties().maxStackSize(1).rarity(Rarity.EPIC).defaultMaxDamage(4).group(ModGroup.itemgroup));
     }
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         if(entityIn instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityIn;
-            player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 2, true, false));
+            player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 1, true, false));
             player.addPotionEffect(new EffectInstance(Effects.HASTE, 300,0,true,false));
         }
         super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
@@ -56,10 +57,13 @@ public class CloudKey extends Item {
         if(entity instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack key_stack = ItemRegistry.CLOUD_KEY.get().getDefaultInstance();
-            if(player.inventory.hasItemStack(key_stack)){
-                int random = (int) (Math.random() * 10 + 1);
-                float f_damage = damage - random;
-                event.setAmount(f_damage > 0 ? f_damage : 0.0f);
+            if(player.getHeldItemOffhand().getItem().equals(key_stack.getItem())){
+                ItemStack key = player.getHeldItemOffhand();
+                if(damage >= player.getHealth()) {
+                    event.setAmount(player.getHealth() - 2.0f);
+                    player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100, 3));
+                    key.damageItem(1, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.OFFHAND));
+                }
             }
         }
     }

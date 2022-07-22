@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:frog_crown"
+    },
+    "title": {
+      "translate": "providencraft.advancement.frog_crown"
+    },
+    "description": {
+      "translate": "providencraft.advancement.frog_crown_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "frog_crown": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:frog_crown"
+          }
+        ]
+      }
+    }
+  }
+}

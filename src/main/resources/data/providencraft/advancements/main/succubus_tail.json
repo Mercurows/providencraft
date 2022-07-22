@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:succubus_tail"
+    },
+    "title": {
+      "translate": "providencraft.advancement.succubus_tail"
+    },
+    "description": {
+      "translate": "providencraft.advancement.succubus_tail_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_marshaimallow",
+  "criteria": {
+    "succubus_tail": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:succubus_tail"
+          }
+        ]
+      }
+    }
+  }
+}

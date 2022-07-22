@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:cloud_key"
+    },
+    "title": {
+      "translate": "providencraft.advancement.cloud_key"
+    },
+    "description": {
+      "translate": "providencraft.advancement.cloud_key_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_marshaimallow",
+  "criteria": {
+    "cloud_key": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:cloud_key"
+          }
+        ]
+      }
+    }
+  }
+}

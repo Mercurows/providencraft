@@ -46,7 +46,7 @@ public class Bolster extends SwordItem {
             map.put(Attributes.ATTACK_KNOCKBACK,
                     new AttributeModifier(uuid, "bolster modifier", 0.1f, AttributeModifier.Operation.MULTIPLY_BASE));
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "bolster modifier", 0.1f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "bolster modifier", -0.1f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }

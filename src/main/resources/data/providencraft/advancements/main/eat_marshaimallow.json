@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:marshaimallow"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_marshaimallow"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_marshaimallow_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/frog_crown",
+  "criteria": {
+    "eat_marshaimallow": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:marshaimallow"
+        }
+      }
+    }
+  }
+}
