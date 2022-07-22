@@ -1,0 +1,49 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:ekira_idol_chestplate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.ekira_idol_costume"
+    },
+    "description": {
+      "translate": "providencraft.advancement.ekira_idol_costume_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/haine_idol_costume",
+  "criteria": {
+    "ekira_idol_costume_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:ekira_idol_helmet"
+          }
+        ]
+      }
+    },
+    "ekira_idol_costume_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:ekira_idol_chestplate"
+          }
+        ]
+      }
+    },
+    "ekira_idol_costume_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:ekira_idol_boots"
+          }
+        ]
+      }
+    }
+  }
+}

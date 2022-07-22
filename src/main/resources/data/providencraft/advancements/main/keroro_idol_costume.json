@@ -1,0 +1,49 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:keroro_idol_chestplate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.keroro_idol_costume"
+    },
+    "description": {
+      "translate": "providencraft.advancement.keroro_idol_costume_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/frog_crown",
+  "criteria": {
+    "keroro_idol_costume_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:keroro_idol_helmet"
+          }
+        ]
+      }
+    },
+    "keroro_idol_costume_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:keroro_idol_chestplate"
+          }
+        ]
+      }
+    },
+    "keroro_idol_costume_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:keroro_idol_boots"
+          }
+        ]
+      }
+    }
+  }
+}

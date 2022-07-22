@@ -304,5 +304,13 @@
   "providencraft.advancement.cloud_key": "云端连结",
   "providencraft.advancement.cloud_key_des": "获得来自天界的力量",
   "providencraft.advancement.succubus_tail": "星之魅魔",
-  "providencraft.advancement.succubus_tail_des": "染上魅魔的颜色"
+  "providencraft.advancement.succubus_tail_des": "染上魅魔的颜色",
+  "providencraft.advancement.keroro_idol_costume": "电子偶像青蛙",
+  "providencraft.advancement.keroro_idol_costume_des": "集齐蛙吹的偶像装",
+  "providencraft.advancement.haine_idol_costume": "见习偶像天使",
+  "providencraft.advancement.haine_idol_costume_des": "集齐灰音的偶像装",
+  "providencraft.advancement.ekira_idol_costume": "星之偶像",
+  "providencraft.advancement.ekira_idol_costume_des": "集齐星宫颜的偶像装",
+  "providencraft.advancement.chiram_idol_costume": "偶像管家",
+  "providencraft.advancement.chiram_idol_costume_des": "集齐倾澜的偶像装"
 }

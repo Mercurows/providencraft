@@ -1,0 +1,49 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:chiram_idol_chestplate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.chiram_idol_costume"
+    },
+    "description": {
+      "translate": "providencraft.advancement.chiram_idol_costume_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/ekira_idol_costume",
+  "criteria": {
+    "chiram_idol_costume_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:chiram_idol_helmet"
+          }
+        ]
+      }
+    },
+    "chiram_idol_costume_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:chiram_idol_chestplate"
+          }
+        ]
+      }
+    },
+    "chiram_idol_costume_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:chiram_idol_boots"
+          }
+        ]
+      }
+    }
+  }
+}

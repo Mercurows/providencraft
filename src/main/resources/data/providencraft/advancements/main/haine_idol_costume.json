@@ -1,0 +1,49 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:haine_idol_chestplate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.haine_idol_costume"
+    },
+    "description": {
+      "translate": "providencraft.advancement.haine_idol_costume_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/keroro_idol_costume",
+  "criteria": {
+    "haine_idol_costume_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:haine_idol_helmet"
+          }
+        ]
+      }
+    },
+    "haine_idol_costume_2": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:haine_idol_chestplate"
+          }
+        ]
+      }
+    },
+    "haine_idol_costume_3": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item": "providencraft:haine_idol_boots"
+          }
+        ]
+      }
+    }
+  }
+}
