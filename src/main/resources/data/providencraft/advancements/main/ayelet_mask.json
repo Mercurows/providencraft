@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:ayelet_mask"
+    },
+    "title": {
+      "translate": "providencraft.advancement.ayelet_mask"
+    },
+    "description": {
+      "translate": "providencraft.advancement.ayelet_mask_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/crystal_horn",
+  "criteria": {
+    "ayelet_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:ayelet_mask"
+          }
+        ]
+      }
+    }
+  }
+}

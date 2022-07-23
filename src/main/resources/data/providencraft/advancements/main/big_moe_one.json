@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:big_moe_one_potion"
+    },
+    "title": {
+      "translate": "providencraft.advancement.big_moe_one_potion"
+    },
+    "description": {
+      "translate": "providencraft.advancement.big_moe_one_potion_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "parent": "providencraft:main/eat_lucia_rice_cake",
+  "criteria": {
+    "big_moe_one_potion": {
+      "trigger": "minecraft:effects_changed",
+      "conditions": {
+        "effects": {
+            "providencraft:big_moe_one": {
+            }
+        }
+      }
+    }
+  }
+}

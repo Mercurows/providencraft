@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:taro_ice_cream"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_taro_ice_cream"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_taro_ice_cream_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_lucia_rice_cake",
+  "criteria": {
+    "eat_taro_ice_cream": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:taro_ice_cream"
+        }
+      }
+    }
+  }
+}

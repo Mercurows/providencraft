@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:crystal_horn"
+    },
+    "title": {
+      "translate": "providencraft.advancement.crystal_horn"
+    },
+    "description": {
+      "translate": "providencraft.advancement.crystal_horn_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "crystal_horn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:crystal_horn"
+          }
+        ]
+      }
+    }
+  }
+}

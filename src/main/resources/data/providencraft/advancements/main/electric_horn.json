@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:electric_horn"
+    },
+    "title": {
+      "translate": "providencraft.advancement.electric_horn"
+    },
+    "description": {
+      "translate": "providencraft.advancement.electric_horn_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/crystal_horn",
+  "criteria": {
+    "electric_horn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:electric_horn"
+          }
+        ]
+      }
+    }
+  }
+}
