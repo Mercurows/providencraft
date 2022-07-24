@@ -319,8 +319,12 @@
   "providencraft.advancement.big_moe_one_potion_des": "",
   "providencraft.advancement.crystal_horn": "晶莹剔透",
   "providencraft.advancement.crystal_horn_des": "耐久MAX",
-  "providencraft.advancement.electric_horn": "",
+  "providencraft.advancement.electric_horn": "Electrification",
   "providencraft.advancement.electric_horn_des": "",
   "providencraft.advancement.ayelet_mask": "",
-  "providencraft.advancement.ayelet_mask_des": ""
+  "providencraft.advancement.ayelet_mask_des": "",
+  "providencraft.advancement.mitsuki_crown": "The Founding Big Head",
+  "providencraft.advancement.mitsuki_crown_des": "",
+  "providencraft.advancement.plunger": "Primal Plunger",
+  "providencraft.advancement.plunger_des": ""
 }

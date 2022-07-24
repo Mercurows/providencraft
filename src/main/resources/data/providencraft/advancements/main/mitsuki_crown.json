@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:crown"
+    },
+    "title": {
+      "translate": "providencraft.advancement.mitsuki_crown"
+    },
+    "description": {
+      "translate": "providencraft.advancement.mitsuki_crown_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "mitsuki_crown": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:crown"
+          }
+        ]
+      }
+    }
+  }
+}
