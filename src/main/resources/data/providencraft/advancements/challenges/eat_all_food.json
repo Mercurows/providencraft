@@ -1,0 +1,119 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:mma_stew"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_all_food"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_all_food_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "challenge",
+    "hidden": true
+  },
+  "parent": "providencraft:challenges/eat_lava_cake",
+  "criteria": {
+    "eat_all_food_1": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:mari_stew"
+        }
+      }
+    },
+    "eat_all_food_2": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:banana_milk"
+        }
+      }
+    },
+    "eat_all_food_3": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:taro_ice_cream"
+        }
+      }
+    },
+    "eat_all_food_4": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:lucia_rice_cake"
+        }
+      }
+    },
+    "eat_all_food_5": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:lotus_potato"
+        }
+      }
+    },
+    "eat_all_food_6": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:frog_leg"
+        }
+      }
+    },
+    "eat_all_food_7": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:momo_daifuku"
+        }
+      }
+    },
+    "eat_all_food_8": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:lava_cake"
+        }
+      }
+    },
+    "eat_all_food_9": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:mma_stew"
+        }
+      }
+    },
+    "eat_all_food_10": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:mva_stew"
+        }
+      }
+    },
+    "eat_all_food_11": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:fox_ice_cream"
+        }
+      }
+    },
+    "eat_all_food_12": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:marshaimallow"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

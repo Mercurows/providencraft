@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:yagi_staff_card"
+    },
+    "title": {
+      "translate": "providencraft.advancement.mojuko_staff_card"
+    },
+    "description": {
+      "translate": "providencraft.advancement.mojuko_staff_card_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "providencraft:main/leave_providence",
+  "criteria": {
+    "mojuko_staff_card": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:yagi_staff_card"
+          }
+        ]
+      }
+    }
+  }
+}
