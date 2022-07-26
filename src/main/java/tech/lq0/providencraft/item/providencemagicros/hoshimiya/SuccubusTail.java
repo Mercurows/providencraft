@@ -66,6 +66,7 @@ public class SuccubusTail extends ArmorItem {
                     float damage = event.getAmount();
                     player.heal(damage);
                     event.setAmount(0.0f);
+                    tail.damageItem(10, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.LEGS));
                 }
             }
         }

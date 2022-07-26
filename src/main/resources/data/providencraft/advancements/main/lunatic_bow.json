@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:lunatic_bow"
+    },
+    "title": {
+      "translate": "providencraft.advancement.lunatic_bow"
+    },
+    "description": {
+      "translate": "providencraft.advancement.lunatic_bow_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_mari_stew",
+  "criteria": {
+    "lunatic_bow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:lunatic_bow"
+          }
+        ]
+      }
+    }
+  }
+}

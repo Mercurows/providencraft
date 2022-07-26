@@ -1,33 +1,30 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:fetuozi"
+      "item": "providencraft:tail_pen"
     },
     "title": {
-      "translate": "providencraft.advancement.fetuozi"
+      "translate": "providencraft.advancement.tail_pen"
     },
     "description": {
-      "translate": "providencraft.advancement.fetuozi_des"
+      "translate": "providencraft.advancement.tail_pen_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "frame": "challenge",
     "hidden": false
   },
-  "parent": "providencraft:main/eat_momo_daifuku",
+  "parent": "providencraft:challenges/fetuozi",
   "criteria": {
-    "fetuozi": {
+    "tail_pen": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:fetuozi"
+            "item":"providencraft:tail_pen"
           }
         ]
       }
     }
-  },
-  "rewards": {
-    "experience": 100
   }
 }

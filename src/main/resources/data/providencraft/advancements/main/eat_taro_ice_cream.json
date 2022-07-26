@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/eat_lucia_rice_cake",
+  "parent": "providencraft:main/drink_banana_milk",
   "criteria": {
     "eat_taro_ice_cream": {
       "trigger": "minecraft:consume_item",

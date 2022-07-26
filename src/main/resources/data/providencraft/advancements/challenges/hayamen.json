@@ -1,33 +1,30 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:fetuozi"
+      "item": "providencraft:hayamen"
     },
     "title": {
-      "translate": "providencraft.advancement.fetuozi"
+      "translate": "providencraft.advancement.hayamen"
     },
     "description": {
-      "translate": "providencraft.advancement.fetuozi_des"
+      "translate": "providencraft.advancement.hayamen_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "frame": "challenge",
     "hidden": false
   },
-  "parent": "providencraft:main/eat_momo_daifuku",
+  "parent": "providencraft:main/big_spoon",
   "criteria": {
-    "fetuozi": {
+    "hayamen": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:fetuozi"
+            "item":"providencraft:hayamen"
           }
         ]
       }
     }
-  },
-  "rewards": {
-    "experience": 100
   }
 }

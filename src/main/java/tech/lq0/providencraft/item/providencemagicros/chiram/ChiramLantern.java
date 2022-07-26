@@ -61,8 +61,7 @@ public class ChiramLantern extends Item{
             if (player.getHeldItemOffhand().getItem().equals(ItemRegistry.CHIRAM_LANTERN.get())) {
                 ItemStack lantern = player.getHeldItemOffhand();
                 if (worldIn.getLight(player.getPosition()) <= 5 && lantern.getDamage() < lantern.getMaxDamage()) {
-                    player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 1));
-                    player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0));
+                    player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 0));
                     player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0));
                     if(player.ticksExisted % 20 == 0 && !player.abilities.isCreativeMode) {
                         lantern.setDamage(lantern.getDamage() + 1);

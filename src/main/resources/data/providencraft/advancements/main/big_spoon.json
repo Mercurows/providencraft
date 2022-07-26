@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:big_spoon"
+    },
+    "title": {
+      "translate": "providencraft.advancement.big_spoon"
+    },
+    "description": {
+      "translate": "providencraft.advancement.big_spoon_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_lucia_rice_cake",
+  "criteria": {
+    "big_spoon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:big_spoon"
+          }
+        ]
+      }
+    }
+  }
+}

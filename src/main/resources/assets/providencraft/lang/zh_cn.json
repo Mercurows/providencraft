@@ -311,7 +311,7 @@
   "providencraft.advancement.haine_idol_costume_des": "集齐灰音的偶像装",
   "providencraft.advancement.ekira_idol_costume": "星之偶像",
   "providencraft.advancement.ekira_idol_costume_des": "集齐星宫颜的偶像装",
-  "providencraft.advancement.chiram_idol_costume": "偶像管家",
+  "providencraft.advancement.chiram_idol_costume": "吃饱才能做偶像",
   "providencraft.advancement.chiram_idol_costume_des": "集齐倾澜的偶像装",
   "providencraft.advancement.eat_taro_ice_cream": "是雪糕，就这么多",
   "providencraft.advancement.eat_taro_ice_cream_des": "海胆味，嘎嘣脆",
@@ -326,5 +326,15 @@
   "providencraft.advancement.mitsuki_crown": "始祖巨头",
   "providencraft.advancement.mitsuki_crown_des": "欲戴王冠，先成大头",
   "providencraft.advancement.plunger": "元始搋",
-  "providencraft.advancement.plunger_des": "用胡桃搋子击中标靶的中心"
+  "providencraft.advancement.plunger_des": "用胡桃搋子击中标靶的中心",
+  "providencraft.advancement.drink_banana_milk": "好喝的妮",
+  "providencraft.advancement.drink_banana_milk_des": "喝出夏天的感觉",
+  "providencraft.advancement.big_spoon": "花言巧语好下饭",
+  "providencraft.advancement.big_spoon_des": "无论是巴旦木还是葡萄干......",
+  "providencraft.advancement.hayamen": "通往雪国的大门",
+  "providencraft.advancement.hayamen_des": "朋友，您听说过我们的救世主花花haya吗？",
+  "providencraft.advancement.lunatic_bow": "理智\"空\"夜",
+  "providencraft.advancement.lunatic_bow_des": "把蝴蝶结拍在我的心，拍在我的脸上吧",
+  "providencraft.advancement.tail_pen": "大艺术猫",
+  "providencraft.advancement.tail_pen_des": "生活不易，炖猫出气！"
 }
