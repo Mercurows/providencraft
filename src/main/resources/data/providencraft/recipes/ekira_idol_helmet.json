@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "cdc",
+    "   "
+  ],
+  "key": {
+    "c": {
+      "item": "providencraft:idol_cloth"
+    },
+    "d": {
+      "item": "minecraft:pink_dye"
+    }
+  },
+  "result": {
+    "item": "providencraft:ekira_idol_helmet",
+    "count": 1
+  }
+}

@@ -57,8 +57,10 @@ public class FrogCrown extends ArmorItem {
         super.onArmorTick(stack, world, player);
         if (world.isRaining()) {
             ItemNBTTool.setBoolean(stack, TAG_RAIN, true);
-            player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 300, 0,true,false));
-            player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 300, 0,true,false));
+            if(player.ticksExisted % 300 == 0) {
+                player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, false));
+            }
+            player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 300, 0, true, false));
         } else {
             ItemNBTTool.setBoolean(stack, TAG_RAIN, false);
         }
@@ -75,9 +77,9 @@ public class FrogCrown extends ArmorItem {
             map = HashMultimap.create(map);
             boolean rain = ItemNBTTool.getBoolean(stack, TAG_RAIN, false);
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "crystal horn modifier", rain ? 2.0 : 0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "frog crown modifier", rain ? 2.0 : 0, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ARMOR,
-                    new AttributeModifier(uuid, "crystal horn modifier", rain ? 4.0 : 0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "frog crown modifier", rain ? 4.0 : 0, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }

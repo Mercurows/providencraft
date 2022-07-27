@@ -26,6 +26,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.LunaticBowModel;
 
@@ -77,9 +78,9 @@ public class LunaticBow extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.ATTACK_SPEED,
-                    new AttributeModifier(uuid, "lunatic bow modifier", 1.0, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "lunatic bow modifier", 0.8, AttributeModifier.Operation.MULTIPLY_BASE));
             map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid, "lunatic bow modifier", 0.5, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "lunatic bow modifier", 0.3, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
@@ -91,7 +92,7 @@ public class LunaticBow extends ArmorItem {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.LUNATIC_BOW.get())) {
-                player.setFire(1);
+                player.attackEntityFrom(DamageSourceRegistry.SORAYO, 1.0f);
             }
         }
     }
@@ -103,8 +104,10 @@ public class LunaticBow extends ArmorItem {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.LUNATIC_BOW.get())) {
-                player.heal(4.0f);
+                player.heal(6.0f);
             }
         }
     }
+
+
 }

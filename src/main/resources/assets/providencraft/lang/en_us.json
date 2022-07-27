@@ -243,6 +243,7 @@
   "item.providencraft.ekira_idol_chestplate": "Ekira Idol Costume (Dress)",
   "item.providencraft.ekira_idol_boots": "Ekira Idol Costume (Boots)",
   "ekira_idol_costume_des": "Incarnated by Ekira",
+  "death.attack.sorayo": "%1$s被月王的尖叫击穿了",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
@@ -301,7 +302,7 @@
   "providencraft.advancement.frog_crown_des": "\"I'm shuffling through the rain, かけ巡る\"",
   "providencraft.advancement.eat_marshaimallow": "Meow Hello!",
   "providencraft.advancement.eat_marshaimallow_des": "Eat cute marshaimallow",
-  "providencraft.advancement.cloud_key": "云端连结",
+  "providencraft.advancement.cloud_key": "Cloud Connect",
   "providencraft.advancement.cloud_key_des": "获得来自天界的力量",
   "providencraft.advancement.succubus_tail": "星之魅魔",
   "providencraft.advancement.succubus_tail_des": "染上魅魔的颜色",
@@ -340,7 +341,7 @@
   "providencraft.advancement.mojuko_staff_card": "上班，下班",
   "providencraft.advancement.mojuko_staff_card_des": "感谢有你，前程似锦！",
   "providencraft.advancement.satou_knife": "砂疯了",
-  "providencraft.advancement.satou_knife_des": "只是一把水果刀",
+  "providencraft.advancement.satou_knife_des": "Just a fruit knife",
   "providencraft.advancement.eat_all_food": "普罗维登食神",
   "providencraft.advancement.eat_all_food_des": "品尝全部普罗维登的美食"
 }

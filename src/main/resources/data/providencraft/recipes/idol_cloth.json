@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " w ",
+    "lgl",
+    " w "
+  ],
+  "key": {
+    "w": {
+      "tag": "minecraft:wool"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "g": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "providencraft:idol_cloth",
+    "count": 2
+  }
+}
