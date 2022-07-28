@@ -14,6 +14,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -28,6 +29,7 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.models.LunaticBowModel;
 
 import javax.annotation.Nonnull;
@@ -78,9 +80,9 @@ public class LunaticBow extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.ATTACK_SPEED,
-                    new AttributeModifier(uuid, "lunatic bow modifier", 0.8, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "lunatic bow modifier", 0.4, AttributeModifier.Operation.MULTIPLY_BASE));
             map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid, "lunatic bow modifier", 0.3, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "lunatic bow modifier", 0.8, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
@@ -88,11 +90,34 @@ public class LunaticBow extends ArmorItem {
     @SubscribeEvent
     public static void BowEffect(AttackEntityEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
+        if (entity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.LUNATIC_BOW.get())) {
-                player.attackEntityFrom(DamageSourceRegistry.SORAYO, 1.0f);
+                player.attackEntityFrom(DamageSourceRegistry.SORAYO, 2.0f);
+                int random = (int)(Math.random() * 5 + 1);
+                switch (random){
+                    case 1:
+                        player.world.playSound(player, player.getPosition(),
+                                SoundRegistry.YYKY_SCREAM_1.get(), SoundCategory.AMBIENT, 0.7f, 1f);
+                        break;
+                    case 2:
+                        player.world.playSound(player, player.getPosition(),
+                                SoundRegistry.YYKY_SCREAM_2.get(), SoundCategory.AMBIENT, 0.7f, 1f);
+                        break;
+                    case 3:
+                        player.world.playSound(player, player.getPosition(),
+                                SoundRegistry.YYKY_SCREAM_3.get(), SoundCategory.AMBIENT, 0.7f, 1f);
+                        break;
+                    case 4:
+                        player.world.playSound(player, player.getPosition(),
+                                SoundRegistry.YYKY_SCREAM_4.get(), SoundCategory.AMBIENT, 0.7f, 1f);
+                        break;
+                    case 5:
+                        player.world.playSound(player, player.getPosition(),
+                                SoundRegistry.YYKY_SCREAM_5.get(), SoundCategory.AMBIENT, 0.7f, 1f);
+                        break;
+                }
             }
         }
     }

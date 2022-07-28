@@ -38,5 +38,55 @@
         "stream": true
       }
     ]
+  },
+  "yyky_scream_1": {
+    "subtitle": "yyky_scream",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:yyky_scream_1",
+        "stream": true
+      }
+    ]
+  },
+  "yyky_scream_2": {
+    "subtitle": "yyky_scream",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:yyky_scream_2",
+        "stream": true
+      }
+    ]
+  },
+  "yyky_scream_3": {
+    "subtitle": "yyky_scream",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:yyky_scream_3",
+        "stream": true
+      }
+    ]
+  },
+  "yyky_scream_4": {
+    "subtitle": "yyky_scream",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:yyky_scream_4",
+        "stream": true
+      }
+    ]
+  },
+  "yyky_scream_5": {
+    "subtitle": "yyky_scream",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:yyky_scream_5",
+        "stream": true
+      }
+    ]
   }
 }

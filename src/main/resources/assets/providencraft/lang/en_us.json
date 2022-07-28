@@ -244,6 +244,12 @@
   "item.providencraft.ekira_idol_boots": "Ekira Idol Costume (Boots)",
   "ekira_idol_costume_des": "Incarnated by Ekira",
   "death.attack.sorayo": "%1$s被月王的尖叫击穿了",
+  "yyky_scream": "Akatsuki Sorayo's Scream",
+  "death.attack.sorayo.player": "%1$s无法承受攻击%2$s时带来的月之狂嚎",
+  "death.attack.beniCake.player": "%1$s在逃离%2$s时品尝了一生只能吃一次的美味",
+  "death.attack.lotusPotato.player": "%1$s在逃离%2$s时血压爆炸了",
+  "death.attack.mariFood.player": "%1$s在逃离%2$s时享用了人妻的秘制料理",
+  "death.attack.emotionalDamage.player": "Emotional Damage",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
