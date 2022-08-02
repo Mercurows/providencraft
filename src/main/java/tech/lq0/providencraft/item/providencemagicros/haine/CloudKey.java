@@ -60,7 +60,7 @@ public class CloudKey extends Item {
             if(player.getHeldItemOffhand().getItem().equals(key_stack.getItem())){
                 ItemStack key = player.getHeldItemOffhand();
                 if(damage >= player.getHealth()) {
-                    event.setAmount(player.getHealth() - 2.0f);
+                    event.setAmount(player.getHealth() > 2.0f ? player.getHealth() - 2.0f : 0.0f);
                     player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100, 3));
                     key.damageItem(1, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.OFFHAND));
                 }
