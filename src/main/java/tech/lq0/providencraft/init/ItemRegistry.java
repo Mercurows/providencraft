@@ -206,6 +206,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> EMPTY_JAR = ITEMS.register("empty_jar", EmptyJar::new);
     public static final RegistryObject<Item> LITTLE_POTATO = ITEMS.register("little_potato", LittlePotato::new);
     public static final RegistryObject<Item> LOLLIPOP = ITEMS.register("lollipop", Lollipop::new);
+    public static final RegistryObject<Item> ORANGE_TRACKER = ITEMS.register("orange_tracker", OrangeTracker::new);
 
     /**
      * costume

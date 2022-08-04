@@ -250,6 +250,9 @@
   "death.attack.lotusPotato.player": "%1$s在逃离%2$s时血压爆炸了",
   "death.attack.mariFood.player": "%1$s在逃离%2$s时误食了人妻的秘制料理",
   "death.attack.emotionalDamage.player": "Emotional Damage",
+  "item.providencraft.orange_tracker": "橘子的全身追踪器",
+  "orange_tracker_des1": "",
+  "orange_tracker_des2": "",
 
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",

@@ -52,43 +52,46 @@ public class Lollipop extends Item {
             player.addPotionEffect(new EffectInstance(Effects.HASTE, 340, 2));
             player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 340, 2));
 
-            Thread t = new Thread(() -> {
-                try {
-                    Thread.sleep(17000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                int random = (int) (Math.random() * 99 + 1);
-                if (random > 70) {
-                    player.sendStatusMessage(new TranslationTextComponent("lollipop_nothing").mergeStyle(TextFormatting.GRAY), false);
-                } else if (random > 20) {
-                    int[] num = RandomTool.getRandom(1, 5, 2);
-                    for (int i = 0; i < 2; i++) {
-                        switch (Objects.requireNonNull(num)[i]) {
-                            case 0:
-                                player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 100, 1));
-                                break;
-                            case 1:
-                                player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 100, 1));
-                                break;
-                            case 2:
-                                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 100, 1));
-                                break;
-                            case 3:
-                                player.addPotionEffect(new EffectInstance(Effects.WITHER, 100, 1));
-                                break;
-                            case 4:
-                                player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 100, 1));
-                                break;
-                        }
+            //sync test
+            synchronized(this) {
+                Thread t = new Thread(() -> {
+                    try {
+                        Thread.sleep(17000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                } else {
-                    player.attackEntityFrom(DamageSourceRegistry.EMO, 30.0f);
-                }
 
-            });
-            t.start();
+                    int random = (int) (Math.random() * 99 + 1);
+                    if (random > 70) {
+                        player.sendStatusMessage(new TranslationTextComponent("lollipop_nothing").mergeStyle(TextFormatting.GRAY), false);
+                    } else if (random > 20) {
+                        int[] num = RandomTool.getRandom(1, 5, 2);
+                        for (int i = 0; i < 2; i++) {
+                            switch (Objects.requireNonNull(num)[i]) {
+                                case 0:
+                                    player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 100, 1));
+                                    break;
+                                case 1:
+                                    player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 100, 1));
+                                    break;
+                                case 2:
+                                    player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 100, 1));
+                                    break;
+                                case 3:
+                                    player.addPotionEffect(new EffectInstance(Effects.WITHER, 100, 1));
+                                    break;
+                                case 4:
+                                    player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 100, 1));
+                                    break;
+                            }
+                        }
+                    } else {
+                        player.attackEntityFrom(DamageSourceRegistry.EMO, 30.0f);
+                    }
+
+                });
+                t.start();
+            }
 
 
         }
