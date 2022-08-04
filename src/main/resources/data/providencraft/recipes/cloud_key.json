@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    "gag",
+    " g "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:white_wool"
+    },
+    "a": {
+      "item": "minecraft:totem_of_undying"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:cloud_key",
+    "count": 1
+  }
+}

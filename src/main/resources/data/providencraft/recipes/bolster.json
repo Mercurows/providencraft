@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    "gag",
+    " x "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:pink_wool"
+    },
+    "a": {
+      "item": "minecraft:bricks"
+    },
+    "g": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "result": {
+    "item": "providencraft:bolster",
+    "count": 1
+  }
+}

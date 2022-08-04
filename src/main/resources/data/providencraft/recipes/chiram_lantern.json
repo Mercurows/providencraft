@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    "iai",
+    " i "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:chain"
+    },
+    "a": {
+      "item": "minecraft:torch"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:chiram_lantern",
+    "count": 1
+  }
+}

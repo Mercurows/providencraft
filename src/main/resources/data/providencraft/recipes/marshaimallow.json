@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "wx ",
+    "xax",
+    "sss"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:light_blue_dye"
+    },
+    "a": {
+      "item": "minecraft:wheat"
+    },
+    "w": {
+      "item": "minecraft:white_dye"
+    },
+    "s": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "providencraft:marshaimallow",
+    "count": 4
+  }
+}
