@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xax",
+    "aya",
+    "xax"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:coal_block"
+    },
+    "a": {
+      "item": "minecraft:diamond"
+    },
+    "y": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:orange_tracker",
+    "count": 1
+  }
+}

@@ -250,9 +250,10 @@
   "death.attack.lotusPotato.player": "%1$s's blood pressure boom when fleeing from %2$s",
   "death.attack.mariFood.player": "%1$s ate the mysterious food made by milf by mistake when fleeing from %2$s",
   "death.attack.emotionalDamage.player": "Emotional Damage",
-  "item.providencraft.orange_tracker": "橘子的全身追踪器",
-  "orange_tracker_des1": "",
-  "orange_tracker_des2": "",
+  "item.providencraft.orange_tracker": "Orange Tracker",
+  "orange_tracker_des1": "Looks like some brands of tracker, but did not buy it actually (Too expensive!)",
+  "orange_tracker_des2": "Be more flexible in Minecraft when wearing it XD",
+  "orange_tracker_des3": "Warning: It doesn't work sometimes :(",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",

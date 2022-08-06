@@ -251,8 +251,9 @@
   "death.attack.mariFood.player": "%1$s在逃离%2$s时误食了人妻的秘制料理",
   "death.attack.emotionalDamage.player": "Emotional Damage",
   "item.providencraft.orange_tracker": "橘子的全身追踪器",
-  "orange_tracker_des1": "",
-  "orange_tracker_des2": "",
+  "orange_tracker_des1": "外形很像某品牌的追踪器，但实际上并没有买（太贵了）",
+  "orange_tracker_des2": "穿上它，就能在Minecraft里面更灵活（确信）",
+  "orange_tracker_des3": "注意，有的时候会不起作用（丢追）",
 
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",
