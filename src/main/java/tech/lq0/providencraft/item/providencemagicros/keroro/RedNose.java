@@ -16,9 +16,10 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.Utils;
@@ -51,20 +52,16 @@ public class RedNose extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void Event(LivingAttackEvent event) {
+    public static void Event(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
-        if (livingEntity instanceof PlayerEntity) {
+        ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.HEAD);
+        if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.RED_NOSE.get())) {
             PlayerEntity player = (PlayerEntity) livingEntity;
-            ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-            if (itemStack.getItem().equals(ItemRegistry.RED_NOSE.get())) {
-                if (!player.world.isRemote) {
-                    player.addPotionEffect(new EffectInstance(Effects.SPEED, 100, 1));
-                    itemStack.damageItem(1, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.HEAD));
-                }
-                player.world.playSound(player, player.getPosition(),
-                        SoundRegistry.KERORO_SNEEZE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
+            if(!player.world.isRemote) {
+                player.playSound(SoundRegistry.KERORO_SNEEZE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
             }
-
+            player.addPotionEffect(new EffectInstance(Effects.SPEED, 100, 1));
+            itemStack.damageItem(1, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.HEAD));
         }
     }
 
