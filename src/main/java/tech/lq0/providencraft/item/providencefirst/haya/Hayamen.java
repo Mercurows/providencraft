@@ -2,6 +2,7 @@ package tech.lq0.providencraft.item.providencefirst.haya;
 
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
@@ -37,6 +38,11 @@ public class Hayamen extends ShieldItem {
         tooltip.add((new TranslationTextComponent("hayamen_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("hayamen_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
+    }
+
+    @Override
+    public boolean isShield(ItemStack stack, @Nullable LivingEntity entity) {
+        return true;
     }
 
     @Nonnull
