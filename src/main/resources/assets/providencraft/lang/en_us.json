@@ -254,6 +254,9 @@
   "orange_tracker_des1": "Looks like some brands of tracker, but did not buy it actually (Too expensive!)",
   "orange_tracker_des2": "Be more flexible in Minecraft when wearing it XD",
   "orange_tracker_des3": "Warning: It doesn't work sometimes :(",
+  "effect.providencraft.overload": "Overload",
+  "death.attack.overload": "%1$s has been overloaded",
+  "death.attack.overload.player": "%1$s has been overloaded when fleeing from %2$s",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
