@@ -121,4 +121,16 @@ public class Lollipop extends Item {
             }
         }
     }
+
+    @SubscribeEvent
+    public static void SideEffect3(PotionEvent.PotionRemoveEvent event){
+        LivingEntity entity = event.getEntityLiving();
+        if(EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())){
+            if(entity instanceof PlayerEntity){
+                PlayerEntity player = (PlayerEntity) entity;
+                int lvl = event.getPotionEffect().getAmplifier();
+                player.attackEntityFrom(DamageSourceRegistry.OVERLOAD, 5.0f * (lvl + 1));
+            }
+        }
+    }
 }
