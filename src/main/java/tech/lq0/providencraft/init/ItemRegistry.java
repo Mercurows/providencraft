@@ -23,6 +23,7 @@ import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
+import tech.lq0.providencraft.item.others.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
@@ -236,6 +237,5 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.WHITE_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.itemgroup)));
     public static final RegistryObject<Item> COMMUNICATION_TABLE = ITEMS.register("communication_table",
             () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.itemgroup)));
-    public static final RegistryObject<Item> PORCELAIN_THRONE = ITEMS.register("porcelain_throne",
-            () -> new BlockItem(BlockRegistry.PORCELAIN_THRONE.get(), new Item.Properties().group(ModGroup.itemgroup)));
+    public static final RegistryObject<Item> PORCELAIN_THRONE = ITEMS.register("porcelain_throne", PorcelainThroneBlockItem::new);
 }

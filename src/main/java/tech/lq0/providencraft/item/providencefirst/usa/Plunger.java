@@ -1,7 +1,9 @@
 package tech.lq0.providencraft.item.providencefirst.usa;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.SwordItem;
@@ -50,5 +52,10 @@ public class Plunger extends SwordItem {
         }
 
         return new ActionResult<>(ActionResultType.SUCCESS, item);
+    }
+
+    @Override
+    public boolean canEquip(ItemStack stack, EquipmentSlotType armorType, Entity entity) {
+        return armorType == EquipmentSlotType.HEAD;
     }
 }
