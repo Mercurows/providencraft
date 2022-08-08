@@ -257,6 +257,7 @@
   "effect.providencraft.overload": "过载",
   "death.attack.overload": "%1$s的身体过载了",
   "death.attack.overload.player": "%1$s在逃离%2$s时过载了",
+  "entity.providencraft.plunger_entity": "胡桃搋子",
 
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",

@@ -257,6 +257,7 @@
   "effect.providencraft.overload": "Overload",
   "death.attack.overload": "%1$s has been overloaded",
   "death.attack.overload.player": "%1$s has been overloaded when fleeing from %2$s",
+  "entity.providencraft.plunger_entity": "Kurumi Plunger",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
