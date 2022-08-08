@@ -4,7 +4,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +31,7 @@ public class BigFierceOne extends Effect {
                 target.setFire(level * 5);
                 if (target.isAlive()) {
                     LivingEntity entity = (LivingEntity) target;
+                    entity.addPotionEffect(new EffectInstance(Effects.GLOWING,300,0,true,false));
                     entity.applyKnockback(level, player.getPosX() - entity.getPosX(), player.getPosZ() - entity.getPosZ());
                 }
             }
