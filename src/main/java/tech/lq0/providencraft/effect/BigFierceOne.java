@@ -27,7 +27,6 @@ public class BigFierceOne extends Effect {
             if (player.isPotionActive(EffectRegistry.BIG_FIERCE_ONE.get())) {
                 int level = Objects.requireNonNull(player.getActivePotionEffect(EffectRegistry.BIG_FIERCE_ONE.get())).getAmplifier();
                 target.setFire(level * 5);
-                target.setGlowing(true);
                 if (target.isAlive()) {
                     LivingEntity entity = (LivingEntity) target;
                     entity.applyKnockback(level, player.getPosX() - entity.getPosX(), player.getPosZ() - entity.getPosZ());
