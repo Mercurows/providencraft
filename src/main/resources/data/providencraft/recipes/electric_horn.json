@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "d d",
+    "mlm",
+    "gsg"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "l": {
+      "item": "minecraft:lever"
+    },
+    "g": {
+      "item": "minecraft:iron_ingot"
+    },
+    "m": {
+      "item": "providencraft:mechanical_horn"
+    },
+    "s": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:electric_horn",
+    "count": 1
+  }
+}

@@ -55,6 +55,7 @@ import tech.lq0.providencraft.item.providencemagicros.keroro.FrogCrown;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogLeg;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providencesecond.lecia.ElectricHorn;
+import tech.lq0.providencraft.item.providencesecond.lecia.MechanicalHorn;
 import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigMoeOnePotion;
 import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
@@ -130,6 +131,7 @@ public class ItemRegistry {
 
     //lecia
     public static final RegistryObject<Item> ELECTRIC_HORN = ITEMS.register("electric_horn", ElectricHorn::new);
+    public static final RegistryObject<Item> MECHANICAL_HORN = ITEMS.register("mechanical_horn", MechanicalHorn::new);
 
     //satou
     public static final RegistryObject<Item> SATOU_KNIFE = ITEMS.register("satou_knife", SatouKnife::new);

@@ -264,6 +264,9 @@
   "daifuku_syrup_des3": "能粘住敌人并有10%的概率使敌人燃烧",
   "entity.providencraft.ahoge_boomerang": "Red Ahoge Boomerang",
   "entity.providencraft.seat_entity": "Sitting Entity",
+  "item.providencraft.mechanical_horn": "Mechanical Horn Component",
+  "mechanical_horn_des1": "合成电子龙角的材料",
+  "mechanical_horn_des2": "电子厂厂妹的力量",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",

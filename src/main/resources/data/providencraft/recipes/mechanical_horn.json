@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    " lq",
+    " q "
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:iron_bars"
+    },
+    "l": {
+      "item": "minecraft:iron_block"
+    },
+    "q": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "providencraft:mechanical_horn",
+    "count": 1
+  }
+}
