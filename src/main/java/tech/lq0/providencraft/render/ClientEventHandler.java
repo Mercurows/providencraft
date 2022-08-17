@@ -13,5 +13,6 @@ public class ClientEventHandler {
     public static void onClientSetUpEvent(FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AHOGE_BOOMERANG_ENTITY.get(), RenderAhogeBoomerangEntity::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.PLUNGER_ENTITY.get(), RenderPlungerEntity::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SEAT_ENTITY.get(), SeatEntityRenderer::new);
     }
 }

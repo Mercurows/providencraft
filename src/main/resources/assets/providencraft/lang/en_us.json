@@ -260,7 +260,10 @@
   "entity.providencraft.plunger_entity": "Kurumi Plunger",
   "item.providencraft.daifuku_syrup": "大福糖浆",
   "daifuku_syrup_des1": "桃大福献身保护毛毛的时候到了！",
-  "daifuku_syrup_des2": "将自身作为弹药发射出去，能粘住敌人并有10％的概率使敌人燃烧",
+  "daifuku_syrup_des2": "将自身作为弹药发射出去",
+  "daifuku_syrup_des3": "能粘住敌人并有10%的概率使敌人燃烧",
+  "entity.providencraft.ahoge_boomerang": "Red Ahoge Boomerang",
+  "entity.providencraft.seat_entity": "Sitting Entity",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",

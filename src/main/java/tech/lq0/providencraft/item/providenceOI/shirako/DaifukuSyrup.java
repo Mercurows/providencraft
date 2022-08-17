@@ -51,6 +51,7 @@ public class DaifukuSyrup extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("daifuku_syrup_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("daifuku_syrup_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("daifuku_syrup_des3")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
     }
 }
