@@ -25,6 +25,7 @@ import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.others.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
+import tech.lq0.providencraft.item.providenceOI.shirako.DaifukuSyrup;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
 import tech.lq0.providencraft.item.providenceOI.yyky.LunaticBow;
@@ -167,6 +168,7 @@ public class ItemRegistry {
     //shirako
     public static final RegistryObject<Item> MOMO_DAIFUKU = ITEMS.register("momo_daifuku", MomoDaifuku::new);
     public static final RegistryObject<Item> FETUOZI = ITEMS.register("fetuozi", Fetuozi::new);
+    public static final RegistryObject<Item> DAIFUKU_SYRUP = ITEMS.register("daifuku_syrup", DaifukuSyrup::new);
 
     //yyky
     public static final RegistryObject<Item> LUNATIC_BOW = ITEMS.register("lunatic_bow", LunaticBow::new);
