@@ -267,6 +267,8 @@
   "item.providencraft.mechanical_horn": "机械龙角部件",
   "mechanical_horn_des1": "合成电子龙角的材料",
   "mechanical_horn_des2": "电子厂厂妹的力量",
+  "item.providencraft.pdc_point": "普罗维登积分",
+  "pdc_point_des": "普罗维登的会员积分，可以在商城换东西",
 
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",

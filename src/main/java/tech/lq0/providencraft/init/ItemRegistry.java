@@ -23,6 +23,7 @@ import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
+import tech.lq0.providencraft.item.others.PdcPoint;
 import tech.lq0.providencraft.item.others.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.DaifukuSyrup;
@@ -202,6 +203,7 @@ public class ItemRegistry {
      */
     public static final RegistryObject<Item> MMA_STEW = ITEMS.register("mma_stew", MMAStew::new);
     public static final RegistryObject<Item> MVA_STEW = ITEMS.register("mva_stew", MVAStew::new);
+    public static final RegistryObject<Item> PDC_POINT = ITEMS.register("pdc_point", PdcPoint::new);
 
     /**
      * donate

@@ -39,7 +39,7 @@ public class AhogeBoomerangEntity extends ProjectileItemEntity {
     protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
-        if (!(entity instanceof PlayerEntity)) {
+        if (entity instanceof LivingEntity) {
             entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), 10.0f);
         }
     }
