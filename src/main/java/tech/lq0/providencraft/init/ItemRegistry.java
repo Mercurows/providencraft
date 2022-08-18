@@ -44,6 +44,7 @@ import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeSword;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
+import tech.lq0.providencraft.item.providencefirst.myanna.DarkElfCore;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
@@ -73,6 +74,8 @@ import tech.lq0.providencraft.item.providencethird.beni.ShuraChin;
 import tech.lq0.providencraft.item.providencethird.beni.Ume;
 import tech.lq0.providencraft.item.providencethird.hiru.HiruHead;
 import tech.lq0.providencraft.item.providencethird.hiru.HiruTentacles;
+import tech.lq0.providencraft.item.providencethird.leciel.LecielEarCoverts;
+import tech.lq0.providencraft.item.providencethird.leciel.ReinaFeather;
 import tech.lq0.providencraft.item.providencethird.leciel.ReinaWings;
 import tech.lq0.providencraft.item.providencethird.yuki.FoxIceCream;
 
@@ -110,6 +113,7 @@ public class ItemRegistry {
 
     //myanna
     public static final RegistryObject<Item> MOUNTAIN_DESTROYER = ITEMS.register("mountain_destroyer", MountainDestroyer::new);
+    public static final RegistryObject<Item> DARK_ELF_CORE = ITEMS.register("dark_elf_core", DarkElfCore::new);
 
     //haya
     public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
@@ -203,6 +207,8 @@ public class ItemRegistry {
 
     //leciel
     public static final RegistryObject<Item> REINA_WINGS = ITEMS.register("reina_wings", ReinaWings::new);
+    public static final RegistryObject<Item> REINA_FEATHER = ITEMS.register("reina_feather", ReinaFeather::new);
+    public static final RegistryObject<Item> LECIEL_EAR_COVERTS = ITEMS.register("leciel_ear_coverts", LecielEarCoverts::new);
 
     //yuki
     public static final RegistryObject<Item> FOX_ICE_CREAM = ITEMS.register("fox_ice_cream", FoxIceCream::new);
