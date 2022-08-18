@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.item.costume.first.usa.KRM_963_53;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolHelmet;
@@ -29,7 +30,9 @@ import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.DaifukuSyrup;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
+import tech.lq0.providencraft.item.providenceOI.shirako.MomoGun;
 import tech.lq0.providencraft.item.providenceOI.yyky.LunaticBow;
+import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
 import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
@@ -44,6 +47,8 @@ import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
+import tech.lq0.providencraft.item.providencefirst.usa.KurumiBoomerang;
+import tech.lq0.providencraft.item.providencefirst.usa.KurumiHalo;
 import tech.lq0.providencraft.item.providencefirst.usa.Plunger;
 import tech.lq0.providencraft.item.providencemagicros.chiram.*;
 import tech.lq0.providencraft.item.providencemagicros.haine.CloudKey;
@@ -99,6 +104,9 @@ public class ItemRegistry {
 
     //usa
     public static final RegistryObject<Item> PLUNGER = ITEMS.register("plunger", Plunger::new);
+    public static final RegistryObject<Item> KURUMI_BOOMERANG = ITEMS.register("kurumi_boomerang",  KurumiBoomerang::new);
+    public static final RegistryObject<Item> KURUMI_HALO = ITEMS.register("kurumi_halo", KurumiHalo::new);
+    public static final RegistryObject<Item> KRM_963_53 = ITEMS.register("krm_963_53", KRM_963_53::new);
 
     //myanna
     public static final RegistryObject<Item> MOUNTAIN_DESTROYER = ITEMS.register("mountain_destroyer", MountainDestroyer::new);
@@ -109,6 +117,7 @@ public class ItemRegistry {
 
     //akumaria
     public static final RegistryObject<Item> PLATE = ITEMS.register("plate", Plate::new);
+    public static final RegistryObject<Item> FLUFF_BALL =ITEMS.register("fluff_ball", FluffBall::new);
 
     //unia
     public static final RegistryObject<Item> TARO_ICE_CREAM = ITEMS.register("taro_ice_cream", TaroIceCream::new);
@@ -172,6 +181,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MOMO_DAIFUKU = ITEMS.register("momo_daifuku", MomoDaifuku::new);
     public static final RegistryObject<Item> FETUOZI = ITEMS.register("fetuozi", Fetuozi::new);
     public static final RegistryObject<Item> DAIFUKU_SYRUP = ITEMS.register("daifuku_syrup", DaifukuSyrup::new);
+    public static final RegistryObject<Item> MOMO_GUN = ITEMS.register("momo_gun", MomoGun::new);
 
     //yyky
     public static final RegistryObject<Item> LUNATIC_BOW = ITEMS.register("lunatic_bow", LunaticBow::new);
@@ -214,6 +224,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LITTLE_POTATO = ITEMS.register("little_potato", LittlePotato::new);
     public static final RegistryObject<Item> LOLLIPOP = ITEMS.register("lollipop", Lollipop::new);
     public static final RegistryObject<Item> ORANGE_TRACKER = ITEMS.register("orange_tracker", OrangeTracker::new);
+    public static final RegistryObject<Item> BLACK_EARPHONES = ITEMS.register("black_earphones", BlackEarphones::new);
 
     /**
      * costume
