@@ -11,8 +11,9 @@ import tech.lq0.providencraft.init.EntityRegistry;
 public class ClientEventHandler {
     @SubscribeEvent
     public static void onClientSetUpEvent(FMLClientSetupEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AHOGE_BOOMERANG_ENTITY.get(), RenderAhogeBoomerangEntity::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.PLUNGER_ENTITY.get(), RenderPlungerEntity::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.AHOGE_BOOMERANG_ENTITY.get(), AhogeBoomerangEntityRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.PLUNGER_ENTITY.get(), PlungerEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SEAT_ENTITY.get(), SeatEntityRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DAIFUKU_SYRUP_ENTITY.get(), DaifukuSyrupEntityRenderer::new);
     }
 }

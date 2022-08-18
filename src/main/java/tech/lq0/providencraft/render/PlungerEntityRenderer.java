@@ -17,11 +17,11 @@ import tech.lq0.providencraft.models.PlungerEntityModel;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-public class RenderPlungerEntity extends EntityRenderer<PlungerEntity> {
+public class PlungerEntityRenderer extends EntityRenderer<PlungerEntity> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(Utils.MOD_ID, "textures/entity/plunger_entity_texture.png");
     private final EntityModel<PlungerEntity> plungerEntityEntityModel;
 
-    public RenderPlungerEntity(EntityRendererManager manager) {
+    public PlungerEntityRenderer(EntityRendererManager manager) {
         super(manager);
         plungerEntityEntityModel = new PlungerEntityModel();
     }
