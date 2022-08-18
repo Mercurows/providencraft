@@ -275,6 +275,8 @@
   "item.providencraft.fluff_ball": "小毛毬",
   "item.providencraft.black_earphones": "黑听耳机",
   "item.providencraft.momo_gun": "毛毛枪",
+  "momo_gun_func": "右键可以发射大福糖浆，消耗1点耐久",
+  "momo_gun_des": "毛毛的夏日水枪，能把桃大福发射出去困住敌人",
 
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",

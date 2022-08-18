@@ -1,6 +1,8 @@
 package tech.lq0.providencraft.item.providenceOI.shirako;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
@@ -14,6 +16,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.entity.DaifukuSyrupEntity;
 import tech.lq0.providencraft.group.ModGroup;
 
 import javax.annotation.Nonnull;
@@ -53,5 +56,14 @@ public class DaifukuSyrup extends Item {
         tooltip.add((new TranslationTextComponent("daifuku_syrup_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("daifuku_syrup_des3")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
+    }
+
+    public DaifukuSyrupEntity createArrow(World p_200887_1_, ItemStack p_200887_2_, LivingEntity p_200887_3_) {
+        return new DaifukuSyrupEntity(p_200887_1_, p_200887_3_);
+    }
+
+    public boolean isInfinite(ItemStack stack, ItemStack bow, net.minecraft.entity.player.PlayerEntity player) {
+        int enchant = EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, bow);
+        return enchant > 0 && this.getClass() == DaifukuSyrup.class;
     }
 }
