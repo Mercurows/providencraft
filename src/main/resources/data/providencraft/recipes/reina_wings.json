@@ -2,18 +2,18 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "bab",
-    "pap",
-    "   "
+    "p p",
+    "p p"
   ],
   "key": {
     "a": {
       "item": "minecraft:iron_ingot"
     },
     "b": {
-      "item": "minecraft:white_wool"
+      "item": "minecraft:leather"
     },
     "p": {
-      "item": "minecraft:pink_wool"
+      "item": "providencraft:reina_feather"
     }
   },
   "result": {

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  x",
+    " a ",
+    "g  "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:pink_dye"
+    },
+    "a": {
+      "item": "minecraft:feather"
+    },
+    "g": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:reina_feather",
+    "count": 1
+  }
+}
