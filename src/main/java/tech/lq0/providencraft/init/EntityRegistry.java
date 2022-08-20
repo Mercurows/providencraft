@@ -27,4 +27,7 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<FluffBallEntity>> FLUFF_BALL_ENTITY =
             ENTITY_TYPES.register("fluff_ball_entity",
                     () -> EntityType.Builder.<FluffBallEntity>create(FluffBallEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("fluff_ball_entity"));
+    public static final RegistryObject<EntityType<KurumiBoomerangEntity>> KURUMI_BOOMERANG_ENTITY =
+            ENTITY_TYPES.register("kurumi_boomerang_entity",
+                    () -> EntityType.Builder.<KurumiBoomerangEntity>create(KurumiBoomerangEntity::new, EntityClassification.MISC).size(1.0f, 0.3f).build("kurumi_boomerang_entity"));
 }

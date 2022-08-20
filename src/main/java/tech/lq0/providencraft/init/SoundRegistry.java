@@ -19,4 +19,5 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> YYKY_SCREAM_3 = SOUNDS.register("yyky_scream_3", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "yyky_scream_3")));
     public static final RegistryObject<SoundEvent> YYKY_SCREAM_4 = SOUNDS.register("yyky_scream_4", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "yyky_scream_4")));
     public static final RegistryObject<SoundEvent> YYKY_SCREAM_5 = SOUNDS.register("yyky_scream_5", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "yyky_scream_5")));
+    public static final RegistryObject<SoundEvent> HOW_HOLD_BLOOD = SOUNDS.register("how_hold_blood", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "how_hold_blood")));
 }

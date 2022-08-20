@@ -88,5 +88,15 @@
         "stream": true
       }
     ]
+  },
+  "how_hold_blood": {
+    "subtitle": "how_hold_blood",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:how_hold_blood",
+        "stream": true
+      }
+    ]
   }
 }
