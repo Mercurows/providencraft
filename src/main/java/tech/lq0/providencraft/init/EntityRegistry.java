@@ -6,10 +6,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
-import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
-import tech.lq0.providencraft.entity.DaifukuSyrupEntity;
-import tech.lq0.providencraft.entity.PlungerEntity;
-import tech.lq0.providencraft.entity.SeatEntity;
+import tech.lq0.providencraft.entity.*;
 
 public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, Utils.MOD_ID);
@@ -27,4 +24,7 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<DaifukuSyrupEntity>> DAIFUKU_SYRUP_ENTITY =
             ENTITY_TYPES.register("daifuku_syrup_entity",
                     () -> EntityType.Builder.<DaifukuSyrupEntity>create(DaifukuSyrupEntity::new, EntityClassification.MISC).size(0.2f, 0.2f).build("daifuku_syrup_entity"));
+    public static final RegistryObject<EntityType<FluffBallEntity>> FLUFF_BALL_ENTITY =
+            ENTITY_TYPES.register("fluff_ball_entity",
+                    () -> EntityType.Builder.<FluffBallEntity>create(FluffBallEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("fluff_ball_entity"));
 }
