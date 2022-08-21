@@ -37,7 +37,13 @@ public class KurumiBoomerang extends Item {
     @ParametersAreNonnullByDefault
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
-        worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundRegistry.HOW_HOLD_BLOOD.get(), SoundCategory.NEUTRAL, 0.5F, 1.0F);
+        int random = (int)(Math.random() * 10 + 1);
+        if(random == 1){
+            worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundRegistry.WHY_NOT_DIE.get(), SoundCategory.NEUTRAL, 0.5F, 1.0F);
+        }else {
+            worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundRegistry.HOW_HOLD_BLOOD.get(), SoundCategory.NEUTRAL, 0.5F, 1.0F);
+        }
+
         if (!worldIn.isRemote()) {
             KurumiBoomerangEntity kurumiBoomerangEntity = new KurumiBoomerangEntity(worldIn, playerIn);
             kurumiBoomerangEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);

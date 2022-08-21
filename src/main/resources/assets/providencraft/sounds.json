@@ -98,5 +98,25 @@
         "stream": true
       }
     ]
+  },
+  "why_not_die": {
+    "subtitle": "why_not_die",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:why_not_die",
+        "stream": true
+      }
+    ]
+  },
+  "sorry": {
+    "subtitle": "sorry",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:sorry",
+        "stream": true
+      }
+    ]
   }
 }

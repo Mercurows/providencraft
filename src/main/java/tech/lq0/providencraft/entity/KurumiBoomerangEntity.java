@@ -4,6 +4,12 @@ import io.netty.buffer.Unpooled;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.HoglinEntity;
+import net.minecraft.entity.monster.ZoglinEntity;
+import net.minecraft.entity.monster.ZombifiedPiglinEntity;
+import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
+import net.minecraft.entity.monster.piglin.PiglinEntity;
+import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.network.IPacket;
@@ -39,7 +45,13 @@ public class KurumiBoomerangEntity extends ProjectileItemEntity {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity) {
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), 15.0f);
+            float damage = 1.0f;
+            if(entity instanceof PigEntity || entity instanceof PiglinEntity ||
+                    entity instanceof PiglinBruteEntity || entity instanceof ZombifiedPiglinEntity ||
+            entity instanceof HoglinEntity || entity instanceof ZoglinEntity){
+                damage = 15.0f;
+            }
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), damage);
         }
     }
 

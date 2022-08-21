@@ -277,6 +277,8 @@
   "fluff_ball_des1": "一个毛球，丢出去可以造成0点伤害",
   "fluff_ball_des2": "这是为什么呢？因为小毛毬屁用没有",
   "item.providencraft.black_earphones": "Black Listening Earphones",
+  "black_earphones_des1": "黑听人专用的耳机，甚至可以隐身",
+  "black_earphones_des2": "\"黑听人出来扣1\" ——柊真华",
   "item.providencraft.momo_gun": "Momo Gun",
   "momo_gun_func": "右键可以发射大福糖浆，消耗1点耐久",
   "momo_gun_des": "毛毛的夏日水枪，能把桃大福发射出去困住敌人",
@@ -289,6 +291,8 @@
   "entity.providencraft.kurumi_boomerang_entity": "Kurumi Boomerang",
   "entity.providencraft.fluff_ball_entity": "小毛毬",
   "how_hold_blood": "胡桃:好厚的血",
+  "why_not_die": "胡桃:怎么打不死他呀",
+  "sorry": "Reina: Sorry",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
