@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.item.blockitem.PointsStoreBlockItem;
 import tech.lq0.providencraft.item.costume.first.usa.KRM_963_53;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
@@ -25,7 +26,8 @@ import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.others.PdcPoint;
-import tech.lq0.providencraft.item.others.PorcelainThroneBlockItem;
+import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
+import tech.lq0.providencraft.item.providenceOI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.DaifukuSyrup;
 import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
@@ -192,6 +194,7 @@ public class ItemRegistry {
 
     //miya
     public static final RegistryObject<Item> TAIL_PEN = ITEMS.register("tail_pen", TailPen::new);
+    public static final RegistryObject<Item> JELLYFISH_SHELL = ITEMS.register("jellyfish_shell", JellyfishShell::new);
 
     /**
      * 3rd
@@ -261,4 +264,5 @@ public class ItemRegistry {
     public static final RegistryObject<Item> COMMUNICATION_TABLE = ITEMS.register("communication_table",
             () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.itemgroup)));
     public static final RegistryObject<Item> PORCELAIN_THRONE = ITEMS.register("porcelain_throne", PorcelainThroneBlockItem::new);
+    public static final RegistryObject<Item> POINTS_STORE = ITEMS.register("points_store", PointsStoreBlockItem::new);
 }

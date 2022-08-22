@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.item.others;
+package tech.lq0.providencraft.item.blockitem;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EquipmentSlotType;

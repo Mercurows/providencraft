@@ -84,6 +84,7 @@ public class BlackEarphones extends ArmorItem {
                     for(int q = -5; q <= 5 ; q++){
                         if(world.getBlockState(basePos.add(i, j ,q)).isIn(Blocks.JUKEBOX)) {
                             player.addPotionEffect(new EffectInstance(Effects.INVISIBILITY, 40, 0, true, false));
+                            player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 40, 1, true, false));
                         }
                     }
                 }

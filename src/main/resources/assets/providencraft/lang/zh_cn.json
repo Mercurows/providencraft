@@ -293,6 +293,10 @@
   "how_hold_blood": "胡桃:好厚的血",
   "why_not_die": "胡桃:怎么打不死他呀",
   "sorry": "怜奈:对不起",
+  "item.providencraft.jellyfish_shell": "水母外壳",
+  "item.providencraft.points_store": "积分商店",
+  "block.providencraft.points_store": "积分商店",
+  "points_store_des": "普罗维登的积分商店，马上就开放了",
 
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",
