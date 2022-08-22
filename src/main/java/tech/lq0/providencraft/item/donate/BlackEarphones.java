@@ -28,12 +28,10 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.BlackEarphonesModel;
-import tech.lq0.providencraft.models.OrangeTrackerModel;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -84,7 +82,7 @@ public class BlackEarphones extends ArmorItem {
             for(int i = -5; i <= 5; i++){
                 for(int j = -5; j <= 5; j++){
                     for(int q = -5; q <= 5 ; q++){
-                        if(world.getBlockState(basePos.add(i, j ,q)).isIn(Blocks.JUKEBOX)){
+                        if(world.getBlockState(basePos.add(i, j ,q)).isIn(Blocks.JUKEBOX)) {
                             player.addPotionEffect(new EffectInstance(Effects.INVISIBILITY, 40, 0, true, false));
                         }
                     }
