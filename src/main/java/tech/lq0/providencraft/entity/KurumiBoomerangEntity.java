@@ -10,11 +10,13 @@ import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
 import net.minecraft.entity.monster.piglin.PiglinEntity;
 import net.minecraft.entity.passive.PigEntity;
-import net.minecraft.entity.projectile.ProjectileItemEntity;
-import net.minecraft.item.Item;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -26,7 +28,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 
-public class KurumiBoomerangEntity extends ProjectileItemEntity {
+public class KurumiBoomerangEntity extends AbstractArrowEntity {
 
     public KurumiBoomerangEntity(EntityType<? extends KurumiBoomerangEntity> p_i50159_1_, World p_i50159_2_) {
         super(p_i50159_1_, p_i50159_2_);
@@ -58,15 +60,6 @@ public class KurumiBoomerangEntity extends ProjectileItemEntity {
     @ParametersAreNonnullByDefault
     protected void onImpact(RayTraceResult p_70227_1_) {
         super.onImpact(p_70227_1_);
-        if (!this.world.isRemote) {
-            this.remove();
-        }
-    }
-
-    @Override
-    @Nonnull
-    protected Item getDefaultItem() {
-        return ItemRegistry.RED_AHOGE_BOOMERANG.get().asItem();
     }
 
     @Override
@@ -80,5 +73,10 @@ public class KurumiBoomerangEntity extends ProjectileItemEntity {
         pack.writeUniqueId(getUniqueID());
 
         return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    @Override
+    protected ItemStack getArrowStack() {
+        return ItemRegistry.KURUMI_BOOMERANG.get().getDefaultInstance();
     }
 }
