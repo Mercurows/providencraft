@@ -16,7 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -78,5 +77,23 @@ public class KurumiBoomerangEntity extends AbstractArrowEntity {
     @Override
     protected ItemStack getArrowStack() {
         return ItemRegistry.KURUMI_BOOMERANG.get().getDefaultInstance();
+    }
+
+    @Override
+    public void onCollideWithPlayer(PlayerEntity entityIn) {
+        if (!this.world.isRemote && (this.inGround || this.getNoClip()) && this.arrowShake <= 0) {
+            boolean flag = this.pickupStatus == AbstractArrowEntity.PickupStatus.ALLOWED || this.pickupStatus == AbstractArrowEntity.PickupStatus.CREATIVE_ONLY && entityIn.abilities.isCreativeMode || this.getNoClip() && this.func_234616_v_().getUniqueID() == entityIn.getUniqueID();
+            if (this.pickupStatus == AbstractArrowEntity.PickupStatus.ALLOWED && !entityIn.inventory.addItemStackToInventory(this.getArrowStack())) {
+                flag = false;
+            }
+
+            if (flag) {
+                if(!entityIn.abilities.isCreativeMode){
+                    entityIn.onItemPickup(this, 1);
+                }
+                this.remove();
+            }
+
+        }
     }
 }

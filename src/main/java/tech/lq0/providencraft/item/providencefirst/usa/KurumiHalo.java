@@ -30,6 +30,6 @@ public class KurumiHalo extends ArmorItem {
     @Nullable
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
-        return Utils.MOD_ID + ":textures/entity/kurumi_boomerang_texture.png";
+        return Utils.MOD_ID + ":textures/models/armor/kurumi_halo_model_texture.png";
     }
 }
