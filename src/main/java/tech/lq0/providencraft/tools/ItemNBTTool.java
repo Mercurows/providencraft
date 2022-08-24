@@ -16,4 +16,12 @@ public final class ItemNBTTool {
     public static boolean getBoolean(ItemStack stack, String tag, boolean defaultExpected) {
         return verifyExistence(stack, tag) ? stack.getOrCreateTag().getBoolean(tag) : defaultExpected;
     }
+
+    public static void setFloat(ItemStack stack, String tag, float f){
+        stack.getOrCreateTag().putFloat(tag, f);
+    }
+
+    public static float getFloat(ItemStack stack, String tag, float f){
+        return verifyExistence(stack, tag) ? stack.getOrCreateTag().getFloat(tag) : f;
+    }
 }

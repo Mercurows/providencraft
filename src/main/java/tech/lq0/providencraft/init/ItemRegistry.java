@@ -29,10 +29,7 @@ import tech.lq0.providencraft.item.others.PdcPoint;
 import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.providenceOI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
-import tech.lq0.providencraft.item.providenceOI.shirako.DaifukuSyrup;
-import tech.lq0.providencraft.item.providenceOI.shirako.Fetuozi;
-import tech.lq0.providencraft.item.providenceOI.shirako.MomoDaifuku;
-import tech.lq0.providencraft.item.providenceOI.shirako.MomoGun;
+import tech.lq0.providencraft.item.providenceOI.shirako.*;
 import tech.lq0.providencraft.item.providenceOI.yyky.LunaticBow;
 import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
@@ -188,6 +185,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> FETUOZI = ITEMS.register("fetuozi", Fetuozi::new);
     public static final RegistryObject<Item> DAIFUKU_SYRUP = ITEMS.register("daifuku_syrup", DaifukuSyrup::new);
     public static final RegistryObject<Item> MOMO_GUN = ITEMS.register("momo_gun", MomoGun::new);
+    public static final RegistryObject<Item> MOMO_PHONE = ITEMS.register("momo_phone", MomoPhone::new);
 
     //yyky
     public static final RegistryObject<Item> LUNATIC_BOW = ITEMS.register("lunatic_bow", LunaticBow::new);

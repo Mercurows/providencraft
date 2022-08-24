@@ -88,9 +88,7 @@ public class KurumiBoomerangEntity extends AbstractArrowEntity {
             }
 
             if (flag) {
-                if(!entityIn.abilities.isCreativeMode){
-                    entityIn.onItemPickup(this, 1);
-                }
+                entityIn.onItemPickup(this, 1);
                 this.remove();
             }
 
