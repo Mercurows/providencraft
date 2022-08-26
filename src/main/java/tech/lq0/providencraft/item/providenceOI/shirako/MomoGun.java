@@ -60,7 +60,7 @@ public class MomoGun extends Item {
                     }
                 }
 
-                playerIn.getCooldownTracker().setCooldown(itemstack.getItem(), 20);
+                playerIn.getCooldownTracker().setCooldown(itemstack.getItem(), 8);
                 return new ActionResult<>(ActionResultType.SUCCESS, itemstack);
             }else {
                 return new ActionResult<>(ActionResultType.FAIL, itemstack);
