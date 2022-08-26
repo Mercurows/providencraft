@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "prg",
+    "pmg",
+    "pig"
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:purple_concrete"
+    },
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "r": {
+      "item": "minecraft:redstone_torch"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "m": {
+      "item": "providencraft:momo_daifuku"
+    }
+  },
+  "result": {
+    "item": "providencraft:momo_phone",
+    "count": 1
+  }
+}

@@ -66,20 +66,23 @@ public class MomoPhone extends Item {
                 playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), false);
                 return new ActionResult<>(ActionResultType.PASS, item);
             }else{
-                if(pos == null){
-                    playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), false);
-                }else if(item.getDamage() < item.getMaxDamage()){
+                if(item.getDamage() < item.getMaxDamage()){
                     if(worldIn.isThundering() && worldIn.canSeeSky(playerIn.getPosition())){
                         LightningBoltEntity lightningBoltEntity = EntityType.LIGHTNING_BOLT.create(worldIn);
                         assert lightningBoltEntity != null;
                         lightningBoltEntity.moveForced(Vector3d.copyCenteredHorizontally(playerIn.getPosition()));
                         worldIn.addEntity(lightningBoltEntity);
-                    }else {
-                        playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
-                        if (!playerIn.abilities.isCreativeMode) {
-                            item.setDamage(item.getDamage() + 1);
-                        }
                         playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
+                    }else {
+                        if(pos == null){
+                            playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), false);
+                        }else {
+                            playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
+                            if (!playerIn.abilities.isCreativeMode) {
+                                item.setDamage(item.getDamage() + 1);
+                            }
+                            playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
+                        }
                     }
                     return new ActionResult<>(ActionResultType.SUCCESS, item);
                 }
