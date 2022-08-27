@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.item.providenceOI.yyky;
+package tech.lq0.providencraft.item.providenceOI.sorayo;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
