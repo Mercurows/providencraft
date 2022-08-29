@@ -26,7 +26,7 @@ import java.util.UUID;
 
 public class YagiStaffCard extends Item {
     public YagiStaffCard() {
-        super(new Properties().maxStackSize(1).group(ModGroup.itemgroup).rarity(Rarity.RARE));
+        super(new Properties().maxStackSize(1).rarity(Rarity.RARE));
     }
 
     @OnlyIn(Dist.CLIENT)
