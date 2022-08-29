@@ -56,7 +56,7 @@ public class Holiness extends Effect {
             if(entity instanceof LivingEntity) {
                 LivingEntity entity1 = (LivingEntity) entity;
                 if (entity1.isEntityUndead()) {
-                    entity1.addPotionEffect(new EffectInstance(Effects.INSTANT_HEALTH, 10, level));
+                    entity1.addPotionEffect(new EffectInstance(Effects.INSTANT_HEALTH, 10, level, true ,false));
                     entity1.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 200, level));
                 }
             }

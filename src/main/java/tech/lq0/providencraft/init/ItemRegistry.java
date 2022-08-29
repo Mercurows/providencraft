@@ -48,6 +48,7 @@ import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
 import tech.lq0.providencraft.item.providencefirst.myanna.DarkElfCore;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
+import tech.lq0.providencraft.item.providencefirst.niina.BlueSmallBall;
 import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiBoomerang;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiHalo;
@@ -105,6 +106,7 @@ public class ItemRegistry {
 
     //niina
     public static final RegistryObject<Item> BANANA_MILK = ITEMS.register("banana_milk", BananaMilk::new);
+    public static final RegistryObject<Item> BLUE_SMALL_BALL = ITEMS.register("blue_small_ball", BlueSmallBall::new);
 
     //usa
     public static final RegistryObject<Item> PLUNGER = ITEMS.register("plunger", Plunger::new);
