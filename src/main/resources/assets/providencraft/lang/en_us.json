@@ -309,6 +309,11 @@
   "item.providencraft.fox_fairy_fan": "Fox Fairy Fan",
   "item.providencraft.blue_small_ball": "Blue Small Ball",
   "fox_fairy_fan_des": "九尾灵狐白雪葵的扇子，可以吹飞周围的生物",
+  "item.providencraft.unigiri": "Unigiri",
+  "unigiri_des1": "吃了就会变成妖怪的饭团？",
+  "unigiri_des2": "才没有那么神奇，只是海胆饭团而已",
+  "item.providencraft.enchanted_unigiri": "Enchanted Unigiri",
+  "enchanted_unigiri_des": "在妖精的祝福之下，蕴含着神奇的力量",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",

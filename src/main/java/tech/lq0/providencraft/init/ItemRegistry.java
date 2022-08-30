@@ -49,6 +49,8 @@ import tech.lq0.providencraft.item.providencefirst.myanna.DarkElfCore;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.niina.BlueSmallBall;
+import tech.lq0.providencraft.item.providencefirst.unia.EnchantedUnigiri;
+import tech.lq0.providencraft.item.providencefirst.unia.Unigiri;
 import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiBoomerang;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiHalo;
@@ -128,6 +130,8 @@ public class ItemRegistry {
 
     //unia
     public static final RegistryObject<Item> TARO_ICE_CREAM = ITEMS.register("taro_ice_cream", TaroIceCream::new);
+    public static final RegistryObject<Item> UNIGIRI = ITEMS.register("unigiri", Unigiri::new);
+    public static final RegistryObject<Item> ENCHANTED_UNIGIRI = ITEMS.register("enchanted_unigiri", EnchantedUnigiri::new);
 
     /**
      * 2nd
