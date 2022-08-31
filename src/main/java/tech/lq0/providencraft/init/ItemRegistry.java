@@ -82,6 +82,7 @@ import tech.lq0.providencraft.item.providencethird.leciel.LecielEarCoverts;
 import tech.lq0.providencraft.item.providencethird.leciel.ReinaFeather;
 import tech.lq0.providencraft.item.providencethird.leciel.ReinaWings;
 import tech.lq0.providencraft.item.providencethird.yuki.FoxIceCream;
+import tech.lq0.providencraft.item.providencethird.yuki.FoxPudding;
 
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Utils.MOD_ID);
@@ -227,6 +228,7 @@ public class ItemRegistry {
 
     //yuki
     public static final RegistryObject<Item> FOX_ICE_CREAM = ITEMS.register("fox_ice_cream", FoxIceCream::new);
+    public static final RegistryObject<Item> FOX_PUDDING = ITEMS.register("fox_pudding", FoxPudding::new);
 
 
     /**
