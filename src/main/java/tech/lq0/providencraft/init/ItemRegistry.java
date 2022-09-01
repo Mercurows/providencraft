@@ -45,6 +45,7 @@ import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeSword;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
+import tech.lq0.providencraft.item.providencefirst.mitsuki.GoodManCard;
 import tech.lq0.providencraft.item.providencefirst.myanna.DarkElfCore;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
@@ -67,11 +68,13 @@ import tech.lq0.providencraft.item.providencemagicros.keroro.FrogLeg;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providencesecond.lecia.ElectricHorn;
 import tech.lq0.providencraft.item.providencesecond.lecia.MechanicalHorn;
+import tech.lq0.providencraft.item.providencesecond.lecia.MoonlightAmulet;
 import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigMoeOnePotion;
 import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
 import tech.lq0.providencraft.item.providencesecond.mojuko.YagiStaffCard;
 import tech.lq0.providencraft.item.providencesecond.mumu.AyeletMask;
+import tech.lq0.providencraft.item.providencesecond.mumu.MumuSteak;
 import tech.lq0.providencraft.item.providencesecond.satou.SatouKnife;
 import tech.lq0.providencraft.item.providencethird.beni.LavaCake;
 import tech.lq0.providencraft.item.providencethird.beni.ShuraChin;
@@ -106,6 +109,7 @@ public class ItemRegistry {
 
     //mitsuki
     public static final RegistryObject<Item> CROWN = ITEMS.register("crown", Crown::new);
+    public static final RegistryObject<Item> GOOD_MAN_CARD = ITEMS.register("good_man_card", GoodManCard::new);
 
     //niina
     public static final RegistryObject<Item> BANANA_MILK = ITEMS.register("banana_milk", BananaMilk::new);
@@ -140,6 +144,7 @@ public class ItemRegistry {
     //lucia
     public static final RegistryObject<Item> LUCIA_RICE_CAKE = ITEMS.register("lucia_rice_cake", LuciaRiceCake::new);
     public static final RegistryObject<Item> BIG_MOE_ONE_POTION = ITEMS.register("big_moe_one_potion", BigMoeOnePotion::new);
+    public static final RegistryObject<Item> MOONLIGHT_AMULET = ITEMS.register("moonlight_amulet", MoonlightAmulet::new);
 
     //louise
     public static final RegistryObject<Item> MAGIC_BOOK = ITEMS.register("magic_book", MagicBook::new);
@@ -160,6 +165,7 @@ public class ItemRegistry {
 
     //mumu
     public static final RegistryObject<Item> AYELET_MASK = ITEMS.register("ayelet_mask", AyeletMask::new);
+    public static final RegistryObject<Item> MUMU_STEAK = ITEMS.register("mumu_steak", MumuSteak::new);
 
     /**
      * magicros
