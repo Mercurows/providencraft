@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " p ",
+    "php",
+    "wsw"
+  ],
+  "key": {
+    "h": {
+      "item": "minecraft:pufferfish"
+    },
+    "p": {
+      "item": "minecraft:purple_dye"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    },
+    "s": {
+      "item": "minecraft:dried_kelp"
+    }
+  },
+  "result": {
+    "item": "providencraft:unigiri",
+    "count": 1
+  }
+}

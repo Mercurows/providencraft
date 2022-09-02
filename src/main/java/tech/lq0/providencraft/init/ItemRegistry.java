@@ -37,6 +37,7 @@ import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
 import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
+import tech.lq0.providencraft.item.providencefirst.haya.HayaSword;
 import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
 import tech.lq0.providencraft.item.providencefirst.madoka.RedAhoge;
 import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeBoomerang;
@@ -128,6 +129,7 @@ public class ItemRegistry {
     //haya
     public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
     public static final RegistryObject<Item> BIG_SPOON = ITEMS.register("big_spoon", BigSpoon::new);
+    public static final RegistryObject<Item> HAYA_SWORD = ITEMS.register("haya_sword", HayaSword::new);
 
     //akumaria
     public static final RegistryObject<Item> PLATE = ITEMS.register("plate", Plate::new);

@@ -4,6 +4,8 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -17,7 +19,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MumuSteak extends Item {
-    private static final Food food = (new Food.Builder()).saturation(12.0f).hunger(9).build();
+    private static final Food food = (new Food.Builder()).saturation(12.0f).hunger(9).
+            effect(new EffectInstance(Effects.HEALTH_BOOST, 600,1), 1.0F).build();
 
     public MumuSteak(){
         super(new Properties().group(ModGroup.itemgroup).food(food));

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " p ",
+    "rhr",
+    "wpw"
+  ],
+  "key": {
+    "h": {
+      "item": "providencraft:unigiri"
+    },
+    "p": {
+      "item": "minecraft:purple_dye"
+    },
+    "w": {
+      "item": "minecraft:chorus_fruit"
+    },
+    "r": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": {
+    "item": "providencraft:enchanted_unigiri",
+    "count": 1
+  }
+}
