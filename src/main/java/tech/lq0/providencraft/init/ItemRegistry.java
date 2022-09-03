@@ -22,6 +22,8 @@ import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
 import tech.lq0.providencraft.item.donate.*;
+import tech.lq0.providencraft.item.material.GNSouls;
+import tech.lq0.providencraft.item.material.GNStar;
 import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
@@ -48,6 +50,7 @@ import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.GoodManCard;
 import tech.lq0.providencraft.item.providencefirst.myanna.DarkElfCore;
+import tech.lq0.providencraft.item.providencefirst.myanna.Drill;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.niina.BlueSmallBall;
@@ -125,6 +128,7 @@ public class ItemRegistry {
     //myanna
     public static final RegistryObject<Item> MOUNTAIN_DESTROYER = ITEMS.register("mountain_destroyer", MountainDestroyer::new);
     public static final RegistryObject<Item> DARK_ELF_CORE = ITEMS.register("dark_elf_core", DarkElfCore::new);
+    public static final RegistryObject<Item> DRILL = ITEMS.register("drill", Drill::new);
 
     //haya
     public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
@@ -277,6 +281,8 @@ public class ItemRegistry {
      * material
      */
     public static final RegistryObject<Item> IDOL_CLOTH = ITEMS.register("idol_cloth", IdolCloth::new);
+    public static final RegistryObject<Item> GN_SOUL = ITEMS.register("gn_souls", GNSouls::new);
+    public static final RegistryObject<Item> GN_STAR = ITEMS.register("gn_star", GNStar::new);
 
     //BLOCKS
     public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " n ",
+    "npn",
+    "ada"
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "providencraft:drill",
+    "count": 1
+  }
+}

@@ -1,19 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " b ",
+    " d ",
     "aca",
-    " a "
+    "oro"
   ],
   "key": {
     "a": {
-      "item": "minecraft:netherite_ingot"
+      "item": "minecraft:iron_ingot"
     },
-    "b": {
-      "item": "minecraft:iron_block"
+    "r": {
+      "item": "minecraft:redstone"
     },
     "c": {
-      "item": "minecraft:diamond_block"
+      "item": "providencraft:dark_elf_core"
+    },
+    "d": {
+      "item": "providencraft:drill"
+    },
+    "o": {
+      "item": "minecraft:obsidian"
     }
   },
   "result": {

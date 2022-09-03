@@ -322,6 +322,10 @@
   "item.providencraft.moonlight_amulet": "Amulet of Moonlight",
   "item.providencraft.good_man_card": "Good Man Card",
   "item.providencraft.haya_sword": "Haya Sword",
+  "item.providencraft.gn_souls": "GN Souls",
+  "item.providencraft.gn_star": "GN Star",
+  "item.providencraft.drill": "Drill",
+  "drill_des": "一个大钻头，是合成终极挖山机器的材料",
 
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
