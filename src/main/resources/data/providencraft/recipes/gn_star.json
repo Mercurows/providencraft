@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xax",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "providencraft:gn_souls"
+    },
+    "a": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "providencraft:gn_star",
+    "count": 1
+  }
+}

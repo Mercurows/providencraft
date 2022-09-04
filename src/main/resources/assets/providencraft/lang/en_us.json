@@ -323,7 +323,11 @@
   "item.providencraft.good_man_card": "Good Man Card",
   "item.providencraft.haya_sword": "Haya Sword",
   "item.providencraft.gn_souls": "GN Souls",
+  "gn_souls_des1": "蕴含神秘力量的粉红色灵魂",
+  "gn_souls_des2": "在GN之力的作用下发出了蓝色的微光",
   "item.providencraft.gn_star": "GN Star",
+  "gn_star_des1": "被注入GN之力的下界之星",
+  "gn_star_des2": "粉色的外表下，发出了蓝色的光芒",
   "item.providencraft.drill": "Drill",
   "drill_des": "一个大钻头，是合成终极挖山机器的材料",
 
