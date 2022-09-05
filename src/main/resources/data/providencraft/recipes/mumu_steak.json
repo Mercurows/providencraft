@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " w ",
+    " g ",
+    "sss"
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:red_wool"
+    },
+    "g": {
+      "item": "minecraft:stick"
+    },
+    "s": {
+      "item": "minecraft:cooked_beef"
+    }
+  },
+  "result": {
+    "item": "providencraft:mumu_steak",
+    "count": 2
+  }
+}

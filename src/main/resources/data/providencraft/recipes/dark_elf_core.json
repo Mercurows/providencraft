@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gcg",
+    "pep",
+    "gcg"
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "p": {
+      "item": "minecraft:purple_dye"
+    },
+    "c": {
+      "item": "minecraft:coal"
+    },
+    "e": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result": {
+    "item": "providencraft:dark_elf_core",
+    "count": 1
+  }
+}

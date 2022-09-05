@@ -23,6 +23,7 @@ import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.GNSouls;
+import tech.lq0.providencraft.item.material.GNSpirit;
 import tech.lq0.providencraft.item.material.GNStar;
 import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
@@ -282,6 +283,7 @@ public class ItemRegistry {
      */
     public static final RegistryObject<Item> IDOL_CLOTH = ITEMS.register("idol_cloth", IdolCloth::new);
     public static final RegistryObject<Item> GN_SOUL = ITEMS.register("gn_souls", GNSouls::new);
+    public static final RegistryObject<Item> GN_SPIRIT = ITEMS.register("gn_spirit", GNSpirit::new);
     public static final RegistryObject<Item> GN_STAR = ITEMS.register("gn_star", GNStar::new);
 
     //BLOCKS

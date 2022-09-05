@@ -2,12 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "xxx",
-    "xax",
-    "xxx"
+    "xay",
+    "yyy"
   ],
   "key": {
     "x": {
       "item": "providencraft:gn_souls"
+    },
+    "y": {
+      "item": "providencraft:gn_spirit"
     },
     "a": {
       "item": "minecraft:nether_star"
