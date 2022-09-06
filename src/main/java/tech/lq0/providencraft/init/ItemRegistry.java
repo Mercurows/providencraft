@@ -31,7 +31,7 @@ import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.others.PdcPoint;
 import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
-import tech.lq0.providencraft.item.providenceOI.miya.JellyfishShell;
+import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.*;
 import tech.lq0.providencraft.item.providenceOI.shirayuki.FoxFairyFan;
@@ -53,6 +53,7 @@ import tech.lq0.providencraft.item.providencefirst.mitsuki.GoodManCard;
 import tech.lq0.providencraft.item.providencefirst.myanna.DarkElfCore;
 import tech.lq0.providencraft.item.providencefirst.myanna.Drill;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
+import tech.lq0.providencraft.item.providencefirst.myanna.Schedule;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.niina.BlueSmallBall;
 import tech.lq0.providencraft.item.providencefirst.unia.EnchantedUnigiri;
@@ -130,6 +131,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MOUNTAIN_DESTROYER = ITEMS.register("mountain_destroyer", MountainDestroyer::new);
     public static final RegistryObject<Item> DARK_ELF_CORE = ITEMS.register("dark_elf_core", DarkElfCore::new);
     public static final RegistryObject<Item> DRILL = ITEMS.register("drill", Drill::new);
+    public static final RegistryObject<Item> SCHEDULE = ITEMS.register("schedule", Schedule::new);
 
     //haya
     public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
