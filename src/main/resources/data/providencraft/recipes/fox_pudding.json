@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "ses",
+    " m "
+  ],
+  "key": {
+    "e": {
+      "item": "minecraft:egg"
+    },
+    "b": {
+      "item": "minecraft:snowball"
+    },
+    "s": {
+      "item": "minecraft:sugar"
+    },
+    "m": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "providencraft:fox_pudding",
+    "count": 2
+  }
+}

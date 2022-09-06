@@ -42,10 +42,7 @@ import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
 import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
 import tech.lq0.providencraft.item.providencefirst.haya.HayaSword;
 import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhoge;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeBoomerang;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeHelmet;
-import tech.lq0.providencraft.item.providencefirst.madoka.RedAhogeSword;
+import tech.lq0.providencraft.item.providencefirst.madoka.*;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
@@ -72,9 +69,10 @@ import tech.lq0.providencraft.item.providencemagicros.hoshimiya.SuccubusTail;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogCrown;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogLeg;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
+import tech.lq0.providencraft.item.providencesecond.lecia.DuelWaterGun;
 import tech.lq0.providencraft.item.providencesecond.lecia.ElectricHorn;
 import tech.lq0.providencraft.item.providencesecond.lecia.MechanicalHorn;
-import tech.lq0.providencraft.item.providencesecond.lecia.MoonlightAmulet;
+import tech.lq0.providencraft.item.providencesecond.lucia.MoonlightAmulet;
 import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigMoeOnePotion;
 import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
@@ -105,6 +103,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> RED_AHOGE_SWORD = ITEMS.register("red_ahoge_sword", RedAhogeSword::new);
     public static final RegistryObject<Item> RED_AHOGE_BOOMERANG = ITEMS.register("red_ahoge_boomerang", RedAhogeBoomerang::new);
     public static final RegistryObject<Item> RED_AHOGE_HELMET = ITEMS.register("red_ahoge_helmet", RedAhogeHelmet::new);
+    public static final RegistryObject<Item> PEACH_BEACH = ITEMS.register("peach_beach", PeachBeach::new);
 
     //ayelet
     public static final RegistryObject<Item> CRYSTAL_HORN = ITEMS.register("crystal_horn", CrystalHorn::new);
@@ -156,11 +155,12 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MOONLIGHT_AMULET = ITEMS.register("moonlight_amulet", MoonlightAmulet::new);
 
     //louise
+    public static final RegistryObject<Item> WHITE_AHOGE = ITEMS.register("white_ahoge", WhiteAhoge::new);
+    public static final RegistryObject<Item> WHITE_DOUBLE_AHOGE = ITEMS.register("white_double_ahoge", WhiteDoubleAhoge::new);
     public static final RegistryObject<Item> MAGIC_BOOK = ITEMS.register("magic_book", MagicBook::new);
     public static final RegistryObject<Item> MAGIC_BOOK_MYANNA = ITEMS.register("magic_book_myanna", MagicBookMyanna::new);
     public static final RegistryObject<Item> MAGIC_BOOK_MYANNA_PLUS = ITEMS.register("magic_book_myanna_plus", MagicBookMyannaPlus::new);
-    public static final RegistryObject<Item> WHITE_AHOGE = ITEMS.register("white_ahoge", WhiteAhoge::new);
-    public static final RegistryObject<Item> WHITE_DOUBLE_AHOGE = ITEMS.register("white_double_ahoge", WhiteDoubleAhoge::new);
+    public static final RegistryObject<Item> MAGIC_BOOK_THROW = ITEMS.register("magic_book_throw", MagicBookThrow::new);
 
     //mojuko
     public static final RegistryObject<Item> YAGI_STAFF_CARD = ITEMS.register("yagi_staff_card", YagiStaffCard::new);
@@ -168,6 +168,7 @@ public class ItemRegistry {
     //lecia
     public static final RegistryObject<Item> ELECTRIC_HORN = ITEMS.register("electric_horn", ElectricHorn::new);
     public static final RegistryObject<Item> MECHANICAL_HORN = ITEMS.register("mechanical_horn", MechanicalHorn::new);
+    public static final RegistryObject<Item> DUEL_WATER_GUN = ITEMS.register("duel_water_gun", DuelWaterGun::new);
 
     //satou
     public static final RegistryObject<Item> SATOU_KNIFE = ITEMS.register("satou_knife", SatouKnife::new);

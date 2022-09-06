@@ -17,7 +17,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class FoxPudding extends Item {
-    private static final Food food = (new Food.Builder()).saturation(6.0f).hunger(8).build();
+    private static final Food food = (new Food.Builder()).saturation(6.0f).hunger(6).fastToEat().build();
 
     public FoxPudding(){
         super(new Properties().food(food).group(ModGroup.itemgroup));
