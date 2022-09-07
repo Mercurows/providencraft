@@ -118,5 +118,15 @@
         "stream": true
       }
     ]
+  },
+  "baby_meow": {
+    "subtitle": "baby_meow",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:baby_meow",
+        "stream": true
+      }
+    ]
   }
 }
