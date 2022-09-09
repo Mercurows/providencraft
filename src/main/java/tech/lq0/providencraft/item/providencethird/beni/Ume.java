@@ -26,6 +26,8 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -98,6 +100,6 @@ public class Ume extends SwordItem {
         tooltip.add((new TranslationTextComponent("ume_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("ume_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("ume_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
-        tooltip.add((new TranslationTextComponent("description_third")).mergeStyle(TextFormatting.DARK_AQUA).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.BENI);
     }
 }

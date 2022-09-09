@@ -22,6 +22,8 @@ import net.minecraftforge.common.ForgeMod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -68,6 +70,6 @@ public class GravityRestraintDevice extends ArmorItem {
         tooltip.add((new TranslationTextComponent("grd_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("grd_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("grd_des2")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.AYU);
     }
 }

@@ -24,6 +24,8 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.models.bakedModel.KurumiBoomerangBakedModel;
 import tech.lq0.providencraft.render.tile.KurumiBoomerangTileEntityRenderer;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -41,7 +43,7 @@ public class KurumiBoomerang extends Item {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("kurumi_boomerang_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("description_zero")).mergeStyle(TextFormatting.LIGHT_PURPLE).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.USA);
     }
 
     @Override

@@ -36,6 +36,8 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.HiruTentaclesModel;
 import tech.lq0.providencraft.particle.TentacleParticleData;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -113,7 +115,7 @@ public class HiruTentacles extends ArmorItem {
         tooltip.add((new TranslationTextComponent("hiru_tentacles_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("hiru_tentacles_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("hiru_tentacles_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
-        tooltip.add((new TranslationTextComponent("description_third")).mergeStyle(TextFormatting.DARK_AQUA).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.HIRU);
     }
 
     @Override

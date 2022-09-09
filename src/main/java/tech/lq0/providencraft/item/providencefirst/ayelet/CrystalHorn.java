@@ -32,6 +32,8 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.CrystalHornModel;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
 import tech.lq0.providencraft.tools.ItemNBTTool;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -101,7 +103,7 @@ public class CrystalHorn extends ArmorItem {
         tooltip.add((new TranslationTextComponent("crystal_horn_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crystal_horn_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crystal_horn_des3")).mergeStyle(TextFormatting.RED));
-        tooltip.add((new TranslationTextComponent("description_first")).mergeStyle(TextFormatting.YELLOW).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.AYELET);
     }
 
     //对牛特攻

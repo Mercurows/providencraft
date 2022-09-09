@@ -30,6 +30,8 @@ import tech.lq0.providencraft.init.AttributeRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.AyeletMaskModel;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -60,7 +62,7 @@ public class AyeletMask extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("ayelet_mask_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("ayelet_mask_des2")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.MUMU);
     }
 
     @Override

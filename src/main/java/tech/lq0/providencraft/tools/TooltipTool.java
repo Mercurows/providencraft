@@ -17,32 +17,32 @@ public class TooltipTool {
         addHideText(tooltip, new TranslationTextComponent("liver").mergeStyle(TextFormatting.WHITE));
         addHideText(tooltip, new TranslationTextComponent(liver.getName()).mergeStyle(Style.EMPTY.setColor(Color.fromHex(liver.getColor()))));
         String gen = liver.getGen();
-        TextFormatting textFormatting = TextFormatting.RESET;
+        String bgColor = "#FFFFFF";
         switch (gen){
             case "zero":
-                textFormatting = TextFormatting.LIGHT_PURPLE;
+                bgColor = "#FF63A7";
                 break;
             case "first":
-                textFormatting = TextFormatting.YELLOW;
+                bgColor = "#D44448";
                 break;
             case "second":
-                textFormatting = TextFormatting.BLUE;
+                bgColor = "#6CBE96";
                 break;
             case "magicros":
-                textFormatting = TextFormatting.GREEN;
+                bgColor = "#B4DDFF";
                 break;
             case "third":
-                textFormatting = TextFormatting.DARK_AQUA;
+                bgColor = "#0076FE";
                 break;
             case "poi":
-                textFormatting = TextFormatting.DARK_RED;
+                bgColor = "#F9F0D8";
                 break;
         }
         if(liver.getName().equals("maria") || liver.getName().equals("mojuko")){
-            addHideText(tooltip, new TranslationTextComponent("description_" + gen).mergeStyle(textFormatting).
+            addHideText(tooltip, new TranslationTextComponent("description_" + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).
                     mergeStyle(TextFormatting.BOLD).mergeStyle(TextFormatting.STRIKETHROUGH));
         }else {
-            addHideText(tooltip, new TranslationTextComponent("description_" + gen).mergeStyle(textFormatting).mergeStyle(TextFormatting.BOLD));
+            addHideText(tooltip, new TranslationTextComponent("description_" + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).mergeStyle(TextFormatting.BOLD));
         }
     }
 }

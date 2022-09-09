@@ -20,6 +20,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.init.SoundRegistry;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -61,6 +63,6 @@ public class MagicBookMyannaPlus extends Item {
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_func1")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("magic_book_myanna_plus_func2")).mergeStyle(TextFormatting.RED));
-        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.LOUISE);
     }
 }

@@ -18,6 +18,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -68,6 +70,6 @@ public class BigMoeOnePotion extends Item {
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_warn")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
-        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.LUCIA);
     }
 }
