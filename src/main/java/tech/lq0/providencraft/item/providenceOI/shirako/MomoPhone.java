@@ -20,6 +20,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -97,6 +99,6 @@ public class MomoPhone extends Item {
         tooltip.add((new TranslationTextComponent("momo_phone_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("momo_phone_des")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("momo_phone_warn")).mergeStyle(TextFormatting.RED));
-        tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 }

@@ -18,12 +18,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.RenderTooltipEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,6 +31,8 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.ElectricHornModel;
 import tech.lq0.providencraft.tools.ItemNBTTool;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -66,7 +67,7 @@ public class ElectricHorn extends ArmorItem {
         tooltip.add((new TranslationTextComponent("electric_horn_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("electric_horn_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("electric_horn_warn")).mergeStyle(TextFormatting.RED));
-        tooltip.add((new TranslationTextComponent("description_second")).mergeStyle(TextFormatting.BLUE).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.LECIA);
     }
 
     @Override

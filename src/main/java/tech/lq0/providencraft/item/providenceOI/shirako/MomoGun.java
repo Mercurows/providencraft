@@ -18,6 +18,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.DaifukuSyrupEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -96,6 +98,6 @@ public class MomoGun extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("momo_gun_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("momo_gun_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 }

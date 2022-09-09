@@ -15,6 +15,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -34,7 +36,7 @@ public class MomoDaifuku extends Item {
         tooltip.add((new TranslationTextComponent("momo_daifuku_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("momo_daifuku_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("momo_daifuku_warn")).mergeStyle(TextFormatting.RED));
-        tooltip.add((new TranslationTextComponent("description_poi")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 
     @Override

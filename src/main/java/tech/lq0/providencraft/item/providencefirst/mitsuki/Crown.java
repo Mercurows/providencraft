@@ -11,9 +11,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -24,6 +22,8 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.CrownModel;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -53,7 +53,7 @@ public class Crown extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("crown_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("crown_des2")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("description_zero")).mergeStyle(TextFormatting.LIGHT_PURPLE).mergeStyle(TextFormatting.BOLD));
+        TooltipTool.addLiverInfo(tooltip, Livers.MITSUKI);
     }
 
     @SubscribeEvent
