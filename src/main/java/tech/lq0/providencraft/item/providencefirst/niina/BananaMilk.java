@@ -41,5 +41,4 @@ public class BananaMilk extends Item {
         tooltip.add((new TranslationTextComponent("banana_milk_des2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.NIINA);
     }
-
 }

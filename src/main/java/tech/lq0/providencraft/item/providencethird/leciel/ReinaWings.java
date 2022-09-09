@@ -81,6 +81,7 @@ public class ReinaWings extends ArmorItem {
         return map;
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {

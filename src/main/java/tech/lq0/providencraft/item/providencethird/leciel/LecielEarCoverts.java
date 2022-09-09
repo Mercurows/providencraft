@@ -61,6 +61,7 @@ public class LecielEarCoverts extends ArmorItem {
         return Utils.MOD_ID + ":textures/models/armor/leciel_ear_coverts_texture.png";
     }
 
+    @OnlyIn(Dist.CLIENT)
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
