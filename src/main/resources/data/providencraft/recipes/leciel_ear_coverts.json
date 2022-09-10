@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  f",
+    "w w",
+    "r r"
+  ],
+  "key": {
+    "w": {
+      "item": "minecraft:white_wool"
+    },
+    "r": {
+      "item": "providencraft:reina_feather"
+    },
+    "f": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "providencraft:leciel_ear_coverts",
+    "count": 1
+  }
+}
