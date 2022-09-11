@@ -328,6 +328,7 @@
   "item.providencraft.mumu_steak": "牟牟牛排",
   "mumu_steak_des": "普罗维登精制牟牟牛排，A5品质，值得选购",
   "item.providencraft.moonlight_amulet": "月光护符",
+  "moonlight_amulet_des": "狼王的月光护符，在夜晚会给予佩戴者祝福",
   "item.providencraft.good_man_card": "好人卡",
   "item.providencraft.haya_sword": "花剑",
   "item.providencraft.gn_souls": "GN之魂",
@@ -349,6 +350,8 @@
   "item.providencraft.duel_water_gun": "决斗盘水枪",
   "baby_meow": "宝贝喵",
   "item.providencraft.magic_mirror": "魔镜",
+  "magic_mirror_des1": "真理小姐用于连接现实与魔法世界的镜子",
+  "magic_mirror_des2": "可以反转使用者身上的部分状态效果",
 
   "liver": "所属Liver:",
   "mitsuki": "神奈满月",
