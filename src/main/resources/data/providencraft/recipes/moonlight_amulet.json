@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  g",
+    "rgg",
+    "ggl"
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "r": {
+      "item": "providencraft:red_ahoge"
+    },
+    "l": {
+      "item": "providencraft:lucia_rice_cake"
+    }
+  },
+  "result": {
+    "item": "providencraft:moonlight_amulet",
+    "count": 1
+  }
+}
