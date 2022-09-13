@@ -39,6 +39,7 @@ import tech.lq0.providencraft.item.providenceOI.sorayo.LunaticBow;
 import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
+import tech.lq0.providencraft.item.providencefirst.ayelet.SleepRoulette;
 import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
 import tech.lq0.providencraft.item.providencefirst.haya.HayaSword;
 import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
@@ -108,6 +109,7 @@ public class ItemRegistry {
 
     //ayelet
     public static final RegistryObject<Item> CRYSTAL_HORN = ITEMS.register("crystal_horn", CrystalHorn::new);
+    public static final RegistryObject<Item> SLEEP_ROULETTE = ITEMS.register("sleep_roulette", SleepRoulette::new);
 
     //mari
     public static final RegistryObject<Item> MACHETE = ITEMS.register("machete", Machete::new);
