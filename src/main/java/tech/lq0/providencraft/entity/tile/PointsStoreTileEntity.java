@@ -2,21 +2,26 @@ package tech.lq0.providencraft.entity.tile;
 
 import net.minecraft.entity.merchant.IMerchant;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.container.MerchantContainer;
+import net.minecraft.inventory.container.SimpleNamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.item.MerchantOffers;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.gui.PointsStoreContainer;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.init.TileEntityRegistry;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
+import java.util.OptionalInt;
 
 public class PointsStoreTileEntity extends TileEntity implements IMerchant {
     PlayerEntity customer = null;
@@ -85,6 +90,18 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant {
     @Override
     public World getWorld() {
         return world;
+    }
+
+    @Override
+    public void openMerchantContainer(PlayerEntity player, ITextComponent displayName, int level) {
+        OptionalInt optionalint = player.openContainer(new SimpleNamedContainerProvider((id, playerInventory, player2)
+                -> new PointsStoreContainer(id, playerInventory, this), displayName));
+        if (optionalint.isPresent()) {
+            MerchantOffers merchantoffers = this.getOffers();
+            if (!merchantoffers.isEmpty()) {
+                player.openMerchantContainer(optionalint.getAsInt(), merchantoffers, level, this.getXp(), this.hasXPBar(), this.canRestockTrades());
+            }
+        }
     }
 
     public void openGui(PlayerEntity player) {
