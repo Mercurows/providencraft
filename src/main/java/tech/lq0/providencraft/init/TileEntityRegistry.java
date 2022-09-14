@@ -1,0 +1,17 @@
+package tech.lq0.providencraft.init;
+
+import net.minecraft.tileentity.TileEntityType;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import tech.lq0.providencraft.Utils;
+import tech.lq0.providencraft.entity.tile.PointsStoreTileEntity;
+
+public class TileEntityRegistry {
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Utils.MOD_ID);
+
+    public static final RegistryObject<TileEntityType<PointsStoreTileEntity>> POINTS_STORE =
+            TILE_ENTITY_TYPES.register("points_store",
+                    () -> TileEntityType.Builder.create(PointsStoreTileEntity::new, BlockRegistry.POINTS_STORE.get()).build(null));
+
+}
