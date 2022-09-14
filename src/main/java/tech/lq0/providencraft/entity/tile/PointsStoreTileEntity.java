@@ -6,8 +6,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.item.MerchantOffers;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.init.ItemRegistry;
@@ -79,6 +81,12 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant {
         return null;
     }
 
+    @Nullable
+    @Override
+    public World getWorld() {
+        return world;
+    }
+
     public void openGui(PlayerEntity player) {
         setCustomer(player);
         TranslationTextComponent name = new TranslationTextComponent("block.providencraft.points_store");
@@ -91,8 +99,9 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant {
     }
 
     private static final MerchantOffer[] offers = {
-            new MerchantOffer(getPoints(35), ItemRegistry.FLUFF_BALL.get().getDefaultInstance(), 64, 0, 0),
-            new MerchantOffer(getPoints(1), ItemRegistry.GN_SOUL.get().getDefaultInstance(), 64,0,0)
+            new MerchantOffer(getPoints(38), getGoods(ItemRegistry.FLUFF_BALL.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(1), getGoods(ItemRegistry.GN_SOUL.get(), 2), 64,0,0),
+            new MerchantOffer(getPoints(64), getPoints(64), getGoods(ItemRegistry.FETUOZI.get(), 1), 64, 0, 0)
     };
 
     private static ItemStack getPoints(int count){
@@ -101,5 +110,13 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant {
             points.grow(count - 1);
         }
         return points;
+    }
+
+    private static ItemStack getGoods(IItemProvider item, int count){
+        ItemStack goods = new ItemStack(item);
+        if(count > 1) {
+            goods.grow(count - 1);
+        }
+        return goods;
     }
 }
