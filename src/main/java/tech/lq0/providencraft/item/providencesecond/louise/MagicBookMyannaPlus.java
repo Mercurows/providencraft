@@ -46,7 +46,7 @@ public class MagicBookMyannaPlus extends Item {
             int random = (int) (Math.random() * 10 + 1);
             if (random <= 3) {
                 player.addPotionEffect(new EffectInstance(EffectRegistry.CURSE_OF_SERPENT.get(), 600, 2));
-                player.sendStatusMessage(new TranslationTextComponent("be_cursed").mergeStyle(TextFormatting.RED), false);
+                player.sendStatusMessage(new TranslationTextComponent("be_cursed").mergeStyle(TextFormatting.RED), true);
             }
         }
 

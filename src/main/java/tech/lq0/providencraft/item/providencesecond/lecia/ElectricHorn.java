@@ -79,7 +79,7 @@ public class ElectricHorn extends ArmorItem {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_ABLE, false);
             ItemNBTTool.setBoolean(stack, TAG_ABLE, !flag);
             playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("electric_horn_enable") :
-                    new TranslationTextComponent("electric_horn_disable"), false);
+                    new TranslationTextComponent("electric_horn_disable"), true);
 
         }
         return ActionResult.resultFail(stack);

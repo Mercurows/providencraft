@@ -36,11 +36,11 @@ public class EnchantedCrystalBall extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if (!worldIn.isRemote) {
             if (worldIn.isThundering()) {
-                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_thunder").mergeStyle(TextFormatting.YELLOW), false);
+                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_thunder").mergeStyle(TextFormatting.YELLOW), true);
             } else if (worldIn.isRaining()) {
-                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_rain").mergeStyle(TextFormatting.AQUA), false);
+                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_rain").mergeStyle(TextFormatting.AQUA), true);
             } else {
-                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_clear").mergeStyle(TextFormatting.GREEN), false);
+                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_clear").mergeStyle(TextFormatting.GREEN), true);
             }
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);

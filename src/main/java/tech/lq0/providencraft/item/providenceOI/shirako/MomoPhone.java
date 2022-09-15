@@ -65,7 +65,7 @@ public class MomoPhone extends Item {
                 ItemNBTTool.setFloat(item, NBT_POS_X, pos.getX());
                 ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
                 ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ());
-                playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), false);
+                playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
                 return new ActionResult<>(ActionResultType.PASS, item);
             }else{
                 if(item.getDamage() < item.getMaxDamage()){
@@ -77,7 +77,7 @@ public class MomoPhone extends Item {
                         playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
                     }else {
                         if(pos == null){
-                            playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), false);
+                            playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), true);
                         }else {
                             playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
                             if (!playerIn.abilities.isCreativeMode) {

@@ -44,13 +44,13 @@ public class MariStew extends Item {
                 player.attackEntityFrom(DamageSourceRegistry.MARI_FOOD, 20.0f);
             } else if (random > 90) {
                 player.heal(20.0f);
-                player.sendStatusMessage(new TranslationTextComponent("mari_stew_heal").mergeStyle(TextFormatting.GOLD), false);
+                player.sendStatusMessage(new TranslationTextComponent("mari_stew_heal").mergeStyle(TextFormatting.GOLD), true);
             } else if (random > 70) {
                 player.addPotionEffect(new EffectInstance(Effects.POISON, 200, 1));
             } else if (random > 40) {
                 player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 400, 1));
             } else {
-                player.sendStatusMessage(new TranslationTextComponent("mari_stew_nothing").mergeStyle(TextFormatting.GRAY), false);
+                player.sendStatusMessage(new TranslationTextComponent("mari_stew_nothing").mergeStyle(TextFormatting.GRAY), true);
             }
 
             if (player.isCreative()) {

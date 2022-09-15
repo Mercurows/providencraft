@@ -71,7 +71,7 @@ public class MountainDestroyer extends PickaxeItem {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_MULTIMINE, false);
             ItemNBTTool.setBoolean(stack, TAG_MULTIMINE, !flag);
             playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("mountain_destroyer_enable") :
-                    new TranslationTextComponent("mountain_destroyer_disable"), false);
+                    new TranslationTextComponent("mountain_destroyer_disable"), true);
 
         }
         return ActionResult.resultFail(stack);

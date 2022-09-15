@@ -64,7 +64,7 @@ public class GravityRestraintDevice extends ArmorItem {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_GRAVITY, false);
             ItemNBTTool.setBoolean(stack, TAG_GRAVITY, !flag);
             playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("grd_moon") :
-                    new TranslationTextComponent("grd_zero"), false);
+                    new TranslationTextComponent("grd_zero"), true);
         }
         return ActionResult.resultFail(stack);
     }

@@ -43,10 +43,10 @@ public class BigMoeOnePotion extends Item {
             int random = (int) (Math.random() * 99 + 1);
             if (random > 10) {
                 player.addPotionEffect(new EffectInstance(EffectRegistry.BIG_FIERCE_ONE.get(), 3600, 2));
-                player.sendStatusMessage(new TranslationTextComponent("big_moe_one_potion_fierce").mergeStyle(TextFormatting.GOLD), false);
+                player.sendStatusMessage(new TranslationTextComponent("big_moe_one_potion_fierce").mergeStyle(TextFormatting.GOLD), true);
             } else {
                 player.addPotionEffect(new EffectInstance(EffectRegistry.BIG_MOE_ONE.get(), 3600, 0));
-                player.sendStatusMessage(new TranslationTextComponent("big_moe_one_potion_moe").mergeStyle(TextFormatting.LIGHT_PURPLE), false);
+                player.sendStatusMessage(new TranslationTextComponent("big_moe_one_potion_moe").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
             }
 
             if (player.isCreative()) {
