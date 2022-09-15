@@ -116,18 +116,18 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant {
     }
 
     private static final MerchantOffer[] offers = {
+            new MerchantOffer(getPremiumPoints(64), getPremiumPoints(64), getGoods(ItemRegistry.FETUOZI.get(), 1), 64, 0, 0),
             new MerchantOffer(getGoods(Items.EMERALD, 10), getPoints(1), 64, 0, 0),
             new MerchantOffer(getPoints(64), getPremiumPoints(1), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(1), getPoints(64), 64, 0, 0),
-            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.FLUFF_BALL.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(1), getGoods(ItemRegistry.GN_SOUL.get(), 2), 64,0,0),
             new MerchantOffer(getPoints(1), getGoods(ItemRegistry.GN_SPIRIT.get(), 2), 64,0,0),
             new MerchantOffer(getPoints(6), getGoods(ItemRegistry.PEACH_BEACH.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(38), getGoods(ItemRegistry.KURUMI_HALO.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(10), getGoods(ItemRegistry.KURUMI_BOOMERANG.get(), 3), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(1), getPoints(4), getGoods(ItemRegistry.MOMO_GUN.get(), 1), 64, 0, 0),
-            new MerchantOffer(getPoints(64), getPoints(64), getGoods(ItemRegistry.FETUOZI.get(), 1), 64, 0, 0),
-            new MerchantOffer(getPremiumPoints(25), getGoods(ItemRegistry.KRM_963_53.get(), 1), 64, 0, 0)
+            new MerchantOffer(getPremiumPoints(25), getGoods(ItemRegistry.KRM_963_53.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.FLUFF_BALL.get(), 1), 64, 0, 0)
     };
 
     private static ItemStack getPoints(int count){
