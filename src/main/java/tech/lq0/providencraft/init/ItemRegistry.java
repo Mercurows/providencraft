@@ -30,6 +30,7 @@ import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.others.PdcPoint;
 import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
+import tech.lq0.providencraft.item.others.PremiumPdcPoint;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
 import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
@@ -257,6 +258,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MMA_STEW = ITEMS.register("mma_stew", MMAStew::new);
     public static final RegistryObject<Item> MVA_STEW = ITEMS.register("mva_stew", MVAStew::new);
     public static final RegistryObject<Item> PDC_POINT = ITEMS.register("pdc_point", PdcPoint::new);
+    public static final RegistryObject<Item> PREMIUM_PDC_POINT = ITEMS.register("premium_pdc_point", PremiumPdcPoint::new);
 
     /**
      * donate
