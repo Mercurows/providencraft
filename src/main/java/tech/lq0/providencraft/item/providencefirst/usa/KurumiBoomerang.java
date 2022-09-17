@@ -5,10 +5,15 @@ import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -21,7 +26,6 @@ import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.entity.KurumiBoomerangEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
-import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.models.bakedModel.KurumiBoomerangBakedModel;
 import tech.lq0.providencraft.render.tile.KurumiBoomerangTileEntityRenderer;
 import tech.lq0.providencraft.tools.Livers;
@@ -32,10 +36,11 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class KurumiBoomerang extends Item {
-    public KurumiBoomerang(){
+    public KurumiBoomerang() {
         super(new Properties().group(ModGroup.itemgroup).setISTER(() -> KurumiBoomerangTileEntityRenderer::new));
     }
 
@@ -51,19 +56,20 @@ public class KurumiBoomerang extends Item {
     @ParametersAreNonnullByDefault
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
-        int random = (int)(Math.random() * 10 + 1);
-        if(random == 1){
-            worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundRegistry.WHY_NOT_DIE.get(), SoundCategory.NEUTRAL, 0.5F, 1.0F);
-        }else {
-            worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundRegistry.HOW_HOLD_BLOOD.get(), SoundCategory.NEUTRAL, 0.5F, 1.0F);
-        }
 
         if (!worldIn.isRemote()) {
             KurumiBoomerangEntity kurumiBoomerangEntity = new KurumiBoomerangEntity(worldIn, playerIn);
             kurumiBoomerangEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+
+            if (playerIn.abilities.isCreativeMode) {
+                kurumiBoomerangEntity.pickupStatus = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
+            }
+
             worldIn.addEntity(kurumiBoomerangEntity);
             item.shrink(1);
         }
+
+        playerIn.addStat(Stats.ITEM_USED.get(this));
 
         return new ActionResult<>(ActionResultType.SUCCESS, item);
     }
@@ -76,7 +82,7 @@ public class KurumiBoomerang extends Item {
     @SubscribeEvent
     public static void onModelBaked(ModelBakeEvent event) {
         Map<ResourceLocation, IBakedModel> modelRegistry = event.getModelRegistry();
-        ModelResourceLocation location = new ModelResourceLocation(ItemRegistry.KURUMI_BOOMERANG.get().getRegistryName(), "inventory");
+        ModelResourceLocation location = new ModelResourceLocation(Objects.requireNonNull(ItemRegistry.KURUMI_BOOMERANG.get().getRegistryName()), "inventory");
         IBakedModel existingModel = modelRegistry.get(location);
         if (existingModel == null) {
             throw new RuntimeException("Did not find Obsidian Hidden in registry");

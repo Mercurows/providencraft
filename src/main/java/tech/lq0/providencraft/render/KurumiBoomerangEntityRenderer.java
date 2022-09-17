@@ -28,16 +28,35 @@ public class KurumiBoomerangEntityRenderer extends EntityRenderer<KurumiBoomeran
 
     @Override
     @ParametersAreNonnullByDefault
-    public void render(KurumiBoomerangEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
-        super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
+    public void render(KurumiBoomerangEntity projectile, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+        super.render(projectile, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         matrixStackIn.push();
 
-        matrixStackIn.rotate(Vector3f.YP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationYaw, entityIn.rotationYaw) - 90.0F));
-        matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch)));
+        matrixStackIn.rotate(Vector3f.YP.rotationDegrees(MathHelper.lerp(partialTicks, projectile.prevRotationYaw, projectile.rotationYaw) - 90.0F));
+        matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, projectile.prevRotationPitch, projectile.rotationPitch)));
 
-        matrixStackIn.translate(0.0f, -1.3f, 0.0f);
-        matrixStackIn.rotate(Vector3f.YN.rotationDegrees(0));
-        IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.kurumiBoomerangEntityEntityModel.getRenderType(this.getEntityTexture(entityIn)));
+        matrixStackIn.translate(0.0f, -0.85f, 0.0f);
+
+        int rotateSpeed = 60;
+
+        if (projectile.inGroundTicks == 0) {
+            matrixStackIn.rotate(Vector3f.YP.rotationDegrees(projectile.flyingTicks * rotateSpeed));
+        } else {
+            int base = projectile.flyingTicks * rotateSpeed;
+            int pitch = Math.round(Math.abs(projectile.rotationPitch));
+            int endTick = Math.toIntExact(Math.round(0.0148148148 * pitch * pitch - 2.664 * pitch + 140));
+
+            int x = projectile.inGroundTicks;
+            if (x > endTick) {
+                x = endTick;
+            }
+            int extraDegree = Math.toIntExact(Math.round(-1800.0 / Math.pow(endTick, 2) * x * x + (3600.0 / endTick) * x));
+
+            matrixStackIn.rotate(Vector3f.YP.rotationDegrees(base + extraDegree));
+        }
+
+        matrixStackIn.scale(0.7f, 0.7f, 0.7f);
+        IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.kurumiBoomerangEntityEntityModel.getRenderType(this.getEntityTexture(projectile)));
         this.kurumiBoomerangEntityEntityModel.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         matrixStackIn.pop();
     }
@@ -48,7 +67,5 @@ public class KurumiBoomerangEntityRenderer extends EntityRenderer<KurumiBoomeran
     public ResourceLocation getEntityTexture(KurumiBoomerangEntity kurumiBoomerangEntity) {
         return TEXTURE;
     }
-
-
 }
 

@@ -10,24 +10,30 @@ import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.monster.piglin.PiglinBruteEntity;
 import net.minecraft.entity.monster.piglin.PiglinEntity;
 import net.minecraft.entity.passive.PigEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import tech.lq0.providencraft.init.EntityRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.init.SoundRegistry;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 
 public class KurumiBoomerangEntity extends AbstractArrowEntity {
+
+    private boolean dealtDamage;
+    public int flyingTicks = 0, inGroundTicks = 0;
 
     public KurumiBoomerangEntity(EntityType<? extends KurumiBoomerangEntity> p_i50159_1_, World p_i50159_2_) {
         super(p_i50159_1_, p_i50159_2_);
@@ -41,24 +47,54 @@ public class KurumiBoomerangEntity extends AbstractArrowEntity {
         super(EntityRegistry.KURUMI_BOOMERANG_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
     }
 
-    @ParametersAreNonnullByDefault
-    protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
-        super.onEntityHit(p_213868_1_);
-        Entity entity = p_213868_1_.getEntity();
-        if (entity instanceof LivingEntity) {
-            float damage = 1.0f;
-            if(entity instanceof PigEntity || entity instanceof PiglinEntity ||
-                    entity instanceof PiglinBruteEntity || entity instanceof ZombifiedPiglinEntity ||
-            entity instanceof HoglinEntity || entity instanceof ZoglinEntity){
-                damage = 15.0f;
+    @Override
+    public void tick() {
+        if (this.timeInGround > 1) {
+            //first time hit ground
+            if (!this.dealtDamage) {
+                this.playSound(SoundRegistry.WHY_NOT_DIE.get(), 0.5F, 1.0F);
             }
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), damage);
+            this.dealtDamage = true;
+            inGroundTicks++;
+        } else {
+            flyingTicks++;
         }
+        super.tick();
+    }
+
+    @Nullable
+    @ParametersAreNonnullByDefault
+    protected EntityRayTraceResult rayTraceEntities(Vector3d startVec, Vector3d endVec) {
+        return this.dealtDamage ? null : super.rayTraceEntities(startVec, endVec);
+    }
+
+    @Override
+    @Nullable
+    protected SoundEvent getHitEntitySound() {
+        return null;
     }
 
     @ParametersAreNonnullByDefault
-    protected void onImpact(RayTraceResult p_70227_1_) {
-        super.onImpact(p_70227_1_);
+    protected void onEntityHit(EntityRayTraceResult rayTraceResult) {
+        Entity target = rayTraceResult.getEntity();
+        if (target instanceof LivingEntity) {
+            float damage = 1.0f;
+            if (target instanceof PigEntity || target instanceof PiglinEntity ||
+                    target instanceof PiglinBruteEntity || target instanceof ZombifiedPiglinEntity ||
+                    target instanceof HoglinEntity || target instanceof ZoglinEntity) {
+                damage = 15.0f;
+            }
+            this.dealtDamage = true;
+            Entity attacker = this.func_234616_v_() == null ? this : this.func_234616_v_();
+            if (target.attackEntityFrom(DamageSource.causeThrownDamage(this, attacker), damage)) {
+                if (target.getType() == EntityType.ENDERMAN) {
+                    return;
+                }
+                this.arrowHit((LivingEntity) target);
+            }
+        }
+        this.setMotion(this.getMotion().mul(-0.01D, -0.1D, -0.01D));
+        this.playSound(SoundRegistry.HOW_HOLD_BLOOD.get(), 0.5F, 1.0F);
     }
 
     @Override
@@ -75,23 +111,26 @@ public class KurumiBoomerangEntity extends AbstractArrowEntity {
     }
 
     @Override
+    @Nonnull
     protected ItemStack getArrowStack() {
         return ItemRegistry.KURUMI_BOOMERANG.get().getDefaultInstance();
     }
 
+    @ParametersAreNonnullByDefault
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+
+        this.dealtDamage = compound.getBoolean("DealtDamage");
+    }
+
+    @ParametersAreNonnullByDefault
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        compound.putBoolean("DealtDamage", this.dealtDamage);
+    }
+
     @Override
-    public void onCollideWithPlayer(PlayerEntity entityIn) {
-        if (!this.world.isRemote && (this.inGround || this.getNoClip()) && this.arrowShake <= 0) {
-            boolean flag = this.pickupStatus == AbstractArrowEntity.PickupStatus.ALLOWED || this.pickupStatus == AbstractArrowEntity.PickupStatus.CREATIVE_ONLY && entityIn.abilities.isCreativeMode || this.getNoClip() && this.func_234616_v_().getUniqueID() == entityIn.getUniqueID();
-            if (this.pickupStatus == AbstractArrowEntity.PickupStatus.ALLOWED && !entityIn.inventory.addItemStackToInventory(this.getArrowStack())) {
-                flag = false;
-            }
-
-            if (flag) {
-                entityIn.onItemPickup(this, 1);
-                this.remove();
-            }
-
-        }
+    protected float getWaterDrag() {
+        return 0.99F;
     }
 }
