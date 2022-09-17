@@ -28,6 +28,7 @@ public enum Livers {
     MIYA("miya","poi","#F9F0D8"),
     AOI("aoi","poi","#EEEEEE"),
     AYU("ayu","poi","#A9BBD9"),
+    YURI("yuri","poi","#F9C8DE"),
     MARIA("maria","first","#AF4657"),
     MOJUKO("mojuko","second","#FFF6F9");
 
