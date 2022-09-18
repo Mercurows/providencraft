@@ -127,7 +127,7 @@ public class ItemRegistry {
 
     //usa
     public static final RegistryObject<Item> PLUNGER = ITEMS.register("plunger", Plunger::new);
-    public static final RegistryObject<Item> KURUMI_BOOMERANG = ITEMS.register("kurumi_boomerang",  KurumiBoomerang::new);
+    public static final RegistryObject<Item> KURUMI_BOOMERANG = ITEMS.register("kurumi_boomerang", KurumiBoomerang::new);
     public static final RegistryObject<Item> KURUMI_HALO = ITEMS.register("kurumi_halo", KurumiHalo::new);
     public static final RegistryObject<Item> KRM_963_53 = ITEMS.register("krm_963_53", KRM_963_53::new);
 
@@ -144,7 +144,7 @@ public class ItemRegistry {
 
     //akumaria
     public static final RegistryObject<Item> PLATE = ITEMS.register("plate", Plate::new);
-    public static final RegistryObject<Item> FLUFF_BALL =ITEMS.register("fluff_ball", FluffBall::new);
+    public static final RegistryObject<Item> FLUFF_BALL = ITEMS.register("fluff_ball", FluffBall::new);
 
     //unia
     public static final RegistryObject<Item> TARO_ICE_CREAM = ITEMS.register("taro_ice_cream", TaroIceCream::new);
@@ -270,6 +270,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LOLLIPOP = ITEMS.register("lollipop", Lollipop::new);
     public static final RegistryObject<Item> ORANGE_TRACKER = ITEMS.register("orange_tracker", OrangeTracker::new);
     public static final RegistryObject<Item> BLACK_EARPHONES = ITEMS.register("black_earphones", BlackEarphones::new);
+    public static final RegistryObject<Item> BEAST = ITEMS.register("beast", Beast::new);
 
     /**
      * costume
