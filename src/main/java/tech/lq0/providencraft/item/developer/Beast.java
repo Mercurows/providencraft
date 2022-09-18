@@ -1,7 +1,6 @@
-package tech.lq0.providencraft.item.donate;
+package tech.lq0.providencraft.item.developer;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
@@ -23,7 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -33,7 +32,7 @@ import java.util.Random;
 
 public class Beast extends SwordItem {
     public Beast() {
-        super(ItemTier.NETHERITE, 114509, 1919806, new Properties().group(ModGroup.donategroup).isImmuneToFire().rarity(Rarity.EPIC));
+        super(ItemTier.NETHERITE, 114509, 1919806, new Properties().isImmuneToFire().rarity(Rarity.EPIC));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -59,12 +58,9 @@ public class Beast extends SwordItem {
             temp.append("\u00a7r");
         }
         tooltip.add(new StringTextComponent(temp.toString()));
-        tooltip.add((new TranslationTextComponent("beast_des")).mergeStyle(TextFormatting.GRAY));
-        //tooltip.add((new TranslationTextComponent("donate_item_des")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
-
-        if (Screen.hasShiftDown()) {
-            tooltip.add(new StringTextComponent("逸一时，误一世"));
-        }
+        tooltip.add((new TranslationTextComponent("beast_des1")).mergeStyle(TextFormatting.GRAY));
+        TooltipTool.addHideText(tooltip, new TranslationTextComponent("beast_des2").mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("description_developer")).mergeStyle(TextFormatting.DARK_RED).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

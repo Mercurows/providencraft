@@ -368,7 +368,9 @@
   "item.providencraft.premium_pdc_point": "普罗维登高级积分",
   "premium_pdc_point_des": "钻石打造的会员积分，可以在商城换更稀有的东西",
   "item.providencraft.beast": "BEAST",
-  "beast_des": "充斥着野兽之力的神剑",
+  "beast_des1": "充斥着野兽之力的神剑",
+  "beast_des2": "逸一时，误一世",
+  "description_developer": "-==开发者物品==-",
 
   "liver": "所属Liver:",
   "mitsuki": "神奈满月",

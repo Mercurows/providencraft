@@ -21,6 +21,7 @@ import tech.lq0.providencraft.item.costume.magicros.hoshimiya.EkiraIdolHelmet;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
+import tech.lq0.providencraft.item.developer.Beast;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.GNSouls;
 import tech.lq0.providencraft.item.material.GNSpirit;
@@ -270,6 +271,10 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LOLLIPOP = ITEMS.register("lollipop", Lollipop::new);
     public static final RegistryObject<Item> ORANGE_TRACKER = ITEMS.register("orange_tracker", OrangeTracker::new);
     public static final RegistryObject<Item> BLACK_EARPHONES = ITEMS.register("black_earphones", BlackEarphones::new);
+
+    /**
+     * developer
+     */
     public static final RegistryObject<Item> BEAST = ITEMS.register("beast", Beast::new);
 
     /**
