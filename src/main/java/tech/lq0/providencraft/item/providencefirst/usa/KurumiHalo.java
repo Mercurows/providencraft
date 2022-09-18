@@ -55,7 +55,7 @@ public class KurumiHalo extends ArmorItem {
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if(!world.isRemote){
-            player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 300, 0));
+            player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 300, 0, true, false));
         }
         super.onArmorTick(stack, world, player);
     }

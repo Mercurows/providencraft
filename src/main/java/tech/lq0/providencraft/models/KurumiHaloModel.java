@@ -140,7 +140,11 @@ public class KurumiHaloModel<T extends LivingEntity> extends BipedModel<T> {
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		this.bone.copyModelAngles(this.bipedBody);
+		matrixStack.push();
+		matrixStack.scale(0.7f,0.7f,0.7f);
+		matrixStack.translate(0.0f, -0.1f, 0.4f);
 		bone.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+		matrixStack.pop();
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
