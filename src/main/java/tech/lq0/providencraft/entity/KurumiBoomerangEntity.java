@@ -78,11 +78,11 @@ public class KurumiBoomerangEntity extends AbstractArrowEntity {
     protected void onEntityHit(EntityRayTraceResult rayTraceResult) {
         Entity target = rayTraceResult.getEntity();
         if (target instanceof LivingEntity) {
-            float damage = 0.3f;
+            float damage = 0.8f;
             if (target instanceof PigEntity || target instanceof PiglinEntity ||
                     target instanceof PiglinBruteEntity || target instanceof ZombifiedPiglinEntity ||
                     target instanceof HoglinEntity || target instanceof ZoglinEntity) {
-                damage = 5.0f;
+                damage = 6.4f;
             }
             this.dealtDamage = true;
             Entity attacker = this.func_234616_v_() == null ? this : this.func_234616_v_();
