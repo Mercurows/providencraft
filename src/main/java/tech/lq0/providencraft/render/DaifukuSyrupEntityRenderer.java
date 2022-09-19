@@ -35,7 +35,7 @@ public class DaifukuSyrupEntityRenderer extends EntityRenderer<DaifukuSyrupEntit
         matrixStackIn.rotate(Vector3f.YP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationYaw, entityIn.rotationYaw) - 90.0F));
         matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch)));
 
-        matrixStackIn.translate(0.0f, -1.3f, 0.0f);
+        matrixStackIn.translate(0.55f, -1.3f, 0.0f);
         matrixStackIn.rotate(Vector3f.YN.rotationDegrees(0));
         IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.daifukuSyrupEntityEntityModel.getRenderType(this.getEntityTexture(entityIn)));
         this.daifukuSyrupEntityEntityModel.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

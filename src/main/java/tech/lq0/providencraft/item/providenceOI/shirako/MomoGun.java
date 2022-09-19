@@ -7,7 +7,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -63,12 +62,13 @@ public class MomoGun extends Item {
                 }
 
                 playerIn.getCooldownTracker().setCooldown(itemstack.getItem(), 8);
-                return new ActionResult<>(ActionResultType.SUCCESS, itemstack);
+                playerIn.setActiveHand(handIn);
+                return ActionResult.resultSuccess(itemstack);
             }else {
-                return new ActionResult<>(ActionResultType.FAIL, itemstack);
+                return ActionResult.resultFail(itemstack);
             }
         }
-        return new ActionResult<>(ActionResultType.FAIL, itemstack);
+        return ActionResult.resultFail(itemstack);
     }
 
     protected ItemStack findAmmo(PlayerEntity player){
