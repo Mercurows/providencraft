@@ -371,6 +371,11 @@
   "beast_des1": "充斥着野兽之力的神剑",
   "beast_des2": "逸一时，误一世",
   "description_developer": "-==开发者物品==-",
+  "item.providencraft.rabbit_lychee": "Rabbit Lychee",
+  "rabbit_lychee_des1": "兔子吃掉了荔枝变成了荔枝兔",
+  "rabbit_lychee_des2": "荔枝吃掉了兔子变成了兔荔枝",
+  "item.providencraft.satou_camera": "砂糖相机",
+  "item.providencraft.moon_cake": "Moon Cake",
 
   "liver": "From:",
   "mitsuki": "Kanna Mitsuki",

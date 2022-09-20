@@ -38,6 +38,8 @@ import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.*;
 import tech.lq0.providencraft.item.providenceOI.shirayuki.FoxFairyFan;
 import tech.lq0.providencraft.item.providenceOI.sorayo.LunaticBow;
+import tech.lq0.providencraft.item.providenceOI.sorayo.MoonCake;
+import tech.lq0.providencraft.item.providenceOI.yuri.RabbitLychee;
 import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
@@ -83,6 +85,7 @@ import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
 import tech.lq0.providencraft.item.providencesecond.mojuko.YagiStaffCard;
 import tech.lq0.providencraft.item.providencesecond.mumu.AyeletMask;
 import tech.lq0.providencraft.item.providencesecond.mumu.MumuSteak;
+import tech.lq0.providencraft.item.providencesecond.satou.SatouCamera;
 import tech.lq0.providencraft.item.providencesecond.satou.SatouKnife;
 import tech.lq0.providencraft.item.providencethird.beni.LavaCake;
 import tech.lq0.providencraft.item.providencethird.beni.ShuraChin;
@@ -178,6 +181,7 @@ public class ItemRegistry {
 
     //satou
     public static final RegistryObject<Item> SATOU_KNIFE = ITEMS.register("satou_knife", SatouKnife::new);
+    public static final RegistryObject<Item> SATOU_CAMERA = ITEMS.register("satou_camera", SatouCamera::new);
 
     //mumu
     public static final RegistryObject<Item> AYELET_MASK = ITEMS.register("ayelet_mask", AyeletMask::new);
@@ -220,6 +224,7 @@ public class ItemRegistry {
 
     //sorayo
     public static final RegistryObject<Item> LUNATIC_BOW = ITEMS.register("lunatic_bow", LunaticBow::new);
+    public static final RegistryObject<Item> MOON_CAKE = ITEMS.register("moon_cake", MoonCake::new);
 
     //miya
     public static final RegistryObject<Item> TAIL_PEN = ITEMS.register("tail_pen", TailPen::new);
@@ -230,6 +235,9 @@ public class ItemRegistry {
 
     //shirayuki
     public static final RegistryObject<Item> FOX_FAIRY_FAN = ITEMS.register("fox_fairy_fan", FoxFairyFan::new);
+
+    //yuri
+    public static final RegistryObject<Item> RABBIT_LYCHEE = ITEMS.register("rabbit_lychee", RabbitLychee::new);
 
     /**
      * 3rd
