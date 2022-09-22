@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MagicBookThrow extends Item {
     public MagicBookThrow(){
-        super(new Properties().group(ModGroup.itemgroup));
+        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).maxDamage(120));
     }
 
     @OnlyIn(Dist.CLIENT)
