@@ -17,5 +17,6 @@ public class ClientEventHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DAIFUKU_SYRUP_ENTITY.get(), DaifukuSyrupEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.FLUFF_BALL_ENTITY.get(), FluffBallEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.KURUMI_BOOMERANG_ENTITY.get(), KurumiBoomerangEntityRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.WHITE_AHOGE_ENTITY.get(), WhiteAhogeEntityRenderer::new);
     }
 }
