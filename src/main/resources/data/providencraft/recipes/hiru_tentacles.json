@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "lll",
+    "lbl",
     "ana",
-    "bbb"
+    "lbl"
   ],
   "key": {
     "a": {
@@ -13,7 +13,7 @@
       "item": "minecraft:lapis_lazuli"
     },
     "n": {
-      "item": "minecraft:nether_star"
+      "item": "providencraft:gn_star"
     },
     "l": {
       "item": "minecraft:glass"

@@ -39,7 +39,6 @@ public class MagicBookThrow extends Item {
     @Nonnull
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
-        worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
         if (!worldIn.isRemote()) {
             WhiteAhogeEntity whiteAhogeEntity1 = new WhiteAhogeEntity(worldIn, playerIn);
             WhiteAhogeEntity whiteAhogeEntity2 = new WhiteAhogeEntity(worldIn, playerIn);
