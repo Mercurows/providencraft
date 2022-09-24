@@ -40,19 +40,19 @@ public class KurumiBoomerangEntityRenderer extends EntityRenderer<KurumiBoomeran
         int rotateSpeed = 60;
 
         if (projectile.inGroundTicks == 0) {
-            matrixStackIn.rotate(Vector3f.YP.rotationDegrees(projectile.flyingTicks * rotateSpeed));
+            matrixStackIn.rotate(Vector3f.YP.rotationDegrees((projectile.flyingTicks + partialTicks) * rotateSpeed));
         } else {
-            float base = projectile.flyingTicks * rotateSpeed;
-            float pitch = Math.abs(projectile.rotationPitch);
-            float endTick = (float) (0.0148148148 * pitch * pitch - 2.664 * pitch + 140);
+            double base = projectile.flyingTicks * rotateSpeed;
+            double pitch = Math.abs(projectile.rotationPitch);
+            double endTick = (float) (0.0148148148 * pitch * pitch - 2.664 * pitch + 140);
 
-            int x = projectile.inGroundTicks;
+            double x = projectile.inGroundTicks + partialTicks;
             if (x > endTick) {
-                x = (int) endTick;
+                x = endTick;
             }
-            float extraDegree = (float) (-1800.0 / Math.pow(endTick, 2) * x * x + (3600.0 / endTick) * x);
+            double extraDegree = (float) (-1800.0 / Math.pow(endTick, 2) * x * x + (3600.0 / (endTick)) * x);
 
-            matrixStackIn.rotate(Vector3f.YP.rotationDegrees(base + extraDegree));
+            matrixStackIn.rotate(Vector3f.YP.rotationDegrees((float) (base + extraDegree)));
         }
 
         matrixStackIn.scale(0.7f, 0.7f, 0.7f);
