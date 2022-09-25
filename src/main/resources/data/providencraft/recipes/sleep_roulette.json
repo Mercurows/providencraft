@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "wrw",
+    "gag",
+    "wbw"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:clock"
+    },
+    "b": {
+      "item": "minecraft:black_dye"
+    },
+    "r": {
+      "item": "minecraft:light_blue_dye"
+    },
+    "w": {
+      "tag": "minecraft:planks"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:sleep_roulette",
+    "count": 1
+  }
+}
