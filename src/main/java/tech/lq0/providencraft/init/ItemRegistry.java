@@ -8,6 +8,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.item.blockitem.PointsStoreBlockItem;
+import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
+import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.costume.first.usa.KRM_963_53;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
@@ -21,7 +23,6 @@ import tech.lq0.providencraft.item.costume.magicros.hoshimiya.EkiraIdolHelmet;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
-import tech.lq0.providencraft.item.developer.Beast;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.GNSouls;
 import tech.lq0.providencraft.item.material.GNSpirit;
@@ -30,10 +31,8 @@ import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.MMAStew;
 import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.others.PdcPoint;
-import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.others.PremiumPdcPoint;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
-import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.*;
 import tech.lq0.providencraft.item.providenceOI.shirayuki.FoxFairyFan;
@@ -60,8 +59,8 @@ import tech.lq0.providencraft.item.providencefirst.myanna.Schedule;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.niina.BlueSmallBall;
 import tech.lq0.providencraft.item.providencefirst.unia.EnchantedUnigiri;
-import tech.lq0.providencraft.item.providencefirst.unia.Unigiri;
 import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
+import tech.lq0.providencraft.item.providencefirst.unia.Unigiri;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiBoomerang;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiHalo;
 import tech.lq0.providencraft.item.providencefirst.usa.Plunger;
@@ -78,10 +77,10 @@ import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providencesecond.lecia.DuelWaterGun;
 import tech.lq0.providencraft.item.providencesecond.lecia.ElectricHorn;
 import tech.lq0.providencraft.item.providencesecond.lecia.MechanicalHorn;
-import tech.lq0.providencraft.item.providencesecond.lucia.MoonlightAmulet;
 import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigMoeOnePotion;
 import tech.lq0.providencraft.item.providencesecond.lucia.LuciaRiceCake;
+import tech.lq0.providencraft.item.providencesecond.lucia.MoonlightAmulet;
 import tech.lq0.providencraft.item.providencesecond.mojuko.YagiStaffCard;
 import tech.lq0.providencraft.item.providencesecond.mumu.AyeletMask;
 import tech.lq0.providencraft.item.providencesecond.mumu.MumuSteak;
@@ -283,7 +282,7 @@ public class ItemRegistry {
     /**
      * developer
      */
-    public static final RegistryObject<Item> BEAST = ITEMS.register("beast", Beast::new);
+    //public static final RegistryObject<Item> BEAST = ITEMS.register("beast", Beast::new);
 
     /**
      * costume
