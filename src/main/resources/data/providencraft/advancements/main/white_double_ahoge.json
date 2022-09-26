@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:providencraft",
+  "parent": "providencraft:main/red_ahoge_weapon_master",
   "criteria": {
     "white_double_ahoge": {
       "trigger": "minecraft:inventory_changed",

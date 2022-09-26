@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:gravity_restraint_device"
+    },
+    "title": {
+      "translate": "providencraft.advancement.gravity_restraint_device"
+    },
+    "description": {
+      "translate": "providencraft.advancement.gravity_restraint_device_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/fox_fairy_fan",
+  "criteria": {
+    "gravity_restraint_device": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:gravity_restraint_device"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:fox_fairy_fan"
+    },
+    "title": {
+      "translate": "providencraft.advancement.fox_fairy_fan"
+    },
+    "description": {
+      "translate": "providencraft.advancement.fox_fairy_fan_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "fox_fairy_fan": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:fox_fairy_fan"
+          }
+        ]
+      }
+    }
+  }
+}
