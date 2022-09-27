@@ -59,7 +59,7 @@ public class HayaSword extends SwordItem {
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
         if(entityLiving instanceof PlayerEntity && this.getUseDuration(stack) - timeLeft > 20) {
             PlayerEntity player = (PlayerEntity) entityLiving;
-            Vector3d v_player = player.getForward();
+            Vector3d v_player = Vector3d.fromPitchYaw(player.getPitchYaw());
             Vector3d v_final = v_player.mul(4.0f, 0.0f, 4.0f).add(0.0f, 0.2f, 0.0f);
             boolean flag = player.isOnGround();
             double factor = flag ? 4.5 : 8.0;

@@ -1,8 +1,11 @@
 package tech.lq0.providencraft.item.providenceOI.yuri;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -18,8 +21,11 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class RabbitLychee extends Item {
+    private static final Food food = (new Food.Builder()).saturation(4.0f).hunger(3).
+            effect(new EffectInstance(Effects.JUMP_BOOST, 200, 1), 1.0f).build();
+
     public RabbitLychee(){
-        super(new Properties().group(ModGroup.itemgroup));
+        super(new Properties().group(ModGroup.itemgroup).food(food));
     }
 
     @OnlyIn(Dist.CLIENT)
