@@ -4,10 +4,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTier;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.UseAction;
+import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
@@ -29,7 +26,7 @@ import java.util.List;
 
 public class HayaSword extends SwordItem {
     public HayaSword(){
-        super(ItemTier.NETHERITE, 4, -2.0f, new Properties().group(ModGroup.itemgroup));
+        super(ItemTier.NETHERITE, 4, -2.6f, new Properties().group(ModGroup.itemgroup).rarity(Rarity.EPIC));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -64,12 +61,17 @@ public class HayaSword extends SwordItem {
             PlayerEntity player = (PlayerEntity) entityLiving;
             Vector3d v_player = player.getForward();
             Vector3d v_final = v_player.mul(4.0f, 0.0f, 4.0f).add(0.0f, 0.2f, 0.0f);
+            boolean flag = player.isOnGround();
+            double factor = flag ? 4.5 : 8.0;
+            Vector3d v_box = v_final.mul(factor, 0.0f, factor);
 
             for(LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class,
-                    player.getBoundingBox().grow(0.5f, 0.0f, 0.5f).expand(v_final))){
-                if (livingentity != player && !player.isOnSameTeam(livingentity) && (!(livingentity instanceof ArmorStandEntity) || !((ArmorStandEntity) livingentity).hasMarker())) {
-                    livingentity.applyKnockback(1.0F, MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F)));
-                    livingentity.attackEntityFrom(DamageSource.causePlayerDamage(player), 9);
+                    player.getBoundingBox().grow(0.5f, 0.0f, 0.5f).expand(v_box))){
+                if (livingentity != player && !player.isOnSameTeam(livingentity)) {
+                    if(!(livingentity instanceof ArmorStandEntity)) {
+                        livingentity.applyKnockback(1.0F, MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F)));
+                        livingentity.attackEntityFrom(DamageSource.causePlayerDamage(player), flag ? 9 : 4.5f);
+                    }
                 }
             }
 

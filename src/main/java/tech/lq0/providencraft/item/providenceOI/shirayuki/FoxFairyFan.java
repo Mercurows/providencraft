@@ -33,8 +33,10 @@ public class FoxFairyFan extends Item {
         ItemStack itemStack = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote){
             for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, playerIn.getBoundingBox().grow(3.5f, 3.5f, 3.5f))) {
-                if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity) && (!(livingentity instanceof ArmorStandEntity) || !((ArmorStandEntity) livingentity).hasMarker()) && playerIn.getDistanceSq(livingentity) < 16.0D) {
-                    livingentity.applyKnockback(6.0F, playerIn.getPosX() - livingentity.getPosX(), playerIn.getPosZ() - livingentity.getPosZ());
+                if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity) && playerIn.getDistanceSq(livingentity) < 16.0D) {
+                    if(!(livingentity instanceof ArmorStandEntity)) {
+                        livingentity.applyKnockback(6.0F, playerIn.getPosX() - livingentity.getPosX(), playerIn.getPosZ() - livingentity.getPosZ());
+                    }
                 }
             }
             playerIn.getCooldownTracker().setCooldown(itemStack.getItem(), 20);
