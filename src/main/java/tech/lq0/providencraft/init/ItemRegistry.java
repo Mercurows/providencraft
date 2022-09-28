@@ -11,6 +11,7 @@ import tech.lq0.providencraft.item.blockitem.PointsStoreBlockItem;
 import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.costume.first.usa.KRM_963_53;
+import tech.lq0.providencraft.item.costume.first.usa.KRM_963_53_Halo;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolHelmet;
@@ -132,7 +133,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PLUNGER = ITEMS.register("plunger", Plunger::new);
     public static final RegistryObject<Item> KURUMI_BOOMERANG = ITEMS.register("kurumi_boomerang", KurumiBoomerang::new);
     public static final RegistryObject<Item> KURUMI_HALO = ITEMS.register("kurumi_halo", KurumiHalo::new);
-    public static final RegistryObject<Item> KRM_963_53 = ITEMS.register("krm_963_53", KRM_963_53::new);
 
     //myanna
     public static final RegistryObject<Item> MOUNTAIN_DESTROYER = ITEMS.register("mountain_destroyer", MountainDestroyer::new);
@@ -299,6 +299,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> EKIRA_IDOL_HELMET = ITEMS.register("ekira_idol_helmet", EkiraIdolHelmet::new);
     public static final RegistryObject<Item> EKIRA_IDOL_CHESTPLATE = ITEMS.register("ekira_idol_chestplate", EkiraIdolChestplate::new);
     public static final RegistryObject<Item> EKIRA_IDOL_BOOTS = ITEMS.register("ekira_idol_boots", EkiraIdolBoots::new);
+    public static final RegistryObject<Item> KRM_963_53 = ITEMS.register("krm_963_53", KRM_963_53::new);
+    public static final RegistryObject<Item> KRM_963_53_HALO = ITEMS.register("krm_963_53_halo", KRM_963_53_Halo::new);
 
     /**
      * material
