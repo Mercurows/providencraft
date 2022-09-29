@@ -16,6 +16,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.PlungerEntity;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -45,9 +46,29 @@ public class Plunger extends SwordItem {
         worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
         if (!worldIn.isRemote()) {
             if (item.getDamage() < item.getMaxDamage() - 1) {
-                PlungerEntity plungerEntity = new PlungerEntity(worldIn, playerIn);
-                plungerEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 4.0f, 0.2f);
-                worldIn.addEntity(plungerEntity);
+                if(playerIn.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem().equals(ItemRegistry.KRM_963_53.get())){
+                    PlungerEntity plungerEntity1 = new PlungerEntity(worldIn, playerIn);
+                    PlungerEntity plungerEntity2 = new PlungerEntity(worldIn, playerIn);
+                    PlungerEntity plungerEntity3 = new PlungerEntity(worldIn, playerIn);
+                    PlungerEntity plungerEntity4 = new PlungerEntity(worldIn, playerIn);
+                    PlungerEntity plungerEntity5 = new PlungerEntity(worldIn, playerIn);
+
+                    plungerEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 12.0f, 0.0f, 5.0f, 0.0f);
+                    plungerEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 6.0f, 0.0f, 5.0f, 0.0f);
+                    plungerEntity3.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 5.0f, 0.0f);
+                    plungerEntity4.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 6.0f, 0.0f, 5.0f, 0.0f);
+                    plungerEntity5.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 12.0f, 0.0f, 5.0f, 0.0f);
+
+                    worldIn.addEntity(plungerEntity1);
+                    worldIn.addEntity(plungerEntity2);
+                    worldIn.addEntity(plungerEntity3);
+                    worldIn.addEntity(plungerEntity4);
+                    worldIn.addEntity(plungerEntity5);
+                }else {
+                    PlungerEntity plungerEntity = new PlungerEntity(worldIn, playerIn);
+                    plungerEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 4.0f, 0.2f);
+                    worldIn.addEntity(plungerEntity);
+                }
                 item.damageItem(1, playerIn, (playerEntity) -> playerEntity.sendBreakAnimation(handIn));
                 playerIn.getCooldownTracker().setCooldown(item.getItem(), 10);
             }

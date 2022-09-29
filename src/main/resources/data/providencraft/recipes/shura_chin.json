@@ -16,10 +16,10 @@
       "item": "minecraft:gold_ingot"
     },
     "f": {
-      "item": "minecraft:salmon"
+      "item": "providencraft:gn_star"
     },
     "b": {
-      "item": "minecraft:poppy"
+      "item": "providencraft:gn_spirit"
     }
   },
   "result": {
