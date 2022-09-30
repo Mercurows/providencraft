@@ -24,4 +24,12 @@ public final class ItemNBTTool {
     public static float getFloat(ItemStack stack, String tag, float f){
         return verifyExistence(stack, tag) ? stack.getOrCreateTag().getFloat(tag) : f;
     }
+
+    public static void setInt(ItemStack stack, String tag, int num){
+        stack.getOrCreateTag().putInt(tag, num);
+    }
+
+    public static int getInt(ItemStack stack, String tag, int num){
+        return verifyExistence(stack, tag) ? stack.getOrCreateTag().getInt(tag) : num;
+    }
 }

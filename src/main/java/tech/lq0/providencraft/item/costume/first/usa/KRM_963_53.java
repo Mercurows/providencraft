@@ -11,6 +11,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -23,17 +24,20 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.KRM96353Model;
+import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.text.NumberFormat;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class KRM_963_53 extends ArmorItem {
+    public static final String TAG_FLY_ENERGY = "fly_energy";
     public KRM_963_53(){
-        super(ArmorMaterial.NETHERITE, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(963).rarity(Rarity.EPIC).group(ModGroup.costumegroup));
+        super(ArmorMaterial.NETHERITE, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(963).isImmuneToFire().rarity(Rarity.EPIC).setNoRepair().group(ModGroup.costumegroup));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -53,7 +57,52 @@ public class KRM_963_53 extends ArmorItem {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("krm_963_53_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new StringTextComponent(""));
+        tooltip.add((new TranslationTextComponent("krm_963_53_func")).mergeStyle(TextFormatting.WHITE));
+        showFlyEnergy(stack, tooltip);
         TooltipTool.addLiverInfo(tooltip, Livers.USA);
+    }
+
+    private void showFlyEnergy(ItemStack stack, List<ITextComponent> tooltip){
+        TextFormatting textFormatting;
+        if(getFlyEnergy(stack) >= 800){
+            textFormatting = TextFormatting.GREEN;
+        }else if(getFlyEnergy(stack) >= 500){
+            textFormatting = TextFormatting.YELLOW;
+        }else if(getFlyEnergy(stack) >= 200){
+            textFormatting = TextFormatting.GOLD;
+        }else {
+            textFormatting = TextFormatting.RED;
+        }
+        NumberFormat numberFormat = NumberFormat.getPercentInstance();
+        numberFormat.setMaximumFractionDigits(1);
+        numberFormat.setMinimumFractionDigits(1);
+        double per = (double)getFlyEnergy(stack) / 1000;
+        String percent = numberFormat.format(per);
+
+        StringBuilder fuel = new StringBuilder(70);
+        for(int i=0;i < getFlyEnergy(stack) / 20;i++){
+            fuel.append("\u00a7").append(Integer.toHexString(textFormatting.getColorIndex())).append("|");
+        }
+        for(int i=0;i < 50 - getFlyEnergy(stack) / 20;i++){
+            fuel.append("\u00a7").append(Integer.toHexString(TextFormatting.GRAY.getColorIndex())).append("|");
+        }
+        fuel.append(" ").append("\u00a7").append(Integer.toHexString(textFormatting.getColorIndex())).append(percent);
+
+        tooltip.add(new StringTextComponent(fuel.toString()));
+    }
+
+    @Override
+    public boolean isDamageable() {
+        return false;
+    }
+
+    private static int getFlyEnergy(ItemStack stack){
+        return ItemNBTTool.getInt(stack, TAG_FLY_ENERGY, 1000);
+    }
+
+    private static void setFlyEnergy(ItemStack stack, int num){
+        ItemNBTTool.setInt(stack, TAG_FLY_ENERGY, Math.min(num, 1000));
     }
 
     @SubscribeEvent
@@ -68,9 +117,11 @@ public class KRM_963_53 extends ArmorItem {
                 player.abilities.allowFlying = flag;
 
                 if(player.abilities.isFlying){
-                    if(itemStack.getDamage() < itemStack.getMaxDamage()){
+                    //if(itemStack.getDamage() < itemStack.getMaxDamage()){
+                    if(getFlyEnergy(itemStack) > 0){
                         if(player.ticksExisted % 20 == 0){
-                            itemStack.setDamage(itemStack.getDamage() + 1);
+                            //itemStack.setDamage(itemStack.getDamage() + 1);
+                            setFlyEnergy(itemStack, Math.max(getFlyEnergy(itemStack) - 1, 0));
                         }
                     }else{
                         player.abilities.isFlying = false;
@@ -85,7 +136,8 @@ public class KRM_963_53 extends ArmorItem {
 
             if(!player.abilities.isFlying){
                 if(player.ticksExisted % 30 == 0){
-                    itemStack.setDamage(itemStack.getDamage() - 1);
+                    //itemStack.setDamage(itemStack.getDamage() - 1);
+                    setFlyEnergy(itemStack, getFlyEnergy(itemStack) + 1);
                 }
             }
         }
