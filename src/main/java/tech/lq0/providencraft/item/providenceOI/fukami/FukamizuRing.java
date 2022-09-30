@@ -55,7 +55,7 @@ public class FukamizuRing extends Item {
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if(!world.isRemote){
-            if(player.isInWater()){
+            if(player.isInWater() || world.isRaining()){
                 ItemNBTTool.setBoolean(stack, TAG_WATER, true);
                 player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 2, true, false));
                 player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0, true, false));
