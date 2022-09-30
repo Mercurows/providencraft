@@ -83,7 +83,7 @@ public class VillagerInit {
                 new ItemsForEmeraldsTrade(ItemRegistry.FROG_LEG.get(), 3, 2, 2)
         };
         VillagerTrades.ITrade[] elifausLevel5 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.YAGI_STAFF_CARD.get(), 40, 1, 1, 20),
+                new ItemsForEmeraldsTrade(ItemRegistry.PLUNGER.get(), 20, 1, 1, 20),
                 new ItemsForEmeraldsTrade(ItemRegistry.TARO_ICE_CREAM.get(), 4, 1, 5)
         };
 

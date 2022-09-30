@@ -33,6 +33,7 @@ import tech.lq0.providencraft.item.others.MVAStew;
 import tech.lq0.providencraft.item.others.PdcPoint;
 import tech.lq0.providencraft.item.others.PremiumPdcPoint;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
+import tech.lq0.providencraft.item.providenceOI.fukami.FukamizuRing;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.shirako.*;
 import tech.lq0.providencraft.item.providenceOI.shirayuki.FoxFairyFan;
@@ -236,6 +237,9 @@ public class ItemRegistry {
 
     //yuri
     public static final RegistryObject<Item> RABBIT_LYCHEE = ITEMS.register("rabbit_lychee", RabbitLychee::new);
+
+    //fukami
+    public static final RegistryObject<Item> FUKAMIZU_RING = ITEMS.register("fukamizu_ring", FukamizuRing::new);
 
     /**
      * 3rd
