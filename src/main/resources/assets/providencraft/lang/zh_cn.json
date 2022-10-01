@@ -373,8 +373,6 @@
   "item.providencraft.premium_pdc_point": "普罗维登高级积分",
   "premium_pdc_point_des": "钻石打造的会员积分，可以在商城换更稀有的东西",
   "item.providencraft.beast": "BEAST",
-  "beast_des1": "充斥着野兽之力的神剑",
-  "beast_des2": "逸一时，误一世",
   "description_developer": "-==开发者物品==-",
   "item.providencraft.rabbit_lychee": "兔荔枝",
   "rabbit_lychee_des1": "兔子吃掉了荔枝变成了荔枝兔",
@@ -524,5 +522,13 @@
   "providencraft.advancement.fox_fairy_fan": "尘世云烟",
   "providencraft.advancement.fox_fairy_fan_des": "获得白雪葵的狐仙扇",
   "providencraft.advancement.gravity_restraint_device": "月面漫步",
-  "providencraft.advancement.gravity_restraint_device_des": "六分之一的重力与完全消失的温柔"
+  "providencraft.advancement.gravity_restraint_device_des": "六分之一的重力与完全消失的温柔",
+  "providencraft.advancement.rabbit_lychee": "魔法之森",
+  "providencraft.advancement.rabbit_lychee_des": "可能这就是魔法生物吧",
+  "providencraft.advancement.fukamizu_ring": "海王之眷顾",
+  "providencraft.advancement.fukamizu_ring_des": "亚特兰蒂斯，显于世间",
+  "providencraft.advancement.fluff_ball": "绝版商品",
+  "providencraft.advancement.fluff_ball_des": "为什么能买到这个呢",
+  "providencraft.advancement.krm_963_53": "天使降临",
+  "providencraft.advancement.krm_963_53_des": "我将以高达形态出击"
 }

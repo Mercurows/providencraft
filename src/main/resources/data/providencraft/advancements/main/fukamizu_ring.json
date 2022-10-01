@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:fukamizu_ring"
+    },
+    "title": {
+      "translate": "providencraft.advancement.fukamizu_ring"
+    },
+    "description": {
+      "translate": "providencraft.advancement.fukamizu_ring_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/rabbit_lychee",
+  "criteria": {
+    "fukamizu_ring": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:fukamizu_ring"
+          }
+        ]
+      }
+    }
+  }
+}

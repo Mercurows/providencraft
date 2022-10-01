@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:fluff_ball"
+    },
+    "title": {
+      "translate": "providencraft.advancement.fluff_ball"
+    },
+    "description": {
+      "translate": "providencraft.advancement.fluff_ball_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "frame": "challenge"
+  },
+  "parent": "providencraft:main/leave_providence",
+  "criteria": {
+    "fluff_ball": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:fluff_ball"
+          }
+        ]
+      }
+    }
+  }
+}

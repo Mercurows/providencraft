@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:rabbit_lychee"
+    },
+    "title": {
+      "translate": "providencraft.advancement.rabbit_lychee"
+    },
+    "description": {
+      "translate": "providencraft.advancement.rabbit_lychee_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/gravity_restraint_device",
+  "criteria": {
+    "rabbit_lychee": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:rabbit_lychee"
+        }
+      }
+    }
+  }
+}

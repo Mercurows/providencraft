@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:krm_963_53"
+    },
+    "title": {
+      "translate": "providencraft.advancement.krm_963_53"
+    },
+    "description": {
+      "translate": "providencraft.advancement.krm_963_53_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "challenge"
+  },
+  "parent": "providencraft:main/plunger",
+  "criteria": {
+    "krm_963_53": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:krm_963_53"
+          }
+        ]
+      }
+    }
+  }
+}
