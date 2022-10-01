@@ -128,5 +128,15 @@
         "stream": true
       }
     ]
+  },
+  "shutter": {
+    "subtitle": "shutter",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:shutter",
+        "stream": true
+      }
+    ]
   }
 }

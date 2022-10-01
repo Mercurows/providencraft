@@ -23,4 +23,5 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> WHY_NOT_DIE = SOUNDS.register("why_not_die", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "why_not_die")));
     public static final RegistryObject<SoundEvent> SORRY = SOUNDS.register("sorry", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "sorry")));
     public static final RegistryObject<SoundEvent> BABY_MEOW = SOUNDS.register("baby_meow", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "baby_meow")));
+    public static final RegistryObject<SoundEvent> SHUTTER = SOUNDS.register("shutter", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "shutter")));
 }
