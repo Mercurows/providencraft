@@ -30,7 +30,7 @@ import java.util.List;
 
 public class SatouCamera extends Item {
     public SatouCamera(){
-        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).maxDamage(48));
+        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).maxDamage(148));
     }
 
     @OnlyIn(Dist.CLIENT)

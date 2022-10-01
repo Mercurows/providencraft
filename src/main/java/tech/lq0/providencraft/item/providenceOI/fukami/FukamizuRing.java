@@ -2,6 +2,8 @@ package tech.lq0.providencraft.item.providenceOI.fukami;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.renderer.model.IBakedModel;
+import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -15,14 +17,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.models.bakedModel.FukamizuRingBakedModel;
+import tech.lq0.providencraft.render.tile.FukamizuRingTileEntityRenderer;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -31,12 +39,15 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class FukamizuRing extends Item {
     public static final String TAG_WATER = "underwater";
     public FukamizuRing(){
-        super(new Properties().maxStackSize(1).maxDamage(404).group(ModGroup.itemgroup).rarity(Rarity.RARE));
+        super(new Properties().maxStackSize(1).maxDamage(404).group(ModGroup.itemgroup).rarity(Rarity.RARE).setISTER(() -> FukamizuRingTileEntityRenderer::new));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -92,5 +103,20 @@ public class FukamizuRing extends Item {
                     new AttributeModifier(uuid, "fukamizu ring modifier", underwater ? 12.0f : 0.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
+    }
+
+    @SubscribeEvent
+    public static void onModelBaked(ModelBakeEvent event) {
+        Map<ResourceLocation, IBakedModel> modelRegistry = event.getModelRegistry();
+        ModelResourceLocation location = new ModelResourceLocation(Objects.requireNonNull(ItemRegistry.FUKAMIZU_RING.get().getRegistryName()), "inventory");
+        IBakedModel existingModel = modelRegistry.get(location);
+        if (existingModel == null) {
+            throw new RuntimeException("Did not find Obsidian Hidden in registry");
+        } else if (existingModel instanceof FukamizuRingBakedModel) {
+            throw new RuntimeException("Tried to replaceObsidian Hidden twice");
+        } else {
+            FukamizuRingBakedModel fukamizuRingBakedModel = new FukamizuRingBakedModel(existingModel);
+            event.getModelRegistry().put(location, fukamizuRingBakedModel);
+        }
     }
 }

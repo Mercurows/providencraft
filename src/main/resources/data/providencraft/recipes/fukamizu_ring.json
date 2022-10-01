@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " as",
+    "cta",
+    "hc "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:gold_ingot"
+    },
+    "c": {
+      "item": "minecraft:cornflower"
+    },
+    "h": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "s": {
+      "item": "minecraft:nether_star"
+    },
+    "t": {
+      "item": "minecraft:conduit"
+    }
+  },
+  "result": {
+    "item": "providencraft:fukamizu_ring",
+    "count": 1
+  }
+}
