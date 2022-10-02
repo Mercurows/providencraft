@@ -33,4 +33,7 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<WhiteAhogeEntity>> WHITE_AHOGE_ENTITY =
             ENTITY_TYPES.register("white_ahoge",
                     () -> EntityType.Builder.<WhiteAhogeEntity>create(WhiteAhogeEntity::new, EntityClassification.MISC).size(0.8f, 0.3f).build("white_ahoge"));
+    public static final RegistryObject<EntityType<NiitCarEntity>> NIIT_CAR_ENTITY =
+            ENTITY_TYPES.register("niit_car",
+                    () -> EntityType.Builder.<NiitCarEntity>create(NiitCarEntity::new, EntityClassification.MISC).size(1.5f, 1.0f).build("niit_car"));
 }
