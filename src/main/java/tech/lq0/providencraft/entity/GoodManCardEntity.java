@@ -26,26 +26,20 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 public class GoodManCardEntity extends ProjectileItemEntity {
     private static final DataParameter<Integer> CARD_TYPE = EntityDataManager.createKey(GoodManCardEntity.class, DataSerializers.VARINT);
-    private GoodManCardEntity.CardType type;
+
+    private int type;
 
     public GoodManCardEntity(EntityType<? extends GoodManCardEntity> p_i50159_1_, World p_i50159_2_) {
         super(p_i50159_1_, p_i50159_2_);
+        this.dataManager.register(CARD_TYPE, 0);
         setCardType(0);
     }
 
-    public GoodManCardEntity(World world, LivingEntity entity) {
-        super(EntityRegistry.GOOD_MAN_CARD_ENTITY.get(), entity, world);
-        setCardType(0);
-    }
 
     public GoodManCardEntity(World world, LivingEntity entity, int type) {
         super(EntityRegistry.GOOD_MAN_CARD_ENTITY.get(), entity, world);
+        this.dataManager.register(CARD_TYPE, type);
         setCardType(type);
-    }
-
-    public GoodManCardEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
-        super(EntityRegistry.GOOD_MAN_CARD_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
-        setCardType(0);
     }
 
     @ParametersAreNonnullByDefault
@@ -53,7 +47,7 @@ public class GoodManCardEntity extends ProjectileItemEntity {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity) {
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), this.type.getDamage());
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), CardType.getById(this.type).getDamage());
         }
     }
 
@@ -68,7 +62,7 @@ public class GoodManCardEntity extends ProjectileItemEntity {
     @Override
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
-        compound.putInt("type", this.type.ordinal());
+        compound.putInt("type", this.type);
     }
 
     @Override
@@ -78,28 +72,13 @@ public class GoodManCardEntity extends ProjectileItemEntity {
     }
 
     public int getCardType() {
-        return this.type.ordinal();
+        return this.dataManager.get(CARD_TYPE);
     }
 
-    public void setCardType(int type){
-        switch (type){
-            case 0:
-            default:
-                this.type = CardType.GOLD;
-                break;
-            case 1:
-                this.type = CardType.DIAMOND;
-                break;
-            case 2:
-                this.type = CardType.EMERALD;
-                break;
-            case 3:
-                this.type = CardType.RED;
-                break;
-            case 4:
-                this.type = CardType.RAINBOW;
-                break;
-        }
+    public void setCardType(int type) {
+        type = type > 4 || type < 0 ? 0 : type;
+        this.type = type;
+        this.dataManager.set(CARD_TYPE, type);
     }
 
     @Override
@@ -121,7 +100,7 @@ public class GoodManCardEntity extends ProjectileItemEntity {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
-    public enum CardType{
+    public enum CardType {
         GOLD("gold", 3),
         DIAMOND("diamond", 7),
         EMERALD("emerald", 12),
@@ -144,7 +123,7 @@ public class GoodManCardEntity extends ProjectileItemEntity {
             return damage;
         }
 
-        public static CardType getById(int id){
+        public static CardType getById(int id) {
             CardType[] types = values();
             if (id < 0 || id >= types.length) {
                 id = 0;

@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 public class GoodManCard extends Item {
-    public GoodManCard(){
+    public GoodManCard() {
         super(new Properties().group(ModGroup.itemgroup).maxDamage(85));
     }
 
@@ -25,12 +25,22 @@ public class GoodManCard extends Item {
         ItemStack item = playerIn.getHeldItem(handIn);
         if (!worldIn.isRemote()) {
             if (item.getDamage() < item.getMaxDamage() - 1) {
-                int type = (int)(Math.random() * 5);
+
+                double temp = Math.random();
+                int type;
+                if (temp > .5) {
+                    type = 0;
+                } else if (temp > .25) {
+                    type = 1;
+                } else if (temp > .15) {
+                    type = 2;
+                } else if (temp > .09) {
+                    type = 3;
+                } else {
+                    type = 4;
+                }
 
                 GoodManCardEntity goodManCard = new GoodManCardEntity(worldIn, playerIn, type);
-
-                System.out.println(type);
-                System.out.println(goodManCard.getCardType());
 
                 goodManCard.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 4.0f, 0.2f);
                 worldIn.addEntity(goodManCard);
