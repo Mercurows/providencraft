@@ -36,4 +36,7 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<NiitCarEntity>> NIIT_CAR_ENTITY =
             ENTITY_TYPES.register("niit_car",
                     () -> EntityType.Builder.<NiitCarEntity>create(NiitCarEntity::new, EntityClassification.MISC).size(1.5f, 1.0f).build("niit_car"));
+    public static final RegistryObject<EntityType<GoodManCardEntity>> GOOD_MAN_CARD_ENTITY =
+            ENTITY_TYPES.register("good_man_card",
+                    () -> EntityType.Builder.<GoodManCardEntity>create(GoodManCardEntity::new, EntityClassification.MISC).size(0.2f,0.1f).build("good_man_card"));
 }
