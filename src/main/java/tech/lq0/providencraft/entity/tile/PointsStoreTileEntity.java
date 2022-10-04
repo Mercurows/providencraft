@@ -127,6 +127,7 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant {
             new MerchantOffer(getPoints(10), getGoods(ItemRegistry.MOON_CAKE.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(18), getGoods(ItemRegistry.KURUMI_BOOMERANG.get(), 4), 64, 0, 0),
             new MerchantOffer(getPoints(25), getGoods(ItemRegistry.MAGIC_MIRROR.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(25), getGoods(ItemRegistry.GOOD_MAN_CARD.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(35), getGoods(ItemRegistry.GRAVITY_RESTRAINT_DEVICE.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(35), getGoods(ItemRegistry.FOX_FAIRY_FAN.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(38), getGoods(ItemRegistry.KURUMI_HALO.get(), 1), 64, 0, 0),
