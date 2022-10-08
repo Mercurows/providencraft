@@ -20,5 +20,6 @@ public class ClientEventHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.WHITE_AHOGE_ENTITY.get(), WhiteAhogeEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NIIT_CAR_ENTITY.get(), NiitCarEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOOD_MAN_CARD_ENTITY.get(), GoodManCardEntityRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.WATER_CARD_ENTITY.get(), WaterCardEntityRenderer::new);
     }
 }
