@@ -5,6 +5,6 @@ import tech.lq0.providencraft.group.ModGroup;
 
 public class DuelWaterGun extends Item {
     public DuelWaterGun(){
-        super(new Properties().group(ModGroup.itemgroup));
+        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).maxDamage(40));
     }
 }
