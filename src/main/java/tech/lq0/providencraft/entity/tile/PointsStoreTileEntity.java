@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
 import net.minecraft.item.MerchantOffers;
+import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.SoundEvent;
@@ -23,7 +24,8 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.OptionalInt;
 
-public class PointsStoreTileEntity extends TileEntity implements IMerchant {
+public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITickableTileEntity {
+    public int ticks;
     PlayerEntity customer = null;
     MerchantOffers merchantOffers = null;
 
@@ -34,6 +36,11 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant {
     @Override
     public void setCustomer(@Nullable PlayerEntity player) {
         this.customer = player;
+    }
+
+    @Override
+    public void tick(){
+        this.ticks++;
     }
 
     @Nullable

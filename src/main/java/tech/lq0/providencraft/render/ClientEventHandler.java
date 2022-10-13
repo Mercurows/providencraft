@@ -2,10 +2,12 @@ package tech.lq0.providencraft.render;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import tech.lq0.providencraft.init.EntityRegistry;
+import tech.lq0.providencraft.init.TileEntityRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventHandler {
@@ -21,5 +23,7 @@ public class ClientEventHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NIIT_CAR_ENTITY.get(), NiitCarEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOOD_MAN_CARD_ENTITY.get(), GoodManCardEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.WATER_CARD_ENTITY.get(), WaterCardEntityRenderer::new);
+
+        event.enqueueWork(() -> ClientRegistry.bindTileEntityRenderer(TileEntityRegistry.POINTS_STORE.get(), PointsStoreTileEntityRenderer::new));
     }
 }
