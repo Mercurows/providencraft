@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "providencraft:block/points_store_model"
+    }
+  }
+}

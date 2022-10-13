@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 
 group = 'providencraft'
-version = '1.0.6-1.16.5-SNAPSHOT'
+version = '1.0.7-1.16.5-SNAPSHOT'
 
 java {
     archivesBaseName = 'providencraft'
