@@ -33,7 +33,6 @@ public class PointsStoreTileEntityRenderer extends TileEntityRenderer<PointsStor
         matrixStackIn.rotate(Vector3f.XP.rotationDegrees(180.0f));
 
         matrixStackIn.rotate(Vector3f.YP.rotationDegrees((tileEntityIn.ticks + partialTicks) * 5));
-        matrixStackIn.translate(0.0f, Math.sin((tileEntityIn.ticks + partialTicks) / 8.0f) * 0.5f, 0.0f);
         IVertexBuilder ivertexbuilder = TEXTURE.getBuffer(bufferIn, RenderType::getEntitySolid);
         this.model.render(matrixStackIn, ivertexbuilder, combinedLightIn, combinedOverlayIn, 255.0F, 255.0F, 255.0F, 1.0F);
         matrixStackIn.pop();

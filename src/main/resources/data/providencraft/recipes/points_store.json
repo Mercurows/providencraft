@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " p ",
+    "aca",
+    "gag"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:smooth_stone"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "c": {
+      "item": "providencraft:communication_table"
+    },
+    "p": {
+      "item": "minecraft:black_concrete"
+    }
+  },
+  "result": {
+    "item": "providencraft:points_store",
+    "count": 1
+  }
+}
