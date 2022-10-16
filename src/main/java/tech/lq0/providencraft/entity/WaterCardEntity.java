@@ -19,6 +19,7 @@ import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Objects;
 
 
 public class WaterCardEntity extends ProjectileItemEntity {
@@ -37,14 +38,16 @@ public class WaterCardEntity extends ProjectileItemEntity {
     }
 
     @ParametersAreNonnullByDefault
-    protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
-        super.onEntityHit(p_213868_1_);
-        Entity entity = p_213868_1_.getEntity();
-        if (entity instanceof LivingEntity) {
-            LivingEntity livingEntity = (LivingEntity) entity;
-            if(!(livingEntity instanceof ArmorStandEntity)) {
-                livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 1.0f);
-                livingEntity.applyKnockback(3.0f, this.getPosX() - entity.getPosX(), this.getPosZ() - entity.getPosZ());
+    protected void onEntityHit(EntityRayTraceResult result) {
+        super.onEntityHit(result);
+        if (result.getType() == RayTraceResult.Type.ENTITY && func_234616_v_() != null) {
+            Entity entity = result.getEntity();
+            if (!Objects.equals(entity, this.func_234616_v_()) && entity instanceof LivingEntity) {
+                LivingEntity livingEntity = (LivingEntity) entity;
+                if (!(livingEntity instanceof ArmorStandEntity)) {
+                    livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 1.0f);
+                    livingEntity.applyKnockback(3.0f, this.getPosX() - entity.getPosX(), this.getPosZ() - entity.getPosZ());
+                }
             }
         }
     }
