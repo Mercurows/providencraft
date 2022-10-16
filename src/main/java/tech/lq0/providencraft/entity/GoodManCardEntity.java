@@ -47,7 +47,7 @@ public class GoodManCardEntity extends ProjectileItemEntity {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity) {
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), CardType.getById(this.type).getDamage());
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), CardType.getById(this.type).getDamage());
         }
     }
 

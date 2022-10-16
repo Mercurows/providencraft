@@ -41,9 +41,10 @@ public class WaterCardEntity extends ProjectileItemEntity {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity) {
-            if(!(entity instanceof ArmorStandEntity)) {
-                entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), 1.0f);
-                ((LivingEntity) entity).applyKnockback(3.0f, this.getPosX() - entity.getPosX(), this.getPosZ() - entity.getPosZ());
+            LivingEntity livingEntity = (LivingEntity) entity;
+            if(!(livingEntity instanceof ArmorStandEntity)) {
+                livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 1.0f);
+                livingEntity.applyKnockback(3.0f, this.getPosX() - entity.getPosX(), this.getPosZ() - entity.getPosZ());
             }
         }
     }

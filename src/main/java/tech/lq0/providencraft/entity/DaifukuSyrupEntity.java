@@ -41,7 +41,7 @@ public class DaifukuSyrupEntity extends ProjectileItemEntity {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity && entity != this.getEntity()) {
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), 2.5f);
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 2.5f);
             int random = (int)(Math.random() * 10 + 1);
             if(random == 1){
                 entity.setFire(10);

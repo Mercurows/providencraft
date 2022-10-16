@@ -36,7 +36,6 @@ public class WaterCardEntityRenderer extends EntityRenderer<WaterCardEntity> {
         matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch)));
 
         matrixStackIn.translate(0.0f, -1.0f, 0.0f);
-        matrixStackIn.rotate(Vector3f.YN.rotationDegrees(0));
         IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.waterCardEntityEntityModel.getRenderType(this.getEntityTexture(entityIn)));
         this.waterCardEntityEntityModel.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         matrixStackIn.pop();
