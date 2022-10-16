@@ -31,6 +31,7 @@ public class MomoPhone extends Item {
     public static final String NBT_POS_X = "posX";
     public static final String NBT_POS_Y = "posY";
     public static final String NBT_POS_Z = "posZ";
+    public static final String NBT_BINDING = "binding";
 
     public MomoPhone(){
         super(new Properties().group(ModGroup.itemgroup).isImmuneToFire().maxStackSize(1).maxDamage(9));
@@ -60,15 +61,18 @@ public class MomoPhone extends Item {
         }
 
         if(!worldIn.isRemote) {
-            if (playerIn.isSneaking()) {
-                pos = playerIn.getPosition();
-                ItemNBTTool.setFloat(item, NBT_POS_X, pos.getX());
-                ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
-                ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ());
-                playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
-                return new ActionResult<>(ActionResultType.PASS, item);
-            }else{
-                if(item.getDamage() < item.getMaxDamage()){
+            if(item.getDamage() < item.getMaxDamage()){
+                if (playerIn.isSneaking()) {
+                    pos = playerIn.getPosition();
+                    ItemNBTTool.setFloat(item, NBT_POS_X, pos.getX());
+                    ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
+                    ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ());
+
+                    ItemNBTTool.setBoolean(item, NBT_BINDING, true);
+
+                    playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
+                    return new ActionResult<>(ActionResultType.PASS, item);
+                }else{
                     if(worldIn.isThundering() && worldIn.canSeeSky(playerIn.getPosition())){
                         LightningBoltEntity lightningBoltEntity = EntityType.LIGHTNING_BOLT.create(worldIn);
                         assert lightningBoltEntity != null;
@@ -84,6 +88,9 @@ public class MomoPhone extends Item {
                                 item.setDamage(item.getDamage() + 1);
                             }
                             playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
+                            if(item.getDamage() == item.getMaxDamage()){
+                                ItemNBTTool.setBoolean(item, NBT_BINDING, false);
+                            }
                         }
                     }
                     return new ActionResult<>(ActionResultType.SUCCESS, item);
