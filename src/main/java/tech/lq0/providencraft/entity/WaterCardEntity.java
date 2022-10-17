@@ -53,7 +53,7 @@ public class WaterCardEntity extends ProjectileItemEntity {
                 LivingEntity livingEntity = (LivingEntity) entity;
                 if (!(livingEntity instanceof ArmorStandEntity)) {
                     livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 1.0f);
-                    Vector3d vector3d = this.getMotion().mul(1.0D, 0.0D, 1.0D).normalize().scale(2.0D * this.strength);
+                    Vector3d vector3d = this.getMotion().mul(1.0D, 0.0D, 1.0D).normalize().scale(4.0D * this.strength);
                     if (vector3d.lengthSquared() > 0.0D) {
                         livingEntity.addVelocity(vector3d.x, 0.1D, vector3d.z);
                     }
