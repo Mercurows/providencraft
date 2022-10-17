@@ -23,6 +23,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.WaterCardEntity;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -57,6 +58,8 @@ public class DuelWaterGun extends Item {
                 waterCard.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 4.0f, 0.0f);
                 worldIn.addEntity(waterCard);
 
+                player.playSound(SoundRegistry.LECIA_HOWL.get(), 1.0F, 1.0F);
+
                 if (!player.abilities.isCreativeMode) {
                     stack.setDamage(stack.getDamage() + 1);
                 }
@@ -77,24 +80,31 @@ public class DuelWaterGun extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if (!worldIn.isRemote) {
-            if (playerIn.isSneaking()) {
-                BlockRayTraceResult raytraceresult = rayTrace(worldIn, playerIn, RayTraceContext.FluidMode.SOURCE_ONLY);
-                if (raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
-                    BlockState state = worldIn.getBlockState(raytraceresult.getPos());
-                    if (state.isIn(Blocks.WATER)) {
-                        stack.setDamage(0);
-                        playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-                        return new ActionResult<>(ActionResultType.PASS, stack);
-                    } else if (state.isIn(Blocks.LAVA)) {
-                        playerIn.setFire(10);
-                        return new ActionResult<>(ActionResultType.PASS, stack);
-                    }
+
+        if (playerIn.isSneaking()) {
+            BlockRayTraceResult raytraceresult = rayTrace(worldIn, playerIn, RayTraceContext.FluidMode.SOURCE_ONLY);
+            if (raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
+                BlockState state = worldIn.getBlockState(raytraceresult.getPos());
+                if (state.isIn(Blocks.WATER)) {
+                    stack.setDamage(0);
+                    playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
+                    return new ActionResult<>(ActionResultType.PASS, stack);
+                } else if (state.isIn(Blocks.LAVA)) {
+                    playerIn.setFire(10);
+                    playerIn.playSound(SoundRegistry.LECIA_SCREAM.get(), 1.0F, 1.0F);
+                    return new ActionResult<>(ActionResultType.PASS, stack);
                 }
             }
-
-            playerIn.setActiveHand(handIn);
+        }else {
+            int random = (int)(Math.random() * 2 + 1);
+            if(random == 1) {
+                playerIn.playSound(SoundRegistry.LECIA_CAST_1.get(), 1.0F, 1.0F);
+            }else {
+                playerIn.playSound(SoundRegistry.LECIA_CAST_2.get(), 1.0F, 1.0F);
+            }
         }
+
+        playerIn.setActiveHand(handIn);
         return new ActionResult<>(ActionResultType.CONSUME, stack);
     }
 }

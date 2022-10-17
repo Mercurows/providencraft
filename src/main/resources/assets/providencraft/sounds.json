@@ -138,5 +138,45 @@
         "stream": true
       }
     ]
+  },
+  "lecia_howl": {
+    "subtitle": "lecia_howl",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:lecia_howl",
+        "stream": true
+      }
+    ]
+  },
+  "lecia_cast_1": {
+    "subtitle": "lecia_cast",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:lecia_cast_1",
+        "stream": true
+      }
+    ]
+  },
+  "lecia_cast_2": {
+    "subtitle": "lecia_cast",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:lecia_cast_2",
+        "stream": true
+      }
+    ]
+  },
+  "lecia_scream": {
+    "subtitle": "lecia_scream",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:lecia_scream",
+        "stream": true
+      }
+    ]
   }
 }
