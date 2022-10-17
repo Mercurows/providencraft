@@ -12,6 +12,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import tech.lq0.providencraft.init.EntityRegistry;
@@ -23,6 +24,7 @@ import java.util.Objects;
 
 
 public class WaterCardEntity extends ProjectileItemEntity {
+    private int strength = 1;
 
     public WaterCardEntity(EntityType<? extends WaterCardEntity> p_i50159_1_, World p_i50159_2_) {
         super(p_i50159_1_, p_i50159_2_);
@@ -30,6 +32,11 @@ public class WaterCardEntity extends ProjectileItemEntity {
 
     public WaterCardEntity(World world, LivingEntity entity) {
         super(EntityRegistry.WATER_CARD_ENTITY.get(), entity, world);
+    }
+
+    public WaterCardEntity(World world, LivingEntity entity, int strength) {
+        super(EntityRegistry.WATER_CARD_ENTITY.get(), entity, world);
+        this.strength = strength;
     }
 
 
@@ -46,7 +53,10 @@ public class WaterCardEntity extends ProjectileItemEntity {
                 LivingEntity livingEntity = (LivingEntity) entity;
                 if (!(livingEntity instanceof ArmorStandEntity)) {
                     livingEntity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 1.0f);
-                    livingEntity.applyKnockback(3.0f, this.getPosX() - entity.getPosX(), this.getPosZ() - entity.getPosZ());
+                    Vector3d vector3d = this.getMotion().mul(1.0D, 0.0D, 1.0D).normalize().scale(2.0D * this.strength);
+                    if (vector3d.lengthSquared() > 0.0D) {
+                        livingEntity.addVelocity(vector3d.x, 0.1D, vector3d.z);
+                    }
                 }
             }
         }

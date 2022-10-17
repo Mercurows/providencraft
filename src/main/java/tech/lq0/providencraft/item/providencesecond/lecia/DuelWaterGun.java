@@ -3,10 +3,11 @@ package tech.lq0.providencraft.item.providencesecond.lecia;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
+import net.minecraft.item.UseAction;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -44,25 +45,33 @@ public class DuelWaterGun extends Item {
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context) {
-        World world = context.getWorld();
-        ItemStack stack = context.getItem();
-        PlayerEntity player = context.getPlayer();
-        if (!world.isRemote) {
-            if (player != null && player.isSneaking()) {
-                BlockRayTraceResult raytraceresult = rayTrace(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-                if (raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
-                    BlockState state = world.getBlockState(raytraceresult.getPos());
-                    if (state.isIn(Blocks.WATER)) {
-                        stack.setDamage(0);
-                        player.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-                    } else if (state.isIn(Blocks.LAVA)) {
-                        player.setFire(10);
-                    }
+    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
+        if(entityLiving instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entityLiving;
+
+            if (stack.getDamage() < stack.getMaxDamage()) {
+                int strength = (this.getUseDuration(stack) - timeLeft) / 20;
+
+                WaterCardEntity waterCard = new WaterCardEntity(worldIn, player, Math.min(strength, 5));
+                waterCard.setShooter(player);
+                waterCard.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 4.0f, 0.0f);
+                worldIn.addEntity(waterCard);
+
+                if (!player.abilities.isCreativeMode) {
+                    stack.setDamage(stack.getDamage() + 1);
                 }
             }
         }
-        return ActionResultType.CONSUME;
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.BOW;
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
     }
 
     @Override
@@ -84,18 +93,8 @@ public class DuelWaterGun extends Item {
                 }
             }
 
-            if (stack.getDamage() < stack.getMaxDamage()) {
-                WaterCardEntity waterCard = new WaterCardEntity(worldIn, playerIn);
-                waterCard.setShooter(playerIn);
-                waterCard.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 4.0f, 0.0f);
-                worldIn.addEntity(waterCard);
-
-                if (!playerIn.abilities.isCreativeMode) {
-                    stack.setDamage(stack.getDamage() + 1);
-                }
-                return new ActionResult<>(ActionResultType.CONSUME, stack);
-            }
+            playerIn.setActiveHand(handIn);
         }
-        return new ActionResult<>(ActionResultType.PASS, stack);
+        return new ActionResult<>(ActionResultType.CONSUME, stack);
     }
 }
