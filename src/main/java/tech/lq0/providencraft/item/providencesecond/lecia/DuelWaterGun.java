@@ -5,6 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
@@ -23,6 +24,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.WaterCardEntity;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.CriteriaRegistry;
 import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -93,6 +95,8 @@ public class DuelWaterGun extends Item {
                     playerIn.setFire(10);
                     playerIn.playSound(SoundRegistry.LECIA_SCREAM.get(), 1.0F, 1.0F);
                     playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL_LAVA, 1.0F, 1.0F);
+
+                    CriteriaRegistry.FILL_LAVA.test((ServerPlayerEntity) playerIn, stack);
                     return new ActionResult<>(ActionResultType.SUCCESS, stack);
                 }
             }

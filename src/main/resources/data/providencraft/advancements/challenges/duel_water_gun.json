@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:duel_water_gun"
+    },
+    "title": {
+      "translate": "providencraft.advancement.duel_water_gun"
+    },
+    "description": {
+      "translate": "providencraft.advancement.duel_water_gun_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "challenge",
+    "hidden": false
+  },
+  "parent": "providencraft:providencraft",
+  "criteria": {
+    "duel_water_gun": {
+      "trigger": "providencraft:fill_lava",
+      "conditions": {
+        "item": {
+          "items":[
+            "providencraft:duel_water_gun"
+          ]
+        }
+      }
+    }
+  }
+}
