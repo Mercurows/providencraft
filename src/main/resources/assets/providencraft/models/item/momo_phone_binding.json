@@ -1,8 +1,10 @@
 {
 	"credit": "Made with Blockbench",
-	"texture_size": [32, 32],
+	"texture_size": [128, 128],
 	"textures": {
-		"1": "providencraft:item/momo_phone_texture2"
+		"1": "providencraft:item/momo_phone_texture2",
+		"2": "providencraft:item/momo_phone_screen",
+		"particle": "providencraft:item/momo_phone_screen"
 	},
 	"elements": [
 		{
@@ -11,7 +13,7 @@
 			"faces": {
 				"north": {"uv": [0, 0, 3, 6], "texture": "#1"},
 				"east": {"uv": [0, 6, 0.5, 12], "texture": "#1"},
-				"south": {"uv": [3, 0, 6, 6], "texture": "#1"},
+				"south": {"uv": [0, 1.375, 8, 16], "texture": "#2"},
 				"west": {"uv": [6, 0, 6.5, 6], "texture": "#1"},
 				"up": {"uv": [3.5, 6.5, 0.5, 6], "texture": "#1"},
 				"down": {"uv": [6.5, 6, 3.5, 6.5], "texture": "#1"}
