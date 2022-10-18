@@ -88,11 +88,12 @@ public class DuelWaterGun extends Item {
                 if (state.isIn(Blocks.WATER)) {
                     stack.setDamage(0);
                     playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
-                    return new ActionResult<>(ActionResultType.PASS, stack);
+                    return new ActionResult<>(ActionResultType.SUCCESS, stack);
                 } else if (state.isIn(Blocks.LAVA)) {
                     playerIn.setFire(10);
                     playerIn.playSound(SoundRegistry.LECIA_SCREAM.get(), 1.0F, 1.0F);
-                    return new ActionResult<>(ActionResultType.PASS, stack);
+                    playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL_LAVA, 1.0F, 1.0F);
+                    return new ActionResult<>(ActionResultType.SUCCESS, stack);
                 }
             }
         }else {
