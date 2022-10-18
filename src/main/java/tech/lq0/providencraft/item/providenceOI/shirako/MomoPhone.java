@@ -6,9 +6,7 @@ import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
@@ -33,7 +31,7 @@ public class MomoPhone extends Item {
     public static final String NBT_POS_Z = "posZ";
     public static final String NBT_BINDING = "binding";
 
-    public MomoPhone(){
+    public MomoPhone() {
         super(new Properties().group(ModGroup.itemgroup).isImmuneToFire().maxStackSize(1).maxDamage(9));
     }
 
@@ -56,45 +54,49 @@ public class MomoPhone extends Item {
         float posY = ItemNBTTool.getFloat(item, NBT_POS_Y, Float.NaN);
         float posZ = ItemNBTTool.getFloat(item, NBT_POS_Z, Float.NaN);
 
-        if(!(Float.isNaN(posX) || Float.isNaN(posY) || Float.isNaN(posZ))){
+        if (!(Float.isNaN(posX) || Float.isNaN(posY) || Float.isNaN(posZ))) {
             pos = new BlockPos(posX, posY, posZ);
         }
 
-        if(!worldIn.isRemote) {
-            if(item.getDamage() < item.getMaxDamage()){
-                if (playerIn.isSneaking()) {
-                    pos = playerIn.getPosition();
-                    ItemNBTTool.setFloat(item, NBT_POS_X, pos.getX());
-                    ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
-                    ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ());
+        if (item.getDamage() < item.getMaxDamage()) {
+            if (playerIn.isSneaking()) {
+                pos = playerIn.getPosition();
+                ItemNBTTool.setFloat(item, NBT_POS_X, pos.getX());
+                ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
+                ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ());
 
-                    ItemNBTTool.setBoolean(item, NBT_BINDING, true);
+                ItemNBTTool.setBoolean(item, NBT_BINDING, true);
 
-                    playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
-                    return new ActionResult<>(ActionResultType.PASS, item);
-                }else{
-                    if(worldIn.isThundering() && worldIn.canSeeSky(playerIn.getPosition())){
-                        LightningBoltEntity lightningBoltEntity = EntityType.LIGHTNING_BOLT.create(worldIn);
-                        assert lightningBoltEntity != null;
-                        lightningBoltEntity.moveForced(Vector3d.copyCenteredHorizontally(playerIn.getPosition()));
-                        worldIn.addEntity(lightningBoltEntity);
+                playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
+
+                playerIn.playSound(SoundEvents.ENTITY_ARROW_HIT_PLAYER, 1.0F, 1.0F);
+
+                return new ActionResult<>(ActionResultType.PASS, item);
+            } else {
+                if (worldIn.isThundering() && worldIn.canSeeSky(playerIn.getPosition())) {
+                    LightningBoltEntity lightningBoltEntity = EntityType.LIGHTNING_BOLT.create(worldIn);
+                    assert lightningBoltEntity != null;
+                    lightningBoltEntity.moveForced(Vector3d.copyCenteredHorizontally(playerIn.getPosition()));
+                    worldIn.addEntity(lightningBoltEntity);
+                    playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
+                } else {
+                    if (pos == null) {
+                        playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), true);
+                    } else {
+                        playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
+
+                        worldIn.playSound(playerIn, pos, SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+                        if (!playerIn.abilities.isCreativeMode) {
+                            item.setDamage(item.getDamage() + 1);
+                        }
                         playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
-                    }else {
-                        if(pos == null){
-                            playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), true);
-                        }else {
-                            playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
-                            if (!playerIn.abilities.isCreativeMode) {
-                                item.setDamage(item.getDamage() + 1);
-                            }
-                            playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
-                            if(item.getDamage() == item.getMaxDamage()){
-                                ItemNBTTool.setBoolean(item, NBT_BINDING, false);
-                            }
+                        if (item.getDamage() == item.getMaxDamage()) {
+                            ItemNBTTool.setBoolean(item, NBT_BINDING, false);
                         }
                     }
-                    return new ActionResult<>(ActionResultType.SUCCESS, item);
                 }
+                return new ActionResult<>(ActionResultType.SUCCESS, item);
             }
         }
         return new ActionResult<>(ActionResultType.FAIL, item);
