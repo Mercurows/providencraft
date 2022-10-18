@@ -49,7 +49,7 @@ public class DuelWaterGun extends Item {
 
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
-        if(entityLiving instanceof PlayerEntity){
+        if (entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
 
             if (stack.getDamage() < stack.getMaxDamage()) {
@@ -96,15 +96,18 @@ public class DuelWaterGun extends Item {
                     playerIn.playSound(SoundRegistry.LECIA_SCREAM.get(), 1.0F, 1.0F);
                     playerIn.playSound(SoundEvents.ITEM_BUCKET_FILL_LAVA, 1.0F, 1.0F);
 
-                    CriteriaRegistry.FILL_LAVA.test((ServerPlayerEntity) playerIn, stack);
+                    if (playerIn instanceof ServerPlayerEntity) {
+                        CriteriaRegistry.FILL_LAVA.test((ServerPlayerEntity) playerIn, stack);
+                    }
+
                     return new ActionResult<>(ActionResultType.SUCCESS, stack);
                 }
             }
-        }else {
-            int random = (int)(Math.random() * 2 + 1);
-            if(random == 1) {
+        } else {
+            int random = (int) (Math.random() * 2 + 1);
+            if (random == 1) {
                 playerIn.playSound(SoundRegistry.LECIA_CAST_1.get(), 1.0F, 1.0F);
-            }else {
+            } else {
                 playerIn.playSound(SoundRegistry.LECIA_CAST_2.get(), 1.0F, 1.0F);
             }
         }

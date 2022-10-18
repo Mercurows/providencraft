@@ -1,22 +1,26 @@
 package tech.lq0.providencraft.init;
 
-import com.google.common.collect.Maps;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.ICriterionTrigger;
-import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import tech.lq0.providencraft.advancements.criterion.FillLavaTrigger;
 
-import java.util.Map;
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 
 public class CriteriaRegistry {
-    public static final Map<ResourceLocation, ICriterionTrigger<?>> REGISTRY = Maps.newHashMap();
-    public static final FillLavaTrigger FILL_LAVA = register(new FillLavaTrigger());
+    public static FillLavaTrigger FILL_LAVA;
+
+    @SubscribeEvent
+    public static void setup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            FILL_LAVA = register(new FillLavaTrigger());
+        });
+    }
 
     public static <T extends ICriterionTrigger<?>> T register(T criterion) {
-        if (REGISTRY.containsKey(criterion.getId())) {
-            throw new IllegalArgumentException("Duplicate criterion id " + criterion.getId());
-        } else {
-            REGISTRY.put(criterion.getId(), criterion);
-            return criterion;
-        }
+        CriteriaTriggers.register(criterion);
+        return criterion;
     }
 }
