@@ -310,6 +310,7 @@
   "momo_phone_func": "潜行时右键设置传送地点，非潜行状态下右键回到该地点",
   "momo_phone_des": "小毛的手机，能使用\"噗噗打车\"回到自己的家",
   "momo_phone_warn": "警告：不要在雷雨天气使用电子产品",
+  "momo_phone_tp_fail": "噗噗打车目前无法到达那里",
   "effect.providencraft.holiness": "圣洁",
   "item.providencraft.gravity_restraint_device": "重力抑制装置",
   "grd_moon": "开启月球重力模式",
@@ -542,5 +543,7 @@
   "providencraft.advancement.fluff_ball": "绝版商品",
   "providencraft.advancement.fluff_ball_des": "为什么能买到这个呢",
   "providencraft.advancement.krm_963_53": "天使降临",
-  "providencraft.advancement.krm_963_53_des": "我将以高达形态出击"
+  "providencraft.advancement.krm_963_53_des": "我将以高达形态出击",
+  "providencraft.advancement.duel_water_gun": "住手，那根本不是弹药",
+  "providencraft.advancement.duel_water_gun_des": "这可是水枪啊（恼）"
 }

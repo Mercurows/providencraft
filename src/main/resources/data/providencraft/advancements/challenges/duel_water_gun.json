@@ -12,9 +12,9 @@
     "show_toast": true,
     "announce_to_chat": true,
     "frame": "challenge",
-    "hidden": false
+    "hidden": true
   },
-  "parent": "providencraft:providencraft",
+  "parent": "providencraft:main/electric_horn",
   "criteria": {
     "duel_water_gun": {
       "trigger": "providencraft:fill_lava",

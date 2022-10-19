@@ -83,16 +83,18 @@ public class MomoPhone extends Item {
                     if (pos == null) {
                         playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), true);
                     } else {
-                        playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true);
+                        if (playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true)) {
+                            worldIn.playSound(playerIn, pos, SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
-                        worldIn.playSound(playerIn, pos, SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
-
-                        if (!playerIn.abilities.isCreativeMode) {
-                            item.setDamage(item.getDamage() + 1);
-                        }
-                        playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
-                        if (item.getDamage() == item.getMaxDamage()) {
-                            ItemNBTTool.setBoolean(item, NBT_BINDING, false);
+                            if (!playerIn.abilities.isCreativeMode) {
+                                item.setDamage(item.getDamage() + 1);
+                            }
+                            playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
+                            if (item.getDamage() == item.getMaxDamage()) {
+                                ItemNBTTool.setBoolean(item, NBT_BINDING, false);
+                            }
+                        } else {
+                            playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_tp_fail").mergeStyle(TextFormatting.RED), true);
                         }
                     }
                 }

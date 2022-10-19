@@ -8,7 +8,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import tech.lq0.providencraft.advancements.criterion.FillLavaTrigger;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-
 public class CriteriaRegistry {
     public static FillLavaTrigger FILL_LAVA;
 
