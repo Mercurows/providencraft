@@ -1,5 +1,6 @@
 package tech.lq0.providencraft.item.providenceOI.shirako;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
@@ -61,9 +62,16 @@ public class MomoPhone extends Item {
         if (item.getDamage() < item.getMaxDamage()) {
             if (playerIn.isSneaking()) {
                 pos = playerIn.getPosition();
-                ItemNBTTool.setFloat(item, NBT_POS_X, pos.getX());
-                ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
-                ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ());
+                ItemNBTTool.setFloat(item, NBT_POS_X, pos.getX() + 0.5F);
+
+                BlockState state = worldIn.getBlockState(pos);
+                if (state.getMaterial().blocksMovement()) {
+                    ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY() + 1);
+                } else {
+                    ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
+                }
+
+                ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ() + 0.5F);
 
                 ItemNBTTool.setBoolean(item, NBT_BINDING, true);
 
@@ -83,8 +91,30 @@ public class MomoPhone extends Item {
                     if (pos == null) {
                         playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), true);
                     } else {
-                        if (playerIn.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), true)) {
-                            worldIn.playSound(playerIn, pos, SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                        boolean isBlocked = false;
+                        BlockState state1 = worldIn.getBlockState(pos.add(0, 1, 0));
+                        BlockState state2 = worldIn.getBlockState(pos.add(0, 2, 0));
+                        if (state1.getMaterial().blocksMovement() || state2.getMaterial().blocksMovement()) {
+                            isBlocked = true;
+                        }
+                        if (!isBlocked) {
+                            boolean temp = false;
+                            for (int i = (int) posY; i >= 0; i--) {
+                                BlockState state = worldIn.getBlockState(new BlockPos(posX, i, posZ));
+                                if (state.getMaterial().blocksMovement()) {
+                                    temp = true;
+                                    posY = i + 1;
+                                    break;
+                                }
+                            }
+                            isBlocked = !temp;
+                        }
+
+                        if (!isBlocked) {
+                            if (!worldIn.isRemote) {
+                                playerIn.teleportKeepLoaded(posX, posY, posZ);
+                            }
+                            playerIn.getEntityWorld().playSound(playerIn, new BlockPos(posX, posY, posZ), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
                             if (!playerIn.abilities.isCreativeMode) {
                                 item.setDamage(item.getDamage() + 1);
@@ -94,7 +124,9 @@ public class MomoPhone extends Item {
                                 ItemNBTTool.setBoolean(item, NBT_BINDING, false);
                             }
                         } else {
-                            playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_tp_fail").mergeStyle(TextFormatting.RED), true);
+                            if (!worldIn.isRemote) {
+                                playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_tp_fail").mergeStyle(TextFormatting.RED), true);
+                            }
                         }
                     }
                 }
