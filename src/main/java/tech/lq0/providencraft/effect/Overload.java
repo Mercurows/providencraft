@@ -79,11 +79,14 @@ public class Overload extends Effect {
     @SubscribeEvent
     public static void SideEffect3(PotionEvent.PotionRemoveEvent event){
         LivingEntity entity = event.getEntityLiving();
-        if(EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())){
-            if(entity instanceof PlayerEntity){
-                PlayerEntity player = (PlayerEntity) entity;
-                int lvl = event.getPotionEffect().getAmplifier();
-                player.attackEntityFrom(DamageSourceRegistry.OVERLOAD, 5.0f * (lvl + 1));
+        EffectInstance effect = event.getPotionEffect();
+        if(effect != null) {
+            if (EffectRegistry.OVERLOAD.get().getName().equals(effect.getEffectName())) {
+                if (entity instanceof PlayerEntity) {
+                    PlayerEntity player = (PlayerEntity) entity;
+                    int lvl = event.getPotionEffect().getAmplifier();
+                    player.attackEntityFrom(DamageSourceRegistry.OVERLOAD, 5.0f * (lvl + 1));
+                }
             }
         }
     }
