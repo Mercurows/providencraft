@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.Utils;
@@ -31,11 +32,15 @@ import tech.lq0.providencraft.tools.TooltipTool;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class KRM_963_53 extends ArmorItem {
     public static final String TAG_FLY_ENERGY = "fly_energy";
+    private static final List<String> players = Collections.synchronizedList(new ArrayList<>());
+
     public KRM_963_53(){
         super(ArmorMaterial.NETHERITE, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(963).isImmuneToFire().rarity(Rarity.EPIC).setNoRepair().group(ModGroup.costumegroup));
     }
@@ -105,6 +110,25 @@ public class KRM_963_53 extends ArmorItem {
         ItemNBTTool.setInt(stack, TAG_FLY_ENERGY, Math.min(num, 1000));
     }
 
+    private static boolean checkFly(PlayerEntity player){
+        ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
+        if(itemStack.getItem().equals(ItemRegistry.KRM_963_53.get())){
+            return getFlyEnergy(itemStack) > 0;
+        }
+        return false;
+    }
+
+    @SubscribeEvent
+    public static void playerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
+        String username = event.getPlayer().getGameProfile().getName();
+        players.remove(username + ":false");
+        players.remove(username + ":true");
+    }
+
+    private static String playerToString(PlayerEntity player){
+        return player.getGameProfile().getName() + ":" + player.world.isRemote;
+    }
+
     @SubscribeEvent
     public static void effect(LivingEvent.LivingUpdateEvent event){
         LivingEntity livingEntity = event.getEntityLiving();
@@ -113,30 +137,40 @@ public class KRM_963_53 extends ArmorItem {
             ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
             boolean flag = itemStack.getItem().equals(ItemRegistry.KRM_963_53.get());
 
-            if(!player.isCreative() && !player.isSpectator()) {
-                player.abilities.allowFlying = flag;
+            if(players.contains(playerToString(player))) {
+                if(checkFly(player)) {
+                //if (!player.isCreative() && !player.isSpectator() && !player.abilities.allowFlying) {
+//                    player.abilities.allowFlying = flag;
+                    player.abilities.allowFlying = true;
 
-                if(player.abilities.isFlying){
-                    //if(itemStack.getDamage() < itemStack.getMaxDamage()){
-                    if(getFlyEnergy(itemStack) > 0){
-                        if(player.ticksExisted % 20 == 0){
-                            //itemStack.setDamage(itemStack.getDamage() + 1);
-                            setFlyEnergy(itemStack, Math.max(getFlyEnergy(itemStack) - 1, 0));
+                    if (player.abilities.isFlying) {
+                        if (getFlyEnergy(itemStack) > 0) {
+                            if (player.ticksExisted % 20 == 0) {
+                                setFlyEnergy(itemStack, Math.max(getFlyEnergy(itemStack) - 1, 0));
+                            }
+                        } else {
+                            player.abilities.isFlying = false;
                         }
-                    }else{
-                        player.abilities.isFlying = false;
+//                        if (!flag) {
+//                            player.abilities.isFlying = false;
+//                        }
                     }
-                    if(!flag) {
+                } else {
+                    if (!player.isSpectator() && !player.abilities.isCreativeMode) {
+                        player.abilities.allowFlying = false;
                         player.abilities.isFlying = false;
+                        player.abilities.disableDamage = false;
                     }
+                    players.remove(playerToString(player));
+//                    player.abilities.allowFlying = true;
                 }
-            }else{
+            }else if(checkFly(player)) {
+                players.add(playerToString(player));
                 player.abilities.allowFlying = true;
             }
 
-            if(!player.abilities.isFlying){
-                if(player.ticksExisted % 30 == 0){
-                    //itemStack.setDamage(itemStack.getDamage() - 1);
+            if (!player.abilities.isFlying) {
+                if (player.ticksExisted % 30 == 0) {
                     setFlyEnergy(itemStack, getFlyEnergy(itemStack) + 1);
                 }
             }
