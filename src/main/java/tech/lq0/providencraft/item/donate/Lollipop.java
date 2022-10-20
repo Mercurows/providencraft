@@ -14,13 +14,8 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.PotionEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.init.EffectRegistry;
-import tech.lq0.providencraft.tools.RandomTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -28,7 +23,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Lollipop extends Item {
     public static final Food food = (new Food.Builder()).saturation(6.0f).hunger(4).setAlwaysEdible().build();
 
@@ -67,70 +61,4 @@ public class Lollipop extends Item {
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }
 
-    private static void triggerSideEffect(PlayerEntity player, int num, int lvl) {
-        switch (num) {
-            case 0:
-                player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 100, lvl));
-                break;
-            case 1:
-                player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 100, lvl));
-                break;
-            case 2:
-                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 100, lvl));
-                break;
-            case 3:
-                player.addPotionEffect(new EffectInstance(Effects.WITHER, 100, lvl));
-                break;
-            case 4:
-                player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 100, lvl));
-                break;
-        }
-    }
-
-    @SubscribeEvent
-    public static void SideEffect(PotionEvent.PotionExpiryEvent event){
-        LivingEntity entity = event.getEntityLiving();
-        if(EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())){
-            if(entity instanceof PlayerEntity){
-                PlayerEntity player = (PlayerEntity) entity;
-                int random = (int) (Math.random() * 99 + 1);
-                int lvl = event.getPotionEffect().getAmplifier();
-
-                if (random > 20) {
-                    int[] num = RandomTool.getRandom(1, 5, 2);
-                    assert num != null;
-                    triggerSideEffect(player, num[0], lvl);
-                    triggerSideEffect(player, num[1], lvl);
-                } else {
-                    player.attackEntityFrom(DamageSourceRegistry.EMO, 30.0f);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void SideEffect2(PotionEvent.PotionAddedEvent event){
-        LivingEntity entity = event.getEntityLiving();
-        if(EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())){
-            if(entity instanceof PlayerEntity){
-                PlayerEntity player = (PlayerEntity) entity;
-                int lvl = event.getPotionEffect().getAmplifier();
-                if (lvl >= 10) {
-                    player.attackEntityFrom(DamageSourceRegistry.OVERLOAD, 300.0f);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void SideEffect3(PotionEvent.PotionRemoveEvent event){
-        LivingEntity entity = event.getEntityLiving();
-        if(EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())){
-            if(entity instanceof PlayerEntity){
-                PlayerEntity player = (PlayerEntity) entity;
-                int lvl = event.getPotionEffect().getAmplifier();
-                player.attackEntityFrom(DamageSourceRegistry.OVERLOAD, 5.0f * (lvl + 1));
-            }
-        }
-    }
 }
