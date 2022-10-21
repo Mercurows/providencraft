@@ -66,9 +66,9 @@ public class MomoPhone extends Item {
 
                 BlockState state = worldIn.getBlockState(pos);
                 if (state.getMaterial().blocksMovement()) {
-                    ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY() + 1);
-                } else {
                     ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY());
+                } else {
+                    ItemNBTTool.setFloat(item, NBT_POS_Y, pos.getY() - 1);
                 }
 
                 ItemNBTTool.setFloat(item, NBT_POS_Z, pos.getZ() + 0.5F);
