@@ -51,6 +51,10 @@ public class MountainDestroyer extends PickaxeItem {
 
     @Override
     public boolean canHarvestBlock(BlockState blockIn) {
+        int i = this.getTier().getHarvestLevel();
+        if (blockIn.getHarvestTool() == net.minecraftforge.common.ToolType.PICKAXE) {
+            return i >= blockIn.getHarvestLevel();
+        }
         Material material = blockIn.getMaterial();
         return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC);
     }
@@ -134,7 +138,8 @@ public class MountainDestroyer extends PickaxeItem {
 
     private void manualMineBlock(ArrayList<BlockPos> pos, World world, LivingEntity player, ItemStack item) {
         for (BlockPos p : pos) {
-            if (item.canHarvestBlock(world.getBlockState(p))) {
+            BlockState s = world.getBlockState(p);
+            if (s.getBlockHardness(world, p) != -1.0F && item.canHarvestBlock(world.getBlockState(p))) {
                 BlockState state = world.getBlockState(p);
                 TileEntity tileentity = state.hasTileEntity() ? world.getTileEntity(p) : null;
                 Block.spawnDrops(state, world, p, tileentity, player, player.getHeldItemMainhand());
