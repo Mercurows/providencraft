@@ -3,20 +3,26 @@ package tech.lq0.providencraft.render.special;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoPhone;
+import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SpecialRender {
@@ -30,7 +36,7 @@ public class SpecialRender {
         ItemStack item = player.getHeldItemMainhand();
         ItemStack item_off = player.getHeldItemOffhand();
 
-        if(!(item.getItem() instanceof MomoPhone) && item_off.getItem() instanceof MomoPhone){
+        if (!(item.getItem() instanceof MomoPhone) && item_off.getItem() instanceof MomoPhone) {
             item = item_off;
         }
 
@@ -50,6 +56,75 @@ public class SpecialRender {
                     renderLandmark(evt.getMatrixStack(), new BlockPos(posX, posY, posZ), Color.gray);
                 } else {
                     renderLandmark(evt.getMatrixStack(), new BlockPos(posX, posY, posZ), Color.green);
+                }
+            }
+        }
+
+        item = player.getHeldItemMainhand();
+        if (item.getItem() instanceof MountainDestroyer) {
+            if (ItemNBTTool.getBoolean(item, MountainDestroyer.TAG_MULTIMINE, false)) {
+                World world = player.getEntityWorld();
+
+                Vector3d look = player.getLookVec();
+
+                Vector3d start = player.getPositionVec().add(0, player.getEyeHeight(), 0);
+                Vector3d end = player.getPositionVec().add(look.x * 5, look.y * 5 + player.getEyeHeight(), look.z * 5);
+
+                RayTraceContext context = new RayTraceContext(start, end, RayTraceContext.BlockMode.OUTLINE, RayTraceContext.FluidMode.NONE, player);
+                BlockRayTraceResult result = player.getEntityWorld().rayTraceBlocks(context);
+
+                BlockPos pos = result.getPos();
+
+                BlockState state = player.getEntityWorld().getBlockState(pos);
+
+                if (state.getBlockHardness(world, pos) != -1.0F && item.canHarvestBlock(state)) {
+
+                    ArrayList<BlockPos> posList = new ArrayList<>();
+
+                    if (pos.getY() - player.getPosY() <= 2 && pos.getY() - player.getPosY() >= 0) {
+                        pos = pos.add(0, player.getPosY() - pos.getY(), 0);
+                        float yaw = Math.abs(player.rotationYaw) % 360;
+                        if ((yaw >= 45.0f && yaw <= 135.0f) || (yaw >= 225.0f && yaw <= 315.0f)) {
+                            //x-facing
+                            posList.add(pos.add(0, 0, -1));
+                            posList.add(pos.add(0, 0, 1));
+                            posList.add(pos.add(0, 1, -1));
+                            posList.add(pos.add(0, 1, 0));
+                            posList.add(pos.add(0, 1, 1));
+                            posList.add(pos.add(0, 2, -1));
+                            posList.add(pos.add(0, 2, 0));
+                            posList.add(pos.add(0, 2, 1));
+                        } else {
+                            //z-facing
+                            posList.add(pos.add(-1, 0, 0));
+                            posList.add(pos.add(1, 0, 0));
+                            posList.add(pos.add(-1, 1, 0));
+                            posList.add(pos.add(0, 1, 0));
+                            posList.add(pos.add(1, 1, 0));
+                            posList.add(pos.add(-1, 2, 0));
+                            posList.add(pos.add(0, 2, 0));
+                            posList.add(pos.add(1, 2, 0));
+                        }
+                    } else {
+                        //up-down-facing
+                        posList.add(pos.add(1, 0, 0));
+                        posList.add(pos.add(-1, 0, 0));
+                        posList.add(pos.add(0, 0, 1));
+                        posList.add(pos.add(0, 0, -1));
+                        posList.add(pos.add(1, 0, 1));
+                        posList.add(pos.add(1, 0, -1));
+                        posList.add(pos.add(-1, 0, 1));
+                        posList.add(pos.add(-1, 0, -1));
+                    }
+                    posList.add(pos);
+
+                    ItemStack finalItem = item;
+                    posList.forEach(b -> {
+                        BlockState s = world.getBlockState(b);
+                        if (s.getBlockHardness(world, b) != -1.0F && finalItem.canHarvestBlock(player.getEntityWorld().getBlockState(b))) {
+                            renderBlock(evt.getMatrixStack(), b, Color.yellow);
+                        }
+                    });
                 }
             }
         }
@@ -118,7 +193,7 @@ public class SpecialRender {
 
         int posX = pos.getX(), posY = pos.getY(), posZ = pos.getZ();
         matrix.push();
-        matrix.translate(-view.x, -view.y + 1.5F, -view.z);
+        matrix.translate(-view.x, -view.y, -view.z);
 
         IVertexBuilder builder;
         builder = buffer.getBuffer(CustomRenderType.BlockOverlay);
@@ -126,10 +201,10 @@ public class SpecialRender {
         {
             matrix.push();
             matrix.translate(posX, posY, posZ);
-            matrix.translate(-0.005f, -0.005f, -0.005f);
-            matrix.scale(1.01f, 1.01f, 1.01f);
+            matrix.translate(-0.0001f, -0.0001f, -0.0001f);
+            matrix.scale(1.0001f, 1.0001f, 1.0001f);
             matrix.rotate(Vector3f.YP.rotationDegrees(-90.0F));
-            matrix.translate(0, -posY, 0);
+            matrix.translate(0, 0, 0);
 
             Matrix4f matrix4f = matrix.getLast().getMatrix();
             float red = color.getRed() / 255f, green = color.getGreen() / 255f, blue = color.getBlue() / 255f;
