@@ -2,12 +2,13 @@ package tech.lq0.providencraft.item.providencefirst.haya;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
@@ -22,10 +23,11 @@ import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HayaSword extends SwordItem {
-    public HayaSword(){
+    public HayaSword() {
         super(ItemTier.NETHERITE, 4, -2.6f, new Properties().group(ModGroup.itemgroup).rarity(Rarity.EPIC));
     }
 
@@ -57,23 +59,34 @@ public class HayaSword extends SwordItem {
 
     @Override
     public void onPlayerStoppedUsing(ItemStack stack, World worldIn, LivingEntity entityLiving, int timeLeft) {
-        if(entityLiving instanceof PlayerEntity && this.getUseDuration(stack) - timeLeft > 20) {
+        if (entityLiving instanceof PlayerEntity && this.getUseDuration(stack) - timeLeft > 20) {
             PlayerEntity player = (PlayerEntity) entityLiving;
+
+            boolean isOnGround = player.isOnGround();
+            int distance = isOnGround ? 16 : 32;
+            float damage = isOnGround ? 9 : 4.5F;
+
+            Vector3d look = player.getLookVec();
+            Vector3d start = player.getPositionVec().add(0, player.getEyeHeight(), 0);
+            Vector3d end = player.getPositionVec().add(look.x * distance, player.getEyeHeight(), look.z * distance);
+
+            EntityRayTraceResult result;
+
+            List<LivingEntity> target = new ArrayList<>();
+            do {
+                result = ProjectileHelper.rayTraceEntities(worldIn, player, start, end, player.getBoundingBox().grow(look.x * distance, 0, look.z * distance), (e) -> (!target.contains(e)) && e != player && !player.isOnSameTeam(e) && e instanceof LivingEntity);
+                if (result != null) {
+                    target.add((LivingEntity) result.getEntity());
+                }
+            } while (result != null);
+
+            target.forEach(e -> {
+                e.applyKnockback(1.0F, MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F)));
+                e.attackEntityFrom(DamageSource.causePlayerDamage(player), damage);
+            });
+
             Vector3d v_player = Vector3d.fromPitchYaw(player.getPitchYaw());
             Vector3d v_final = v_player.mul(4.0f, 0.0f, 4.0f).add(0.0f, 0.2f, 0.0f);
-            boolean flag = player.isOnGround();
-            double factor = flag ? 4.5 : 8.0;
-            Vector3d v_box = v_final.mul(factor, 0.0f, factor);
-
-            for(LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class,
-                    player.getBoundingBox().grow(0.5f, 0.0f, 0.5f).expand(v_box))){
-                if (livingentity != player && !player.isOnSameTeam(livingentity)) {
-                    if(!(livingentity instanceof ArmorStandEntity)) {
-                        livingentity.applyKnockback(1.0F, MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F)));
-                        livingentity.attackEntityFrom(DamageSource.causePlayerDamage(player), flag ? 9 : 4.5f);
-                    }
-                }
-            }
 
             player.setMotion(v_final);
             stack.damageItem(1, player, (player1 -> player1.sendBreakAnimation(player1.getActiveHand())));
