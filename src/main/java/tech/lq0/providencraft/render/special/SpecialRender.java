@@ -28,6 +28,12 @@ public class SpecialRender {
         ClientPlayerEntity player = Minecraft.getInstance().player;
         assert player != null;
         ItemStack item = player.getHeldItemMainhand();
+        ItemStack item_off = player.getHeldItemOffhand();
+
+        if(!(item.getItem() instanceof MomoPhone) && item_off.getItem() instanceof MomoPhone){
+            item = item_off;
+        }
+
         if (item.getItem() instanceof MomoPhone) {
             float posX = ItemNBTTool.getFloat(item, MomoPhone.NBT_POS_X, Float.NaN) - .5F;
             float posY = ItemNBTTool.getFloat(item, MomoPhone.NBT_POS_Y, Float.NaN) - .5F;

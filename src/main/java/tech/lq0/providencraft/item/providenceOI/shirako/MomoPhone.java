@@ -140,7 +140,8 @@ public class MomoPhone extends Item {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("momo_phone_func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("momo_phone_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("momo_phone_des1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("momo_phone_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("momo_phone_warn")).mergeStyle(TextFormatting.RED));
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
