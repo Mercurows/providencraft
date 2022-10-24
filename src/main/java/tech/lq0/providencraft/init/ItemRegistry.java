@@ -28,10 +28,7 @@ import tech.lq0.providencraft.item.material.GNSouls;
 import tech.lq0.providencraft.item.material.GNSpirit;
 import tech.lq0.providencraft.item.material.GNStar;
 import tech.lq0.providencraft.item.material.IdolCloth;
-import tech.lq0.providencraft.item.others.MMAStew;
-import tech.lq0.providencraft.item.others.MVAStew;
-import tech.lq0.providencraft.item.others.PdcPoint;
-import tech.lq0.providencraft.item.others.PremiumPdcPoint;
+import tech.lq0.providencraft.item.others.*;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
 import tech.lq0.providencraft.item.providenceOI.fukami.FukamizuRing;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
@@ -270,6 +267,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MVA_STEW = ITEMS.register("mva_stew", MVAStew::new);
     public static final RegistryObject<Item> PDC_POINT = ITEMS.register("pdc_point", PdcPoint::new);
     public static final RegistryObject<Item> PREMIUM_PDC_POINT = ITEMS.register("premium_pdc_point", PremiumPdcPoint::new);
+    public static final RegistryObject<Item> AUDIO_TAPE = ITEMS.register("audio_tape", AudioTape::new);
 
     /**
      * donate
