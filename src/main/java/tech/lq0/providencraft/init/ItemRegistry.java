@@ -94,6 +94,7 @@ import tech.lq0.providencraft.item.providencethird.leciel.ReinaFeather;
 import tech.lq0.providencraft.item.providencethird.leciel.ReinaWings;
 import tech.lq0.providencraft.item.providencethird.yuki.FoxIceCream;
 import tech.lq0.providencraft.item.providencethird.yuki.FoxPudding;
+import tech.lq0.providencraft.tools.Livers;
 
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Utils.MOD_ID);
@@ -267,7 +268,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MVA_STEW = ITEMS.register("mva_stew", MVAStew::new);
     public static final RegistryObject<Item> PDC_POINT = ITEMS.register("pdc_point", PdcPoint::new);
     public static final RegistryObject<Item> PREMIUM_PDC_POINT = ITEMS.register("premium_pdc_point", PremiumPdcPoint::new);
-    public static final RegistryObject<Item> AUDIO_TAPE = ITEMS.register("audio_tape", AudioTape::new);
+
+    public static final RegistryObject<Item> AUDIO_TAPE_HAINE = ITEMS.register("audio_tape_haine", () -> new AudioTape(Livers.HAINE, null, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_EKIRA = ITEMS.register("audio_tape_ekira", () -> new AudioTape(Livers.EKIRA, null, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
 
     /**
      * donate

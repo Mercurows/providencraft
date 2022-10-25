@@ -402,6 +402,11 @@
   "lecia_howl": "莉夏：嗷呜",
   "lecia_cast": "蓄力",
   "lecia_scream": "莉夏：尖叫",
+  "itemGroup.Providencraft Tapes": "普罗维登：音声",
+  "item.providencraft.audio_tape_haine": "音声磁带（灰音）",
+  "item.providencraft.audio_tape_ekira": "音声磁带（星宫颜）",
+  "item.providencraft.audio_tape_chiram": "音声磁带（倾澜）",
+  "item.providencraft.audio_tape_keroro": "音声磁带（蛙吹）",
 
   "liver": "所属Liver:",
   "mitsuki": "神奈满月",

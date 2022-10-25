@@ -11,6 +11,6 @@ public class ProvidencraftTapeGroup extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ItemRegistry.AUDIO_TAPE.get());
+        return new ItemStack(ItemRegistry.AUDIO_TAPE_HAINE.get());
     }
 }
