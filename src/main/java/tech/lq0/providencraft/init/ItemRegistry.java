@@ -269,10 +269,10 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PDC_POINT = ITEMS.register("pdc_point", PdcPoint::new);
     public static final RegistryObject<Item> PREMIUM_PDC_POINT = ITEMS.register("premium_pdc_point", PremiumPdcPoint::new);
 
-    public static final RegistryObject<Item> AUDIO_TAPE_HAINE = ITEMS.register("audio_tape_haine", () -> new AudioTape(Livers.HAINE, null, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
-    public static final RegistryObject<Item> AUDIO_TAPE_EKIRA = ITEMS.register("audio_tape_ekira", () -> new AudioTape(Livers.EKIRA, null, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
-    public static final RegistryObject<Item> AUDIO_TAPE_CHIRAM = ITEMS.register("audio_tape_chiram", () -> new AudioTape(Livers.CHIRAM, null, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
-    public static final RegistryObject<Item> AUDIO_TAPE_KERORO = ITEMS.register("audio_tape_keroro", () -> new AudioTape(Livers.KERORO, null, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_HAINE = ITEMS.register("audio_tape_haine", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_EKIRA = ITEMS.register("audio_tape_ekira", () -> new AudioTape(Livers.EKIRA, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_CHIRAM = ITEMS.register("audio_tape_chiram", () -> new AudioTape(Livers.CHIRAM, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_KERORO = ITEMS.register("audio_tape_keroro", () -> new AudioTape(Livers.KERORO, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
 
     /**
      * donate

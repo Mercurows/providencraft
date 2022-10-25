@@ -20,11 +20,11 @@ import java.util.function.Supplier;
 
 public class AudioTape extends Item {
     private Livers liver;
-    private final SoundEvent sound;
+    private final Supplier<SoundEvent> sound;
 
     public AudioTape(Livers liver, Supplier<SoundEvent> sound, Item.Properties builder){
         super(builder);
-        this.sound = sound.get();
+        this.sound = sound;
         this.liver = liver;
     }
 
@@ -36,11 +36,17 @@ public class AudioTape extends Item {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(this.getDescription().mergeStyle(TextFormatting.GRAY));
+        TooltipTool.addHideText(tooltip, this.getText().mergeStyle(TextFormatting.WHITE));
         TooltipTool.addLiverInfo(tooltip, this.liver);
     }
 
     @OnlyIn(Dist.CLIENT)
     public IFormattableTextComponent getDescription() {
-        return new TranslationTextComponent(this.getTranslationKey());
+        return new TranslationTextComponent("des." + this.getTranslationKey());
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public IFormattableTextComponent getText() {
+        return new TranslationTextComponent("text." + this.getTranslationKey());
     }
 }

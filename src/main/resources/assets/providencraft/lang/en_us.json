@@ -404,6 +404,8 @@
   "lecia_scream": "Lecia: Scream",
   "itemGroup.Providencraft Audio Tapes": "Providencraft Tapes",
   "item.providencraft.audio_tape_haine": "Audio Tape (Haine)",
+  "des.item.providencraft.audio_tape_haine": "紧急苦力怕播报",
+  "text.item.providencraft.audio_tape_haine": "海芭拉海芭拉海芭拉海涅为您播报，前方发现大量普罗维登苦力怕！",
   "item.providencraft.audio_tape_ekira": "Audio Tape (Ekira)",
   "item.providencraft.audio_tape_chiram": "Audio Tape (Chiram)",
   "item.providencraft.audio_tape_keroro": "Audio Tape (Keroro)",
