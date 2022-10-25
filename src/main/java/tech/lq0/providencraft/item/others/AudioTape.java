@@ -16,14 +16,15 @@ import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class AudioTape extends Item {
     private Livers liver;
     private final SoundEvent sound;
 
-    public AudioTape(Livers liver, SoundEvent sound, Item.Properties builder){
+    public AudioTape(Livers liver, Supplier<SoundEvent> sound, Item.Properties builder){
         super(builder);
-        this.sound = sound;
+        this.sound = sound.get();
         this.liver = liver;
     }
 
