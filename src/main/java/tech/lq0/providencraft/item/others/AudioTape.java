@@ -3,6 +3,7 @@ package tech.lq0.providencraft.item.others;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.ITextComponent;
@@ -18,13 +19,11 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class AudioTape extends Item {
-    private Livers liver;
-    private final Supplier<SoundEvent> sound;
+public class AudioTape extends MusicDiscItem {
+    private final Livers liver;
 
-    public AudioTape(Livers liver, Supplier<SoundEvent> sound, Item.Properties builder){
-        super(builder);
-        this.sound = sound;
+    public AudioTape(Livers liver, Supplier<SoundEvent> soundSupplier, Item.Properties builder) {
+        super(15, soundSupplier, builder);
         this.liver = liver;
     }
 
@@ -33,6 +32,7 @@ public class AudioTape extends Item {
         return false;
     }
 
+    @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(this.getDescription().mergeStyle(TextFormatting.GRAY));
@@ -40,6 +40,7 @@ public class AudioTape extends Item {
         TooltipTool.addLiverInfo(tooltip, this.liver);
     }
 
+    @Override
     @OnlyIn(Dist.CLIENT)
     public IFormattableTextComponent getDescription() {
         return new TranslationTextComponent("des." + this.getTranslationKey());
