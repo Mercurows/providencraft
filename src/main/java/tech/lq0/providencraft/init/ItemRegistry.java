@@ -269,6 +269,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PDC_POINT = ITEMS.register("pdc_point", PdcPoint::new);
     public static final RegistryObject<Item> PREMIUM_PDC_POINT = ITEMS.register("premium_pdc_point", PremiumPdcPoint::new);
 
+    // TODO 为磁带换上正确的语音
+
     public static final RegistryObject<Item> AUDIO_TAPE_HAINE = ITEMS.register("audio_tape_haine", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_EKIRA = ITEMS.register("audio_tape_ekira", () -> new AudioTape(Livers.EKIRA, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_CHIRAM = ITEMS.register("audio_tape_chiram", () -> new AudioTape(Livers.CHIRAM, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));

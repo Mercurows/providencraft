@@ -45,6 +45,8 @@ public class SatouCamera extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote){
+
+            // TODO 修改相机判定范围
             Vector3d v_player = Vector3d.fromPitchYaw(playerIn.getPitchYaw()).
                     mul(4.0, 0.0, 4.0).add(5.0, 5.0, 5.0).mul(4.0, 2.0, 4.0);
 

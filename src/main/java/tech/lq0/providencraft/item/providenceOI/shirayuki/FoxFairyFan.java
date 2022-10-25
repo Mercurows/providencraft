@@ -32,6 +32,7 @@ public class FoxFairyFan extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemStack = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote){
+            // TODO 修改扇子判定范围和威力
             for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, playerIn.getBoundingBox().grow(3.5f, 3.5f, 3.5f))) {
                 if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity) && playerIn.getDistanceSq(livingentity) < 16.0D) {
                     if(!(livingentity instanceof ArmorStandEntity)) {
