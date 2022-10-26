@@ -67,18 +67,29 @@ public class HayaSword extends SwordItem {
             float damage = isOnGround ? 9 : 4.5F;
 
             Vector3d look = player.getLookVec();
-            Vector3d start = player.getPositionVec().add(0, player.getEyeHeight(), 0);
-            Vector3d end = player.getPositionVec().add(look.x * distance, player.getEyeHeight(), look.z * distance);
+            Vector3d start = player.getPositionVec().add(0, 0.8, 0);
+            Vector3d end = player.getPositionVec().add(look.x * distance, 0.8, look.z * distance);
 
             EntityRayTraceResult result;
 
             List<LivingEntity> target = new ArrayList<>();
-            do {
-                result = ProjectileHelper.rayTraceEntities(worldIn, player, start, end, player.getBoundingBox().grow(look.x * distance, 0, look.z * distance), (e) -> (!target.contains(e)) && e != player && !player.isOnSameTeam(e) && e instanceof LivingEntity);
-                if (result != null) {
-                    target.add((LivingEntity) result.getEntity());
-                }
-            } while (result != null);
+
+//            System.out.println("sina = " +look.z + " lsina = " + look.z * 1.5f);
+//            System.out.println("cosa = " +look.x + " lcosa = " + look.x * 1.5f);
+//            System.out.println(start);
+//            System.out.println(start.add(look.z * (-1.5f),0, look.x * 1.5f));
+
+            float length = 1.5f;
+            for(int i = -1; i <= 1; i++) {
+                do {
+                    result = ProjectileHelper.rayTraceEntities(worldIn, player, start.add(look.z * length * i, 0, look.x * length * (-i)), end.add(look.z * length * i, 0, look.x * length * (-i)), player.getBoundingBox().grow(look.x * distance, 0, look.z * distance), (e) -> (!target.contains(e)) && e != player && !player.isOnSameTeam(e) && e instanceof LivingEntity);
+                    if (result != null) {
+                        target.add((LivingEntity) result.getEntity());
+                    }
+
+                    System.out.println("pos="+start.add(look.z * length * i, 0, look.x * length * (-i)));
+                } while (result != null);
+            }
 
             target.forEach(e -> {
                 e.applyKnockback(1.0F, MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F)));
