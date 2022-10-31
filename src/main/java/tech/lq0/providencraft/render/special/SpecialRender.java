@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -14,9 +15,12 @@ import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.gui.GuiUtils;
 import net.minecraftforge.fml.common.Mod;
+import tech.lq0.providencraft.entity.NiitCarEntity;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoPhone;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.tools.ItemNBTTool;
@@ -127,6 +131,32 @@ public class SpecialRender {
                     });
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void renderOverlay(RenderGameOverlayEvent evt) {
+        if (evt.getType() != RenderGameOverlayEvent.ElementType.ALL) {
+            return;
+        }
+        ClientPlayerEntity player = Minecraft.getInstance().player;
+        if (player != null && player.getRidingEntity() instanceof NiitCarEntity) {
+            MatrixStack stack = evt.getMatrixStack();
+            Minecraft mc = Minecraft.getInstance();
+
+            NiitCarEntity car = (NiitCarEntity) player.getRidingEntity();
+
+            double spd = car.getSpeed();
+
+            FontRenderer f = Minecraft.getInstance().fontRenderer;
+            String spdStr = String.format("speed: %.2f km/h", spd);
+            float left = mc.getMainWindow().getScaledWidth() / 2F - f.getStringWidth(spdStr) / 2F;
+            float top = mc.getMainWindow().getScaledHeight() / 2F + 20;
+
+            Matrix4f matrixBar = stack.getLast().getMatrix();
+            int left2 = mc.getMainWindow().getScaledWidth() / 2 - 50;
+            GuiUtils.drawGradientRect(matrixBar, 1, (int) (left2 + (spd / 80 * 100)), (int) top + 14, left2, (int) (top + 13), 0xaa00ff00, 0xaa00ff00);
+            f.drawStringWithShadow(evt.getMatrixStack(), spdStr, left, top, 0xff0000);
         }
     }
 

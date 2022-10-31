@@ -14,7 +14,6 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -123,14 +122,12 @@ public class NiitCarEntity extends Entity {
                 updateInputs(player.movementInput.leftKeyDown, player.movementInput.rightKeyDown, player.movementInput.forwardKeyDown, player.movementInput.backKeyDown);
             }
         }
+    }
 
-//        Minecraft.getInstance().ingameGUI.setOverlayMessage(new StringTextComponent("speed: " + Math.sqrt(getMotion().getX() * getMotion().getX() + getMotion().getZ() * getMotion().getZ())), false);
-        if (world.isRemote) {
-            float motX = (float) (getMotion().getX() * 20);
-            float motZ = (float) (getMotion().getZ() * 20);
-            double spd = Math.sqrt(motX * motX + motZ * motZ);
-            Minecraft.getInstance().ingameGUI.setOverlayMessage(new StringTextComponent(String.format("speed: %.2f km/h", spd * 3.6)), false);
-        }
+    public double getSpeed() {
+        float motX = (float) ((getPosX() - lastTickPosX) * 20);
+        float motZ = (float) ((getPosZ() - lastTickPosZ) * 20);
+        return Math.sqrt(motX * motX + motZ * motZ) * 3.6;
     }
 
     @Nullable
@@ -158,9 +155,9 @@ public class NiitCarEntity extends Entity {
             this.rotationYaw += this.deltaRotation;
             if (this.forwardInputDown) {
                 if (Minecraft.getInstance().player != null && Minecraft.getInstance().player.isSprinting()) {
-                    f += 0.25;
+                    f += 0.1666666666666666666;
                 } else {
-                    f += 0.125;
+                    f += 0.0833333333333333333;
                 }
             }
 
