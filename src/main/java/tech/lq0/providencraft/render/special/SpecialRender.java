@@ -155,8 +155,26 @@ public class SpecialRender {
 
             Matrix4f matrixBar = stack.getLast().getMatrix();
             int left2 = mc.getMainWindow().getScaledWidth() / 2 - 50;
-            GuiUtils.drawGradientRect(matrixBar, 1, (int) (left2 + (spd / 80 * 100)), (int) top + 14, left2, (int) (top + 13), 0xaa00ff00, 0xaa00ff00);
-            f.drawStringWithShadow(evt.getMatrixStack(), spdStr, left, top, 0xff0000);
+
+            GuiUtils.drawGradientRect(matrixBar, 1, left2 + 100, (int) top + 14, (int) (left2 + (spd / 80 * 100)), (int) (top + 13), 0xaa888888, 0xaa888888);
+
+            int color;
+            if (spd <= 40) {
+                Color temp = Color.GREEN;
+                int r = (int) (temp.getRed() + (Color.YELLOW.getRed() - temp.getRed()) * spd / 40);
+                int g = (int) (temp.getGreen() + (Color.YELLOW.getGreen() - temp.getGreen()) * spd / 40);
+                int b = (int) (temp.getBlue() + (Color.YELLOW.getBlue() - temp.getBlue()) * spd / 40);
+                color = new Color(r, g, b).getRGB();
+            } else {
+                Color temp = Color.YELLOW;
+                int r = (int) (temp.getRed() + (Color.RED.getRed() - temp.getRed()) * (spd - 40) / 40);
+                int g = (int) (temp.getGreen() + (Color.RED.getGreen() - temp.getGreen()) * (spd - 40) / 40);
+                int b = (int) (temp.getBlue() + (Color.RED.getBlue() - temp.getBlue()) * (spd - 40) / 40);
+                color = new Color(r, g, b).getRGB();
+            }
+
+            GuiUtils.drawGradientRect(matrixBar, 1, (int) (left2 + (spd / 80 * 100)), (int) top + 14, left2, (int) (top + 13), color, color);
+            f.drawStringWithShadow(evt.getMatrixStack(), spdStr, left, top, color);
         }
     }
 
