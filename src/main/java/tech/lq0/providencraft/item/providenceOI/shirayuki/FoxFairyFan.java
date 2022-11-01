@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -24,19 +25,20 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class FoxFairyFan extends Item {
-    public FoxFairyFan(){
+    public FoxFairyFan() {
         super(new Properties().maxDamage(186).group(ModGroup.itemgroup));
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemStack = playerIn.getHeldItem(handIn);
-        if(!worldIn.isRemote){
-            // TODO 修改扇子判定范围和威力
-            for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, playerIn.getBoundingBox().grow(3.5f, 3.5f, 3.5f))) {
-                if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity) && playerIn.getDistanceSq(livingentity) < 16.0D) {
-                    if(!(livingentity instanceof ArmorStandEntity)) {
-                        livingentity.applyKnockback(6.0F, playerIn.getPosX() - livingentity.getPosX(), playerIn.getPosZ() - livingentity.getPosZ());
+        if (!worldIn.isRemote) {
+            for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, playerIn.getBoundingBox().grow(8, 8, 8))) {
+                if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity)) {
+                    if (!(livingentity instanceof ArmorStandEntity)) {
+                        float distance = livingentity.getDistance(playerIn);
+                        float strength = distance <= 2 ? 6 : (float) Math.sqrt(MathHelper.lerp((distance - 2) / 6, 6, 0));
+                        livingentity.applyKnockback(strength, playerIn.getPosX() - livingentity.getPosX(), playerIn.getPosZ() - livingentity.getPosZ());
                     }
                 }
             }
