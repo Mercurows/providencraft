@@ -20,13 +20,13 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<SeatEntity>> SEAT_ENTITY =
             ENTITY_TYPES.register("seat_entity",
                     () -> EntityType.Builder.<SeatEntity>create((type, world) -> new SeatEntity(world),
-                            EntityClassification.MISC).size(0.0f,0.0f).setCustomClientFactory((spawnEntity, world) -> new SeatEntity(world)).build("seat_entity"));
+                            EntityClassification.MISC).size(0.0f, 0.0f).setCustomClientFactory((spawnEntity, world) -> new SeatEntity(world)).build("seat_entity"));
     public static final RegistryObject<EntityType<DaifukuSyrupEntity>> DAIFUKU_SYRUP_ENTITY =
             ENTITY_TYPES.register("daifuku_syrup_entity",
                     () -> EntityType.Builder.<DaifukuSyrupEntity>create(DaifukuSyrupEntity::new, EntityClassification.MISC).size(0.2f, 0.2f).build("daifuku_syrup_entity"));
     public static final RegistryObject<EntityType<FluffBallEntity>> FLUFF_BALL_ENTITY =
             ENTITY_TYPES.register("fluff_ball_entity",
-                    () -> EntityType.Builder.<FluffBallEntity>create(FluffBallEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("fluff_ball_entity"));
+                    () -> EntityType.Builder.<FluffBallEntity>create(FluffBallEntity::new, EntityClassification.MISC).size(0.3f, 0.3f).build("fluff_ball_entity"));
     public static final RegistryObject<EntityType<KurumiBoomerangEntity>> KURUMI_BOOMERANG_ENTITY =
             ENTITY_TYPES.register("kurumi_boomerang_entity",
                     () -> EntityType.Builder.<KurumiBoomerangEntity>create(KurumiBoomerangEntity::new, EntityClassification.MISC).size(1.0f, 0.3f).build("kurumi_boomerang_entity"));
@@ -35,10 +35,10 @@ public class EntityRegistry {
                     () -> EntityType.Builder.<WhiteAhogeEntity>create(WhiteAhogeEntity::new, EntityClassification.MISC).size(0.8f, 0.3f).build("white_ahoge"));
     public static final RegistryObject<EntityType<NiitCarEntity>> NIIT_CAR_ENTITY =
             ENTITY_TYPES.register("niit_car",
-                    () -> EntityType.Builder.<NiitCarEntity>create(NiitCarEntity::new, EntityClassification.MISC).size(1.5f, 1.0f).build("niit_car"));
+                    () -> EntityType.Builder.create(NiitCarEntity::new, EntityClassification.MISC).size(2.0f, 1.7f).build("niit_car"));
     public static final RegistryObject<EntityType<GoodManCardEntity>> GOOD_MAN_CARD_ENTITY =
             ENTITY_TYPES.register("good_man_card",
-                    () -> EntityType.Builder.<GoodManCardEntity>create(GoodManCardEntity::new, EntityClassification.MISC).size(0.2f,0.1f).build("good_man_card"));
+                    () -> EntityType.Builder.<GoodManCardEntity>create(GoodManCardEntity::new, EntityClassification.MISC).size(0.2f, 0.1f).build("good_man_card"));
     public static final RegistryObject<EntityType<WaterCardEntity>> WATER_CARD_ENTITY =
             ENTITY_TYPES.register("water_card",
                     () -> EntityType.Builder.<WaterCardEntity>create(WaterCardEntity::new, EntityClassification.MISC).size(0.1f, 0.3f).build("water_card"));

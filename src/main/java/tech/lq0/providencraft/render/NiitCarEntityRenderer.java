@@ -42,9 +42,7 @@ public class NiitCarEntityRenderer extends EntityRenderer<NiitCarEntity> {
         matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch)));
         matrixStackIn.rotate(Vector3f.XP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch) + 180));
 
-        //matrixStackIn.translate(0, 1, 0);
-
-        matrixStackIn.translate(0.0f, -3f, 0.0f);
+        matrixStackIn.translate(0.0f, -3f, 1.1f);
         matrixStackIn.rotate(Vector3f.YN.rotationDegrees(0));
         IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.model.getRenderType(this.getEntityTexture(entityIn)));
         this.model.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

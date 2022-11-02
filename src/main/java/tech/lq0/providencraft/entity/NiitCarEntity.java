@@ -7,6 +7,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
+import net.minecraft.entity.item.ArmorStandEntity;
+import net.minecraft.entity.item.ItemFrameEntity;
+import net.minecraft.entity.item.PaintingEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
@@ -41,7 +44,7 @@ public class NiitCarEntity extends Entity {
 
     public NiitCarEntity(EntityType<? extends Entity> type, World worldIn) {
         super(type, worldIn);
-        this.stepHeight = 1.0F;
+        this.stepHeight = 2.0F;
 
     }
 
@@ -139,42 +142,46 @@ public class NiitCarEntity extends Entity {
     public boolean canCollide(Entity entity) {
         double speed = getSpeed();
         if (speed > 10 && !isPassenger(entity)) {
-            if (!entity.noClip && !this.noClip) {
-                double xDiff = entity.getPosX() - this.getPosX();
-                double zDiff = entity.getPosZ() - this.getPosZ();
-                double maxDiff = MathHelper.absMax(xDiff, zDiff);
-                if (maxDiff >= (double) 0.01F) {
-                    maxDiff = MathHelper.sqrt(maxDiff);
-                    xDiff = xDiff / maxDiff;
-                    zDiff = zDiff / maxDiff;
-                    double d3 = 1.0D / maxDiff;
-                    if (d3 > 1.0D) {
-                        d3 = 1.0D;
-                    }
-
-                    d3 *= 1 + speed * .5;
-
-                    xDiff = xDiff * d3;
-                    zDiff = zDiff * d3;
-                    xDiff = xDiff * (double) 0.05F;
-                    zDiff = zDiff * (double) 0.05F;
-                    xDiff = xDiff * (double) (1.0F - this.entityCollisionReduction);
-                    zDiff = zDiff * (double) (1.0F - this.entityCollisionReduction);
-
-                    //往车头方向增加动量
-                    Vector3d look = getLookVec();
-                    xDiff += look.x * (speed / 8.0);
-                    zDiff += look.z * (speed / 8.0);
-
-                    if (!entity.isBeingRidden() && entity.hurtResistantTime <= 0) {
-                        entity.addVelocity(xDiff, speed / 2.0, zDiff);
-                        if (speed > 20) {
-                            float damage = (float) Math.pow((speed / 16.0), 2);
-                            if (getControllingPassenger() != null) {
-                                entity.attackEntityFrom(new EntityDamageSource("niitcarCrash", getControllingPassenger()), damage);
-                            }
+            if (!(entity instanceof ArmorStandEntity) && !(entity instanceof ItemFrameEntity) &&
+                    !(entity instanceof PaintingEntity) && !(entity instanceof NiitCarEntity)) {
+                if (!entity.noClip && !this.noClip) {
+                    double xDiff = entity.getPosX() - this.getPosX();
+                    double zDiff = entity.getPosZ() - this.getPosZ();
+                    double maxDiff = MathHelper.absMax(xDiff, zDiff);
+                    if (maxDiff >= (double) 0.01F) {
+                        maxDiff = MathHelper.sqrt(maxDiff);
+                        xDiff = xDiff / maxDiff;
+                        zDiff = zDiff / maxDiff;
+                        double d3 = 1.0D / maxDiff;
+                        if (d3 > 1.0D) {
+                            d3 = 1.0D;
                         }
-                        entity.hurtResistantTime = 20;
+
+                        d3 *= 1 + speed * .5;
+
+                        xDiff = xDiff * d3;
+                        zDiff = zDiff * d3;
+                        xDiff = xDiff * (double) 0.05F;
+                        zDiff = zDiff * (double) 0.05F;
+                        xDiff = xDiff * (double) (1.0F - this.entityCollisionReduction);
+                        zDiff = zDiff * (double) (1.0F - this.entityCollisionReduction);
+
+                        //往车头方向增加动量
+                        Vector3d look = getLookVec();
+                        xDiff += look.x * (speed / 8.0);
+                        zDiff += look.z * (speed / 8.0);
+
+                        if (!entity.isBeingRidden() && entity.hurtResistantTime <= 0) {
+                            entity.addVelocity(xDiff, Math.min(speed / 2.0, 4.0f), zDiff);
+
+                            if (speed > 20) {
+                                float damage = (float) Math.pow((speed / 16.0), 2);
+                                if (getControllingPassenger() != null) {
+                                    entity.attackEntityFrom(new EntityDamageSource("niitcarCrash", getControllingPassenger()), damage);
+                                }
+                            }
+                            entity.hurtResistantTime = 20;
+                        }
                     }
                 }
             }
@@ -245,18 +252,18 @@ public class NiitCarEntity extends Entity {
         entityToUpdate.setRenderYawOffset(this.rotationYaw);
         float f = MathHelper.wrapDegrees(entityToUpdate.rotationYaw - this.rotationYaw);
 
-        //最大左右旋转角度：±10°（船为±105°）
-        float f1 = MathHelper.clamp(f, -3.0F, 3.0F);
+        //最大左右旋转角度：±60°（船为±105°）
+        float f1 = MathHelper.clamp(f, -60.0F, 60.0F);
 
         //模拟A/D键按下
-        if (f > 2) {
+        if (f > 58) {
             rightInputDown = true;
-        } else if (f < -2) {
+        } else if (f < -58) {
             leftInputDown = true;
         }
 
         //使光标缓慢归位
-        f1 *= 0.985;
+        //f1 *= 0.985;
         entityToUpdate.prevRotationYaw += f1 - f;
         entityToUpdate.rotationYaw += f1 - f;
         entityToUpdate.setRotationYawHead(entityToUpdate.rotationYaw);
@@ -289,7 +296,7 @@ public class NiitCarEntity extends Entity {
 
     @Override
     public double getMountedYOffset() {
-        return 1;
+        return 0.5;
     }
 
     @Override

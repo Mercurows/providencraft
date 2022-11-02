@@ -149,7 +149,7 @@ public class SpecialRender {
             double spd = car.getSpeed();
 
             FontRenderer f = Minecraft.getInstance().fontRenderer;
-            String spdStr = String.format("speed: %.2f km/h", spd);
+            String spdStr = String.format("%.2f km/h", spd);
             float left = mc.getMainWindow().getScaledWidth() / 2F - f.getStringWidth(spdStr) / 2F;
             float top = mc.getMainWindow().getScaledHeight() / 2F + 20;
 
