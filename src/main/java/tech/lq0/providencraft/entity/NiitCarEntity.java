@@ -1,17 +1,18 @@
 package tech.lq0.providencraft.entity;
 
 import io.netty.buffer.Unpooled;
-import net.minecraft.block.material.PushReaction;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.GameRules;
@@ -24,7 +25,6 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import javax.annotation.Nullable;
 import java.util.List;
 
-// TODO 实现妮头车创人功能
 public class NiitCarEntity extends Entity {
 
     private double lerpX;
@@ -34,7 +34,6 @@ public class NiitCarEntity extends Entity {
     private double lerpPitch;
     private int lerpSteps;
     private float deltaRotation;
-    private float momentum;
     private boolean leftInputDown;
     private boolean rightInputDown;
     private boolean forwardInputDown;
@@ -63,56 +62,11 @@ public class NiitCarEntity extends Entity {
                 controlCar();
             }
             move(MoverType.SELF, getMotion());
-            doBlockCollisions();
         } else {
             setMotion(Vector3d.ZERO);
         }
 
-//        {
-//            //开创
-//            List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getBoundingBox().grow(2F, -0.01F, 2F), (e) -> true);
-//            if (!list.isEmpty()) {
-//                for (Entity entity : list) {
-//                    if (!entity.isPassenger(this)) {
-//                        if (entity instanceof NiitCarEntity) {
-//                            if (entity.getBoundingBox().minY < this.getBoundingBox().maxY) {
-//                                super.applyEntityCollision(entity);
-//                            }
-//                        } else {
-//                            //super.applyEntityCollision(entity);
-//                            if (!this.isRidingSameEntity(entity)) {
-//                                if (!entity.noClip && !this.noClip) {
-//                                    double d0 = entity.getPosX() - this.getPosX();
-//                                    double d1 = entity.getPosZ() - this.getPosZ();
-//                                    double d2 = MathHelper.absMax(d0, d1);
-//                                    if (d2 >= (double) 0.01F) {
-//                                        d2 = MathHelper.sqrt(d2);
-//                                        d0 = d0 / d2;
-//                                        d1 = d1 / d2;
-//                                        double d3 = 1.0D / d2;
-//                                        if (d3 > 1.0D) {
-//                                            d3 = 1.0D;
-//                                        }
-//
-//                                        d0 = d0 * d3;
-//                                        d1 = d1 * d3;
-//                                        d0 = d0 * (double) 0.05F;
-//                                        d1 = d1 * (double) 0.05F;
-//                                        d0 = d0 * (double) (1.0F - this.entityCollisionReduction);
-//                                        d1 = d1 * (double) (1.0F - this.entityCollisionReduction);
-//
-//                                        if (!entity.isBeingRidden()) {
-//                                            entity.addVelocity(d0 + getPosX() - lastTickPosX, 0.0D, d1 + getPosZ() - lastTickPosZ);
-//                                        }
-//                                    }
-//
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        doBlockCollisions();
 
         //读取键盘输入
         ClientPlayerEntity player = Minecraft.getInstance().player;
@@ -173,7 +127,7 @@ public class NiitCarEntity extends Entity {
     private void updateMotion() {
         double gravity = this.hasNoGravity() ? 0.0D : (double) -0.06F;
 
-        this.momentum = 0.85F;
+        float momentum = 0.85F;
 
         Vector3d vector3d = this.getMotion();
         this.setMotion(vector3d.x * momentum, vector3d.y + gravity, vector3d.z * momentum);
@@ -183,28 +137,49 @@ public class NiitCarEntity extends Entity {
 
     @Override
     public boolean canCollide(Entity entity) {
-        return (entity.canBeCollidedWith() || entity.canBePushed()) && !isPassenger(entity);
-    }
+        double speed = getSpeed();
+        if (speed > 10 && !isPassenger(entity)) {
+            if (!entity.noClip && !this.noClip) {
+                double xDiff = entity.getPosX() - this.getPosX();
+                double zDiff = entity.getPosZ() - this.getPosZ();
+                double maxDiff = MathHelper.absMax(xDiff, zDiff);
+                if (maxDiff >= (double) 0.01F) {
+                    maxDiff = MathHelper.sqrt(maxDiff);
+                    xDiff = xDiff / maxDiff;
+                    zDiff = zDiff / maxDiff;
+                    double d3 = 1.0D / maxDiff;
+                    if (d3 > 1.0D) {
+                        d3 = 1.0D;
+                    }
 
-    @Override
-    public PushReaction getPushReaction() {
-        return PushReaction.IGNORE;
-    }
+                    d3 *= 1 + speed * .5;
 
-    @Override
-    public boolean canBePushed() {
-        return true;
-    }
+                    xDiff = xDiff * d3;
+                    zDiff = zDiff * d3;
+                    xDiff = xDiff * (double) 0.05F;
+                    zDiff = zDiff * (double) 0.05F;
+                    xDiff = xDiff * (double) (1.0F - this.entityCollisionReduction);
+                    zDiff = zDiff * (double) (1.0F - this.entityCollisionReduction);
 
-    @Override
-    public void applyEntityCollision(Entity entityIn) {
-        if (entityIn instanceof NiitCarEntity) {
-            if (entityIn.getBoundingBox().minY < this.getBoundingBox().maxY) {
-                super.applyEntityCollision(entityIn);
+                    //往车头方向增加动量
+                    Vector3d look = getLookVec();
+                    xDiff += look.x * (speed / 8.0);
+                    zDiff += look.z * (speed / 8.0);
+
+                    if (!entity.isBeingRidden() && entity.hurtResistantTime <= 0) {
+                        entity.addVelocity(xDiff, speed / 2.0, zDiff);
+                        if (speed > 20) {
+                            float damage = (float) Math.pow((speed / 16.0), 2);
+                            if (getControllingPassenger() != null) {
+                                entity.attackEntityFrom(new EntityDamageSource("niitcarCrash", getControllingPassenger()), damage);
+                            }
+                        }
+                        entity.hurtResistantTime = 20;
+                    }
+                }
             }
-        } else if (entityIn.getBoundingBox().minY <= this.getBoundingBox().minY) {
-            super.applyEntityCollision(entityIn);
         }
+        return false;
     }
 
     private void tickLerp() {
@@ -238,7 +213,7 @@ public class NiitCarEntity extends Entity {
     public void updatePassenger(Entity passenger) {
         if (this.isPassenger(passenger)) {
             float f = 0.0F;
-            float f1 = (float) ((this.removed ? (double) 0.01F : this.getMountedYOffset()) + passenger.getYOffset());
+            float f1 = (float) ((!this.isAlive() ? (double) 0.01F : this.getMountedYOffset()) + passenger.getYOffset());
             if (this.getPassengers().size() > 1) {
                 int i = this.getPassengers().indexOf(passenger);
                 if (i == 0) {
@@ -317,10 +292,15 @@ public class NiitCarEntity extends Entity {
         return 1;
     }
 
+    @Override
+    protected boolean canTriggerWalking() {
+        return false;
+    }
+
     public boolean attackEntityFrom(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
             return false;
-        } else if (!this.world.isRemote && !this.removed) {
+        } else if (!this.world.isRemote && this.isAlive()) {
             if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS) && !(source.getTrueSource() instanceof PlayerEntity && ((PlayerEntity) source.getTrueSource()).isCreative())) {
                 this.entityDropItem(ItemRegistry.BLUE_SMALL_BALL.get());
             }
@@ -331,30 +311,6 @@ public class NiitCarEntity extends Entity {
 
     @Override
     public Vector3d func_230268_c_(LivingEntity livingEntity) {
-        Vector3d vector3d = func_233559_a_(this.getWidth() * MathHelper.SQRT_2, livingEntity.getWidth(), this.rotationYaw);
-        double d0 = this.getPosX() + vector3d.x;
-        double d1 = this.getPosZ() + vector3d.z;
-        BlockPos blockpos = new BlockPos(d0, this.getBoundingBox().maxY, d1);
-        BlockPos blockpos1 = blockpos.down();
-        if (!this.world.hasWater(blockpos1)) {
-            double d2 = (double) blockpos.getY() + this.world.func_242403_h(blockpos);
-            double d3 = (double) blockpos.getY() + this.world.func_242403_h(blockpos1);
-
-            for (Pose pose : livingEntity.getAvailablePoses()) {
-                Vector3d vector3d1 = TransportationHelper.func_242381_a(this.world, d0, d2, d1, livingEntity, pose);
-                if (vector3d1 != null) {
-                    livingEntity.setPose(pose);
-                    return vector3d1;
-                }
-
-                Vector3d vector3d2 = TransportationHelper.func_242381_a(this.world, d0, d3, d1, livingEntity, pose);
-                if (vector3d2 != null) {
-                    livingEntity.setPose(pose);
-                    return vector3d2;
-                }
-            }
-        }
-
         return super.func_230268_c_(livingEntity);
     }
 

@@ -324,6 +324,8 @@
   "blue_small_ball_des1": "从天而降的蓝色小球，是某位虚拟主播的化身",
   "blue_small_ball_des2": "右键使用可以召唤一辆妮头车",
   "entity.providencraft.niit_car": "妮头车",
+  "death.attack.niitcarCrash": "%1$s被%2$s开妮头车创死了",
+  "death.attack.niitcarCrash.item": "%1$s被%2$s开妮头车创死了",
   "fox_fairy_fan_des": "九尾灵狐白雪葵的扇子，可以吹飞周围的生物",
   "item.providencraft.unigiri": "妖饭团",
   "unigiri_des1": "吃了就会变成妖精的饭团？",
@@ -409,7 +411,6 @@
   "item.providencraft.audio_tape_ekira": "音声磁带（星宫颜）",
   "item.providencraft.audio_tape_chiram": "音声磁带（倾澜）",
   "item.providencraft.audio_tape_keroro": "音声磁带（蛙吹）",
-
   "liver": "所属Liver:",
   "mitsuki": "神奈满月",
   "usa": "胡桃Usa",
@@ -442,14 +443,12 @@
   "fukami": "海栖深水",
   "maria": "安久毬亚",
   "mojuko": "茉吱Mojuko",
-
   "description_zero": "===普罗维登零期生物品===",
   "description_first": "===普罗维登一期生物品===",
   "description_second": "===普罗维登二期生物品===",
   "description_magicros": "===普罗维登Magicros组物品===",
   "description_third": "===普罗维登三期生物品===",
   "description_poi": "===普罗维登OI物品===",
-
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "欢迎来到普罗维登",
   "providencraft.advancement.white_double_ahoge": "白色双呆毛",

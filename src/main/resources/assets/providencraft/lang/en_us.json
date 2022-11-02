@@ -324,6 +324,8 @@
   "blue_small_ball_des1": "从天而降的蓝色小球，是某位虚拟主播的化身",
   "blue_small_ball_des2": "右键使用可以召唤一辆妮头车",
   "entity.providencraft.niit_car": "Niit Car",
+  "death.attack.niitcarCrash": "%1$s被%2$s开妮头车创死了",
+  "death.attack.niitcarCrash.item": "%1$s被%2$s开妮头车创死了",
   "fox_fairy_fan_des": "九尾灵狐白雪葵的扇子，可以吹飞周围的生物",
   "item.providencraft.unigiri": "Unigiri",
   "unigiri_des1": "吃了就会变成妖精的饭团？",
@@ -409,7 +411,6 @@
   "item.providencraft.audio_tape_ekira": "Audio Tape (Ekira)",
   "item.providencraft.audio_tape_chiram": "Audio Tape (Chiram)",
   "item.providencraft.audio_tape_keroro": "Audio Tape (Keroro)",
-
   "liver": "From:",
   "mitsuki": "Kanna Mitsuki",
   "usa": "Kurumi=Usiel=Saturnalia",
@@ -442,14 +443,12 @@
   "fukami": "Fukamizu",
   "maria": "Aku Maria",
   "mojuko": "Mojuko",
-
   "description_zero": "===Providence 0th Gen Item===",
   "description_first": "===Providence 1st Gen Item===",
   "description_second": "===Providence 2nd Gen Item===",
   "description_magicros": "===Providence Magicros Item===",
   "description_third": "===Providence 3rd Gen Item===",
   "description_poi": "===Providence OI Item===",
-
   "providencraft.advancement.root": "Providencraft",
   "providencraft.advancement.root_des": "Welcome to Providence",
   "providencraft.advancement.white_double_ahoge": "White Double Ahoge",
