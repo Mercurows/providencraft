@@ -11,6 +11,7 @@ import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.item.ItemFrameEntity;
 import net.minecraft.entity.item.PaintingEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
@@ -79,6 +80,18 @@ public class NiitCarEntity extends Entity {
                 updateInputs(player.movementInput.leftKeyDown, player.movementInput.rightKeyDown, player.movementInput.forwardKeyDown, player.movementInput.backKeyDown);
             }
         }
+
+        List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getBoundingBox().grow(0.2F, -0.01F, 0.2F), EntityPredicates.pushableBy(this));
+        if (!list.isEmpty()) {
+            boolean flag = !this.world.isRemote && !(this.getControllingPassenger() instanceof PlayerEntity);
+            for (Entity entity : list) {
+                if (!entity.isPassenger(this)) {
+                    if (flag && this.getPassengers().size() < 2 && !entity.isPassenger() && entity.getWidth() < this.getWidth() && entity instanceof LivingEntity && !(entity instanceof WaterMobEntity) && !(entity instanceof PlayerEntity)) {
+                        entity.startRiding(this);
+                    }
+                }
+            }
+        }
     }
 
     public double getSpeed() {
@@ -142,8 +155,7 @@ public class NiitCarEntity extends Entity {
     public boolean canCollide(Entity entity) {
         double speed = getSpeed();
         if (speed > 10 && !isPassenger(entity)) {
-            if (!(entity instanceof ArmorStandEntity) && !(entity instanceof ItemFrameEntity) &&
-                    !(entity instanceof PaintingEntity) && !(entity instanceof NiitCarEntity)) {
+            if (!(entity instanceof ArmorStandEntity) && !(entity instanceof ItemFrameEntity) && !(entity instanceof PaintingEntity) && !(entity instanceof NiitCarEntity)) {
                 if (!entity.noClip && !this.noClip) {
                     double xDiff = entity.getPosX() - this.getPosX();
                     double zDiff = entity.getPosZ() - this.getPosZ();
@@ -168,8 +180,8 @@ public class NiitCarEntity extends Entity {
 
                         //往车头方向增加动量
                         Vector3d look = getLookVec();
-                        xDiff += look.x * (speed / 8.0);
-                        zDiff += look.z * (speed / 8.0);
+                        xDiff += look.x * (speed / 16.0);
+                        zDiff += look.z * (speed / 16.0);
 
                         if (!entity.isBeingRidden() && entity.hurtResistantTime <= 0) {
                             entity.addVelocity(xDiff, Math.min(speed / 2.0, 4.0f), zDiff);
@@ -235,7 +247,21 @@ public class NiitCarEntity extends Entity {
             }
 
             Vector3d vector3d = (new Vector3d(f, 0.0D, 0.0D)).rotateYaw(-this.rotationYaw * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
-            passenger.setPosition(this.getPosX() + vector3d.x, this.getPosY() + (double) f1, this.getPosZ() + vector3d.z);
+            if (getPassengers().size() == 1 || passenger == getControllingPassenger()) {
+                //司机
+                passenger.setPosition(this.getPosX() + vector3d.x, this.getPosY() + (double) f1, this.getPosZ() + vector3d.z);
+            } else if (getPassengers().size() == 2) {
+                //第一个乘客
+                passenger.setPosition(this.getPosX() + vector3d.x * 3.5, this.getPosY() + (double) f1, this.getPosZ() + vector3d.z * 3.5);
+            } else if (getPassengers().size() == 3) {
+                if (getPassengers().get(1) == passenger) {
+                    //第一个乘客
+                    passenger.setPosition(this.getPosX() + vector3d.x * 2.5, this.getPosY() + (double) f1, this.getPosZ() + vector3d.z * 2.5);
+                } else {
+                    //第二个乘客
+                    passenger.setPosition(this.getPosX() + vector3d.x * 4.5, this.getPosY() + (double) f1, this.getPosZ() + vector3d.z * 4.5);
+                }
+            }
             passenger.rotationYaw += this.deltaRotation;
             passenger.setRotationYawHead(passenger.getRotationYawHead() + this.deltaRotation);
             this.applyYawToEntity(passenger);
@@ -252,26 +278,31 @@ public class NiitCarEntity extends Entity {
         entityToUpdate.setRenderYawOffset(this.rotationYaw);
         float f = MathHelper.wrapDegrees(entityToUpdate.rotationYaw - this.rotationYaw);
 
-        //最大左右旋转角度：±60°（船为±105°）
-        float f1 = MathHelper.clamp(f, -60.0F, 60.0F);
+        if (entityToUpdate == getControllingPassenger()) {
+            //最大左右旋转角度：±60°（船为±105°）
+            float f1 = MathHelper.clamp(f, -60.0F, 60.0F);
 
-        //模拟A/D键按下
-        if (f > 58) {
-            rightInputDown = true;
-        } else if (f < -58) {
-            leftInputDown = true;
+            //模拟A/D键按下
+            if (f > 58) {
+                rightInputDown = true;
+                //使光标缓慢归位
+                f1 *= 0.985;
+            } else if (f < -58) {
+                leftInputDown = true;
+                //使光标缓慢归位
+                f1 *= 0.985;
+            }
+
+            entityToUpdate.prevRotationYaw += f1 - f;
+            entityToUpdate.rotationYaw += f1 - f;
         }
-
-        //使光标缓慢归位
-        //f1 *= 0.985;
-        entityToUpdate.prevRotationYaw += f1 - f;
-        entityToUpdate.rotationYaw += f1 - f;
         entityToUpdate.setRotationYawHead(entityToUpdate.rotationYaw);
     }
 
     @Override
     protected boolean canFitPassenger(Entity passenger) {
-        return this.getPassengers().size() < 2;
+        //最多可乘坐3人
+        return this.getPassengers().size() < 3;
     }
 
 
