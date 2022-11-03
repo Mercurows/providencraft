@@ -41,7 +41,7 @@ public class KRM_963_53 extends ArmorItem {
     public static final String TAG_FLY_ENERGY = "fly_energy";
     private static final List<String> players = Collections.synchronizedList(new ArrayList<>());
 
-    public KRM_963_53(){
+    public KRM_963_53() {
         super(ArmorMaterial.NETHERITE, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(963).isImmuneToFire().rarity(Rarity.EPIC).setNoRepair().group(ModGroup.costumegroup));
     }
 
@@ -68,28 +68,28 @@ public class KRM_963_53 extends ArmorItem {
         TooltipTool.addLiverInfo(tooltip, Livers.USA);
     }
 
-    private void showFlyEnergy(ItemStack stack, List<ITextComponent> tooltip){
+    private void showFlyEnergy(ItemStack stack, List<ITextComponent> tooltip) {
         TextFormatting textFormatting;
-        if(getFlyEnergy(stack) >= 800){
+        if (getFlyEnergy(stack) >= 800) {
             textFormatting = TextFormatting.GREEN;
-        }else if(getFlyEnergy(stack) >= 500){
+        } else if (getFlyEnergy(stack) >= 500) {
             textFormatting = TextFormatting.YELLOW;
-        }else if(getFlyEnergy(stack) >= 200){
+        } else if (getFlyEnergy(stack) >= 200) {
             textFormatting = TextFormatting.GOLD;
-        }else {
+        } else {
             textFormatting = TextFormatting.RED;
         }
         NumberFormat numberFormat = NumberFormat.getPercentInstance();
         numberFormat.setMaximumFractionDigits(1);
         numberFormat.setMinimumFractionDigits(1);
-        double per = (double)getFlyEnergy(stack) / 1000;
+        double per = (double) getFlyEnergy(stack) / 1000;
         String percent = numberFormat.format(per);
 
         StringBuilder fuel = new StringBuilder(70);
-        for(int i=0;i < getFlyEnergy(stack) / 20;i++){
+        for (int i = 0; i < getFlyEnergy(stack) / 20; i++) {
             fuel.append("\u00a7").append(Integer.toHexString(textFormatting.getColorIndex())).append("|");
         }
-        for(int i=0;i < 50 - getFlyEnergy(stack) / 20;i++){
+        for (int i = 0; i < 50 - getFlyEnergy(stack) / 20; i++) {
             fuel.append("\u00a7").append(Integer.toHexString(TextFormatting.GRAY.getColorIndex())).append("|");
         }
         fuel.append(" ").append("\u00a7").append(Integer.toHexString(textFormatting.getColorIndex())).append(percent);
@@ -102,17 +102,17 @@ public class KRM_963_53 extends ArmorItem {
         return false;
     }
 
-    private static int getFlyEnergy(ItemStack stack){
+    private static int getFlyEnergy(ItemStack stack) {
         return ItemNBTTool.getInt(stack, TAG_FLY_ENERGY, 1000);
     }
 
-    private static void setFlyEnergy(ItemStack stack, int num){
+    private static void setFlyEnergy(ItemStack stack, int num) {
         ItemNBTTool.setInt(stack, TAG_FLY_ENERGY, Math.min(num, 1000));
     }
 
-    private static boolean checkFly(PlayerEntity player){
+    private static boolean checkFly(PlayerEntity player) {
         ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
-        if(itemStack.getItem().equals(ItemRegistry.KRM_963_53.get())){
+        if (itemStack.getItem().equals(ItemRegistry.KRM_963_53.get())) {
             return getFlyEnergy(itemStack) > 0;
         }
         return false;
@@ -125,27 +125,26 @@ public class KRM_963_53 extends ArmorItem {
         players.remove(username + ":true");
     }
 
-    private static String playerToString(PlayerEntity player){
+    private static String playerToString(PlayerEntity player) {
         return player.getGameProfile().getName() + ":" + player.world.isRemote;
     }
 
     @SubscribeEvent
-    public static void effect(LivingEvent.LivingUpdateEvent event){
+    public static void effect(LivingEvent.LivingUpdateEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
-        if(livingEntity instanceof PlayerEntity){
+        if (livingEntity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) livingEntity;
             ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
-            boolean flag = itemStack.getItem().equals(ItemRegistry.KRM_963_53.get());
 
-            if(players.contains(playerToString(player))) {
-                if(checkFly(player)) {
-                //if (!player.isCreative() && !player.isSpectator() && !player.abilities.allowFlying) {
+            if (players.contains(playerToString(player))) {
+                if (checkFly(player)) {
+                    //if (!player.isCreative() && !player.isSpectator() && !player.abilities.allowFlying) {
 //                    player.abilities.allowFlying = flag;
                     player.abilities.allowFlying = true;
 
                     if (player.abilities.isFlying) {
                         if (getFlyEnergy(itemStack) > 0) {
-                            if (player.ticksExisted % 20 == 0) {
+                            if (player.ticksExisted % 20 == 0 && !player.abilities.isCreativeMode) {
                                 setFlyEnergy(itemStack, Math.max(getFlyEnergy(itemStack) - 1, 0));
                             }
                         } else {
@@ -164,7 +163,7 @@ public class KRM_963_53 extends ArmorItem {
                     players.remove(playerToString(player));
 //                    player.abilities.allowFlying = true;
                 }
-            }else if(checkFly(player)) {
+            } else if (checkFly(player)) {
                 players.add(playerToString(player));
                 player.abilities.allowFlying = true;
             }

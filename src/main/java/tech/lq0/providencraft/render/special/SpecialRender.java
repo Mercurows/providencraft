@@ -147,7 +147,7 @@ public class SpecialRender {
 
             NiitCarEntity car = (NiitCarEntity) player.getRidingEntity();
 
-            double spd = car.getSpeed();
+            double spd = Math.min(car.getSpeed(), 80.0);
 
             FontRenderer f = Minecraft.getInstance().fontRenderer;
             String spdStr = String.format("%.2f km/h", spd);
