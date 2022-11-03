@@ -73,13 +73,13 @@ public class NiitCarEntity extends Entity {
         doBlockCollisions();
 
         //读取键盘输入
-        ClientPlayerEntity player = Minecraft.getInstance().player;
-        if (player != null) {
-            Entity riding = player.getRidingEntity();
-            if (riding == this) {
-                updateInputs(player.movementInput.leftKeyDown, player.movementInput.rightKeyDown, player.movementInput.forwardKeyDown, player.movementInput.backKeyDown);
-            }
-        }
+//        ClientPlayerEntity player = Minecraft.getInstance().player;
+//        if (player != null) {
+//            Entity riding = player.getRidingEntity();
+//            if (riding == this) {
+//                updateInputs(player.movementInput.leftKeyDown, player.movementInput.rightKeyDown, player.movementInput.forwardKeyDown, player.movementInput.backKeyDown);
+//            }
+//        }
 
         List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getBoundingBox().grow(0.2F, -0.01F, 0.2F), EntityPredicates.pushableBy(this));
         if (!list.isEmpty()) {
@@ -124,8 +124,13 @@ public class NiitCarEntity extends Entity {
 
             this.rotationYaw += this.deltaRotation;
             if (this.forwardInputDown) {
-                if (Minecraft.getInstance().player != null && Minecraft.getInstance().player.isSprinting()) {
-                    f += 0.1666666666666666666;
+                if (this.getControllingPassenger() instanceof PlayerEntity) {
+                    PlayerEntity player = (PlayerEntity) this.getControllingPassenger();
+                    if (player.isSprinting()) {
+                        f += 0.1666666666666666666;
+                    } else {
+                        f += 0.0833333333333333333;
+                    }
                 } else {
                     f += 0.0833333333333333333;
                 }
