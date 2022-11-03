@@ -1,8 +1,6 @@
 package tech.lq0.providencraft.entity;
 
 import io.netty.buffer.Unpooled;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -189,7 +187,7 @@ public class NiitCarEntity extends Entity {
                         zDiff += look.z * (speed / 16.0);
 
                         if (!entity.isBeingRidden() && entity.hurtResistantTime <= 0) {
-                            entity.addVelocity(xDiff, Math.min(speed / 2.0, 4.0f), zDiff);
+                            entity.addVelocity(xDiff, Math.min(speed / 8.0, 1.0f), zDiff);
 
                             if (speed > 20) {
                                 float damage = (float) Math.pow((speed / 16.0), 2);
@@ -287,16 +285,18 @@ public class NiitCarEntity extends Entity {
             //最大左右旋转角度：±60°（船为±105°）
             float f1 = MathHelper.clamp(f, -60.0F, 60.0F);
 
-            //模拟A/D键按下
-            if (f > 58) {
-                rightInputDown = true;
-                //使光标缓慢归位
-                f1 *= 0.985;
-            } else if (f < -58) {
-                leftInputDown = true;
-                //使光标缓慢归位
-                f1 *= 0.985;
-            }
+            /*
+             //模拟A/D键按下
+             if (f > 58) {
+             rightInputDown = true;
+             //使光标缓慢归位
+             f1 *= 0.985;
+             } else if (f < -58) {
+             leftInputDown = true;
+             //使光标缓慢归位
+             f1 *= 0.985;
+             }
+             */
 
             entityToUpdate.prevRotationYaw += f1 - f;
             entityToUpdate.rotationYaw += f1 - f;
