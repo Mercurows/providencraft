@@ -17,19 +17,19 @@ public final class ItemNBTTool {
         return verifyExistence(stack, tag) ? stack.getOrCreateTag().getBoolean(tag) : defaultExpected;
     }
 
-    public static void setFloat(ItemStack stack, String tag, float f){
+    public static void setFloat(ItemStack stack, String tag, float f) {
         stack.getOrCreateTag().putFloat(tag, f);
     }
 
-    public static float getFloat(ItemStack stack, String tag, float f){
+    public static float getFloat(ItemStack stack, String tag, float f) {
         return verifyExistence(stack, tag) ? stack.getOrCreateTag().getFloat(tag) : f;
     }
 
-    public static void setInt(ItemStack stack, String tag, int num){
+    public static void setInt(ItemStack stack, String tag, int num) {
         stack.getOrCreateTag().putInt(tag, num);
     }
 
-    public static int getInt(ItemStack stack, String tag, int num){
+    public static int getInt(ItemStack stack, String tag, int num) {
         return verifyExistence(stack, tag) ? stack.getOrCreateTag().getInt(tag) : num;
     }
 }

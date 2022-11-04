@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class HaineIdolChestplate extends ArmorItem {
-    public HaineIdolChestplate(){
+    public HaineIdolChestplate() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.CHEST, new Properties().group(ModGroup.costumegroup));
     }
 

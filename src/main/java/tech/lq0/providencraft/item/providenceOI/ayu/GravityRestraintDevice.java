@@ -39,7 +39,7 @@ import java.util.UUID;
 public class GravityRestraintDevice extends ArmorItem {
     public static final String TAG_GRAVITY = "gravity";
 
-    public GravityRestraintDevice(){
+    public GravityRestraintDevice() {
         super(ArmorMaterial.IRON, EquipmentSlotType.LEGS, new Properties().group(ModGroup.itemgroup));
     }
 

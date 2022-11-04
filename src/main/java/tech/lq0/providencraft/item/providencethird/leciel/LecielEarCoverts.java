@@ -44,7 +44,7 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class LecielEarCoverts extends ArmorItem {
-    public LecielEarCoverts(){
+    public LecielEarCoverts() {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().maxDamage(285).group(ModGroup.itemgroup));
     }
 
@@ -87,19 +87,19 @@ public class LecielEarCoverts extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void effect(AttackEntityEvent event){
+    public static void effect(AttackEntityEvent event) {
         Entity entity = event.getTarget();
         PlayerEntity player = event.getPlayer();
 
         ItemStack item = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
-        if(item.getItem().equals(ItemRegistry.LECIEL_EAR_COVERTS.get()) && !player.world.isRemote){
-            if(entity instanceof LivingEntity){
+        if (item.getItem().equals(ItemRegistry.LECIEL_EAR_COVERTS.get()) && !player.world.isRemote) {
+            if (entity instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) entity;
-                if(livingEntity instanceof AnimalEntity || livingEntity instanceof VillagerEntity){
+                if (livingEntity instanceof AnimalEntity || livingEntity instanceof VillagerEntity) {
                     player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 200, 0));
                     player.addPotionEffect(new EffectInstance(Effects.UNLUCK, 200, 0));
 
-                    player.playSound(SoundRegistry.SORRY.get(), SoundCategory.AMBIENT, 0.5f,1.0f);
+                    player.playSound(SoundRegistry.SORRY.get(), SoundCategory.AMBIENT, 0.5f, 1.0f);
                 }
 
             }

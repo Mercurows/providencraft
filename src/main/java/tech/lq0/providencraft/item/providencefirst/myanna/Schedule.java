@@ -27,7 +27,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class Schedule extends Item {
-    public Schedule(){
+    public Schedule() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

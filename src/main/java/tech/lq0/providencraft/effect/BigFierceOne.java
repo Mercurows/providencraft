@@ -31,7 +31,7 @@ public class BigFierceOne extends Effect {
                 target.setFire(level * 5);
                 if (target.isAlive()) {
                     LivingEntity entity = (LivingEntity) target;
-                    entity.addPotionEffect(new EffectInstance(Effects.GLOWING,300,0,true,false));
+                    entity.addPotionEffect(new EffectInstance(Effects.GLOWING, 300, 0, true, false));
                     entity.applyKnockback(level, player.getPosX() - entity.getPosX(), player.getPosZ() - entity.getPosZ());
                 }
             }

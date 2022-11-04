@@ -42,10 +42,10 @@ public class DaifukuSyrupEntity extends ProjectileItemEntity {
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity && entity != this.getEntity()) {
             entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 2.5f);
-            int random = (int)(Math.random() * 10 + 1);
-            if(random == 1){
+            int random = (int) (Math.random() * 10 + 1);
+            if (random == 1) {
                 entity.setFire(10);
-            }else{
+            } else {
                 ((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 9));
             }
         }

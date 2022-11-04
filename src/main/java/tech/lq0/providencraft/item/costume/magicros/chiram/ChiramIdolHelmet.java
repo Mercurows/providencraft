@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class ChiramIdolHelmet extends ArmorItem {
-    public ChiramIdolHelmet(){
+    public ChiramIdolHelmet() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.HEAD, new Properties().group(ModGroup.costumegroup));
     }
 

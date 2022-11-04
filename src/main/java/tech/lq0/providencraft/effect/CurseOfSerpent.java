@@ -24,7 +24,7 @@ public class CurseOfSerpent extends Effect {
         Effect effect_curse = EffectRegistry.CURSE_OF_SERPENT.get();
         LivingEntity entity = event.getEntityLiving();
 
-        if(entity instanceof PlayerEntity && !entity.world.isRemote) {
+        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
             PlayerEntity player = (PlayerEntity) entity;
             if (player.isPotionActive(effect_curse)) {
                 int level = Objects.requireNonNull(player.getActivePotionEffect(effect_curse)).getAmplifier();

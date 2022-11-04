@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import tech.lq0.providencraft.init.ItemRegistry;
 
 public class ProvidencraftTapeGroup extends ItemGroup {
-    public ProvidencraftTapeGroup(){
+    public ProvidencraftTapeGroup() {
         super("Providencraft Audio Tapes");
     }
 

@@ -46,7 +46,7 @@ public class Lollipop extends Item {
         if (!worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             int lvl = -1;
-            if(player.isPotionActive(EffectRegistry.OVERLOAD.get())){
+            if (player.isPotionActive(EffectRegistry.OVERLOAD.get())) {
                 lvl = Objects.requireNonNull(player.getActivePotionEffect(EffectRegistry.OVERLOAD.get())).getAmplifier();
             }
 

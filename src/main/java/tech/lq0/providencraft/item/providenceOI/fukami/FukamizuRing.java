@@ -46,7 +46,8 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class FukamizuRing extends Item {
     public static final String TAG_WATER = "underwater";
-    public FukamizuRing(){
+
+    public FukamizuRing() {
         super(new Properties().maxStackSize(1).maxDamage(404).group(ModGroup.itemgroup).rarity(Rarity.RARE).setISTER(() -> FukamizuRingTileEntityRenderer::new));
     }
 
@@ -65,22 +66,22 @@ public class FukamizuRing extends Item {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if(!world.isRemote){
-            if(player.isInWater() || world.isRaining()){
+        if (!world.isRemote) {
+            if (player.isInWater() || world.isRaining()) {
                 ItemNBTTool.setBoolean(stack, TAG_WATER, true);
                 player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 2, true, false));
                 player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0, true, false));
-                if(player.isSwimming()){
+                if (player.isSwimming()) {
                     player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 300, 0, true, false));
                 }
                 for (LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(10.0D, 10.0D, 10.0D))) {
-                    if(livingentity instanceof PlayerEntity && livingentity != player){
+                    if (livingentity instanceof PlayerEntity && livingentity != player) {
                         PlayerEntity playerEntity = (PlayerEntity) livingentity;
                         playerEntity.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 0, true, false));
                         playerEntity.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0, true, false));
                     }
                 }
-            }else {
+            } else {
                 ItemNBTTool.setBoolean(stack, TAG_WATER, false);
                 player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 0, true, false));
             }

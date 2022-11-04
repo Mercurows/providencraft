@@ -47,7 +47,7 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HiruTentacles extends ArmorItem {
-    public HiruTentacles(){
+    public HiruTentacles() {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(913).setNoRepair().group(ModGroup.itemgroup));
     }
 
@@ -65,8 +65,8 @@ public class HiruTentacles extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void tentacleEffect(LivingHurtEvent event){
-        if(event.getEntityLiving() instanceof PlayerEntity) {
+    public static void tentacleEffect(LivingHurtEvent event) {
+        if (event.getEntityLiving() instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             ItemStack chestplate = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
             int count = 0;
@@ -100,7 +100,7 @@ public class HiruTentacles extends ArmorItem {
                         }
 
                         count++;
-                        if(count > 3){
+                        if (count > 3) {
                             break;
                         }
                     }

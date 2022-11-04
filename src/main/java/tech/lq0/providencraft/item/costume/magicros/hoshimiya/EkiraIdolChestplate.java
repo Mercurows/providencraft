@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class EkiraIdolChestplate extends ArmorItem {
-    public EkiraIdolChestplate(){
+    public EkiraIdolChestplate() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.CHEST, new Properties().group(ModGroup.costumegroup));
     }
 

@@ -24,7 +24,7 @@ public class RabbitLychee extends Item {
     private static final Food food = (new Food.Builder()).saturation(4.0f).hunger(3).
             effect(new EffectInstance(Effects.JUMP_BOOST, 200, 1), 1.0f).build();
 
-    public RabbitLychee(){
+    public RabbitLychee() {
         super(new Properties().group(ModGroup.itemgroup).food(food));
     }
 

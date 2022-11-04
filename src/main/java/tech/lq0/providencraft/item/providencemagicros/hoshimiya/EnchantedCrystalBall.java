@@ -52,14 +52,14 @@ public class EnchantedCrystalBall extends Item {
         if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity playerIn = (PlayerEntity) entityIn;
             if (worldIn.isThundering()) {
-                playerIn.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 2,true,false));
-                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1,true,false));
-                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0,true,false));
+                playerIn.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 2, true, false));
+                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
+                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0, true, false));
             } else if (worldIn.isRaining()) {
-                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1,true,false));
-                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0,true,false));
+                playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
+                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0, true, false));
             } else {
-                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0,true,false));
+                playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0, true, false));
             }
         }
     }

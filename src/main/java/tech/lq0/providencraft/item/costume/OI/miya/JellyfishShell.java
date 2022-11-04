@@ -28,7 +28,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class JellyfishShell extends ArmorItem {
-    public JellyfishShell(){
+    public JellyfishShell() {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().group(ModGroup.costumegroup).maxDamage(207).setNoRepair());
     }
 
@@ -54,7 +54,7 @@ public class JellyfishShell extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if(!world.isRemote){
+        if (!world.isRemote) {
             player.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 300, 0, true, false));
         }
     }

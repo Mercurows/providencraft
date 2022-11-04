@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class KeroroIdolHelmet extends ArmorItem {
-    public KeroroIdolHelmet(){
+    public KeroroIdolHelmet() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.HEAD, new Properties().group(ModGroup.costumegroup));
     }
 

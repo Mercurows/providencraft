@@ -22,7 +22,7 @@ public class FukamizuRingTileEntityRenderer extends ItemStackTileEntityRenderer 
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         IBakedModel ibakedmodel = itemRenderer.getItemModelWithOverrides(stack, null, null);
         matrixStack.push();
-        matrixStack.scale(0.4F,0.4F,0.4F);
+        matrixStack.scale(0.4F, 0.4F, 0.4F);
         matrixStack.translate(-0.15F, 2.8F, 0.8F);
         matrixStack.rotate(Vector3f.ZP.rotationDegrees(30.0F));
         matrixStack.rotate(Vector3f.XP.rotationDegrees(10.0F));

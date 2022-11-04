@@ -28,7 +28,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class KurumiHalo extends ArmorItem {
-    public KurumiHalo(){
+    public KurumiHalo() {
         super(ArmorMaterial.DIAMOND, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(535).group(ModGroup.itemgroup));
     }
 
@@ -54,7 +54,7 @@ public class KurumiHalo extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if(!world.isRemote){
+        if (!world.isRemote) {
             player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 300, 0, true, false));
         }
         super.onArmorTick(stack, world, player);

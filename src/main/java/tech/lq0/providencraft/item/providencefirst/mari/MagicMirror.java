@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MagicMirror extends Item {
-    public MagicMirror(){
+    public MagicMirror() {
         super(new Properties().group(ModGroup.itemgroup).maxDamage(136));
     }
 
@@ -43,11 +43,11 @@ public class MagicMirror extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemStack = playerIn.getHeldItem(handIn);
-        for(Effect[] effect : EFFECT){
-            if(playerIn.isPotionActive(effect[0])){
+        for (Effect[] effect : EFFECT) {
+            if (playerIn.isPotionActive(effect[0])) {
                 playerIn.removePotionEffect(effect[0]);
                 playerIn.addPotionEffect(new EffectInstance(effect[1], 600, 1));
-            }else if(playerIn.isPotionActive(effect[1])){
+            } else if (playerIn.isPotionActive(effect[1])) {
                 playerIn.removePotionEffect(effect[1]);
                 playerIn.addPotionEffect(new EffectInstance(effect[0], 600, 1));
             }

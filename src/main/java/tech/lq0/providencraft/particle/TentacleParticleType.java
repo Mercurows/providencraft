@@ -7,7 +7,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import java.awt.*;
 
 public class TentacleParticleType extends ParticleType<TentacleParticleData> {
-    public TentacleParticleType(){
+    public TentacleParticleType() {
         super(false, TentacleParticleData.DESERIALIZER);
     }
 

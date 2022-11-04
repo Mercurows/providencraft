@@ -24,7 +24,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class BlueSmallBall extends Item {
-    public BlueSmallBall(){
+    public BlueSmallBall() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 
@@ -44,9 +44,9 @@ public class BlueSmallBall extends Item {
         niitCar.setPosition(playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ());
         worldIn.addEntity(niitCar);
 
-        if(!playerIn.isCreative()){
+        if (!playerIn.isCreative()) {
             stack.shrink(1);
-            if(stack.isEmpty()){
+            if (stack.isEmpty()) {
                 playerIn.inventory.deleteStack(stack);
             }
         }

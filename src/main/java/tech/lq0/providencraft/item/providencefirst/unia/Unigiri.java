@@ -21,7 +21,7 @@ import java.util.List;
 public class Unigiri extends Item {
     private static final Food food = (new Food.Builder()).saturation(10.0f).hunger(10).build();
 
-    public Unigiri(){
+    public Unigiri() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
     }
 

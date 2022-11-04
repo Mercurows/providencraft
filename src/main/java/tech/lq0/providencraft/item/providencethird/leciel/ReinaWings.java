@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ReinaWings extends ArmorItem {
-    public ReinaWings(){
+    public ReinaWings() {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(627).setNoRepair().group(ModGroup.itemgroup));
     }
 
@@ -56,9 +56,9 @@ public class ReinaWings extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if(!world.isRemote){
+        if (!world.isRemote) {
             player.addPotionEffect(new EffectInstance(Effects.SLOW_FALLING, 300, 0, true, false));
-            if(player.ticksExisted % 600 == 0){
+            if (player.ticksExisted % 600 == 0) {
                 player.addPotionEffect(new EffectInstance(Effects.SATURATION, 20, 0));
             }
         }

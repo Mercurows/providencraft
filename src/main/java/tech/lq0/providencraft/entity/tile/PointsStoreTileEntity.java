@@ -39,7 +39,7 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
     }
 
     @Override
-    public void tick(){
+    public void tick() {
         this.ticks++;
     }
 
@@ -51,7 +51,7 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
 
     @Override
     public MerchantOffers getOffers() {
-        if(merchantOffers == null) {
+        if (merchantOffers == null) {
             addOffers();
             markDirty();
         }
@@ -117,7 +117,7 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
         this.openMerchantContainer(player, name, 5);
     }
 
-    private void addOffers(){
+    private void addOffers() {
         merchantOffers = new MerchantOffers();
         Collections.addAll(merchantOffers, offers);
     }
@@ -126,8 +126,8 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
             new MerchantOffer(getGoods(Items.EMERALD, 10), getPoints(1), 64, 0, 0),
             new MerchantOffer(getPoints(64), getPremiumPoints(1), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(1), getPoints(64), 64, 0, 0),
-            new MerchantOffer(getPoints(2), getGoods(ItemRegistry.GN_SOUL.get(), 1), 64,0,0),
-            new MerchantOffer(getPoints(2), getGoods(ItemRegistry.GN_SPIRIT.get(), 1), 64,0,0),
+            new MerchantOffer(getPoints(2), getGoods(ItemRegistry.GN_SOUL.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(2), getGoods(ItemRegistry.GN_SPIRIT.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(6), getGoods(ItemRegistry.PEACH_BEACH.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(6), getGoods(ItemRegistry.RABBIT_LYCHEE.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(10), getGoods(ItemRegistry.MOON_CAKE.get(), 1), 64, 0, 0),
@@ -139,7 +139,7 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
             new MerchantOffer(getPoints(38), getGoods(ItemRegistry.KURUMI_HALO.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(38), getGoods(ItemRegistry.JELLYFISH_SHELL.get(), 1), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(1), getPoints(4), getGoods(ItemRegistry.MOMO_GUN.get(), 1), 64, 0, 0),
-            new MerchantOffer(getPremiumPoints(1), getPoints(4), getGoods(ItemRegistry.DUEL_WATER_GUN.get(), 1), 64 ,0 ,0),
+            new MerchantOffer(getPremiumPoints(1), getPoints(4), getGoods(ItemRegistry.DUEL_WATER_GUN.get(), 1), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(1), getPoints(4), getGoods(ItemRegistry.SATOU_CAMERA.get(), 1), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(1), getPoints(4), getGoods(ItemRegistry.BLUE_SMALL_BALL.get(), 1), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(10), getPoints(8), getGoods(ItemRegistry.HAYA_SWORD.get(), 1), 64, 0, 0),
@@ -148,25 +148,25 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
             new MerchantOffer(getPremiumPoints(64), getPremiumPoints(64), getGoods(ItemRegistry.FETUOZI.get(), 1), 64, 0, 0)
     };
 
-    private static ItemStack getPoints(int count){
+    private static ItemStack getPoints(int count) {
         ItemStack points = new ItemStack(ItemRegistry.PDC_POINT.get());
-        if(count > 1) {
+        if (count > 1) {
             points.grow(count - 1);
         }
         return points;
     }
 
-    private static ItemStack getPremiumPoints(int count){
+    private static ItemStack getPremiumPoints(int count) {
         ItemStack points = new ItemStack(ItemRegistry.PREMIUM_PDC_POINT.get());
-        if(count > 1) {
+        if (count > 1) {
             points.grow(count - 1);
         }
         return points;
     }
 
-    private static ItemStack getGoods(IItemProvider item, int count){
+    private static ItemStack getGoods(IItemProvider item, int count) {
         ItemStack goods = new ItemStack(item);
-        if(count > 1) {
+        if (count > 1) {
             goods.grow(count - 1);
         }
         return goods;

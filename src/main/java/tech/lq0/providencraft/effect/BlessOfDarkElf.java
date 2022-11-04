@@ -24,15 +24,15 @@ public class BlessOfDarkElf extends Effect {
         Effect effect_bless = EffectRegistry.BLESS_OF_DARK_ELF.get();
         LivingEntity entity = event.getEntityLiving();
 
-        if(entity instanceof PlayerEntity && !entity.world.isRemote) {
+        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
             PlayerEntity player = (PlayerEntity) entity;
             if (player.isPotionActive(effect_bless)) {
                 int level = Objects.requireNonNull(player.getActivePotionEffect(effect_bless)).getAmplifier();
                 if (source.isFireDamage() || source.getDamageType().equals("lava")) {
                     event.setAmount(0);
-                }else if (source.isExplosion()) {
+                } else if (source.isExplosion()) {
                     event.setAmount(event.getAmount());
-                }else{
+                } else {
                     int num = (level + 1) * 2;
                     event.setAmount(event.getAmount() > num ? event.getAmount() - num : 0);
                 }

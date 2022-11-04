@@ -1,16 +1,13 @@
 package tech.lq0.providencraft.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import tech.lq0.providencraft.init.EnchantRegistry;
 
 public class UniHusk extends Enchantment {
     private static final EquipmentSlotType[] CHEST = new EquipmentSlotType[]{EquipmentSlotType.CHEST};

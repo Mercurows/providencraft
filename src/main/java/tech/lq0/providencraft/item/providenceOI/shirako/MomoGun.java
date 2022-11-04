@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MomoGun extends Item {
-    public MomoGun(){
+    public MomoGun() {
         super(new Properties().maxDamage(1540).group(ModGroup.itemgroup));
     }
 
@@ -64,21 +64,19 @@ public class MomoGun extends Item {
                 playerIn.getCooldownTracker().setCooldown(itemstack.getItem(), 8);
                 playerIn.setActiveHand(handIn);
                 return ActionResult.resultSuccess(itemstack);
-            }else {
+            } else {
                 return ActionResult.resultFail(itemstack);
             }
         }
         return ActionResult.resultFail(itemstack);
     }
 
-    protected ItemStack findAmmo(PlayerEntity player){
+    protected ItemStack findAmmo(PlayerEntity player) {
         if (this.check(player.getHeldItem(Hand.OFF_HAND))) {
             return player.getHeldItem(Hand.OFF_HAND);
-        }
-        else if (this.check(player.getHeldItem(Hand.MAIN_HAND))) {
+        } else if (this.check(player.getHeldItem(Hand.MAIN_HAND))) {
             return player.getHeldItem(Hand.MAIN_HAND);
-        }
-        else {
+        } else {
             for (int i = 0; i < player.inventory.getSizeInventory(); ++i) {
                 ItemStack itemstack = player.inventory.getStackInSlot(i);
                 if (this.check(itemstack)) {
@@ -89,7 +87,7 @@ public class MomoGun extends Item {
         }
     }
 
-    protected boolean check(ItemStack stack){
+    protected boolean check(ItemStack stack) {
         return stack.getItem() instanceof DaifukuSyrup;
     }
 

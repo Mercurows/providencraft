@@ -21,15 +21,15 @@ public class PointsStoreTileEntityRenderer extends TileEntityRenderer<PointsStor
     public static final RenderMaterial TEXTURE = new RenderMaterial(AtlasTexture.LOCATION_BLOCKS_TEXTURE, new ResourceLocation(Utils.MOD_ID, "textures/entity/pdc_logo_texture.png"));
     private final PdCLogoModel model = new PdCLogoModel();
 
-    public PointsStoreTileEntityRenderer(TileEntityRendererDispatcher dispatcher){
+    public PointsStoreTileEntityRenderer(TileEntityRendererDispatcher dispatcher) {
         super(dispatcher);
     }
 
     @Override
     public void render(PointsStoreTileEntity tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
         matrixStackIn.push();
-        matrixStackIn.translate(0.5f, 1.3f ,0.5f);
-        matrixStackIn.scale(0.4f,0.4f,0.4f);
+        matrixStackIn.translate(0.5f, 1.3f, 0.5f);
+        matrixStackIn.scale(0.4f, 0.4f, 0.4f);
         matrixStackIn.rotate(Vector3f.XP.rotationDegrees(180.0f));
 
         matrixStackIn.rotate(Vector3f.YP.rotationDegrees((tileEntityIn.ticks + partialTicks) * 5));

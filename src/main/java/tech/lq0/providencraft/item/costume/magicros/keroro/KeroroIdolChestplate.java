@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class KeroroIdolChestplate extends ArmorItem {
-    public KeroroIdolChestplate(){
+    public KeroroIdolChestplate() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.CHEST, new Properties().group(ModGroup.costumegroup));
     }
 

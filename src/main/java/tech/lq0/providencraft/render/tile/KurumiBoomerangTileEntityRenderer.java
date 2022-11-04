@@ -22,7 +22,7 @@ public class KurumiBoomerangTileEntityRenderer extends ItemStackTileEntityRender
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         IBakedModel ibakedmodel = itemRenderer.getItemModelWithOverrides(stack, null, null);
         matrixStack.push();
-        matrixStack.scale(0.6F,0.6F,0.6F);
+        matrixStack.scale(0.6F, 0.6F, 0.6F);
         matrixStack.translate(0.2F, 1.5F, 0.8F);
         matrixStack.rotate(Vector3f.ZP.rotationDegrees(-155.5F));
         float xOffset = -1 / 32f;

@@ -29,7 +29,7 @@ import java.util.List;
 public class DaifukuSyrup extends Item {
     public static final Food food = (new Food.Builder()).saturation(1.0f).hunger(1).fastToEat().setAlwaysEdible().build();
 
-    public DaifukuSyrup(){
+    public DaifukuSyrup() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
     }
 

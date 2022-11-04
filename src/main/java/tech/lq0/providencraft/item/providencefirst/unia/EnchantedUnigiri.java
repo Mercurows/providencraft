@@ -26,7 +26,7 @@ public class EnchantedUnigiri extends Item {
             effect(new EffectInstance(Effects.JUMP_BOOST, 140, 0), 1.0F).
             effect(new EffectInstance(Effects.REGENERATION, 140, 0), 1.0F).build();
 
-    public EnchantedUnigiri(){
+    public EnchantedUnigiri() {
         super(new Properties().food(food).rarity(Rarity.UNCOMMON).group(ModGroup.itemgroup));
     }
 

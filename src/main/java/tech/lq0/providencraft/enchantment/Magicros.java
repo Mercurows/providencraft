@@ -32,17 +32,17 @@ public class Magicros extends Enchantment {
 
     @Override
     public void onUserHurt(LivingEntity user, Entity attacker, int level) {
-        if(user instanceof PlayerEntity && !user.world.isRemote){
+        if (user instanceof PlayerEntity && !user.world.isRemote) {
             PlayerEntity player = (PlayerEntity) user;
             int count = 0;
             for (LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(10.0D, 10.0D, 10.0D))) {
-                if(livingentity != player && !(livingentity instanceof MonsterEntity || livingentity instanceof ArmorStandEntity) && player.getDistanceSq(livingentity) < 100.0D){
+                if (livingentity != player && !(livingentity instanceof MonsterEntity || livingentity instanceof ArmorStandEntity) && player.getDistanceSq(livingentity) < 100.0D) {
                     count++;
                 }
             }
-            if(count >= 3){
-                player.heal((float)(level + 1) * (count + 1) / 4);
-                if(attacker instanceof LivingEntity){
+            if (count >= 3) {
+                player.heal((float) (level + 1) * (count + 1) / 4);
+                if (attacker instanceof LivingEntity) {
                     LivingEntity attackerLiving = (LivingEntity) attacker;
                     attackerLiving.attackEntityFrom(DamageSource.MAGIC, level);
                     attackerLiving.applyKnockback(level + 1, player.getPosX() - attackerLiving.getPosX(), player.getPosZ() - attackerLiving.getPosZ());

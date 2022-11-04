@@ -24,8 +24,8 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class ChiramLantern extends Item{
-    public ChiramLantern(){
+public class ChiramLantern extends Item {
+    public ChiramLantern() {
         super(new Properties().maxStackSize(1).group(ModGroup.itemgroup).isImmuneToFire().defaultMaxDamage(1031).rarity(Rarity.UNCOMMON));
     }
 
@@ -54,14 +54,14 @@ public class ChiramLantern extends Item{
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(entityIn instanceof PlayerEntity) {
+        if (entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             if (player.getHeldItemOffhand().getItem().equals(ItemRegistry.CHIRAM_LANTERN.get())) {
                 ItemStack lantern = player.getHeldItemOffhand();
                 if (worldIn.getLight(player.getPosition()) <= 5 && lantern.getDamage() < lantern.getMaxDamage()) {
-                    player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 0,true,false));
-                    player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0,true,false));
-                    if(player.ticksExisted % 20 == 0 && !player.abilities.isCreativeMode) {
+                    player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 0, true, false));
+                    player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 300, 0, true, false));
+                    if (player.ticksExisted % 20 == 0 && !player.abilities.isCreativeMode) {
                         lantern.setDamage(lantern.getDamage() + 1);
                     }
                 }

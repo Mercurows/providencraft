@@ -16,7 +16,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class GNSouls extends Item {
-    public GNSouls(){
+    public GNSouls() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

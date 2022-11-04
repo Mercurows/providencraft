@@ -30,10 +30,10 @@ public class FillLavaTrigger extends AbstractCriterionTrigger<FillLavaTrigger.In
         this.triggerListeners(player, (instance) -> instance.test(stack));
     }
 
-    public static class Instance extends CriterionInstance{
+    public static class Instance extends CriterionInstance {
         private final ItemPredicate itemPredicate;
 
-        public Instance(EntityPredicate.AndPredicate entityCondition, ItemPredicate itemCondition){
+        public Instance(EntityPredicate.AndPredicate entityCondition, ItemPredicate itemCondition) {
             super(FillLavaTrigger.ID, entityCondition);
             this.itemPredicate = itemCondition;
         }

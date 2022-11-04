@@ -18,7 +18,7 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Holiness extends Effect {
-    public Holiness(){
+    public Holiness() {
         super(EffectType.BENEFICIAL, 16777159);
     }
 
@@ -30,13 +30,13 @@ public class Holiness extends Effect {
 
         Entity enemy = source.getTrueSource();
 
-        if(entity instanceof PlayerEntity && !entity.world.isRemote) {
+        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
             PlayerEntity player = (PlayerEntity) entity;
             if (player.isPotionActive(effect)) {
                 int level = Objects.requireNonNull(player.getActivePotionEffect(effect)).getAmplifier();
                 if (enemy instanceof LivingEntity) {
                     LivingEntity enemyL = (LivingEntity) enemy;
-                    if(enemyL.isEntityUndead()) {
+                    if (enemyL.isEntityUndead()) {
                         float damage = event.getAmount() - (level + 1) * 3;
                         event.setAmount(damage > 0 ? damage : 1.0f);
                     }
@@ -46,17 +46,17 @@ public class Holiness extends Effect {
     }
 
     @SubscribeEvent
-    public static void effect2(AttackEntityEvent event){
+    public static void effect2(AttackEntityEvent event) {
         PlayerEntity player = event.getPlayer();
         Effect effect = EffectRegistry.HOLINESS.get();
         Entity entity = event.getTarget();
 
-        if(!player.world.isRemote && player.isPotionActive(effect)){
+        if (!player.world.isRemote && player.isPotionActive(effect)) {
             int level = Objects.requireNonNull(player.getActivePotionEffect(effect)).getAmplifier();
-            if(entity instanceof LivingEntity) {
+            if (entity instanceof LivingEntity) {
                 LivingEntity entity1 = (LivingEntity) entity;
                 if (entity1.isEntityUndead()) {
-                    entity1.addPotionEffect(new EffectInstance(Effects.INSTANT_HEALTH, 10, level, true ,false));
+                    entity1.addPotionEffect(new EffectInstance(Effects.INSTANT_HEALTH, 10, level, true, false));
                     entity1.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 200, level));
                 }
             }

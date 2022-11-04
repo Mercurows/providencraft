@@ -27,7 +27,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class PointsStore extends Block {
-    public PointsStore(){
+    public PointsStore() {
         super(Properties.create(Material.IRON).hardnessAndResistance(3.0f).notSolid());
     }
 
@@ -52,7 +52,7 @@ public class PointsStore extends Block {
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (!worldIn.isRemote && handIn == Hand.MAIN_HAND) {
             TileEntity tileEntity = worldIn.getTileEntity(pos);
-            if(tileEntity instanceof PointsStoreTileEntity) {
+            if (tileEntity instanceof PointsStoreTileEntity) {
                 PointsStoreTileEntity pointsStoreTileEntity = (PointsStoreTileEntity) tileEntity;
                 pointsStoreTileEntity.openGui(player);
             }

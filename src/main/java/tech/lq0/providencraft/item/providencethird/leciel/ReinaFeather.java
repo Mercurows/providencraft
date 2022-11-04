@@ -18,7 +18,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class ReinaFeather extends Item {
-    public ReinaFeather(){
+    public ReinaFeather() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

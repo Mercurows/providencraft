@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class BlackEarphones extends ArmorItem {
-    public BlackEarphones(){
+    public BlackEarphones() {
         super(ArmorMaterial.IRON, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(325).group(ModGroup.donategroup));
     }
 
@@ -77,12 +77,12 @@ public class BlackEarphones extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if(!world.isRemote){
+        if (!world.isRemote) {
             BlockPos basePos = new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ());
-            for(int i = -5; i <= 5; i++){
-                for(int j = -5; j <= 5; j++){
-                    for(int q = -5; q <= 5 ; q++){
-                        if(world.getBlockState(basePos.add(i, j ,q)).isIn(Blocks.JUKEBOX)) {
+            for (int i = -5; i <= 5; i++) {
+                for (int j = -5; j <= 5; j++) {
+                    for (int q = -5; q <= 5; q++) {
+                        if (world.getBlockState(basePos.add(i, j, q)).isIn(Blocks.JUKEBOX)) {
                             player.addPotionEffect(new EffectInstance(Effects.INVISIBILITY, 40, 0, true, false));
                             player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 40, 1, true, false));
                         }

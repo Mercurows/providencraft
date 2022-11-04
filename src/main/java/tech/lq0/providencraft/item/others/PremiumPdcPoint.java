@@ -16,7 +16,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class PremiumPdcPoint extends Item {
-    public PremiumPdcPoint(){
+    public PremiumPdcPoint() {
         super(new Properties().isImmuneToFire().group(ModGroup.itemgroup));
     }
 

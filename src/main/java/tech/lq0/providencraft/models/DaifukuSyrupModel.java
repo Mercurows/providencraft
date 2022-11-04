@@ -10,34 +10,34 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import tech.lq0.providencraft.entity.DaifukuSyrupEntity;
 
 public class DaifukuSyrupModel extends EntityModel<DaifukuSyrupEntity> {
-	private final ModelRenderer bone;
+    private final ModelRenderer bone;
 
-	public DaifukuSyrupModel() {
-		textureWidth = 16;
-		textureHeight = 16;
+    public DaifukuSyrupModel() {
+        textureWidth = 16;
+        textureHeight = 16;
 
-		bone = new ModelRenderer(this);
-		bone.setRotationPoint(0.0F, 22.0F, 0.0F);
-		bone.setTextureOffset(6, 5).addBox(-1.0F, 1.0F, -1.0F, 2.0F, 1.0F, 2.0F, 0.0F, false);
-		bone.setTextureOffset(0, 0).addBox(-2.0F, -1.0F, -1.0F, 4.0F, 2.0F, 2.0F, 0.0F, false);
-		bone.setTextureOffset(6, 8).addBox(-1.0F, -1.0F, 1.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
-		bone.setTextureOffset(0, 7).addBox(-1.0F, -1.0F, -2.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
-		bone.setTextureOffset(0, 4).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 1.0F, 2.0F, 0.0F, false);
-	}
+        bone = new ModelRenderer(this);
+        bone.setRotationPoint(0.0F, 22.0F, 0.0F);
+        bone.setTextureOffset(6, 5).addBox(-1.0F, 1.0F, -1.0F, 2.0F, 1.0F, 2.0F, 0.0F, false);
+        bone.setTextureOffset(0, 0).addBox(-2.0F, -1.0F, -1.0F, 4.0F, 2.0F, 2.0F, 0.0F, false);
+        bone.setTextureOffset(6, 8).addBox(-1.0F, -1.0F, 1.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
+        bone.setTextureOffset(0, 7).addBox(-1.0F, -1.0F, -2.0F, 2.0F, 2.0F, 1.0F, 0.0F, false);
+        bone.setTextureOffset(0, 4).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 1.0F, 2.0F, 0.0F, false);
+    }
 
-	@Override
-	public void setRotationAngles(DaifukuSyrupEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    @Override
+    public void setRotationAngles(DaifukuSyrupEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
-	}
+    }
 
-	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		bone.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
-	}
+    @Override
+    public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        bone.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+    }
 
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
-	}
+    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
+    }
 }

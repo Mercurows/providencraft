@@ -42,10 +42,10 @@ public class Overload extends Effect {
     }
 
     @SubscribeEvent
-    public static void SideEffect(PotionEvent.PotionExpiryEvent event){
+    public static void SideEffect(PotionEvent.PotionExpiryEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if(EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())){
-            if(entity instanceof PlayerEntity){
+        if (EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())) {
+            if (entity instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) entity;
                 int random = (int) (Math.random() * 99 + 1);
                 int lvl = event.getPotionEffect().getAmplifier();
@@ -63,10 +63,10 @@ public class Overload extends Effect {
     }
 
     @SubscribeEvent
-    public static void SideEffect2(PotionEvent.PotionAddedEvent event){
+    public static void SideEffect2(PotionEvent.PotionAddedEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if(EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())){
-            if(entity instanceof PlayerEntity){
+        if (EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())) {
+            if (entity instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) entity;
                 int lvl = event.getPotionEffect().getAmplifier();
                 if (lvl >= 10) {
@@ -77,10 +77,10 @@ public class Overload extends Effect {
     }
 
     @SubscribeEvent
-    public static void SideEffect3(PotionEvent.PotionRemoveEvent event){
+    public static void SideEffect3(PotionEvent.PotionRemoveEvent event) {
         LivingEntity entity = event.getEntityLiving();
         EffectInstance effect = event.getPotionEffect();
-        if(effect != null) {
+        if (effect != null) {
             if (EffectRegistry.OVERLOAD.get().getName().equals(effect.getEffectName())) {
                 if (entity instanceof PlayerEntity) {
                     PlayerEntity player = (PlayerEntity) entity;

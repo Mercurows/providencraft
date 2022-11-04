@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class HaineIdolHelmet extends ArmorItem {
-    public HaineIdolHelmet(){
+    public HaineIdolHelmet() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.HEAD, new Properties().group(ModGroup.costumegroup));
     }
 

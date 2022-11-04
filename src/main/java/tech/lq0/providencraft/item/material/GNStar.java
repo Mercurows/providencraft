@@ -17,7 +17,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class GNStar extends Item {
-    public GNStar(){
+    public GNStar() {
         super(new Properties().group(ModGroup.itemgroup).isImmuneToFire().rarity(Rarity.UNCOMMON));
     }
 

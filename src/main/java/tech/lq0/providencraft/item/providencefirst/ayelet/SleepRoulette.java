@@ -24,21 +24,21 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class SleepRoulette extends Item {
-    public SleepRoulette(){
+    public SleepRoulette() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack itemStack = playerIn.getHeldItem(handIn);
-        if(!worldIn.isRemote && !worldIn.isDaytime()){
-            int random = (int)(Math.random() * 10) + 1;
-            if(random > 6){
+        if (!worldIn.isRemote && !worldIn.isDaytime()) {
+            int random = (int) (Math.random() * 10) + 1;
+            if (random > 6) {
                 playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 1200, 2));
                 playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 1200, 2));
                 playerIn.addPotionEffect(new EffectInstance(Effects.STRENGTH, 1200, 2));
                 playerIn.sendStatusMessage(new TranslationTextComponent("sleep_roulette_awake").mergeStyle(TextFormatting.GOLD), true);
-            }else{
+            } else {
                 playerIn.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 1200, 0));
                 playerIn.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 1200, 0));
                 playerIn.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 1200, 0));

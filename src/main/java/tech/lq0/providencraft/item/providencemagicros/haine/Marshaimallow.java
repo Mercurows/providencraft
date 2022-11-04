@@ -24,7 +24,7 @@ public class Marshaimallow extends Item {
     private static final Food food = (new Food.Builder()).saturation(4.0f).hunger(5).
             effect(new EffectInstance(Effects.SLOW_FALLING, 600, 0), 1.0f).build();
 
-    public Marshaimallow(){
+    public Marshaimallow() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
     }
 

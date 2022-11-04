@@ -46,7 +46,7 @@ public class Plunger extends SwordItem {
         worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
         if (!worldIn.isRemote()) {
             if (item.getDamage() < item.getMaxDamage() - 1) {
-                if(playerIn.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem().equals(ItemRegistry.KRM_963_53.get())){
+                if (playerIn.getItemStackFromSlot(EquipmentSlotType.CHEST).getItem().equals(ItemRegistry.KRM_963_53.get())) {
                     PlungerEntity plungerEntity1 = new PlungerEntity(worldIn, playerIn);
                     PlungerEntity plungerEntity2 = new PlungerEntity(worldIn, playerIn);
                     PlungerEntity plungerEntity3 = new PlungerEntity(worldIn, playerIn);
@@ -64,7 +64,7 @@ public class Plunger extends SwordItem {
                     worldIn.addEntity(plungerEntity3);
                     worldIn.addEntity(plungerEntity4);
                     worldIn.addEntity(plungerEntity5);
-                }else {
+                } else {
                     PlungerEntity plungerEntity = new PlungerEntity(worldIn, playerIn);
                     plungerEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 4.0f, 0.2f);
                     worldIn.addEntity(plungerEntity);

@@ -39,7 +39,7 @@ import java.util.UUID;
 public class Ume extends SwordItem {
     public static final String TAG_INVOKE = "invoke";
 
-    public Ume(){
+    public Ume() {
         super(ItemTier.IRON, -2, -1.0f, new Properties().group(ModGroup.itemgroup).
                 setNoRepair().defaultMaxDamage(721).rarity(Rarity.UNCOMMON));
     }
@@ -53,7 +53,7 @@ public class Ume extends SwordItem {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
             map.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(uuid, "ume modifier", flag ? 5.0f : 0.0f, AttributeModifier.Operation.ADDITION));
-        }else if (equipmentSlot == EquipmentSlotType.OFFHAND) {
+        } else if (equipmentSlot == EquipmentSlotType.OFFHAND) {
             map = HashMultimap.create(map);
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
             map.put(Attributes.ARMOR,
@@ -77,11 +77,11 @@ public class Ume extends SwordItem {
         ItemStack stack = playerIn.getHeldItem(handIn);
 
         if (handIn == Hand.MAIN_HAND) {
-            if(!ItemNBTTool.getBoolean(stack, TAG_INVOKE, false)) {
+            if (!ItemNBTTool.getBoolean(stack, TAG_INVOKE, false)) {
                 worldIn.playSound(playerIn, playerIn.getPosition(),
                         SoundRegistry.BLADE.get(), SoundCategory.AMBIENT, 0.5f, 1f);
             }
-            if(!worldIn.isRemote) {
+            if (!worldIn.isRemote) {
                 boolean flag = ItemNBTTool.getBoolean(stack, TAG_INVOKE, false);
                 ItemNBTTool.setBoolean(stack, TAG_INVOKE, !flag);
             }

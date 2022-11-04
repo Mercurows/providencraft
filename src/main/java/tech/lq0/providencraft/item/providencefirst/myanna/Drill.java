@@ -18,7 +18,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class Drill extends Item {
-    public Drill(){
+    public Drill() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

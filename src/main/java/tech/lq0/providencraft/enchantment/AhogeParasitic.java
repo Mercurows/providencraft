@@ -1,14 +1,12 @@
 package tech.lq0.providencraft.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import tech.lq0.providencraft.init.EnchantRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
 
 public class AhogeParasitic extends Enchantment {

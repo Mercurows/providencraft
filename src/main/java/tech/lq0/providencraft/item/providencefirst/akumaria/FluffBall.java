@@ -22,7 +22,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class FluffBall extends Item {
-    public FluffBall(){
+    public FluffBall() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class ChiramIdolBoots extends ArmorItem {
-    public ChiramIdolBoots(){
+    public ChiramIdolBoots() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.FEET, new Properties().group(ModGroup.costumegroup));
     }
 

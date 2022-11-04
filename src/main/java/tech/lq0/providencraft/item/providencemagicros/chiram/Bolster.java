@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Bolster extends SwordItem {
-    public Bolster(){
+    public Bolster() {
         super(ItemTier.WOOD, 4, -3.0f, new Properties().setNoRepair().maxDamage(430).group(ModGroup.itemgroup));
     }
 

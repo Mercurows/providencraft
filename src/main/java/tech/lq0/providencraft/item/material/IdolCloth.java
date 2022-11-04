@@ -16,7 +16,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class IdolCloth extends Item {
-    public IdolCloth(){
+    public IdolCloth() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

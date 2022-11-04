@@ -30,16 +30,16 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CloudKey extends Item {
-    public CloudKey(){
+    public CloudKey() {
         super(new Properties().maxStackSize(1).rarity(Rarity.EPIC).defaultMaxDamage(4).group(ModGroup.itemgroup));
     }
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(entityIn instanceof PlayerEntity){
+        if (entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 1, true, false));
-            player.addPotionEffect(new EffectInstance(Effects.HASTE, 300,0,true,false));
+            player.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 0, true, false));
         }
         super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
     }
@@ -53,15 +53,15 @@ public class CloudKey extends Item {
     }
 
     @SubscribeEvent
-    public static void event(LivingHurtEvent event){
+    public static void event(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
         float damage = event.getAmount();
-        if(entity instanceof PlayerEntity){
+        if (entity instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack key_stack = ItemRegistry.CLOUD_KEY.get().getDefaultInstance();
-            if(player.getHeldItemOffhand().getItem().equals(key_stack.getItem())){
+            if (player.getHeldItemOffhand().getItem().equals(key_stack.getItem())) {
                 ItemStack key = player.getHeldItemOffhand();
-                if(damage >= player.getHealth()) {
+                if (damage >= player.getHealth()) {
                     event.setAmount(player.getHealth() > 2.0f ? player.getHealth() - 2.0f : 0.0f);
                     player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 100, 3));
                     key.damageItem(1, player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.OFFHAND));

@@ -33,7 +33,7 @@ import java.util.UUID;
 public class MoonlightAmulet extends Item {
     public static final String TAG_MOONLIGHT = "isnight";
 
-    public MoonlightAmulet(){
+    public MoonlightAmulet() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 
@@ -55,12 +55,12 @@ public class MoonlightAmulet extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(entityIn instanceof PlayerEntity) {
+        if (entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             if (!worldIn.isDaytime()) {
                 ItemNBTTool.setBoolean(stack, TAG_MOONLIGHT, true);
                 player.addPotionEffect(new EffectInstance(EffectRegistry.BIG_FIERCE_ONE.get(), 300, 0));
-            }else {
+            } else {
                 ItemNBTTool.setBoolean(stack, TAG_MOONLIGHT, false);
             }
         }

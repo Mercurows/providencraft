@@ -32,7 +32,7 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SuccubusTail extends ArmorItem {
-    public SuccubusTail(){
+    public SuccubusTail() {
         super(ArmorMaterial.CHAIN, EquipmentSlotType.LEGS, new Properties().defaultMaxDamage(530).setNoRepair().rarity(Rarity.RARE).group(ModGroup.itemgroup));
     }
 
@@ -62,7 +62,7 @@ public class SuccubusTail extends ArmorItem {
         if (event.getEntityLiving() instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             ItemStack tail = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
-            if(!tail.isEmpty() && tail.getItem().equals(ItemRegistry.SUCCUBUS_TAIL.get())) {
+            if (!tail.isEmpty() && tail.getItem().equals(ItemRegistry.SUCCUBUS_TAIL.get())) {
                 int random = (int) (Math.random() * 10 + 1);
                 if (random > 7) {
                     float damage = event.getAmount();

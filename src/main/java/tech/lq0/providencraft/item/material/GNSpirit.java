@@ -16,7 +16,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class GNSpirit extends Item {
-    public GNSpirit(){
+    public GNSpirit() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

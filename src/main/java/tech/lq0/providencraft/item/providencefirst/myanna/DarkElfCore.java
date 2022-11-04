@@ -18,7 +18,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class DarkElfCore extends Item {
-    public DarkElfCore(){
+    public DarkElfCore() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

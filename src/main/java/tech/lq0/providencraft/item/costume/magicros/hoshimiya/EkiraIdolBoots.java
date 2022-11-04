@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class EkiraIdolBoots extends ArmorItem {
-    public EkiraIdolBoots(){
+    public EkiraIdolBoots() {
         super(ModArmorMaterial.IDOL_COSTUME, EquipmentSlotType.FEET, new Properties().group(ModGroup.costumegroup));
     }
 

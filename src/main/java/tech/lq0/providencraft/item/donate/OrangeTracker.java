@@ -41,7 +41,7 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class OrangeTracker extends ArmorItem {
-    public OrangeTracker(){
+    public OrangeTracker() {
         super(ArmorMaterial.CHAIN, EquipmentSlotType.LEGS, new Properties().group(ModGroup.donategroup).defaultMaxDamage(2022));
     }
 
@@ -79,8 +79,8 @@ public class OrangeTracker extends ArmorItem {
         );
         items.forEach(item -> item.setPosition(player.getPosX(), player.getPosY(), player.getPosZ()));
 
-        player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 1,true,false));
-        player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 1,true,false));
+        player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 1, true, false));
+        player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 1, true, false));
     }
 
     @Override
@@ -104,8 +104,8 @@ public class OrangeTracker extends ArmorItem {
             PlayerEntity player = (PlayerEntity) entity;
             ItemStack tracker = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
             if (!tracker.isEmpty() && tracker.getItem().equals(ItemRegistry.ORANGE_TRACKER.get())) {
-                int random = (int)(Math.random() * 10 + 1);
-                if(random == 1){
+                int random = (int) (Math.random() * 10 + 1);
+                if (random == 1) {
                     player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 100, 0));
                     player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 0));
                 }

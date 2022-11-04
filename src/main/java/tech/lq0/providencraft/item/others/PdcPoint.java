@@ -16,7 +16,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class PdcPoint extends Item {
-    public PdcPoint(){
+    public PdcPoint() {
         super(new Properties().isImmuneToFire().group(ModGroup.itemgroup));
     }
 

@@ -58,7 +58,7 @@ public class ShuraChin extends SwordItem {
     public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
         event.enqueueWork(() ->
                 ItemModelsProperties.registerProperty(ItemRegistry.SHURA_CHIN.get(), new ResourceLocation(Utils.MOD_ID, "shurachin_invoke"),
-                (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F)
+                        (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_INVOKE, false) ? 1.0F : 0.0F)
         );
     }
 

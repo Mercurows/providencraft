@@ -97,8 +97,8 @@ public class LunaticBow extends ArmorItem {
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.LUNATIC_BOW.get())) {
                 player.attackEntityFrom(DamageSourceRegistry.SORAYO, 2.0f);
-                int random = (int)(Math.random() * 5 + 1);
-                switch (random){
+                int random = (int) (Math.random() * 5 + 1);
+                switch (random) {
                     case 1:
                         player.world.playSound(player, player.getPosition(),
                                 SoundRegistry.YYKY_SCREAM_1.get(), SoundCategory.AMBIENT, 0.7f, 1f);

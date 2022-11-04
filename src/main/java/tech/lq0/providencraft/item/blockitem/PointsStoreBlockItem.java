@@ -5,7 +5,7 @@ import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.BlockRegistry;
 
 public class PointsStoreBlockItem extends BlockItem {
-    public PointsStoreBlockItem(){
+    public PointsStoreBlockItem() {
         super(BlockRegistry.POINTS_STORE.get(), new Properties().group(ModGroup.itemgroup));
     }
 }

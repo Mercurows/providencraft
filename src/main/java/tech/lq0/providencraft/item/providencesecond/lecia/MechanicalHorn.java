@@ -18,7 +18,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MechanicalHorn extends Item {
-    public MechanicalHorn(){
+    public MechanicalHorn() {
         super(new Properties().group(ModGroup.itemgroup));
     }
 

@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class HiruHead extends ArmorItem {
-    public HiruHead(){
+    public HiruHead() {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().maxDamage(913).setNoRepair().group(ModGroup.itemgroup));
     }
 
@@ -71,7 +71,7 @@ public class HiruHead extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if(!world.isRemote && player.isInWater()){
+        if (!world.isRemote && player.isInWater()) {
             player.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 300, 0));
             player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0));
         }

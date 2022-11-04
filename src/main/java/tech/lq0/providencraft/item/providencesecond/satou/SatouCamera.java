@@ -29,7 +29,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class SatouCamera extends Item {
-    public SatouCamera(){
+    public SatouCamera() {
         super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).maxDamage(148));
     }
 
@@ -44,16 +44,16 @@ public class SatouCamera extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if(!worldIn.isRemote){
+        if (!worldIn.isRemote) {
 
             // TODO 修改相机判定范围
             Vector3d v_player = Vector3d.fromPitchYaw(playerIn.getPitchYaw()).
                     mul(4.0, 0.0, 4.0).add(5.0, 5.0, 5.0).mul(4.0, 2.0, 4.0);
 
-            for(LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class,
-                    playerIn.getBoundingBox().grow(5.0f, 5.0f, 5.0f).expand(v_player))){
+            for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class,
+                    playerIn.getBoundingBox().grow(5.0f, 5.0f, 5.0f).expand(v_player))) {
                 if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity)) {
-                    if(!(livingentity instanceof ArmorStandEntity)) {
+                    if (!(livingentity instanceof ArmorStandEntity)) {
                         livingentity.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 200, 0));
                         livingentity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
                     }

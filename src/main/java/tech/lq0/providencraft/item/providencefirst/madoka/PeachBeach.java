@@ -28,7 +28,7 @@ public class PeachBeach extends Item {
             effect(new EffectInstance(Effects.NAUSEA, 300, 0), 0.3f).
             effect(new EffectInstance(Effects.STRENGTH, 300, 0), 1.0f).build();
 
-    public PeachBeach(){
+    public PeachBeach() {
         super(new Properties().group(ModGroup.itemgroup).food(food).maxStackSize(1));
     }
 

@@ -37,7 +37,8 @@ import java.util.UUID;
 
 public class FrogCrown extends ArmorItem {
     public static final String TAG_RAIN = "isRaining";
-    public FrogCrown(){
+
+    public FrogCrown() {
         super(ArmorMaterial.GOLD, EquipmentSlotType.HEAD, new Properties().setNoRepair().defaultMaxDamage(302).group(ModGroup.itemgroup));
     }
 
@@ -59,15 +60,15 @@ public class FrogCrown extends ArmorItem {
         super.onArmorTick(stack, world, player);
         if (world.isRaining()) {
             ItemNBTTool.setBoolean(stack, TAG_RAIN, true);
-            if(player.ticksExisted % 300 == 0) {
+            if (player.ticksExisted % 300 == 0) {
                 player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 200, 0, true, false));
             }
             player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 300, 0, true, false));
         } else {
             ItemNBTTool.setBoolean(stack, TAG_RAIN, false);
         }
-        if(player.isSwimming()){
-            player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 300, 0,true,false));
+        if (player.isSwimming()) {
+            player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 300, 0, true, false));
         }
     }
 
