@@ -4,19 +4,21 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
+import net.minecraft.util.math.EntityRayTraceResult;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
@@ -26,6 +28,7 @@ import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SatouCamera extends Item {
@@ -46,18 +49,45 @@ public class SatouCamera extends Item {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if (!worldIn.isRemote) {
 
-            // TODO 修改相机判定范围
-            Vector3d v_player = Vector3d.fromPitchYaw(playerIn.getPitchYaw()).
-                    mul(4.0, 0.0, 4.0).add(5.0, 5.0, 5.0).mul(4.0, 2.0, 4.0);
+            List<LivingEntity> target = new ArrayList<>();
+            Vector3d start = playerIn.getPositionVec().add(0, playerIn.getEyeHeight(), 0);
 
-            for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class,
-                    playerIn.getBoundingBox().grow(5.0f, 5.0f, 5.0f).expand(v_player))) {
-                if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity)) {
-                    if (!(livingentity instanceof ArmorStandEntity)) {
-                        livingentity.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 200, 0));
-                        livingentity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
-                    }
+            EntityRayTraceResult result;
+
+            //最远距离5m
+            float distance = 5;
+
+            float yaw = playerIn.rotationYaw;
+            float pitch = playerIn.rotationPitch < -30 ? -30 : playerIn.rotationPitch > 30 ? 30 : playerIn.rotationPitch;
+
+            //生成闪光粒子效果
+            ServerWorld world = (ServerWorld) worldIn;
+            world.spawnParticle(ParticleTypes.FLASH, playerIn.getPosX() + playerIn.getLookVec().x, playerIn.getPosY() + playerIn.getEyeHeight() + playerIn.getLookVec().y, playerIn.getPosZ() + playerIn.getLookVec().z, 1, 0, 0, 0, 0);
+
+            //水平±60°
+            for (int i = 0; i < 24; i++) {
+                //垂直±30°
+                for (int j = 0; j < 12; j++) {
+
+                    float finalYaw = (yaw + 5 * (i - 11.5F)) / 180F * 3.14159F;
+                    float finalPitch = (pitch + 5 * (j - 5.5F)) / 180F * 3.14159F;
+
+                    Vector3d end = start.add(-distance * MathHelper.sin(finalYaw) * MathHelper.cos(finalPitch), -distance * MathHelper.sin(finalPitch), distance * MathHelper.cos(finalYaw) * MathHelper.cos(finalPitch));
+
+                    do {
+                        result = ProjectileHelper.rayTraceEntities(worldIn, playerIn, start, end, playerIn.getBoundingBox().grow(distance, distance, distance), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity));
+                        if (result != null) {
+                            target.add((LivingEntity) result.getEntity());
+                        }
+                    } while (result != null);
                 }
+            }
+            for (LivingEntity livingentity : target) {
+                livingentity.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 200, 0));
+                livingentity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
+
+                livingentity.hurtResistantTime = 0;
+                livingentity.attackEntityFrom(DamageSource.causePlayerDamage(playerIn), 0);
             }
 
             playerIn.playSound(SoundRegistry.SHUTTER.get(), SoundCategory.AMBIENT, 0.7f, 1f);
