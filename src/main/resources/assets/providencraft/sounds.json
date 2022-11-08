@@ -178,5 +178,65 @@
         "stream": true
       }
     ]
+  },
+  "chiram_bolster": {
+    "subtitle": "chiram_bolster",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:chiram_bolster",
+        "stream": true
+      }
+    ]
+  },
+  "chiram_intro": {
+    "subtitle": "chiram_intro",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:chiram_intro",
+        "stream": true
+      }
+    ]
+  },
+  "chiram_tales": {
+    "subtitle": "chiram_tales",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:chiram_tales",
+        "stream": true
+      }
+    ]
+  },
+  "haine_broadcast": {
+    "subtitle": "haine_broadcast",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:haine_broadcast",
+        "stream": true
+      }
+    ]
+  },
+  "haine_haiplate": {
+    "subtitle": "haine_haiplate",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:haine_haiplate",
+        "stream": true
+      }
+    ]
+  },
+  "haine_taunt": {
+    "subtitle": "haine_taunt",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:haine_taunt",
+        "stream": true
+      }
+    ]
   }
 }
