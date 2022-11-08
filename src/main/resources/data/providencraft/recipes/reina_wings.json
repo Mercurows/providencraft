@@ -2,18 +2,21 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "bab",
-    "p p",
+    "psp",
     "p p"
   ],
   "key": {
     "a": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:gold_ingot"
     },
     "b": {
-      "item": "minecraft:leather"
+      "item": "minecraft:iron_ingot"
     },
     "p": {
       "item": "providencraft:reina_feather"
+    },
+    "s": {
+      "item": "minecraft:slime_ball"
     }
   },
   "result": {

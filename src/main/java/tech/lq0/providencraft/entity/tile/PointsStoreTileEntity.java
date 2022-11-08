@@ -145,7 +145,13 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
             new MerchantOffer(getPremiumPoints(10), getPoints(8), getGoods(ItemRegistry.HAYA_SWORD.get(), 1), 64, 0, 0),
             new MerchantOffer(getPremiumPoints(25), getGoods(ItemRegistry.KRM_963_53.get(), 1), 64, 0, 0),
             new MerchantOffer(getPoints(28), getGoods(ItemRegistry.FLUFF_BALL.get(), 1), 64, 0, 0),
-            new MerchantOffer(getPremiumPoints(64), getPremiumPoints(64), getGoods(ItemRegistry.FETUOZI.get(), 1), 64, 0, 0)
+            new MerchantOffer(getPremiumPoints(64), getPremiumPoints(64), getGoods(ItemRegistry.FETUOZI.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_HAINE_1.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_HAINE_2.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_HAINE_3.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_CHIRAM_1.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_CHIRAM_2.get(), 1), 64, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_CHIRAM_3.get(), 1), 64, 0, 0)
     };
 
     private static ItemStack getPoints(int count) {

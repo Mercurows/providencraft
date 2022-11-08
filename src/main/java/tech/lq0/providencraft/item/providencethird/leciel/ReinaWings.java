@@ -58,7 +58,7 @@ public class ReinaWings extends ArmorItem {
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if (!world.isRemote) {
             player.addPotionEffect(new EffectInstance(Effects.SLOW_FALLING, 300, 0, true, false));
-            if (player.ticksExisted % 600 == 0) {
+            if (player.ticksExisted % 3600 == 0) {
                 player.addPotionEffect(new EffectInstance(Effects.SATURATION, 20, 0));
             }
         }
@@ -70,13 +70,13 @@ public class ReinaWings extends ArmorItem {
     @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
-        UUID uuid = new UUID(ItemRegistry.HIRU_HEAD.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        UUID uuid = new UUID(ItemRegistry.REINA_WINGS.hashCode() + equipmentSlot.toString().hashCode(), 0);
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(ForgeMod.ENTITY_GRAVITY.get(),
-                    new AttributeModifier(uuid, "hiru head modifier", -0.5f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "reina wing modifier", -0.5f, AttributeModifier.Operation.MULTIPLY_BASE));
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "hiru head modifier", 0.3f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "reina wing modifier", 0.3f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }

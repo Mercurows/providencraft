@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "  x",
-    " a ",
-    "g  "
+    " xa",
+    "xsx",
+    "gx "
   ],
   "key": {
     "x": {
@@ -14,6 +14,9 @@
     },
     "g": {
       "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "minecraft:slime_ball"
     }
   },
   "result": {
