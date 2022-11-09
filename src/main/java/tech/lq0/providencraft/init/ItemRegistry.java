@@ -274,11 +274,11 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_HAINE_1 = ITEMS.register("audio_tape_haine_1", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAINE_BROADCAST, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_HAINE_2 = ITEMS.register("audio_tape_haine_2", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAINE_TAUNT, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_HAINE_3 = ITEMS.register("audio_tape_haine_3", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAINE_HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
-    public static final RegistryObject<Item> AUDIO_TAPE_EKIRA_1 = ITEMS.register("audio_tape_ekira_1", () -> new AudioTape(Livers.EKIRA, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    //public static final RegistryObject<Item> AUDIO_TAPE_EKIRA_1 = ITEMS.register("audio_tape_ekira_1", () -> new AudioTape(Livers.EKIRA, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_CHIRAM_1 = ITEMS.register("audio_tape_chiram_1", () -> new AudioTape(Livers.CHIRAM, SoundRegistry.CHIRAM_INTRO, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_CHIRAM_2 = ITEMS.register("audio_tape_chiram_2", () -> new AudioTape(Livers.CHIRAM, SoundRegistry.CHIRAM_TALES, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_CHIRAM_3 = ITEMS.register("audio_tape_chiram_3", () -> new AudioTape(Livers.CHIRAM, SoundRegistry.CHIRAM_BOLSTER, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
-    public static final RegistryObject<Item> AUDIO_TAPE_KERORO_1 = ITEMS.register("audio_tape_keroro_1", () -> new AudioTape(Livers.KERORO, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    //public static final RegistryObject<Item> AUDIO_TAPE_KERORO_1 = ITEMS.register("audio_tape_keroro_1", () -> new AudioTape(Livers.KERORO, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
 
     /**
      * donate
