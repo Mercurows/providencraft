@@ -14,8 +14,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.init.EffectRegistry;
 
-import java.util.Objects;
-
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Holiness extends Effect {
     public Holiness() {
@@ -33,7 +31,7 @@ public class Holiness extends Effect {
         if (entity instanceof PlayerEntity && !entity.world.isRemote) {
             PlayerEntity player = (PlayerEntity) entity;
             if (player.isPotionActive(effect)) {
-                int level = Objects.requireNonNull(player.getActivePotionEffect(effect)).getAmplifier();
+                int level = player.getActivePotionEffect(effect).getAmplifier();
                 if (enemy instanceof LivingEntity) {
                     LivingEntity enemyL = (LivingEntity) enemy;
                     if (enemyL.isEntityUndead()) {
@@ -52,7 +50,7 @@ public class Holiness extends Effect {
         Entity entity = event.getTarget();
 
         if (!player.world.isRemote && player.isPotionActive(effect)) {
-            int level = Objects.requireNonNull(player.getActivePotionEffect(effect)).getAmplifier();
+            int level = player.getActivePotionEffect(effect).getAmplifier();
             if (entity instanceof LivingEntity) {
                 LivingEntity entity1 = (LivingEntity) entity;
                 if (entity1.isEntityUndead()) {

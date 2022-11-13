@@ -13,8 +13,6 @@ import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.tools.RandomTool;
 
-import java.util.Objects;
-
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Overload extends Effect {
     public Overload() {
@@ -44,7 +42,7 @@ public class Overload extends Effect {
     @SubscribeEvent
     public static void SideEffect(PotionEvent.PotionExpiryEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if (EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())) {
+        if (EffectRegistry.OVERLOAD.get().getName().equals(event.getPotionEffect().getEffectName())) {
             if (entity instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) entity;
                 int random = (int) (Math.random() * 99 + 1);
@@ -65,7 +63,7 @@ public class Overload extends Effect {
     @SubscribeEvent
     public static void SideEffect2(PotionEvent.PotionAddedEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if (EffectRegistry.OVERLOAD.get().getName().equals(Objects.requireNonNull(event.getPotionEffect()).getEffectName())) {
+        if (EffectRegistry.OVERLOAD.get().getName().equals(event.getPotionEffect().getEffectName())) {
             if (entity instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) entity;
                 int lvl = event.getPotionEffect().getAmplifier();
