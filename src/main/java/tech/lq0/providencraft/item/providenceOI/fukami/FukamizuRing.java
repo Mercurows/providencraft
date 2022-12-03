@@ -112,9 +112,9 @@ public class FukamizuRing extends Item {
         ModelResourceLocation location = new ModelResourceLocation(Objects.requireNonNull(ItemRegistry.FUKAMIZU_RING.get().getRegistryName()), "inventory");
         IBakedModel existingModel = modelRegistry.get(location);
         if (existingModel == null) {
-            throw new RuntimeException("Did not find Obsidian Hidden in registry");
+            throw new RuntimeException();
         } else if (existingModel instanceof FukamizuRingBakedModel) {
-            throw new RuntimeException("Tried to replaceObsidian Hidden twice");
+            throw new RuntimeException();
         } else {
             FukamizuRingBakedModel fukamizuRingBakedModel = new FukamizuRingBakedModel(existingModel);
             event.getModelRegistry().put(location, fukamizuRingBakedModel);
