@@ -36,4 +36,7 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> HAINE_BROADCAST = SOUNDS.register("haine_broadcast", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "haine_broadcast")));
     public static final RegistryObject<SoundEvent> HAINE_TAUNT = SOUNDS.register("haine_taunt", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "haine_taunt")));
     public static final RegistryObject<SoundEvent> HAINE_HAIPLATE = SOUNDS.register("haine_haiplate", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "haine_haiplate")));
+    public static final RegistryObject<SoundEvent> EKIRA_STAR = SOUNDS.register("ekira_star", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "ekira_star")));
+    public static final RegistryObject<SoundEvent> EKIRA_TAUNT = SOUNDS.register("ekira_taunt", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "ekira_taunt")));
+    public static final RegistryObject<SoundEvent> EKIRA_GOURMET = SOUNDS.register("ekira_gourmet", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "ekira_gourmet")));
 }

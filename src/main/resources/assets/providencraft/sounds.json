@@ -238,5 +238,35 @@
         "stream": true
       }
     ]
+  },
+  "ekira_taunt": {
+    "subtitle": "ekira_taunt",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:ekira_taunt",
+        "stream": true
+      }
+    ]
+  },
+  "ekira_star": {
+    "subtitle": "ekira_star",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:ekira_star",
+        "stream": true
+      }
+    ]
+  },
+  "ekira_gourmet": {
+    "subtitle": "ekira_gourmet",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:ekira_gourmet",
+        "stream": true
+      }
+    ]
   }
 }
