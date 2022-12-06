@@ -104,7 +104,6 @@ public class VillagerInit {
                 new ItemsForEmeraldsTrade(ItemRegistry.PORCELAIN_THRONE.get(), 8, 1, 3)
         };
         VillagerTrades.ITrade[] ruozhiLevel4 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.MOUNTAIN_DESTROYER.get(), 50, 1, 1, 30),
                 new EmeraldForItemsTrade(Items.SMOOTH_STONE, 10, 20, 1)
         };
         VillagerTrades.ITrade[] ruozhiLevel5 = new VillagerTrades.ITrade[]{

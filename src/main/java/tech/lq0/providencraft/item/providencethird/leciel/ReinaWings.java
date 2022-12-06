@@ -38,7 +38,12 @@ import java.util.UUID;
 
 public class ReinaWings extends ArmorItem {
     public ReinaWings() {
-        super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(627).setNoRepair().group(ModGroup.itemgroup));
+        super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(627).group(ModGroup.itemgroup));
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == ItemRegistry.REINA_FEATHER.get();
     }
 
     @OnlyIn(Dist.CLIENT)

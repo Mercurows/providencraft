@@ -106,4 +106,9 @@ public class LecielEarCoverts extends ArmorItem {
 
         }
     }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == ItemRegistry.REINA_FEATHER.get();
+    }
 }
