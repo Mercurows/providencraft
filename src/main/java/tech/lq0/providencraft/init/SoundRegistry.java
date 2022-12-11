@@ -29,7 +29,6 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> LECIA_CAST_1 = SOUNDS.register("lecia_cast_1", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "lecia_cast_1")));
     public static final RegistryObject<SoundEvent> LECIA_CAST_2 = SOUNDS.register("lecia_cast_2", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "lecia_cast_2")));
 
-    // TODO 添加Liver定制语音
     public static final RegistryObject<SoundEvent> CHIRAM_BOLSTER = SOUNDS.register("chiram_bolster", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "chiram_bolster")));
     public static final RegistryObject<SoundEvent> CHIRAM_INTRO = SOUNDS.register("chiram_intro", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "chiram_intro")));
     public static final RegistryObject<SoundEvent> CHIRAM_TALES = SOUNDS.register("chiram_tales", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "chiram_tales")));
@@ -39,4 +38,7 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> EKIRA_STAR = SOUNDS.register("ekira_star", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "ekira_star")));
     public static final RegistryObject<SoundEvent> EKIRA_TAUNT = SOUNDS.register("ekira_taunt", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "ekira_taunt")));
     public static final RegistryObject<SoundEvent> EKIRA_GOURMET = SOUNDS.register("ekira_gourmet", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "ekira_gourmet")));
+    public static final RegistryObject<SoundEvent> KERORO_ELECTRIC_FROG = SOUNDS.register("keroro_electric_frog", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "keroro_electric_frog")));
+    public static final RegistryObject<SoundEvent> KERORO_FROG_CROWN = SOUNDS.register("keroro_frog_crown", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "keroro_frog_crown")));
+    public static final RegistryObject<SoundEvent> KERORO_WALKING = SOUNDS.register("keroro_walking", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "keroro_walking")));
 }

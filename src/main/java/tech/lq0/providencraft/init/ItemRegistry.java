@@ -269,8 +269,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PDC_POINT = ITEMS.register("pdc_point", PdcPoint::new);
     public static final RegistryObject<Item> PREMIUM_PDC_POINT = ITEMS.register("premium_pdc_point", PremiumPdcPoint::new);
 
-    // TODO 为磁带换上正确的语音
-    // TODO 为语音描述添加英文翻译
     public static final RegistryObject<Item> AUDIO_TAPE_HAINE_1 = ITEMS.register("audio_tape_haine_1", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAINE_BROADCAST, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_HAINE_2 = ITEMS.register("audio_tape_haine_2", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAINE_TAUNT, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_HAINE_3 = ITEMS.register("audio_tape_haine_3", () -> new AudioTape(Livers.HAINE, SoundRegistry.HAINE_HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
@@ -280,8 +278,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_EKIRA_1 = ITEMS.register("audio_tape_ekira_1", () -> new AudioTape(Livers.EKIRA, SoundRegistry.EKIRA_STAR, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_EKIRA_2 = ITEMS.register("audio_tape_ekira_2", () -> new AudioTape(Livers.EKIRA, SoundRegistry.EKIRA_TAUNT, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_EKIRA_3 = ITEMS.register("audio_tape_ekira_3", () -> new AudioTape(Livers.EKIRA, SoundRegistry.EKIRA_GOURMET, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
-
-    //public static final RegistryObject<Item> AUDIO_TAPE_KERORO_1 = ITEMS.register("audio_tape_keroro_1", () -> new AudioTape(Livers.KERORO, SoundRegistry.HAIPLATE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_KERORO_1 = ITEMS.register("audio_tape_keroro_1", () -> new AudioTape(Livers.KERORO, SoundRegistry.KERORO_ELECTRIC_FROG, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_KERORO_2 = ITEMS.register("audio_tape_keroro_2", () -> new AudioTape(Livers.KERORO, SoundRegistry.KERORO_WALKING, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_KERORO_3 = ITEMS.register("audio_tape_keroro_3", () -> new AudioTape(Livers.KERORO, SoundRegistry.KERORO_FROG_CROWN, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
 
     /**
      * donate

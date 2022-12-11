@@ -268,5 +268,35 @@
         "stream": true
       }
     ]
+  },
+  "keroro_electric_frog": {
+    "subtitle": "keroro_electric_frog",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:keroro_electric_frog",
+        "stream": true
+      }
+    ]
+  },
+  "keroro_frog_crown": {
+    "subtitle": "keroro_frog_crown",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:keroro_frog_crown",
+        "stream": true
+      }
+    ]
+  },
+  "keroro_walking": {
+    "subtitle": "keroro_walking",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:keroro_walking",
+        "stream": true
+      }
+    ]
   }
 }
