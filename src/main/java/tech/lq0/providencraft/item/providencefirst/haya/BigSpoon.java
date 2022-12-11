@@ -2,6 +2,8 @@ package tech.lq0.providencraft.item.providencefirst.haya;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,9 +35,23 @@ public class BigSpoon extends SwordItem {
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (attacker instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) attacker;
-            if (!player.world.isRemote && stack.getDamage() < stack.getMaxDamage() - 10 && !player.isCreative()) {
-                player.addPotionEffect(new EffectInstance(Effects.SATURATION, 20, 0));
-                stack.setDamage(stack.getDamage() + 10);
+            int food = 1;
+            float saturation = 1.0f;
+            if (target instanceof MonsterEntity) {
+                if (target.isEntityUndead()) {
+                    food = 2;
+                    saturation = 2.0f;
+                } else {
+                    food = 4;
+                    saturation = 4.0f;
+                }
+            } else if (target instanceof AnimalEntity) {
+                food = 6;
+                saturation = 6.0f;
+            }
+
+            if (!target.isAlive()) {
+                player.getFoodStats().addStats(food, saturation);
             }
         }
         return true;
