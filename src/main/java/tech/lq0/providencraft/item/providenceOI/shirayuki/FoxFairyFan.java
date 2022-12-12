@@ -34,7 +34,7 @@ public class FoxFairyFan extends Item {
         ItemStack itemStack = playerIn.getHeldItem(handIn);
         if (!worldIn.isRemote) {
             for (LivingEntity livingentity : playerIn.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, playerIn.getBoundingBox().grow(8, 8, 8))) {
-                if (livingentity != playerIn && !playerIn.isOnSameTeam(livingentity)) {
+                if (livingentity != playerIn) {
                     if (!(livingentity instanceof ArmorStandEntity)) {
                         float distance = livingentity.getDistance(playerIn);
                         float strength = distance <= 2 ? 6 : (float) Math.sqrt(MathHelper.lerp((distance - 2) / 6, 6, 0));
