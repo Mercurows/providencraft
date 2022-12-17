@@ -36,7 +36,6 @@ public class SteelPlate extends ArmorItem {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("steel_plate_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("steel_plate_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
         TooltipTool.addLiverInfo(tooltip, Livers.CHIRAM);
     }
 
@@ -49,7 +48,7 @@ public class SteelPlate extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.5f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "steel plate modifier", -0.4f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }

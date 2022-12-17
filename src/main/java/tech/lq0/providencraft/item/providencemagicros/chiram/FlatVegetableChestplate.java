@@ -48,7 +48,7 @@ public class FlatVegetableChestplate extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.3f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "flat vegetable chestplate modifier", -0.2f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
