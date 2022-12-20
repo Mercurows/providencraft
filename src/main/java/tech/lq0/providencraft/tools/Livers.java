@@ -30,6 +30,8 @@ public enum Livers {
     AYU("ayu", "poi", "#A9BBD9"),
     YURI("yuri", "poi", "#F9C8DE"),
     FUKAMI("fukami", "poi", "#E0D7F5"),
+    LUTAFIA("lutafia", "poi", "#6BD2B5"),
+    QIANYUN("qianyun", "connections", "#A33432"),
     MARIA("maria", "first", "#AF4657"),
     MOJUKO("mojuko", "second", "#FFF6F9");
 

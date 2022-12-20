@@ -37,6 +37,9 @@ public class TooltipTool {
             case "poi":
                 bgColor = "#F9F0D8";
                 break;
+            case "connections":
+                bgColor = "#B2453F";
+                break;
         }
         if (liver.getName().equals("maria") || liver.getName().equals("mojuko") || liver.getName().equals("shirako")) {
             addHideText(tooltip, new TranslationTextComponent("description_" + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).
