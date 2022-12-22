@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    "xg ",
+    "xa "
+  ],
+  "key": {
+    "x": {
+      "item": "providencraft:red_ahoge"
+    },
+    "a": {
+      "tag": "minecraft:logs"
+    },
+    "g": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:red_ahoge_machete",
+    "count": 1
+  }
+}
