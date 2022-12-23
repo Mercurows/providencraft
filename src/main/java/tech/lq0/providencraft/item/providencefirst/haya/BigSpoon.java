@@ -54,7 +54,7 @@ public class BigSpoon extends SwordItem {
                 player.getFoodStats().addStats(food, saturation);
             }
         }
-        return true;
+        return super.hitEntity(stack, target, attacker);
     }
 
     @OnlyIn(Dist.CLIENT)

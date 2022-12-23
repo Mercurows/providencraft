@@ -30,7 +30,8 @@ public class AhogeParasitic extends Enchantment {
 
     @Override
     public boolean canApply(ItemStack stack) {
-        if ((stack.getItem() == ItemRegistry.RED_AHOGE_BOOMERANG.get()) || stack.getItem() == ItemRegistry.RED_AHOGE_SWORD.get()) {
+        if ((stack.getItem() == ItemRegistry.RED_AHOGE_BOOMERANG.get()) || stack.getItem() == ItemRegistry.RED_AHOGE_SWORD.get()
+        || stack.getItem() == ItemRegistry.RED_AHOGE_MACHETE.get()) {
             return true;
         } else {
             return super.canApply(stack);
@@ -49,7 +50,8 @@ public class AhogeParasitic extends Enchantment {
                 times++;
             }
             if (heldItem.getItem().equals(ItemRegistry.RED_AHOGE_SWORD.get()) ||
-                    heldItem.getItem().equals(ItemRegistry.RED_AHOGE_BOOMERANG.get())) {
+                    heldItem.getItem().equals(ItemRegistry.RED_AHOGE_BOOMERANG.get()) ||
+            heldItem.getItem().equals(ItemRegistry.RED_AHOGE_MACHETE.get())) {
                 times++;
             }
 
