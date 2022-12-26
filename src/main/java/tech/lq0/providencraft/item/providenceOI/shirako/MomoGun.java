@@ -1,6 +1,7 @@
 package tech.lq0.providencraft.item.providenceOI.shirako;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,6 +15,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ToolType;
 import tech.lq0.providencraft.entity.DaifukuSyrupEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
@@ -23,6 +25,7 @@ import tech.lq0.providencraft.tools.TooltipTool;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
+import java.util.Set;
 
 public class MomoGun extends Item {
     public MomoGun() {
@@ -97,5 +100,15 @@ public class MomoGun extends Item {
         tooltip.add((new TranslationTextComponent("momo_gun_func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("momo_gun_des")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment == Enchantments.INFINITY || enchantment == Enchantments.MENDING;
     }
 }
