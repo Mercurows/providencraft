@@ -1,5 +1,6 @@
 package tech.lq0.providencraft.item.providenceOI.lutafia;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class Fiaxe extends AxeItem {
     public Fiaxe() {
-        super(ItemTier.IRON, 8.0f, -2.8f, new Properties().maxStackSize(1).maxDamage(601).group(ModGroup.itemgroup));
+        super(ItemTier.IRON, 8.0f, -3.0f, new Properties().maxStackSize(1).maxDamage(601).group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -28,5 +29,15 @@ public class Fiaxe extends AxeItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("fiaxe_des")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.LUTAFIA);
+    }
+
+    @Override
+    public float getDestroySpeed(ItemStack stack, BlockState state) {
+        return super.getDestroySpeed(stack, state);
+    }
+
+    @Override
+    public boolean canHarvestBlock(BlockState blockIn) {
+        return super.canHarvestBlock(blockIn);
     }
 }
