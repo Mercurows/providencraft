@@ -56,14 +56,14 @@ public class MountainDestroyer extends PickaxeItem {
             return i >= blockIn.getHarvestLevel();
         }
         Material material = blockIn.getMaterial();
-        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC);
+        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE);
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         Material material = state.getMaterial();
-        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC) ? this.efficiency : super.getDestroySpeed(stack, state);
+        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE) ? this.efficiency : super.getDestroySpeed(stack, state);
     }
 
     @Override
@@ -85,7 +85,8 @@ public class MountainDestroyer extends PickaxeItem {
     @ParametersAreNonnullByDefault
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
         if ((state.getMaterial() == Material.ROCK || state.getMaterial() == Material.EARTH ||
-                state.getMaterial() == Material.SAND || state.getMaterial() == Material.ORGANIC)
+                state.getMaterial() == Material.SAND || state.getMaterial() == Material.ORGANIC ||
+                state.getMaterial() == Material.ICE || state.getMaterial() == Material.PACKED_ICE)
                 && !worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             stack.damageItem(-1, player, (playerEntity) -> playerEntity.sendBreakAnimation(player.getActiveHand()));
@@ -156,7 +157,7 @@ public class MountainDestroyer extends PickaxeItem {
     @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
-        UUID uuid = new UUID(ItemRegistry.TAIL_PEN.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        UUID uuid = new UUID(ItemRegistry.MOUNTAIN_DESTROYER.hashCode() + equipmentSlot.toString().hashCode(), 0);
         if (equipmentSlot == EquipmentSlotType.MAINHAND) {
             map = HashMultimap.create(map);
             map.put(Attributes.MOVEMENT_SPEED,
