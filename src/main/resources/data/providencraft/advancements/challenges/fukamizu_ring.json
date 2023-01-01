@@ -9,6 +9,7 @@
     "description": {
       "translate": "providencraft.advancement.fukamizu_ring_des"
     },
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

@@ -21,10 +21,10 @@
       "conditions": {
         "items": [
           {
-            "item": "providencraft:fox_ice_cream",
-            "count": {
-              "min": 32
-            }
+            "item": "providencraft:fox_ice_cream"
+          },
+          {
+            "item": "providencraft:fox_pudding"
           },
           {
             "item": "providencraft:shura_chin"
@@ -36,7 +36,13 @@
             "item": "providencraft:hiru_head"
           },
           {
+            "item": "providencraft:hiru_tentacles"
+          },
+          {
             "item": "providencraft:reina_wings"
+          },
+          {
+            "item": "providencraft:leciel_ear_coverts"
           }
         ]
       }

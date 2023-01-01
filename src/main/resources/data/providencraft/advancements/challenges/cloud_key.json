@@ -9,6 +9,7 @@
     "description": {
       "translate": "providencraft.advancement.cloud_key_des"
     },
+    "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

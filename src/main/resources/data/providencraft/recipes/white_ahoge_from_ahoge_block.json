@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "providencraft:white_ahoge_block"
+    }
+  ],
+  "result": {
+    "item": "providencraft:white_ahoge",
+    "count": 9
+  }
+}
