@@ -6,10 +6,14 @@ import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.IronGolemEntity;
+import net.minecraft.entity.passive.SnowGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -72,7 +76,16 @@ public class HiruTentacles extends ArmorItem {
             int count = 0;
             if (!chestplate.isEmpty() && chestplate.getItem().equals(ItemRegistry.HIRU_TENTACLES.get())) {
                 for (LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(20.0D, 20.0D, 20.0D))) {
-                    if (livingentity instanceof MonsterEntity && !player.isOnSameTeam(livingentity) && !livingentity.hasCustomName() && player.getDistanceSq(livingentity) < 400.0f) {
+                    if (
+                        player.getDistanceSq(livingentity) < 400.0f &&
+                        !player.isOnSameTeam(livingentity) &&
+                        !livingentity.hasCustomName() &&
+                        !(livingentity instanceof AnimalEntity) &&
+                        !(livingentity instanceof VillagerEntity) &&
+                        !(livingentity instanceof IronGolemEntity) &&
+                        !(livingentity instanceof SnowGolemEntity) &&
+                        livingentity instanceof MobEntity
+                    ) {
                         double[] px = {player.getPosX() + 0.95f * MathHelper.cos(player.getHorizontalFacing().getHorizontalAngle()),
                                 player.getPosX() - 0.95f * MathHelper.cos(player.getHorizontalFacing().getHorizontalAngle()),
                                 player.getPosX() + 0.65f * MathHelper.cos(player.getHorizontalFacing().getHorizontalAngle()),
