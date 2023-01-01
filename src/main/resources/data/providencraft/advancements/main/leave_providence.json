@@ -14,7 +14,7 @@
     "hidden": true,
     "frame": "goal"
   },
-  "parent": "providencraft:providencraft",
+  "parent": "providencraft:main/providencraft",
   "criteria": {
     "leave_providence": {
       "trigger": "minecraft:item_durability_changed",

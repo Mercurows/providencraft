@@ -1,0 +1,31 @@
+{
+  "criteria": {
+    "has_white_wool": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["minecraft:white_wool"]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "providencraft:white_ahoge"
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "providencraft:white_ahoge"
+    ]
+  },
+  "requirements": [
+    [
+      "has_white_wool",
+      "has_the_recipe"
+    ]
+  ]
+}

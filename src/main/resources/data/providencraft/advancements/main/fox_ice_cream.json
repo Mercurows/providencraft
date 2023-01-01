@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:providencraft",
+  "parent": "providencraft:main/providencraft",
   "criteria": {
     "fox_ice_cream": {
       "trigger": "minecraft:consume_item",
