@@ -101,4 +101,9 @@ public class MomoKnife extends SwordItem {
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         setAllDamage(stack, getAllDamage(stack) > 0.1f ? getAllDamage(stack) - 0.1f : 0.0f);
     }
+
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged && !oldStack.equals(newStack);
+    }
 }
