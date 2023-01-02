@@ -85,7 +85,7 @@ public class MomoKnife extends SwordItem {
             lvl = target.getActivePotionEffect(EffectRegistry.BLEEDING.get()).getAmplifier();
         }
 
-        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 120, lvl > 3 ? 4 : lvl + 1));
+        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 120, lvl > 2 ? 3 : lvl + 1));
         return super.hitEntity(stack, target, attacker);
     }
 

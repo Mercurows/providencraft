@@ -18,6 +18,7 @@ public class Bleeding extends Effect {
     @Override
     public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
         entityLivingBaseIn.attackEntityFrom(DamageSourceRegistry.BLEEDING, 0.5f);
+        entityLivingBaseIn.hurtResistantTime = 0;
     }
 
     @Override
@@ -38,6 +39,7 @@ public class Bleeding extends Effect {
             if (entity.isPotionActive(effect)) {
                 int level = entity.getActivePotionEffect(EffectRegistry.BLEEDING.get()).getAmplifier();
                 entity.attackEntityFrom(DamageSourceRegistry.BLEEDING, level + 1.0f);
+                entity.hurtResistantTime = 0;
             }
         }
     }

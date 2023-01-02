@@ -43,4 +43,9 @@ public class LittlePotato extends Item {
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 120;
+    }
 }
