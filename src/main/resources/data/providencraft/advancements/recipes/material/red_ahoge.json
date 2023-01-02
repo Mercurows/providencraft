@@ -1,13 +1,20 @@
 {
+  "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_red_wool": {
+    "red_wool": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["minecraft:red_wool"]
+            "item": "minecraft:red_wool"
           }
         ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "providencraft:red_ahoge"
       }
     }
   },
@@ -18,7 +25,8 @@
   },
   "requirements": [
     [
-      "has_red_wool"
+      "red_wool",
+      "has_the_recipe"
     ]
   ]
 }

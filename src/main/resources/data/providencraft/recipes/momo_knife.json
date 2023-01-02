@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " r ",
+    "bab",
+    "bnb"
+  ],
+  "key": {
+    "a": {
+      "item": "providencraft:momo_daifuku"
+    },
+    "b": {
+      "item": "minecraft:purpur_block"
+    },
+    "r": {
+      "item": "minecraft:netherite_sword"
+    },
+    "n": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "providencraft:momo_knife",
+    "count": 1
+  }
+}

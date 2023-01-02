@@ -1,31 +1,50 @@
 {
+  "parent": "providencraft:recipes/red_ahoge",
   "criteria": {
-    "has_white_wool": {
+    "white_wool": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": ["minecraft:white_wool"]
+            "item": "minecraft:white_wool"
           }
-        ]
+        ],
+        "recipe": "providencraft:red_ahoge"
       }
     },
-    "has_the_recipe": {
+    "white_ahoge": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
         "recipe": "providencraft:white_ahoge"
+      }
+    },
+    "white_double_ahoge": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "providencraft:white_double_ahoge"
+      }
+    },
+    "red_ahoge": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "providencraft:red_ahoge"
       }
     }
   },
   "rewards": {
     "recipes": [
-      "providencraft:white_ahoge"
+      "providencraft:white_ahoge",
+      "providencraft:white_double_ahoge"
     ]
   },
   "requirements": [
     [
-      "has_white_wool",
-      "has_the_recipe"
+      "white_wool",
+      "white_ahoge",
+      "white_double_ahoge"
+    ],
+    [
+      "red_ahoge"
     ]
   ]
 }

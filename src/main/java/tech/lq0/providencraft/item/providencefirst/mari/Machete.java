@@ -31,7 +31,7 @@ public class Machete extends SwordItem {
     @ParametersAreNonnullByDefault
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 6));
-        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 200, 3));
+        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 200, 1));
         attacker.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 40, 4));
         return super.hitEntity(stack, target, attacker);
     }

@@ -6,10 +6,7 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTier;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -36,7 +33,7 @@ public class MomoKnife extends SwordItem {
     public static final String TAG_DAMAGE = "damage";
 
     public MomoKnife(){
-        super(ItemTier.IRON, 1, -1.0f, new Properties().group(ModGroup.itemgroup).maxDamage(1231).setNoRepair().rarity(Rarity.EPIC));
+        super(ItemTier.IRON, 1, -1.0f, new Properties().group(ModGroup.itemgroup).maxDamage(1231).rarity(Rarity.EPIC));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -105,5 +102,10 @@ public class MomoKnife extends SwordItem {
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return slotChanged && !oldStack.equals(newStack);
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == Items.NETHERITE_INGOT;
     }
 }
