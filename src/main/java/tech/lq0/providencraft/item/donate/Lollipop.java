@@ -47,7 +47,7 @@ public class Lollipop extends Item {
             PlayerEntity player = (PlayerEntity) entityLiving;
             int lvl = -1;
             if (player.isPotionActive(EffectRegistry.OVERLOAD.get())) {
-                lvl = Objects.requireNonNull(player.getActivePotionEffect(EffectRegistry.OVERLOAD.get())).getAmplifier();
+                lvl = player.getActivePotionEffect(EffectRegistry.OVERLOAD.get()).getAmplifier();
             }
 
             player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 340, 9));

@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.SwordItem;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
@@ -20,6 +21,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -76,6 +78,13 @@ public class MomoKnife extends SwordItem {
         int random = (int)(Math.random() * (maxDamage * 10)) + 20;
         float allDamage = getAllDamage(stack);
         setAllDamage(stack, allDamage + random / 10.0f);
+
+        int lvl = -1;
+        if (target.isPotionActive(EffectRegistry.BLEEDING.get())) {
+            lvl = target.getActivePotionEffect(EffectRegistry.BLEEDING.get()).getAmplifier();
+        }
+
+        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 120, lvl > 3 ? 4 : lvl + 1));
         return super.hitEntity(stack, target, attacker);
     }
 

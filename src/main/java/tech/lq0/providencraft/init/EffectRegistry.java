@@ -16,4 +16,5 @@ public class EffectRegistry {
     public static final RegistryObject<Effect> BIG_MOE_ONE = EFFECTS.register("big_moe_one", BigMoeOne::new);
     public static final RegistryObject<Effect> OVERLOAD = EFFECTS.register("overload", Overload::new);
     public static final RegistryObject<Effect> HOLINESS = EFFECTS.register("holiness", Holiness::new);
+    public static final RegistryObject<Effect> BLEEDING = EFFECTS.register("bleeding", Bleeding::new);
 }
