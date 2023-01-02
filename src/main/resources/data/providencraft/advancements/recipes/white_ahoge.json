@@ -23,6 +23,12 @@
       "conditions": {
         "recipe": "providencraft:white_double_ahoge"
       }
+    },
+    "red_ahoge": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "providencraft:red_ahoge"
+      }
     }
   },
   "rewards": {
@@ -36,6 +42,9 @@
       "white_wool",
       "white_ahoge",
       "white_double_ahoge"
+    ],
+    [
+      "red_ahoge"
     ]
   ]
 }
