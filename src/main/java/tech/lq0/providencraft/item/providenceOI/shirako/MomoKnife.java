@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResult;
@@ -35,7 +36,7 @@ public class MomoKnife extends SwordItem {
     public static final String TAG_DAMAGE = "damage";
 
     public MomoKnife(){
-        super(ItemTier.IRON, 1, -1.0f, new Properties().group(ModGroup.itemgroup).maxDamage(1231));
+        super(ItemTier.IRON, 1, -1.0f, new Properties().group(ModGroup.itemgroup).maxDamage(1231).setNoRepair().rarity(Rarity.EPIC));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -98,11 +99,6 @@ public class MomoKnife extends SwordItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(entityIn instanceof PlayerEntity){
-            PlayerEntity player = (PlayerEntity) entityIn;
-            if(player.ticksExisted % 2 == 0){
-                setAllDamage(stack, getAllDamage(stack) > 0.1f ? getAllDamage(stack) - 0.1f : 0.0f);
-            }
-        }
+        setAllDamage(stack, getAllDamage(stack) > 0.1f ? getAllDamage(stack) - 0.1f : 0.0f);
     }
 }

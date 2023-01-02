@@ -48,7 +48,7 @@ public class FukamizuRing extends Item {
     public static final String TAG_WATER = "underwater";
 
     public FukamizuRing() {
-        super(new Properties().maxStackSize(1).maxDamage(404).group(ModGroup.itemgroup).rarity(Rarity.RARE).setISTER(() -> FukamizuRingTileEntityRenderer::new));
+        super(new Properties().maxStackSize(1).maxDamage(404).group(ModGroup.itemgroup).rarity(Rarity.EPIC).setISTER(() -> FukamizuRingTileEntityRenderer::new));
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -30,6 +31,7 @@ public class Machete extends SwordItem {
     @ParametersAreNonnullByDefault
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 6));
+        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 200, 3));
         attacker.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 40, 4));
         return super.hitEntity(stack, target, attacker);
     }
