@@ -298,5 +298,35 @@
         "stream": true
       }
     ]
+  },
+  "fukamizu_ocean_monument": {
+    "subtitle": "fukamizu_ocean_monument",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:fukamizu_ocean_monument",
+        "stream": true
+      }
+    ]
+  },
+  "fukamizu_diamond": {
+    "subtitle": "fukamizu_diamond",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:fukamizu_diamond",
+        "stream": true
+      }
+    ]
+  },
+  "fukamizu_ring": {
+    "subtitle": "fukamizu_ring",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:fukamizu_ring",
+        "stream": true
+      }
+    ]
   }
 }

@@ -41,4 +41,7 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> KERORO_ELECTRIC_FROG = SOUNDS.register("keroro_electric_frog", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "keroro_electric_frog")));
     public static final RegistryObject<SoundEvent> KERORO_FROG_CROWN = SOUNDS.register("keroro_frog_crown", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "keroro_frog_crown")));
     public static final RegistryObject<SoundEvent> KERORO_WALKING = SOUNDS.register("keroro_walking", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "keroro_walking")));
+    public static final RegistryObject<SoundEvent> FUKAMIZU_OCEAN_MONUMENT = SOUNDS.register("fukamizu_ocean_monument", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "fukamizu_ocean_monument")));
+    public static final RegistryObject<SoundEvent> FUKAMIZU_DIAMOND = SOUNDS.register("fukamizu_diamond", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "fukamizu_diamond")));
+    public static final RegistryObject<SoundEvent> FUKAMIZU_RING = SOUNDS.register("fukamizu_ring", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "fukamizu_ring")));
 }

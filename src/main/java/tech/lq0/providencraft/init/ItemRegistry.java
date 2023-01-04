@@ -287,6 +287,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_KERORO_1 = ITEMS.register("audio_tape_keroro_1", () -> new AudioTape(Livers.KERORO, SoundRegistry.KERORO_ELECTRIC_FROG, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_KERORO_2 = ITEMS.register("audio_tape_keroro_2", () -> new AudioTape(Livers.KERORO, SoundRegistry.KERORO_WALKING, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_KERORO_3 = ITEMS.register("audio_tape_keroro_3", () -> new AudioTape(Livers.KERORO, SoundRegistry.KERORO_FROG_CROWN, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_FUKAMIZU_1 = ITEMS.register("audio_tape_fukamizu_1", () -> new AudioTape(Livers.FUKAMI, SoundRegistry.FUKAMIZU_OCEAN_MONUMENT, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_FUKAMIZU_2 = ITEMS.register("audio_tape_fukamizu_2", () -> new AudioTape(Livers.FUKAMI, SoundRegistry.FUKAMIZU_DIAMOND, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_FUKAMIZU_3 = ITEMS.register("audio_tape_fukamizu_3", () -> new AudioTape(Livers.FUKAMI, SoundRegistry.FUKAMIZU_RING, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
 
     /**
      * donate
