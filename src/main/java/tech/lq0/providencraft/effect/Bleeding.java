@@ -3,7 +3,7 @@ package tech.lq0.providencraft.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.init.DamageSourceRegistry;
@@ -32,14 +32,14 @@ public class Bleeding extends Effect {
     }
 
     @SubscribeEvent
-    public static void effects(LivingAttackEvent event) {
+    public static void effects(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
         Effect effect = EffectRegistry.BLEEDING.get();
         if(event.getSource() != DamageSourceRegistry.BLEEDING) {
             if (entity.isPotionActive(effect)) {
-                int level = entity.getActivePotionEffect(EffectRegistry.BLEEDING.get()).getAmplifier();
-                entity.attackEntityFrom(DamageSourceRegistry.BLEEDING, level + 1.0f);
                 entity.hurtResistantTime = 0;
+                int level = entity.getActivePotionEffect(EffectRegistry.BLEEDING.get()).getAmplifier();
+                entity.attackEntityFrom(DamageSourceRegistry.BLEEDING, 1.0f + level * (level + 1.0f) / 2.0f);
             }
         }
     }

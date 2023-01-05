@@ -9,5 +9,5 @@ public class DamageSourceRegistry {
     public static final DamageSource LOTUS = (new DamageSource("lotusPotato")).setDamageBypassesArmor().setMagicDamage();
     public static final DamageSource SORAYO = (new DamageSource("sorayo")).setDamageBypassesArmor().setMagicDamage();
     public static final DamageSource OVERLOAD = (new DamageSource("overload")).setDamageBypassesArmor().setMagicDamage().setDamageIsAbsolute();
-    public static final DamageSource BLEEDING = (new DamageSource("bleeding")).setDamageBypassesArmor().setMagicDamage();
+    public static final DamageSource BLEEDING = (new DamageSource("bleeding")).setDamageBypassesArmor().setMagicDamage().setDamageIsAbsolute();
 }
