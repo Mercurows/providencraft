@@ -1,5 +1,5 @@
 {
-  "parent": "providencraft:recipes/red_ahoge",
+  "parent": "providencraft:recipes/material/red_ahoge",
   "criteria": {
     "white_wool": {
       "trigger": "minecraft:inventory_changed",

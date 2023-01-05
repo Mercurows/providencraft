@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:fiaxe"
+    },
+    "title": {
+      "translate": "providencraft.advancement.fiaxe"
+    },
+    "description": {
+      "translate": "providencraft.advancement.fiaxe_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:challenges/fukamizu_ring",
+  "criteria": {
+    "big_spoon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:fiaxe"
+          }
+        ]
+      }
+    }
+  }
+}

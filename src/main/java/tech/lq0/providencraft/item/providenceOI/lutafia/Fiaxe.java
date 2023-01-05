@@ -26,7 +26,7 @@ import java.util.List;
 
 public class Fiaxe extends AxeItem {
     public Fiaxe() {
-        super(ItemTier.IRON, 8.0f, -3.0f, new Properties().maxStackSize(1).maxDamage(601).group(ModGroup.itemgroup));
+        super(ItemTier.IRON, 8.0f, -3.0f, new Properties().maxStackSize(1).maxDamage(601).group(ModGroup.itemgroup).setNoRepair());
     }
 
     @OnlyIn(Dist.CLIENT)
