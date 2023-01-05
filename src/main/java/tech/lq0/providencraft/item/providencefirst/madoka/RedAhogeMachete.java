@@ -3,6 +3,7 @@ package tech.lq0.providencraft.item.providencefirst.madoka;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.ItemStack;
@@ -10,6 +11,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.MathHelper;
@@ -76,7 +78,8 @@ public class RedAhogeMachete extends SwordItem {
         float length = .8f;
         for (int i = -2; i <= 2; i++) {
             do {
-                result = ProjectileHelper.rayTraceEntities(worldIn, playerIn, start, end.add(look.z * length * i, 0, look.x * length * (-i)), playerIn.getBoundingBox().grow(10, height + 10, 10), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity);
+                result = ProjectileHelper.rayTraceEntities(worldIn, playerIn, start, end.add(look.z * length * i, 0, look.x * length * (-i)),
+                        new AxisAlignedBB(new BlockPos(posX, posY2, posZ)).grow(10, 10, 10), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity));
                 if (result != null) {
                     target.add((LivingEntity) result.getEntity());
                 }
