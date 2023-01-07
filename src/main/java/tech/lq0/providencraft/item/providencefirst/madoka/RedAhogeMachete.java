@@ -57,6 +57,7 @@ public class RedAhogeMachete extends SwordItem {
 
         int posY2 = posY;
 
+        //calculate ground Y
         for (int i = posY; i >= 0; i--) {
             BlockState state = worldIn.getBlockState(new BlockPos(posX, i, posZ));
             if (state.getMaterial().blocksMovement()) {
@@ -68,8 +69,8 @@ public class RedAhogeMachete extends SwordItem {
         int height = posY - posY2;
 
         Vector3d look = playerIn.getLookVec();
-        Vector3d start = playerIn.getPositionVec().add(0, 0.8 - height, 0);
-        Vector3d end = playerIn.getPositionVec().add(look.x * 5, 0.8 - height, look.z * 5);
+        Vector3d start = playerIn.getPositionVec().add(0, -height, 0);
+        Vector3d end = playerIn.getPositionVec().add(look.x * 5, -height, look.z * 5);
 
         EntityRayTraceResult result;
 
@@ -79,7 +80,7 @@ public class RedAhogeMachete extends SwordItem {
         for (int i = -2; i <= 2; i++) {
             do {
                 result = ProjectileHelper.rayTraceEntities(worldIn, playerIn, start, end.add(look.z * length * i, 0, look.x * length * (-i)),
-                        new AxisAlignedBB(new BlockPos(posX, posY2, posZ)).grow(10, 10, 10), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity));
+                        new AxisAlignedBB(posX, posY2, posZ, posX, posY2 + 1.0, posZ).grow(5, 2, 5), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity));
                 if (result != null) {
                     target.add((LivingEntity) result.getEntity());
                 }
