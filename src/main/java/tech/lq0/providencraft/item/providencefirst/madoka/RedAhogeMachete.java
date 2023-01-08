@@ -104,7 +104,10 @@ public class RedAhogeMachete extends SwordItem {
 
 
                 double xySquareSum = Math.sqrt(look.z * look.z + look.x * look.x);
-                double ratio = 1.0 / xySquareSum;
+                double ratio = 1.0;
+                if(xySquareSum != 0.0) {
+                    ratio = 1.0 / xySquareSum;
+                }
 
                 Vector3d end = playerIn.getPositionVec().add(look.x * 5 * ratio, 0, look.z * 5 * ratio);
 
