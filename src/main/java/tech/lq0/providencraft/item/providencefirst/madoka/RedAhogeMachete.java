@@ -53,11 +53,13 @@ public class RedAhogeMachete extends SwordItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
+        playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
         if (!playerIn.isOnGround()) {
             playerIn.addVelocity(0.0f, -8.0f, 0.0f);
-            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
-            stack.damageItem(10, playerIn, (player1 -> player1.sendBreakAnimation(player1.getActiveHand())));
+        } else {
+            doDamage(playerIn, 0);
         }
+        stack.damageItem(10, playerIn, (player1 -> player1.sendBreakAnimation(player1.getActiveHand())));
         return ActionResult.resultSuccess(stack);
     }
 
