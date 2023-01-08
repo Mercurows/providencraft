@@ -55,7 +55,11 @@ public class RedAhogeMachete extends SwordItem {
         ItemStack stack = playerIn.getHeldItem(handIn);
         playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
         if (!playerIn.isOnGround()) {
-            playerIn.addVelocity(0.0f, -8.0f, 0.0f);
+            if (!playerIn.abilities.isFlying) {
+                playerIn.addVelocity(0.0f, -8.0f, 0.0f);
+            } else {
+                doDamage(playerIn, 0);
+            }
         } else {
             doDamage(playerIn, 0);
         }
@@ -65,18 +69,14 @@ public class RedAhogeMachete extends SwordItem {
 
     @SubscribeEvent
     public static void onFlyablePlayerFall(PlayerFlyableFallEvent event) {
-        if (event.getDistance() > 2) {
-            doDamage(event.getPlayer(), event.getDistance());
-        }
+        doDamage(event.getPlayer(), event.getDistance());
     }
 
     @SubscribeEvent
     public static void onPlayerFall(LivingFallEvent event) {
         if (event.getEntity() instanceof PlayerEntity) {
-            if (event.getDistance() > 2) {
-                PlayerEntity playerIn = (PlayerEntity) event.getEntity();
-                doDamage(playerIn, event.getDistance());
-            }
+            PlayerEntity playerIn = (PlayerEntity) event.getEntity();
+            doDamage(playerIn, event.getDistance());
         }
     }
 
