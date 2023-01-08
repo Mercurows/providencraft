@@ -70,7 +70,12 @@ public class RedAhogeMachete extends SwordItem {
 
         Vector3d look = playerIn.getLookVec();
         Vector3d start = playerIn.getPositionVec().add(0, -height, 0);
-        Vector3d end = playerIn.getPositionVec().add(look.x * 5, -height, look.z * 5);
+
+
+        double xySquareSum = Math.sqrt(look.z * look.z + look.x * look.x);
+        double ratio = 1.0 / xySquareSum;
+
+        Vector3d end = playerIn.getPositionVec().add(look.x * 5 * ratio, -height, look.z * 5 * ratio);
 
         EntityRayTraceResult result;
 
@@ -80,7 +85,8 @@ public class RedAhogeMachete extends SwordItem {
         for (int i = -2; i <= 2; i++) {
             do {
                 result = ProjectileHelper.rayTraceEntities(worldIn, playerIn, start, end.add(look.z * length * i, 0, look.x * length * (-i)),
-                        new AxisAlignedBB(posX, posY2, posZ, posX, posY2 + 1.0, posZ).grow(5, 2, 5), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity));
+                        new AxisAlignedBB(posX, posY2, posZ, posX, posY2 + 1.0, posZ).grow(5, 2, 5), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity))
+                ;
                 if (result != null) {
                     target.add((LivingEntity) result.getEntity());
                 }
