@@ -27,6 +27,7 @@ import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModItemTier;
+import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -37,6 +38,8 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RedAhogeMachete extends SwordItem {
+    private static final String TAG_FALL = "falling";
+
     public RedAhogeMachete() {
         super(ModItemTier.RED_AHOGE, 7, -2.8f, new Properties().maxDamage(851).group(ModGroup.itemgroup));
     }
@@ -53,68 +56,81 @@ public class RedAhogeMachete extends SwordItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
-        if (!playerIn.isOnGround()) {
-            if (!playerIn.abilities.isFlying) {
-                playerIn.addVelocity(0.0f, -8.0f, 0.0f);
+        if(handIn == Hand.MAIN_HAND) {
+            ItemNBTTool.setBoolean(stack, TAG_FALL, true);
+            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
+
+            if (!playerIn.isOnGround()) {
+                if (!playerIn.abilities.isFlying) {
+                    playerIn.addVelocity(0.0f, -8.0f, 0.0f);
+                } else {
+                    doDamage(playerIn, 0, stack);
+                }
             } else {
-                doDamage(playerIn, 0);
+                doDamage(playerIn, 0, stack);
             }
-        } else {
-            doDamage(playerIn, 0);
+            stack.damageItem(10, playerIn, (player1 -> player1.sendBreakAnimation(player1.getActiveHand())));
+            return ActionResult.resultSuccess(stack);
         }
-        stack.damageItem(10, playerIn, (player1 -> player1.sendBreakAnimation(player1.getActiveHand())));
-        return ActionResult.resultSuccess(stack);
+        return ActionResult.resultFail(stack);
     }
 
     @SubscribeEvent
     public static void onFlyablePlayerFall(PlayerFlyableFallEvent event) {
-        doDamage(event.getPlayer(), event.getDistance());
+        PlayerEntity player = event.getPlayer();
+        ItemStack stack = player.getHeldItemMainhand();
+        doDamage(event.getPlayer(), event.getDistance(), stack);
     }
 
     @SubscribeEvent
     public static void onPlayerFall(LivingFallEvent event) {
         if (event.getEntity() instanceof PlayerEntity) {
             PlayerEntity playerIn = (PlayerEntity) event.getEntity();
-            doDamage(playerIn, event.getDistance());
+            ItemStack stack = playerIn.getHeldItemMainhand();
+            doDamage(playerIn, event.getDistance(), stack);
         }
     }
 
-    private static void doDamage(PlayerEntity playerIn, float distance) {
-        if (playerIn.getCooldownTracker().getCooldown(ItemRegistry.RED_AHOGE_MACHETE.get(), 0) > 0) {
-            int posX = playerIn.getPosition().getX();
-            int posY = playerIn.getPosition().getY();
-            int posZ = playerIn.getPosition().getZ();
+    private static void doDamage(PlayerEntity playerIn, float distance, ItemStack stack) {
+        if(stack.getItem() == ItemRegistry.RED_AHOGE_MACHETE.get()) {
+            if (ItemNBTTool.getBoolean(stack, TAG_FALL, false)) {
+                //if (playerIn.getCooldownTracker().getCooldown(ItemRegistry.RED_AHOGE_MACHETE.get(), 0) > 0) {
+                int posX = playerIn.getPosition().getX();
+                int posY = playerIn.getPosition().getY();
+                int posZ = playerIn.getPosition().getZ();
 
-            Vector3d look = playerIn.getLookVec();
-            Vector3d start = playerIn.getPositionVec();
+                Vector3d look = playerIn.getLookVec();
+                Vector3d start = playerIn.getPositionVec();
 
 
-            double xySquareSum = Math.sqrt(look.z * look.z + look.x * look.x);
-            double ratio = 1.0 / xySquareSum;
+                double xySquareSum = Math.sqrt(look.z * look.z + look.x * look.x);
+                double ratio = 1.0 / xySquareSum;
 
-            Vector3d end = playerIn.getPositionVec().add(look.x * 5 * ratio, 0, look.z * 5 * ratio);
+                Vector3d end = playerIn.getPositionVec().add(look.x * 5 * ratio, 0, look.z * 5 * ratio);
 
-            EntityRayTraceResult result;
+                EntityRayTraceResult result;
 
-            List<LivingEntity> target = new ArrayList<>();
+                List<LivingEntity> target = new ArrayList<>();
 
-            float length = .8f;
-            for (int i = -2; i <= 2; i++) {
-                do {
-                    result = ProjectileHelper.rayTraceEntities(playerIn.getEntityWorld(), playerIn, start, end.add(look.z * length * i, 0, look.x * length * (-i)),
-                            new AxisAlignedBB(posX, posY, posZ, posX, posY + 1.0, posZ).grow(5, 2, 5), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity))
-                    ;
-                    if (result != null) {
-                        target.add((LivingEntity) result.getEntity());
-                    }
-                } while (result != null);
+                float length = .8f;
+                for (int i = -2; i <= 2; i++) {
+                    do {
+                        result = ProjectileHelper.rayTraceEntities(playerIn.getEntityWorld(), playerIn, start, end.add(look.z * length * i, 0, look.x * length * (-i)),
+                                new AxisAlignedBB(posX, posY, posZ, posX, posY + 1.0, posZ).grow(5, 2, 5), (e) -> (!target.contains(e)) && e != playerIn && !playerIn.isOnSameTeam(e) && e instanceof LivingEntity && !(e instanceof ArmorStandEntity))
+                        ;
+                        if (result != null) {
+                            target.add((LivingEntity) result.getEntity());
+                        }
+                    } while (result != null);
+                }
+
+                target.forEach(e -> {
+                    e.applyKnockback(1.0F, MathHelper.sin(playerIn.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(playerIn.rotationYaw * ((float) Math.PI / 180F)));
+                    e.attackEntityFrom(DamageSource.causePlayerDamage(playerIn), distance * 0.8f + 10);
+                });
+
+                ItemNBTTool.setBoolean(stack, TAG_FALL, false);
             }
-
-            target.forEach(e -> {
-                e.applyKnockback(1.0F, MathHelper.sin(playerIn.rotationYaw * ((float) Math.PI / 180F)), -MathHelper.cos(playerIn.rotationYaw * ((float) Math.PI / 180F)));
-                e.attackEntityFrom(DamageSource.causePlayerDamage(playerIn), distance * 0.5f + 10);
-            });
         }
     }
 }

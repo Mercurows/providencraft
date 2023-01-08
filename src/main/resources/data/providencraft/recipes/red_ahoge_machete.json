@@ -7,13 +7,13 @@
   ],
   "key": {
     "x": {
-      "item": "providencraft:red_ahoge"
+      "item": "providencraft:red_ahoge_block"
     },
     "a": {
       "tag": "minecraft:logs"
     },
     "g": {
-      "item": "minecraft:iron_block"
+      "item": "minecraft:obsidian"
     }
   },
   "result": {
