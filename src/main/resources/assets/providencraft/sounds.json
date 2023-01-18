@@ -179,152 +179,182 @@
       }
     ]
   },
-  "chiram_bolster": {
+  "audio/magicros/chiram_bolster": {
     "subtitle": "chiram_bolster",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:chiram_bolster",
+        "name": "providencraft:audio/magicros/chiram_bolster",
         "stream": true
       }
     ]
   },
-  "chiram_intro": {
+  "audio/magicros/chiram_intro": {
     "subtitle": "chiram_intro",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:chiram_intro",
+        "name": "providencraft:audio/magicros/chiram_intro",
         "stream": true
       }
     ]
   },
-  "chiram_tales": {
+  "audio/magicros/chiram_tales": {
     "subtitle": "chiram_tales",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:chiram_tales",
+        "name": "providencraft:audio/magicros/chiram_tales",
         "stream": true
       }
     ]
   },
-  "haine_broadcast": {
+  "audio/magicros/haine_broadcast": {
     "subtitle": "haine_broadcast",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:haine_broadcast",
+        "name": "providencraft:audio/magicros/haine_broadcast",
         "stream": true
       }
     ]
   },
-  "haine_haiplate": {
+  "audio/magicros/haine_haiplate": {
     "subtitle": "haine_haiplate",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:haine_haiplate",
+        "name": "providencraft:audio/magicros/haine_haiplate",
         "stream": true
       }
     ]
   },
-  "haine_taunt": {
+  "audio/magicros/haine_taunt": {
     "subtitle": "haine_taunt",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:haine_taunt",
+        "name": "providencraft:audio/magicros/haine_taunt",
         "stream": true
       }
     ]
   },
-  "ekira_taunt": {
+  "audio/magicros/ekira_taunt": {
     "subtitle": "ekira_taunt",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:ekira_taunt",
+        "name": "providencraft:audio/magicros/ekira_taunt",
         "stream": true
       }
     ]
   },
-  "ekira_star": {
+  "audio/magicros/ekira_star": {
     "subtitle": "ekira_star",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:ekira_star",
+        "name": "providencraft:audio/magicros/ekira_star",
         "stream": true
       }
     ]
   },
-  "ekira_gourmet": {
+  "audio/magicros/ekira_gourmet": {
     "subtitle": "ekira_gourmet",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:ekira_gourmet",
+        "name": "providencraft:audio/magicros/ekira_gourmet",
         "stream": true
       }
     ]
   },
-  "keroro_electric_frog": {
+  "audio/magicros/keroro_electric_frog": {
     "subtitle": "keroro_electric_frog",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:keroro_electric_frog",
+        "name": "providencraft:audio/magicros/keroro_electric_frog",
         "stream": true
       }
     ]
   },
-  "keroro_frog_crown": {
+  "audio/magicros/keroro_frog_crown": {
     "subtitle": "keroro_frog_crown",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:keroro_frog_crown",
+        "name": "providencraft:audio/magicros/keroro_frog_crown",
         "stream": true
       }
     ]
   },
-  "keroro_walking": {
+  "audio/magicros/keroro_walking": {
     "subtitle": "keroro_walking",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:keroro_walking",
+        "name": "providencraft:audio/magicros/keroro_walking",
         "stream": true
       }
     ]
   },
-  "fukamizu_ocean_monument": {
+  "audio/poi/fukamizu_ocean_monument": {
     "subtitle": "fukamizu_ocean_monument",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:fukamizu_ocean_monument",
+        "name": "providencraft:audio/poi/fukamizu_ocean_monument",
         "stream": true
       }
     ]
   },
-  "fukamizu_diamond": {
+  "audio/poi/fukamizu_diamond": {
     "subtitle": "fukamizu_diamond",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:fukamizu_diamond",
+        "name": "providencraft:audio/poi/fukamizu_diamond",
         "stream": true
       }
     ]
   },
-  "fukamizu_ring": {
+  "audio/poi/fukamizu_ring": {
     "subtitle": "fukamizu_ring",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:fukamizu_ring",
+        "name": "providencraft:audio/poi/fukamizu_ring",
+        "stream": true
+      }
+    ]
+  },
+  "audio/second/louise_summon": {
+    "subtitle": "louise_summon",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/second/louise_summon",
+        "stream": true
+      }
+    ]
+  },
+  "audio/second/louise_farming": {
+    "subtitle": "louise_farming",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/second/louise_farming",
+        "stream": true
+      }
+    ]
+  },
+  "audio/second/louise_food": {
+    "subtitle": "louise_food",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/second/louise_food",
         "stream": true
       }
     ]

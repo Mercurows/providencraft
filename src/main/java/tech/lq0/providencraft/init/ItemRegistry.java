@@ -169,6 +169,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MAGIC_BOOK_MYANNA = ITEMS.register("magic_book_myanna", MagicBookMyanna::new);
     public static final RegistryObject<Item> MAGIC_BOOK_MYANNA_PLUS = ITEMS.register("magic_book_myanna_plus", MagicBookMyannaPlus::new);
     public static final RegistryObject<Item> MAGIC_BOOK_THROW = ITEMS.register("magic_book_throw", MagicBookThrow::new);
+    public static final RegistryObject<Item> LOUISTEW = ITEMS.register("louistew", Louistew::new);
 
     //mojuko
     public static final RegistryObject<Item> YAGI_STAFF_CARD = ITEMS.register("yagi_staff_card", YagiStaffCard::new);
@@ -212,6 +213,27 @@ public class ItemRegistry {
     public static final RegistryObject<Item> SUCCUBUS_TAIL = ITEMS.register("succubus_tail", SuccubusTail::new);
 
     /**
+     * 3rd
+     **/
+    //beni
+    public static final RegistryObject<Item> LAVA_CAKE = ITEMS.register("lava_cake", LavaCake::new);
+    public static final RegistryObject<Item> SHURA_CHIN = ITEMS.register("shura_chin", ShuraChin::new);
+    public static final RegistryObject<Item> UME = ITEMS.register("ume", Ume::new);
+
+    //hiru
+    public static final RegistryObject<Item> HIRU_HEAD = ITEMS.register("hiru_head", HiruHead::new);
+    public static final RegistryObject<Item> HIRU_TENTACLES = ITEMS.register("hiru_tentacles", HiruTentacles::new);
+
+    //leciel
+    public static final RegistryObject<Item> REINA_WINGS = ITEMS.register("reina_wings", ReinaWings::new);
+    public static final RegistryObject<Item> REINA_FEATHER = ITEMS.register("reina_feather", ReinaFeather::new);
+    public static final RegistryObject<Item> LECIEL_EAR_COVERTS = ITEMS.register("leciel_ear_coverts", LecielEarCoverts::new);
+
+    //yuki
+    public static final RegistryObject<Item> FOX_ICE_CREAM = ITEMS.register("fox_ice_cream", FoxIceCream::new);
+    public static final RegistryObject<Item> FOX_PUDDING = ITEMS.register("fox_pudding", FoxPudding::new);
+
+    /**
      * POI
      **/
     //shirako
@@ -245,27 +267,6 @@ public class ItemRegistry {
     //lutafia
     public static final RegistryObject<Item> FIAXE = ITEMS.register("fiaxe", Fiaxe::new);
 
-    /**
-     * 3rd
-     **/
-    //beni
-    public static final RegistryObject<Item> LAVA_CAKE = ITEMS.register("lava_cake", LavaCake::new);
-    public static final RegistryObject<Item> SHURA_CHIN = ITEMS.register("shura_chin", ShuraChin::new);
-    public static final RegistryObject<Item> UME = ITEMS.register("ume", Ume::new);
-
-    //hiru
-    public static final RegistryObject<Item> HIRU_HEAD = ITEMS.register("hiru_head", HiruHead::new);
-    public static final RegistryObject<Item> HIRU_TENTACLES = ITEMS.register("hiru_tentacles", HiruTentacles::new);
-
-    //leciel
-    public static final RegistryObject<Item> REINA_WINGS = ITEMS.register("reina_wings", ReinaWings::new);
-    public static final RegistryObject<Item> REINA_FEATHER = ITEMS.register("reina_feather", ReinaFeather::new);
-    public static final RegistryObject<Item> LECIEL_EAR_COVERTS = ITEMS.register("leciel_ear_coverts", LecielEarCoverts::new);
-
-    //yuki
-    public static final RegistryObject<Item> FOX_ICE_CREAM = ITEMS.register("fox_ice_cream", FoxIceCream::new);
-    public static final RegistryObject<Item> FOX_PUDDING = ITEMS.register("fox_pudding", FoxPudding::new);
-
 
     /**
      * others
@@ -290,6 +291,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_FUKAMIZU_1 = ITEMS.register("audio_tape_fukamizu_1", () -> new AudioTape(Livers.FUKAMI, SoundRegistry.FUKAMIZU_OCEAN_MONUMENT, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_FUKAMIZU_2 = ITEMS.register("audio_tape_fukamizu_2", () -> new AudioTape(Livers.FUKAMI, SoundRegistry.FUKAMIZU_DIAMOND, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_FUKAMIZU_3 = ITEMS.register("audio_tape_fukamizu_3", () -> new AudioTape(Livers.FUKAMI, SoundRegistry.FUKAMIZU_RING, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_1 = ITEMS.register("audio_tape_louise_1", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_SUMMON, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_2 = ITEMS.register("audio_tape_louise_2", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_FARMING, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_3 = ITEMS.register("audio_tape_louise_3", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_FOOD, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
 
     /**
      * donate
