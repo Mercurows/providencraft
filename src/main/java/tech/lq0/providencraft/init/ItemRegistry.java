@@ -30,6 +30,7 @@ import tech.lq0.providencraft.item.material.GNStar;
 import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.*;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
+import tech.lq0.providencraft.item.providenceOI.fukami.EchoedDestinyRing;
 import tech.lq0.providencraft.item.providenceOI.fukami.FukamizuRing;
 import tech.lq0.providencraft.item.providenceOI.lutafia.Fiaxe;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
@@ -263,6 +264,7 @@ public class ItemRegistry {
 
     //fukami
     public static final RegistryObject<Item> FUKAMIZU_RING = ITEMS.register("fukamizu_ring", FukamizuRing::new);
+    public static final RegistryObject<Item> ECHOED_DESTINY_RING = ITEMS.register("echoed_destiny_ring", EchoedDestinyRing::new);
 
     //lutafia
     public static final RegistryObject<Item> FIAXE = ITEMS.register("fiaxe", Fiaxe::new);
