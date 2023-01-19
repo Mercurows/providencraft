@@ -23,8 +23,8 @@ import java.util.List;
 
 public class EnchantedUnigiri extends Item {
     private static final Food food = (new Food.Builder()).saturation(14.0f).hunger(14).
-            effect(new EffectInstance(Effects.JUMP_BOOST, 140, 0), 1.0F).
-            effect(new EffectInstance(Effects.REGENERATION, 140, 0), 1.0F).build();
+            effect(() -> new EffectInstance(Effects.JUMP_BOOST, 140, 0), 1.0F).
+            effect(() -> new EffectInstance(Effects.REGENERATION, 140, 0), 1.0F).build();
 
     public EnchantedUnigiri() {
         super(new Properties().food(food).rarity(Rarity.UNCOMMON).group(ModGroup.itemgroup));

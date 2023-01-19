@@ -22,7 +22,7 @@ import java.util.List;
 
 public class TaroIceCream extends Item {
     private static final Food food = (new Food.Builder()).saturation(3.0f).hunger(5).
-            effect(new EffectInstance(Effects.SLOWNESS, 80, 2), 1.0F).build();
+            effect(() -> new EffectInstance(Effects.SLOWNESS, 80, 2), 1.0F).build();
 
     public TaroIceCream() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
