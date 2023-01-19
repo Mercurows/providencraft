@@ -71,6 +71,9 @@ public class EchoedDestinyRing extends Item {
                 ItemNBTTool.setBoolean(stack, TAG_ECHO, true);
                 player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 2, true, false));
                 player.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0, true, false));
+                player.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
+                player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 2, true, false));
+
                 if (player.isSwimming()) {
                     player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 300, 0, true, false));
                 }
@@ -83,7 +86,19 @@ public class EchoedDestinyRing extends Item {
                 }
             } else {
                 ItemNBTTool.setBoolean(stack, TAG_ECHO, false);
-                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 0, true, false));
+                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 1, true, false));
+                player.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
+            }
+
+            //heal player
+            if(player.ticksExisted % 100 == 0){
+                player.heal(1.0f);
+            }
+
+            //give saturation effect when player is dying
+            if(player.getHealth() <= 5.0f && !player.getCooldownTracker().hasCooldown(stack.getItem())){
+                player.addPotionEffect(new EffectInstance(Effects.SATURATION, 100, 0, true, false));
+                player.getCooldownTracker().setCooldown(stack.getItem(), 2400);
             }
         }
         super.onArmorTick(stack, world, player);
@@ -99,9 +114,11 @@ public class EchoedDestinyRing extends Item {
             map = HashMultimap.create(map);
             boolean underwater = ItemNBTTool.getBoolean(stack, TAG_ECHO, false);
             map.put(Attributes.ARMOR,
-                    new AttributeModifier(uuid, "fukamizu ring modifier", underwater ? 6.0f : 3.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "echoed destiny ring modifier", underwater ? 9.0f : 3.0f, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.ARMOR_TOUGHNESS,
+                    new AttributeModifier(uuid, "echoed destiny ring modifier", underwater ? 6.0f : 0.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "fukamizu ring modifier", underwater ? 12.0f : 0.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "echoed destiny ring modifier", underwater ? 20.0f : 6.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
