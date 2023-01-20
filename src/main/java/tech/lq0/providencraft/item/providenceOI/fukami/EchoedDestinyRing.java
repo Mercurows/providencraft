@@ -29,8 +29,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
-import tech.lq0.providencraft.models.bakedModel.FukamizuRingBakedModel;
-import tech.lq0.providencraft.render.tile.FukamizuRingTileEntityRenderer;
+import tech.lq0.providencraft.models.bakedModel.EchoedDestinyRingBakedModel;
+import tech.lq0.providencraft.render.tile.EchoedDestinyRingTileEntityRenderer;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -43,18 +43,19 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class EchoedDestinyRing extends Item {
     public static final String TAG_ECHO = "underwater";
 
     public EchoedDestinyRing() {
         super(new Properties().maxStackSize(1).maxDamage(404).group(ModGroup.itemgroup)
-                .rarity(Rarity.create("LEGENDARY", TextFormatting.GOLD)));
+                .rarity(Rarity.create("LEGENDARY", TextFormatting.GOLD)).setISTER(() -> EchoedDestinyRingTileEntityRenderer::new));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("echoed_destiny_ring_des1").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("echoed_destiny_ring_des1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add(new TranslationTextComponent("echoed_destiny_ring_des2").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
@@ -123,18 +124,18 @@ public class EchoedDestinyRing extends Item {
         return map;
     }
 
-//    @SubscribeEvent
-//    public static void onModelBaked(ModelBakeEvent event) {
-//        Map<ResourceLocation, IBakedModel> modelRegistry = event.getModelRegistry();
-//        ModelResourceLocation location = new ModelResourceLocation(Objects.requireNonNull(ItemRegistry.FUKAMIZU_RING.get().getRegistryName()), "inventory");
-//        IBakedModel existingModel = modelRegistry.get(location);
-//        if (existingModel == null) {
-//            throw new RuntimeException();
-//        } else if (existingModel instanceof FukamizuRingBakedModel) {
-//            throw new RuntimeException();
-//        } else {
-//            FukamizuRingBakedModel fukamizuRingBakedModel = new FukamizuRingBakedModel(existingModel);
-//            event.getModelRegistry().put(location, fukamizuRingBakedModel);
-//        }
-//    }
+    @SubscribeEvent
+    public static void onModelBaked(ModelBakeEvent event) {
+        Map<ResourceLocation, IBakedModel> modelRegistry = event.getModelRegistry();
+        ModelResourceLocation location = new ModelResourceLocation(Objects.requireNonNull(ItemRegistry.ECHOED_DESTINY_RING.get().getRegistryName()), "inventory");
+        IBakedModel existingModel = modelRegistry.get(location);
+        if (existingModel == null) {
+            throw new RuntimeException();
+        } else if (existingModel instanceof EchoedDestinyRingBakedModel) {
+            throw new RuntimeException();
+        } else {
+            EchoedDestinyRingBakedModel echoedDestinyRingBakedModel = new EchoedDestinyRingBakedModel(existingModel);
+            event.getModelRegistry().put(location, echoedDestinyRingBakedModel);
+        }
+    }
 }

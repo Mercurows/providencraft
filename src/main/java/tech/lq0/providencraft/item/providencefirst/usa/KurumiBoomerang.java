@@ -85,9 +85,9 @@ public class KurumiBoomerang extends Item {
         ModelResourceLocation location = new ModelResourceLocation(Objects.requireNonNull(ItemRegistry.KURUMI_BOOMERANG.get().getRegistryName()), "inventory");
         IBakedModel existingModel = modelRegistry.get(location);
         if (existingModel == null) {
-            throw new RuntimeException("Did not find Obsidian Hidden in registry");
+            throw new RuntimeException();
         } else if (existingModel instanceof KurumiBoomerangBakedModel) {
-            throw new RuntimeException("Tried to replaceObsidian Hidden twice");
+            throw new RuntimeException();
         } else {
             KurumiBoomerangBakedModel kurumiBoomerangBakedModel = new KurumiBoomerangBakedModel(existingModel);
             event.getModelRegistry().put(location, kurumiBoomerangBakedModel);
