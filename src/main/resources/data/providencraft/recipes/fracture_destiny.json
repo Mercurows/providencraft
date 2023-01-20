@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "cac",
+    "dbe",
+    "cfc"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:diamond"
+    },
+    "b": {
+      "item": "minecraft:end_crystal"
+    },
+    "c": {
+      "item": "minecraft:cornflower"
+    },
+    "d": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "e": {
+      "item": "minecraft:emerald"
+    },
+    "f": {
+      "item": "minecraft:prismarine_shard"
+    }
+  },
+  "result": {
+    "item": "providencraft:fracture_destiny",
+    "count": 1
+  }
+}

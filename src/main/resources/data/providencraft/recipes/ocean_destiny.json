@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "cdc",
+    "ded",
+    "cdc"
+  ],
+  "key": {
+    "c": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "d": {
+      "item": "providencraft:fracture_destiny"
+    },
+    "e": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "providencraft:ocean_destiny",
+    "count": 1
+  }
+}

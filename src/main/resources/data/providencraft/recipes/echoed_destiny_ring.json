@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "providencraft:fukamizu_ring"
+  },
+  "addition": {
+    "item": "providencraft:ocean_destiny"
+  },
+  "result": {
+    "item": "providencraft:echoed_destiny_ring",
+    "count": 1
+  }
+}

@@ -78,6 +78,23 @@ public class EchoedDestinyRing extends Item {
                 if (player.isSwimming()) {
                     player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 300, 0, true, false));
                 }
+                for (LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(30.0D, 30.0D, 30.0D))) {
+                    if (livingentity instanceof PlayerEntity && livingentity != player) {
+                        PlayerEntity playerEntity = (PlayerEntity) livingentity;
+                        playerEntity.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 1, true, false));
+                        playerEntity.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 1, true, false));
+                        playerEntity.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0, true, false));
+                        playerEntity.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 300, 0, true, false));
+                        playerEntity.addPotionEffect(new EffectInstance(Effects.HEALTH_BOOST, 300, 1, true, false));
+                        playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0, true, false));
+                        playerEntity.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
+                    }
+                }
+            } else {
+                ItemNBTTool.setBoolean(stack, TAG_ECHO, false);
+                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 1, true, false));
+                player.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
+
                 for (LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(10.0D, 10.0D, 10.0D))) {
                     if (livingentity instanceof PlayerEntity && livingentity != player) {
                         PlayerEntity playerEntity = (PlayerEntity) livingentity;
@@ -85,10 +102,6 @@ public class EchoedDestinyRing extends Item {
                         playerEntity.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0, true, false));
                     }
                 }
-            } else {
-                ItemNBTTool.setBoolean(stack, TAG_ECHO, false);
-                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 300, 1, true, false));
-                player.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
             }
 
             //heal player
