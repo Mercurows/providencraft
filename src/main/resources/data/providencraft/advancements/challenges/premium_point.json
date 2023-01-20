@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:premium_pdc_point"
+    },
+    "title": {
+      "translate": "providencraft.advancement.premium_pdc_point"
+    },
+    "description": {
+      "translate": "providencraft.advancement.premium_pdc_point_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "challenge",
+    "hidden": false
+  },
+  "parent": "providencraft:main/points_store",
+  "criteria": {
+    "ayelet_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:premium_pdc_point"
+          }
+        ]
+      }
+    }
+  }
+}

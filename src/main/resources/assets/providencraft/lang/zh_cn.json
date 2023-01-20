@@ -424,7 +424,10 @@
   "echoed_destiny_ring_des1": "若能扭转宿命……",
   "echoed_destiny_ring_des2": "赋予回响之命运……裁定世间之理……接而赐予一切",
   "item.providencraft.ocean_destiny": "深海宿命之石",
+  "ocean_destiny_des": "寄宿着深海力量的宝石，似乎可以将它与什么东西融合",
   "item.providencraft.fracture_destiny": "命运残片",
+  "fracture_destiny_des1": "似乎是某个宝石的碎片，虽然碎裂了，但能感觉到蕴含着巨大的力量",
+  "fracture_destiny_des2": "使用后能瞬间回复体力",
   "itemGroup.Providencraft Audio Tapes": "普罗维登：音声",
   "item.providencraft.audio_tape_haine_1": "音声磁带（灰音）",
   "haine_broadcast": "灰音：紧急苦力怕播报",
@@ -647,5 +650,9 @@
   "providencraft.advancement.duel_water_gun": "住手，那根本不是弹药",
   "providencraft.advancement.duel_water_gun_des": "这可是水枪啊（恼）",
   "providencraft.advancement.fiaxe": "收割者",
-  "providencraft.advancement.fiaxe_des": "请看护好自己的树苗"
+  "providencraft.advancement.fiaxe_des": "请看护好自己的树苗",
+  "providencraft.advancement.points_store": "营业中",
+  "providencraft.advancement.points_store_des": "欢迎选购",
+  "providencraft.advancement.premium_pdc_point": "满级会员",
+  "providencraft.advancement.premium_pdc_point_des": "感谢购买虚拟内容定制服务"
 }

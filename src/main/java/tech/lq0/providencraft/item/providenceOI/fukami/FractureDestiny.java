@@ -1,6 +1,8 @@
 package tech.lq0.providencraft.item.providenceOI.fukami;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -18,14 +20,28 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class FractureDestiny extends Item {
+    private static final Food food = (new Food.Builder()).saturation(20.0f).hunger(20).setAlwaysEdible().build();
+
     public FractureDestiny(){
-        super(new Properties().rarity(Rarity.RARE).group(ModGroup.itemgroup));
+        super(new Properties().rarity(Rarity.RARE).group(ModGroup.itemgroup).food(food));
     }
 
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("fracture_destiny_des").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("fracture_destiny_des1").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("fracture_destiny_des2").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
+    }
+
+    @Override
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+        entityLiving.heal(entityLiving.getMaxHealth());
+        return super.onItemUseFinish(stack, worldIn, entityLiving);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 60;
     }
 }

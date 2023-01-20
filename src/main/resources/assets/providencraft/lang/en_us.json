@@ -424,7 +424,10 @@
   "echoed_destiny_ring_des1": "若能扭转宿命……",
   "echoed_destiny_ring_des2": "赋予回响之命运……裁定世间之理……接而赐予一切",
   "item.providencraft.ocean_destiny": "Ocean Destiny",
+  "ocean_destiny_des": "寄宿着深海力量的宝石，似乎可以将它与什么东西融合",
   "item.providencraft.fracture_destiny": "Fracture Destiny",
+  "fracture_destiny_des1": "似乎是某个宝石的碎片，虽然碎裂了，但能感觉到蕴含着巨大的力量",
+  "fracture_destiny_des2": "使用后能瞬间回复体力",
   "itemGroup.Providencraft Audio Tapes": "Providencraft Tapes",
   "item.providencraft.audio_tape_haine_1": "Audio Tape (Haine)",
   "haine_broadcast": "Haine: Warning for emergency of Creepers",
@@ -647,5 +650,9 @@
   "providencraft.advancement.duel_water_gun": "Stop! It's not the Ammo!",
   "providencraft.advancement.duel_water_gun_des": "This is water-gun!",
   "providencraft.advancement.fiaxe": "The Reaper",
-  "providencraft.advancement.fiaxe_des": "Please take good care of your saplings"
+  "providencraft.advancement.fiaxe_des": "Please take good care of your saplings",
+  "providencraft.advancement.points_store": "营业中",
+  "providencraft.advancement.points_store_des": "欢迎选购",
+  "providencraft.advancement.premium_pdc_point": "满级会员",
+  "providencraft.advancement.premium_pdc_point_des": "感谢购买虚拟内容定制服务"
 }

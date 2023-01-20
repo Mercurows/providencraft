@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:points_store"
+    },
+    "title": {
+      "translate": "providencraft.advancement.points_store"
+    },
+    "description": {
+      "translate": "providencraft.advancement.points_store_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/providencraft",
+  "criteria": {
+    "ayelet_mask": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:points_store"
+          }
+        ]
+      }
+    }
+  }
+}
