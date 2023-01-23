@@ -18,8 +18,6 @@ public class Utils {
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        MinecraftForge.EVENT_BUS.register(this);
-
         ItemRegistry.ITEMS.register(eventBus);
         EffectRegistry.EFFECTS.register(eventBus);
         PotionRegistry.POTION_TYPES.register(eventBus);
@@ -32,6 +30,8 @@ public class Utils {
         AttributeRegistry.ATTRIBUTES.register(eventBus);
         ParticleRegistry.PARTICLE_TYPES.register(eventBus);
         TileEntityRegistry.TILE_ENTITY_TYPES.register(eventBus);
+
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
