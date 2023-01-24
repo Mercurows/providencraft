@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.register;
+package tech.lq0.providencraft.client;
 
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
