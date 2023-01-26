@@ -8,6 +8,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import tech.lq0.providencraft.init.*;
+import tech.lq0.providencraft.loot.LootTableHandler;
 
 @Mod("providencraft")
 public class Utils {
@@ -30,6 +31,7 @@ public class Utils {
         AttributeRegistry.ATTRIBUTES.register(eventBus);
         ParticleRegistry.PARTICLE_TYPES.register(eventBus);
         TileEntityRegistry.TILE_ENTITY_TYPES.register(eventBus);
+        LootTableHandler.init(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
