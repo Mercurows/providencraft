@@ -1,6 +1,7 @@
 package tech.lq0.providencraft.item.providencefirst.madoka;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -33,5 +34,13 @@ public class Trachelium extends Item {
         TooltipTool.addLiverInfo(tooltip, Livers.MADOKA);
     }
 
+    @Override
+    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
+        return true;
+    }
 
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged && !oldStack.equals(newStack);
+    }
 }

@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
@@ -13,45 +14,47 @@ import tech.lq0.providencraft.init.ItemRegistry;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class TracheliumHandler {
-//    private static TracheliumHandler tracheliumHandler;
-//
-//    public static TracheliumHandler getInstance(){
-//        if(tracheliumHandler == null){
-//            tracheliumHandler = new TracheliumHandler();
-//        }
-//        return tracheliumHandler;
-//    }
+    private static TracheliumHandler tracheliumHandler;
 
-    public TracheliumHandler(){}
+    public TracheliumHandler(){
 
-    private boolean isInGame() {
+    }
+
+    public static TracheliumHandler getInstance(){
+        if(tracheliumHandler == null){
+            tracheliumHandler = new TracheliumHandler();
+        }
+        return tracheliumHandler;
+    }
+
+    private boolean outOfScreen() {
         Minecraft mc = Minecraft.getInstance();
-        if(mc.loadingGui != null)
-            return false;
-        if(mc.currentScreen != null)
-            return false;
-        if(!mc.mouseHelper.isMouseGrabbed())
-            return false;
-        return mc.isGameFocused();
+
+        if(mc.loadingGui != null) {
+            return true;
+        }else if(mc.currentScreen != null) {
+            return true;
+        }else if(!mc.mouseHelper.isMouseGrabbed()) {
+            return true;
+        }else {
+            return !mc.isGameFocused();
+        }
     }
 
     //fire when left button is clicked
     @SubscribeEvent
-    public void onKeyPressed(InputEvent.RawMouseEvent event){
-        if(!this.isInGame()) {
-            System.out.println(111);
+    public void onKeyInput(InputEvent.RawMouseEvent event){
+        if(this.outOfScreen()) {
             return;
         }
 
         if(event.getAction() != GLFW.GLFW_PRESS) {
-            System.out.println(222);
             return;
         }
 
         Minecraft mc = Minecraft.getInstance();
         PlayerEntity player = mc.player;
         if(player == null) {
-            System.out.println(333);
             return;
         }
 
@@ -59,14 +62,65 @@ public class TracheliumHandler {
         if(heldItem.getItem() == ItemRegistry.TRACHELIUM.get()) {
             int button = event.getButton();
 
-            if(button == GLFW.GLFW_MOUSE_BUTTON_LEFT || button == GLFW.GLFW_MOUSE_BUTTON_RIGHT) {
-                System.out.println(444);
+            if(button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
                 event.setCanceled(true);
             }
 
-            if(event.getAction() == GLFW.GLFW_PRESS && button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
-                System.out.println(555);
-                player.sendStatusMessage(new StringTextComponent("哼哼啊啊啊"), true);
+            if(button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
+                if(event.getAction() == GLFW.GLFW_PRESS) {
+
+                    //do shoot
+                    player.sendStatusMessage(new StringTextComponent("test"), true);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onTickEvent(TickEvent.ClientTickEvent event) {
+        if(this.outOfScreen()) {
+            return;
+        }
+
+        if(event.phase != TickEvent.Phase.START) {
+            return;
+        }
+
+        Minecraft mc = Minecraft.getInstance();
+        PlayerEntity player = mc.player;
+
+        if(player != null) {
+            ItemStack heldItem = player.getHeldItemMainhand();
+            if(heldItem.getItem() == ItemRegistry.TRACHELIUM.get()) {
+                boolean clicked = GLFW.glfwGetMouseButton(mc.getMainWindow().getHandle(), GLFW.GLFW_MOUSE_BUTTON_LEFT) == GLFW.GLFW_PRESS;
+
+                if(clicked) {
+                    System.out.println("clicked");
+                }
+            }
+        }
+
+    }
+
+    @SubscribeEvent
+    public void onPostClientTick(TickEvent.ClientTickEvent event) {
+        if(outOfScreen()) {
+            return;
+        }
+
+        if(event.phase != TickEvent.Phase.END) {
+            return;
+        }
+
+        Minecraft mc = Minecraft.getInstance();
+        PlayerEntity player = mc.player;
+
+        if(player != null) {
+            ItemStack heldItem = player.getHeldItemMainhand();
+            if(heldItem.getItem() == ItemRegistry.TRACHELIUM.get()) {
+                if(GLFW.glfwGetMouseButton(mc.getMainWindow().getHandle(), GLFW.GLFW_MOUSE_BUTTON_LEFT) == GLFW.GLFW_PRESS) {
+                    System.out.println("114514");
+                }
             }
         }
     }

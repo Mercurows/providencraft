@@ -4,9 +4,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import tech.lq0.providencraft.client.ClientHandler;
 import tech.lq0.providencraft.init.*;
 import tech.lq0.providencraft.loot.LootTableHandler;
 
@@ -33,6 +35,8 @@ public class Utils {
         TileEntityRegistry.TILE_ENTITY_TYPES.register(eventBus);
         LootTableHandler.init(eventBus);
 
+        eventBus.addListener(this::onClientSetup);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -43,5 +47,9 @@ public class Utils {
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
 
+    }
+
+    public void onClientSetup(FMLClientSetupEvent event){
+        ClientHandler.init();
     }
 }
