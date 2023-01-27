@@ -23,6 +23,9 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * from vanilla-boom mod
+ */
 public class LootTableHandler {
     private static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, Utils.MOD_ID);
 
@@ -35,7 +38,7 @@ public class LootTableHandler {
     public static class FishLootModifier extends LootModifier {
         protected final TableLootEntry table;
         protected final float chance;
-        private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "field_216037_g");
+        private static final Field LOOT_FIELD = ObfuscationReflectionHelper.findField(LootContext.class, "field_186504_g");
 
         public FishLootModifier(ILootCondition[] conditions, TableLootEntry lootTable, float replaceChance) {
             super(conditions);
@@ -77,12 +80,8 @@ public class LootTableHandler {
             @Override
             public JsonObject write(FishLootModifier instance) {
                 JsonObject json = makeConditions(instance.conditions);
-
-                Field TABLE_FIELD = ObfuscationReflectionHelper.findField(TableLootEntry.class, "table");
-                json.addProperty("table", TABLE_FIELD.toString());
-//                json.addProperty("table", instance.table.table.toString());
+                json.addProperty("table", instance.table.table.toString());
                 json.addProperty("chance", instance.chance);
-
                 return json;
             }
         }

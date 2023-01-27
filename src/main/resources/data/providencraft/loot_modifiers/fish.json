@@ -1,0 +1,12 @@
+{
+  "type": "providencraft:fish",
+  "conditions":
+  [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:gameplay/fishing"
+    }
+  ],
+  "table": "providencraft:gameplay/fishing/fish",
+  "chance": 0.2
+}
