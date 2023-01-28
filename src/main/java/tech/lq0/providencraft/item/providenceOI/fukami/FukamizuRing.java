@@ -75,7 +75,7 @@ public class FukamizuRing extends Item {
                     player.addPotionEffect(new EffectInstance(Effects.DOLPHINS_GRACE, 300, 0, true, false));
                 }
                 for (LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(10.0D, 10.0D, 10.0D))) {
-                    if (livingentity instanceof PlayerEntity && livingentity != player) {
+                    if (livingentity instanceof PlayerEntity && livingentity != player && livingentity.isOnSameTeam(player)) {
                         PlayerEntity playerEntity = (PlayerEntity) livingentity;
                         playerEntity.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 0, true, false));
                         playerEntity.addPotionEffect(new EffectInstance(Effects.CONDUIT_POWER, 300, 0, true, false));
