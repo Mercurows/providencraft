@@ -2,6 +2,7 @@ package tech.lq0.providencraft.init;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Rarity;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -299,6 +300,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_1 = ITEMS.register("audio_tape_louise_1", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_SUMMON, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_2 = ITEMS.register("audio_tape_louise_2", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_FARMING, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_3 = ITEMS.register("audio_tape_louise_3", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_FOOD, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+
+    public static final RegistryObject<Item> MUSIC_DISC_DARAKUDATENSHI = ITEMS.register("music_disc_darakudatenshi", () -> new MusicDisc(Livers.USA, SoundRegistry.DARAKUDATENSHI, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE)));
 
     /**
      * donate

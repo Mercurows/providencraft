@@ -29,6 +29,7 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> LECIA_CAST_1 = SOUNDS.register("lecia_cast_1", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "lecia_cast_1")));
     public static final RegistryObject<SoundEvent> LECIA_CAST_2 = SOUNDS.register("lecia_cast_2", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "lecia_cast_2")));
 
+    //audios
     public static final RegistryObject<SoundEvent> CHIRAM_BOLSTER = SOUNDS.register("chiram_bolster", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/magicros/chiram_bolster")));
     public static final RegistryObject<SoundEvent> CHIRAM_INTRO = SOUNDS.register("chiram_intro", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/magicros/chiram_intro")));
     public static final RegistryObject<SoundEvent> CHIRAM_TALES = SOUNDS.register("chiram_tales", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/magicros/chiram_tales")));
@@ -47,4 +48,7 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> LOUISE_SUMMON = SOUNDS.register("louise_summon", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_summon")));
     public static final RegistryObject<SoundEvent> LOUISE_FARMING = SOUNDS.register("louise_farming", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_farming")));
     public static final RegistryObject<SoundEvent> LOUISE_FOOD = SOUNDS.register("louise_food", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_food")));
+
+    //songs
+    public static final RegistryObject<SoundEvent> DARAKUDATENSHI = SOUNDS.register("darakudatenshi", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/darakudatenshi")));
 }

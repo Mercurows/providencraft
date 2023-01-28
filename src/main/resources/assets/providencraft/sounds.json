@@ -358,5 +358,15 @@
         "stream": true
       }
     ]
+  },
+  "song/darakudatenshi": {
+    "subtitle": "darakudatenshi",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:song/darakudatenshi",
+        "stream": true
+      }
+    ]
   }
 }
