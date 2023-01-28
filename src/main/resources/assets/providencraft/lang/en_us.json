@@ -411,6 +411,8 @@
   "item.providencraft.fiaxe": "Fiaxe",
   "fiaxe_des": "Cyber dragon's axe, designed to hack the disobedient DD",
   "item.providencraft.momo_cutter": "Utility Knife",
+  "item.providencraft.momo_knife": "Utility Knife",
+  "momo_old_knife_des": "一把老旧的美工刀，可以用来免费换新",
   "momo_knife_des": "Momo's utility knife, can be used for self-defense",
   "momo_knife_func": "Right click to restore HP based on the stored damage",
   "momo_knife_damage": "Stored damage:",
