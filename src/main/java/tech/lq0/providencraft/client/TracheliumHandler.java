@@ -3,6 +3,7 @@ package tech.lq0.providencraft.client;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.CooldownTracker;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
@@ -11,6 +12,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.item.providencefirst.madoka.Trachelium;
+import tech.lq0.providencraft.network.NetworkHandler;
+import tech.lq0.providencraft.network.TracheliumPack;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class TracheliumHandler {
@@ -71,6 +75,7 @@ public class TracheliumHandler {
 
                     //do shoot
                     player.sendStatusMessage(new StringTextComponent("test"), true);
+                    doShoot(player, heldItem);
                 }
             }
         }
@@ -122,6 +127,29 @@ public class TracheliumHandler {
                     System.out.println("114514");
                 }
             }
+        }
+    }
+
+    public void doShoot(PlayerEntity player, ItemStack itemStack){
+        if(player == null){
+            return;
+        }
+
+        if(itemStack.getItem() != ItemRegistry.TRACHELIUM.get()){
+            return;
+        }
+
+        if(player.isSpectator()){
+            return;
+        }
+
+        CooldownTracker tracker = player.getCooldownTracker();
+        if(!tracker.hasCooldown(itemStack.getItem())){
+            Trachelium trachelium = (Trachelium) itemStack.getItem();
+
+            tracker.setCooldown(trachelium, 20);
+
+            NetworkHandler.getInstance().sendToServer(new TracheliumPack(player));
         }
     }
 }
