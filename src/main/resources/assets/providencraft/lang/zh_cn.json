@@ -410,7 +410,7 @@
   "red_ahoge_machete_func": "右键可以急速下坠并劈砍，消耗10点耐久",
   "item.providencraft.fiaxe": "斐雅斧",
   "fiaxe_des": "电子机械龙的斧头，专砍不听话的DD",
-  "item.providencraft.momo_knife": "美工刀",
+  "item.providencraft.momo_cutter": "美工刀",
   "momo_knife_des": "毛毛的美工刀，可以用来防身",
   "momo_knife_func": "右键可以根据存储的伤害值恢复一定的血量",
   "momo_knife_damage": "已储存伤害值：",

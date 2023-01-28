@@ -410,7 +410,7 @@
   "red_ahoge_machete_func": "Right-click to quickly drop and slash, costing 10 durability",
   "item.providencraft.fiaxe": "Fiaxe",
   "fiaxe_des": "Cyber dragon's axe, designed to hack the disobedient DD",
-  "item.providencraft.momo_knife": "Utility Knife",
+  "item.providencraft.momo_cutter": "Utility Knife",
   "momo_knife_des": "Momo's utility knife, can be used for self-defense",
   "momo_knife_func": "Right click to restore HP based on the stored damage",
   "momo_knife_damage": "Stored damage:",
