@@ -1,3 +1,62 @@
 {
-  "parent": "bettercombat:claymore"
+  "attributes": {
+    "attack_range": 4.0,
+    "two_handed": true,
+    "pose": "bettercombat:pose_two_handed_heavy",
+    "category": "big_spoon",
+    "attacks": [
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1.0,
+        "angle": 160,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_right",
+        "swing_sound": {
+          "id": "bettercombat:fist_punch"
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1.0,
+        "angle": 160,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slash_horizontal_left",
+        "swing_sound": {
+          "id": "bettercombat:fist_punch"
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "damage_multiplier": 1.25,
+        "angle": 360,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_spin",
+        "swing_sound": {
+          "id": "bettercombat:claymore_swing"
+        }
+      },
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 1.5,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slam",
+        "swing_sound": {
+          "id": "bettercombat:anchor_slam",
+          "randomness": 0
+        }
+      },
+      {
+        "hitbox": "VERTICAL_PLANE",
+        "damage_multiplier": 2.0,
+        "angle": 150,
+        "upswing": 0.5,
+        "animation": "bettercombat:two_handed_slam_heavy",
+        "swing_sound": {
+          "id": "bettercombat:hammer_slam",
+          "randomness": 0
+        }
+      }
+    ]
+  }
 }
