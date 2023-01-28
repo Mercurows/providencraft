@@ -1,15 +1,25 @@
 package tech.lq0.providencraft.item.providenceOI.shirako;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -29,11 +39,16 @@ import java.text.NumberFormat;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class MomoKnife extends SwordItem {
+public class MomoKnife extends Item {
     public static final String TAG_DAMAGE = "damage";
+    private final Multimap<Attribute, AttributeModifier> attributeModifiers;
 
     public MomoKnife(){
-        super(ItemTier.IRON, 1, -1.0f, new Properties().group(ModGroup.itemgroup).maxDamage(1231).rarity(Rarity.EPIC));
+        super(new Properties().group(ModGroup.itemgroup).maxDamage(1231).rarity(Rarity.EPIC));
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 3.0, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -1.0, AttributeModifier.Operation.ADDITION));
+        this.attributeModifiers = builder.build();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -83,6 +98,7 @@ public class MomoKnife extends SwordItem {
         }
 
         target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 120, lvl > 2 ? 3 : lvl + 1));
+        stack.damageItem(1, attacker, (playerEntity) -> playerEntity.sendBreakAnimation(playerEntity.swingingHand));
         return super.hitEntity(stack, target, attacker);
     }
 
@@ -107,5 +123,29 @@ public class MomoKnife extends SwordItem {
     @Override
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
         return repair.getItem() == Items.NETHERITE_INGOT;
+    }
+
+    @Override
+    public boolean canPlayerBreakBlockWhileHolding(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
+        return !player.isCreative();
+    }
+
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
+        return equipmentSlot == EquipmentSlotType.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(equipmentSlot);
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.type == EnchantmentType.WEAPON;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getItemEnchantability() {
+        return 14;
     }
 }
