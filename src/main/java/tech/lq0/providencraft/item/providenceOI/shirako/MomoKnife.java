@@ -41,7 +41,7 @@ public class MomoKnife extends SwordItem {
             ItemStack newStack = ItemRegistry.MOMO_CUTTER.get().getDefaultInstance();
             newStack.setTag(nbt);
 
-            player.inventory.setInventorySlotContents(player.inventory.getSlotFor(stack), newStack);
+            player.inventory.setInventorySlotContents(itemSlot, newStack);
         }
         super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
     }
