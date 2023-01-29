@@ -3,6 +3,8 @@ package tech.lq0.providencraft.item.providencethird.beni;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -159,5 +161,20 @@ public class ShuraChin extends SwordItem {
     @Override
     public boolean isDamageable() {
         return false;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getItemEnchantability(ItemStack stack) {
+        return 20;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.type == EnchantmentType.WEAPON;
     }
 }

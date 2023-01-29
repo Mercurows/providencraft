@@ -3,6 +3,8 @@ package tech.lq0.providencraft.item.providencethird.beni;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -101,5 +103,20 @@ public class Ume extends SwordItem {
         tooltip.add((new TranslationTextComponent("ume_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("ume_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
         TooltipTool.addLiverInfo(tooltip, Livers.BENI);
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getItemEnchantability(ItemStack stack) {
+        return 20;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.type == EnchantmentType.WEAPON;
     }
 }
