@@ -4,6 +4,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
+import tech.lq0.providencraft.client.TracheliumFireHandler;
 
 import java.util.function.Supplier;
 
@@ -52,7 +53,7 @@ public class TracheliumPack implements NetworkPack{
         context.get().enqueueWork(() -> {
             ServerPlayerEntity player = context.get().getSender();
             if(player != null){
-                System.out.println("test111");
+                TracheliumFireHandler.fireHandler(this, player);
             }
         });
         context.get().setPacketHandled(true);

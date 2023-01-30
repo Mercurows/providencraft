@@ -7,7 +7,6 @@ import net.minecraft.util.CooldownTracker;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
@@ -72,59 +71,8 @@ public class TracheliumHandler {
 
             if(button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
                 if(event.getAction() == GLFW.GLFW_PRESS) {
-
                     //do shoot
-                    player.sendStatusMessage(new StringTextComponent("test"), true);
                     doShoot(player, heldItem);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public void onTickEvent(TickEvent.ClientTickEvent event) {
-        if(this.outOfScreen()) {
-            return;
-        }
-
-        if(event.phase != TickEvent.Phase.START) {
-            return;
-        }
-
-        Minecraft mc = Minecraft.getInstance();
-        PlayerEntity player = mc.player;
-
-        if(player != null) {
-            ItemStack heldItem = player.getHeldItemMainhand();
-            if(heldItem.getItem() == ItemRegistry.TRACHELIUM.get()) {
-                boolean clicked = GLFW.glfwGetMouseButton(mc.getMainWindow().getHandle(), GLFW.GLFW_MOUSE_BUTTON_LEFT) == GLFW.GLFW_PRESS;
-
-                if(clicked) {
-                    System.out.println("clicked");
-                }
-            }
-        }
-
-    }
-
-    @SubscribeEvent
-    public void onPostClientTick(TickEvent.ClientTickEvent event) {
-        if(outOfScreen()) {
-            return;
-        }
-
-        if(event.phase != TickEvent.Phase.END) {
-            return;
-        }
-
-        Minecraft mc = Minecraft.getInstance();
-        PlayerEntity player = mc.player;
-
-        if(player != null) {
-            ItemStack heldItem = player.getHeldItemMainhand();
-            if(heldItem.getItem() == ItemRegistry.TRACHELIUM.get()) {
-                if(GLFW.glfwGetMouseButton(mc.getMainWindow().getHandle(), GLFW.GLFW_MOUSE_BUTTON_LEFT) == GLFW.GLFW_PRESS) {
-                    System.out.println("114514");
                 }
             }
         }
@@ -136,6 +84,10 @@ public class TracheliumHandler {
         }
 
         if(itemStack.getItem() != ItemRegistry.TRACHELIUM.get()){
+            return;
+        }
+
+        if(Trachelium.getAmmo(itemStack) == 0 && !player.isCreative()){
             return;
         }
 
