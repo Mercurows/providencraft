@@ -1,6 +1,12 @@
 {
   "textures": [
     "providencraft:white_trachelium",
+    "providencraft:red_trachelium",
+    "providencraft:orange_trachelium",
+    "providencraft:yellow_trachelium",
+    "providencraft:green_trachelium",
+    "providencraft:blue_trachelium",
+    "providencraft:pink_trachelium",
     "providencraft:purple_trachelium"
   ]
 }
