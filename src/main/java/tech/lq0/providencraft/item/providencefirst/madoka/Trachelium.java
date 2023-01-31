@@ -31,7 +31,7 @@ public class Trachelium extends Item {
     public static final String TAG_AMMO = "ammo";
 
     public Trachelium(){
-        super(new Properties().maxStackSize(1).maxDamage(6).group(ModGroup.itemgroup).rarity(Rarity.create("LEGENDARY", TextFormatting.GOLD)));
+        super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("LEGENDARY", TextFormatting.GOLD)));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -53,7 +53,7 @@ public class Trachelium extends Item {
     }
 
     public static int getAmmo(ItemStack stack){
-        return ItemNBTTool.getInt(stack, TAG_AMMO, 6);
+        return ItemNBTTool.getInt(stack, TAG_AMMO, 8);
     }
 
     public static void setAmmo(ItemStack stack, int num){
@@ -74,14 +74,14 @@ public class Trachelium extends Item {
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        setAmmo(stack, 6);
+        setAmmo(stack, 8);
         return stack;
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if(getAmmo(stack) < 6){
+        if(getAmmo(stack) < 8){
             playerIn.setActiveHand(handIn);
             return ActionResult.resultConsume(stack);
         }else {
