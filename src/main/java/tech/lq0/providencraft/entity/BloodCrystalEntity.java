@@ -9,11 +9,11 @@ import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.init.EntityRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
 
@@ -45,14 +45,18 @@ public class BloodCrystalEntity extends ProjectileItemEntity {
                 if(shooter != null) {
                     if (player.isOnSameTeam(shooter)) {
                         player.heal(4.0f);
-                    }else {
-                        player.attackEntityFrom(DamageSource.causeThrownDamage(this, shooter), 4.0f);
+                    } else if(player.getTeam() == null && shooter.getTeam() == null){
+                        player.heal(4.0f);
+                    } else {
+                        player.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
                     }
-                    player.hurtResistantTime = 0;
+                }else {
+                    player.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
                 }
+                player.hurtResistantTime = 0;
             }
             else {
-                entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 4.0f);
+                entity.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
                 entity.hurtResistantTime = 0;
             }
         }
