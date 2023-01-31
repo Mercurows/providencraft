@@ -108,4 +108,9 @@ public class WorldPeaceStaff extends SwordItem {
         }
         super.onUsingTick(stack, player, count);
     }
+
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged && !oldStack.equals(newStack);
+    }
 }

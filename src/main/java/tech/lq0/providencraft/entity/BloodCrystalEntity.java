@@ -45,8 +45,10 @@ public class BloodCrystalEntity extends ProjectileItemEntity {
                 if(shooter != null) {
                     if (player.isOnSameTeam(shooter)) {
                         player.heal(4.0f);
-                        player.hurtResistantTime = 0;
+                    }else {
+                        player.attackEntityFrom(DamageSource.causeThrownDamage(this, shooter), 4.0f);
                     }
+                    player.hurtResistantTime = 0;
                 }
             }
             else {
