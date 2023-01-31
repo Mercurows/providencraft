@@ -52,13 +52,12 @@ public class WorldPeaceStaff extends SwordItem {
         float allDamage = getAllDamage(stack);
         setAllDamage(stack, allDamage + random / 10.0f);
 
-
         target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 300, 6));
         target.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 300, 2));
         return true;
     }
 
-    private static float getAllDamage(ItemStack stack) {
+    public static float getAllDamage(ItemStack stack) {
         return ItemNBTTool.getFloat(stack, TAG_DAMAGE, 0.0f);
     }
 

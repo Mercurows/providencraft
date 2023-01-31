@@ -22,7 +22,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.gui.GuiUtils;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.entity.NiitCarEntity;
+import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoPhone;
+import tech.lq0.providencraft.item.providenceOI.shirako.WorldPeaceStaff;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 
@@ -133,6 +135,8 @@ public class SpecialRender {
                 }
             }
         }
+
+
     }
 
     @SubscribeEvent
@@ -176,6 +180,46 @@ public class SpecialRender {
 
             GuiUtils.drawGradientRect(matrixBar, 1, (int) (left2 + (spd / 80 * 100)), (int) top + 14, left2, (int) (top + 13), color, color);
             f.drawStringWithShadow(evt.getMatrixStack(), spdStr, left, top, color);
+        }
+    }
+
+    @SubscribeEvent
+    public static void renderWPS(RenderGameOverlayEvent event){
+        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
+            return;
+        }
+
+        ClientPlayerEntity player = Minecraft.getInstance().player;
+        if (player != null && player.getHeldItemMainhand().getItem() == ItemRegistry.WORLD_PEACE_STAFF.get()) {
+            ItemStack item = player.getHeldItemMainhand();
+
+            MatrixStack stack = event.getMatrixStack();
+            Minecraft mc = Minecraft.getInstance();
+
+            FontRenderer f = Minecraft.getInstance().fontRenderer;
+
+            float blood = WorldPeaceStaff.getAllDamage(item);
+            String bloodStr = String.format("%.1f", blood);
+
+            float top = mc.getMainWindow().getScaledHeight() / 2F;
+
+            Matrix4f matrixBar = stack.getLast().getMatrix();
+            int left2 = mc.getMainWindow().getScaledWidth() / 2;
+
+            GuiUtils.drawGradientRect(matrixBar, 1, left2 - 60, (int) top - 20 , left2 - 55, (int) (top + 20 - (blood / 500 * 20)),
+                    0xaa888888, 0xaa888888);
+
+            int color = new Color(237,38,109).getRGB();
+            int color2 = new Color(163, 15, 15).getRGB();
+            int color3 = new Color(255, 196, 82).getRGB();
+
+            GuiUtils.drawGradientRect(matrixBar, 1, left2 - 60, (int) (top + 20 - blood / 500 * 40), left2 - 55, (int) (top + 20), color, color);
+
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 61, (int) top - 21, left2 - 54, (int) top + 21, color2, color2);
+
+            f.drawStringWithShadow(event.getMatrixStack(), bloodStr, left2 - 65, top + 22, color);
+            f.drawStringWithShadow(event.getMatrixStack(), "500.0", left2 - 65, top - 32, color2);
+            f.drawStringWithShadow(event.getMatrixStack(), "HP", left2 - 70, top - 4, color3);
         }
     }
 

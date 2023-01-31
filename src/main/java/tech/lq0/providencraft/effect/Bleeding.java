@@ -27,7 +27,7 @@ public class Bleeding extends Effect {
         if (k > 0) {
             return duration % k == 0;
         } else {
-            return true;
+            return duration % 10 == 0;
         }
     }
 
