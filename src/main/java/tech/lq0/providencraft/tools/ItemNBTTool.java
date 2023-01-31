@@ -32,4 +32,12 @@ public final class ItemNBTTool {
     public static int getInt(ItemStack stack, String tag, int num) {
         return verifyExistence(stack, tag) ? stack.getOrCreateTag().getInt(tag) : num;
     }
+
+    public static void setLong(ItemStack stack, String tag, long num) {
+        stack.getOrCreateTag().putLong(tag, num);
+    }
+
+    public static long getLong(ItemStack stack, String tag, long num) {
+        return verifyExistence(stack, tag) ? stack.getOrCreateTag().getLong(tag) : num;
+    }
 }
