@@ -23,6 +23,7 @@ public class ClientEventHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.NIIT_CAR_ENTITY.get(), NiitCarEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.GOOD_MAN_CARD_ENTITY.get(), GoodManCardEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.WATER_CARD_ENTITY.get(), WaterCardEntityRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.BLOOD_CRYSTAL_ENTITY.get(), BloodCrystalEntityRenderer::new);
 
         event.enqueueWork(() -> ClientRegistry.bindTileEntityRenderer(TileEntityRegistry.POINTS_STORE.get(), PointsStoreTileEntityRenderer::new));
     }
