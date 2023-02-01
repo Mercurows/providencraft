@@ -438,7 +438,7 @@
   "world_peace_staff_des1": "“洗脑壳的愿望是世界和平”",
   "entity.providencraft.blood_crystal": "Blood Crystal",
   "death.attack.blood_crystal": "%1$s被凝血水晶刺穿了",
-  "death.attack.blood_crystal.player": "%1$s被%2$s发射的凝血水晶刺穿了",
+  "death.attack.blood_crystal.player": "%1$s在逃离%2$s时被凝血水晶刺穿了",
   "itemGroup.Providencraft Audio Tapes": "Providencraft Tapes",
   "item.providencraft.audio_tape_haine_1": "Audio Tape (Haine)",
   "haine_broadcast": "Haine: Warning for emergency of Creepers",

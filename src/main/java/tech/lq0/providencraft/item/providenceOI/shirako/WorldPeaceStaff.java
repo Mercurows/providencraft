@@ -59,7 +59,7 @@ public class WorldPeaceStaff extends SwordItem {
         float allDamage = getAllDamage(stack);
         setAllDamage(stack, allDamage + random / 10.0f);
 
-        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 300, 5));
+        target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 200, 5));
         target.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 40, 2));
         return true;
     }

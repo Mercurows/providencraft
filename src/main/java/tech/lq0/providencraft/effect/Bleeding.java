@@ -39,7 +39,9 @@ public class Bleeding extends Effect {
             if (entity.isPotionActive(effect)) {
                 entity.hurtResistantTime = 0;
                 int level = entity.getActivePotionEffect(EffectRegistry.BLEEDING.get()).getAmplifier();
-                entity.attackEntityFrom(DamageSourceRegistry.BLEEDING, 1.0f + level * (level + 1.0f) / 2.0f);
+
+                float damage = 1.0f + level * (level + 1.0f) / 2.0f;
+                entity.attackEntityFrom(DamageSourceRegistry.BLEEDING, damage);
             }
         }
     }
