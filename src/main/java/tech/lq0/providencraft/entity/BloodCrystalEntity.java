@@ -49,11 +49,12 @@ public class BloodCrystalEntity extends ProjectileItemEntity {
                         player.heal(4.0f);
                     } else {
                         player.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
+                        player.hurtResistantTime = 0;
                     }
                 }else {
                     player.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
+                    player.hurtResistantTime = 0;
                 }
-                player.hurtResistantTime = 0;
             }
             else {
                 entity.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
