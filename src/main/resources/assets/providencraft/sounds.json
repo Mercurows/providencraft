@@ -368,5 +368,15 @@
         "stream": true
       }
     ]
+  },
+  "audio/other/elifaus": {
+    "subtitle": "elifaus",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/other/elifaus",
+        "stream": true
+      }
+    ]
   }
 }

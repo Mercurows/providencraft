@@ -49,6 +49,8 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> LOUISE_FARMING = SOUNDS.register("louise_farming", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_farming")));
     public static final RegistryObject<SoundEvent> LOUISE_FOOD = SOUNDS.register("louise_food", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_food")));
 
+    public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
+
     //songs
     public static final RegistryObject<SoundEvent> DARAKUDATENSHI = SOUNDS.register("darakudatenshi", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/darakudatenshi")));
 }
