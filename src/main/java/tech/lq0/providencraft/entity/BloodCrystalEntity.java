@@ -9,6 +9,7 @@ import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.util.IndirectEntityDamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -48,7 +49,7 @@ public class BloodCrystalEntity extends ProjectileItemEntity {
                     } else if(player.getTeam() == null && shooter.getTeam() == null){
                         player.heal(4.0f);
                     } else {
-                        player.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
+                        player.attackEntityFrom(new IndirectEntityDamageSource("blood_crystal", player, shooter).setProjectile(), 4.0f);
                         player.hurtResistantTime = 0;
                     }
                 }else {
@@ -57,7 +58,7 @@ public class BloodCrystalEntity extends ProjectileItemEntity {
                 }
             }
             else {
-                entity.attackEntityFrom(DamageSourceRegistry.BLOOD_CRYSTAL, 4.0f);
+                entity.attackEntityFrom(new IndirectEntityDamageSource("blood_crystal", entity, this.func_234616_v_()).setProjectile(), 4.0f);
                 entity.hurtResistantTime = 0;
             }
         }
