@@ -217,9 +217,70 @@ public class SpecialRender {
 
             GuiUtils.drawGradientRect(matrixBar, 0, left2 - 61, (int) top - 21, left2 - 54, (int) top + 21, color2, color2);
 
-            f.drawStringWithShadow(event.getMatrixStack(), bloodStr, left2 - 65, top + 22, color);
-            f.drawStringWithShadow(event.getMatrixStack(), "500.0", left2 - 65, top - 32, color2);
-            f.drawStringWithShadow(event.getMatrixStack(), "HP", left2 - 70, top - 4, color3);
+            //边框
+            int color_border1 = new Color(11609897).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 100, (int) top - 43, left2 - 98, (int) top + 44, color_border1, color_border1);
+            int color_border2 = new Color(11013905).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 98, (int) top - 43, left2 - 95, (int) top - 41, color_border2, color_border2);
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 98, (int) top + 42, left2 - 95, (int) top + 44, color_border2, color_border2);
+            int color_border3 = new Color(9899279).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 95, (int) top - 43, left2 - 90, (int) top - 41, color_border3, color_border3);
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 95, (int) top + 42, left2 - 90, (int) top + 44, color_border3, color_border3);
+            int color_border4 = new Color(8915981).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 90, (int) top - 43, left2 - 87, (int) top - 41, color_border4, color_border4);
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 90, (int) top + 42, left2 - 87, (int) top + 44, color_border4, color_border4);
+            int color_border5 = new Color(7998220).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 0, left2 - 87, (int) top - 43, left2 - 85, (int) top + 44, color_border5, color_border5);
+
+            //血条
+
+
+            //刻度
+            int color_scale = new Color(15834818).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 40, left2 - 90, (int) top - 39, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 35, left2 - 96, (int) top - 34, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 30, left2 - 96, (int) top - 29, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 25, left2 - 96, (int) top - 24, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 20, left2 - 94, (int) top - 19, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 15, left2 - 96, (int) top - 14, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 10, left2 - 96, (int) top - 9, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top - 5, left2 - 96, (int) top - 4, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top , left2 - 91, (int) top + 1, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 5, left2 - 96, (int) top + 6, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 10, left2 - 96, (int) top + 11, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 15, left2 - 96, (int) top + 16, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 20, left2 - 94, (int) top + 21, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 25, left2 - 96, (int) top + 26, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 30, left2 - 96, (int) top + 31, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 35, left2 - 96, (int) top + 36, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 98, (int) top + 40, left2 - 90, (int) top + 41, color_scale, color_scale);
+
+            //高光
+            int color_highlight = new Color(255,255,255).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 3, left2 - 97, (int) top - 38, left2 - 95, (int) top - 31, color_highlight, color_highlight);
+            GuiUtils.drawGradientRect(matrixBar, 3, left2 - 97, (int) top - 31, left2 - 96, (int) top - 26, color_highlight, color_highlight);
+            GuiUtils.drawGradientRect(matrixBar, 3, left2 - 97, (int) top - 23, left2 - 96, (int) top - 22, color_highlight, color_highlight);
+            GuiUtils.drawGradientRect(matrixBar, 3, left2 - 97, (int) top - 31, left2 - 96, (int) top - 26, color_highlight, color_highlight);
+            GuiUtils.drawGradientRect(matrixBar, 3, left2 - 97, (int) top + 35, left2 - 96, (int) top + 39, color_highlight, color_highlight);
+            GuiUtils.drawGradientRect(matrixBar, 3, left2 - 97, (int) top + 33, left2 - 96, (int) top + 34, color_highlight, color_highlight);
+
+            //刀边
+            int color_knife1 = new Color(201,201,201).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 100, (int) top - 31, left2 - 99, (int) top + 32, color_knife1, color_knife1);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 86, (int) top - 31, left2 - 85, (int) top + 32, color_knife1, color_knife1);
+            int color_knife2 = new Color(0,0,0).getRGB();
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 100, (int) top - 27, left2 - 99, (int) top + 3, color_knife2, color_knife2);
+            int color_knife3 = new Color(49,49,49).getRGB();
+            for(int i = 0;i < 7;i++){
+                GuiUtils.drawGradientRect(matrixBar, 2, left2 - 101, (int) top - 26 + i * 3, left2 - 100, (int) top - 25 + i * 3, color_knife3, color_knife3);
+                GuiUtils.drawGradientRect(matrixBar, 2, left2 - 102, (int) top - 25 + i * 3, left2 - 101, (int) top - 24 + i * 3, color_knife3, color_knife3);
+                GuiUtils.drawGradientRect(matrixBar, 2, left2 - 102, (int) top - 24 + i * 3, left2 - 101, (int) top - 23 + i * 3, color_knife2, color_knife2);
+                GuiUtils.drawGradientRect(matrixBar, 2, left2 - 101, (int) top - 25 + i * 3, left2 - 100, (int) top - 23 + i * 3, color_knife2, color_knife2);
+            }
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 101, (int) top - 5, left2 - 100, (int) top - 3, color_knife3, color_knife3);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 102, (int) top - 3, left2 - 101, (int) top - 2, color_knife3, color_knife3);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 101, (int) top - 3, left2 - 100, (int) top + 2, color_knife2, color_knife2);
+            GuiUtils.drawGradientRect(matrixBar, 2, left2 - 102, (int) top - 2, left2 - 101, (int) top + 1, color_knife2, color_knife2);
         }
     }
 
