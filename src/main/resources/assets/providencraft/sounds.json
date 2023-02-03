@@ -378,5 +378,15 @@
         "stream": true
       }
     ]
+  },
+  "blood_crystal": {
+    "subtitle": "blood_crystal",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:blood_crystal",
+        "stream": true
+      }
+    ]
   }
 }

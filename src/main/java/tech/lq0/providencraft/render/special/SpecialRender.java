@@ -339,6 +339,11 @@ public class SpecialRender {
             drawNumber(matrixBar, 4, left - 115, (int) top + 38, num_2, color_blood);
             drawNumber(matrixBar, 4, left - 111, (int) top + 38, num_3, color_blood);
             drawNumber(matrixBar, 4, left - 105, (int) top + 38, num_4, color_blood);
+
+            //兔子
+
+
+            //如果玩家在使用，兔子冒红光
         }
     }
 

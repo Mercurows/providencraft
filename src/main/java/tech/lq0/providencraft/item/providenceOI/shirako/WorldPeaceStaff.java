@@ -13,6 +13,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -23,6 +24,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.BloodCrystalEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
+import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -101,6 +103,12 @@ public class WorldPeaceStaff extends SwordItem {
                     Vector3d vector3d = player.getLookVec();
                     bloodCrystal.shoot(vector3d.x, vector3d.y, vector3d.z, 4.0f, 0.6f);
                     world.addEntity(bloodCrystal);
+
+                    if(player instanceof PlayerEntity) {
+                        PlayerEntity playerEntity = (PlayerEntity) player;
+                        world.playSound(playerEntity, playerEntity.getPosition(),
+                                SoundRegistry.BLOOD_CRYSTAL.get(), SoundCategory.AMBIENT, 0.8f, 1.0f);
+                    }
                 }
 
                 setAllDamage(stack, Math.max(getAllDamage(stack) - 5.0f, 0.0f));
