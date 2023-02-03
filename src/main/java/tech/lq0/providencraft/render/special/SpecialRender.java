@@ -196,10 +196,7 @@ public class SpecialRender {
             MatrixStack stack = event.getMatrixStack();
             Minecraft mc = Minecraft.getInstance();
 
-            FontRenderer f = Minecraft.getInstance().fontRenderer;
-
             float blood = WorldPeaceStaff.getAllDamage(item);
-            String bloodStr = String.format("%.1f", blood);
 
             float top = mc.getMainWindow().getScaledHeight() / 2F;
 
