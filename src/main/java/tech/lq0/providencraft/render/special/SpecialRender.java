@@ -247,7 +247,6 @@ public class SpecialRender {
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top - 38, left - 95, (int) top - 31, color_highlight, color_highlight);
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top - 31, left - 96, (int) top - 26, color_highlight, color_highlight);
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top - 23, left - 96, (int) top - 22, color_highlight, color_highlight);
-            GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top - 31, left - 96, (int) top - 26, color_highlight, color_highlight);
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top + 35, left - 96, (int) top + 39, color_highlight, color_highlight);
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top + 33, left - 96, (int) top + 34, color_highlight, color_highlight);
 
