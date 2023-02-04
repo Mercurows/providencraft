@@ -28,4 +28,9 @@ public class OceanDestiny extends Item {
         tooltip.add(new TranslationTextComponent("ocean_destiny_des").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
+
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return true;
+    }
 }

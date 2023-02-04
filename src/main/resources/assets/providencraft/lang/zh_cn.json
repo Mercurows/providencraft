@@ -447,6 +447,7 @@
   "death.attack.blood_crystal": "%1$s被凝血水晶刺穿了",
   "death.attack.blood_crystal.player": "%1$s在逃离%2$s时被凝血水晶刺穿了",
   "death.attack.blood_crystal.item": "%1$s被%2$s用%3$s发射的凝血水晶刺穿了",
+  "blood_crystal": "凝血水晶：发射",
   "itemGroup.Providencraft Audio Tapes": "普罗维登：音声",
   "item.providencraft.audio_tape_haine_1": "音声磁带（灰音）",
   "haine_broadcast": "灰音：紧急苦力怕播报",

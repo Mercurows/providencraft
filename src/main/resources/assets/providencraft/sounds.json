@@ -384,8 +384,7 @@
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:blood_crystal",
-        "stream": true
+        "name": "providencraft:blood_crystal"
       }
     ]
   }

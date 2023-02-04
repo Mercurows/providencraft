@@ -447,6 +447,7 @@
   "death.attack.blood_crystal": "%1$s被凝血水晶刺穿了",
   "death.attack.blood_crystal.player": "%1$s在逃离%2$s时被凝血水晶刺穿了",
   "death.attack.blood_crystal.item": "%1$s被%2$s用%3$s发射的凝血水晶刺穿了",
+  "blood_crystal": "Blood Crystal: Shoot",
   "itemGroup.Providencraft Audio Tapes": "Providencraft Tapes",
   "item.providencraft.audio_tape_haine_1": "Audio Tape (Haine)",
   "haine_broadcast": "Haine: Warning for emergency of Creepers",
