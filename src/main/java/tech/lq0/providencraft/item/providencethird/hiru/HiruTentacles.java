@@ -52,7 +52,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HiruTentacles extends ArmorItem {
     public HiruTentacles() {
-        super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(913).setNoRepair().group(ModGroup.itemgroup));
+        super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(913).group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -66,6 +66,11 @@ public class HiruTentacles extends ArmorItem {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
         return Utils.MOD_ID + ":textures/models/armor/hiru_tentacles_model_texture.png";
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == ItemRegistry.GN_SOUL.get();
     }
 
     @SubscribeEvent
