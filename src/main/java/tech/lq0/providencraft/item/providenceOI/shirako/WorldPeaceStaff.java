@@ -104,8 +104,12 @@ public class WorldPeaceStaff extends SwordItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        playerIn.setActiveHand(handIn);
-        return ActionResult.resultConsume(stack);
+        if(handIn == Hand.MAIN_HAND) {
+            playerIn.setActiveHand(handIn);
+            return ActionResult.resultConsume(stack);
+        }else {
+            return ActionResult.resultFail(stack);
+        }
     }
 
     @Override
