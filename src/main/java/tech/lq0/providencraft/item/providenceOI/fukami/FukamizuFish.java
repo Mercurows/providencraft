@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class FukamizuFish extends Item {
-    private static final Food food = (new Food.Builder()).saturation(6.0f).hunger(6).
+    private static final Food food = (new Food.Builder()).saturation(1.0f).hunger(6).
             effect(() -> new EffectInstance(Effects.LUCK, 600, 0), 1.0f).build();
 
     public FukamizuFish(){

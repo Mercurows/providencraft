@@ -26,7 +26,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class Louistew extends Item {
-    private static final Food food = (new Food.Builder()).saturation(6.0f).hunger(14).
+    private static final Food food = (new Food.Builder()).saturation(1.2f).hunger(14).
             effect(() -> new EffectInstance(EffectRegistry.CURSE_OF_SERPENT.get(), 200, 0), 0.1f).
             effect(() -> new EffectInstance(Effects.FIRE_RESISTANCE, 400, 0), 1.0f).build();
 

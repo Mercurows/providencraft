@@ -24,7 +24,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class LavaCake extends Item {
-    private static final Food food = (new Food.Builder()).saturation(30.0f).hunger(20).build();
+    private static final Food food = (new Food.Builder()).saturation(1.5f).hunger(20).build();
 
     public LavaCake() {
         super(new Properties().food(food).maxStackSize(1).group(ModGroup.itemgroup).rarity(Rarity.RARE));

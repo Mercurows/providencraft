@@ -21,7 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MumuSteak extends Item {
-    private static final Food food = (new Food.Builder()).saturation(14.0f).hunger(10).
+    private static final Food food = (new Food.Builder()).saturation(1.4f).hunger(10).
             effect(new EffectInstance(Effects.HEALTH_BOOST, 600, 1), 1.0F).build();
 
     public MumuSteak() {

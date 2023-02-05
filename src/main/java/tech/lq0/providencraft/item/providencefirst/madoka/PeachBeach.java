@@ -24,7 +24,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class PeachBeach extends Item {
-    private static final Food food = (new Food.Builder()).saturation(8).hunger(6).setAlwaysEdible().
+    private static final Food food = (new Food.Builder()).saturation(1.33f).hunger(6).setAlwaysEdible().
             effect(new EffectInstance(Effects.NAUSEA, 300, 0), 0.3f).
             effect(new EffectInstance(Effects.STRENGTH, 300, 0), 1.0f).build();
 

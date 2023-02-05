@@ -22,7 +22,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class EnchantedUnigiri extends Item {
-    private static final Food food = (new Food.Builder()).saturation(14.0f).hunger(14).
+    private static final Food food = (new Food.Builder()).saturation(1.0f).hunger(14).
             effect(() -> new EffectInstance(Effects.JUMP_BOOST, 140, 0), 1.0F).
             effect(() -> new EffectInstance(Effects.REGENERATION, 140, 0), 1.0F).build();
 

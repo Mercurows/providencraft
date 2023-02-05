@@ -26,7 +26,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MariStew extends Item {
-    private static final Food food = (new Food.Builder()).saturation(12.0f).hunger(10).build();
+    private static final Food food = (new Food.Builder()).saturation(1.2f).hunger(10).build();
 
     public MariStew() {
         super(new Properties().food(food).maxStackSize(1).group(ModGroup.itemgroup));

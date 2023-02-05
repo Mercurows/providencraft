@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class FractureDestiny extends Item {
-    private static final Food food = (new Food.Builder()).saturation(20.0f).hunger(20).setAlwaysEdible().build();
+    private static final Food food = (new Food.Builder()).saturation(1.0f).hunger(20).setAlwaysEdible().build();
 
     public FractureDestiny(){
         super(new Properties().rarity(Rarity.RARE).group(ModGroup.itemgroup).food(food));

@@ -20,7 +20,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class LittlePotato extends Item {
-    public static final Food food = (new Food.Builder()).saturation(20.0f).hunger(20).build();
+    public static final Food food = (new Food.Builder()).saturation(1.0f).hunger(20).build();
 
     public LittlePotato() {
         super(new Properties().food(food).group(ModGroup.donategroup));
