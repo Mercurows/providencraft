@@ -22,7 +22,7 @@ import java.util.List;
 
 public class RabbitLychee extends Item {
     private static final Food food = (new Food.Builder()).saturation(1.33f).hunger(3).
-            effect(new EffectInstance(Effects.JUMP_BOOST, 200, 1), 1.0f).build();
+            effect(() -> new EffectInstance(Effects.JUMP_BOOST, 200, 1), 1.0f).build();
 
     public RabbitLychee() {
         super(new Properties().group(ModGroup.itemgroup).food(food));

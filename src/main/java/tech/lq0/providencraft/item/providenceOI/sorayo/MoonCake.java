@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MoonCake extends Item {
     public static final Food food = (new Food.Builder()).saturation(1.143f).hunger(7).setAlwaysEdible().
-            effect(new EffectInstance(Effects.HASTE, 600, 4), 1.0f).build();
+            effect(() -> new EffectInstance(Effects.HASTE, 600, 4), 1.0f).build();
 
     public MoonCake() {
         super(new Properties().group(ModGroup.itemgroup).food(food));
