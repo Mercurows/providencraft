@@ -16,6 +16,11 @@ public class TracheliumParticleData implements IParticleData {
     private final Vector3d speed;
     private final Color color;
     private final float diameter;
+    public final boolean flag;
+    public final double posX;
+    public final double posY;
+    public final double posZ;
+
     public static final IDeserializer<TracheliumParticleData> DESERIALIZER = new IDeserializer<TracheliumParticleData>() {
 
         @Override
@@ -57,10 +62,24 @@ public class TracheliumParticleData implements IParticleData {
         }
     };
 
+    public TracheliumParticleData(Vector3d speed, Color color, float diameter, double posX, double posY, double posZ, boolean flag) {
+        this.speed = speed;
+        this.color = color;
+        this.diameter = diameter;
+        this.posX = posX;
+        this.posY = posY;
+        this.posZ = posZ;
+        this.flag = flag;
+    }
+
     public TracheliumParticleData(Vector3d speed, Color color, float diameter) {
         this.speed = speed;
         this.color = color;
         this.diameter = diameter;
+        this.posX = 0;
+        this.posY = 0;
+        this.posZ = 0;
+        this.flag = false;
     }
 
     @Override
@@ -78,6 +97,10 @@ public class TracheliumParticleData implements IParticleData {
         buffer.writeInt(this.color.getBlue());
         buffer.writeInt(this.color.getAlpha());
         buffer.writeFloat(this.diameter);
+        buffer.writeDouble(this.posX);
+        buffer.writeDouble(this.posY);
+        buffer.writeDouble(this.posZ);
+        buffer.writeBoolean(this.flag);
     }
 
     @Override

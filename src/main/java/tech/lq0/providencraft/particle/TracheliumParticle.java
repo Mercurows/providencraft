@@ -15,7 +15,7 @@ public class TracheliumParticle extends SpriteTexturedParticle {
 
     protected TracheliumParticle(ClientWorld world, double x, double y, double z, Vector3d speed, Color color, float diameter) {
         super(world, x, y, z, speed.x, speed.y, speed.z);
-        maxAge = 40;
+        maxAge = 80;
         motionX = speed.x;
         motionY = speed.y;
         motionZ = speed.z;
@@ -23,13 +23,13 @@ public class TracheliumParticle extends SpriteTexturedParticle {
         this.setAlphaF(color.getAlpha());
         final float PARTICLE_SCALE_FOR_ONE_METRE = 0.3F;
         particleScale = PARTICLE_SCALE_FOR_ONE_METRE * diameter;
-        this.canCollide = false;
+        this.canCollide = true;
     }
 
     protected TracheliumParticle(ClientWorld world, double x, double y, double z, Vector3d speed, Color color, float diameter,
                                  double posX, double posY, double posZ, boolean flag) {
         super(world, x, y, z, speed.x, speed.y, speed.z);
-        maxAge = 80;
+        maxAge = 30;
         motionX = speed.x;
         motionY = speed.y;
         motionZ = speed.z;
@@ -47,13 +47,23 @@ public class TracheliumParticle extends SpriteTexturedParticle {
     @Override
     public void tick() {
         if(flag){
-            if(this.age == 40){
+            if(age < 10){
+                setAlphaF(age / 10.0f);
+            }else {
+                setAlphaF(1.0f);
+                double x = this.posX - this.prevPosX;
+                double y = this.posY - this.prevPosY;
+                double z = this.posZ - this.prevPosZ;
 
+                double speed = (60 - age) / 10.0f;
+
+                move(x / speed, y / speed, z / speed);
             }
         }
-
         super.tick();
     }
+
+
 
     @Override
     public IParticleRenderType getRenderType() {

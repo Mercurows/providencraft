@@ -14,7 +14,7 @@ public class TracheliumParticleFactory implements IParticleFactory<TracheliumPar
 
     @Override
     public Particle makeParticle(TracheliumParticleData typeIn, ClientWorld worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-        TracheliumParticle particle = new TracheliumParticle(worldIn, x, y, z, typeIn.getSpeed(), typeIn.getColor(), typeIn.getDiameter());
+        TracheliumParticle particle = new TracheliumParticle(worldIn, x, y, z, typeIn.getSpeed(), typeIn.getColor(), typeIn.getDiameter(), typeIn.posX, typeIn.posY, typeIn.posZ, typeIn.flag);
         particle.selectSpriteRandomly(sprites);
         return particle;
     }
