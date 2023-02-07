@@ -191,6 +191,11 @@ public class SpecialRender {
 
         ClientPlayerEntity player = Minecraft.getInstance().player;
         if (player != null && player.getHeldItemMainhand().getItem() == ItemRegistry.WORLD_PEACE_STAFF.get()) {
+
+            if(player.isSpectator()){
+                return;
+            }
+
             ItemStack item = player.getHeldItemMainhand();
 
             MatrixStack stack = event.getMatrixStack();
