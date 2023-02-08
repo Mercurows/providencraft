@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " r ",
+    "gag",
+    " b "
+  ],
+  "key": {
+    "a": {
+      "item": "providencraft:daifuku_syrup"
+    },
+    "g": {
+      "tag": "forge:glass/colorless"
+    },
+    "r": {
+      "item": "minecraft:iron_nugget"
+    },
+    "b": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "providencraft:momo_syringe",
+    "count": 1
+  }
+}
