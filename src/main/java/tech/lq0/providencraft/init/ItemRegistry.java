@@ -68,10 +68,7 @@ import tech.lq0.providencraft.item.providencemagicros.chiram.*;
 import tech.lq0.providencraft.item.providencemagicros.haine.CloudKey;
 import tech.lq0.providencraft.item.providencemagicros.haine.HaiPlate;
 import tech.lq0.providencraft.item.providencemagicros.haine.Marshaimallow;
-import tech.lq0.providencraft.item.providencemagicros.hoshimiya.CrystalBall;
-import tech.lq0.providencraft.item.providencemagicros.hoshimiya.EkiraPearl;
-import tech.lq0.providencraft.item.providencemagicros.hoshimiya.EnchantedCrystalBall;
-import tech.lq0.providencraft.item.providencemagicros.hoshimiya.SuccubusTail;
+import tech.lq0.providencraft.item.providencemagicros.hoshimiya.*;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogCrown;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogLeg;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
@@ -215,6 +212,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> ENCHANTED_CRYSTAL_BALL = ITEMS.register("enchanted_crystal_ball", EnchantedCrystalBall::new);
     public static final RegistryObject<Item> SUCCUBUS_TAIL = ITEMS.register("succubus_tail", SuccubusTail::new);
     public static final RegistryObject<Item> EKIRA_PEARL = ITEMS.register("ekira_pearl", EkiraPearl::new);
+    public static final RegistryObject<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", BubbleTea::new);
 
     /**
      * 3rd
