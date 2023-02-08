@@ -6,7 +6,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.SoundEvent;
@@ -26,8 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class BubbleTea extends Item {
-    public static final Food food = (new Food.Builder()).saturation(0.8f).hunger(8).
-            effect(() -> new EffectInstance(Effects.REGENERATION, 400, 0), 1.0f).setAlwaysEdible().build();
+    public static final Food food = (new Food.Builder()).saturation(0.8f).hunger(8).setAlwaysEdible().build();
 
     public BubbleTea(){
         super(new Properties().food(food).group(ModGroup.itemgroup));
@@ -37,6 +35,7 @@ public class BubbleTea extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if(entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
+            player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 400, 0));
 
             double random = Math.random();
             if (random <= .2) {
