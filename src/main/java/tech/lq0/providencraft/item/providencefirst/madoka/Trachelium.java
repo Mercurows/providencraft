@@ -99,18 +99,18 @@ public class Trachelium extends Item {
         return UseAction.BOW;
     }
 
-    @Override
-    public void onUsingTick(ItemStack stack, LivingEntity player, int count) {
-        if(this.getUseDuration(stack) - count < 20) {
-            if (player.getEntityWorld() instanceof ServerWorld) {
-                System.out.println(1919);
-                IParticleData particleData = new TracheliumParticleData(new Vector3d(0, 0, 0),
-                        new Color(255, 255, 255, 0), 0.3f, player.getPosX(), player.getPosY() + 1.3, player.getPosZ(), true);
-                ((ServerWorld) player.getEntityWorld()).spawnParticle(particleData, player.getPosX(), player.getPosY() + 1.3, player.getPosZ(),
-                        3, Math.random() * 3 + 2, Math.random() * 3 + 2, Math.random() * 3 + 2, 0.1D);
-            }
-
-        }
-        super.onUsingTick(stack, player, count);
-    }
+//    @Override
+//    public void onUsingTick(ItemStack stack, LivingEntity player, int count) {
+//        if(this.getUseDuration(stack) - count < 20) {
+//            if (player.getEntityWorld() instanceof ServerWorld) {
+//                System.out.println(1919);
+//                IParticleData particleData = new TracheliumParticleData(new Vector3d(0, 0, 0),
+//                        new Color(255, 255, 255, 0), 0.3f, player.getPosX(), player.getPosY() + 1.3, player.getPosZ(), true);
+//                ((ServerWorld) player.getEntityWorld()).spawnParticle(particleData, player.getPosX(), player.getPosY() + 1.3, player.getPosZ(),
+//                        3, Math.random() * 3 + 2, Math.random() * 3 + 2, Math.random() * 3 + 2, 0.1D);
+//            }
+//
+//        }
+//        super.onUsingTick(stack, player, count);
+//    }
 }
