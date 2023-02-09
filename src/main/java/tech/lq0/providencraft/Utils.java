@@ -1,6 +1,7 @@
 package tech.lq0.providencraft;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -51,5 +52,10 @@ public class Utils {
 
     public void onClientSetup(FMLClientSetupEvent event){
         ClientHandler.init();
+    }
+
+    @SubscribeEvent
+    public void loadLootTable(LootTableLoadEvent event){
+        LootTableRegistry.getRegistry().loadLootTable(event);
     }
 }
