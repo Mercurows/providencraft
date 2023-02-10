@@ -41,16 +41,23 @@ public class MomoSyringe extends Item {
     @Override
     public ActionResultType itemInteractionForEntity(ItemStack stack, PlayerEntity playerIn, LivingEntity target, Hand hand) {
         double random = Math.random();
-        if(random <= .1){
-            target.setFire(8);
-            target.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 2));
-        }else {
-            target.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 1));
-            target.heal(target.getMaxHealth() * 0.25f);
-        }
 
-        if(!playerIn.isCreative()) {
-            stack.shrink(1);
+        if (playerIn.getCooldownTracker().hasCooldown(stack.getItem())) {
+            return ActionResultType.FAIL;
+        } else {
+            if (random <= .1) {
+                target.setFire(8);
+                target.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 2));
+            } else {
+                target.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 1));
+                target.heal(target.getMaxHealth() * 0.25f);
+            }
+
+            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 200);
+
+            if (!playerIn.isCreative()) {
+                stack.shrink(1);
+            }
         }
         return ActionResultType.CONSUME;
     }
@@ -89,7 +96,7 @@ public class MomoSyringe extends Item {
             stack.shrink(1);
         }
 
-        playerEntity.getCooldownTracker().setCooldown(stack.getItem(), 400);
+        playerEntity.getCooldownTracker().setCooldown(stack.getItem(), 200);
 
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }
