@@ -45,4 +45,7 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<BloodCrystalEntity>> BLOOD_CRYSTAL_ENTITY =
             ENTITY_TYPES.register("blood_crystal",
                     () -> EntityType.Builder.<BloodCrystalEntity>create(BloodCrystalEntity::new, EntityClassification.MISC).size(0.1f, 0.1f).build("blood_crystal"));
+    public static final RegistryObject<EntityType<CursedCatDollEntity>> CURSED_CAT_DOLL_ENTITY =
+            ENTITY_TYPES.register("cursed_cat_doll",
+                    () -> EntityType.Builder.<CursedCatDollEntity>create(CursedCatDollEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("cursed_cat_doll"));
 }

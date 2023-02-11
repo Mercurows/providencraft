@@ -66,6 +66,7 @@ import tech.lq0.providencraft.item.providencefirst.usa.KurumiHalo;
 import tech.lq0.providencraft.item.providencefirst.usa.Plunger;
 import tech.lq0.providencraft.item.providencemagicros.chiram.*;
 import tech.lq0.providencraft.item.providencemagicros.haine.CloudKey;
+import tech.lq0.providencraft.item.providencemagicros.haine.CursedMarshaimallow;
 import tech.lq0.providencraft.item.providencemagicros.haine.HaiPlate;
 import tech.lq0.providencraft.item.providencemagicros.haine.Marshaimallow;
 import tech.lq0.providencraft.item.providencemagicros.hoshimiya.*;
@@ -201,6 +202,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> HAI_PLATE = ITEMS.register("hai_plate", HaiPlate::new);
     public static final RegistryObject<Item> MARSHAIMALLOW = ITEMS.register("marshaimallow", Marshaimallow::new);
     public static final RegistryObject<Item> CLOUD_KEY = ITEMS.register("cloud_key", CloudKey::new);
+    public static final RegistryObject<Item> CURSED_MARSHAIMALLOW = ITEMS.register("cursed_marshaimallow", CursedMarshaimallow::new);
 
     //keroro
     public static final RegistryObject<Item> RED_NOSE = ITEMS.register("red_nose", RedNose::new);
