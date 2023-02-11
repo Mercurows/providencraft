@@ -75,6 +75,7 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
             if (result.getType() == RayTraceResult.Type.BLOCK) {
                 BlockRayTraceResult blockResult = (BlockRayTraceResult) result;
 
+                //From TaC
                 Direction direction = blockResult.getFace();
                 switch (direction.getAxis()) {
                     case X:

@@ -52,6 +52,8 @@ public class CursedMarshaimallow extends Item {
                 if(!player.isCreative()) {
                     stack.shrink(1);
                 }
+
+                player.getCooldownTracker().setCooldown(stack.getItem(), 100);
             }
         }
     }

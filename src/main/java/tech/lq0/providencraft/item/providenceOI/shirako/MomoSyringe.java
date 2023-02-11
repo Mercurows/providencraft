@@ -83,20 +83,22 @@ public class MomoSyringe extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         PlayerEntity playerEntity = (PlayerEntity) entityLiving;
 
-        double random = Math.random();
-        if(random <= .1){
-            playerEntity.setFire(8);
-            playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 2));
-        }else {
-            playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 1));
-            playerEntity.heal(playerEntity.getMaxHealth() * 0.25f);
-        }
+        if(!worldIn.isRemote) {
+            double random = Math.random();
+            if (random <= .1) {
+                playerEntity.setFire(8);
+                playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 2));
+            } else {
+                playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 160, 1));
+                playerEntity.heal(playerEntity.getMaxHealth() * 0.25f);
+            }
 
-        if(!playerEntity.isCreative()) {
-            stack.shrink(1);
-        }
+            if (!playerEntity.isCreative()) {
+                stack.shrink(1);
+            }
 
-        playerEntity.getCooldownTracker().setCooldown(stack.getItem(), 200);
+            playerEntity.getCooldownTracker().setCooldown(stack.getItem(), 200);
+        }
 
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }
