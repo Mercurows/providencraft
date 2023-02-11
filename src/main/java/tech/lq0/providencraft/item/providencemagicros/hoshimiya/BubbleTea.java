@@ -33,7 +33,7 @@ public class BubbleTea extends Item {
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        if(entityLiving instanceof PlayerEntity) {
+        if(entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 400, 0));
 

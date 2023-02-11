@@ -15,7 +15,10 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SExplosionPacket;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -34,10 +37,6 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
         super(EntityRegistry.CURSED_CAT_DOLL_ENTITY.get(), entity, world);
     }
 
-    public CursedCatDollEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
-        super(EntityRegistry.CURSED_CAT_DOLL_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
-    }
-
     @Override
     protected Item getDefaultItem() {
         return null;
@@ -49,7 +48,13 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
         this.dataManager.register(FUSE, 80);
     }
 
+    @Override
+    public boolean canBeCollidedWith() {
+        return this.isAlive();
+    }
+
     public void tick() {
+        super.tick();
         --this.fuse;
         if (this.fuse <= 0) {
             this.remove();
@@ -62,6 +67,34 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
             }
         }
 
+    }
+
+    @Override
+    protected void onImpact(RayTraceResult result) {
+        if(!world.isRemote) {
+            if (result.getType() == RayTraceResult.Type.BLOCK) {
+                BlockRayTraceResult blockResult = (BlockRayTraceResult) result;
+
+                Direction direction = blockResult.getFace();
+                switch (direction.getAxis()) {
+                    case X:
+                        this.setMotion(this.getMotion().mul(-0.5, 0.75, 0.75));
+                        break;
+                    case Y:
+                        this.setMotion(this.getMotion().mul(0.75, -0.25, 0.75));
+                        if (this.getMotion().getY() < this.getGravityVelocity()) {
+                            this.setMotion(this.getMotion().mul(1, 0, 1));
+                        }
+                        break;
+                    case Z:
+                        this.setMotion(this.getMotion().mul(0.75, 0.75, -0.5));
+                        break;
+                }
+            } else {
+                this.remove();
+                explode(this, 10.0f);
+            }
+        }
     }
 
     @Override

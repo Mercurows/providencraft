@@ -30,16 +30,22 @@ public class CursedMarshaimallow extends Item {
                 PlayerEntity player = (PlayerEntity) entityLiving;
 
                 CursedCatDollEntity cursedCatDoll = new CursedCatDollEntity(worldIn, player);
-                cursedCatDoll.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 4.0f, 0.0f);
+                int usingTime = this.getUseDuration(stack) - timeLeft;
+
+                float power = Math.min(usingTime / 30.0f, 3.5f);
+
+                cursedCatDoll.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, power, 0.0f);
                 worldIn.addEntity(cursedCatDoll);
 
-                stack.shrink(1);
+                if(!player.isCreative()) {
+                    stack.shrink(1);
+                }
             }
         }
     }
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return 200;
+        return 1000;
     }
 }
