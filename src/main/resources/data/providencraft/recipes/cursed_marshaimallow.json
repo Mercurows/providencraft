@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "prp",
+    "tat",
+    "bcb"
+  ],
+  "key": {
+    "a": {
+      "item": "providencraft:marshaimallow"
+    },
+    "b": {
+      "item": "minecraft:light_gray_wool"
+    },
+    "r": {
+      "item": "minecraft:wither_rose"
+    },
+    "p": {
+      "item": "minecraft:magenta_wool"
+    },
+    "c": {
+      "item": "minecraft:dragon_breath"
+    },
+    "t": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "item": "providencraft:cursed_marshaimallow",
+    "count": 2
+  }
+}

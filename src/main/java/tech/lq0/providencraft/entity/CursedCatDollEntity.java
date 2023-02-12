@@ -1,6 +1,7 @@
 package tech.lq0.providencraft.entity;
 
 import io.netty.buffer.Unpooled;
+import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -15,6 +16,8 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SExplosionPacket;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
@@ -63,7 +66,7 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
             }
         } else {
             if (this.world.isRemote) {
-                this.world.addParticle(ParticleTypes.HEART, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), 0.0D, 0.0D, 0.0D);
+                this.world.addParticle(ParticleTypes.DAMAGE_INDICATOR, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), 0.0D, 0.0D, 0.0D);
             }
         }
 
@@ -155,5 +158,15 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
                 player.connection.sendPacket(new SExplosionPacket(entity.getPosX(), entity.getPosY(), entity.getPosZ(), radius, explosion.getAffectedBlockPositions(), explosion.getPlayerKnockbackMap().get(player)));
             }
         }
+
+        AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ());
+        areaEffectCloud.addEffect(new EffectInstance(Effects.WEAKNESS, 100, 2));
+        areaEffectCloud.addEffect(new EffectInstance(Effects.SLOWNESS, 100, 2));
+        areaEffectCloud.addEffect(new EffectInstance(Effects.WITHER, 100, 0));
+        areaEffectCloud.setRadius(1.0f);
+        areaEffectCloud.setDuration(180);
+        areaEffectCloud.setRadiusPerTick(0.05f);
+
+        world.addEntity(areaEffectCloud);
     }
 }
