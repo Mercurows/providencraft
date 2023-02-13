@@ -23,7 +23,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class LotusPotato extends Item {
-    private static final Food food = (new Food.Builder()).saturation(1.33f).hunger(6).build();
+    private static final Food food = (new Food.Builder()).saturation(1.2f).hunger(6).build();
 
     public LotusPotato() {
         super(new Properties().food(food).group(ModGroup.itemgroup));
