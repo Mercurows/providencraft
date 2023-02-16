@@ -98,7 +98,9 @@ public class TracheliumHandler {
         if(!tracker.hasCooldown(itemStack.getItem())){
             Trachelium trachelium = (Trachelium) itemStack.getItem();
 
-            tracker.setCooldown(trachelium, 20);
+            if(Trachelium.getAmmo(itemStack) != 0) {
+                tracker.setCooldown(trachelium, 15);
+            }
 
             NetworkHandler.getInstance().sendToServer(new TracheliumPack(player));
         }

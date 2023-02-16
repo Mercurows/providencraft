@@ -6,29 +6,22 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
-import net.minecraft.item.UseAction;
-import net.minecraft.particles.IParticleData;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.particle.TracheliumParticleData;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.awt.*;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -74,7 +67,7 @@ public class Trachelium extends Item {
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return 40;
+        return 72000;
     }
 
     @Override
@@ -86,18 +79,10 @@ public class Trachelium extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if(getAmmo(stack) < 8){
-            playerIn.setActiveHand(handIn);
-            return ActionResult.resultConsume(stack);
-        }else {
-            return new ActionResult<>(ActionResultType.FAIL, stack);
-        }
+        playerIn.setActiveHand(handIn);
+        return ActionResult.resultConsume(stack);
     }
 
-    @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BOW;
-    }
 
 //    @Override
 //    public void onUsingTick(ItemStack stack, LivingEntity player, int count) {

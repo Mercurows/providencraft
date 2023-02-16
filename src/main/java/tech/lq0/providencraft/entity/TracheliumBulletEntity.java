@@ -286,7 +286,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
             damage = this.getCriticalDamage(damage);
         }
 
-        DamageSource source = new IndirectEntityDamageSource("bullet", this, shooter).setProjectile();
+        DamageSource source = new IndirectEntityDamageSource("trachelium_bullet", this, shooter).setProjectile().setDamageIsAbsolute();
         entity.attackEntityFrom(source, damage);
 
         if(entity instanceof LivingEntity) {
@@ -406,7 +406,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
     }
 
     private float getCriticalDamage(float damage) {
-        return damage * 1.5f;
+        return damage * 2.0f;
     }
 
     @Override
