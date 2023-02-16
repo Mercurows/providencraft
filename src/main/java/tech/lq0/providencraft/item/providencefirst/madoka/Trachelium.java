@@ -59,9 +59,9 @@ public class Trachelium extends Item {
     }
 
     public static void shoot(ItemStack stack, PlayerEntity player){
-//        if(player.isCreative()){
-//            return;
-//        }
+        if(player.isCreative()){
+            return;
+        }
         setAmmo(stack, Math.max(getAmmo(stack) - 1, 0));
     }
 
