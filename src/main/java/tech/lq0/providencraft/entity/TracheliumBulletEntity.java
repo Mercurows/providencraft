@@ -71,7 +71,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
         this.setPosition(posX, posY, posZ);
     }
 
-    //Forked from TaC
+    //Forked from MrCrayfish and TaC
     public void updateHeading() {
         float f = MathHelper.sqrt(this.getMotion().getX() * this.getMotion().getX() + this.getMotion().getZ() * this.getMotion().getZ());
         this.rotationYaw = (float) (MathHelper.atan2(this.getMotion().getX(), this.getMotion().getZ()) * (180D / Math.PI));
@@ -286,6 +286,15 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
 
         DamageSource source = new IndirectEntityDamageSource("bullet", this, shooter).setProjectile();
         entity.attackEntityFrom(source, damage);
+
+        if(entity instanceof LivingEntity) {
+            LivingEntity livingEntity = (LivingEntity) entity;
+            if (this.effectInstances != null) {
+                for (EffectInstance instance : effectInstances) {
+                    livingEntity.addPotionEffect(instance);
+                }
+            }
+        }
     }
 
     @Nullable
@@ -299,7 +308,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
         boundingBox = boundingBox.expand(0, expandHeight, 0);
 
         Vector3d hitPos = boundingBox.rayTrace(startVec, endVec).orElse(null);
-        Vector3d grownHitPos = boundingBox.grow(Config.COMMON.gameplay.growBoundingBoxAmountV2.get(), 0, Config.COMMON.gameplay.growBoundingBoxAmountV2.get()).rayTrace(startVec, endVec).orElse(null);
+        Vector3d grownHitPos = boundingBox.grow(0, 0, 1).rayTrace(startVec, endVec).orElse(null);
         if(hitPos == null && grownHitPos != null) {
             RayTraceResult raytraceresult = rayTraceBlocks(this.world, new RayTraceContext(startVec, grownHitPos, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, this), IGNORE_LEAVES);
             if(raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
@@ -317,7 +326,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
                     box = box.offset(boundingBox.getCenter().x, boundingBox.minY, boundingBox.getCenter().z);
                     Optional<Vector3d> headshotHitPos = box.rayTrace(startVec, endVec);
                     if(!headshotHitPos.isPresent()) {
-                        box = box.grow(Config.COMMON.gameplay.growBoundingBoxAmountV2.get(), 0, Config.COMMON.gameplay.growBoundingBoxAmountV2.get());
+                        box = box.grow(0, 0, 1);
                         headshotHitPos = box.rayTrace(startVec, endVec);
                     }
                     if(headshotHitPos.isPresent() && (hitPos == null || headshotHitPos.get().distanceTo(hitPos) < 0.5)) {
@@ -405,12 +414,12 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
 
     @Override
     protected void readAdditional(CompoundNBT compound) {
-
+        this.maxLife = compound.getInt("MaxLife");
     }
 
     @Override
     protected void writeAdditional(CompoundNBT compound) {
-
+        compound.putInt("MaxLife", this.maxLife);
     }
 
     @Override
@@ -420,12 +429,17 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
 
     @Override
     public void writeSpawnData(PacketBuffer buffer) {
-
+        buffer.writeInt(this.shooterId);
+        buffer.writeVarInt(this.maxLife);
+        buffer.writeInt(this.bulletType);
     }
 
     @Override
     public void readSpawnData(PacketBuffer additionalData) {
-
+        this.shooterId = additionalData.readInt();
+        this.maxLife = additionalData.readVarInt();
+        this.bulletType = additionalData.readInt();
+        this.size = new EntitySize(0.1f, 0.1f, false);
     }
 
     //Forked from MrCrayfish
@@ -440,23 +454,14 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
             this.headshot = headshot;
         }
 
-        /**
-         * Gets the entity that was hit by the projectile
-         */
         public Entity getEntity() {
             return this.entity;
         }
 
-        /**
-         * Gets the position the projectile hit
-         */
         public Vector3d getHitPos() {
             return this.hitVec;
         }
 
-        /**
-         * Gets if this was a headshot
-         */
         public boolean isHeadshot() {
             return this.headshot;
         }
