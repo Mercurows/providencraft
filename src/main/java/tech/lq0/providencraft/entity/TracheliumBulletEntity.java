@@ -183,8 +183,8 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
             return;
         }
 
-        if(result instanceof EntityRayTraceResult) {
-            EntityRayTraceResult entityRayTraceResult = (EntityRayTraceResult) result;
+        if(result instanceof ExtendedEntityRayTraceResult) {
+            ExtendedEntityRayTraceResult entityRayTraceResult = (ExtendedEntityRayTraceResult) result;
             Entity entity = entityRayTraceResult.getEntity();
             if(entity.getEntityId() == this.shooterId) {
                 return;
@@ -193,7 +193,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
             if(!entity.isAlive()) {
                 entity.hurtResistantTime = 0;
             } else if(entity.isAlive()) {
-                this.onHitEntity(entity);
+                this.onHitEntity(entity, entityRayTraceResult.isHeadshot());
 
                 this.remove();
                 entity.hurtResistantTime = 0;
@@ -280,9 +280,11 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
         });
     }
 
-    protected void onHitEntity(Entity entity) {
+    protected void onHitEntity(Entity entity, boolean headshot) {
         float damage = this.getDamage();
-        damage = this.getCriticalDamage(damage);
+        if(headshot) {
+            damage = this.getCriticalDamage(damage);
+        }
 
         DamageSource source = new IndirectEntityDamageSource("bullet", this, shooter).setProjectile();
         entity.attackEntityFrom(source, damage);
@@ -308,7 +310,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
         boundingBox = boundingBox.expand(0, expandHeight, 0);
 
         Vector3d hitPos = boundingBox.rayTrace(startVec, endVec).orElse(null);
-        Vector3d grownHitPos = boundingBox.grow(0, 0, 1).rayTrace(startVec, endVec).orElse(null);
+        Vector3d grownHitPos = boundingBox.grow(0, 0, 0).rayTrace(startVec, endVec).orElse(null);
         if(hitPos == null && grownHitPos != null) {
             RayTraceResult raytraceresult = rayTraceBlocks(this.world, new RayTraceContext(startVec, grownHitPos, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, this), IGNORE_LEAVES);
             if(raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
@@ -326,7 +328,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
                     box = box.offset(boundingBox.getCenter().x, boundingBox.minY, boundingBox.getCenter().z);
                     Optional<Vector3d> headshotHitPos = box.rayTrace(startVec, endVec);
                     if(!headshotHitPos.isPresent()) {
-                        box = box.grow(0, 0, 1);
+                        box = box.grow(0, 0, 0);
                         headshotHitPos = box.rayTrace(startVec, endVec);
                     }
                     if(headshotHitPos.isPresent() && (hitPos == null || headshotHitPos.get().distanceTo(hitPos) < 0.5)) {
@@ -439,7 +441,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
         this.shooterId = additionalData.readInt();
         this.maxLife = additionalData.readVarInt();
         this.bulletType = additionalData.readInt();
-        this.size = new EntitySize(0.1f, 0.1f, false);
+        this.size = new EntitySize(0.2f, 0.2f, false);
     }
 
     //Forked from MrCrayfish

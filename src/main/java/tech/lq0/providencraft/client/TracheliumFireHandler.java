@@ -29,6 +29,7 @@ public class TracheliumFireHandler {
 
                     TracheliumBulletEntity entity = new TracheliumBulletEntity(EntityRegistry.TRACHELIUM_BULLET_ENTITY.get(), world, player, 0);
                     world.addEntity(entity);
+                    entity.setBulletDamage(40.0f);
                     entity.tick();
 
                 }else {
