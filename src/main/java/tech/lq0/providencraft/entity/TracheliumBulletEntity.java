@@ -310,7 +310,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
         boundingBox = boundingBox.expand(0, expandHeight, 0);
 
         Vector3d hitPos = boundingBox.rayTrace(startVec, endVec).orElse(null);
-        Vector3d grownHitPos = boundingBox.grow(0, 0, 0).rayTrace(startVec, endVec).orElse(null);
+        Vector3d grownHitPos = boundingBox.grow(0.1, 0, 0.1).rayTrace(startVec, endVec).orElse(null);
         if(hitPos == null && grownHitPos != null) {
             RayTraceResult raytraceresult = rayTraceBlocks(this.world, new RayTraceContext(startVec, grownHitPos, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, this), IGNORE_LEAVES);
             if(raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
@@ -328,7 +328,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
                     box = box.offset(boundingBox.getCenter().x, boundingBox.minY, boundingBox.getCenter().z);
                     Optional<Vector3d> headshotHitPos = box.rayTrace(startVec, endVec);
                     if(!headshotHitPos.isPresent()) {
-                        box = box.grow(0, 0, 0);
+                        box = box.grow(0.1, 0, 0.1);
                         headshotHitPos = box.rayTrace(startVec, endVec);
                     }
                     if(headshotHitPos.isPresent() && (hitPos == null || headshotHitPos.get().distanceTo(hitPos) < 0.5)) {
@@ -441,7 +441,7 @@ public class TracheliumBulletEntity extends Entity implements IEntityAdditionalS
         this.shooterId = additionalData.readInt();
         this.maxLife = additionalData.readVarInt();
         this.bulletType = additionalData.readInt();
-        this.size = new EntitySize(0.2f, 0.2f, false);
+        this.size = new EntitySize(0.5f, 0.5f, false);
     }
 
     //Forked from MrCrayfish

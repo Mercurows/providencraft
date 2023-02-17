@@ -4,18 +4,24 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -79,9 +85,30 @@ public class Trachelium extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
+        if(playerIn.isSneaking()){
+            setAmmo(stack, 8);
+            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
+            return ActionResult.resultSuccess(stack);
+        }
         playerIn.setActiveHand(handIn);
         return ActionResult.resultConsume(stack);
     }
+
+//    @SubscribeEvent
+//    public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
+//        event.enqueueWork(() -> ItemModelsProperties.registerProperty(
+//                ItemRegistry.TRACHELIUM.get(), new ResourceLocation(Utils.MOD_ID, "trachelium_ammo"),
+//                (itemStack, clientWorld, livingEntity) -> {
+//                    if (livingEntity == null) {
+//                        return 8;
+//                    } else {
+//                        ItemStack stack = livingEntity.getActiveItemStack();
+//                        return !stack.isEmpty() && itemStack.getItem() instanceof Trachelium ?
+//                                Trachelium.getAmmo(stack) : 8;
+//                    }
+//                }
+//        ));
+//    }
 
 
 //    @Override

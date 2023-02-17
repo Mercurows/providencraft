@@ -50,5 +50,5 @@ public class EntityRegistry {
                     () -> EntityType.Builder.<CursedCatDollEntity>create(CursedCatDollEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("cursed_cat_doll"));
     public static final RegistryObject<EntityType<TracheliumBulletEntity>> TRACHELIUM_BULLET_ENTITY =
             ENTITY_TYPES.register("trachelium_bullet",
-                    () -> EntityType.Builder.<TracheliumBulletEntity>create(TracheliumBulletEntity::new, EntityClassification.MISC).size(0.1f,0.1f).build("trachelium_bullet"));
+                    () -> EntityType.Builder.<TracheliumBulletEntity>create(TracheliumBulletEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("trachelium_bullet"));
 }
