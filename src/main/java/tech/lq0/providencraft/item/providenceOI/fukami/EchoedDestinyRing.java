@@ -49,7 +49,7 @@ public class EchoedDestinyRing extends Item {
 
     public EchoedDestinyRing() {
         super(new Properties().maxStackSize(1).maxDamage(404).group(ModGroup.itemgroup)
-                .rarity(Rarity.create("LEGENDARY", TextFormatting.GOLD)).setISTER(() -> EchoedDestinyRingTileEntityRenderer::new));
+                .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)).setISTER(() -> EchoedDestinyRingTileEntityRenderer::new));
     }
 
     @OnlyIn(Dist.CLIENT)

@@ -35,7 +35,7 @@ public class Trachelium extends Item {
     public static final String TAG_AMMO = "ammo";
 
     public Trachelium(){
-        super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("LEGENDARY", TextFormatting.GOLD)));
+        super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
     }
 
     @OnlyIn(Dist.CLIENT)

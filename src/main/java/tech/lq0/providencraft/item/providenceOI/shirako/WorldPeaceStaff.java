@@ -39,7 +39,7 @@ public class WorldPeaceStaff extends SwordItem {
 
     public WorldPeaceStaff(){
         super(ItemTier.NETHERITE, 18, -2.0f, new Properties().maxDamage(11451).isImmuneToFire()
-                .rarity(Rarity.create("legendary", TextFormatting.GOLD)).group(ModGroup.itemgroup));
+                .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)).group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
