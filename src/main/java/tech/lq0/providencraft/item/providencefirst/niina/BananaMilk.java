@@ -4,6 +4,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.UseAction;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.ITextComponent;
@@ -40,5 +41,9 @@ public class BananaMilk extends Item {
         tooltip.add((new TranslationTextComponent("banana_milk_des1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("banana_milk_des2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.NIINA);
+    }
+
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.DRINK;
     }
 }

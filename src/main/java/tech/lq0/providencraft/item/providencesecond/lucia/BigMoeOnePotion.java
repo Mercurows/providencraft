@@ -3,10 +3,7 @@ package tech.lq0.providencraft.item.providencesecond.lucia;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -71,5 +68,9 @@ public class BigMoeOnePotion extends Item {
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_des2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("big_moe_one_potion_warn")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
         TooltipTool.addLiverInfo(tooltip, Livers.LUCIA);
+    }
+
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.DRINK;
     }
 }

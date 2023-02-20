@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.item.providencefirst.madoka;
+package tech.lq0.providencraft.item.providencesecond.lucia;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Food;
@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -24,13 +25,15 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class PeachBeach extends Item {
-    private static final Food food = (new Food.Builder()).saturation(0.75f).hunger(6).setAlwaysEdible().
-            effect(() -> new EffectInstance(Effects.NAUSEA, 300, 0), 0.3f).
-            effect(() -> new EffectInstance(Effects.STRENGTH, 300, 0), 1.0f).build();
+public class BigFierceOneCoffee extends Item {
+    private static final Food food = (new Food.Builder()).saturation(0.5f).hunger(2).
+            effect(() -> new EffectInstance(Effects.NIGHT_VISION, 600, 0), 1.0f).
+            effect(() -> new EffectInstance(Effects.HASTE, 600, 1), 1.0f).
+            effect(() -> new EffectInstance(EffectRegistry.BIG_FIERCE_ONE.get(), 600, 0), 1.0f).
+            setAlwaysEdible().build();
 
-    public PeachBeach() {
-        super(new Properties().group(ModGroup.itemgroup).food(food).maxStackSize(1));
+    public BigFierceOneCoffee(){
+        super(new Properties().group(ModGroup.itemgroup).food(food));
     }
 
     @Override
@@ -42,9 +45,9 @@ public class PeachBeach extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("peach_beach_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("peach_beach_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
-        TooltipTool.addLiverInfo(tooltip, Livers.MADOKA);
+        tooltip.add((new TranslationTextComponent("big_fierce_one_coffee_des1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("big_fierce_one_coffee_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        TooltipTool.addLiverInfo(tooltip, Livers.LUCIA);
     }
 
     public UseAction getUseAction(ItemStack stack) {
