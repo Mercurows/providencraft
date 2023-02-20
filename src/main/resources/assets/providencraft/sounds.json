@@ -387,5 +387,35 @@
         "name": "providencraft:blood_crystal"
       }
     ]
+  },
+  "audio/poi/fukamizu_cats": {
+    "subtitle": "fukamizu_cats",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/poi/fukamizu_cats",
+        "stream": true
+      }
+    ]
+  },
+  "audio/poi/fukamizu_math": {
+    "subtitle": "fukamizu_math",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/poi/fukamizu_math",
+        "stream": true
+      }
+    ]
+  },
+  "audio/poi/fukamizu_sun_bath": {
+    "subtitle": "fukamizu_sun_bath",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/poi/fukamizu_sun_bath",
+        "stream": true
+      }
+    ]
   }
 }

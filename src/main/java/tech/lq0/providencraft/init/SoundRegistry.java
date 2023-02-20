@@ -49,6 +49,9 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> LOUISE_SUMMON = SOUNDS.register("louise_summon", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_summon")));
     public static final RegistryObject<SoundEvent> LOUISE_FARMING = SOUNDS.register("louise_farming", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_farming")));
     public static final RegistryObject<SoundEvent> LOUISE_FOOD = SOUNDS.register("louise_food", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/louise_food")));
+    public static final RegistryObject<SoundEvent> FUKAMIZU_CATS = SOUNDS.register("fukamizu_cats", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/poi/fukamizu_cats")));
+    public static final RegistryObject<SoundEvent> FUKAMIZU_MATH = SOUNDS.register("fukamizu_math", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/poi/fukamizu_math")));
+    public static final RegistryObject<SoundEvent> FUKAMIZU_SUN_BATH = SOUNDS.register("fukamizu_sun_bath", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/poi/fukamizu_sun_bath")));
 
     public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
 
