@@ -27,14 +27,13 @@ public class BigMoeOnePotion extends Item {
     private static final Food food = (new Food.Builder()).saturation(0).hunger(0).setAlwaysEdible().build();
 
     public BigMoeOnePotion() {
-        super(new Properties().food(food).maxStackSize(1).group(ModGroup.itemgroup));
+        super(new Properties().food(food).maxStackSize(16).group(ModGroup.itemgroup).containerItem(Items.GLASS_BOTTLE));
     }
 
     @Override
     @ParametersAreNonnullByDefault
     @Nonnull
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             int random = (int) (Math.random() * 99 + 1);
@@ -46,13 +45,17 @@ public class BigMoeOnePotion extends Item {
                 player.sendStatusMessage(new TranslationTextComponent("big_moe_one_potion_moe").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
             }
 
-            if (player.isCreative()) {
-                return itemStack;
-            } else {
-                return Items.GLASS_BOTTLE.getDefaultInstance();
+            if (!player.abilities.isCreativeMode) {
+                stack.shrink(1);
+
+                if (stack.isEmpty()) {
+                    return new ItemStack(Items.GLASS_BOTTLE);
+                }
+
+                player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
             }
         }
-        return itemStack;
+        return stack;
     }
 
     @Override

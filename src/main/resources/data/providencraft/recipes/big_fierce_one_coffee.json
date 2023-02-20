@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "ama",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "providencraft:big_moe_one_potion"
+    },
+    "b": {
+      "item": "minecraft:blaze_powder"
+    },
+    "m": {
+      "item": "minecraft:magma_cream"
+    }
+  },
+  "result": {
+    "item": "providencraft:big_fierce_one_coffee",
+    "count": 1
+  }
+}
