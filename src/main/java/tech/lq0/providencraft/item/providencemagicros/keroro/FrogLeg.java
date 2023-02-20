@@ -21,7 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class FrogLeg extends Item {
-    private static final Food food = (new Food.Builder()).saturation(0.8f).hunger(5).
+    private static final Food food = (new Food.Builder()).saturation(0.4f).hunger(5).
             effect(() -> new EffectInstance(Effects.JUMP_BOOST, 200, 3), 1.0f).build();
 
     public FrogLeg() {

@@ -29,7 +29,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class DaifukuSyrup extends Item {
-    public static final Food food = (new Food.Builder()).saturation(1.0f).hunger(1).fastToEat().setAlwaysEdible().build();
+    public static final Food food = (new Food.Builder()).saturation(0.5f).hunger(1).fastToEat().setAlwaysEdible().build();
 
     public DaifukuSyrup() {
         super(new Properties().food(food).group(ModGroup.itemgroup));

@@ -24,7 +24,7 @@ import java.util.List;
 
 public class AtsuiShio extends Item {
 
-    public static final Food food = (new Food.Builder()).saturation(1.0f).hunger(1).setAlwaysEdible().build();
+    public static final Food food = (new Food.Builder()).saturation(0.5f).hunger(1).setAlwaysEdible().build();
 
     public AtsuiShio() {
         super(new Properties().food(food).maxStackSize(1).group(ModGroup.donategroup).isImmuneToFire());

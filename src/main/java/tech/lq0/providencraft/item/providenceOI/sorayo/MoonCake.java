@@ -21,7 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MoonCake extends Item {
-    public static final Food food = (new Food.Builder()).saturation(1.2f).hunger(7).setAlwaysEdible().
+    public static final Food food = (new Food.Builder()).saturation(0.6f).hunger(7).setAlwaysEdible().
             effect(() -> new EffectInstance(Effects.HASTE, 600, 4), 1.0f).build();
 
     public MoonCake() {

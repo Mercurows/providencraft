@@ -19,7 +19,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class Unigiri extends Item {
-    private static final Food food = (new Food.Builder()).saturation(1.0f).hunger(10).build();
+    private static final Food food = (new Food.Builder()).saturation(0.5f).hunger(10).build();
 
     public Unigiri() {
         super(new Properties().food(food).group(ModGroup.itemgroup));

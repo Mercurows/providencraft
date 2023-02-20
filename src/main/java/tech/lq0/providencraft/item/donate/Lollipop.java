@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Lollipop extends Item {
-    public static final Food food = (new Food.Builder()).saturation(1.5f).hunger(4).setAlwaysEdible().build();
+    public static final Food food = (new Food.Builder()).saturation(0.75f).hunger(4).setAlwaysEdible().build();
 
     public Lollipop() {
         super(new Properties().food(food).isImmuneToFire().group(ModGroup.donategroup));

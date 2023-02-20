@@ -21,7 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class RabbitLychee extends Item {
-    private static final Food food = (new Food.Builder()).saturation(1.2f).hunger(3).
+    private static final Food food = (new Food.Builder()).saturation(0.6f).hunger(3).
             effect(() -> new EffectInstance(Effects.JUMP_BOOST, 200, 1), 1.0f).build();
 
     public RabbitLychee() {

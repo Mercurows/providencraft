@@ -25,7 +25,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class BubbleTea extends Item {
-    public static final Food food = (new Food.Builder()).saturation(0.8f).hunger(8).setAlwaysEdible().build();
+    public static final Food food = (new Food.Builder()).saturation(0.4f).hunger(8).setAlwaysEdible().build();
 
     public BubbleTea(){
         super(new Properties().food(food).group(ModGroup.itemgroup));
