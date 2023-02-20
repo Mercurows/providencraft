@@ -27,9 +27,9 @@ import java.util.List;
 
 public class BigFierceOneCoffee extends Item {
     private static final Food food = (new Food.Builder()).saturation(0.5f).hunger(2).
-            effect(() -> new EffectInstance(Effects.NIGHT_VISION, 600, 0), 1.0f).
-            effect(() -> new EffectInstance(Effects.HASTE, 600, 1), 1.0f).
-            effect(() -> new EffectInstance(EffectRegistry.BIG_FIERCE_ONE.get(), 600, 0), 1.0f).
+            effect(() -> new EffectInstance(Effects.NIGHT_VISION, 1200, 0), 1.0f).
+            effect(() -> new EffectInstance(Effects.HASTE, 1200, 1), 1.0f).
+            effect(() -> new EffectInstance(EffectRegistry.BIG_FIERCE_ONE.get(), 1200, 3), 1.0f).
             setAlwaysEdible().build();
 
     public BigFierceOneCoffee(){
