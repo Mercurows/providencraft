@@ -9,5 +9,6 @@ import tech.lq0.providencraft.Utils;
 public class ClientHandler {
     public static void init(){
         MinecraftForge.EVENT_BUS.register(TracheliumHandler.getInstance());
+        MinecraftForge.EVENT_BUS.register(ClientRenderHandler.get());
     }
 }

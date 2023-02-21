@@ -120,8 +120,6 @@ public abstract class AnimationController {
                     return new AnimationSoundMeta(new ResourceLocation(Utils.MOD_ID, "how_hold_blood"));
                 case DRAW:
                     return new AnimationSoundMeta(new ResourceLocation(Utils.MOD_ID, "sorry"));
-                case INSPECT:
-                    return new AnimationSoundMeta(new ResourceLocation(Utils.MOD_ID, "yyky_scream_1"));
                 default:
                     return null;
             }

@@ -6,9 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.CooldownTracker;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
+import tech.lq0.providencraft.event.FireEvent;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.item.providencefirst.madoka.Trachelium;
 import tech.lq0.providencraft.network.NetworkHandler;
@@ -98,11 +100,16 @@ public class TracheliumHandler {
         if(!tracker.hasCooldown(itemStack.getItem())){
             Trachelium trachelium = (Trachelium) itemStack.getItem();
 
+            if(MinecraftForge.EVENT_BUS.post(new FireEvent.Pre(player, itemStack))) {
+                return;
+            }
+
             if(Trachelium.getAmmo(itemStack) != 0) {
                 tracker.setCooldown(trachelium, 15);
             }
 
             NetworkHandler.getInstance().sendToServer(new TracheliumPack(player));
+            MinecraftForge.EVENT_BUS.post(new FireEvent.Post(player, itemStack));
         }
     }
 }

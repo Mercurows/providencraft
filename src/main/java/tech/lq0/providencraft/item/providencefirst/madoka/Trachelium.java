@@ -94,6 +94,10 @@ public class Trachelium extends Item {
         return ActionResult.resultConsume(stack);
     }
 
+    public void playAnimation(String animationName, ItemStack stack, boolean coercive){
+        System.out.println(114514);
+    }
+
 //    @SubscribeEvent
 //    public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
 //        event.enqueueWork(() -> ItemModelsProperties.registerProperty(
