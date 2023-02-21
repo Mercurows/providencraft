@@ -7,9 +7,10 @@ import tech.lq0.providencraft.init.ItemRegistry;
 import java.io.IOException;
 
 public class TracheliumController extends AnimationController{
-    public static int INDEX_BODY = 3;
-    public static int INDEX_LEFT_HAND = 7;
-    public static int INDEX_RIGHT_HAND = 4;
+    public static int INDEX_BODY = 0;
+    public static int INDEX_LEFT_HAND = 0;
+    public static int INDEX_RIGHT_HAND = 0;
+    public static final AnimationMeta FIRE = new AnimationMeta(new ResourceLocation(Utils.MOD_ID,"animations/trachelium_fire.gltf"));
     public static final AnimationMeta RELOAD_NORM = new AnimationMeta(new ResourceLocation(Utils.MOD_ID,"animations/trachelium_fire.gltf"));
     public static final AnimationMeta RELOAD_EMPTY = new AnimationMeta(new ResourceLocation(Utils.MOD_ID,"animations/trachelium_fire.gltf"));
     public static final AnimationMeta INSPECT = new AnimationMeta(new ResourceLocation(Utils.MOD_ID,"animations/trachelium_fire.gltf"));
@@ -19,6 +20,7 @@ public class TracheliumController extends AnimationController{
 
     private TracheliumController() {
         try {
+            Animations.load(FIRE);
             Animations.load(RELOAD_NORM);
             Animations.load(INSPECT);
             Animations.load(DRAW);
@@ -38,6 +40,7 @@ public class TracheliumController extends AnimationController{
     @Override
     public AnimationMeta getAnimationFromLabel(AnimationLabel label) {
         switch (label){
+            case FIRE: return FIRE;
             case INSPECT: return INSPECT;
             case RELOAD_NORMAL: return RELOAD_NORM;
             case DRAW: return DRAW;

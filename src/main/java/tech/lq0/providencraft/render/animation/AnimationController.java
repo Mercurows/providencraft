@@ -28,11 +28,10 @@ public abstract class AnimationController {
         RELOAD_LOOP,
         RELOAD_NORMAL_END,
         RELOAD_EMPTY_END,
-        PUMP,
-        PULL_BOLT,
         INSPECT,
         DRAW,
         STATIC,
+        FIRE
     }
 
     private AnimationMeta previousAnimation;

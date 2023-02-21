@@ -119,8 +119,7 @@ public enum AnimationHandler {
         if(event.isClient()){
             AnimationController controller = AnimationController.fromItem(event.getStack().getItem());
             if(controller != null){
-                if(controller.isAnimationRunning(AnimationController.AnimationLabel.DRAW) ||
-                        controller.isAnimationRunning(AnimationController.AnimationLabel.PUMP)) {
+                if(controller.isAnimationRunning(AnimationController.AnimationLabel.DRAW)) {
                     event.setCanceled(true);
                 }
             }

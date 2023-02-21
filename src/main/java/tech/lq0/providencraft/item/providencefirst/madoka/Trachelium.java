@@ -22,6 +22,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.render.animation.AnimationController;
+import tech.lq0.providencraft.render.animation.AnimationMeta;
+import tech.lq0.providencraft.render.animation.TracheliumController;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -95,7 +98,9 @@ public class Trachelium extends Item {
     }
 
     public void playAnimation(String animationName, ItemStack stack, boolean coercive){
-        System.out.println(114514);
+//        TracheliumController controller = TracheliumController.getInstance();
+//        controller.runAnimation(AnimationController.AnimationLabel.FIRE);
+        //TODO 使动画正常播放
     }
 
 //    @SubscribeEvent
