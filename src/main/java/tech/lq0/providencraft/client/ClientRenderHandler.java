@@ -1,30 +1,20 @@
 package tech.lq0.providencraft.client;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.FirstPersonRenderer;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.settings.PointOfView;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import tech.lq0.providencraft.event.FireEvent;
 import tech.lq0.providencraft.item.providencefirst.madoka.Trachelium;
-import tech.lq0.providencraft.render.animation.models.IOverrideModel;
-import tech.lq0.providencraft.render.animation.models.ModelOverrides;
-import tech.lq0.providencraft.render.util.RenderUtil;
 
 import java.lang.reflect.Field;
 
@@ -200,51 +190,6 @@ public class ClientRenderHandler {
         dest.rotateAngleY = source.rotateAngleY;
         dest.rotateAngleZ = source.rotateAngleZ;
     }
-
-    public boolean renderWeapon(LivingEntity entity, ItemStack stack, ItemCameraTransforms.TransformType transformType, MatrixStack matrixStack, IRenderTypeBuffer renderTypeBuffer, int light, float partialTicks) {
-        if (stack.getItem() instanceof Trachelium) {
-            matrixStack.push();
-
-            ItemStack model = ItemStack.EMPTY;
-            if (stack.getTag() != null) {
-                if (stack.getTag().contains("Model", Constants.NBT.TAG_COMPOUND)) {
-                    model = ItemStack.read(stack.getTag().getCompound("Model"));
-                }
-            }
-
-            RenderUtil.applyTransformType(model.isEmpty() ? stack : model, matrixStack, transformType, entity);
-
-            this.renderGun(entity, transformType, model.isEmpty() ? stack : model, matrixStack, renderTypeBuffer, light, partialTicks);
-
-            matrixStack.pop();
-            return true;
-        }
-        return false;
-    }
-
-    private void renderGun(LivingEntity entity, ItemCameraTransforms.TransformType transformType, ItemStack stack, MatrixStack matrixStack, IRenderTypeBuffer renderTypeBuffer, int light, float partialTicks) {
-        if (stack.getItem() instanceof Trachelium) {
-            RenderUtil.renderModel(stack, matrixStack, renderTypeBuffer, light, OverlayTexture.NO_OVERLAY, entity);
-        }
-        if (ModelOverrides.hasModel(stack)) {
-            IOverrideModel model = ModelOverrides.getModel(stack);
-            if (model != null) {
-
-                if (ModelOverrides.hasModel(stack) && transformType.equals(ItemCameraTransforms.TransformType.GUI)) {
-                    matrixStack.push();
-                    matrixStack.rotate(Vector3f.XP.rotationDegrees(25.0F));
-                    matrixStack.rotate(Vector3f.YP.rotationDegrees(-145.0F));
-                    matrixStack.scale(0.55f, 0.55f, 0.55f);
-                }
-                model.render(partialTicks, transformType, stack, ItemStack.EMPTY, entity, matrixStack, renderTypeBuffer, light, OverlayTexture.NO_OVERLAY);
-            }
-        } else {
-            RenderUtil.renderModel(stack, matrixStack, renderTypeBuffer, light, OverlayTexture.NO_OVERLAY, entity);
-        }
-        if (ModelOverrides.hasModel(stack) && transformType.equals(ItemCameraTransforms.TransformType.GUI))
-            matrixStack.pop();
-    }
-
 
 //    private void renderMuzzleFlash(LivingEntity entity, MatrixStack matrixStack, IRenderTypeBuffer buffer, ItemStack weapon, ItemCameraTransforms.TransformType transformType) {
 //        Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);

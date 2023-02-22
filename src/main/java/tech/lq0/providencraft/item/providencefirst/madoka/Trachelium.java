@@ -22,6 +22,7 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.render.item.RenderTrachelium;
 import tech.lq0.providencraft.tools.ItemNBTTool;
@@ -93,6 +94,8 @@ public class Trachelium extends Item implements IAnimatable{
         if(playerIn.isSneaking()){
             setAmmo(stack, 8);
             playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
+            GeckoLibUtil.getControllerForStack(this.factory, stack, "controller").setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", false));
+
             return ActionResult.resultSuccess(stack);
         }
         playerIn.setActiveHand(handIn);
@@ -111,12 +114,7 @@ public class Trachelium extends Item implements IAnimatable{
         data.addAnimationController(new AnimationController<>(this, "controller", 20, this::predicate));
     }
 
-    @SuppressWarnings("unused")
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if(isFire()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", false));
-            setFire(false);
-        }
         return PlayState.CONTINUE;
     }
 
