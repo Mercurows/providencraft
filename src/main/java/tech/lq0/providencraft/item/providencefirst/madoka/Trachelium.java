@@ -98,8 +98,13 @@ public class Trachelium extends Item {
     }
 
     public void playAnimation(String animationName, ItemStack stack, boolean coercive){
-//        TracheliumController controller = TracheliumController.getInstance();
-//        controller.runAnimation(AnimationController.AnimationLabel.FIRE);
+        TracheliumController controller = TracheliumController.getInstance();
+        if(controller.getAnimationFromLabel(AnimationController.AnimationLabel.FIRE) != null){
+            System.out.println(114);
+        }else {
+            System.out.println(514);
+        }
+        controller.runAnimation(AnimationController.AnimationLabel.FIRE);
         //TODO 使动画正常播放
     }
 

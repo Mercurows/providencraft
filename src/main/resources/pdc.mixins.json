@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "tech.lq0.providencraft.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.8",
+  "refmap": "pdc.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "MixinRender"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
