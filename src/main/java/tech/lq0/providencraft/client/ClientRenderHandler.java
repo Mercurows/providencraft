@@ -1,22 +1,16 @@
 package tech.lq0.providencraft.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.FirstPersonRenderer;
-import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.client.settings.PointOfView;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import tech.lq0.providencraft.event.FireEvent;
 import tech.lq0.providencraft.item.providencefirst.madoka.Trachelium;
-
-import java.lang.reflect.Field;
 
 //Forked from TaC
 public class ClientRenderHandler {
@@ -29,27 +23,11 @@ public class ClientRenderHandler {
         return instance;
     }
 
-
     public int sprintTransition;
     private int sprintCooldown;
-    private int restingTimer;
-    private final int restingTimerUpper = 5;
-
-    private float offhandTranslate;
-    private float prevOffhandTranslate;
-
-    public float muzzleExtraOnEnch = 0f;
-
-    private Field equippedProgressMainHandField;
-    private Field prevEquippedProgressMainHandField;
 
     private float startingDistance = 0f;
     private float speedUpDistanceFrom = 0f;
-
-    public float speedUpDistance = 0.6f;
-
-    public float speedUpProgress = 0f;
-
 
     private ClientRenderHandler() {
     }
@@ -100,7 +78,7 @@ public class ClientRenderHandler {
         Item item = event.getStack().getItem();
         if (item instanceof Trachelium) {
             Trachelium trachelium = (Trachelium) item;
-            trachelium.playAnimation("fire");
+            trachelium.playAnimation("fire", item.getDefaultInstance());
         }
         this.sprintTransition = 0;
         this.speedUpDistanceFrom = Minecraft.getInstance().player.distanceWalkedModified;
@@ -115,53 +93,6 @@ public class ClientRenderHandler {
 //            animated.playAnimation("reload", event.getStack(), false);
 //        }
 //    }
-
-
-    public float immersiveWeaponRoll;
-
-    public float walkingDistance1;
-    public float walkingDistance = 0.0f; //Abandoned. It is always 0.0f.
-    public float walkingCrouch;
-    public float walkingCameraYaw;
-    public float zoomProgressInv;
-
-    public double xOffset = 0.0;
-    public double yOffset = 0.0;
-    public double zOffset = 0.0;
-
-    public double opticMovement;
-    public double slideKeep;
-
-    public float translateX = 0f;
-    public float translateY = 0f;
-    public float translateZ = 0f;
-
-
-//    private void applyReloadTransforms(MatrixStack matrixStack, HandSide hand, float partialTicks, ItemStack modifiedGun) {
-//        float reloadProgress = ReloadHandler.get().getReloadProgress(partialTicks, modifiedGun);
-//
-//        if (reloadProgress > 0) {
-//            float leftHanded = hand == HandSide.LEFT ? -1 : 1;
-//
-//            matrixStack.translate(-0.25 * leftHanded, -0.1, 0);
-//            matrixStack.rotate(Vector3f.YP.rotationDegrees(45F * leftHanded));
-//            matrixStack.rotate(Vector3f.XP.rotationDegrees(-25F));
-//        }
-//    }
-
-    public float kickReduction = 0;
-    public float recoilReduction = 0;
-    public double kick = 0;
-    public float recoilLift = 0;
-    public float newSwayYawAmount = 0;
-    public float weaponsHorizontalAngle = 0;
-    public float newSwayPitch = 0;
-
-    public float newSwayYaw = 0;
-
-    public float newSwayYawPitch = 0;
-    public float newSwayYawYaw = 0;
-
 
     @SubscribeEvent
     public void onTick(TickEvent.RenderTickEvent event) {
@@ -184,14 +115,7 @@ public class ClientRenderHandler {
             return;
     }
 
-
-    private static void copyModelAngles(ModelRenderer source, ModelRenderer dest) {
-        dest.rotateAngleX = source.rotateAngleX;
-        dest.rotateAngleY = source.rotateAngleY;
-        dest.rotateAngleZ = source.rotateAngleZ;
-    }
-
-//    private void renderMuzzleFlash(LivingEntity entity, MatrixStack matrixStack, IRenderTypeBuffer buffer, ItemStack weapon, ItemCameraTransforms.TransformType transformType) {
+    //    private void renderMuzzleFlash(LivingEntity entity, MatrixStack matrixStack, IRenderTypeBuffer buffer, ItemStack weapon, ItemCameraTransforms.TransformType transformType) {
 //        Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
 //        if (modifiedGun.getDisplay().getFlash() == null) {
 //            return;
@@ -283,23 +207,4 @@ public class ClientRenderHandler {
 //        matrixStack.pop();
 //    }
 
-    private float getEquipProgress(float partialTicks) {
-        if (this.equippedProgressMainHandField == null) {
-            this.equippedProgressMainHandField = ObfuscationReflectionHelper.findField(FirstPersonRenderer.class, "field_187469_f");
-            this.equippedProgressMainHandField.setAccessible(true);
-        }
-        if (this.prevEquippedProgressMainHandField == null) {
-            this.prevEquippedProgressMainHandField = ObfuscationReflectionHelper.findField(FirstPersonRenderer.class, "field_187470_g");
-            this.prevEquippedProgressMainHandField.setAccessible(true);
-        }
-        FirstPersonRenderer firstPersonRenderer = Minecraft.getInstance().getFirstPersonRenderer();
-        try {
-            float equippedProgressMainHand = (float) this.equippedProgressMainHandField.get(firstPersonRenderer);
-            float prevEquippedProgressMainHand = (float) this.prevEquippedProgressMainHandField.get(firstPersonRenderer);
-            return 1.0F - MathHelper.lerp(partialTicks, prevEquippedProgressMainHand, equippedProgressMainHand);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return 0.0F;
-    }
 }
