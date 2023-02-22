@@ -26,19 +26,9 @@ public class ClientRenderHandler {
     public int sprintTransition;
     private int sprintCooldown;
 
-    private float startingDistance = 0f;
     private float speedUpDistanceFrom = 0f;
 
     private ClientRenderHandler() {
-    }
-
-    @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.END)
-            return;
-        if (Minecraft.getInstance().player == null) {
-            return;
-        }
     }
 
     private long fireTime = System.currentTimeMillis();

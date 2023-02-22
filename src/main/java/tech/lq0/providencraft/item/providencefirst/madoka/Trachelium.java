@@ -15,8 +15,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.network.PacketDistributor;
-import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -25,8 +23,6 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.network.GeckoLibNetwork;
-import software.bernie.geckolib3.network.ISyncable;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.render.item.RenderTrachelium;
@@ -39,16 +35,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class Trachelium extends Item implements IAnimatable, ISyncable {
+public class Trachelium extends Item implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     public static final String TAG_AMMO = "ammo";
-    public static final int ANIM_OPEN = 0;
     public String CONTROLLER_NAME = "trachelium_controller";
 
     public Trachelium(){
         super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD))
                 .setISTER(() -> RenderTrachelium::new));
-        GeckoLibNetwork.registerSyncable(this);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -110,14 +104,15 @@ public class Trachelium extends Item implements IAnimatable, ISyncable {
     public void playAnimation(String animationName, ItemStack stack){
         //TODO 使动画正常播放
         if(animationName.equals("fire")){
-            GeckoLibUtil.getControllerForStack(this.factory, stack, "trachelium_controller").
-                    setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
+            final AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, "trachelium_controller");
+            controller.markNeedsReload();
+            controller.setAnimation(new AnimationBuilder().addAnimation("trachelium.animation.fire", ILoopType.EDefaultLoopTypes.LOOP));
         }
     }
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, CONTROLLER_NAME, 1, this::predicate));
+        data.addAnimationController(new AnimationController<>(this, CONTROLLER_NAME, 15, this::predicate));
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
@@ -127,17 +122,6 @@ public class Trachelium extends Item implements IAnimatable, ISyncable {
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
-    }
-
-    @Override
-    public void onAnimationSync(int id, int state) {
-//        if (state == ANIM_OPEN) {
-//            final AnimationController<?> controller = GeckoLibUtil.getControllerForID(this.factory, id, CONTROLLER_NAME);
-//            if (controller.getAnimationState() == AnimationState.Stopped) {
-//                controller.markNeedsReload();
-//                controller.setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
-//            }
-//        }
     }
 
 //    @SubscribeEvent

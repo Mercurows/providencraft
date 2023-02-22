@@ -19,6 +19,6 @@ public class TracheliumModel extends AnimatedGeoModel<Trachelium> {
 
     @Override
     public ResourceLocation getAnimationFileLocation(Trachelium animatable) {
-        return new ResourceLocation(Utils.MOD_ID, "animations/animation.trachelium.fire.json");
+        return new ResourceLocation(Utils.MOD_ID, "animations/trachelium.animation.fire.json");
     }
 }
