@@ -1,0 +1,51 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.trachelium.fire": {
+			"loop": true,
+			"animation_length": 0.75,
+			"bones": {
+				"main": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0417": {
+							"vector": [-37.46853, 0.76629, -3.45102]
+						},
+						"0.1667": {
+							"vector": [-13.38, 0, 0]
+						},
+						"0.25": {
+							"vector": [-5.29, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0417": {
+							"vector": [-1, 5, 7]
+						},
+						"0.1667": {
+							"vector": [-0.5, 2.38, 4.64]
+						},
+						"0.25": {
+							"vector": [0, 0.76, 2.29]
+						},
+						"0.375": {
+							"vector": [0, 0.23, 0.68]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

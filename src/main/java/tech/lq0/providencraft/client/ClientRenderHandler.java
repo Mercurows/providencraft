@@ -110,7 +110,7 @@ public class ClientRenderHandler {
         Item item = event.getStack().getItem();
         if (item instanceof Trachelium) {
             Trachelium trachelium = (Trachelium) item;
-            trachelium.playAnimation("fire", event.getStack(), true);
+            trachelium.playAnimation("fire");
         }
         this.sprintTransition = 0;
         this.speedUpDistanceFrom = Minecraft.getInstance().player.distanceWalkedModified;

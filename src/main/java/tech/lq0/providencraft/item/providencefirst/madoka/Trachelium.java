@@ -4,27 +4,26 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import tech.lq0.providencraft.Utils;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.init.ItemRegistry;
-import tech.lq0.providencraft.render.animation.AnimationController;
-import tech.lq0.providencraft.render.animation.AnimationMeta;
-import tech.lq0.providencraft.render.animation.TracheliumController;
+import tech.lq0.providencraft.render.item.RenderTrachelium;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -34,11 +33,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class Trachelium extends Item {
+public class Trachelium extends Item implements IAnimatable{
+    private AnimationFactory factory = new AnimationFactory(this);
     public static final String TAG_AMMO = "ammo";
+    private boolean fire = false;
 
     public Trachelium(){
-        super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
+        super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD))
+                .setISTER(() -> RenderTrachelium::new));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -97,15 +99,38 @@ public class Trachelium extends Item {
         return ActionResult.resultConsume(stack);
     }
 
-    public void playAnimation(String animationName, ItemStack stack, boolean coercive){
-        TracheliumController controller = TracheliumController.getInstance();
-        if(controller.getAnimationFromLabel(AnimationController.AnimationLabel.FIRE) != null){
-            System.out.println(114);
-        }else {
-            System.out.println(514);
-        }
-        controller.runAnimation(AnimationController.AnimationLabel.FIRE);
+    public void playAnimation(String animationName){
         //TODO 使动画正常播放
+        if(animationName.equals("fire")){
+            setFire(true);
+        }
+    }
+
+    @Override
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(new AnimationController<>(this, "controller", 20, this::predicate));
+    }
+
+    @SuppressWarnings("unused")
+    private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
+        if(isFire()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", false));
+            setFire(false);
+        }
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
+    }
+
+    public boolean isFire() {
+        return fire;
+    }
+
+    public void setFire(boolean fire) {
+        this.fire = fire;
     }
 
 //    @SubscribeEvent
