@@ -106,7 +106,7 @@ public class Trachelium extends Item implements IAnimatable {
         if(animationName.equals("fire")){
             final AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, "trachelium_controller");
             controller.markNeedsReload();
-            controller.setAnimation(new AnimationBuilder().addAnimation("trachelium.animation.fire", ILoopType.EDefaultLoopTypes.LOOP));
+            controller.setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
         }
     }
 
