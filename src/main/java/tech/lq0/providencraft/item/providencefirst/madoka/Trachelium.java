@@ -11,9 +11,13 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -39,6 +43,8 @@ public class Trachelium extends Item implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
     public static final String TAG_AMMO = "ammo";
     public String CONTROLLER_NAME = "trachelium_controller";
+
+    private boolean fire = false;
 
     public Trachelium(){
         super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD))
@@ -101,22 +107,54 @@ public class Trachelium extends Item implements IAnimatable {
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 
-    public void playAnimation(String animationName, ItemStack stack){
+    public void playAnimation(String animationName, ItemStack stack, PlayerEntity player){
         //TODO 使动画正常播放
         if(animationName.equals("fire")){
-            final AnimationController<?> controller = GeckoLibUtil.getControllerForStack(this.factory, stack, "trachelium_controller");
-            controller.markNeedsReload();
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
+            new Object() {
+                private int ticks = 0;
+                private float waitTicks;
+                private IWorld world;
+
+                public void start(IWorld world, int waitTicks) {
+                    setFire(true);
+                    this.waitTicks = waitTicks;
+                    MinecraftForge.EVENT_BUS.register(this);
+                    this.world = world;
+                }
+
+                @SubscribeEvent
+                public void tick(TickEvent.ServerTickEvent event) {
+                    if (event.phase == TickEvent.Phase.END) {
+                        this.ticks++;
+                        if (this.ticks >= this.waitTicks) {
+                            run();
+                        }
+                    }
+                }
+
+                private void run() {
+                    setFire(false);
+                    MinecraftForge.EVENT_BUS.unregister(this);
+                }
+
+            }.start(player.world, (int) 15);
+        }else if (animationName.equals("reload")){
+            //TODO 添加换弹动画
         }
     }
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, CONTROLLER_NAME, 15, this::predicate));
+        data.addAnimationController(new AnimationController<>(this, CONTROLLER_NAME, 0, this::predicate));
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        return PlayState.CONTINUE;
+        if(this.isFire()){
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", ILoopType.EDefaultLoopTypes.LOOP));
+            return PlayState.CONTINUE;
+        }else {
+            return PlayState.STOP;
+        }
     }
 
     @Override
@@ -124,7 +162,15 @@ public class Trachelium extends Item implements IAnimatable {
         return this.factory;
     }
 
-//    @SubscribeEvent
+    public boolean isFire() {
+        return fire;
+    }
+
+    public void setFire(boolean fire) {
+        this.fire = fire;
+    }
+
+    //    @SubscribeEvent
 //    public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
 //        event.enqueueWork(() -> ItemModelsProperties.registerProperty(
 //                ItemRegistry.TRACHELIUM.get(), new ResourceLocation(Utils.MOD_ID, "trachelium_ammo"),

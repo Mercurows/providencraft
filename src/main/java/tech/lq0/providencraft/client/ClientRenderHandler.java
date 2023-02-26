@@ -2,6 +2,7 @@ package tech.lq0.providencraft.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.PointOfView;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -49,13 +50,13 @@ public class ClientRenderHandler {
             return;
         }
 
-        float cameraShakeDuration = 0.06f;
+        float cameraShakeDuration = 0.15f;
         long alphaTime = System.currentTimeMillis() - fireTime;
         float progress = (alphaTime < cameraShakeDuration * 1000 ? 1 - alphaTime / (cameraShakeDuration * 1000f) : 0);
 
-        float alpha = (progress * (Math.random() - 0.5 < 0 ? -1 : 1) * 0.9f);
+        float alpha = (progress * (Math.random() - 0.5 < 0 ? -1 : 1) * 4.0f);
         event.setPitch(event.getPitch() - Math.abs(alpha));
-        event.setRoll(event.getRoll() + alpha * 0.5f);
+        event.setRoll(event.getRoll() + alpha * 0.05f);
     }
 
 
@@ -67,8 +68,12 @@ public class ClientRenderHandler {
         if (Minecraft.getInstance().player == null) return;
         Item item = event.getStack().getItem();
         if (item instanceof Trachelium) {
-            Trachelium trachelium = (Trachelium) item;
-            trachelium.playAnimation("fire", item.getDefaultInstance());
+            LivingEntity entity = event.getEntityLiving();
+            if(entity instanceof PlayerEntity) {
+                PlayerEntity player = (PlayerEntity) entity;
+                Trachelium trachelium = (Trachelium) item;
+                trachelium.playAnimation("fire", item.getDefaultInstance(), player);
+            }
         }
         this.sprintTransition = 0;
         this.speedUpDistanceFrom = Minecraft.getInstance().player.distanceWalkedModified;
