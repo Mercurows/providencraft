@@ -1,0 +1,13 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.trachelium.fire": {
+			"animation_length": 0.91667,
+			"bones": {
+				"main": {
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

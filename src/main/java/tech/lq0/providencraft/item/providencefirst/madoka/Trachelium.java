@@ -27,7 +27,6 @@ import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.render.item.RenderTrachelium;
 import tech.lq0.providencraft.tools.ItemNBTTool;
@@ -44,7 +43,8 @@ public class Trachelium extends Item implements IAnimatable {
     public static final String TAG_AMMO = "ammo";
     public String CONTROLLER_NAME = "trachelium_controller";
 
-    private boolean fire = false;
+    //TODO 把属性改成NBT格式储存
+    public static final String TAG_FIRE = "fire";
 
     public Trachelium(){
         super(new Properties().maxStackSize(1).maxDamage(8).group(ModGroup.itemgroup).rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD))
@@ -116,7 +116,7 @@ public class Trachelium extends Item implements IAnimatable {
                 private IWorld world;
 
                 public void start(IWorld world, int waitTicks) {
-                    setFire(true);
+                    ItemNBTTool.setBoolean(stack, TAG_FIRE, true);
                     this.waitTicks = waitTicks;
                     MinecraftForge.EVENT_BUS.register(this);
                     this.world = world;
@@ -133,11 +133,11 @@ public class Trachelium extends Item implements IAnimatable {
                 }
 
                 private void run() {
-                    setFire(false);
+                    ItemNBTTool.setBoolean(stack, TAG_FIRE, false);
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
 
-            }.start(player.world, (int) 15);
+            }.start(player.world, (int) 18);
         }else if (animationName.equals("reload")){
             //TODO 添加换弹动画
         }
@@ -149,10 +149,12 @@ public class Trachelium extends Item implements IAnimatable {
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if(this.isFire()){
+        //TODO 修改正确的predicate
+        List<ItemStack> stacks = event.getExtraDataOfType(ItemStack.class);
+        if (ItemNBTTool.getBoolean(stacks.get(0), TAG_FIRE, false)) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.trachelium.fire", ILoopType.EDefaultLoopTypes.LOOP));
             return PlayState.CONTINUE;
-        }else {
+        } else {
             return PlayState.STOP;
         }
     }
@@ -160,14 +162,6 @@ public class Trachelium extends Item implements IAnimatable {
     @Override
     public AnimationFactory getFactory() {
         return this.factory;
-    }
-
-    public boolean isFire() {
-        return fire;
-    }
-
-    public void setFire(boolean fire) {
-        this.fire = fire;
     }
 
     //    @SubscribeEvent

@@ -2,7 +2,6 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.trachelium.fire": {
-			"loop": true,
 			"animation_length": 0.91667,
 			"bones": {
 				"main": {
