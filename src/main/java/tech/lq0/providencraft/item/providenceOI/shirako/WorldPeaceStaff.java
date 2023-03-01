@@ -17,9 +17,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -46,6 +44,8 @@ public class WorldPeaceStaff extends SwordItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("world_peace_staff_des1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        TooltipTool.addHideText(tooltip, (new TranslationTextComponent("world_peace_staff_des2")).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#F4ADB4"))).mergeStyle(TextFormatting.ITALIC));
+        TooltipTool.addHideText(tooltip, (new TranslationTextComponent("world_peace_staff_des3")).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#F4ADB4"))).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 
