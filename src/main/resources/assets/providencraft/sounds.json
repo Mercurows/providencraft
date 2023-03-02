@@ -417,5 +417,15 @@
         "stream": true
       }
     ]
+  },
+  "song/around_the_travel": {
+    "subtitle": "around_the_travel",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:song/around_the_travel",
+        "stream": true
+      }
+    ]
   }
 }

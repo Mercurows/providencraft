@@ -57,4 +57,5 @@ public class SoundRegistry {
 
     //songs
     public static final RegistryObject<SoundEvent> DARAKUDATENSHI = SOUNDS.register("darakudatenshi", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/darakudatenshi")));
+    public static final RegistryObject<SoundEvent> AROUND_THE_TRAVEL = SOUNDS.register("around_the_travel", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/around_the_travel")));
 }
