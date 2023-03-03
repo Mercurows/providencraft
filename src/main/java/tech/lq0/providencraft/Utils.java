@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import software.bernie.geckolib3.GeckoLib;
 import tech.lq0.providencraft.init.*;
 import tech.lq0.providencraft.loot.LootTableHandler;
 
@@ -20,8 +19,6 @@ public class Utils {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        GeckoLib.initialize();
 
         ItemRegistry.ITEMS.register(eventBus);
         EffectRegistry.EFFECTS.register(eventBus);
