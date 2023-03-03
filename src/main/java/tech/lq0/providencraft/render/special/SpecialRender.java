@@ -4,10 +4,8 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.MainWindow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -18,7 +16,6 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -636,18 +633,5 @@ public class SpecialRender {
         matrix.pop();
         RenderSystem.disableDepthTest();
         buffer.finish(CustomRenderType.BlockOverlay);
-    }
-
-    @SubscribeEvent
-    public static void renderTrachelium(FOVUpdateEvent event){
-        Minecraft mc = Minecraft.getInstance();
-        ClientPlayerEntity player = mc.player;
-        if (player != null && player.getHeldItemMainhand().getItem() == ItemRegistry.TRACHELIUM.get()) {
-            if(player.isHandActive()) {
-                event.setNewfov(event.getFov() / 1.5f);
-            }
-
-        }
-        mc.gameSettings.smoothCamera = false;
     }
 }

@@ -56,9 +56,3 @@ Providence企划同人Minecraft Mod, 好评更新中!
     versionRange="[1.16.5,1.18)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.providencraft]]
-    modId="geckolib3"
-    mandatory=true
-    versionRange="[3.0.96,)"
-    ordering="NONE"
-    side="BOTH"
