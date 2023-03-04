@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:echoed_destiny_ring"
+    },
+    "title": {
+      "translate": "providencraft.advancement.echoed_destiny_ring"
+    },
+    "description": {
+      "translate": "providencraft.advancement.echoed_destiny_ring_des"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "hidden": false
+  },
+  "parent": "providencraft:legendary/legendary",
+  "criteria": {
+    "echoed_destiny_ring": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:echoed_destiny_ring"
+          }
+        ]
+      }
+    }
+  }
+}

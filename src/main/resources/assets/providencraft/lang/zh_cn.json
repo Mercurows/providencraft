@@ -717,5 +717,11 @@
   "providencraft.advancement.points_store": "营业中",
   "providencraft.advancement.points_store_des": "欢迎选购",
   "providencraft.advancement.premium_pdc_point": "满级会员",
-  "providencraft.advancement.premium_pdc_point_des": "感谢购买虚拟内容定制服务"
+  "providencraft.advancement.premium_pdc_point_des": "感谢购买虚拟内容定制服务",
+  "providencraft.advancement.legendary": "普罗维登传说",
+  "providencraft.advancement.legendary_des": "见证真实的普罗维登大陆",
+  "providencraft.advancement.echoed_destiny_ring": "",
+  "providencraft.advancement.echoed_destiny_ring_des": "",
+  "providencraft.advancement.world_peace_staff": "",
+  "providencraft.advancement.world_peace_staff_des": ""
 }

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:world_peace_staff"
+    },
+    "title": {
+      "translate": "providencraft.advancement.world_peace_staff"
+    },
+    "description": {
+      "translate": "providencraft.advancement.world_peace_staff_des"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "hidden": false
+  },
+  "parent": "providencraft:legendary/legendary",
+  "criteria": {
+    "world_peace_staff": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:world_peace_staff"
+          }
+        ]
+      }
+    }
+  }
+}
