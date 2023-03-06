@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "kdk",
+    "pmp",
+    "sfs"
+  ],
+  "key": {
+    "k": {
+      "item": "providencraft:momo_knife"
+    },
+    "d": {
+      "item": "providencraft:momo_gun"
+    },
+    "f": {
+      "item": "providencraft:fetuozi"
+    },
+    "m": {
+      "item": "providencraft:music_disc_around_the_travel"
+    },
+    "s": {
+      "item": "providencraft:momo_syringe"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    }
+  },
+  "result": {
+    "item": "providencraft:world_peace_staff",
+    "count": 1
+  }
+}
