@@ -52,6 +52,9 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> FUKAMIZU_CATS = SOUNDS.register("fukamizu_cats", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/poi/fukamizu_cats")));
     public static final RegistryObject<SoundEvent> FUKAMIZU_MATH = SOUNDS.register("fukamizu_math", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/poi/fukamizu_math")));
     public static final RegistryObject<SoundEvent> FUKAMIZU_SUN_BATH = SOUNDS.register("fukamizu_sun_bath", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/poi/fukamizu_sun_bath")));
+    public static final RegistryObject<SoundEvent> MADOKA_EXCHANGE_STUDENT = SOUNDS.register("madoka_exchange_student", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/madoka_exchange_student")));
+    public static final RegistryObject<SoundEvent> MADOKA_RED_AHOGE = SOUNDS.register("madoka_red_ahoge", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/madoka_red_ahoge")));
+    public static final RegistryObject<SoundEvent> MADOKA_PARTY = SOUNDS.register("madoka_party", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/madoka_party")));
 
     public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
 

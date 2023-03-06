@@ -307,6 +307,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_1 = ITEMS.register("audio_tape_louise_1", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_SUMMON, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_2 = ITEMS.register("audio_tape_louise_2", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_FARMING, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
     public static final RegistryObject<Item> AUDIO_TAPE_LOUISE_3 = ITEMS.register("audio_tape_louise_3", () -> new AudioTape(Livers.LOUISE, SoundRegistry.LOUISE_FOOD, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_MADOKA_1 = ITEMS.register("audio_tape_madoka_1", () -> new AudioTape(Livers.MADOKA, SoundRegistry.MADOKA_EXCHANGE_STUDENT, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_MADOKA_2 = ITEMS.register("audio_tape_madoka_2", () -> new AudioTape(Livers.MADOKA, SoundRegistry.MADOKA_RED_AHOGE, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
+    public static final RegistryObject<Item> AUDIO_TAPE_MADOKA_3 = ITEMS.register("audio_tape_madoka_3", () -> new AudioTape(Livers.MADOKA, SoundRegistry.MADOKA_PARTY, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1)));
 
     public static final RegistryObject<Item> AUDIO_TAPE_ELIFAUS = ITEMS.register("audio_tape_elifaus", () -> new BrokenAudioTape(SoundRegistry.ELIFAUS, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.UNCOMMON))));
 

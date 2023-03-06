@@ -427,5 +427,35 @@
         "stream": true
       }
     ]
+  },
+  "audio/first/madoka_exchange_student": {
+    "subtitle": "madoka_exchange_student",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/first/madoka_exchange_student",
+        "stream": true
+      }
+    ]
+  },
+  "audio/first/madoka_red_ahoge": {
+    "subtitle": "madoka_red_ahoge",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/first/madoka_red_ahoge",
+        "stream": true
+      }
+    ]
+  },
+  "audio/first/madoka_party": {
+    "subtitle": "madoka_party",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/first/madoka_party",
+        "stream": true
+      }
+    ]
   }
 }
