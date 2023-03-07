@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:mint_chocolate"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_mint_chocolate"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_mint_chocolate_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/fiaxe",
+  "criteria": {
+    "eat_mint_chocolate": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:mint_chocolate"
+        }
+      }
+    }
+  }
+}

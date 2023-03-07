@@ -167,6 +167,46 @@
           "item": "providencraft:moon_cake"
         }
       }
+    },
+    "eat_all_food_20": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:louistew"
+        }
+      }
+    },
+    "eat_all_food_21": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:fukamizu_fish"
+        }
+      }
+    },
+    "eat_all_food_22": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:bubble_tea"
+        }
+      }
+    },
+    "eat_all_food_23": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:big_fierce_one_coffee"
+        }
+      }
+    },
+    "eat_all_food_24": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:mint_chocolate"
+        }
+      }
     }
   },
   "rewards": {
