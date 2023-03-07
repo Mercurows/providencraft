@@ -38,6 +38,7 @@ import tech.lq0.providencraft.item.providenceOI.shirako.*;
 import tech.lq0.providencraft.item.providenceOI.shirayuki.FoxFairyFan;
 import tech.lq0.providencraft.item.providenceOI.sorayo.LunaticBow;
 import tech.lq0.providencraft.item.providenceOI.sorayo.MoonCake;
+import tech.lq0.providencraft.item.providenceOI.yesa.MintChocolate;
 import tech.lq0.providencraft.item.providenceOI.yuri.RabbitLychee;
 import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
@@ -277,6 +278,8 @@ public class ItemRegistry {
     //lutafia
     public static final RegistryObject<Item> FIAXE = ITEMS.register("fiaxe", Fiaxe::new);
 
+    //yesa
+    public static final RegistryObject<Item> MINT_CHOCOLATE = ITEMS.register("mint_chocolate", MintChocolate::new);
 
     /**
      * others
