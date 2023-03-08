@@ -55,6 +55,9 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> MADOKA_EXCHANGE_STUDENT = SOUNDS.register("madoka_exchange_student", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/madoka_exchange_student")));
     public static final RegistryObject<SoundEvent> MADOKA_RED_AHOGE = SOUNDS.register("madoka_red_ahoge", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/madoka_red_ahoge")));
     public static final RegistryObject<SoundEvent> MADOKA_PARTY = SOUNDS.register("madoka_party", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/madoka_party")));
+    public static final RegistryObject<SoundEvent> MUMU_AYELET = SOUNDS.register("mumu_ayelet", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/mumu_ayelet")));
+    public static final RegistryObject<SoundEvent> MUMU_TRAVEL = SOUNDS.register("mumu_travel", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/mumu_travel")));
+    public static final RegistryObject<SoundEvent> MUMU_BEEF = SOUNDS.register("mumu_beef", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/mumu_beef")));
 
     public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
 

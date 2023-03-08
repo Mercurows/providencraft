@@ -457,5 +457,35 @@
         "stream": true
       }
     ]
+  },
+  "audio/second/mumu_ayelet": {
+    "subtitle": "mumu_ayelet",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/second/mumu_ayelet",
+        "stream": true
+      }
+    ]
+  },
+  "audio/second/mumu_travel": {
+    "subtitle": "mumu_travel",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/second/mumu_travel",
+        "stream": true
+      }
+    ]
+  },
+  "audio/second/mumu_beef": {
+    "subtitle": "mumu_beef",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/second/mumu_beef",
+        "stream": true
+      }
+    ]
   }
 }

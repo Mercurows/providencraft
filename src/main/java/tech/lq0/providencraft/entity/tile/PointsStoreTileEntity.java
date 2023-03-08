@@ -171,7 +171,10 @@ public class PointsStoreTileEntity extends TileEntity implements IMerchant, ITic
             new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_LOUISE_3.get(), 1),10000, 0, 0),
             new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_MADOKA_1.get(), 1),10000, 0, 0),
             new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_MADOKA_2.get(), 1),10000, 0, 0),
-            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_MADOKA_3.get(), 1),10000, 0, 0)
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_MADOKA_3.get(), 1),10000, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_MUMU_1.get(), 1),10000, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_MUMU_2.get(), 1),10000, 0, 0),
+            new MerchantOffer(getPoints(28), getGoods(ItemRegistry.AUDIO_TAPE_MUMU_3.get(), 1),10000, 0, 0)
     };
 
     private static ItemStack getPoints(int count) {
