@@ -21,8 +21,9 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class MintChocolate extends Item {
-    private static final Food food = (new Food.Builder()).saturation(0.8f).hunger(4).
-            effect(() -> new EffectInstance(Effects.NIGHT_VISION, 600, 0), 1.0f).build();
+    private static final Food food = (new Food.Builder()).saturation(0.8f).hunger(4).setAlwaysEdible().
+            effect(() -> new EffectInstance(Effects.NIGHT_VISION, 1200, 0), 1.0f).
+            effect(() -> new EffectInstance(Effects.GLOWING, 100, 0), 1.0f).build();
 
     public MintChocolate(){
         super(new Properties().group(ModGroup.itemgroup).food(food));
