@@ -374,4 +374,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> POINTS_STORE = ITEMS.register("points_store", PointsStoreBlockItem::new);
     public static final RegistryObject<Item> BLUE_SAND = ITEMS.register("blue_sand",
             () -> new BlockItem(BlockRegistry.BLUE_SAND.get(), new Item.Properties().group(ModGroup.itemgroup)));
+    public static final RegistryObject<Item> BLUE_SANDSTONE = ITEMS.register("blue_sandstone",
+            () -> new BlockItem(BlockRegistry.BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.itemgroup)));
 }
