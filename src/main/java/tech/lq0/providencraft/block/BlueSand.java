@@ -24,6 +24,6 @@ public class BlueSand extends SandBlock {
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("blue_sand_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.blue_sand")).mergeStyle(TextFormatting.GRAY));
     }
 }

@@ -376,4 +376,6 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.BLUE_SAND.get(), new Item.Properties().group(ModGroup.itemgroup)));
     public static final RegistryObject<Item> BLUE_SANDSTONE = ITEMS.register("blue_sandstone",
             () -> new BlockItem(BlockRegistry.BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.itemgroup)));
+    public static final RegistryObject<Item> CUT_BLUE_SANDSTONE = ITEMS.register("cut_blue_sandstone",
+            () -> new BlockItem(BlockRegistry.CUT_BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.itemgroup)));
 }

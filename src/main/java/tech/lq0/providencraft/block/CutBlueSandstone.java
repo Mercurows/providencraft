@@ -1,6 +1,5 @@
 package tech.lq0.providencraft.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -15,14 +14,14 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class BlueSandstone extends Block {
-    public BlueSandstone(){
-        super(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLUE_TERRACOTTA).setRequiresTool().hardnessAndResistance(0.8F));
+public class CutBlueSandstone extends Block {
+    public CutBlueSandstone(){
+        super(Properties.create(Material.ROCK, MaterialColor.BLUE_TERRACOTTA).setRequiresTool().hardnessAndResistance(0.8F));
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("des.blue_sandstone")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.cut_blue_sandstone")).mergeStyle(TextFormatting.GRAY));
     }
 }
