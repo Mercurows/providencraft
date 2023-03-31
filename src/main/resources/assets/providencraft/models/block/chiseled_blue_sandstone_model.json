@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "providencraft:block/blue_sandstone_top",
+    "side": "providencraft:block/chiseled_blue_sandstone"
+  }
+}

@@ -365,17 +365,19 @@ public class ItemRegistry {
 
     //BLOCKS
     public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",
-            () -> new BlockItem(BlockRegistry.RED_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.RED_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> WHITE_AHOGE_BLOCK = ITEMS.register("white_ahoge_block",
-            () -> new BlockItem(BlockRegistry.WHITE_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.WHITE_AHOGE_BLOCK.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> COMMUNICATION_TABLE = ITEMS.register("communication_table",
-            () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> PORCELAIN_THRONE = ITEMS.register("porcelain_throne", PorcelainThroneBlockItem::new);
     public static final RegistryObject<Item> POINTS_STORE = ITEMS.register("points_store", PointsStoreBlockItem::new);
     public static final RegistryObject<Item> BLUE_SAND = ITEMS.register("blue_sand",
-            () -> new BlockItem(BlockRegistry.BLUE_SAND.get(), new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.BLUE_SAND.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> BLUE_SANDSTONE = ITEMS.register("blue_sandstone",
-            () -> new BlockItem(BlockRegistry.BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> CUT_BLUE_SANDSTONE = ITEMS.register("cut_blue_sandstone",
-            () -> new BlockItem(BlockRegistry.CUT_BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.itemgroup)));
+            () -> new BlockItem(BlockRegistry.CUT_BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.blockgroup)));
+    public static final RegistryObject<Item> CHISELED_BLUE_SANDSTONE = ITEMS.register("chiseled_blue_sandstone",
+            () -> new BlockItem(BlockRegistry.CHISELED_BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.blockgroup)));
 }

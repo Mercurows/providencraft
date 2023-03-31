@@ -18,4 +18,5 @@ public class BlockRegistry {
     public static final RegistryObject<Block> BLUE_SAND = BLOCKS.register("blue_sand", BlueSand::new);
     public static final RegistryObject<Block> BLUE_SANDSTONE = BLOCKS.register("blue_sandstone", BlueSandstone::new);
     public static final RegistryObject<Block> CUT_BLUE_SANDSTONE = BLOCKS.register("cut_blue_sandstone", CutBlueSandstone::new);
+    public static final RegistryObject<Block> CHISELED_BLUE_SANDSTONE = BLOCKS.register("chiseled_blue_sandstone", ChiseledBlueSandstone::new);
 }

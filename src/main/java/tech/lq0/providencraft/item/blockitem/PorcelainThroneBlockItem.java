@@ -10,7 +10,7 @@ import tech.lq0.providencraft.init.BlockRegistry;
 
 public class PorcelainThroneBlockItem extends BlockItem {
     public PorcelainThroneBlockItem() {
-        super(BlockRegistry.PORCELAIN_THRONE.get(), new Item.Properties().group(ModGroup.itemgroup));
+        super(BlockRegistry.PORCELAIN_THRONE.get(), new Item.Properties().group(ModGroup.blockgroup));
     }
 
     @Override
