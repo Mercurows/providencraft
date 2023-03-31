@@ -33,9 +33,9 @@ public class MomoDaifuku extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("momo_daifuku_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("momo_daifuku_des2")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("momo_daifuku_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_daifuku_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_daifuku_2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_daifuku.warn")).mergeStyle(TextFormatting.RED));
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 
@@ -50,7 +50,7 @@ public class MomoDaifuku extends Item {
             int random = (int) (Math.random() * 99 + 1);
             if (random > 90) {
                 player.setFire(10);
-                player.sendStatusMessage(new TranslationTextComponent("momo_daifuku_fire").mergeStyle(TextFormatting.RED), true);
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.momo_daifuku_fire").mergeStyle(TextFormatting.RED), true);
             }
 
         }
