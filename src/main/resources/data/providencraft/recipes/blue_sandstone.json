@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:blue_sand"
+    }
+  },
+  "result": {
+    "item": "providencraft:blue_sandstone"
+  }
+}

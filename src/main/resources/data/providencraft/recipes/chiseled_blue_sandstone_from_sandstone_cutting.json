@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "providencraft:blue_sandstone"
+  },
+  "result": "providencraft:chiseled_blue_sandstone",
+  "count": 1
+}
