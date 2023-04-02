@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "providencraft:block/chiseled_blue_sandstone_model"
+      "model": "providencraft:block/chiseled_blue_sandstone"
     }
   }
 }

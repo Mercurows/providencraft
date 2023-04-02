@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "providencraft:block/points_store_model"
+      "model": "providencraft:block/points_store"
     }
   }
 }

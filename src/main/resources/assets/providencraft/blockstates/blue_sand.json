@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "providencraft:block/blue_sand_model"
+      "model": "providencraft:block/blue_sand"
     }
   }
 }

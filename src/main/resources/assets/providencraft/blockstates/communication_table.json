@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "providencraft:block/communication_table_model"
+      "model": "providencraft:block/communication_table"
     }
   }
 }

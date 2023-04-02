@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "top": "providencraft:block/blue_sandstone_top",
+    "bottom": "providencraft:block/blue_sandstone_bottom",
+    "side": "providencraft:block/blue_sandstone"
+  }
+}
