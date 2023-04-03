@@ -8,6 +8,11 @@
           "type": "minecraft:item",
           "name": "providencraft:blue_sand"
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
       ]
     }
   ]

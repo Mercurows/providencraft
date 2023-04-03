@@ -53,8 +53,8 @@ public class MagicBookMyanna extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("magic_book_myanna_func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("magic_book_myanna_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.magic_book_myanna.func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.magic_book_myanna")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.LOUISE);
     }
 

@@ -382,4 +382,6 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.CHISELED_BLUE_SANDSTONE.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> BLUE_SANDSTONE_SLAB = ITEMS.register("blue_sandstone_slab",
             () -> new BlockItem(BlockRegistry.BLUE_SANDSTONE_SLAB.get(), new Item.Properties().group(ModGroup.blockgroup)));
+    public static final RegistryObject<Item> BLUE_SANDSTONE_STAIRS = ITEMS.register("blue_sandstone_stairs",
+            () -> new BlockItem(BlockRegistry.BLUE_SANDSTONE_STAIRS.get(), new Item.Properties().group(ModGroup.blockgroup)));
 }

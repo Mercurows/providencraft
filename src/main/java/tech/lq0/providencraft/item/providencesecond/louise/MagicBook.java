@@ -25,7 +25,7 @@ public class MagicBook extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("magic_book_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.magic_book")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.LOUISE);
     }
 

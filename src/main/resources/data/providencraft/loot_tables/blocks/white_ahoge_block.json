@@ -8,6 +8,11 @@
           "type": "minecraft:item",
           "name": "providencraft:white_ahoge_block"
         }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
       ]
     }
   ]
