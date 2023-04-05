@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "   "
+  ],
+  "key": {
+    "#": [
+      {
+        "item": "providencraft:blue_sandstone"
+      }
+    ]
+  },
+  "result": {
+    "item": "providencraft:blue_sandstone_wall",
+    "count": 6
+  }
+}
