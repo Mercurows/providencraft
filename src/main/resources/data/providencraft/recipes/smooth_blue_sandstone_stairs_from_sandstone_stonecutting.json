@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "providencraft:smooth_blue_sandstone"
+  },
+  "result": "providencraft:smooth_blue_sandstone_stairs",
+  "count": 1
+}

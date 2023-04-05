@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:smooth_blue_sandstone"
+    }
+  },
+  "result": {
+    "item": "providencraft:smooth_blue_sandstone_stairs",
+    "count": 4
+  }
+}

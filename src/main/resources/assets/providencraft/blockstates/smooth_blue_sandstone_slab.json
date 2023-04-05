@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "providencraft:block/smooth_blue_sandstone_slab"
+    },
+    "type=double": {
+      "model": "providencraft:block/smooth_blue_sandstone"
+    },
+    "type=top": {
+      "model": "providencraft:block/smooth_blue_sandstone_slab_top"
+    }
+  }
+}
