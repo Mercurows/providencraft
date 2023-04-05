@@ -1,17 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
-    "###",
-    "   "
+    "###"
   ],
   "key": {
     "#": {
-      "item": "providencraft:blue_sandstone"
+      "item": "providencraft:cut_blue_sandstone"
     }
   },
   "result": {
-    "item": "providencraft:blue_sandstone_wall",
+    "item": "providencraft:cut_blue_sandstone_slab",
     "count": 6
   }
 }

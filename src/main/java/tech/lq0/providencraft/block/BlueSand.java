@@ -1,16 +1,17 @@
 package tech.lq0.providencraft.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.SandBlock;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import net.minecraftforge.common.IPlantable;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -25,5 +26,11 @@ public class BlueSand extends SandBlock {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("des.providencraft.blue_sand")).mergeStyle(TextFormatting.GRAY));
+    }
+
+    @Override
+    public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
+        BlockState plant = plantable.getPlant(world, pos.offset(facing));
+        return plant.getBlock() == Blocks.CACTUS || plant.getBlock() == Blocks.DEAD_BUSH;
     }
 }
