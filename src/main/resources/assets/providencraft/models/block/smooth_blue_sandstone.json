@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "providencraft:block/blue_sandstone_top"
+  }
+}
