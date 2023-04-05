@@ -31,6 +31,6 @@ public class BlueSand extends SandBlock {
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
         BlockState plant = plantable.getPlant(world, pos.offset(facing));
-        return plant.getBlock() == Blocks.CACTUS || plant.getBlock() == Blocks.DEAD_BUSH;
+        return plant.getBlock() == Blocks.CACTUS || plant.getBlock() == Blocks.DEAD_BUSH || plant.getBlock() == Blocks.SUGAR_CANE;
     }
 }
