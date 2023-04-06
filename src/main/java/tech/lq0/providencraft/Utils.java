@@ -1,5 +1,10 @@
 package tech.lq0.providencraft;
 
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -10,14 +15,15 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import tech.lq0.providencraft.init.*;
 import tech.lq0.providencraft.loot.LootTableHandler;
+import tech.lq0.providencraft.world.biome.BlueDesertBiome;
+
+import java.util.Objects;
 
 @Mod("providencraft")
 public class Utils {
     public static final String MOD_ID = "providencraft";
 
     public Utils() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ItemRegistry.ITEMS.register(eventBus);
@@ -34,11 +40,14 @@ public class Utils {
         TileEntityRegistry.TILE_ENTITY_TYPES.register(eventBus);
         LootTableHandler.init(eventBus);
 
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
+        BiomeDictionary.addTypes(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(WorldGenRegistries.BIOME.getKey(BlueDesertBiome.blueDesertBiome))), BiomeDictionary.Type.DRY);
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT,
+                new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(WorldGenRegistries.BIOME.getKey(BlueDesertBiome.blueDesertBiome))), 5));
     }
 
     @SubscribeEvent
