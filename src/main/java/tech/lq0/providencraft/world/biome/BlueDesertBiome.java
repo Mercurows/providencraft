@@ -22,12 +22,12 @@ public class BlueDesertBiome {
 
     static {
         biomeAmbience = (new BiomeAmbience.Builder())
-                .withSkyColor(0xabd1f8)
+                .withSkyColor(0x7cb8ff)
                 .setFogColor(0xc0d8ff)
-                .setWaterColor(0x9bbfe7)
+                .setWaterColor(0x90f2f6)
                 .setWaterFogColor(0x050533)
-                .withGrassColor(0xaa82e7)
-                .withFoliageColor(0x6c55aa)
+                .withGrassColor(0x8ea6f2)
+                .withFoliageColor(0x869eea)
                 .build();
 
         generationSettings = new BiomeGenerationSettings.Builder()
@@ -36,11 +36,18 @@ public class BlueDesertBiome {
                         BlockRegistry.BLUE_SANDSTONE.get().getDefaultState(),
                         Blocks.STONE.getDefaultState())));
 
-        generationSettings.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-                Feature.FLOWER.withConfiguration(Features.Configs.DEAD_BUSH_CONFIG)
-                        .withPlacement(Features.Placements.PATCH_PLACEMENT)
-                        .withPlacement(Placement.COUNT_NOISE.configure(new NoiseDependant(-0.3D, 5, 3)))
-                        .func_242731_b(3));
+        generationSettings
+                .withFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                        Feature.FLOWER.withConfiguration(Features.Configs.DEAD_BUSH_CONFIG)
+                                .withPlacement(Features.Placements.PATCH_PLACEMENT)
+                                .withPlacement(Placement.COUNT_NOISE.configure(new NoiseDependant(-0.3D, 5, 3)))
+                                        .func_242731_b(3))
+                .withFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                        Features.PATCH_CACTUS_DESERT.withPlacement(Features.Placements.PATCH_PLACEMENT))
+                .withFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+                        Features.PATCH_SUGAR_CANE_DESERT.withPlacement(Features.Placements.PATCH_PLACEMENT)
+                                .withPlacement(Placement.COUNT_NOISE.configure(new NoiseDependant(-0.2D, 3, 1))
+                                        .func_242731_b(1)));
 
         DefaultBiomeFeatures.withCavesAndCanyons(generationSettings);
         DefaultBiomeFeatures.withOverworldOres(generationSettings);
