@@ -506,6 +506,8 @@
   "item.providencraft.smooth_blue_sandstone_stairs": "Smooth Blue Sandstone Stairs",
   "block.providencraft.smooth_blue_sandstone_stairs": "Smooth Blue Sandstone Stairs",
   "des.providencraft.smooth_blue_sandstone_stairs": "Just a smooth Blue Sandstone stairs",
+  "item.providencraft.lunar_eclipse": "Lunar Eclipse",
+  "effect.providencraft.eclipse_night": "Eclipse Night",
   "itemGroup.Providencraft Audio Tapes": "Providencraft Tapes",
   "item.providencraft.audio_tape_haine_1": "Audio Tape (Haine)",
   "haine_broadcast": "Haine: Warning for emergency of Creepers",
