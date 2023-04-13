@@ -1,0 +1,15 @@
+# 3ds Max Wavefront OBJ Exporter v0.94b - (c)2007 guruware
+
+newmtl 01___Default
+# 	Ns 9.99999905
+# 	Ni 1.50000000
+# 	d 1.00000000
+# 	Tr 1.00000000
+# 	Tf 1.00000000 1.00000000 1.00000000
+# 	illum 2
+# 	Ka 0.00000000 0.00000000 0.00000000
+# 	Kd 0.58823532 0.58823532 0.58823532
+# 	Ks 0.00000000 0.00000000 0.00000000
+# 	Ke 0.00000000 0.00000000 0.00000000
+# 	map_Ka Map__0_Checker.tga
+	map_Kd providencraft:item/lunar_eclipse
