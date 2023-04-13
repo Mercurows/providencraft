@@ -27,4 +27,6 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SMOOTH_BLUE_SANDSTONE_SLAB = BLOCKS.register("smooth_blue_sandstone_slab", SmoothBlueSandstoneSlab::new);
     public static final RegistryObject<Block> SMOOTH_BLUE_SANDSTONE_STAIRS = BLOCKS.register("smooth_blue_sandstone_stairs", SmoothBlueSandstoneStairs::new);
     public static final RegistryObject<Block> HARANO_LOG = BLOCKS.register("harano_log", HaranoLog::new);
+    public static final RegistryObject<Block> HARANO_LEAVES = BLOCKS.register("harano_leaves", HaranoLeaves::new);
+    public static final RegistryObject<Block> HARANO_SAPLING = BLOCKS.register("harano_sapling", HaranoSapling::new);
 }
