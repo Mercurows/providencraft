@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "providencraft:harano_log"
+    }
+  ],
+  "result": {
+    "item": "providencraft:harano_planks",
+    "count": 4
+  }
+}

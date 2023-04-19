@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bbb",
+    "bab",
+    "bbb"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:sand"
+    },
+    "a": {
+      "item": "minecraft:blue_dye"
+    }
+  },
+  "result": {
+    "item": "providencraft:blue_sand",
+    "count": 8
+  }
+}
