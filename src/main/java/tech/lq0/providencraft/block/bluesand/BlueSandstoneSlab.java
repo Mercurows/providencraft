@@ -1,27 +1,27 @@
-package tech.lq0.providencraft.block;
+package tech.lq0.providencraft.block.bluesand;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
+import tech.lq0.providencraft.init.BlockRegistry;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class SmoothBlueSandstone extends Block {
-    public SmoothBlueSandstone(){
-        super(Properties.create(Material.ROCK, MaterialColor.BLUE_TERRACOTTA).setRequiresTool().hardnessAndResistance(0.8F));
+public class BlueSandstoneSlab extends SlabBlock {
+    public BlueSandstoneSlab(){
+        super(AbstractBlock.Properties.from(BlockRegistry.BLUE_SANDSTONE.get()));
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("des.providencraft.smooth_blue_sandstone")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.blue_sandstone_slab")).mergeStyle(TextFormatting.GRAY));
     }
 }

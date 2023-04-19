@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.block;
+package tech.lq0.providencraft.block.bluesand;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

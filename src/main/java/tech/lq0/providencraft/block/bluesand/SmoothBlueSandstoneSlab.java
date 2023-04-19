@@ -1,6 +1,5 @@
-package tech.lq0.providencraft.block;
+package tech.lq0.providencraft.block.bluesand;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
@@ -14,14 +13,14 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class CutBlueSandstoneSlab extends SlabBlock {
-    public CutBlueSandstoneSlab(){
-        super(AbstractBlock.Properties.from(BlockRegistry.CUT_BLUE_SANDSTONE.get()));
+public class SmoothBlueSandstoneSlab extends SlabBlock {
+    public SmoothBlueSandstoneSlab(){
+        super(Properties.from(BlockRegistry.SMOOTH_BLUE_SANDSTONE.get()));
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("des.providencraft.cut_blue_sandstone_slab")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.smooth_blue_sandstone_slab")).mergeStyle(TextFormatting.GRAY));
     }
 }

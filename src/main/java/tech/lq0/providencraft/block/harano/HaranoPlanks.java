@@ -1,7 +1,7 @@
-package tech.lq0.providencraft.block;
+package tech.lq0.providencraft.block.harano;
 
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -16,14 +16,14 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class HaranoLog extends RotatedPillarBlock {
-    public HaranoLog(){
-        super(AbstractBlock.Properties.create(Material.WOOD, (state) -> MaterialColor.RED_TERRACOTTA).hardnessAndResistance(2.0F).sound(SoundType.WOOD));
+public class HaranoPlanks extends Block {
+    public HaranoPlanks(){
+        super(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD));
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("des.providencraft.harano_log")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.harano_planks")).mergeStyle(TextFormatting.GRAY));
     }
 }

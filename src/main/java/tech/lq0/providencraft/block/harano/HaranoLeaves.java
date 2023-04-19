@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.block;
+package tech.lq0.providencraft.block.harano;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.LeavesBlock;

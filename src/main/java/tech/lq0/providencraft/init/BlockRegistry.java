@@ -6,6 +6,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.block.*;
+import tech.lq0.providencraft.block.bluesand.*;
+import tech.lq0.providencraft.block.harano.HaranoLeaves;
+import tech.lq0.providencraft.block.harano.HaranoLog;
+import tech.lq0.providencraft.block.harano.HaranoPlanks;
+import tech.lq0.providencraft.block.harano.HaranoSapling;
 
 public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Utils.MOD_ID);
@@ -29,4 +34,5 @@ public class BlockRegistry {
     public static final RegistryObject<Block> HARANO_LOG = BLOCKS.register("harano_log", HaranoLog::new);
     public static final RegistryObject<Block> HARANO_LEAVES = BLOCKS.register("harano_leaves", HaranoLeaves::new);
     public static final RegistryObject<Block> HARANO_SAPLING = BLOCKS.register("harano_sapling", HaranoSapling::new);
+    public static final RegistryObject<Block> HARANO_PLANKS = BLOCKS.register("harano_planks", HaranoPlanks::new);
 }
