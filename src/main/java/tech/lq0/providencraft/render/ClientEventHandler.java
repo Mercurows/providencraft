@@ -30,6 +30,6 @@ public class ClientEventHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.CURSED_CAT_DOLL_ENTITY.get(), CursedCatDollEntityRenderer::new);
 
         event.enqueueWork(() -> ClientRegistry.bindTileEntityRenderer(TileEntityRegistry.POINTS_STORE.get(), PointsStoreTileEntityRenderer::new));
-        event.enqueueWork(() -> {RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_SAPLING.get(), RenderType.getCutout());});
+        event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_SAPLING.get(), RenderType.getCutout()));
     }
 }
