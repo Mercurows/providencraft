@@ -13,7 +13,7 @@ public class Features {
             Feature.TREE.withConfiguration((new BaseTreeFeatureConfig.Builder(
                     new SimpleBlockStateProvider(BlockRegistry.HARANO_LOG.get().getDefaultState()),
                     new SimpleBlockStateProvider(BlockRegistry.HARANO_LEAVES.get().getDefaultState()),
-                    new BlobFoliagePlacer(FeatureSpread.func_242253_a(2, 3), FeatureSpread.func_242252_a(0), 3),
+                    new BlobFoliagePlacer(FeatureSpread.func_242253_a(2, 1), FeatureSpread.func_242252_a(0), 3),
                     new StraightTrunkPlacer(7, 4, 0),
                     new TwoLayerFeature(1, 0, 1)))
                     .setIgnoreVines().build()));
