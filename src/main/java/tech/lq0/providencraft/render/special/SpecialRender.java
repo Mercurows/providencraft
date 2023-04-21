@@ -404,9 +404,9 @@ public class SpecialRender {
             Color color_eye1 = new Color(13777775);
             Color color_eye2 = new Color(16711722);
 
-            int eye_r = (int) (color_eye1.getRed() + (color_eye2.getRed() - color_eye1.getRed()) * blood / 500);
-            int eye_g = (int) (color_eye1.getGreen() + (color_eye2.getGreen() - color_eye1.getGreen()) * blood / 500);
-            int eye_b = (int) (color_eye1.getBlue() + (color_eye2.getBlue() - color_eye1.getBlue()) * blood / 500);
+            int eye_r = (int) Math.min(255, color_eye1.getRed() + (color_eye2.getRed() - color_eye1.getRed()) * blood / 500);
+            int eye_g = (int) Math.min(255, color_eye1.getGreen() + (color_eye2.getGreen() - color_eye1.getGreen()) * blood / 500);
+            int eye_b = (int) Math.min(255, color_eye1.getBlue() + (color_eye2.getBlue() - color_eye1.getBlue()) * blood / 500);
             int color_eye = new Color(eye_r,eye_g,eye_b).getRGB();
 
             GuiUtils.drawGradientRect(matrixBar, 3, left - 108, (int) top - 1, left - 107, (int) top + 1, color_eye, color_eye);

@@ -8,6 +8,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.gui.EclipseNightHUD;
+import tech.lq0.providencraft.gui.EclipseNightHUD2;
 import tech.lq0.providencraft.init.EffectRegistry;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
@@ -23,6 +24,9 @@ public class HudClientEvent {
         PlayerEntity player = Minecraft.getInstance().player;
         if(Minecraft.getInstance().player.isPotionActive(EffectRegistry.ECLIPSE_NIGHT.get())) {
             int level = Math.min(5, player.getActivePotionEffect(EffectRegistry.ECLIPSE_NIGHT.get()).getAmplifier() + 1);
+
+            EclipseNightHUD2 eclipseNightHUD2 = new EclipseNightHUD2(event.getMatrixStack(), level);
+            eclipseNightHUD2.render();
 
             EclipseNightHUD eclipseNightHUD = new EclipseNightHUD(event.getMatrixStack(), level);
             eclipseNightHUD.render();
