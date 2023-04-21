@@ -12,7 +12,7 @@ public class EclipseNightHUD extends AbstractGui {
     private final int width;
     private final int height;
     private final Minecraft minecraft;
-    private final ResourceLocation HUD = new ResourceLocation(Utils.MOD_ID, "textures/gui/eclipse_night_hud_1.png");
+    private final ResourceLocation HUD = new ResourceLocation(Utils.MOD_ID, "textures/gui/eclipse_night_hud.png");
     private MatrixStack matrixStack;
     private final float level;
 
