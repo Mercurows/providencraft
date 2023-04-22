@@ -43,14 +43,12 @@ public class ShuRinoKen extends SwordItem {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack item = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote){
-            AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
-            AhogeBoomerangEntity ahogeBoomerangEntity2 = new AhogeBoomerangEntity(worldIn, playerIn);
-            AhogeBoomerangEntity ahogeBoomerangEntity3 = new AhogeBoomerangEntity(worldIn, playerIn);
-            AhogeBoomerangEntity ahogeBoomerangEntity4 = new AhogeBoomerangEntity(worldIn, playerIn);
-            AhogeBoomerangEntity ahogeBoomerangEntity5 = new AhogeBoomerangEntity(worldIn, playerIn);
-            ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
-            worldIn.addEntity(ahogeBoomerangEntity1);
+            //First 1
+            AhogeBoomerangEntity ahogeBoomerangEntity = new AhogeBoomerangEntity(worldIn, playerIn);
+            ahogeBoomerangEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+            worldIn.addEntity(ahogeBoomerangEntity);
 
+            //Second 2
             new Object() {
                 private int ticks = 0;
                 private float waitTicks;
@@ -71,12 +69,18 @@ public class ShuRinoKen extends SwordItem {
                 }
 
                 private void run() {
-                    ahogeBoomerangEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
+                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 4.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(ahogeBoomerangEntity1);
+
+                    AhogeBoomerangEntity ahogeBoomerangEntity2 = new AhogeBoomerangEntity(worldIn, playerIn);
+                    ahogeBoomerangEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 4.0f, 0.0f, 3.0f, 0.2f);
                     worldIn.addEntity(ahogeBoomerangEntity2);
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
-            }.start((int) 2);
+            }.start((int) 3);
 
+            //Third 3
             new Object() {
                 private int ticks = 0;
                 private float waitTicks;
@@ -97,38 +101,22 @@ public class ShuRinoKen extends SwordItem {
                 }
 
                 private void run() {
+                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
+                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 8.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(ahogeBoomerangEntity1);
+
+                    AhogeBoomerangEntity ahogeBoomerangEntity2 = new AhogeBoomerangEntity(worldIn, playerIn);
+                    ahogeBoomerangEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 8.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(ahogeBoomerangEntity2);
+
+                    AhogeBoomerangEntity ahogeBoomerangEntity3 = new AhogeBoomerangEntity(worldIn, playerIn);
                     ahogeBoomerangEntity3.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
                     worldIn.addEntity(ahogeBoomerangEntity3);
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
-            }.start((int) 4);
-
-            new Object() {
-                private int ticks = 0;
-                private float waitTicks;
-
-                public void start(int waitTicks) {
-                    this.waitTicks = waitTicks;
-                    MinecraftForge.EVENT_BUS.register(this);
-                }
-
-                @SubscribeEvent
-                public void tick(TickEvent.ServerTickEvent event) {
-                    if (event.phase == TickEvent.Phase.END) {
-                        this.ticks++;
-                        if (this.ticks >= this.waitTicks) {
-                            run();
-                        }
-                    }
-                }
-
-                private void run() {
-                    ahogeBoomerangEntity4.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity4);
-                    MinecraftForge.EVENT_BUS.unregister(this);
-                }
             }.start((int) 6);
 
+            //Fourth 2
             new Object() {
                 private int ticks = 0;
                 private float waitTicks;
@@ -149,11 +137,48 @@ public class ShuRinoKen extends SwordItem {
                 }
 
                 private void run() {
-                    ahogeBoomerangEntity5.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity5);
+                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
+                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 4.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(ahogeBoomerangEntity1);
+
+                    AhogeBoomerangEntity ahogeBoomerangEntity2 = new AhogeBoomerangEntity(worldIn, playerIn);
+                    ahogeBoomerangEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 4.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(ahogeBoomerangEntity2);
+
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
-            }.start((int) 8);
+            }.start((int) 9);
+
+            //Fifth 1
+            new Object() {
+                private int ticks = 0;
+                private float waitTicks;
+
+                public void start(int waitTicks) {
+                    this.waitTicks = waitTicks;
+                    MinecraftForge.EVENT_BUS.register(this);
+                }
+
+                @SubscribeEvent
+                public void tick(TickEvent.ServerTickEvent event) {
+                    if (event.phase == TickEvent.Phase.END) {
+                        this.ticks++;
+                        if (this.ticks >= this.waitTicks) {
+                            run();
+                        }
+                    }
+                }
+
+                private void run() {
+                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
+                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(ahogeBoomerangEntity1);
+                    MinecraftForge.EVENT_BUS.unregister(this);
+                }
+            }.start((int) 12);
+
+            item.damageItem(5, playerIn, (playerEntity) -> playerEntity.sendBreakAnimation(handIn));
+            playerIn.getCooldownTracker().setCooldown(item.getItem(), 30);
         }
 
         return new ActionResult<>(ActionResultType.SUCCESS, item);
