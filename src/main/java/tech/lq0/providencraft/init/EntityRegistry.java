@@ -48,4 +48,8 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<CursedCatDollEntity>> CURSED_CAT_DOLL_ENTITY =
             ENTITY_TYPES.register("cursed_cat_doll",
                     () -> EntityType.Builder.<CursedCatDollEntity>create(CursedCatDollEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("cursed_cat_doll"));
+    public static final RegistryObject<EntityType<ShuRinoKenEntity>> SHU_RINO_KEN_ENTITY =
+            ENTITY_TYPES.register("shu_rino_ken",
+                    () -> EntityType.Builder.<ShuRinoKenEntity>create(ShuRinoKenEntity::new, EntityClassification.MISC).size(0.5f, 0.2f).build("shu_rino_ken"));
+
 }

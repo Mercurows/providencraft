@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
+import tech.lq0.providencraft.entity.ShuRinoKenEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -44,9 +44,9 @@ public class ShuRinoKen extends SwordItem {
         ItemStack item = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote){
             //First 1
-            AhogeBoomerangEntity ahogeBoomerangEntity = new AhogeBoomerangEntity(worldIn, playerIn);
-            ahogeBoomerangEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
-            worldIn.addEntity(ahogeBoomerangEntity);
+            ShuRinoKenEntity shuRinoKenEntity = new ShuRinoKenEntity(worldIn, playerIn);
+            shuRinoKenEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+            worldIn.addEntity(shuRinoKenEntity);
 
             //Second 2
             new Object() {
@@ -69,13 +69,13 @@ public class ShuRinoKen extends SwordItem {
                 }
 
                 private void run() {
-                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 4.0f, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity1);
+                    ShuRinoKenEntity shuRinoKenEntity1 = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 4.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity1);
 
-                    AhogeBoomerangEntity ahogeBoomerangEntity2 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 4.0f, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity2);
+                    ShuRinoKenEntity shuRinoKenEntity2 = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 4.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity2);
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
             }.start((int) 3);
@@ -101,17 +101,17 @@ public class ShuRinoKen extends SwordItem {
                 }
 
                 private void run() {
-                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 8.0f, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity1);
+                    ShuRinoKenEntity shuRinoKenEntity1 = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 8.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity1);
 
-                    AhogeBoomerangEntity ahogeBoomerangEntity2 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 8.0f, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity2);
+                    ShuRinoKenEntity shuRinoKenEntity2 = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 8.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity2);
 
-                    AhogeBoomerangEntity ahogeBoomerangEntity3 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity3.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity3);
+                    ShuRinoKenEntity shuRinoKenEntity3 = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity3.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity3);
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
             }.start((int) 6);
@@ -137,13 +137,13 @@ public class ShuRinoKen extends SwordItem {
                 }
 
                 private void run() {
-                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 4.0f, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity1);
+                    ShuRinoKenEntity shuRinoKenEntity1 = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw - 4.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity1);
 
-                    AhogeBoomerangEntity ahogeBoomerangEntity2 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 4.0f, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity2);
+                    ShuRinoKenEntity shuRinoKenEntity2 = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity2.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw + 4.0f, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity2);
 
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
@@ -170,9 +170,10 @@ public class ShuRinoKen extends SwordItem {
                 }
 
                 private void run() {
-                    AhogeBoomerangEntity ahogeBoomerangEntity1 = new AhogeBoomerangEntity(worldIn, playerIn);
-                    ahogeBoomerangEntity1.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
-                    worldIn.addEntity(ahogeBoomerangEntity1);
+                    ShuRinoKenEntity shuRinoKenEntity = new ShuRinoKenEntity(worldIn, playerIn);
+                    shuRinoKenEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0f, 3.0f, 0.2f);
+                    worldIn.addEntity(shuRinoKenEntity);
+
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
             }.start((int) 12);
