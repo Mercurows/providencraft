@@ -96,6 +96,7 @@ import tech.lq0.providencraft.item.providencethird.beni.ShuraChin;
 import tech.lq0.providencraft.item.providencethird.beni.Ume;
 import tech.lq0.providencraft.item.providencethird.hiru.HiruHead;
 import tech.lq0.providencraft.item.providencethird.hiru.HiruTentacles;
+import tech.lq0.providencraft.item.providencethird.leciel.GiantDiamondRing;
 import tech.lq0.providencraft.item.providencethird.leciel.LecielEarCoverts;
 import tech.lq0.providencraft.item.providencethird.leciel.ReinaFeather;
 import tech.lq0.providencraft.item.providencethird.leciel.ReinaWings;
@@ -237,6 +238,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> REINA_WINGS = ITEMS.register("reina_wings", ReinaWings::new);
     public static final RegistryObject<Item> REINA_FEATHER = ITEMS.register("reina_feather", ReinaFeather::new);
     public static final RegistryObject<Item> LECIEL_EAR_COVERTS = ITEMS.register("leciel_ear_coverts", LecielEarCoverts::new);
+    public static final RegistryObject<Item> GIANT_DIAMOND_RING = ITEMS.register("giant_diamond_ring", GiantDiamondRing::new);
 
     //yuki
     public static final RegistryObject<Item> FOX_ICE_CREAM = ITEMS.register("fox_ice_cream", FoxIceCream::new);
