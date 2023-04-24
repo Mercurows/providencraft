@@ -4,6 +4,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
@@ -37,6 +38,11 @@ public class ShuRinoKen extends SwordItem {
         tooltip.add((new TranslationTextComponent("des.providencraft.shu_rino_ken_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.shu_rino_ken_2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.RINO);
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == Items.DIAMOND;
     }
 
     @Override
@@ -178,7 +184,7 @@ public class ShuRinoKen extends SwordItem {
                 }
             }.start((int) 12);
 
-            item.damageItem(5, playerIn, (playerEntity) -> playerEntity.sendBreakAnimation(handIn));
+            item.damageItem(10, playerIn, (playerEntity) -> playerEntity.sendBreakAnimation(handIn));
             playerIn.getCooldownTracker().setCooldown(item.getItem(), 30);
         }
 

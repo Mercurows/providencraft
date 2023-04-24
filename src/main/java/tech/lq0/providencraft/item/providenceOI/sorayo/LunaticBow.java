@@ -14,6 +14,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -62,7 +63,7 @@ public class LunaticBow extends ArmorItem {
     @Override
     @ParametersAreNonnullByDefault
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-        return false;
+        return repair.getItem() == Items.NAUTILUS_SHELL;
     }
 
     @OnlyIn(Dist.CLIENT)
