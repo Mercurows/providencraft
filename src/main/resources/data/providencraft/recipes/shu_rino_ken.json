@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "bcb",
+    " b "
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:diamond"
+    },
+    "c": {
+      "item": "minecraft:blue_ice"
+    }
+  },
+  "result": {
+    "item": "providencraft:shu_rino_ken",
+    "count": 1
+  }
+}
