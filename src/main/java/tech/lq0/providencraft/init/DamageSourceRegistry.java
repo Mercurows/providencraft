@@ -12,4 +12,5 @@ public class DamageSourceRegistry {
     public static final DamageSource BLEEDING = (new DamageSource("pdc_bleeding")).setDamageBypassesArmor().setMagicDamage().setDamageIsAbsolute();
     public static final DamageSource BLOOD_CRYSTAL = (new DamageSource("blood_crystal").setProjectile());
     public static final DamageSource LUNAR_ECLIPSE = (new DamageSource("lunar_eclipse").setDamageBypassesArmor().setMagicDamage().setDamageIsAbsolute());
+    public static final DamageSource FUKAMIZU_BREAD = (new DamageSource("fukamizu_bread")).setDamageBypassesArmor().setMagicDamage();
 }
