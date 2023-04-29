@@ -2,6 +2,7 @@ package tech.lq0.providencraft.item.providenceOI.yesa;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -12,16 +13,25 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -30,6 +40,14 @@ public class YeggyPearl extends ArmorItem {
 
     public YeggyPearl(){
         super(ArmorMaterial.LEATHER, EquipmentSlotType.HEAD, new Properties().defaultMaxDamage(802).group(ModGroup.itemgroup));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @ParametersAreNonnullByDefault
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add((new TranslationTextComponent("des.providencraft.yeggy_pearl_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.yeggy_pearl_2")).mergeStyle(TextFormatting.GRAY));
+        TooltipTool.addLiverInfo(tooltip, Livers.YESA);
     }
 
     @Override
@@ -59,7 +77,7 @@ public class YeggyPearl extends ArmorItem {
         setEnergy(stack, getEnergy(stack) + 1);
 
         if(getEnergy(stack) == 40){
-            player.playSound(SoundEvents.ENTITY_ARROW_HIT_PLAYER, 1.0F, 1.0F);
+            player.playSound(SoundEvents.ENTITY_ARROW_HIT_PLAYER, 0.5F, 1.0F);
         }
 
         super.onArmorTick(stack, world, player);
@@ -74,11 +92,11 @@ public class YeggyPearl extends ArmorItem {
         if(x >= 60){
             res = 25.0f;
         }else if(x >= 40){
-            res = -0.5f * x * x + 40f * x - 575f;
-        }else if(x >= 35){
-            res = -2.0f * x * x + 160f * x - 2975f;
+            res = -1.187f * x * x + 95f * x - 1400f;
+        }else if(x >= 30){
+            res = 3.25f * x * x - 195f * x + 3100f;
         }else if(x >= 10){
-            res = -0.08f * x * x + 5.6f * x - 23f;
+            res = -0.375f * x * x + 22.5f * x - 162.5f;
         }else if(x >= 0){
             res = 2.5f * x;
         }
@@ -86,13 +104,15 @@ public class YeggyPearl extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void yeggyPearlEffect1(LivingDamageEvent event) {
+    public static void yeggyPearlEffect(LivingDamageEvent event) {
         Entity source = event.getSource().getImmediateSource();
         if (source instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source;
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.YEGGY_PEARL.get())) {
                 event.setAmount(event.getAmount() * getDamageTimes(getEnergy(helmet)));
+//                System.out.println("yesa: " + event.getAmount());
+//                System.out.println("times: " + getDamageTimes(getEnergy(helmet)));
                 setEnergy(helmet, 0);
             }
         }
