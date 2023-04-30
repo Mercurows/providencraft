@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -25,6 +26,7 @@ import tech.lq0.providencraft.entity.NiitCarEntity;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.item.providenceOI.shirako.MomoPhone;
 import tech.lq0.providencraft.item.providenceOI.shirako.WorldPeaceStaff;
+import tech.lq0.providencraft.item.providenceOI.yesa.YeggyPearl;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 
@@ -182,6 +184,37 @@ public class SpecialRender {
             f.drawStringWithShadow(evt.getMatrixStack(), spdStr, left, top, color);
         }
     }
+
+    //TODO 添加伊头珠的HUD
+    @SubscribeEvent
+    public static void renderYeggyPearl(RenderGameOverlayEvent event){
+        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
+            return;
+        }
+
+        ClientPlayerEntity player = Minecraft.getInstance().player;
+        if (player != null && player.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemRegistry.YEGGY_PEARL.get()) {
+
+            if (player.isSpectator()) {
+                return;
+            }
+
+            ItemStack itemStack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+            MatrixStack stack = event.getMatrixStack();
+            Minecraft mc = Minecraft.getInstance();
+
+            int energy = YeggyPearl.getEnergy(itemStack);
+            float times = YeggyPearl.getDamageTimes(energy);
+
+            float left = mc.getMainWindow().getScaledWidth() / 2F;
+            float top = mc.getMainWindow().getScaledHeight() / 2F - 20;
+
+            FontRenderer f = Minecraft.getInstance().fontRenderer;
+            f.drawStringWithShadow(stack, "energy: " + energy + " times: "+ times, left, top, 0xffffff);
+
+        }
+    }
+
 
     @SubscribeEvent
     public static void renderWPS(RenderGameOverlayEvent event){
