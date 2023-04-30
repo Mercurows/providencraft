@@ -93,8 +93,10 @@ public class YeggyPearl extends ArmorItem {
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         setEnergy(stack, getEnergy(stack) + 1);
 
-        if(getEnergy(stack) == 40){
-            player.playSound(SoundEvents.ENTITY_ARROW_HIT_PLAYER, 0.5F, 1.0F);
+        if(world.isRemote) {
+            if (getEnergy(stack) == 40) {
+                player.playSound(SoundEvents.ENTITY_ARROW_HIT_PLAYER, 0.5F, 1.0F);
+            }
         }
 
         super.onArmorTick(stack, world, player);
