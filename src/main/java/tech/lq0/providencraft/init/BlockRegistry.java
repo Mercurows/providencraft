@@ -39,4 +39,5 @@ public class BlockRegistry {
     public static final RegistryObject<Block> HARANO_WOOD = BLOCKS.register("harano_wood", HaranoWood::new);
     public static final RegistryObject<Block> HARANO_STAIRS = BLOCKS.register("harano_stairs", HaranoStairs::new);
     public static final RegistryObject<Block> HARANO_SLAB = BLOCKS.register("harano_slab", HaranoSlab::new);
+    public static final RegistryObject<Block> HARANO_FENCE = BLOCKS.register("harano_fence", HaranoFence::new);
 }
