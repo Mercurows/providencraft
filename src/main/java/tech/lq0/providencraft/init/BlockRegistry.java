@@ -17,6 +17,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> COMMUNICATION_TABLE = BLOCKS.register("communication_table", CommunicationTable::new);
     public static final RegistryObject<Block> PORCELAIN_THRONE = BLOCKS.register("porcelain_throne", PorcelainThrone::new);
     public static final RegistryObject<Block> POINTS_STORE = BLOCKS.register("points_store", PointsStore::new);
+
+    //Blue Sand Series
     public static final RegistryObject<Block> BLUE_SAND = BLOCKS.register("blue_sand", BlueSand::new);
     public static final RegistryObject<Block> BLUE_SANDSTONE = BLOCKS.register("blue_sandstone", BlueSandstone::new);
     public static final RegistryObject<Block> CUT_BLUE_SANDSTONE = BLOCKS.register("cut_blue_sandstone", CutBlueSandstone::new);
@@ -28,10 +30,13 @@ public class BlockRegistry {
     public static final RegistryObject<Block> CUT_BLUE_SANDSTONE_SLAB = BLOCKS.register("cut_blue_sandstone_slab", CutBlueSandstoneSlab::new);
     public static final RegistryObject<Block> SMOOTH_BLUE_SANDSTONE_SLAB = BLOCKS.register("smooth_blue_sandstone_slab", SmoothBlueSandstoneSlab::new);
     public static final RegistryObject<Block> SMOOTH_BLUE_SANDSTONE_STAIRS = BLOCKS.register("smooth_blue_sandstone_stairs", SmoothBlueSandstoneStairs::new);
+
+    //Harano Wood Series
     public static final RegistryObject<Block> HARANO_LOG = BLOCKS.register("harano_log", HaranoLog::new);
     public static final RegistryObject<Block> HARANO_LEAVES = BLOCKS.register("harano_leaves", HaranoLeaves::new);
     public static final RegistryObject<Block> HARANO_SAPLING = BLOCKS.register("harano_sapling", HaranoSapling::new);
     public static final RegistryObject<Block> HARANO_PLANKS = BLOCKS.register("harano_planks", HaranoPlanks::new);
     public static final RegistryObject<Block> HARANO_WOOD = BLOCKS.register("harano_wood", HaranoWood::new);
     public static final RegistryObject<Block> HARANO_STAIRS = BLOCKS.register("harano_stairs", HaranoStairs::new);
+    public static final RegistryObject<Block> HARANO_SLAB = BLOCKS.register("harano_slab", HaranoSlab::new);
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "providencraft:block/harano_slab"
+    },
+    "type=double": {
+      "model": "providencraft:block/harano_planks"
+    },
+    "type=top": {
+      "model": "providencraft:block/harano_slab_top"
+    }
+  }
+}
