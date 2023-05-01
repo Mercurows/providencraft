@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "pr ",
+    "bab",
+    "cac"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:white_wool"
+    },
+    "b": {
+      "item": "minecraft:gray_wool"
+    },
+    "c": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "r": {
+      "item": "minecraft:chorus_flower"
+    },
+    "p": {
+      "item": "minecraft:smooth_quartz"
+    }
+  },
+  "result": {
+    "item": "providencraft:yeggy_pearl",
+    "count": 1
+  }
+}
