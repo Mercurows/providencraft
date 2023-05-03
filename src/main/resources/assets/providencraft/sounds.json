@@ -1,6 +1,6 @@
 {
   "myanna": {
-    "subtitle": "call_myanna",
+    "subtitle": "subtitle.providencraft.call_myanna",
     "replace": "true",
     "sounds": [
       {
@@ -10,7 +10,7 @@
     ]
   },
   "haiplate": {
-    "subtitle": "haiplate_invoke",
+    "subtitle": "subtitle.providencraft.haiplate_invoke",
     "replace": "true",
     "sounds": [
       {
@@ -180,7 +180,7 @@
     ]
   },
   "audio/magicros/chiram_bolster": {
-    "subtitle": "chiram_bolster",
+    "subtitle": "subtitle.providencraft.chiram_bolster",
     "replace": "true",
     "sounds": [
       {
@@ -190,7 +190,7 @@
     ]
   },
   "audio/magicros/chiram_intro": {
-    "subtitle": "chiram_intro",
+    "subtitle": "subtitle.providencraft.chiram_intro",
     "replace": "true",
     "sounds": [
       {
@@ -200,7 +200,7 @@
     ]
   },
   "audio/magicros/chiram_tales": {
-    "subtitle": "chiram_tales",
+    "subtitle": "subtitle.providencraft.chiram_tales",
     "replace": "true",
     "sounds": [
       {
@@ -210,7 +210,7 @@
     ]
   },
   "audio/magicros/haine_broadcast": {
-    "subtitle": "haine_broadcast",
+    "subtitle": "subtitle.providencraft.haine_broadcast",
     "replace": "true",
     "sounds": [
       {
@@ -220,7 +220,7 @@
     ]
   },
   "audio/magicros/haine_haiplate": {
-    "subtitle": "haine_haiplate",
+    "subtitle": "subtitle.providencraft.haine_haiplate",
     "replace": "true",
     "sounds": [
       {
@@ -230,7 +230,7 @@
     ]
   },
   "audio/magicros/haine_taunt": {
-    "subtitle": "haine_taunt",
+    "subtitle": "subtitle.providencraft.haine_taunt",
     "replace": "true",
     "sounds": [
       {
@@ -240,7 +240,7 @@
     ]
   },
   "audio/magicros/ekira_taunt": {
-    "subtitle": "ekira_taunt",
+    "subtitle": "subtitle.providencraft.ekira_taunt",
     "replace": "true",
     "sounds": [
       {
@@ -250,7 +250,7 @@
     ]
   },
   "audio/magicros/ekira_star": {
-    "subtitle": "ekira_star",
+    "subtitle": "subtitle.providencraft.ekira_star",
     "replace": "true",
     "sounds": [
       {
@@ -260,7 +260,7 @@
     ]
   },
   "audio/magicros/ekira_gourmet": {
-    "subtitle": "ekira_gourmet",
+    "subtitle": "subtitle.providencraft.ekira_gourmet",
     "replace": "true",
     "sounds": [
       {
@@ -270,7 +270,7 @@
     ]
   },
   "audio/magicros/keroro_electric_frog": {
-    "subtitle": "keroro_electric_frog",
+    "subtitle": "subtitle.providencraft.keroro_electric_frog",
     "replace": "true",
     "sounds": [
       {
@@ -280,7 +280,7 @@
     ]
   },
   "audio/magicros/keroro_frog_crown": {
-    "subtitle": "keroro_frog_crown",
+    "subtitle": "subtitle.providencraft.keroro_frog_crown",
     "replace": "true",
     "sounds": [
       {
@@ -290,7 +290,7 @@
     ]
   },
   "audio/magicros/keroro_walking": {
-    "subtitle": "keroro_walking",
+    "subtitle": "subtitle.providencraft.keroro_walking",
     "replace": "true",
     "sounds": [
       {
@@ -300,7 +300,7 @@
     ]
   },
   "audio/poi/fukamizu_ocean_monument": {
-    "subtitle": "fukamizu_ocean_monument",
+    "subtitle": "subtitle.providencraft.fukamizu_ocean_monument",
     "replace": "true",
     "sounds": [
       {
@@ -310,7 +310,7 @@
     ]
   },
   "audio/poi/fukamizu_diamond": {
-    "subtitle": "fukamizu_diamond",
+    "subtitle": "subtitle.providencraft.fukamizu_diamond",
     "replace": "true",
     "sounds": [
       {
@@ -320,7 +320,7 @@
     ]
   },
   "audio/poi/fukamizu_ring": {
-    "subtitle": "fukamizu_ring",
+    "subtitle": "subtitle.providencraft.fukamizu_ring",
     "replace": "true",
     "sounds": [
       {
@@ -330,7 +330,7 @@
     ]
   },
   "audio/second/louise_summon": {
-    "subtitle": "louise_summon",
+    "subtitle": "subtitle.providencraft.louise_summon",
     "replace": "true",
     "sounds": [
       {
@@ -340,7 +340,7 @@
     ]
   },
   "audio/second/louise_farming": {
-    "subtitle": "louise_farming",
+    "subtitle": "subtitle.providencraft.louise_farming",
     "replace": "true",
     "sounds": [
       {
@@ -350,7 +350,7 @@
     ]
   },
   "audio/second/louise_food": {
-    "subtitle": "louise_food",
+    "subtitle": "subtitle.providencraft.louise_food",
     "replace": "true",
     "sounds": [
       {
@@ -360,7 +360,7 @@
     ]
   },
   "song/darakudatenshi": {
-    "subtitle": "darakudatenshi",
+    "subtitle": "subtitle.providencraft.darakudatenshi",
     "replace": "true",
     "sounds": [
       {
@@ -370,7 +370,7 @@
     ]
   },
   "audio/other/elifaus": {
-    "subtitle": "elifaus",
+    "subtitle": "subtitle.providencraft.elifaus",
     "replace": "true",
     "sounds": [
       {
@@ -380,7 +380,7 @@
     ]
   },
   "blood_crystal": {
-    "subtitle": "blood_crystal",
+    "subtitle": "subtitle.providencraft.blood_crystal",
     "replace": "true",
     "sounds": [
       {
@@ -389,7 +389,7 @@
     ]
   },
   "audio/poi/fukamizu_cats": {
-    "subtitle": "fukamizu_cats",
+    "subtitle": "subtitle.providencraft.fukamizu_cats",
     "replace": "true",
     "sounds": [
       {
@@ -399,7 +399,7 @@
     ]
   },
   "audio/poi/fukamizu_math": {
-    "subtitle": "fukamizu_math",
+    "subtitle": "subtitle.providencraft.fukamizu_math",
     "replace": "true",
     "sounds": [
       {
@@ -409,7 +409,7 @@
     ]
   },
   "audio/poi/fukamizu_sun_bath": {
-    "subtitle": "fukamizu_sun_bath",
+    "subtitle": "subtitle.providencraft.fukamizu_sun_bath",
     "replace": "true",
     "sounds": [
       {
@@ -419,7 +419,7 @@
     ]
   },
   "song/around_the_travel": {
-    "subtitle": "around_the_travel",
+    "subtitle": "subtitle.providencraft.around_the_travel",
     "replace": "true",
     "sounds": [
       {
@@ -429,7 +429,7 @@
     ]
   },
   "audio/first/madoka_exchange_student": {
-    "subtitle": "madoka_exchange_student",
+    "subtitle": "subtitle.providencraft.madoka_exchange_student",
     "replace": "true",
     "sounds": [
       {
@@ -439,7 +439,7 @@
     ]
   },
   "audio/first/madoka_red_ahoge": {
-    "subtitle": "madoka_red_ahoge",
+    "subtitle": "subtitle.providencraft.madoka_red_ahoge",
     "replace": "true",
     "sounds": [
       {
@@ -449,7 +449,7 @@
     ]
   },
   "audio/first/madoka_party": {
-    "subtitle": "madoka_party",
+    "subtitle": "subtitle.providencraft.madoka_party",
     "replace": "true",
     "sounds": [
       {
@@ -459,7 +459,7 @@
     ]
   },
   "audio/second/mumu_ayelet": {
-    "subtitle": "mumu_ayelet",
+    "subtitle": "subtitle.providencraft.mumu_ayelet",
     "replace": "true",
     "sounds": [
       {
@@ -469,7 +469,7 @@
     ]
   },
   "audio/second/mumu_travel": {
-    "subtitle": "mumu_travel",
+    "subtitle": "subtitle.providencraft.mumu_travel",
     "replace": "true",
     "sounds": [
       {
@@ -479,11 +479,41 @@
     ]
   },
   "audio/second/mumu_beef": {
-    "subtitle": "mumu_beef",
+    "subtitle": "subtitle.providencraft.mumu_beef",
     "replace": "true",
     "sounds": [
       {
         "name": "providencraft:audio/second/mumu_beef",
+        "stream": true
+      }
+    ]
+  },
+  "audio/cnt/qianyun_self_introduction": {
+    "subtitle": "subtitle.providencraft.qianyun_self_introduction",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/cnt/qianyun_self_introduction",
+        "stream": true
+      }
+    ]
+  },
+  "audio/cnt/qianyun_explorer": {
+    "subtitle": "subtitle.providencraft.qianyun_explorer",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/cnt/qianyun_explorer",
+        "stream": true
+      }
+    ]
+  },
+  "audio/cnt/qianyun_protection": {
+    "subtitle": "subtitle.providencraft.qianyun_protection",
+    "replace": "true",
+    "sounds": [
+      {
+        "name": "providencraft:audio/cnt/qianyun_protection",
         "stream": true
       }
     ]
