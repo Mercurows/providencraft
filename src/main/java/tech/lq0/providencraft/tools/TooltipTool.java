@@ -12,6 +12,10 @@ public class TooltipTool {
         }
     }
 
+    public static void addDevelopingText(List<ITextComponent> tooltip) {
+        tooltip.add(new StringTextComponent("本物品还在开发中，[海芭拉_别急]").mergeStyle(TextFormatting.BOLD).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#ADDBFF"))));
+    }
+
     public static void addLiverInfo(List<ITextComponent> tooltip, Livers liver) {
         addHideText(tooltip, new StringTextComponent(""));
         addHideText(tooltip, new TranslationTextComponent("liver").mergeStyle(TextFormatting.WHITE));

@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+//TODO 完成千耘锄的功能
 public class QianyunHoe extends HoeItem {
     public QianyunHoe(){
         super(ItemTier.IRON, 1, -1.0f, new Properties().group(ModGroup.itemgroup));
@@ -26,6 +27,8 @@ public class QianyunHoe extends HoeItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        TooltipTool.addDevelopingText(tooltip);
+
         tooltip.add((new TranslationTextComponent("des.providencraft.qianyun_hoe")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.QIANYUN);
     }
