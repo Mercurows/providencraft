@@ -488,22 +488,22 @@
       }
     ]
   },
-  "audio/cnt/qianyun_self_introduction": {
-    "subtitle": "subtitle.providencraft.qianyun_self_introduction",
+  "audio/cnt/qianyun_intro": {
+    "subtitle": "subtitle.providencraft.qianyun_intro",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:audio/cnt/qianyun_self_introduction",
+        "name": "providencraft:audio/cnt/qianyun_intro",
         "stream": true
       }
     ]
   },
-  "audio/cnt/qianyun_explorer": {
-    "subtitle": "subtitle.providencraft.qianyun_explorer",
+  "audio/cnt/qianyun_explore": {
+    "subtitle": "subtitle.providencraft.qianyun_explore",
     "replace": "true",
     "sounds": [
       {
-        "name": "providencraft:audio/cnt/qianyun_explorer",
+        "name": "providencraft:audio/cnt/qianyun_explore",
         "stream": true
       }
     ]

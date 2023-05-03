@@ -58,6 +58,9 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> MUMU_AYELET = SOUNDS.register("mumu_ayelet", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/mumu_ayelet")));
     public static final RegistryObject<SoundEvent> MUMU_TRAVEL = SOUNDS.register("mumu_travel", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/mumu_travel")));
     public static final RegistryObject<SoundEvent> MUMU_BEEF = SOUNDS.register("mumu_beef", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/second/mumu_beef")));
+    public static final RegistryObject<SoundEvent> QIANYUN_INTRO = SOUNDS.register("qianyun_intro", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/cnt/qianyun_intro")));
+    public static final RegistryObject<SoundEvent> QIANYUN_EXPLORE = SOUNDS.register("qianyun_explore", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/cnt/qianyun_explore")));
+    public static final RegistryObject<SoundEvent> QIANYUN_PROTECTION = SOUNDS.register("qianyun_protection", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/cnt/qianyun_protection")));
 
     public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
 
