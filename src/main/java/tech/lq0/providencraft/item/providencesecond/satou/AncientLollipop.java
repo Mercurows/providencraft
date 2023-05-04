@@ -5,7 +5,9 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.network.play.server.SExplosionPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -15,10 +17,16 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import tech.lq0.providencraft.init.EffectRegistry;
+import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -30,6 +38,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class AncientLollipop extends SwordItem {
+    public static final String TAG_LOLLIPOP = "shouldExplode";
+
     public AncientLollipop(){
         super(ItemTier.NETHERITE, 2, -0.5F, new Properties().maxDamage(642)
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
@@ -104,6 +114,7 @@ public class AncientLollipop extends SwordItem {
 
             player.getCooldownTracker().setCooldown(stack.getItem(), 30);
             player.playSound(SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, 1.0f, 1.0f);
+            ItemNBTTool.setBoolean(stack, TAG_LOLLIPOP, true);
         }
         return stack;
     }
@@ -177,6 +188,10 @@ public class AncientLollipop extends SwordItem {
                 player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 50, 4, true, false));
                 player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 50, 2, true, false));
             }
+
+            if(player.ticksExisted % 100 == 0){
+                player.getFoodStats().addStats(1, 0.5f);
+            }
         }
     }
 
@@ -192,8 +207,62 @@ public class AncientLollipop extends SwordItem {
 
     @Override
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if(attacker.isSneaking()){
-            target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 100, 3));
+        World worldIn = attacker.world;
+        if(attacker instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) attacker;
+            if (player.isSneaking()) {
+                target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 100, 3));
+            }
+
+            boolean flag = ItemNBTTool.getBoolean(stack, TAG_LOLLIPOP, false);
+            if (flag) {
+                if(!worldIn.isRemote) {
+                    new Object() {
+                        private int ticks = 0;
+                        private float waitTicks;
+
+                        public void start(int waitTicks) {
+                            ((ServerWorld) worldIn).spawnParticle(ParticleTypes.ENCHANT, target.getPosX(), target.getPosY() + 1, target.getPosZ(),
+                                    150, 0.5, 1, 0.5, 2);
+
+                            this.waitTicks = waitTicks;
+                            MinecraftForge.EVENT_BUS.register(this);
+                        }
+
+                        @SubscribeEvent
+                        public void tick(TickEvent.ServerTickEvent event) {
+                            if (event.phase == TickEvent.Phase.END) {
+                                this.ticks++;
+                                if (this.ticks >= this.waitTicks) {
+                                    run();
+                                }
+                            }
+                        }
+
+                        private void run() {
+                            Explosion explosion = new Explosion(worldIn, player, DamageSource.causeExplosionDamage(player),
+                                    null, target.getPosX(), target.getPosY(), target.getPosZ(), 3, false, Explosion.Mode.NONE);
+                            explosion.doExplosionA();
+                            explosion.doExplosionB(false);
+
+                            ((ServerWorld) worldIn).spawnParticle(ParticleTypes.DRAGON_BREATH, target.getPosX(), target.getPosY() + 1, target.getPosZ(),
+                                    200, worldIn.rand.nextDouble() - 0.5, worldIn.rand.nextDouble(), worldIn.rand.nextDouble() - 0.5, 0.5);
+
+                            explosion.clearAffectedBlockPositions();
+
+                            for (ServerPlayerEntity serverPlayer : ((ServerWorld) worldIn).getPlayers()) {
+                                if (serverPlayer.getDistanceSq(target.getPosX(), target.getPosY(), target.getPosZ()) < 400) {
+                                    serverPlayer.connection.sendPacket(new SExplosionPacket(target.getPosX(), target.getPosY(), target.getPosZ(), 3, explosion.getAffectedBlockPositions(), explosion.getPlayerKnockbackMap().get(player)));
+                                }
+                            }
+
+                            MinecraftForge.EVENT_BUS.unregister(this);
+                        }
+                    }.start(30);
+                }
+
+                ItemNBTTool.setBoolean(stack, TAG_LOLLIPOP, false);
+            }
         }
         return true;
     }
