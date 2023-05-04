@@ -6,10 +6,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
@@ -48,6 +48,9 @@ public class AncientLollipop extends SwordItem {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
         playerIn.setActiveHand(handIn);
+        if(!worldIn.isRemote){
+            playerIn.addPotionEffect(new EffectInstance(Effects.INVISIBILITY, 10, 0, true, false));
+        }
         return ActionResult.resultConsume(stack);
     }
 
@@ -58,7 +61,12 @@ public class AncientLollipop extends SwordItem {
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return 10;
+        return 5;
+    }
+
+    @Override
+    public SoundEvent getEatSound() {
+        return null;
     }
 
     @Override
@@ -69,26 +77,33 @@ public class AncientLollipop extends SwordItem {
             Vector3d start = player.getEyePosition(1);
             Vector3d end = start.add(player.getLookVec().scale(20));
 
+            Vector3d res;
+
             BlockRayTraceResult rayTrace = worldIn.rayTraceBlocks(new RayTraceContext(start, end, RayTraceContext.BlockMode.COLLIDER,
                     RayTraceContext.FluidMode.NONE, player));
 
             if(rayTrace.getType() == RayTraceResult.Type.BLOCK){
                 BlockPos pos = rayTrace.getPos().offset(rayTrace.getFace());
 
-                Vector3d vector3d = getTpPos(player, getFaceCenter(pos));
-                if(vector3d != null){
-                    if(!worldIn.isRemote) {
-                        player.setPositionAndUpdate(vector3d.getX(), vector3d.getY(), vector3d.getZ());
-                    }
-                }
+                res = getTpPos(player, getFaceCenter(pos));
             }else {
-                if(!worldIn.isRemote) {
-                    Vector3d vector3d = start.add(player.getLookVec().scale(10));
-                    player.setPositionAndUpdate(vector3d.getX(), vector3d.getY(), vector3d.getZ());
+                res = start.add(player.getLookVec().scale(10));
+            }
+
+            if(res != null) {
+                if (!worldIn.isRemote) {
+                    player.setPositionAndUpdate(res.x, res.y, res.z);
+                }else {
+                    for(int i=1; i<=10; i++){
+                        worldIn.addParticle(ParticleTypes.PORTAL, true,
+                                    player.getPosX(), player.getPosY(), player.getPosZ(),
+                                    worldIn.rand.nextDouble() - 0.5, worldIn.rand.nextDouble(), worldIn.rand.nextDouble() - 0.5);
+                    }
                 }
             }
 
-            player.getCooldownTracker().setCooldown(stack.getItem(), 10);
+            player.getCooldownTracker().setCooldown(stack.getItem(), 30);
+            player.playSound(SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, 1.0f, 1.0f);
         }
         return stack;
     }
