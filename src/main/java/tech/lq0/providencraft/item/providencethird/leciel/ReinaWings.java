@@ -67,7 +67,7 @@ public class ReinaWings extends ArmorItem {
             player.addPotionEffect(new EffectInstance(Effects.SLOW_FALLING, 300, 0, true, false));
             if (player.ticksExisted % 200 == 0) {
                 //player.addPotionEffect(new EffectInstance(Effects.SATURATION, 20, 0));
-                player.getFoodStats().addStats(1, 1.0f);
+                player.getFoodStats().addStats(1, 0.5f);
             }
         }
         super.onArmorTick(stack, world, player);

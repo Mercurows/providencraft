@@ -25,7 +25,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -189,7 +188,7 @@ public class AncientLollipop extends SwordItem {
                 player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 50, 2, true, false));
             }
 
-            if(player.ticksExisted % 100 == 0){
+            if(player.ticksExisted % 160 == 0){
                 player.getFoodStats().addStats(1, 0.5f);
             }
         }
@@ -210,12 +209,11 @@ public class AncientLollipop extends SwordItem {
         World worldIn = attacker.world;
         if(attacker instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) attacker;
-            if (player.isSneaking()) {
-                target.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 100, 3));
-            }
 
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_LOLLIPOP, false);
             if (flag) {
+                target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 80, 2));
+
                 if(!worldIn.isRemote) {
                     new Object() {
                         private int ticks = 0;
@@ -223,7 +221,7 @@ public class AncientLollipop extends SwordItem {
 
                         public void start(int waitTicks) {
                             ((ServerWorld) worldIn).spawnParticle(ParticleTypes.ENCHANT, target.getPosX(), target.getPosY() + 1, target.getPosZ(),
-                                    150, 0.5, 1, 0.5, 2);
+                                    150, 0.1, 0.2, 0.1, 2);
 
                             this.waitTicks = waitTicks;
                             MinecraftForge.EVENT_BUS.register(this);
