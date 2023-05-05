@@ -33,8 +33,8 @@ public class AtsuiShio extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("atsuishio_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("donate_item_des")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
+        tooltip.add((new TranslationTextComponent("des.providencraft.atsuishio")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.donate_item")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

@@ -29,8 +29,8 @@ public class LittlePotato extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("little_potato_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("donate_item_des")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
+        tooltip.add((new TranslationTextComponent("des.providencraft.little_potato")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.donate_item")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override
@@ -39,7 +39,7 @@ public class LittlePotato extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if (!worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
-            player.sendStatusMessage(new TranslationTextComponent("little_potato_eaten").mergeStyle(TextFormatting.WHITE), true);
+            player.sendStatusMessage(new TranslationTextComponent("des.providencraft.little_potato_eaten").mergeStyle(TextFormatting.WHITE), true);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

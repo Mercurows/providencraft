@@ -56,9 +56,9 @@ public class BlackEarphones extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("black_earphones_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("black_earphones_des2")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("donate_item_des")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
+        tooltip.add((new TranslationTextComponent("des.providencraft.black_earphones_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.black_earphones_2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.donate_item")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override

@@ -360,6 +360,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LOLLIPOP = ITEMS.register("lollipop", Lollipop::new);
     public static final RegistryObject<Item> ORANGE_TRACKER = ITEMS.register("orange_tracker", OrangeTracker::new);
     public static final RegistryObject<Item> BLACK_EARPHONES = ITEMS.register("black_earphones", BlackEarphones::new);
+    public static final RegistryObject<Item> EMERGENCY_ENGINE_POWER = ITEMS.register("emergency_engine_power", EmergencyEnginePower::new);
 
     /**
      * developer
