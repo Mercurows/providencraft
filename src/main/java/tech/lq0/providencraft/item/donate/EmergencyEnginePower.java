@@ -33,8 +33,8 @@ public class EmergencyEnginePower extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote){
-            playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 20, 6));
-            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 60);
+            playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 80, 6));
+            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 110);
 
             new Object() {
                 private int ticks = 0;
@@ -60,7 +60,7 @@ public class EmergencyEnginePower extends Item {
                     MinecraftForge.EVENT_BUS.unregister(this);
                 }
 
-            }.start(20);
+            }.start(80);
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
