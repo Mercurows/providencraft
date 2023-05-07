@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "minecraft:bread"
+  },
+  "result": "providencraft:fukamizu_bread",
+  "experience": 1.00,
+  "cookingtime": 100
+}

@@ -25,6 +25,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -41,13 +42,12 @@ public class AncientLollipop extends SwordItem {
 
     public AncientLollipop(){
         super(ItemTier.NETHERITE, 2, -0.5F, new Properties().maxDamage(642)
-                .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
+                .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)).isImmuneToFire().group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
         tooltip.add((new TranslationTextComponent("des.providencraft.ancient_lollipop_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("des.providencraft.ancient_lollipop_2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.SATOU);
@@ -82,6 +82,9 @@ public class AncientLollipop extends SwordItem {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if(entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
+            if(player.getRidingEntity() != null){
+                return stack;
+            }
 
             Vector3d start = player.getEyePosition(1);
             Vector3d end = start.add(player.getLookVec().scale(20));
@@ -207,11 +210,15 @@ public class AncientLollipop extends SwordItem {
     @Override
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         World worldIn = attacker.world;
+        target.hurtResistantTime = 0;
+
         if(attacker instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) attacker;
 
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_LOLLIPOP, false);
             if (flag) {
+                ItemNBTTool.setBoolean(stack, TAG_LOLLIPOP, false);
+
                 target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 80, 2));
 
                 if(!worldIn.isRemote) {
@@ -259,7 +266,7 @@ public class AncientLollipop extends SwordItem {
                     }.start(30);
                 }
 
-                ItemNBTTool.setBoolean(stack, TAG_LOLLIPOP, false);
+
             }
         }
         return true;

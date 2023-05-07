@@ -1,7 +1,6 @@
 package tech.lq0.providencraft.effect;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.DamageSource;
@@ -24,10 +23,9 @@ public class CurseOfSerpent extends Effect {
         Effect effect_curse = EffectRegistry.CURSE_OF_SERPENT.get();
         LivingEntity entity = event.getEntityLiving();
 
-        if (entity instanceof PlayerEntity && !entity.world.isRemote) {
-            PlayerEntity player = (PlayerEntity) entity;
-            if (player.isPotionActive(effect_curse)) {
-                int level = Objects.requireNonNull(player.getActivePotionEffect(effect_curse)).getAmplifier();
+        if (!entity.world.isRemote) {
+            if (entity.isPotionActive(effect_curse)) {
+                int level = Objects.requireNonNull(entity.getActivePotionEffect(effect_curse)).getAmplifier();
                 if (source.isExplosion()) {
                     event.setAmount(event.getAmount() * (1 + level));
                 }
