@@ -41,4 +41,9 @@ public class FukamizuBread extends Item {
         tooltip.add(new TranslationTextComponent("des.providencraft.fukamizu_bread_2").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 80;
+    }
 }
