@@ -75,7 +75,7 @@ public class YeggyPearl extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid, "lunatic bow modifier", -0.2, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "lunatic bow modifier", -0.2, AttributeModifier.Operation.MULTIPLY_TOTAL));
         }
         return map;
     }
