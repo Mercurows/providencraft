@@ -5,6 +5,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.item.*;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
@@ -102,6 +104,8 @@ public class HayaSword extends SwordItem {
             Vector3d v_final = v_player.mul(4.0f, 0.0f, 4.0f).add(0.0f, 0.2f, 0.0f);
 
             player.setMotion(v_final);
+            player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 40, 4, true, false));
+
             stack.damageItem(1, player, (player1 -> player1.sendBreakAnimation(player1.getActiveHand())));
         }
     }

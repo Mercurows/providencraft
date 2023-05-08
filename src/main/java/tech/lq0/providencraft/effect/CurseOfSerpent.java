@@ -25,7 +25,7 @@ public class CurseOfSerpent extends Effect {
 
         if (!entity.world.isRemote) {
             if (entity.isPotionActive(effect_curse)) {
-                int level = Objects.requireNonNull(entity.getActivePotionEffect(effect_curse)).getAmplifier();
+                int level = Objects.requireNonNull(entity.getActivePotionEffect(effect_curse)).getAmplifier() + 1;
                 if (source.isExplosion()) {
                     event.setAmount(event.getAmount() * (1 + level));
                 }
