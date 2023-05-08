@@ -186,7 +186,6 @@ public class SpecialRender {
         }
     }
 
-    //TODO 添加伊头珠的HUD
     @SubscribeEvent
     public static void renderYeggyPearl(RenderGameOverlayEvent event){
         if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
