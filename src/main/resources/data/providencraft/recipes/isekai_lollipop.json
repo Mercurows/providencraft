@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #P",
+    "SH#",
+    "/S "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_block"
+    },
+    "P": {
+      "item": "minecraft:pink_dye"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "H": {
+      "item": "minecraft:honey_block"
+    },
+    "/": {
+      "item": "minecraft:end_rod"
+    }
+  },
+  "result": {
+    "item": "providencraft:isekai_lollipop",
+    "count": 1
+  }
+}

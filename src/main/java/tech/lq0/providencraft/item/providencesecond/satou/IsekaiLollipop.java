@@ -54,11 +54,12 @@ public class IsekaiLollipop extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
         tooltip.add((new TranslationTextComponent("des.providencraft.isekai_lollipop_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.isekai_lollipop_2")).mergeStyle(TextFormatting.GRAY));
-        if(checkEnchantments(stack) > 10){
-            tooltip.add((new TranslationTextComponent("des.providencraft.isekai_lollipop_3")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.ITALIC));
+        if(checkEnchantments(stack) >= 30){
+            tooltip.add((new TranslationTextComponent("des.providencraft.isekai_lollipop_4")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.ITALIC));
+        }else if(checkEnchantments(stack) > 10){
+            tooltip.add((new TranslationTextComponent("des.providencraft.isekai_lollipop_3")).mergeStyle(TextFormatting.LIGHT_PURPLE).mergeStyle(TextFormatting.ITALIC));
         }
         TooltipTool.addLiverInfo(tooltip, Livers.SATOU);
     }
@@ -101,6 +102,6 @@ public class IsekaiLollipop extends Item {
 
     @Override
     public int getItemEnchantability(ItemStack stack) {
-        return 25;
+        return 20;
     }
 }
