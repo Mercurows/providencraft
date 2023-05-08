@@ -41,7 +41,7 @@ public class HaiPlate extends ShieldItem {
 
         playerIn.setActiveHand(handIn);
         if (playerIn.isSneaking() && itemstack.getDamage() < itemstack.getMaxDamage() - 80) {
-            playerIn.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 200, 10));
+            playerIn.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 200, 4));
             itemstack.damageItem(80, playerIn, (playerEntity) -> playerEntity.sendBreakAnimation(handIn));
             playerIn.getCooldownTracker().setCooldown(itemstack.getItem(), 220);
             worldIn.playSound(playerIn, playerIn.getPosition(),
