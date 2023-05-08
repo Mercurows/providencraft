@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MumuSteak extends Item {
     private static final Food food = (new Food.Builder()).saturation(0.7f).hunger(10).
-            effect(new EffectInstance(Effects.HEALTH_BOOST, 600, 1), 1.0F).build();
+            effect(() -> new EffectInstance(Effects.HEALTH_BOOST, 600, 1), 1.0F).build();
 
     public MumuSteak() {
         super(new Properties().group(ModGroup.itemgroup).food(food));

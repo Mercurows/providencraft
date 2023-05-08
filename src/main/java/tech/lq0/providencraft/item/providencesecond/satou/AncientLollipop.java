@@ -2,6 +2,8 @@ package tech.lq0.providencraft.item.providencesecond.satou;
 
 import com.google.common.collect.Streams;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -65,17 +67,22 @@ public class AncientLollipop extends SwordItem {
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.EAT;
+        return UseAction.DRINK;
+    }
+
+    @Override
+    public int getItemEnchantability() {
+        return 20;
+    }
+
+    @Override
+    public SoundEvent getDrinkSound() {
+        return null;
     }
 
     @Override
     public int getUseDuration(ItemStack stack) {
         return 5;
-    }
-
-    @Override
-    public SoundEvent getEatSound() {
-        return null;
     }
 
     @Override
@@ -271,4 +278,15 @@ public class AncientLollipop extends SwordItem {
         }
         return true;
     }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.type == EnchantmentType.WEAPON || enchantment.type == EnchantmentType.BREAKABLE;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
 }

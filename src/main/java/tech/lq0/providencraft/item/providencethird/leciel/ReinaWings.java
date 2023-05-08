@@ -105,6 +105,6 @@ public class ReinaWings extends ArmorItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment.type == EnchantmentType.ARMOR_CHEST;
+        return enchantment.type == EnchantmentType.ARMOR_CHEST || enchantment.type == EnchantmentType.BREAKABLE;
     }
 }
