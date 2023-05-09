@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MusicDiscSongOfAutumn extends MusicDiscItem {
     public MusicDiscSongOfAutumn() {
-        super(7, SoundRegistry.SONG_OF_AUTUMN, new Properties().maxStackSize(1).group(ModGroup.donategroup).rarity(Rarity.UNCOMMON));
+        super(7, SoundRegistry.SONG_OF_AUTUMN, new Properties().maxStackSize(1).group(ModGroup.donategroup).rarity(Rarity.RARE));
     }
 
     @Override
