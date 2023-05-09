@@ -436,7 +436,7 @@
     "sounds": [
       {
         "name": "providencraft:song/song_of_autumn",
-        "volume": 0.9,
+        "volume": 0.8,
         "stream": true
       }
     ]
