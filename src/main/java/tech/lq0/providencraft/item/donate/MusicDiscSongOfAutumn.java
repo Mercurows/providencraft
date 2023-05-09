@@ -3,21 +3,23 @@ package tech.lq0.providencraft.item.donate;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MusicDiscItem;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.item.Rarity;
+import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.SoundRegistry;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Supplier;
 
 public class MusicDiscSongOfAutumn extends MusicDiscItem {
-    public MusicDiscSongOfAutumn(Supplier<SoundEvent> soundSupplier, Properties builder) {
-        super(7, soundSupplier, builder);
+    public MusicDiscSongOfAutumn() {
+        super(7, SoundRegistry.SONG_OF_AUTUMN, new Properties().maxStackSize(1).group(ModGroup.donategroup).rarity(Rarity.UNCOMMON));
     }
 
     @Override
@@ -31,5 +33,10 @@ public class MusicDiscSongOfAutumn extends MusicDiscItem {
         tooltip.add((new TranslationTextComponent("des.providencraft.music_disc_song_of_autumn_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.music_disc_song_of_autumn_2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.donate_item")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
+    }
+
+    @Override
+    public IFormattableTextComponent getDescription() {
+        return new TranslationTextComponent("des.providencraft.music_disc_song_of_autumn_1");
     }
 }
