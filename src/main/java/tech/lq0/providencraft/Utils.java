@@ -16,6 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import tech.lq0.providencraft.init.*;
 import tech.lq0.providencraft.loot.LootTableHandler;
 import tech.lq0.providencraft.world.biome.BlueDesertBiome;
+import tech.lq0.providencraft.world.biome.HaranoPlainsBiome;
 
 import java.util.Objects;
 
@@ -48,6 +49,9 @@ public class Utils {
         BiomeDictionary.addTypes(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(WorldGenRegistries.BIOME.getKey(BlueDesertBiome.blueDesertBiome))), BiomeDictionary.Type.DRY);
         BiomeManager.addBiome(BiomeManager.BiomeType.DESERT,
                 new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(WorldGenRegistries.BIOME.getKey(BlueDesertBiome.blueDesertBiome))), 5));
+        BiomeDictionary.addTypes(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(WorldGenRegistries.BIOME.getKey(HaranoPlainsBiome.haranoPlainsBiome))), BiomeDictionary.Type.DRY);
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT,
+                new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, Objects.requireNonNull(WorldGenRegistries.BIOME.getKey(HaranoPlainsBiome.haranoPlainsBiome))), 5));
     }
 
     @SubscribeEvent
