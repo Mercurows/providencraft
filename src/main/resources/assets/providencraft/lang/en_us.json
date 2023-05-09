@@ -245,7 +245,7 @@
   "item.providencraft.ekira_idol_boots": "Ekira Idol Costume (Boots)",
   "ekira_idol_costume_des": "Incarnated by Ekira",
   "death.attack.sorayo": "%1$s was penetrated by the scream of Akatsuki Sorayo",
-  "yyky_scream": "Akatsuki Sorayo's Scream",
+  "subtitle.providencraft.yyky_scream": "Akatsuki Sorayo's Scream",
   "death.attack.sorayo.player": "%1$s was killed by Akatsuki Sorayo's scream when attacking %2$s",
   "death.attack.sorayo.item": "%1$s was killed by Akatsuki Sorayo's scream when attacking %2$s",
   "death.attack.beniCake.player": "%1$s ate lava cake by mistake when fleeing from %2$s",

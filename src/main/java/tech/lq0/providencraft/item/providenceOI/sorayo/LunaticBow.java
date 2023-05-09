@@ -98,29 +98,8 @@ public class LunaticBow extends ArmorItem {
             ItemStack helmet = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.LUNATIC_BOW.get())) {
                 player.attackEntityFrom(DamageSourceRegistry.SORAYO, 2.0f);
-                int random = (int) (Math.random() * 5 + 1);
-                switch (random) {
-                    case 1:
-                        player.world.playSound(player, player.getPosition(),
-                                SoundRegistry.YYKY_SCREAM_1.get(), SoundCategory.AMBIENT, 0.7f, 1f);
-                        break;
-                    case 2:
-                        player.world.playSound(player, player.getPosition(),
-                                SoundRegistry.YYKY_SCREAM_2.get(), SoundCategory.AMBIENT, 0.7f, 1f);
-                        break;
-                    case 3:
-                        player.world.playSound(player, player.getPosition(),
-                                SoundRegistry.YYKY_SCREAM_3.get(), SoundCategory.AMBIENT, 0.7f, 1f);
-                        break;
-                    case 4:
-                        player.world.playSound(player, player.getPosition(),
-                                SoundRegistry.YYKY_SCREAM_4.get(), SoundCategory.AMBIENT, 0.7f, 1f);
-                        break;
-                    case 5:
-                        player.world.playSound(player, player.getPosition(),
-                                SoundRegistry.YYKY_SCREAM_5.get(), SoundCategory.AMBIENT, 0.7f, 1f);
-                        break;
-                }
+                player.world.playSound(player, player.getPosition(),
+                                SoundRegistry.YYKY_SCREAM.get(), SoundCategory.AMBIENT, 0.7f, 1f);
             }
         }
     }

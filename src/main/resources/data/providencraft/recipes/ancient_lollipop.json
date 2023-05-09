@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#P#",
+    "PAP",
+    "EPE"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    "P": {
+      "item": "providencraft:past_sugar"
+    },
+    "A": {
+      "item": "providencraft:satou_knife"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "result": {
+    "item": "providencraft:ancient_lollipop",
+    "count": 1
+  }
+}
