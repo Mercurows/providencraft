@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "providencraft:block/harano_pressure_plate"
+    },
+    "powered=true": {
+      "model": "providencraft:block/harano_pressure_plate_down"
+    }
+  }
+}

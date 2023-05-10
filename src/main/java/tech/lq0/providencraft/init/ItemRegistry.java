@@ -402,6 +402,9 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.COMMUNICATION_TABLE.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> PORCELAIN_THRONE = ITEMS.register("porcelain_throne", PorcelainThroneBlockItem::new);
     public static final RegistryObject<Item> POINTS_STORE = ITEMS.register("points_store", PointsStoreBlockItem::new);
+    public static final RegistryObject<Item> FUKAMIZU_BREAD_BLOCK = ITEMS.register("fukamizu_bread_block",
+            () -> new BlockItem(BlockRegistry.FUKAMIZU_BREAD_BLOCK.get(), new Item.Properties().group(ModGroup.blockgroup)));
+
     public static final RegistryObject<Item> BLUE_SAND = ITEMS.register("blue_sand",
             () -> new BlockItem(BlockRegistry.BLUE_SAND.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> BLUE_SANDSTONE = ITEMS.register("blue_sandstone",
@@ -424,6 +427,7 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.SMOOTH_BLUE_SANDSTONE_SLAB.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> SMOOTH_BLUE_SANDSTONE_STAIRS = ITEMS.register("smooth_blue_sandstone_stairs",
             () -> new BlockItem(BlockRegistry.SMOOTH_BLUE_SANDSTONE_STAIRS.get(), new Item.Properties().group(ModGroup.blockgroup)));
+
     public static final RegistryObject<Item> HARANO_LOG = ITEMS.register("harano_log",
             () -> new BlockItem(BlockRegistry.HARANO_LOG.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> HARANO_PLANKS = ITEMS.register("harano_planks",
@@ -442,6 +446,6 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.HARANO_FENCE.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> HARANO_FENCE_GATE = ITEMS.register("harano_fence_gate",
             () -> new BlockItem(BlockRegistry.HARANO_FENCE_GATE.get(), new Item.Properties().group(ModGroup.blockgroup)));
-    public static final RegistryObject<Item> FUKAMIZU_BREAD_BLOCK = ITEMS.register("fukamizu_bread_block",
-            () -> new BlockItem(BlockRegistry.FUKAMIZU_BREAD_BLOCK.get(), new Item.Properties().group(ModGroup.blockgroup)));
+    public static final RegistryObject<Item> HARANO_PRESSURE_PLATE = ITEMS.register("harano_pressure_plate",
+            () -> new BlockItem(BlockRegistry.HARANO_PRESSURE_PLATE.get(), new Item.Properties().group(ModGroup.blockgroup)));
 }
