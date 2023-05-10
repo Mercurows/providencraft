@@ -45,6 +45,7 @@ import tech.lq0.providencraft.item.providenceOI.yesa.MintChocolate;
 import tech.lq0.providencraft.item.providenceOI.yesa.YeggyPearl;
 import tech.lq0.providencraft.item.providenceOI.yuri.RabbitLychee;
 import tech.lq0.providencraft.item.providenceconnections.qianyun.QianyunHoe;
+import tech.lq0.providencraft.item.providenceconnections.qianyun.Suitcase;
 import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
@@ -177,6 +178,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MAGIC_BOOK_MYANNA_PLUS = ITEMS.register("magic_book_myanna_plus", MagicBookMyannaPlus::new);
     public static final RegistryObject<Item> MAGIC_BOOK_THROW = ITEMS.register("magic_book_throw", MagicBookThrow::new);
     public static final RegistryObject<Item> LOUISTEW = ITEMS.register("louistew", Louistew::new);
+    public static final RegistryObject<Item> UNI_MILLET = ITEMS.register("uni_millet", UniMillet::new);
 
     //mojuko
     public static final RegistryObject<Item> YAGI_STAFF_CARD = ITEMS.register("yagi_staff_card", YagiStaffCard::new);
@@ -206,6 +208,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LOTUS_POTATO = ITEMS.register("lotus_potato", LotusPotato::new);
     public static final RegistryObject<Item> CHIRAM_LANTERN = ITEMS.register("chiram_lantern", ChiramLantern::new);
     public static final RegistryObject<Item> BOLSTER = ITEMS.register("bolster", Bolster::new);
+    public static final RegistryObject<Item> VEGETABLE_DUMPLING = ITEMS.register("vegetable_dumpling", VegetableDumpling::new);
 
     //haine
     public static final RegistryObject<Item> HAI_PLATE = ITEMS.register("hai_plate", HaiPlate::new);
@@ -304,7 +307,7 @@ public class ItemRegistry {
      */
     //qianyun
     public static final RegistryObject<Item> QIANYUN_HOE = ITEMS.register("qianyun_hoe", QianyunHoe::new);
-
+    public static final RegistryObject<Item> SUITCASE = ITEMS.register("suitcase", Suitcase::new);
 
     /**
      * others
