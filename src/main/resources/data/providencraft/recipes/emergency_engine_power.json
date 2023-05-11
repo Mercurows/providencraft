@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##W",
+    "BBU",
+    "##W"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:piston"
+    },
+    "W": {
+      "item": "minecraft:white_carpet"
+    },
+    "B": {
+      "item": "minecraft:blast_furnace"
+    },
+    "U": {
+      "item": "minecraft:blue_carpet"
+    }
+  },
+  "result": {
+    "item": "providencraft:emergency_engine_power",
+    "count": 1
+  }
+}

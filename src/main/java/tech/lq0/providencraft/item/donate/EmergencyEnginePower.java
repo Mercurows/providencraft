@@ -14,11 +14,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.init.EffectRegistry;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -26,7 +22,7 @@ import java.util.List;
 
 public class EmergencyEnginePower extends Item {
     public EmergencyEnginePower(){
-        super(new Properties().group(ModGroup.donategroup));
+        super(new Properties().group(ModGroup.donategroup).defaultMaxDamage(16));
     }
 
     @Override
@@ -34,33 +30,9 @@ public class EmergencyEnginePower extends Item {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if(!worldIn.isRemote){
             playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 80, 6));
+            playerIn.setFire(6);
             playerIn.getCooldownTracker().setCooldown(stack.getItem(), 110);
-
-            new Object() {
-                private int ticks = 0;
-                private float waitTicks;
-
-                public void start(int waitTicks) {
-                    this.waitTicks = waitTicks;
-                    MinecraftForge.EVENT_BUS.register(this);
-                }
-
-                @SubscribeEvent
-                public void tick(TickEvent.ServerTickEvent event) {
-                    if (event.phase == TickEvent.Phase.END) {
-                        this.ticks++;
-                        if (this.ticks >= this.waitTicks) {
-                            run();
-                        }
-                    }
-                }
-
-                private void run(){
-                    playerIn.addPotionEffect(new EffectInstance(EffectRegistry.OVERLOAD.get(), 400, 0));
-                    MinecraftForge.EVENT_BUS.unregister(this);
-                }
-
-            }.start(80);
+            stack.damageItem(1, playerIn, (player) -> player.sendBreakAnimation(handIn));
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
