@@ -347,6 +347,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_QIANYUN_1 = ITEMS.register("audio_tape_qianyun_1", () -> new AudioTape(Livers.QIANYUN, SoundRegistry.QIANYUN_INTRO, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
     public static final RegistryObject<Item> AUDIO_TAPE_QIANYUN_2 = ITEMS.register("audio_tape_qianyun_2", () -> new AudioTape(Livers.QIANYUN, SoundRegistry.QIANYUN_EXPLORE, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
     public static final RegistryObject<Item> AUDIO_TAPE_QIANYUN_3 = ITEMS.register("audio_tape_qianyun_3", () -> new AudioTape(Livers.QIANYUN, SoundRegistry.QIANYUN_PROTECTION, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
+    public static final RegistryObject<Item> AUDIO_TAPE_UNIA_1 = ITEMS.register("audio_tape_unia_1", () -> new AudioTape(Livers.UNIA, SoundRegistry.UNIA_LEGION, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
+    public static final RegistryObject<Item> AUDIO_TAPE_UNIA_2 = ITEMS.register("audio_tape_unia_2", () -> new AudioTape(Livers.UNIA, SoundRegistry.UNIA_EXPLORE, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
+    public static final RegistryObject<Item> AUDIO_TAPE_UNIA_3 = ITEMS.register("audio_tape_unia_3", () -> new AudioTape(Livers.UNIA, SoundRegistry.UNIA_UNIGIRI, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
 
     public static final RegistryObject<Item> AUDIO_TAPE_ELIFAUS = ITEMS.register("audio_tape_elifaus", () -> new BrokenAudioTape(SoundRegistry.ELIFAUS, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.UNCOMMON))));
 

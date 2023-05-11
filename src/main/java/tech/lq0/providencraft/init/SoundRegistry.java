@@ -57,6 +57,9 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> QIANYUN_INTRO = SOUNDS.register("qianyun_intro", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/cnt/qianyun_intro")));
     public static final RegistryObject<SoundEvent> QIANYUN_EXPLORE = SOUNDS.register("qianyun_explore", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/cnt/qianyun_explore")));
     public static final RegistryObject<SoundEvent> QIANYUN_PROTECTION = SOUNDS.register("qianyun_protection", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/cnt/qianyun_protection")));
+    public static final RegistryObject<SoundEvent> UNIA_LEGION = SOUNDS.register("unia_legion", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/unia_legion")));
+    public static final RegistryObject<SoundEvent> UNIA_EXPLORE = SOUNDS.register("unia_explore", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/unia_explore")));
+    public static final RegistryObject<SoundEvent> UNIA_UNIGIRI = SOUNDS.register("unia_unigiri", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/unia_unigiri")));
 
     public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
 

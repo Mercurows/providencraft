@@ -440,5 +440,32 @@
         "stream": true
       }
     ]
+  },
+  "audio/first/unia_legion": {
+    "subtitle": "subtitle.providencraft.unia_legion",
+    "sounds": [
+      {
+        "name": "providencraft:audio/first/unia_legion",
+        "stream": true
+      }
+    ]
+  },
+  "audio/first/unia_explore": {
+    "subtitle": "subtitle.providencraft.unia_explore",
+    "sounds": [
+      {
+        "name": "providencraft:audio/first/unia_explore",
+        "stream": true
+      }
+    ]
+  },
+  "audio/first/unia_unigiri": {
+    "subtitle": "subtitle.providencraft.unia_unigiri",
+    "sounds": [
+      {
+        "name": "providencraft:audio/first/unia_unigiri",
+        "stream": true
+      }
+    ]
   }
 }
