@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#Y#",
+    "WGW",
+    " W "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_torch"
+    },
+    "Y": {
+      "item": "minecraft:yellow_dye"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "providencraft:xiaolongbao",
+    "count": 2
+  }
+}
