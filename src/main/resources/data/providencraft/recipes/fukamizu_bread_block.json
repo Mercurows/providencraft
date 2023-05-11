@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bbb",
+    "bbb",
+    "bbb"
+  ],
+  "key": {
+    "b": {
+      "item": "providencraft:fukamizu_bread"
+    }
+  },
+  "result": {
+    "item": "providencraft:fukamizu_bread_block",
+    "count": 1
+  }
+}
