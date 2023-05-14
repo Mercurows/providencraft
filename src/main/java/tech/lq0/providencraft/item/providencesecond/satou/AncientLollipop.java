@@ -43,7 +43,7 @@ public class AncientLollipop extends SwordItem {
     public static final String TAG_LOLLIPOP = "shouldExplode";
 
     public AncientLollipop(){
-        super(ItemTier.NETHERITE, 2, -0.5F, new Properties().maxDamage(642)
+        super(ItemTier.NETHERITE, 1, -0.8F, new Properties().maxDamage(642)
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)).isImmuneToFire().group(ModGroup.itemgroup));
     }
 
@@ -121,7 +121,7 @@ public class AncientLollipop extends SwordItem {
                 }
             }
 
-            player.getCooldownTracker().setCooldown(stack.getItem(), 30);
+            player.getCooldownTracker().setCooldown(stack.getItem(), 70);
             player.playSound(SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, 1.0f, 1.0f);
             ItemNBTTool.setBoolean(stack, TAG_LOLLIPOP, true);
         }
@@ -195,10 +195,10 @@ public class AncientLollipop extends SwordItem {
                 player.addPotionEffect(new EffectInstance(Effects.SPEED, 50, 4, true, false));
                 player.addPotionEffect(new EffectInstance(Effects.INVISIBILITY, 50, 0, true, false));
                 player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 50, 4, true, false));
-                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 50, 2, true, false));
+                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 50, 1, true, false));
             }
 
-            if(player.ticksExisted % 160 == 0){
+            if(player.ticksExisted % 200 == 0){
                 player.getFoodStats().addStats(1, 0.5f);
             }
         }
