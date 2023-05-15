@@ -44,7 +44,8 @@ public class HaranoLog extends RotatedPillarBlock {
         if(stack.getItem() instanceof AxeItem) {
             worldIn.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
             if (!worldIn.isRemote) {
-                worldIn.setBlockState(pos, BlockRegistry.STRIPPED_HARANO_LOG.get().getDefaultState(), 11);
+                worldIn.setBlockState(pos, BlockRegistry.STRIPPED_HARANO_LOG.get().getDefaultState()
+                        .with(RotatedPillarBlock.AXIS, state.get(RotatedPillarBlock.AXIS)), 11);
                 stack.damageItem(1, player, (player1) -> player1.sendBreakAnimation(handIn));
             }
             return ActionResultType.func_233537_a_(worldIn.isRemote);

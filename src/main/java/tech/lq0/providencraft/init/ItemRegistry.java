@@ -456,4 +456,6 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.HARANO_PRESSURE_PLATE.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> STRIPPED_HARANO_LOG = ITEMS.register("stripped_harano_log",
             () -> new BlockItem(BlockRegistry.STRIPPED_HARANO_LOG.get(), new Item.Properties().group(ModGroup.blockgroup)));
+    public static final RegistryObject<Item> STRIPPED_HARANO_WOOD = ITEMS.register("stripped_harano_wood",
+            () -> new BlockItem(BlockRegistry.STRIPPED_HARANO_WOOD.get(), new Item.Properties().group(ModGroup.blockgroup)));
 }
