@@ -23,7 +23,7 @@ import java.util.List;
 
 public class CommunicationTable extends Block {
     public CommunicationTable() {
-        super(Properties.create(Material.WOOD).hardnessAndResistance(2));
+        super(Properties.create(Material.IRON).hardnessAndResistance(2));
     }
 
     @Override
