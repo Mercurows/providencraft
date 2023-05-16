@@ -458,4 +458,6 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.STRIPPED_HARANO_LOG.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> STRIPPED_HARANO_WOOD = ITEMS.register("stripped_harano_wood",
             () -> new BlockItem(BlockRegistry.STRIPPED_HARANO_WOOD.get(), new Item.Properties().group(ModGroup.blockgroup)));
+    public static final RegistryObject<Item> HARANO_DOOR = ITEMS.register("harano_door",
+            () -> new BlockItem(BlockRegistry.HARANO_DOOR.get(), new Item.Properties().group(ModGroup.blockgroup)));
 }
