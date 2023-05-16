@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:harano_planks"
+    }
+  },
+  "result": {
+    "item": "providencraft:harano_pressure_plate"
+  }
+}

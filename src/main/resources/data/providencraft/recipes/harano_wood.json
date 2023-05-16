@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:harano_log"
+    }
+  },
+  "result": {
+    "item": "providencraft:harano_wood",
+    "count": 3
+  }
+}

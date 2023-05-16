@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "providencraft:harano_planks"
+    }
+  },
+  "result": {
+    "item": "providencraft:harano_fence_gate"
+  }
+}
