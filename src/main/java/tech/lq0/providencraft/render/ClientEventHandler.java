@@ -33,5 +33,6 @@ public class ClientEventHandler {
         event.enqueueWork(() -> ClientRegistry.bindTileEntityRenderer(TileEntityRegistry.POINTS_STORE.get(), PointsStoreTileEntityRenderer::new));
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_SAPLING.get(), RenderType.getCutout()));
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_DOOR.get(), RenderType.getCutout()));
+        event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_TRAPDOOR.get(), RenderType.getCutout()));
     }
 }

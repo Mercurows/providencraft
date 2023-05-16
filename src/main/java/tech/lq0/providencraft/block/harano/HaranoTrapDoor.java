@@ -1,9 +1,10 @@
 package tech.lq0.providencraft.block.harano;
 
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.TrapDoorBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
@@ -15,15 +16,15 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class HaranoLeaves extends LeavesBlock {
-    public HaranoLeaves(){
-        super(AbstractBlock.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F)
-                .tickRandomly().sound(SoundType.PLANT).notSolid().setAllowsSpawn((state, reader, pos, entityType) -> false));
+public class HaranoTrapDoor extends TrapDoorBlock {
+    public HaranoTrapDoor(){
+        super(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.RED_TERRACOTTA).hardnessAndResistance(3.0F)
+                .sound(SoundType.WOOD).notSolid().setAllowsSpawn((state, reader, pos, entityType) -> false));
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("des.providencraft.harano_leaves")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.harano_trapdoor")).mergeStyle(TextFormatting.GRAY));
     }
 }
