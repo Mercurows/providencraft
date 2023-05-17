@@ -1,7 +1,7 @@
 package tech.lq0.providencraft.entity;
 
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +10,7 @@ import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.*;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.play.server.SSpawnObjectPacket;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
@@ -18,18 +18,23 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
+import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.network.FMLPlayMessages;
+import net.minecraftforge.fml.network.NetworkHooks;
+import tech.lq0.providencraft.init.EntityRegistry;
 
 import java.util.Collections;
 import java.util.List;
 
-public class TailBobberEntity extends FishingBobberEntity {
+public class TailBobberEntity extends FishingBobberEntity implements IEntityAdditionalSpawnData {
     public TailBobberEntity(FMLPlayMessages.SpawnEntity spawnPacket, World world){
         super(world.getPlayerByUuid(spawnPacket.getAdditionalData().readUniqueId()), world, 0, 0);
     }
 
     public TailBobberEntity(PlayerEntity player, World world, int luck, int lureSpeed) {
         super(player, world, luck, lureSpeed);
+        this.setShooter(player);
+        player.fishingBobber = this;
     }
 
     @Override
@@ -93,8 +98,25 @@ public class TailBobberEntity extends FishingBobberEntity {
         }
     }
 
+    @Override
+    public EntityType<?> getType() {
+        return EntityRegistry.TAIL_BOBBER_ENTITY.get();
+    }
+
     public IPacket<?> createSpawnPacket() {
-        Entity entity = this.func_234616_v_();
-        return new SSpawnObjectPacket(this, entity == null ? this.getEntityId() : entity.getEntityId());
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    @Override
+    public void writeSpawnData(PacketBuffer buffer) {
+        PlayerEntity player = this.func_234606_i_();
+        if (player != null) {
+            buffer.writeUniqueId(player.getUniqueID());
+        }
+    }
+
+    @Override
+    public void readSpawnData(PacketBuffer additionalData) {
+
     }
 }
