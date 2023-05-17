@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
 import tech.lq0.providencraft.Utils;
-import tech.lq0.providencraft.entity.ShuRinoKenEntity;
+import tech.lq0.providencraft.entity.projectile.ShuRinoKenEntity;
 import tech.lq0.providencraft.models.ShuRinoKenEntityModel;
 
 import javax.annotation.Nonnull;

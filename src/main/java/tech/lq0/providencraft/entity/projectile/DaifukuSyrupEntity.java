@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.entity;
+package tech.lq0.providencraft.entity.projectile;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.entity.Entity;
@@ -8,6 +8,8 @@ import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
@@ -20,26 +22,32 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 
-public class AhogeBoomerangEntity extends ProjectileItemEntity {
+public class DaifukuSyrupEntity extends ProjectileItemEntity {
 
-    public AhogeBoomerangEntity(EntityType<? extends AhogeBoomerangEntity> p_i50159_1_, World p_i50159_2_) {
+    public DaifukuSyrupEntity(EntityType<? extends DaifukuSyrupEntity> p_i50159_1_, World p_i50159_2_) {
         super(p_i50159_1_, p_i50159_2_);
     }
 
-    public AhogeBoomerangEntity(World world, LivingEntity entity) {
-        super(EntityRegistry.AHOGE_BOOMERANG_ENTITY.get(), entity, world);
+    public DaifukuSyrupEntity(World world, LivingEntity entity) {
+        super(EntityRegistry.DAIFUKU_SYRUP_ENTITY.get(), entity, world);
     }
 
-    public AhogeBoomerangEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
-        super(EntityRegistry.AHOGE_BOOMERANG_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
+    public DaifukuSyrupEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
+        super(EntityRegistry.DAIFUKU_SYRUP_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
     }
 
     @ParametersAreNonnullByDefault
     protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
-        if (entity instanceof LivingEntity) {
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 10.0f);
+        if (entity instanceof LivingEntity && entity != this.getEntity()) {
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 2.5f);
+            int random = (int) (Math.random() * 10 + 1);
+            if (random == 1) {
+                entity.setFire(10);
+            } else {
+                ((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 9));
+            }
         }
     }
 
@@ -54,7 +62,7 @@ public class AhogeBoomerangEntity extends ProjectileItemEntity {
     @Override
     @Nonnull
     protected Item getDefaultItem() {
-        return ItemRegistry.RED_AHOGE_BOOMERANG.get().asItem();
+        return ItemRegistry.DAIFUKU_SYRUP.get().asItem();
     }
 
     @Override

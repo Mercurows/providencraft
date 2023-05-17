@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import tech.lq0.providencraft.entity.DaifukuSyrupEntity;
+import tech.lq0.providencraft.entity.projectile.DaifukuSyrupEntity;
 
 public class DaifukuSyrupModel extends EntityModel<DaifukuSyrupEntity> {
     private final ModelRenderer bone;

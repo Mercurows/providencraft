@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
 import tech.lq0.providencraft.Utils;
-import tech.lq0.providencraft.entity.DaifukuSyrupEntity;
+import tech.lq0.providencraft.entity.projectile.DaifukuSyrupEntity;
 import tech.lq0.providencraft.models.DaifukuSyrupModel;
 
 import javax.annotation.Nonnull;

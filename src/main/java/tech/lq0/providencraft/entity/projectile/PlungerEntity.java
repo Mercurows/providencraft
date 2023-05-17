@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.entity;
+package tech.lq0.providencraft.entity.projectile;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.entity.Entity;
@@ -20,18 +20,18 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 
-public class WhiteAhogeEntity extends ProjectileItemEntity {
+public class PlungerEntity extends ProjectileItemEntity {
 
-    public WhiteAhogeEntity(EntityType<? extends WhiteAhogeEntity> p_i50159_1_, World p_i50159_2_) {
+    public PlungerEntity(EntityType<? extends PlungerEntity> p_i50159_1_, World p_i50159_2_) {
         super(p_i50159_1_, p_i50159_2_);
     }
 
-    public WhiteAhogeEntity(World world, LivingEntity entity) {
-        super(EntityRegistry.WHITE_AHOGE_ENTITY.get(), entity, world);
+    public PlungerEntity(World world, LivingEntity entity) {
+        super(EntityRegistry.PLUNGER_ENTITY.get(), entity, world);
     }
 
-    public WhiteAhogeEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
-        super(EntityRegistry.WHITE_AHOGE_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
+    public PlungerEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
+        super(EntityRegistry.PLUNGER_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
     }
 
     @ParametersAreNonnullByDefault
@@ -39,7 +39,7 @@ public class WhiteAhogeEntity extends ProjectileItemEntity {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity) {
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 8.0f);
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 5.0f);
         }
     }
 
@@ -54,7 +54,7 @@ public class WhiteAhogeEntity extends ProjectileItemEntity {
     @Override
     @Nonnull
     protected Item getDefaultItem() {
-        return ItemRegistry.WHITE_AHOGE.get().asItem();
+        return ItemRegistry.PLUNGER.get().asItem();
     }
 
     @Override

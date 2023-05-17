@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
+import tech.lq0.providencraft.entity.projectile.AhogeBoomerangEntity;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 

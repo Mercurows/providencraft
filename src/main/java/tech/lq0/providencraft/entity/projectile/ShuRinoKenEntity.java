@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.entity;
+package tech.lq0.providencraft.entity.projectile;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.entity.Entity;

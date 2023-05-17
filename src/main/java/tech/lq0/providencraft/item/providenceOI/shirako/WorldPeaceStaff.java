@@ -21,7 +21,7 @@ import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tech.lq0.providencraft.entity.BloodCrystalEntity;
+import tech.lq0.providencraft.entity.projectile.BloodCrystalEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.init.SoundRegistry;

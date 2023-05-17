@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import tech.lq0.providencraft.entity.PlungerEntity;
+import tech.lq0.providencraft.entity.projectile.PlungerEntity;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 

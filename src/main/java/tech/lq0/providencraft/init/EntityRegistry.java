@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.entity.*;
+import tech.lq0.providencraft.entity.projectile.*;
 
 public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, Utils.MOD_ID);

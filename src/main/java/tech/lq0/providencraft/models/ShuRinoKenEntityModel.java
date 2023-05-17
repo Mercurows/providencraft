@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import tech.lq0.providencraft.entity.ShuRinoKenEntity;
+import tech.lq0.providencraft.entity.projectile.ShuRinoKenEntity;
 
 public class ShuRinoKenEntityModel extends EntityModel<ShuRinoKenEntity> {
 	private final ModelRenderer main;

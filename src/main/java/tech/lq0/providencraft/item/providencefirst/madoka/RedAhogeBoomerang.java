@@ -12,7 +12,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import tech.lq0.providencraft.entity.AhogeBoomerangEntity;
+import tech.lq0.providencraft.entity.projectile.AhogeBoomerangEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tiers.ModItemTier;
 import tech.lq0.providencraft.tools.Livers;

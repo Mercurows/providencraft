@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import tech.lq0.providencraft.entity.GoodManCardEntity;
+import tech.lq0.providencraft.entity.projectile.GoodManCardEntity;
 
 public class GoodManCardModel extends EntityModel<GoodManCardEntity> {
     private final ModelRenderer main;

@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import tech.lq0.providencraft.entity.ShuRinoKenEntity;
+import tech.lq0.providencraft.entity.projectile.ShuRinoKenEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;

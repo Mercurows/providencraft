@@ -23,7 +23,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import tech.lq0.providencraft.entity.KurumiBoomerangEntity;
+import tech.lq0.providencraft.entity.projectile.KurumiBoomerangEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.bakedModel.KurumiBoomerangBakedModel;

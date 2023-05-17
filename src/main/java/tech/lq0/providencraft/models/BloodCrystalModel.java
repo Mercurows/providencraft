@@ -7,7 +7,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import tech.lq0.providencraft.entity.BloodCrystalEntity;
+import tech.lq0.providencraft.entity.projectile.BloodCrystalEntity;
 
 public class BloodCrystalModel extends EntityModel<BloodCrystalEntity> {
 	private final ModelRenderer bb_main;

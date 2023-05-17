@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.entity;
+package tech.lq0.providencraft.entity.projectile;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.entity.Entity;
@@ -20,18 +20,18 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 
-public class PlungerEntity extends ProjectileItemEntity {
+public class AhogeBoomerangEntity extends ProjectileItemEntity {
 
-    public PlungerEntity(EntityType<? extends PlungerEntity> p_i50159_1_, World p_i50159_2_) {
+    public AhogeBoomerangEntity(EntityType<? extends AhogeBoomerangEntity> p_i50159_1_, World p_i50159_2_) {
         super(p_i50159_1_, p_i50159_2_);
     }
 
-    public PlungerEntity(World world, LivingEntity entity) {
-        super(EntityRegistry.PLUNGER_ENTITY.get(), entity, world);
+    public AhogeBoomerangEntity(World world, LivingEntity entity) {
+        super(EntityRegistry.AHOGE_BOOMERANG_ENTITY.get(), entity, world);
     }
 
-    public PlungerEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
-        super(EntityRegistry.PLUNGER_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
+    public AhogeBoomerangEntity(World p_i1775_1_, double p_i1775_2_, double p_i1775_4_, double p_i1775_6_) {
+        super(EntityRegistry.AHOGE_BOOMERANG_ENTITY.get(), p_i1775_2_, p_i1775_4_, p_i1775_6_, p_i1775_1_);
     }
 
     @ParametersAreNonnullByDefault
@@ -39,7 +39,7 @@ public class PlungerEntity extends ProjectileItemEntity {
         super.onEntityHit(p_213868_1_);
         Entity entity = p_213868_1_.getEntity();
         if (entity instanceof LivingEntity) {
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 5.0f);
+            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 10.0f);
         }
     }
 
@@ -54,7 +54,7 @@ public class PlungerEntity extends ProjectileItemEntity {
     @Override
     @Nonnull
     protected Item getDefaultItem() {
-        return ItemRegistry.PLUNGER.get().asItem();
+        return ItemRegistry.RED_AHOGE_BOOMERANG.get().asItem();
     }
 
     @Override
