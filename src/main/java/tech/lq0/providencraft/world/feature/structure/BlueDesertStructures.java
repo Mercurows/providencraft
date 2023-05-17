@@ -35,7 +35,7 @@ public class BlueDesertStructures {
                 return false;
             }
 
-            if(rand.nextInt(200) <= 1){
+            if(rand.nextInt(300) <= 1){
                 int i = ci + rand.nextInt(16);
                 int k = ck + rand.nextInt(16);
                 int j = reader.getHeight(Heightmap.Type.OCEAN_FLOOR_WG, i, k);
