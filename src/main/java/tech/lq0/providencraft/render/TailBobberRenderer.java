@@ -21,6 +21,7 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.entity.TailBobberEntity;
 import tech.lq0.providencraft.init.ItemRegistry;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class TailBobberRenderer extends EntityRenderer<TailBobberEntity> {
@@ -93,13 +94,16 @@ public class TailBobberRenderer extends EntityRenderer<TailBobberEntity> {
             IVertexBuilder ivertexbuilder1 = bufferIn.getBuffer(RenderType.getLines());
             Matrix4f matrix4f1 = matrixStackIn.getLast().getMatrix();
 
-            int r = 0x90;
-            int g = 0xf2;
-            int b = 0xf6;
+            Color color_end = new Color(0x90f2f6);
+            Color color_start = new Color(0x2d2b2d);
 
             for(int k = 0; k < 16; ++k) {
-                renderPosColor(f4, f5, f6, ivertexbuilder1, matrix4f1, divide(k, 16), r, g, b);
-                renderPosColor(f4, f5, f6, ivertexbuilder1, matrix4f1, divide(k + 1, 16), r, g, b);
+                int r = Math.min(color_end.getRed() + (color_start.getRed() - color_end.getRed()) * k / 15, 255);
+                int g = Math.min(color_end.getGreen() + (color_start.getGreen() - color_end.getGreen()) * k / 15, 255);
+                int b = Math.min(color_end.getBlue() + (color_start.getBlue() - color_end.getBlue()) * k / 15, 255);
+
+                renderPosColor(f4, f5, f6, ivertexbuilder1, matrix4f1, divide(k, 16), 255 - r, 255 - g, 255 - b);
+                renderPosColor(f4, f5, f6, ivertexbuilder1, matrix4f1, divide(k + 1, 16), 255 - r, 255 - g, 255 - b);
             }
 
             matrixStackIn.pop();
