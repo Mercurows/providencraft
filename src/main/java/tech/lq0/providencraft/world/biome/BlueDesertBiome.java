@@ -53,6 +53,12 @@ public class BlueDesertBiome {
         DefaultBiomeFeatures.withOverworldOres(generationSettings);
 
         spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.COW, 100, 1, 4));
+        DefaultBiomeFeatures.withBats(spawnInfo);
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.HUSK, 40, 1, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SPIDER, 30, 1, 1));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ZOMBIE, 20, 1, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 60, 2, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ENDERMAN, 10, 1, 2));
 
         blueDesertBiome = (new Biome.Builder())
                 .precipitation(Biome.RainType.NONE)

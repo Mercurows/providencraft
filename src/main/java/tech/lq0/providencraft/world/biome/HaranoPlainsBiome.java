@@ -50,6 +50,10 @@ public class HaranoPlainsBiome {
         DefaultBiomeFeatures.withOverworldOres(generationSettings);
 
         spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.MOOSHROOM, 100, 1, 4));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SPIDER, 20, 2, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ZOMBIE, 60, 2, 3));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 20, 1, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.WITCH, 5, 1, 1));
 
         haranoPlainsBiome = (new Biome.Builder())
                 .precipitation(Biome.RainType.NONE)
