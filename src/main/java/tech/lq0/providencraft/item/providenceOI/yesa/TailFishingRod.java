@@ -31,9 +31,7 @@ public class TailFishingRod extends FishingRodItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-        tooltip.add((new TranslationTextComponent("des.providencraft.tail_fishing_rod_1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("des.providencraft.tail_fishing_rod_2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.tail_fishing_rod")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.YESA);
     }
 
@@ -57,7 +55,7 @@ public class TailFishingRod extends FishingRodItem {
             worldIn.playSound(null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_FISHING_BOBBER_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
             if (!worldIn.isRemote) {
                 int k = EnchantmentHelper.getFishingSpeedBonus(itemstack) + 2;
-                int j = EnchantmentHelper.getFishingLuckBonus(itemstack) + 2;
+                int j = EnchantmentHelper.getFishingLuckBonus(itemstack) + 3;
                 worldIn.addEntity(new TailBobberEntity(playerIn, worldIn, j, k));
             }
             playerIn.swingArm(handIn);
