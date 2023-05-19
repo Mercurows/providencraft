@@ -18,7 +18,7 @@ public class BlueDesertBiome {
 
     public static BiomeAmbience biomeAmbience;
     public static BiomeGenerationSettings.Builder generationSettings;
-    public static MobSpawnInfo.Builder spawnInfo = new MobSpawnInfo.Builder().isValidSpawnBiomeForPlayer();
+    public static MobSpawnInfo.Builder spawnInfo;
 
     static {
         biomeAmbience = (new BiomeAmbience.Builder())
@@ -52,12 +52,15 @@ public class BlueDesertBiome {
         DefaultBiomeFeatures.withCavesAndCanyons(generationSettings);
         DefaultBiomeFeatures.withOverworldOres(generationSettings);
 
-        spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.COW, 100, 1, 4));
-        DefaultBiomeFeatures.withBats(spawnInfo);
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.HUSK, 40, 1, 2));
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SPIDER, 30, 1, 1));
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ZOMBIE, 20, 1, 2));
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 60, 2, 2));
+        spawnInfo = new MobSpawnInfo.Builder().isValidSpawnBiomeForPlayer();
+
+        spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.SHEEP, 12, 2, 4));
+        spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.PIG, 10, 4, 4));
+        spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.COW, 78, 4, 4));
+        spawnInfo.withSpawner(EntityClassification.AMBIENT, new MobSpawnInfo.Spawners(EntityType.BAT, 10, 8, 8));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SPIDER, 100, 1, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ZOMBIE, 100, 1, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 100, 2, 2));
         spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ENDERMAN, 10, 1, 2));
 
         blueDesertBiome = (new Biome.Builder())

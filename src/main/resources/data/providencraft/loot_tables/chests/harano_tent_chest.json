@@ -6,16 +6,10 @@
         {
           "type": "minecraft:item",
           "name": "providencraft:music_disc_song_of_autumn",
-          "functions": [
+          "conditions": [
             {
-              "function": "minecraft:set_count",
-              "count": 1,
-              "conditions": [
-                {
-                  "condition": "minecraft:random_chance",
-                  "chance": 0.2
-                }
-              ]
+              "condition": "minecraft:random_chance",
+              "chance": 0.2
             }
           ]
         }

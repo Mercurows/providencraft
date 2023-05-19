@@ -18,7 +18,7 @@ public class HaranoPlainsBiome {
 
     public static BiomeAmbience biomeAmbience;
     public static BiomeGenerationSettings.Builder generationSettings;
-    public static MobSpawnInfo.Builder spawnInfo = new MobSpawnInfo.Builder().isValidSpawnBiomeForPlayer();
+    public static MobSpawnInfo.Builder spawnInfo;
 
     static {
         biomeAmbience = (new BiomeAmbience.Builder())
@@ -49,11 +49,13 @@ public class HaranoPlainsBiome {
         DefaultBiomeFeatures.withCavesAndCanyons(generationSettings);
         DefaultBiomeFeatures.withOverworldOres(generationSettings);
 
-        spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.MOOSHROOM, 100, 1, 4));
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SPIDER, 20, 2, 2));
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ZOMBIE, 60, 2, 3));
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 20, 1, 2));
-        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.WITCH, 5, 1, 1));
+        spawnInfo = new MobSpawnInfo.Builder().isValidSpawnBiomeForPlayer();
+
+        spawnInfo.withSpawner(EntityClassification.CREATURE, new MobSpawnInfo.Spawners(EntityType.MOOSHROOM, 90, 4, 8));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SPIDER, 100, 1, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ZOMBIE, 100, 1, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.SKELETON, 100, 2, 2));
+        spawnInfo.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.WITCH, 10, 1, 2));
 
         haranoPlainsBiome = (new Biome.Builder())
                 .precipitation(Biome.RainType.NONE)
