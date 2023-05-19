@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:ancient_lollipop"
+    },
+    "title": {
+      "translate": "providencraft.advancement.ancient_lollipop"
+    },
+    "description": {
+      "translate": "providencraft.advancement.ancient_lollipop_des"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "hidden": false
+  },
+  "parent": "providencraft:legendary/legendary",
+  "criteria": {
+    "world_peace_staff": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:ancient_lollipop"
+          }
+        ]
+      }
+    }
+  }
+}
