@@ -467,5 +467,15 @@
         "stream": true
       }
     ]
+  },
+  "song/song_of_qingqiu": {
+    "subtitle": "subtitle.providencraft.song_of_qingqiu",
+    "sounds": [
+      {
+        "name": "providencraft:song/song_of_qingqiu",
+        "volume": 0.7,
+        "stream": true
+      }
+    ]
   }
 }

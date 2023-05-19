@@ -67,4 +67,5 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> DARAKUDATENSHI = SOUNDS.register("darakudatenshi", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/darakudatenshi")));
     public static final RegistryObject<SoundEvent> AROUND_THE_TRAVEL = SOUNDS.register("around_the_travel", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/around_the_travel")));
     public static final RegistryObject<SoundEvent> SONG_OF_AUTUMN = SOUNDS.register("song_of_autumn", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/song_of_autumn")));
+    public static final RegistryObject<SoundEvent> SONG_OF_QINGQIU = SOUNDS.register("song_of_qingqiu", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/song_of_qingqiu")));
 }
