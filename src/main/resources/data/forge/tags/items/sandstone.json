@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "providencraft:blue_sandstone",
+    "providencraft:cut_blue_sandstone",
+    "providencraft:chiseled_blue_sandstone",
+    "providencraft:smooth_blue_sandstone"
+  ]
+}

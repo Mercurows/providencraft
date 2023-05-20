@@ -49,7 +49,7 @@ public class HaranoPlainsStructures {
                     return false;
                 }
                 template.func_237144_a_(reader, spawnPos, new PlacementSettings().setRotation(rotation).setMirror(mirror)
-                        .addProcessor(BlockIgnoreStructureProcessor.AIR).setChunk(null).setIgnoreEntities(true), rand);
+                        .addProcessor(BlockIgnoreStructureProcessor.AIR).setChunk(null).setIgnoreEntities(false), rand);
 
             }
             return true;
