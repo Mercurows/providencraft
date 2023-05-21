@@ -14,7 +14,7 @@
     "frame": "challenge",
     "hidden": true
   },
-  "parent": "providencraft:main/eat_mari_stew",
+  "parent": "providencraft:main/providencraft",
   "criteria": {
     "eat_lava_cake": {
       "trigger": "minecraft:consume_item",

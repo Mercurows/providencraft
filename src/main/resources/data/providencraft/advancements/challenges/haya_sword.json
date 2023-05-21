@@ -1,27 +1,27 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:tail_pen"
+      "item": "providencraft:haya_sword"
     },
     "title": {
-      "translate": "providencraft.advancement.tail_pen"
+      "translate": "providencraft.advancement.haya_sword"
     },
     "description": {
-      "translate": "providencraft.advancement.tail_pen_des"
+      "translate": "providencraft.advancement.haya_sword_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "frame": "challenge",
     "hidden": false
   },
-  "parent": "providencraft:main/lunatic_bow",
+  "parent": "providencraft:main/big_spoon",
   "criteria": {
-    "tail_pen": {
+    "haya_sword": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:tail_pen"
+            "item":"providencraft:haya_sword"
           }
         ]
       }

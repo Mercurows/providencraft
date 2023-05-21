@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:enchanted_unigiri"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_enchanted_unigiri"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_enchanted_unigiri_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "parent": "providencraft:main/eat_unigiri",
+  "criteria": {
+    "eat_enchanted_unigiri": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:enchanted_unigiri"
+        }
+      }
+    }
+  }
+}

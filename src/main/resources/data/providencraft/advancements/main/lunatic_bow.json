@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/eat_mari_stew",
+  "parent": "providencraft:main/providencraft",
   "criteria": {
     "lunatic_bow": {
       "trigger": "minecraft:inventory_changed",

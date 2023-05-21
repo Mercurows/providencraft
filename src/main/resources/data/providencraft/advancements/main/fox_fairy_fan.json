@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/providencraft",
+  "parent": "providencraft:challenges/tail_pen",
   "criteria": {
     "fox_fairy_fan": {
       "trigger": "minecraft:inventory_changed",

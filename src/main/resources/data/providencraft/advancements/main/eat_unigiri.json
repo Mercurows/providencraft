@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:unigiri"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_unigiri"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_unigiri_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_taro_ice_cream",
+  "criteria": {
+    "eat_unigiri": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:unigiri"
+        }
+      }
+    }
+  }
+}

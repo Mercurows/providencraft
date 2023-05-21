@@ -1,27 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:tail_pen"
+      "item": "providencraft:sleep_roulette"
     },
     "title": {
-      "translate": "providencraft.advancement.tail_pen"
+      "translate": "providencraft.advancement.sleep_roulette"
     },
     "description": {
-      "translate": "providencraft.advancement.tail_pen_des"
+      "translate": "providencraft.advancement.sleep_roulette_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "challenge",
     "hidden": false
   },
-  "parent": "providencraft:main/lunatic_bow",
+  "parent": "providencraft:main/crystal_horn",
   "criteria": {
-    "tail_pen": {
+    "sleep_roulette": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:tail_pen"
+            "item":"providencraft:sleep_roulette"
           }
         ]
       }

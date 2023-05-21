@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:magic_mirror"
+    },
+    "title": {
+      "translate": "providencraft.advancement.magic_mirror"
+    },
+    "description": {
+      "translate": "providencraft.advancement.magic_mirror_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "frame": "goal"
+  },
+  "parent": "providencraft:main/eat_mari_stew",
+  "criteria": {
+    "magic_mirror": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:magic_mirror"
+          }
+        ]
+      }
+    }
+  }
+}
