@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/succubus_tail",
+  "parent": "providencraft:main/eat_lotus_potato",
   "criteria": {
     "flat_vegetable_chestplate": {
       "trigger": "minecraft:inventory_changed",

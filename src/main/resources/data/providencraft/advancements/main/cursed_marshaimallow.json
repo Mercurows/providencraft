@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:cursed_marshaimallow"
+    },
+    "title": {
+      "translate": "providencraft.advancement.cursed_marshaimallow"
+    },
+    "description": {
+      "translate": "providencraft.advancement.cursed_marshaimallow_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_marshaimallow",
+  "criteria": {
+    "cursed_marshaimallow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:cursed_marshaimallow"
+          }
+        ]
+      }
+    }
+  }
+}

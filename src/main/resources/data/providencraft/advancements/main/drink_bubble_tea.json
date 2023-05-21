@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:lotus_potato"
+      "item": "providencraft:bubble_tea"
     },
     "title": {
-      "translate": "providencraft.advancement.eat_lotus_potato"
+      "translate": "providencraft.advancement.drink_bubble_tea"
     },
     "description": {
-      "translate": "providencraft.advancement.eat_lotus_potato_des"
+      "translate": "providencraft.advancement.drink_bubble_tea_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
@@ -15,11 +15,11 @@
   },
   "parent": "providencraft:main/succubus_tail",
   "criteria": {
-    "eat_lotus_potato": {
+    "drink_bubble_tea": {
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-            "item":"providencraft:lotus_potato"
+            "item":"providencraft:bubble_tea"
         }
       }
     }

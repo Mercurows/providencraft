@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:frog_leg"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_frog_leg"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_frog_leg_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/frog_crown",
+  "criteria": {
+    "eat_frog_leg": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:frog_leg"
+        }
+      }
+    }
+  }
+}
