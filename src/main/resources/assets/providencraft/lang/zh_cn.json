@@ -605,6 +605,7 @@
   "des.providencraft.harano_button": "外表清楚但内在混沌的按钮",
   "item.providencraft.tail_fishing_rod": "尾巴鱼竿",
   "des.providencraft.tail_fishing_rod": "什么样的鱼才会咬这么奇怪的钓竿，肯定不太聪明",
+  "entity.providencraft.tail_bobber": "尾巴浮标",
   "itemGroup.Providencraft Audio Tapes": "普罗维登：音声",
   "item.providencraft.audio_tape_haine_1": "音声磁带（灰音）",
   "subtitle.providencraft.haine_broadcast": "灰音：紧急苦力怕播报",
@@ -917,5 +918,9 @@
   "providencraft.advancement.eat_mint_chocolate": "清新口气",
   "providencraft.advancement.eat_mint_chocolate_des": "把它带给末影龙吧",
   "providencraft.advancement.ancient_lollipop": "岁月回甘",
-  "providencraft.advancement.ancient_lollipop_des": "普普乐街苍古糖，秋甜浓郁回味长"
+  "providencraft.advancement.ancient_lollipop_des": "普普乐街苍古糖，秋甜浓郁回味长",
+  "providencraft.advancement.eat_xiaolongbao": "好吃到爆炸",
+  "providencraft.advancement.eat_xiaolongbao_des": "吃掉一个蟹黄小笼包",
+  "providencraft.advancement.shu_rino_ken": "流浪生存法则",
+  "providencraft.advancement.shu_rino_ken_des": "捡到莉乃手里剑"
 }

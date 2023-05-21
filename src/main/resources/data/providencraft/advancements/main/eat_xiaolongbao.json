@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:xiaolongbao"
+    },
+    "title": {
+      "translate": "providencraft.advancement.eat_xiaolongbao"
+    },
+    "description": {
+      "translate": "providencraft.advancement.eat_xiaolongbao_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_mint_chocolate",
+  "criteria": {
+    "eat_xiaolongbao": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:xiaolongbao"
+        }
+      }
+    }
+  }
+}

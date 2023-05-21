@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:shu_rino_ken"
+    },
+    "title": {
+      "translate": "providencraft.advancement.shu_rino_ken"
+    },
+    "description": {
+      "translate": "providencraft.advancement.shu_rino_ken_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_xiaolongbao",
+  "criteria": {
+    "shu_rino_ken": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:shu_rino_ken"
+          }
+        ]
+      }
+    }
+  }
+}
