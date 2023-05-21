@@ -14,7 +14,7 @@
     "frame": "challenge",
     "hidden": true
   },
-  "parent": "providencraft:challenges/eat_lava_cake",
+  "parent": "providencraft:main/providencraft",
   "criteria": {
     "eat_all_food_1": {
       "trigger": "minecraft:consume_item",

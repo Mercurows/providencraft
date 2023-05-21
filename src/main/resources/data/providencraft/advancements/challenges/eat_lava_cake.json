@@ -14,7 +14,7 @@
     "frame": "challenge",
     "hidden": true
   },
-  "parent": "providencraft:main/providencraft",
+  "parent": "providencraft:main/tokain_blade",
   "criteria": {
     "eat_lava_cake": {
       "trigger": "minecraft:consume_item",
