@@ -73,7 +73,7 @@ public class CrystalHorn extends ArmorItem {
             map.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(uuid, "crystal horn modifier", night ? 4.0 : 0, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_SPEED,
-                    new AttributeModifier(uuid, "crystal horn modifier", night ? 200 : 0, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "crystal horn modifier", night ? 2 : 0, AttributeModifier.Operation.ADDITION));
             map.put(AttributeRegistry.ATTACK_COW.get(),
                     new AttributeModifier(uuid, "crystal horn modifier", 200.0D, AttributeModifier.Operation.ADDITION));
         }
