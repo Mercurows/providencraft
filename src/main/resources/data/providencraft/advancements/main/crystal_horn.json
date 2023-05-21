@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/providencraft",
+  "parent": "providencraft:main/eat_taro_ice_cream",
   "criteria": {
     "crystal_horn": {
       "trigger": "minecraft:inventory_changed",

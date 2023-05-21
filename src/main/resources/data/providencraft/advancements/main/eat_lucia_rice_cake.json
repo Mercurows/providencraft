@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/providencraft",
+  "parent": "providencraft:main/satou_knife",
   "criteria": {
     "eat_lucia_rice_cake": {
       "trigger": "minecraft:consume_item",

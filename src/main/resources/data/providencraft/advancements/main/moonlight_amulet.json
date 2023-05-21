@@ -1,27 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:tail_pen"
+      "item": "providencraft:moonlight_amulet"
     },
     "title": {
-      "translate": "providencraft.advancement.tail_pen"
+      "translate": "providencraft.advancement.moonlight_amulet"
     },
     "description": {
-      "translate": "providencraft.advancement.tail_pen_des"
+      "translate": "providencraft.advancement.moonlight_amulet_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "challenge",
     "hidden": false
   },
-  "parent": "providencraft:main/providencraft",
+  "parent": "providencraft:main/big_moe_one",
   "criteria": {
-    "tail_pen": {
+    "moonlight_amulet": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:tail_pen"
+            "item":"providencraft:moonlight_amulet"
           }
         ]
       }

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:peach_beach"
+    },
+    "title": {
+      "translate": "providencraft.advancement.drink_peach_beach"
+    },
+    "description": {
+      "translate": "providencraft.advancement.drink_peach_beach_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/red_ahoge_weapon_master",
+  "criteria": {
+    "drink_peach_beach": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+            "item":"providencraft:peach_beach"
+        }
+      }
+    }
+  }
+}

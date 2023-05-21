@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/crystal_horn",
+  "parent": "providencraft:main/eat_mumu_steak",
   "criteria": {
     "ayelet_mask": {
       "trigger": "minecraft:inventory_changed",

@@ -1,27 +1,26 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:tail_pen"
+      "item": "providencraft:satou_camera"
     },
     "title": {
-      "translate": "providencraft.advancement.tail_pen"
+      "translate": "providencraft.advancement.satou_camera"
     },
     "description": {
-      "translate": "providencraft.advancement.tail_pen_des"
+      "translate": "providencraft.advancement.satou_camera_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "challenge",
     "hidden": false
   },
-  "parent": "providencraft:main/providencraft",
+  "parent": "providencraft:main/satou_knife",
   "criteria": {
-    "tail_pen": {
+    "satou_camera": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:tail_pen"
+            "item":"providencraft:satou_camera"
           }
         ]
       }

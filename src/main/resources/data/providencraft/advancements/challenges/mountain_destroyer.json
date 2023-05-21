@@ -14,7 +14,7 @@
     "frame": "challenge",
     "hidden": false
   },
-  "parent": "providencraft:main/magic_book_myanna",
+  "parent": "providencraft:main/schedule",
   "criteria": {
     "mountain_destroyer": {
       "trigger": "minecraft:inventory_changed",

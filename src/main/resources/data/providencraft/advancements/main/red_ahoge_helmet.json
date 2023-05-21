@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/red_ahoge_weapon_master",
+  "parent": "providencraft:main/providencraft",
   "criteria": {
     "red_ahoge_helmet": {
       "trigger": "minecraft:inventory_changed",

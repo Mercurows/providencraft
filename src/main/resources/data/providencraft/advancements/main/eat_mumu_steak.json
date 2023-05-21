@@ -1,25 +1,25 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:banana_milk"
+      "item": "providencraft:mumu_steak"
     },
     "title": {
-      "translate": "providencraft.advancement.drink_banana_milk"
+      "translate": "providencraft.advancement.eat_mumu_steak"
     },
     "description": {
-      "translate": "providencraft.advancement.drink_banana_milk_des"
+      "translate": "providencraft.advancement.eat_mumu_steak_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/schedule",
+  "parent": "providencraft:main/providencraft",
   "criteria": {
-    "drink_banana_milk": {
+    "eat_mumu_steak": {
       "trigger": "minecraft:consume_item",
       "conditions": {
         "item": {
-            "item":"providencraft:banana_milk"
+            "item":"providencraft:mumu_steak"
         }
       }
     }

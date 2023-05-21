@@ -13,7 +13,7 @@
     "announce_to_chat": true,
     "hidden": false
   },
-  "parent": "providencraft:main/eat_lotus_potato",
+  "parent": "providencraft:main/crystal_horn",
   "criteria": {
     "eat_mari_stew": {
       "trigger": "minecraft:consume_item",
