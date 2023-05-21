@@ -1,33 +1,30 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:fetuozi"
+      "item": "providencraft:momo_phone",
+      "nbt": "{binding:1}"
     },
     "title": {
-      "translate": "providencraft.advancement.fetuozi"
+      "translate": "providencraft.advancement.momo_phone"
     },
     "description": {
-      "translate": "providencraft.advancement.fetuozi_des"
+      "translate": "providencraft.advancement.momo_phone_des"
     },
     "show_toast": true,
     "announce_to_chat": true,
-    "frame": "challenge",
     "hidden": false
   },
   "parent": "providencraft:main/eat_momo_daifuku",
   "criteria": {
-    "fetuozi": {
+    "momo_phone": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:fetuozi"
+            "item": "providencraft:momo_phone"
           }
         ]
       }
     }
-  },
-  "rewards": {
-    "experience": 100
   }
 }

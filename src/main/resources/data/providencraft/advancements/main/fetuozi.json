@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:fetuozi"
+    },
+    "title": {
+      "translate": "providencraft.advancement.fetuozi"
+    },
+    "description": {
+      "translate": "providencraft.advancement.fetuozi_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/eat_momo_daifuku",
+  "criteria": {
+    "fetuozi": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:fetuozi"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

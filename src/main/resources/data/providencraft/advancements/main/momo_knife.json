@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:momo_knife"
+    },
+    "title": {
+      "translate": "providencraft.advancement.momo_knife"
+    },
+    "description": {
+      "translate": "providencraft.advancement.momo_knife_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "goal",
+    "hidden": false
+  },
+  "parent": "providencraft:main/fetuozi",
+  "criteria": {
+    "momo_knife": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:momo_knife"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}
