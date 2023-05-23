@@ -19,6 +19,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -56,14 +57,20 @@ public class MountainDestroyer extends PickaxeItem {
             return i >= blockIn.getHarvestLevel();
         }
         Material material = blockIn.getMaterial();
-        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE);
+        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND ||
+                material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE ||
+                material == Material.IRON || blockIn.getBlock().getTags().contains(new ResourceLocation("forge:ores"))
+        );
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         Material material = state.getMaterial();
-        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND || material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE) ? this.efficiency : super.getDestroySpeed(stack, state);
+        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND ||
+                material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE ||
+                material == Material.IRON || state.getBlock().getTags().contains(new ResourceLocation("forge:ores"))
+        ) ? this.efficiency : super.getDestroySpeed(stack, state);
     }
 
     @Override
