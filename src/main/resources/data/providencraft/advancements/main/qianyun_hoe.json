@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:qianyun_hoe"
+    },
+    "title": {
+      "translate": "providencraft.advancement.qianyun_hoe"
+    },
+    "description": {
+      "translate": "providencraft.advancement.qianyun_hoe_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/providencraft",
+  "criteria": {
+    "qianyun_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items":[
+          {
+            "item":"providencraft:qianyun_hoe"
+          }
+        ]
+      }
+    }
+  }
+}
