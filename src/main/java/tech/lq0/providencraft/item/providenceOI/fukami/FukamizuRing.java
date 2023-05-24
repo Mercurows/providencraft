@@ -5,6 +5,8 @@ import com.google.common.collect.Multimap;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -119,5 +121,21 @@ public class FukamizuRing extends Item {
             FukamizuRingBakedModel fukamizuRingBakedModel = new FukamizuRingBakedModel(existingModel);
             event.getModelRegistry().put(location, fukamizuRingBakedModel);
         }
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getItemEnchantability() {
+        return 15;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.type == EnchantmentType.ARMOR_HEAD || enchantment.type == EnchantmentType.BREAKABLE ||
+                enchantment.type == EnchantmentType.ARMOR;
     }
 }

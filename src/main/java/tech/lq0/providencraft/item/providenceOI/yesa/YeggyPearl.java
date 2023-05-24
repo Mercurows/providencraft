@@ -139,7 +139,8 @@ public class YeggyPearl extends ArmorItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment.type == EnchantmentType.ARMOR_HEAD || enchantment.type == EnchantmentType.BREAKABLE;
+        return enchantment.type == EnchantmentType.ARMOR_HEAD || enchantment.type == EnchantmentType.BREAKABLE ||
+                enchantment.type == EnchantmentType.ARMOR;
     }
 
     @Override
