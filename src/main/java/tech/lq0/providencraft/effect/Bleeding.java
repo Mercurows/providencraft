@@ -3,6 +3,7 @@ package tech.lq0.providencraft.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +18,10 @@ public class Bleeding extends Effect {
 
     @Override
     public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
+        //冰雪女王在获得流血效果时受到攻击，游戏会崩溃
+        if(entityLivingBaseIn.getType().getRegistryName().equals(new ResourceLocation("twilightforest:snow_queen"))){
+            return;
+        }
         entityLivingBaseIn.attackEntityFrom(DamageSourceRegistry.BLEEDING, 0.5f);
         entityLivingBaseIn.hurtResistantTime = 0;
     }
@@ -35,6 +40,11 @@ public class Bleeding extends Effect {
     public static void effects(LivingHurtEvent event) {
         LivingEntity entity = event.getEntityLiving();
         Effect effect = EffectRegistry.BLEEDING.get();
+
+        if(entity.getType().getRegistryName().equals(new ResourceLocation("twilightforest:snow_queen"))){
+            return;
+        }
+
         if(event.getSource() != DamageSourceRegistry.BLEEDING) {
             if (entity.isPotionActive(effect)) {
                 entity.hurtResistantTime = 0;
