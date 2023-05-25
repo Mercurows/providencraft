@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.item.blockitem.EliboardBlockItem;
 import tech.lq0.providencraft.item.blockitem.PointsStoreBlockItem;
 import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
@@ -467,4 +468,5 @@ public class ItemRegistry {
             () -> new BlockItem(BlockRegistry.HARANO_TRAPDOOR.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> HARANO_BUTTON = ITEMS.register("harano_button",
             () -> new BlockItem(BlockRegistry.HARANO_BUTTON.get(), new Item.Properties().group(ModGroup.blockgroup)));
+    public static final RegistryObject<Item> ELIBOARD = ITEMS.register("eliboard", EliboardBlockItem::new);
 }

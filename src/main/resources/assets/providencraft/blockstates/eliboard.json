@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "providencraft:block/eliboard"
+    },
+    "facing=east": {
+      "model": "providencraft:block/eliboard",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "providencraft:block/eliboard",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "providencraft:block/eliboard",
+      "y": 270
+    }
+  }
+}

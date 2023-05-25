@@ -49,4 +49,6 @@ public class BlockRegistry {
     public static final RegistryObject<Block> HARANO_DOOR = BLOCKS.register("harano_door", HaranoDoor::new);
     public static final RegistryObject<Block> HARANO_TRAPDOOR = BLOCKS.register("harano_trapdoor", HaranoTrapDoor::new);
     public static final RegistryObject<Block> HARANO_BUTTON = BLOCKS.register("harano_button", HaranoButton::new);
+
+    public static final RegistryObject<Block> ELIBOARD = BLOCKS.register("eliboard", Eliboard::new);
 }
