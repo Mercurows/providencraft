@@ -69,22 +69,22 @@ public class VillagerInit {
                 new ItemsForEmeraldsTrade(Items.APPLE, 1, 4, 10, 2)
         };
         VillagerTrades.ITrade[] elifausLevel2 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.LUCIA_RICE_CAKE.get(), 2, 5, 4, 4),
+                new ItemsForEmeraldsTrade(ItemRegistry.LUCIA_RICE_CAKE.get(), 2, 5, 8, 4),
                 new ItemsForEmeraldsTrade(Items.CAKE, 3, 1, 10)
         };
         VillagerTrades.ITrade[] elifausLevel3 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.WHITE_DOUBLE_AHOGE.get(), 5, 1, 6, 4),
-                new EmeraldForItemsTrade(ItemRegistry.MAGIC_BOOK.get(), 1, 4, 5),
-                new ItemsForEmeraldsTrade(ItemRegistry.BANANA_MILK.get(), 2, 3, 6)
+                new ItemsForEmeraldsTrade(ItemRegistry.WHITE_DOUBLE_AHOGE.get(), 5, 1, 12, 4),
+                new EmeraldForItemsTrade(ItemRegistry.MAGIC_BOOK.get(), 1, 10, 5),
+                new ItemsForEmeraldsTrade(ItemRegistry.BANANA_MILK.get(), 2, 3, 20, 6)
         };
         VillagerTrades.ITrade[] elifausLevel4 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.FLAT_VEGETABLE_CHESTPLATE.get(), 30, 1, 1, 10),
-                new EmeraldForItemsTrade(ItemRegistry.LOTUS_POTATO.get(), 3, 10, 2),
-                new ItemsForEmeraldsTrade(ItemRegistry.FROG_LEG.get(), 3, 2, 2)
+                new ItemsForEmeraldsTrade(ItemRegistry.FLAT_VEGETABLE_CHESTPLATE.get(), 30, 1, 3, 30),
+                new EmeraldForItemsTrade(ItemRegistry.LOTUS_POTATO.get(), 3, 10, 3),
+                new ItemsForEmeraldsTrade(ItemRegistry.FROG_LEG.get(), 3, 2, 3)
         };
         VillagerTrades.ITrade[] elifausLevel5 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.PLUNGER.get(), 20, 1, 1, 20),
-                new ItemsForEmeraldsTrade(ItemRegistry.TARO_ICE_CREAM.get(), 4, 1, 5)
+                new ItemsForEmeraldsTrade(ItemRegistry.PLUNGER.get(), 20, 1, 5, 20),
+                new ItemsForEmeraldsTrade(ItemRegistry.TARO_ICE_CREAM.get(), 4, 1, 16, 5)
         };
 
         VillagerTrades.VILLAGER_DEFAULT_TRADES.put(ELIFAUS.get(),
@@ -100,15 +100,16 @@ public class VillagerInit {
                 new ItemsForEmeraldsTrade(Items.STICKY_PISTON, 7, 1, 5)
         };
         VillagerTrades.ITrade[] ruozhiLevel3 = new VillagerTrades.ITrade[]{
-                new EmeraldForItemsTrade(ItemRegistry.LAVA_CAKE.get(), 1, 1, 30),
+                new EmeraldForItemsTrade(ItemRegistry.LAVA_CAKE.get(), 1, 2, 30),
                 new ItemsForEmeraldsTrade(ItemRegistry.PORCELAIN_THRONE.get(), 8, 1, 10)
         };
         VillagerTrades.ITrade[] ruozhiLevel4 = new VillagerTrades.ITrade[]{
-                new EmeraldForItemsTrade(Items.SMOOTH_STONE, 10, 30, 1)
+                new EmeraldForItemsTrade(Items.SMOOTH_STONE, 10, 30, 1),
+                new ItemsForEmeraldsTrade(ItemRegistry.ELIBOARD.get(), 3,8, 16, 3)
         };
         VillagerTrades.ITrade[] ruozhiLevel5 = new VillagerTrades.ITrade[]{
                 new ItemsForEmeraldsTrade(ItemRegistry.ELECTRIC_HORN.get(), 50, 1, 1, 35),
-                new ItemsForPointsTrade(ItemRegistry.AUDIO_TAPE_ELIFAUS.get(), 24, 1, 1, 1, 50)
+                new ItemsForPointsTrade(ItemRegistry.AUDIO_TAPE_ELIFAUS.get(), 24, 1, 1, 3, 50)
         };
 
         VillagerTrades.VILLAGER_DEFAULT_TRADES.put(RUOZHI.get(),
