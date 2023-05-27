@@ -44,13 +44,13 @@ public class MariStew extends Item {
                 player.attackEntityFrom(DamageSourceRegistry.MARI_FOOD, 20.0f);
             } else if (random > 90) {
                 player.heal(20.0f);
-                player.sendStatusMessage(new TranslationTextComponent("mari_stew_heal").mergeStyle(TextFormatting.GOLD), true);
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.mari_stew.heal").mergeStyle(TextFormatting.GOLD), true);
             } else if (random > 70) {
                 player.addPotionEffect(new EffectInstance(Effects.POISON, 200, 1));
             } else if (random > 40) {
                 player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 400, 1));
             } else {
-                player.sendStatusMessage(new TranslationTextComponent("mari_stew_nothing").mergeStyle(TextFormatting.GRAY), true);
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.mari_stew.nothing").mergeStyle(TextFormatting.GRAY), true);
             }
 
             if (player.isCreative()) {
@@ -65,8 +65,8 @@ public class MariStew extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("mari_stew_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("mari_stew_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("des.providencraft.mari_stew")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.mari_stew.warn")).mergeStyle(TextFormatting.RED));
         TooltipTool.addLiverInfo(tooltip, Livers.MARI);
     }
 }
