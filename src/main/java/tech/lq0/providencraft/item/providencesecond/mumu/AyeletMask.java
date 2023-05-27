@@ -60,8 +60,8 @@ public class AyeletMask extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("ayelet_mask_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("ayelet_mask_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.ayelet_mask_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.ayelet_mask_2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.MUMU);
     }
 
@@ -71,8 +71,6 @@ public class AyeletMask extends ArmorItem {
         UUID uuid = new UUID(ItemRegistry.AYELET_MASK.hashCode() + equipmentSlot.toString().hashCode(), 0);
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
-            map.put(AttributeRegistry.ATTACK_COPPER.get(),
-                    new AttributeModifier(uuid, "ayelet mask modifier", 200.0D, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_KNOCKBACK,
                     new AttributeModifier(uuid, "ayelet mask modifier", 0.2f, AttributeModifier.Operation.MULTIPLY_BASE));
             map.put(AttributeRegistry.ATTACK_COW.get(),

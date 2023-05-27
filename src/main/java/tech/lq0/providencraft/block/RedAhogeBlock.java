@@ -21,6 +21,6 @@ public class RedAhogeBlock extends Block {
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("red_ahoge_block_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.red_ahoge_block")).mergeStyle(TextFormatting.GRAY));
     }
 }

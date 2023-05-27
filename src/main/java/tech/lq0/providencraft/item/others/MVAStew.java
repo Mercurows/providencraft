@@ -35,8 +35,8 @@ public class MVAStew extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("mva_stew_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("mva_stew_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.mva_stew_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.mva_stew_2")).mergeStyle(TextFormatting.GRAY));
     }
 
     @Override

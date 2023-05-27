@@ -59,7 +59,7 @@ public class PorcelainThrone extends Block {
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("porcelain_throne_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.porcelain_throne")).mergeStyle(TextFormatting.GRAY));
     }
 
     @Override

@@ -34,22 +34,22 @@ public class CommunicationTable extends Block {
             int random = (int) (Math.random() * 6 + 1);
             switch (random) {
                 case 1:
-                    player.sendStatusMessage(new TranslationTextComponent("ct_message_1"), false);
+                    player.sendStatusMessage(new TranslationTextComponent("des.providencraft.ct_message_1"), false);
                     break;
                 case 2:
-                    player.sendStatusMessage(new TranslationTextComponent("ct_message_2"), false);
+                    player.sendStatusMessage(new TranslationTextComponent("des.providencraft.ct_message_2"), false);
                     break;
                 case 3:
-                    player.sendStatusMessage(new TranslationTextComponent("ct_message_3"), false);
+                    player.sendStatusMessage(new TranslationTextComponent("des.providencraft.ct_message_3"), false);
                     break;
                 case 4:
-                    player.sendStatusMessage(new TranslationTextComponent("ct_message_4"), false);
+                    player.sendStatusMessage(new TranslationTextComponent("des.providencraft.ct_message_4"), false);
                     break;
                 case 5:
-                    player.sendStatusMessage(new TranslationTextComponent("ct_message_5"), false);
+                    player.sendStatusMessage(new TranslationTextComponent("des.providencraft.ct_message_5"), false);
                     break;
                 default:
-                    player.sendStatusMessage(new TranslationTextComponent("ct_message_default"), false);
+                    player.sendStatusMessage(new TranslationTextComponent("des.providencraft.ct_message.default"), false);
                     break;
             }
         }
@@ -59,7 +59,7 @@ public class CommunicationTable extends Block {
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("communication_table_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("communication_table_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.communication_table_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.communication_table_2")).mergeStyle(TextFormatting.GRAY));
     }
 }
