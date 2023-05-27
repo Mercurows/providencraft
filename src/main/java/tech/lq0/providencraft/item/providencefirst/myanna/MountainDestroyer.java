@@ -81,8 +81,8 @@ public class MountainDestroyer extends PickaxeItem {
         if (!worldIn.isRemote) {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_MULTIMINE, false);
             ItemNBTTool.setBoolean(stack, TAG_MULTIMINE, !flag);
-            playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("mountain_destroyer_enable") :
-                    new TranslationTextComponent("mountain_destroyer_disable"), true);
+            playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("des.providencraft.mountain_destroyer.enable") :
+                    new TranslationTextComponent("des.providencraft.mountain_destroyer.disable"), true);
 
         }
         return ActionResult.resultFail(stack);
@@ -177,8 +177,8 @@ public class MountainDestroyer extends PickaxeItem {
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World
             worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("mountain_destroyer_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("mountain_destroyer_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.mountain_destroyer_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.mountain_destroyer_2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.MYANNA);
     }
 

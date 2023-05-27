@@ -64,10 +64,10 @@ public class ElectricHorn extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("electric_horn_func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("electric_horn_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("electric_horn_des2")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("electric_horn_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("des.providencraft.electric_horn.func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.electric_horn_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.electric_horn_2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.electric_horn.warn")).mergeStyle(TextFormatting.RED));
         TooltipTool.addLiverInfo(tooltip, Livers.LECIA);
     }
 
@@ -79,8 +79,8 @@ public class ElectricHorn extends ArmorItem {
         if (!worldIn.isRemote && playerIn.isSneaking()) {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_ABLE, false);
             ItemNBTTool.setBoolean(stack, TAG_ABLE, !flag);
-            playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("electric_horn_enable") :
-                    new TranslationTextComponent("electric_horn_disable"), true);
+            playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("des.providencraft.electric_horn.enable") :
+                    new TranslationTextComponent("des.providencraft.electric_horn.disable"), true);
 
         }
         return ActionResult.resultFail(stack);

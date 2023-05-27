@@ -18,7 +18,7 @@
     ]
   },
   "keroro_sneeze": {
-    "subtitle": "keroro_sneeze",
+    "subtitle": "subtitle.providencraft.keroro_sneeze",
     "sounds": [
       {
         "name": "providencraft:red_nose_voice",
@@ -27,7 +27,7 @@
     ]
   },
   "blade": {
-    "subtitle": "blade",
+    "subtitle": "subtitle.providencraft.blade",
     "sounds": [
       {
         "name": "providencraft:blade",
