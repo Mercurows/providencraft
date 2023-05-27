@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "# #",
+        "PWP",
+        "PGP"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:black_wool"
+        },
+        "P": {
+            "item": "providencraft:idol_cloth"
+        },
+        "W": {
+            "item": "minecraft:white_wool"
+        },
+        "G": {
+            "item": "minecraft:grass"
+        }
+    },
+    "result": {
+        "item": "providencraft:maid_costume",
+        "count": 1
+    }
+}

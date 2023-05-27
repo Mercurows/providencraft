@@ -150,7 +150,7 @@ public class MaidCostumeModel<T extends LivingEntity> extends BipedModel<T> {
 		body_total = new ModelRenderer(this);
 		body_total.setRotationPoint(0.0F, 24.0F, 0.0F);
 		main.addChild(body_total);
-		
+		body_total.setTextureOffset(8, 78).addBox(-4.0F, -1.1F, -2.5F, 8.0F, 12.1F, 4.85F, 0.0F, false);
 
 		body = new ModelRenderer(this);
 		body.setRotationPoint(0.0F, 11.0F, 0.0F);
