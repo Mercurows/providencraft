@@ -1,7 +1,5 @@
 package tech.lq0.providencraft.item.providenceOI.sorayo;
 
-import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -12,31 +10,23 @@ import net.minecraft.item.ItemTier;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ModelBakeEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.init.EffectRegistry;
-import tech.lq0.providencraft.init.ItemRegistry;
-import tech.lq0.providencraft.models.bakedModel.LunarEclipseBakedModel;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class LunarEclipse extends SwordItem {
     public LunarEclipse(){
         super(ItemTier.NETHERITE, 2, -2.3f, new Properties().group(ModGroup.itemgroup).rarity(Rarity.EPIC).maxDamage(928));
@@ -86,20 +76,5 @@ public class LunarEclipse extends SwordItem {
             }
         }
         super.inventoryTick(stack, worldIn, entityIn, itemSlot, isSelected);
-    }
-
-    @SubscribeEvent
-    public static void onModelBaked(ModelBakeEvent event) {
-        Map<ResourceLocation, IBakedModel> modelRegistry = event.getModelRegistry();
-        ModelResourceLocation location = new ModelResourceLocation(Objects.requireNonNull(ItemRegistry.LUNAR_ECLIPSE.get().getRegistryName()), "inventory");
-        IBakedModel existingModel = modelRegistry.get(location);
-        if (existingModel == null) {
-            throw new RuntimeException();
-        } else if (existingModel instanceof LunarEclipseBakedModel) {
-            throw new RuntimeException();
-        } else {
-            LunarEclipseBakedModel lunarEclipseBakedModel = new LunarEclipseBakedModel(existingModel);
-            event.getModelRegistry().put(location, lunarEclipseBakedModel);
-        }
     }
 }
