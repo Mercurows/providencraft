@@ -12,6 +12,7 @@ import tech.lq0.providencraft.item.blockitem.EliboardBlockItem;
 import tech.lq0.providencraft.item.blockitem.PointsStoreBlockItem;
 import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
+import tech.lq0.providencraft.item.costume.cnt.qianyun.MaidCostume;
 import tech.lq0.providencraft.item.costume.first.usa.KRM_963_53;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
@@ -394,6 +395,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> EKIRA_IDOL_CHESTPLATE = ITEMS.register("ekira_idol_chestplate", EkiraIdolChestplate::new);
     public static final RegistryObject<Item> EKIRA_IDOL_BOOTS = ITEMS.register("ekira_idol_boots", EkiraIdolBoots::new);
     public static final RegistryObject<Item> KRM_963_53 = ITEMS.register("krm_963_53", KRM_963_53::new);
+    public static final RegistryObject<Item> MAID_COSTUME = ITEMS.register("maid_costume", MaidCostume::new);
 
     /**
      * material
