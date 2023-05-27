@@ -39,7 +39,7 @@ public class LittlePotato extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if (!worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
-            player.sendStatusMessage(new TranslationTextComponent("des.providencraft.little_potato_eaten").mergeStyle(TextFormatting.WHITE), true);
+            player.sendStatusMessage(new TranslationTextComponent("des.providencraft.little_potato.eaten").mergeStyle(TextFormatting.WHITE), true);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

@@ -36,11 +36,11 @@ public class EnchantedCrystalBall extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if (!worldIn.isRemote) {
             if (worldIn.isThundering()) {
-                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_thunder").mergeStyle(TextFormatting.YELLOW), true);
+                playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.crystal_ball.weather_thunder").mergeStyle(TextFormatting.YELLOW), true);
             } else if (worldIn.isRaining()) {
-                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_rain").mergeStyle(TextFormatting.AQUA), true);
+                playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.crystal_ball.weather_rain").mergeStyle(TextFormatting.AQUA), true);
             } else {
-                playerIn.sendStatusMessage(new TranslationTextComponent("crystal_ball_weather_clear").mergeStyle(TextFormatting.GREEN), true);
+                playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.crystal_ball.weather_clear").mergeStyle(TextFormatting.GREEN), true);
             }
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -67,8 +67,8 @@ public class EnchantedCrystalBall extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("crystal_ball_func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("enchanted_crystal_ball_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.crystal_ball.func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.enchanted_crystal_ball")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.EKIRA);
     }
 }
