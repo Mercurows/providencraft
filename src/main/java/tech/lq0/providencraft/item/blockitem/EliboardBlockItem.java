@@ -38,7 +38,7 @@ public class EliboardBlockItem extends BlockItem {
             map.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(uuid, "eliboard modifier", 4.0, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_SPEED,
-                    new AttributeModifier(uuid, "eliboard modifier", -2.0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "eliboard modifier", -3.0, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }

@@ -70,7 +70,8 @@ public class VillagerInit {
         };
         VillagerTrades.ITrade[] elifausLevel2 = new VillagerTrades.ITrade[]{
                 new ItemsForEmeraldsTrade(ItemRegistry.LUCIA_RICE_CAKE.get(), 2, 5, 8, 4),
-                new ItemsForEmeraldsTrade(Items.CAKE, 3, 1, 10)
+                new ItemsForEmeraldsTrade(Items.CAKE, 3, 1, 10),
+                new ItemsForEmeraldsTrade(ItemRegistry.UNI_MILLET.get(), 3, 4, 10, 5)
         };
         VillagerTrades.ITrade[] elifausLevel3 = new VillagerTrades.ITrade[]{
                 new ItemsForEmeraldsTrade(ItemRegistry.WHITE_DOUBLE_AHOGE.get(), 5, 1, 12, 4),
