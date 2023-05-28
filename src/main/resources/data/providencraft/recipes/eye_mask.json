@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "WWW"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:idol_cloth"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "result": {
+    "item": "providencraft:eye_mask",
+    "count": 1
+  }
+}
