@@ -211,7 +211,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LOTUS_POTATO = ITEMS.register("lotus_potato", LotusPotato::new);
     public static final RegistryObject<Item> CHIRAM_LANTERN = ITEMS.register("chiram_lantern", ChiramLantern::new);
     public static final RegistryObject<Item> BOLSTER = ITEMS.register("bolster", Bolster::new);
-    public static final RegistryObject<Item> VEGETABLE_DUMPLING = ITEMS.register("vegetable_dumpling", VegetableDumpling::new);
+    public static final RegistryObject<Item> EYE_MASK = ITEMS.register("eye_mask", EyeMask::new);
 
     //haine
     public static final RegistryObject<Item> HAI_PLATE = ITEMS.register("hai_plate", HaiPlate::new);

@@ -82,18 +82,19 @@ public class CrystalHorn extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        super.onArmorTick(stack, world, player);
-        if (!world.isDaytime()) {
-            ItemNBTTool.setBoolean(stack, TAG_NIGHT, true);
-            player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 400, 0));
-        } else {
-            ItemNBTTool.setBoolean(stack, TAG_NIGHT, false);
-        }
+        if(!world.isRemote) {
+            if (!world.isDaytime()) {
+                ItemNBTTool.setBoolean(stack, TAG_NIGHT, true);
+                player.addPotionEffect(new EffectInstance(Effects.NIGHT_VISION, 400, 0));
+            } else {
+                ItemNBTTool.setBoolean(stack, TAG_NIGHT, false);
+            }
 
-        if (player.isSleeping()) {
-            player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 12000, 2));
-            player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 12000, 2));
-            player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 12000, 2));
+            if (player.isSleeping()) {
+                player.addPotionEffect(new EffectInstance(Effects.WEAKNESS, 12000, 2));
+                player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 12000, 2));
+                player.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 12000, 0));
+            }
         }
     }
 
