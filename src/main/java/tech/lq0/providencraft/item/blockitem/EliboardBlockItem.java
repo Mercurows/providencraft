@@ -36,7 +36,9 @@ public class EliboardBlockItem extends BlockItem {
         if (equipmentSlot == EquipmentSlotType.MAINHAND) {
             map = HashMultimap.create(map);
             map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid, "fukamizu bread modifier", 4.0, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "eliboard modifier", 4.0, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.ATTACK_SPEED,
+                    new AttributeModifier(uuid, "eliboard modifier", -2.0, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
