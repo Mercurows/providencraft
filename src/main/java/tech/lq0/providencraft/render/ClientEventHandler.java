@@ -35,5 +35,6 @@ public class ClientEventHandler {
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_SAPLING.get(), RenderType.getCutout()));
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_DOOR.get(), RenderType.getCutout()));
         event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.HARANO_TRAPDOOR.get(), RenderType.getCutout()));
+        event.enqueueWork(() -> RenderTypeLookup.setRenderLayer(BlockRegistry.UNI_MILLET_BLOCK.get(), RenderType.getCutout()));
     }
 }
