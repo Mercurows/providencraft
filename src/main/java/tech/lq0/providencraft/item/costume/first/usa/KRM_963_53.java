@@ -61,9 +61,9 @@ public class KRM_963_53 extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("krm_963_53_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.krm_963_53")).mergeStyle(TextFormatting.GRAY));
         tooltip.add(new StringTextComponent(""));
-        tooltip.add((new TranslationTextComponent("krm_963_53_func")).mergeStyle(TextFormatting.WHITE));
+        tooltip.add((new TranslationTextComponent("des.providencraft.krm_963_53.func")).mergeStyle(TextFormatting.WHITE));
         showFlyEnergy(stack, tooltip);
         TooltipTool.addLiverInfo(tooltip, Livers.USA);
     }

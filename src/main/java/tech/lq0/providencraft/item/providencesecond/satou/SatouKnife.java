@@ -64,8 +64,8 @@ public class SatouKnife extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("satou_knife_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("satou_knife_func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.satou_knife")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.satou_knife.func")).mergeStyle(TextFormatting.AQUA));
         TooltipTool.addLiverInfo(tooltip, Livers.SATOU);
     }
 }

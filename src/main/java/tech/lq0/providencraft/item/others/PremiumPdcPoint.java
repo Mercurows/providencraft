@@ -23,6 +23,6 @@ public class PremiumPdcPoint extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("premium_pdc_point_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.premium_pdc_point")).mergeStyle(TextFormatting.GRAY));
     }
 }
