@@ -37,12 +37,12 @@ public class SleepRoulette extends Item {
                 playerIn.addPotionEffect(new EffectInstance(Effects.HASTE, 1200, 2));
                 playerIn.addPotionEffect(new EffectInstance(Effects.SPEED, 1200, 2));
                 playerIn.addPotionEffect(new EffectInstance(Effects.STRENGTH, 1200, 2));
-                playerIn.sendStatusMessage(new TranslationTextComponent("sleep_roulette_awake").mergeStyle(TextFormatting.GOLD), true);
+                playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.sleep_roulette.awake").mergeStyle(TextFormatting.GOLD), true);
             } else {
                 playerIn.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 1200, 0));
                 playerIn.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 1200, 0));
                 playerIn.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 1200, 0));
-                playerIn.sendStatusMessage(new TranslationTextComponent("sleep_roulette_asleep").mergeStyle(TextFormatting.GRAY), true);
+                playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.sleep_roulette.asleep").mergeStyle(TextFormatting.GRAY), true);
             }
             playerIn.getCooldownTracker().setCooldown(itemStack.getItem(), 1800);
             return new ActionResult<>(ActionResultType.SUCCESS, itemStack);
@@ -54,11 +54,11 @@ public class SleepRoulette extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("sleep_roulette_func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("sleep_roulette_des1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
-        tooltip.add((new TranslationTextComponent("sleep_roulette_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
-        tooltip.add((new TranslationTextComponent("sleep_roulette_des3")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
-        tooltip.add((new TranslationTextComponent("sleep_roulette_des4")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.sleep_roulette.func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.sleep_roulette_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.sleep_roulette_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.sleep_roulette_3")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.sleep_roulette_4")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.AYELET);
     }
 }

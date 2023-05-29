@@ -29,8 +29,8 @@ public class FractureDestiny extends Item {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("fracture_destiny_des1").mergeStyle(TextFormatting.GRAY));
-        tooltip.add(new TranslationTextComponent("fracture_destiny_des2").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("des.providencraft.fracture_destiny_1").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("des.providencraft.fracture_destiny_2").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
 

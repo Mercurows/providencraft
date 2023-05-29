@@ -30,8 +30,8 @@ public class FukamizuFish extends Item {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("fukamizu_fish_des1").mergeStyle(TextFormatting.GRAY));
-        tooltip.add(new TranslationTextComponent("fukamizu_fish_des2").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("des.providencraft.fukamizu_fish_1").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("des.providencraft.fukamizu_fish_2").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
 }

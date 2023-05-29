@@ -37,8 +37,8 @@ public class Louistew extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("louistew_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("louistew_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("des.providencraft.louistew")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.louistew.warn")).mergeStyle(TextFormatting.RED));
         TooltipTool.addLiverInfo(tooltip, Livers.LOUISE);
     }
 

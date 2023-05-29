@@ -47,9 +47,9 @@ public class RedAhogeMachete extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("red_ahoge_machete_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("red_ahoge_machete_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
-        tooltip.add((new TranslationTextComponent("red_ahoge_machete_func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.red_ahoge_machete_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.red_ahoge_machete_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.STRIKETHROUGH));
+        tooltip.add((new TranslationTextComponent("des.providencraft.red_ahoge_machete.func")).mergeStyle(TextFormatting.AQUA));
         TooltipTool.addLiverInfo(tooltip, Livers.MADOKA);
     }
 

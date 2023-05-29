@@ -57,8 +57,8 @@ public class EchoedDestinyRing extends Item {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("echoed_destiny_ring_des1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
-        tooltip.add(new TranslationTextComponent("echoed_destiny_ring_des2").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("des.providencraft.echoed_destiny_ring_1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add(new TranslationTextComponent("des.providencraft.echoed_destiny_ring_2").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
 

@@ -39,8 +39,8 @@ public class MomoKnife extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("momo_knife_des")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("momo_knife_func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_knife")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_knife.func")).mergeStyle(TextFormatting.AQUA));
         showDamage(stack, tooltip, worldIn == null ? 0 : worldIn.getGameTime());
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
@@ -61,7 +61,7 @@ public class MomoKnife extends SwordItem {
         String damage = numberFormat.format(allDamage);
 
         tooltip.add((new StringTextComponent("")));
-        tooltip.add((new TranslationTextComponent("momo_knife_damage")).mergeStyle(TextFormatting.WHITE));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_knife.damage")).mergeStyle(TextFormatting.WHITE));
         tooltip.add((new StringTextComponent(damage)).mergeStyle(TextFormatting.GREEN).mergeStyle(TextFormatting.BOLD));
     }
 

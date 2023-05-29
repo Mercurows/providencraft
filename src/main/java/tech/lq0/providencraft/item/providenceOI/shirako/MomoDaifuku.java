@@ -50,7 +50,7 @@ public class MomoDaifuku extends Item {
             int random = (int) (Math.random() * 99 + 1);
             if (random > 90) {
                 player.setFire(10);
-                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.momo_daifuku_fire").mergeStyle(TextFormatting.RED), true);
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.momo_daifuku.fire").mergeStyle(TextFormatting.RED), true);
             }
 
         }

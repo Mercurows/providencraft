@@ -25,7 +25,7 @@ public class OceanDestiny extends Item {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("ocean_destiny_des").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("des.providencraft.ocean_destiny").mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
 

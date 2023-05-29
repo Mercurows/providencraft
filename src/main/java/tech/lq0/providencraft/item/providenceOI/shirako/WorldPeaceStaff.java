@@ -43,9 +43,9 @@ public class WorldPeaceStaff extends SwordItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("world_peace_staff_des1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
-        TooltipTool.addHideText(tooltip, (new TranslationTextComponent("world_peace_staff_des2")).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#F4ADB4"))).mergeStyle(TextFormatting.ITALIC));
-        TooltipTool.addHideText(tooltip, (new TranslationTextComponent("world_peace_staff_des3")).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#F4ADB4"))).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.world_peace_staff_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        TooltipTool.addHideText(tooltip, (new TranslationTextComponent("des.providencraft.world_peace_staff_2")).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#F4ADB4"))).mergeStyle(TextFormatting.ITALIC));
+        TooltipTool.addHideText(tooltip, (new TranslationTextComponent("des.providencraft.world_peace_staff_3")).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#F4ADB4"))).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 
