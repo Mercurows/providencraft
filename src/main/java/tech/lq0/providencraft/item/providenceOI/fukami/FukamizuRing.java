@@ -66,6 +66,12 @@ public class FukamizuRing extends Item {
         return armorType == EquipmentSlotType.HEAD;
     }
 
+    @Nullable
+    @Override
+    public EquipmentSlotType getEquipmentSlot(ItemStack stack) {
+        return EquipmentSlotType.HEAD;
+    }
+
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if (!world.isRemote) {

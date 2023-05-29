@@ -62,6 +62,12 @@ public class EchoedDestinyRing extends Item {
         TooltipTool.addLiverInfo(tooltip, Livers.FUKAMI);
     }
 
+    @Nullable
+    @Override
+    public EquipmentSlotType getEquipmentSlot(ItemStack stack) {
+        return EquipmentSlotType.HEAD;
+    }
+
     @Override
     public boolean canEquip(ItemStack stack, EquipmentSlotType armorType, Entity entity) {
         return armorType == EquipmentSlotType.HEAD;

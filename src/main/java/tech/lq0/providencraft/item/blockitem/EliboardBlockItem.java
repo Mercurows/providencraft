@@ -1,6 +1,6 @@
 package tech.lq0.providencraft.item.blockitem;
 
-import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -11,15 +11,16 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.BlockRegistry;
-import tech.lq0.providencraft.init.ItemRegistry;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.UUID;
 
 public class EliboardBlockItem extends BlockItem {
+    private final Multimap<Attribute, AttributeModifier> attributeModifiers;
+
     public EliboardBlockItem(){
         super(BlockRegistry.ELIBOARD.get(), new Properties().group(ModGroup.blockgroup));
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 4, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -3, AttributeModifier.Operation.ADDITION));
+        this.attributeModifiers = builder.build();
     }
 
     @Override
@@ -28,18 +29,7 @@ public class EliboardBlockItem extends BlockItem {
     }
 
     @Override
-    @ParametersAreNonnullByDefault
-    @Nonnull
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
-        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot, stack);
-        UUID uuid = new UUID(ItemRegistry.ELIBOARD.hashCode() + equipmentSlot.toString().hashCode(), 0);
-        if (equipmentSlot == EquipmentSlotType.MAINHAND) {
-            map = HashMultimap.create(map);
-            map.put(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(uuid, "eliboard modifier", 4.0, AttributeModifier.Operation.ADDITION));
-            map.put(Attributes.ATTACK_SPEED,
-                    new AttributeModifier(uuid, "eliboard modifier", -3.0, AttributeModifier.Operation.ADDITION));
-        }
-        return map;
+        return equipmentSlot == EquipmentSlotType.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(equipmentSlot, stack);
     }
 }
