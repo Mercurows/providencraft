@@ -63,8 +63,8 @@ public class GravityRestraintDevice extends ArmorItem {
         if (!worldIn.isRemote && playerIn.isSneaking()) {
             boolean flag = ItemNBTTool.getBoolean(stack, TAG_GRAVITY, false);
             ItemNBTTool.setBoolean(stack, TAG_GRAVITY, !flag);
-            playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("grd_moon") :
-                    new TranslationTextComponent("grd_zero"), true);
+            playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("des.providencraft.grd.moon") :
+                    new TranslationTextComponent("des.providencraft.grd.zero"), true);
         }
         return ActionResult.resultFail(stack);
     }
@@ -72,9 +72,9 @@ public class GravityRestraintDevice extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("grd_func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("grd_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("grd_des2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.grd.func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.grd_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.grd_2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.AYU);
     }
 

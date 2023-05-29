@@ -31,8 +31,8 @@ public class GoodManCard extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("good_man_card_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("good_man_card_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.good_man_card_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.good_man_card_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.MITSUKI);
     }
 

@@ -46,7 +46,7 @@
     ]
   },
   "how_hold_blood": {
-    "subtitle": "how_hold_blood",
+    "subtitle": "subtitle.providencraft.how_hold_blood",
     "sounds": [
       {
         "name": "providencraft:how_hold_blood",
@@ -55,7 +55,7 @@
     ]
   },
   "why_not_die": {
-    "subtitle": "why_not_die",
+    "subtitle": "subtitle.providencraft.why_not_die",
     "sounds": [
       {
         "name": "providencraft:why_not_die",
@@ -64,7 +64,7 @@
     ]
   },
   "sorry": {
-    "subtitle": "sorry",
+    "subtitle": "subtitle.providencraft.sorry",
     "sounds": [
       {
         "name": "providencraft:sorry",
@@ -73,7 +73,7 @@
     ]
   },
   "baby_meow": {
-    "subtitle": "baby_meow",
+    "subtitle": "subtitle.providencraft.baby_meow",
     "sounds": [
       {
         "name": "providencraft:baby_meow",
@@ -82,7 +82,7 @@
     ]
   },
   "shutter": {
-    "subtitle": "shutter",
+    "subtitle": "subtitle.providencraft.shutter",
     "sounds": [
       {
         "name": "providencraft:shutter",
@@ -91,7 +91,7 @@
     ]
   },
   "lecia_howl": {
-    "subtitle": "lecia_howl",
+    "subtitle": "subtitle.providencraft.lecia_howl",
     "sounds": [
       {
         "name": "providencraft:lecia_howl",
@@ -100,7 +100,7 @@
     ]
   },
   "lecia_cast_1": {
-    "subtitle": "lecia_cast",
+    "subtitle": "subtitle.providencraft.lecia_cast",
     "sounds": [
       {
         "name": "providencraft:lecia_cast_1",
@@ -109,7 +109,7 @@
     ]
   },
   "lecia_cast_2": {
-    "subtitle": "lecia_cast",
+    "subtitle": "subtitle.providencraft.lecia_cast",
     "sounds": [
       {
         "name": "providencraft:lecia_cast_2",
@@ -118,7 +118,7 @@
     ]
   },
   "lecia_scream": {
-    "subtitle": "lecia_scream",
+    "subtitle": "subtitle.providencraft.lecia_scream",
     "sounds": [
       {
         "name": "providencraft:lecia_scream",

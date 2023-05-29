@@ -75,7 +75,7 @@ public class MomoPhone extends Item {
 
                 ItemNBTTool.setBoolean(item, NBT_BINDING, true);
 
-                playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
+                playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.momo_phone.set_pos").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
 
                 playerIn.playSound(SoundEvents.ENTITY_ARROW_HIT_PLAYER, 1.0F, 1.0F);
 
@@ -89,7 +89,7 @@ public class MomoPhone extends Item {
                     playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
                 } else {
                     if (pos == null) {
-                        playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_not_set_pos").mergeStyle(TextFormatting.RED), true);
+                        playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.momo_phone.not_set_pos").mergeStyle(TextFormatting.RED), true);
                     } else {
                         boolean isBlocked = false;
                         BlockState state1 = worldIn.getBlockState(pos.add(0, 1, 0));
@@ -125,7 +125,7 @@ public class MomoPhone extends Item {
                             }
                         } else {
                             if (!worldIn.isRemote) {
-                                playerIn.sendStatusMessage(new TranslationTextComponent("momo_phone_tp_fail").mergeStyle(TextFormatting.RED), true);
+                                playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.momo_phone.tp_fail").mergeStyle(TextFormatting.RED), true);
                             }
                         }
                     }
@@ -139,10 +139,10 @@ public class MomoPhone extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("momo_phone_func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("momo_phone_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("momo_phone_des2")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("momo_phone_warn")).mergeStyle(TextFormatting.RED));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_phone.func")).mergeStyle(TextFormatting.AQUA));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_phone_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_phone_2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.momo_phone.warn")).mergeStyle(TextFormatting.RED));
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 }

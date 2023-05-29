@@ -42,8 +42,8 @@ public class PeachBeach extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("peach_beach_des1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("peach_beach_des2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.peach_beach_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.peach_beach_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.MADOKA);
     }
 
