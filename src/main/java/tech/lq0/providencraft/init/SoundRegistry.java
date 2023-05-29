@@ -60,6 +60,9 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> UNIA_LEGION = SOUNDS.register("unia_legion", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/unia_legion")));
     public static final RegistryObject<SoundEvent> UNIA_EXPLORE = SOUNDS.register("unia_explore", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/unia_explore")));
     public static final RegistryObject<SoundEvent> UNIA_UNIGIRI = SOUNDS.register("unia_unigiri", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/first/unia_unigiri")));
+    public static final RegistryObject<SoundEvent> USA_DUODUO_ANGEL = SOUNDS.register("usa_duoduo_angel", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/zero/usa_duoduo_angel")));
+    public static final RegistryObject<SoundEvent> USA_BOOMERANG = SOUNDS.register("usa_boomerang", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/zero/usa_boomerang")));
+    public static final RegistryObject<SoundEvent> USA_GUNDAM = SOUNDS.register("usa_gundam", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/zero/usa_gundam")));
 
     public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
 

@@ -354,6 +354,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_UNIA_1 = ITEMS.register("audio_tape_unia_1", () -> new AudioTape(Livers.UNIA, SoundRegistry.UNIA_LEGION, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
     public static final RegistryObject<Item> AUDIO_TAPE_UNIA_2 = ITEMS.register("audio_tape_unia_2", () -> new AudioTape(Livers.UNIA, SoundRegistry.UNIA_EXPLORE, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
     public static final RegistryObject<Item> AUDIO_TAPE_UNIA_3 = ITEMS.register("audio_tape_unia_3", () -> new AudioTape(Livers.UNIA, SoundRegistry.UNIA_UNIGIRI, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
+    public static final RegistryObject<Item> AUDIO_TAPE_USA_1 = ITEMS.register("audio_tape_usa_1", () -> new AudioTape(Livers.USA, SoundRegistry.USA_DUODUO_ANGEL, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
+    public static final RegistryObject<Item> AUDIO_TAPE_USA_2 = ITEMS.register("audio_tape_usa_2", () -> new AudioTape(Livers.USA, SoundRegistry.USA_BOOMERANG, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
+    public static final RegistryObject<Item> AUDIO_TAPE_USA_3 = ITEMS.register("audio_tape_usa_3", () -> new AudioTape(Livers.USA, SoundRegistry.USA_GUNDAM, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
 
     public static final RegistryObject<Item> AUDIO_TAPE_ELIFAUS = ITEMS.register("audio_tape_elifaus", () -> new BrokenAudioTape(SoundRegistry.ELIFAUS, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.UNCOMMON))));
 

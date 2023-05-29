@@ -477,5 +477,32 @@
         "stream": true
       }
     ]
+  },
+  "audio/zero/usa_duoduo_angel": {
+    "subtitle": "subtitle.providencraft.usa_duoduo_angel",
+    "sounds": [
+      {
+        "name": "providencraft:audio/zero/usa_duoduo_angel",
+        "stream": true
+      }
+    ]
+  },
+  "audio/zero/usa_boomerang": {
+    "subtitle": "subtitle.providencraft.usa_boomerang",
+    "sounds": [
+      {
+        "name": "providencraft:audio/zero/usa_boomerang",
+        "stream": true
+      }
+    ]
+  },
+  "audio/zero/usa_gundam": {
+    "subtitle": "subtitle.providencraft.usa_gundam",
+    "sounds": [
+      {
+        "name": "providencraft:audio/zero/usa_gundam",
+        "stream": true
+      }
+    ]
   }
 }
