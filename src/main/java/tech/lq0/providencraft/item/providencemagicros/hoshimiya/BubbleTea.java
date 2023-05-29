@@ -42,7 +42,7 @@ public class BubbleTea extends Item {
             if (random <= .2) {
                 player.addPotionEffect(new EffectInstance(Effects.HASTE, 200, 2));
                 player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 200, 1));
-                player.sendStatusMessage(new TranslationTextComponent("bubble_tea_message").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.bubble_tea.message").mergeStyle(TextFormatting.LIGHT_PURPLE), true);
             }
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
@@ -51,7 +51,7 @@ public class BubbleTea extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("bubble_tea_des")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.bubble_tea")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.EKIRA);
     }
 

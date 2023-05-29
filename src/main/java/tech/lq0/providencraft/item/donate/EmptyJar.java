@@ -63,4 +63,10 @@ public class EmptyJar extends Item {
         }
         return map;
     }
+
+    @Nullable
+    @Override
+    public EquipmentSlotType getEquipmentSlot(ItemStack stack) {
+        return EquipmentSlotType.HEAD;
+    }
 }
