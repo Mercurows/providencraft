@@ -207,6 +207,38 @@
           "item": "providencraft:mint_chocolate"
         }
       }
+    },
+    "eat_all_food_25": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:fukamizu_bread"
+        }
+      }
+    },
+    "eat_all_food_26": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:xiaolongbao"
+        }
+      }
+    },
+    "eat_all_food_27": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:uni_millet"
+        }
+      }
+    },
+    "eat_all_food_28": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item": "providencraft:isekai_lollipop"
+        }
+      }
     }
   },
   "rewards": {

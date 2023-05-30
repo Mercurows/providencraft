@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": [
+    {
+      "item": "providencraft:harano_wood"
+    },
+    {
+      "item": "providencraft:harano_log"
+    },
+    {
+      "item": "providencraft:stripped_harano_wood"
+    },
+    {
+      "item": "providencraft:stripped_harano_log"
+    }
+  ],
+  "result": "minecraft:charcoal",
+  "experience": 0.15
+}
