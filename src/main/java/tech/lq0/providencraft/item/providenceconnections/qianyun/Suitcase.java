@@ -32,20 +32,19 @@ public class Suitcase extends Item {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
         tooltip.add((new TranslationTextComponent("des.providencraft.suitcase")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.QIANYUN);
     }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemStack stack = playerIn.getHeldItem(handIn);
         EnderChestInventory enderchestinventory = playerIn.getInventoryEnderChest();
         //此处!=null判定不能删
         if (!worldIn.isRemote && enderchestinventory != null) {
             NetworkHooks.openGui((ServerPlayerEntity) playerIn,
                     new SimpleNamedContainerProvider((p_226928_1_, p_226928_2_, p_226928_3_)
-                            -> ChestContainer.createGeneric9X3(p_226928_1_, p_226928_2_, enderchestinventory), new TranslationTextComponent("container.enderchest")), playerIn.getPosition());
+                            -> ChestContainer.createGeneric9X3(p_226928_1_, p_226928_2_, enderchestinventory), stack.getDisplayName()), playerIn.getPosition());
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }

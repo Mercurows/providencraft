@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#L#",
+    "CEG",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gray_wool"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "C": {
+      "item": "minecraft:cactus"
+    },
+    "E": {
+      "item": "minecraft:ender_chest"
+    },
+    "G": {
+      "item": "minecraft:grass"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "providencraft:suitcase",
+    "count": 1
+  }
+}
