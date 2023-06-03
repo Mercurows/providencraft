@@ -36,6 +36,7 @@ public class Suitcase extends Item {
         TooltipTool.addLiverInfo(tooltip, Livers.QIANYUN);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
