@@ -18,8 +18,8 @@ public class TooltipTool {
 
     public static void addLiverInfo(List<ITextComponent> tooltip, Livers liver) {
         addHideText(tooltip, new StringTextComponent(""));
-        addHideText(tooltip, new TranslationTextComponent("liver").mergeStyle(TextFormatting.WHITE));
-        addHideText(tooltip, new TranslationTextComponent(liver.getName()).mergeStyle(Style.EMPTY.setColor(Color.fromHex(liver.getColor()))));
+        addHideText(tooltip, new TranslationTextComponent("liver.providencraft.liver").mergeStyle(TextFormatting.WHITE));
+        addHideText(tooltip, new TranslationTextComponent("liver.providencraft." + liver.getName()).mergeStyle(Style.EMPTY.setColor(Color.fromHex(liver.getColor()))));
         String gen = liver.getGen();
         String bgColor = "#FFFFFF";
         switch (gen) {
@@ -46,10 +46,10 @@ public class TooltipTool {
                 break;
         }
         if (liver.getName().equals("maria") || liver.getName().equals("mojuko") || liver.getName().equals("shirako")) {
-            addHideText(tooltip, new TranslationTextComponent("description_" + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).
+            addHideText(tooltip, new TranslationTextComponent("des.providencraft.group." + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).
                     mergeStyle(TextFormatting.BOLD).mergeStyle(TextFormatting.STRIKETHROUGH));
         } else {
-            addHideText(tooltip, new TranslationTextComponent("description_" + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).mergeStyle(TextFormatting.BOLD));
+            addHideText(tooltip, new TranslationTextComponent("des.providencraft.group." + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).mergeStyle(TextFormatting.BOLD));
         }
     }
 }
