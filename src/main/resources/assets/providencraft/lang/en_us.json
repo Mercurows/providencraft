@@ -580,6 +580,8 @@
   "des.providencraft.eliboard": "\"You must exit Providence NOW!\"",
   "item.providencraft.maid_costume": "Maid Costume",
   "des.providencraft.maid_costume": "It might not be best to wear that...",
+  "itemGroup.Providencraft Integration Items": "Providencraft Integration Items",
+  "item.providencraft.rainy_butterfly": "Rainy Butterfly Umbrella",
   "itemGroup.Providencraft Audio Tapes": "Providencraft Tapes",
   "item.providencraft.audio_tape_haine_1": "Audio Tape (Haine)",
   "subtitle.providencraft.haine_broadcast": "Haine: Warning for emergency of Creepers",
