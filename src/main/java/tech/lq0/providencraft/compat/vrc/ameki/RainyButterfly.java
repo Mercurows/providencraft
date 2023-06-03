@@ -24,6 +24,7 @@ public class RainyButterfly extends SwordItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("des.providencraft.rainy_butterfly_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.rainy_butterfly_2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.rainy_butterfly_3")).mergeStyle(TextFormatting.GRAY));
 
         TooltipTool.addHideText(tooltip, new StringTextComponent(""));
         TooltipTool.addHideText(tooltip, new TranslationTextComponent("liver.providencraft.liver").mergeStyle(TextFormatting.WHITE));
