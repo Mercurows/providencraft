@@ -42,6 +42,6 @@ public class MusicDisc extends MusicDiscItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public IFormattableTextComponent getDescription() {
-        return new TranslationTextComponent("des." + this.getTranslationKey());
+        return new TranslationTextComponent(this.getTranslationKey() + ".desc");
     }
 }

@@ -30,13 +30,13 @@ public class MusicDiscSongOfAutumn extends MusicDiscItem {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("des.providencraft.music_disc_song_of_autumn_1")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add((new TranslationTextComponent("des.providencraft.music_disc_song_of_autumn_2")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("item.providencraft.music_disc_song_of_autumn.desc")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.music_disc_song_of_autumn")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.donate_item")).mergeStyle(TextFormatting.GOLD).mergeStyle(TextFormatting.BOLD));
     }
 
     @Override
     public IFormattableTextComponent getDescription() {
-        return new TranslationTextComponent("des.providencraft.music_disc_song_of_autumn_1");
+        return new TranslationTextComponent("item.providencraft.music_disc_song_of_autumn.desc");
     }
 }

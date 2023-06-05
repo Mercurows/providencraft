@@ -14,6 +14,6 @@ public class ProvidencraftIntegrationGroup extends ItemGroup {
     @Override
     @Nonnull
     public ItemStack createIcon() {
-        return new ItemStack(ItemRegistry.MAGIC_MIRROR.get());
+        return new ItemStack(ItemRegistry.CLOUD_KEY.get());
     }
 }

@@ -1,6 +1,7 @@
-package tech.lq0.providencraft.compat.vrc.ameki;
+package tech.lq0.providencraft.integration.vrc.ameki;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.SwordItem;
@@ -29,5 +30,12 @@ public class RainyButterfly extends SwordItem {
         TooltipTool.addHideText(tooltip, new StringTextComponent(""));
         TooltipTool.addHideText(tooltip, new TranslationTextComponent("liver.providencraft.liver").mergeStyle(TextFormatting.WHITE));
         TooltipTool.addHideText(tooltip, new TranslationTextComponent("liver.providencraft.coop.ameki").mergeStyle(Style.EMPTY.setColor(Color.fromHex("#D7F0FE"))));
+    }
+
+    @Override
+    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+
+
+        return super.hitEntity(stack, target, attacker);
     }
 }

@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import tech.lq0.providencraft.compat.CompatHandler;
+import tech.lq0.providencraft.integration.CompatHandler;
 import tech.lq0.providencraft.init.*;
 import tech.lq0.providencraft.loot.LootTableHandler;
 import tech.lq0.providencraft.world.biome.BlueDesertBiome;
