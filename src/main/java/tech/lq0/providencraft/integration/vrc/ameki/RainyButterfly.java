@@ -46,8 +46,20 @@ public class RainyButterfly extends SwordItem {
 
     @Override
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-
-
+        World world = attacker.getEntityWorld();
+        if(!world.isRemote){
+            if(!ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false)) {
+                int count = ItemNBTTool.getInt(stack, TAG_RAINY_BUTTERFLY_COUNT, 0);
+                if (count > 0) {
+                    if (!world.isRaining()) {
+                        attacker.heal(2.0f);
+                    } else {
+                        attacker.heal(5.0f);
+                    }
+                    ItemNBTTool.setInt(stack, TAG_RAINY_BUTTERFLY_COUNT, count - 1);
+                }
+            }
+        }
         return super.hitEntity(stack, target, attacker);
     }
 
@@ -82,6 +94,14 @@ public class RainyButterfly extends SwordItem {
                             setRainyButterflyTime(stack, getRainyButterflyTime(stack) - 20);
                         }
                     }
+                }
+            }
+        }
+        if(worldIn.isRaining()){
+            if(stack.getDamage() < stack.getMaxDamage()){
+                PlayerEntity player = (PlayerEntity) entityIn;
+                if (player.ticksExisted % 20 == 0) {
+                    stack.damageItem(-1, player, (playerEntity) -> playerEntity.sendBreakAnimation(player.getActiveHand()));
                 }
             }
         }
