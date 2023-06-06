@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemModelsProperties;
@@ -16,10 +17,9 @@ import net.minecraft.item.ItemTier;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -134,27 +134,44 @@ public class RainyButterfly extends SwordItem {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if(!worldIn.isRemote){
-            boolean open = ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
-            if(open){
-                ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
-            }else {
-                int level = getRainyButterflyCount(stack);
-                if(level > 0){
-                    if(playerIn.isSneaking()){
-                        playerIn.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 800, level - 1, false, false));
-                        setRainyButterflyCount(stack, 0);
 
-                        //TODO 发射冲击波，击退面前的生物
+        boolean open = ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
+        if(open){
+            ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
+            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 40);
+            playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0f, 1.0f);
+        }else {
+            int level = getRainyButterflyCount(stack);
+            if(level > 0){
+                if(playerIn.isSneaking()){
+                    playerIn.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 800, level - 1, false, false));
+                    
+                    Vector3d look = playerIn.getLookVec();
+                    Vector3d position = playerIn.getPositionVec().add(0, playerIn.getEyeHeight(), 0);
+                    Vector3d endPos = position.add(look.scale(4.0));
 
-                    }else {
-                        playerIn.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 1200, 0, false, false));
-                        setRainyButterflyCount(stack, level - 1);
+                    AxisAlignedBB box = new AxisAlignedBB(position, endPos);
+                    List<Entity> entities = worldIn.getEntitiesWithinAABB(Entity.class, box);
+
+                    for (Entity entity : entities) {
+                        if (entity != playerIn && entity.canBePushed()) {
+                            if (entity instanceof LivingEntity && !(entity instanceof ArmorStandEntity)) {
+                                float strength = (float) Math.ceil(getRainyButterflyCount(stack) / 3.0f);
+                                ((LivingEntity) entity).applyKnockback(strength * 1.5f, playerIn.getPosX() - entity.getPosX(), playerIn.getPosZ() - entity.getPosZ());
+                            }
+                        }
                     }
-                }
 
-                ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, true);
+                    setRainyButterflyCount(stack, 0);
+                }else {
+                    playerIn.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 1200, 0, false, false));
+                    setRainyButterflyCount(stack, level - 1);
+                }
             }
+
+            ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, true);
+            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 10);
+            playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0f, 1.0f);
         }
         return new ActionResult<>(ActionResultType.FAIL, stack);
     }
