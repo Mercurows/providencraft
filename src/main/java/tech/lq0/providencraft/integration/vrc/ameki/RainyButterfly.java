@@ -1,9 +1,15 @@
 package tech.lq0.providencraft.integration.vrc.ameki;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
@@ -28,15 +34,17 @@ import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RainyButterfly extends SwordItem {
     public static final String TAG_RAINY_BUTTERFLY_COUNT = "rainy_butterfly_count";
     public static final String TAG_RAINY_BUTTERFLY_TIME = "rainy_butterfly_time";
     public static final String TAG_RAINY_BUTTERFLY_OPEN = "rainy_butterfly_open";
+    public static final String TAG_RAINY_BUTTERFLY_RAIN = "rainy_butterfly_rain";
 
     public RainyButterfly(){
-        super(ItemTier.IRON, 5, -2.1f, new Properties().group(ModGroup.integrationgroup).maxDamage(1206));
+        super(ItemTier.IRON, -2, -2.1f, new Properties().group(ModGroup.integrationgroup).maxDamage(1206));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -75,30 +83,36 @@ public class RainyButterfly extends SwordItem {
         ItemNBTTool.setInt(stack, TAG_RAINY_BUTTERFLY_COUNT, 0);
         ItemNBTTool.setInt(stack, TAG_RAINY_BUTTERFLY_TIME, 0);
         ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
+        ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_RAIN, false);
     }
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(!worldIn.isRemote && isSelected){
+        if(!worldIn.isRemote){
             if(entityIn instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) entityIn;
 
-                boolean open = ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
-                if (open) {
-                    if(player.ticksExisted % 20 == 0 && getRainyButterflyTime(stack) < 20
-                        && getRainyButterflyCount(stack) < (worldIn.isRaining() ? 9 : 3)){
-                        setRainyButterflyTime(stack, Math.min(20, getRainyButterflyTime(stack) + 1));
-                    }
+                boolean isMainhand = player.getHeldItemMainhand() == stack;
+                boolean isOffHand = player.getHeldItemOffhand() == stack;
 
-                    if (worldIn.isRaining()) {
-                        if(getRainyButterflyTime(stack) >= 5 && getRainyButterflyCount(stack) < 9 && getRainyButterflyTime(stack) > 0){
-                            setRainyButterflyCount(stack, Math.min(9, getRainyButterflyCount(stack) + 1));
-                            setRainyButterflyTime(stack, getRainyButterflyTime(stack) - 5);
+                if(isMainhand || isOffHand) {
+                    boolean open = ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
+                    if (open) {
+                        if (player.ticksExisted % 20 == 0 && getRainyButterflyTime(stack) < 20
+                                && getRainyButterflyCount(stack) < (worldIn.isRaining() ? 9 : 3)) {
+                            setRainyButterflyTime(stack, Math.min(20, getRainyButterflyTime(stack) + 1));
                         }
-                    }else {
-                        if(getRainyButterflyTime(stack) % 20 == 0 && getRainyButterflyCount(stack) < 3 && getRainyButterflyTime(stack) > 0){
-                            setRainyButterflyCount(stack, Math.min(3, getRainyButterflyCount(stack) + 1));
-                            setRainyButterflyTime(stack, getRainyButterflyTime(stack) - 20);
+
+                        if (worldIn.isRaining()) {
+                            if (getRainyButterflyTime(stack) >= 5 && getRainyButterflyCount(stack) < 9 && getRainyButterflyTime(stack) > 0) {
+                                setRainyButterflyCount(stack, Math.min(9, getRainyButterflyCount(stack) + 1));
+                                setRainyButterflyTime(stack, getRainyButterflyTime(stack) - 5);
+                            }
+                        } else {
+                            if (getRainyButterflyTime(stack) % 20 == 0 && getRainyButterflyCount(stack) < 3 && getRainyButterflyTime(stack) > 0) {
+                                setRainyButterflyCount(stack, Math.min(3, getRainyButterflyCount(stack) + 1));
+                                setRainyButterflyTime(stack, getRainyButterflyTime(stack) - 20);
+                            }
                         }
                     }
                 }
@@ -111,6 +125,9 @@ public class RainyButterfly extends SwordItem {
                     stack.damageItem(-1, player, (playerEntity) -> playerEntity.sendBreakAnimation(player.getActiveHand()));
                 }
             }
+            ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_RAIN, true);
+        }else {
+            ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_RAIN, false);
         }
     }
 
@@ -148,6 +165,31 @@ public class RainyButterfly extends SwordItem {
                 ItemModelsProperties.registerProperty(VirtuaRealCraftRegistry.RAINY_BUTTERFLY.get(), new ResourceLocation("open"),
                         (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false) ? 1.0F : 0.0F)
         );
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot, stack);
+        UUID uuid = new UUID(VirtuaRealCraftRegistry.RAINY_BUTTERFLY.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        UUID uuid2 = new UUID(VirtuaRealCraftRegistry.RAINY_BUTTERFLY.hashCode(), 0);
+        if (equipmentSlot == EquipmentSlotType.MAINHAND || equipmentSlot == EquipmentSlotType.OFFHAND) {
+            map = HashMultimap.create(map);
+            boolean flag = ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
+            int count = ItemNBTTool.getInt(stack, TAG_RAINY_BUTTERFLY_COUNT, 0);
+            boolean rain = ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_RAIN, false);
+
+            map.put(Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(uuid, "rainy butterfly modifier", flag ? 0.0f : 7.0f, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.MAX_HEALTH,
+                    new AttributeModifier(uuid, "rainy butterfly modifier", flag ? count * 0.05f : 0.0f, AttributeModifier.Operation.MULTIPLY_TOTAL));
+            map.put(Attributes.ARMOR,
+                    new AttributeModifier(uuid2, "rainy butterfly modifier2", rain ? count * 0.03f : 0.0f, AttributeModifier.Operation.MULTIPLY_TOTAL));
+            map.put(Attributes.ARMOR_TOUGHNESS,
+                    new AttributeModifier(uuid, "rainy butterfly modifier", rain ? count * 0.02f : 0.0f, AttributeModifier.Operation.MULTIPLY_TOTAL));
+            map.put(Attributes.MOVEMENT_SPEED,
+                    new AttributeModifier(uuid, "rainy butterfly modifier", rain ? count * 0.05f : 0.0f, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        }
+        return map;
     }
 
     private static int getRainyButterflyCount(ItemStack stack){
