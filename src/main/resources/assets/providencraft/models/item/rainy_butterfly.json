@@ -1,0 +1,47 @@
+{
+  "loader": "forge:obj",
+  "model": "providencraft:models/item/rainy_butterfly.obj",
+  "flip-v": true,
+  "gui_light": "front",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, 0, 0],
+      "translation": [20, 15, 21],
+      "scale": [2.5, 2.5, 2.5]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, 0, 0],
+      "translation": [-20, 15, 21],
+      "scale": [2.5, 2.5, 2.5]
+    },
+    "firstperson_righthand": {
+      "rotation": [-20, 0, 0],
+      "translation": [25, 17, 5],
+      "scale": [2.5, 2.5, 2.5]
+    },
+    "firstperson_lefthand": {
+      "rotation": [-20, 0, 0],
+      "translation": [-13, 17, 5],
+      "scale": [2.5, 2.5, 2.5]
+    },
+    "ground": {
+      "translation": [12.0, 7.0, 12.0],
+      "scale": [1.5, 1.5, 1.5]
+    },
+    "gui": {
+      "rotation": [90, -135, 90],
+      "translation": [-8.1, 9, 0],
+      "scale": [1.5, 1.5, 1.5]
+    },
+    "head": {
+      "rotation": [0, 0, 0],
+      "translation": [20, 15, 20],
+      "scale": [2.5, 2.5, 2.5]
+    },
+    "fixed": {
+      "rotation": [-270, -45, -270],
+      "translation": [-11, -9, 14],
+      "scale": [1.8, 1.8, 1.8]
+    }
+  }
+}
