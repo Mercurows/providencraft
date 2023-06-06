@@ -1,27 +1,27 @@
 {
   "loader": "forge:obj",
-  "model": "providencraft:models/item/rainy_butterfly.obj",
+  "model": "providencraft:models/item/rainy_butterfly_open.obj",
   "flip-v": true,
   "gui_light": "front",
   "display": {
     "thirdperson_righthand": {
-      "rotation": [0, 0, 0],
-      "translation": [20, 15, 21],
+      "rotation": [70, 0, 0],
+      "translation": [20, -14, 24],
       "scale": [2.5, 2.5, 2.5]
     },
     "thirdperson_lefthand": {
-      "rotation": [0, 0, 0],
-      "translation": [-20, 15, 21],
+      "rotation": [70, 0, 0],
+      "translation": [-20, -14, 24],
       "scale": [2.5, 2.5, 2.5]
     },
     "firstperson_righthand": {
-      "rotation": [-20, 0, 0],
-      "translation": [25, 17, 5],
+      "rotation": [10, 0, 0],
+      "translation": [25, 12, 20],
       "scale": [2.5, 2.5, 2.5]
     },
     "firstperson_lefthand": {
-      "rotation": [-20, 0, 0],
-      "translation": [-13, 17, 5],
+      "rotation": [10, 0, 0],
+      "translation": [-13, 12, 20],
       "scale": [2.5, 2.5, 2.5]
     },
     "ground": {
@@ -29,9 +29,9 @@
       "scale": [1.5, 1.5, 1.5]
     },
     "gui": {
-      "rotation": [90, -135, 90],
-      "translation": [-8.1, 9, 0],
-      "scale": [1.5, 1.5, 1.5]
+      "rotation": [-115, -40, -125],
+      "translation": [-11, 6, 0],
+      "scale": [1.1, 1.1, 1.1]
     },
     "head": {
       "rotation": [0, 0, 0],
@@ -40,16 +40,8 @@
     },
     "fixed": {
       "rotation": [-270, -45, -270],
-      "translation": [-11, -9, 14],
-      "scale": [1.8, 1.8, 1.8]
+      "translation": [-8, -9, 13],
+      "scale": [1.5, 1.5, 1.5]
     }
-  },
-  "overrides": [
-    {
-      "predicate": {
-        "open": 1
-      },
-      "model": "providencraft:item/rainy_butterfly_open"
-    }
-  ]
+  }
 }

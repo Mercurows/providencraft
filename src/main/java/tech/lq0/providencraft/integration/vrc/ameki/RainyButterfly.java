@@ -4,6 +4,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemModelsProperties;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.SwordItem;
@@ -12,17 +13,23 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.integration.vrc.VirtuaRealCraftRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RainyButterfly extends SwordItem {
     public static final String TAG_RAINY_BUTTERFLY_COUNT = "rainy_butterfly_count";
     public static final String TAG_RAINY_BUTTERFLY_TIME = "rainy_butterfly_time";
@@ -132,7 +139,15 @@ public class RainyButterfly extends SwordItem {
                 ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, true);
             }
         }
-        return new ActionResult<>(ActionResultType.SUCCESS, stack);
+        return new ActionResult<>(ActionResultType.FAIL, stack);
+    }
+
+    @SubscribeEvent
+    public static void propertyOverrideRegistry(FMLClientSetupEvent event) {
+        event.enqueueWork(() ->
+                ItemModelsProperties.registerProperty(VirtuaRealCraftRegistry.RAINY_BUTTERFLY.get(), new ResourceLocation("open"),
+                        (stack, world, entity) -> ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false) ? 1.0F : 0.0F)
+        );
     }
 
     private static int getRainyButterflyCount(ItemStack stack){
