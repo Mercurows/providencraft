@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/#",
+    "LnL",
+    " Q "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "/": {
+      "item": "minecraft:end_rod"
+    },
+    "L": {
+      "item": "minecraft:light_blue_dye"
+    },
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "Q": {
+      "item": "minecraft:quartz_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:rainy_butterfly",
+    "count": 1
+  }
+}
