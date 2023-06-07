@@ -13,27 +13,24 @@ public class CompatHandler {
         ModList modList = ModList.get();
         virtuarealcraft = modList.isLoaded("virtuarealcraft");
         target = modList.isLoaded("target");
+
+        //测试用
+        target = true;
     }
 
-    @SuppressWarnings({"StatementWithEmptyBody", "ConstantConditions"})
+    @SuppressWarnings({"StatementWithEmptyBody"})
     public static void registerCompatItems(IEventBus eventBus) {
-        boolean test_flag = true;
-
         getIntegration();
         if(virtuarealcraft){
             //TODO 把target的内容移至此处
         }
-        if(target || test_flag){
+        if(target){
             VirtuaRealCraftRegistry.VRC_ITEMS.register(eventBus);
         }
     }
 
-    @SuppressWarnings("ConstantConditions")
     public static void getIntegration(){
-        //测试环境下设置为true
-        boolean test_flag = true;
-
-        if(virtuarealcraft || target || test_flag){
+        if(virtuarealcraft || target){
             ModGroup.initIntegrationGroup();
         }
     }
