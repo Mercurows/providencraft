@@ -75,13 +75,11 @@ import tech.lq0.providencraft.item.providencefirst.usa.KurumiBoomerang;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiHalo;
 import tech.lq0.providencraft.item.providencefirst.usa.Plunger;
 import tech.lq0.providencraft.item.providencemagicros.chiram.*;
-import tech.lq0.providencraft.item.providencemagicros.haine.CloudKey;
-import tech.lq0.providencraft.item.providencemagicros.haine.CursedMarshaimallow;
-import tech.lq0.providencraft.item.providencemagicros.haine.HaiPlate;
-import tech.lq0.providencraft.item.providencemagicros.haine.Marshaimallow;
+import tech.lq0.providencraft.item.providencemagicros.haine.*;
 import tech.lq0.providencraft.item.providencemagicros.hoshimiya.*;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogCrown;
 import tech.lq0.providencraft.item.providencemagicros.keroro.FrogLeg;
+import tech.lq0.providencraft.item.providencemagicros.keroro.FroggyLeggings;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providencesecond.lecia.DuelWaterGun;
 import tech.lq0.providencraft.item.providencesecond.lecia.ElectricHorn;
@@ -212,17 +210,20 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CHIRAM_LANTERN = ITEMS.register("chiram_lantern", ChiramLantern::new);
     public static final RegistryObject<Item> BOLSTER = ITEMS.register("bolster", Bolster::new);
     public static final RegistryObject<Item> EYE_MASK = ITEMS.register("eye_mask", EyeMask::new);
+    public static final RegistryObject<Item> RIPPLE_CROWN = ITEMS.register("ripple_crown", RippleCrown::new);
 
     //haine
     public static final RegistryObject<Item> HAI_PLATE = ITEMS.register("hai_plate", HaiPlate::new);
     public static final RegistryObject<Item> MARSHAIMALLOW = ITEMS.register("marshaimallow", Marshaimallow::new);
     public static final RegistryObject<Item> CLOUD_KEY = ITEMS.register("cloud_key", CloudKey::new);
     public static final RegistryObject<Item> CURSED_MARSHAIMALLOW = ITEMS.register("cursed_marshaimallow", CursedMarshaimallow::new);
+    public static final RegistryObject<Item> MISTY_CHESTPLATE = ITEMS.register("misty_chestplate", MistyChestplate::new);
 
     //keroro
     public static final RegistryObject<Item> RED_NOSE = ITEMS.register("red_nose", RedNose::new);
     public static final RegistryObject<Item> FROG_LEG = ITEMS.register("frog_leg", FrogLeg::new);
     public static final RegistryObject<Item> FROG_CROWN = ITEMS.register("frog_crown", FrogCrown::new);
+    public static final RegistryObject<Item> FROGGY_LEGGINGS = ITEMS.register("froggy_leggings", FroggyLeggings::new);
 
     //hoshimiya
     public static final RegistryObject<Item> CRYSTAL_BALL = ITEMS.register("crystal_ball", CrystalBall::new);
@@ -230,6 +231,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> SUCCUBUS_TAIL = ITEMS.register("succubus_tail", SuccubusTail::new);
     public static final RegistryObject<Item> EKIRA_PEARL = ITEMS.register("ekira_pearl", EkiraPearl::new);
     public static final RegistryObject<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", BubbleTea::new);
+    public static final RegistryObject<Item> CELESTIAL_BOOTS = ITEMS.register("celestial_boots", CelestialBoots::new);
 
     /**
      * 3rd
