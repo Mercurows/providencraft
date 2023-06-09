@@ -96,8 +96,8 @@ public class EchoedDestinyRing extends Item {
                         playerEntity.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 0, true, false));
                         playerEntity.addPotionEffect(new EffectInstance(Effects.HASTE, 300, 1, true, false));
 
-                        if(player.ticksExisted % 280 == 0){
-                            playerEntity.addPotionEffect(new EffectInstance(Effects.HEALTH_BOOST, 300, 1, true, false));
+                        if(player.ticksExisted % 300 == 0){
+                            playerEntity.addPotionEffect(new EffectInstance(Effects.REGENERATION, 300, 1, true, false));
                         }
                     }
                 }
