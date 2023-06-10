@@ -56,7 +56,7 @@ public class RainyButterfly extends SwordItem {
 
         TooltipTool.addHideText(tooltip, new StringTextComponent(""));
         TooltipTool.addHideText(tooltip, new TranslationTextComponent("liver.providencraft.liver").mergeStyle(TextFormatting.WHITE));
-        TooltipTool.addHideText(tooltip, new TranslationTextComponent("liver.providencraft.coop.ameki").mergeStyle(Style.EMPTY.setColor(Color.fromHex("#D7F0FE"))));
+        TooltipTool.addHideText(tooltip, new TranslationTextComponent("liver.providencraft.coop.ameki").mergeStyle(Style.EMPTY.setColor(Color.fromHex("#9EEEFF"))));
     }
 
     @Override
