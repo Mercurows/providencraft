@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
@@ -29,7 +30,7 @@ public class BrownieUzza extends Item {
             .effect(() -> new EffectInstance(Effects.HUNGER, 340, 1), 1.0f).build();
 
     public BrownieUzza(){
-        super(new Properties().group(ModGroup.itemgroup).food(food).maxStackSize(16));
+        super(new Properties().group(ModGroup.itemgroup).food(food).maxStackSize(16).rarity(Rarity.UNCOMMON));
     }
 
     @OnlyIn(Dist.CLIENT)
