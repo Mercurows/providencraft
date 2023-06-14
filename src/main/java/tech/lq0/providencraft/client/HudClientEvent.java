@@ -49,7 +49,7 @@ public class HudClientEvent {
 
             PlayerEntity player = Minecraft.getInstance().player;
 
-            if(player.isSpectator()){
+            if(player.isSpectator() || player.isCreative()){
                 return;
             }
 

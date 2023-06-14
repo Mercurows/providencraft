@@ -21,7 +21,7 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<SeatEntity>> SEAT_ENTITY =
             ENTITY_TYPES.register("seat_entity",
                     () -> EntityType.Builder.<SeatEntity>create((type, world) -> new SeatEntity(world),
-                            EntityClassification.MISC).size(0.0f, 0.0f).setCustomClientFactory((spawnEntity, world) -> new SeatEntity(world)).build("seat_entity"));
+                            EntityClassification.MISC).size(0.0f, 0.0f).setCustomClientFactory((spawnEntity, world) -> new SeatEntity(world)).disableSummoning().build("seat_entity"));
     public static final RegistryObject<EntityType<DaifukuSyrupEntity>> DAIFUKU_SYRUP_ENTITY =
             ENTITY_TYPES.register("daifuku_syrup_entity",
                     () -> EntityType.Builder.<DaifukuSyrupEntity>create(DaifukuSyrupEntity::new, EntityClassification.MISC).size(0.2f, 0.2f).build("daifuku_syrup_entity"));

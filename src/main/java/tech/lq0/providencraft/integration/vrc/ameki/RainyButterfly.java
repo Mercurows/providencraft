@@ -137,9 +137,11 @@ public class RainyButterfly extends SwordItem {
 
         boolean open = ItemNBTTool.getBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
         if(open){
-            ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
-            playerIn.getCooldownTracker().setCooldown(stack.getItem(), 40);
-            playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0f, 1.0f);
+            if(playerIn.isSneaking()) {
+                ItemNBTTool.setBoolean(stack, TAG_RAINY_BUTTERFLY_OPEN, false);
+                playerIn.getCooldownTracker().setCooldown(stack.getItem(), 40);
+                playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0f, 1.0f);
+            }
         }else {
             int level = getRainyButterflyCount(stack);
             if(level > 0){
