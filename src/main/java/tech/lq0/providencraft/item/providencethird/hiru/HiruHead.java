@@ -24,6 +24,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.AttributeRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.HiruHeadModel;
 import tech.lq0.providencraft.tools.Livers;
@@ -65,6 +66,8 @@ public class HiruHead extends ArmorItem {
                     new AttributeModifier(uuid, "hiru head modifier", -0.1f, AttributeModifier.Operation.MULTIPLY_BASE));
             map.put(Attributes.KNOCKBACK_RESISTANCE,
                     new AttributeModifier(uuid, "hiru head modifier", 1.0f, AttributeModifier.Operation.ADDITION));
+            map.put(AttributeRegistry.CHAOS.get(),
+                    new AttributeModifier(uuid, "hiru head modifier", 100.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
