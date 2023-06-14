@@ -25,5 +25,11 @@
   "result": {
     "item": "providencraft:rainy_butterfly",
     "count": 1
-  }
+  },
+  "conditions": [
+    {
+      "modid": "target",
+      "type": "forge:mod_loaded"
+    }
+  ]
 }
