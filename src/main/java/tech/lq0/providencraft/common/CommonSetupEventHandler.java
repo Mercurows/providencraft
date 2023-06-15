@@ -15,23 +15,21 @@ import javax.annotation.Nullable;
 public class CommonSetupEventHandler {
     @SubscribeEvent
     public static void onSetupEvent(FMLCommonSetupEvent event){
-        event.enqueueWork(() -> {
-            CapabilityManager.INSTANCE.register(
-                    IChaosCapability.class,
-                    new Capability.IStorage<IChaosCapability>() {
-                        @Nullable
-                        @Override
-                        public INBT writeNBT(Capability<IChaosCapability> capability, IChaosCapability instance, Direction side) {
-                            return null;
-                        }
+        event.enqueueWork(() -> CapabilityManager.INSTANCE.register(
+                IChaosCapability.class,
+                new Capability.IStorage<IChaosCapability>() {
+                    @Nullable
+                    @Override
+                    public INBT writeNBT(Capability<IChaosCapability> capability, IChaosCapability instance, Direction side) {
+                        return null;
+                    }
 
-                        @Override
-                        public void readNBT(Capability<IChaosCapability> capability, IChaosCapability instance, Direction side, INBT nbt) {
+                    @Override
+                    public void readNBT(Capability<IChaosCapability> capability, IChaosCapability instance, Direction side, INBT nbt) {
 
-                        }
-                    },
-                    () -> null
-            );
-        });
+                    }
+                },
+                () -> null
+        ));
     }
 }
