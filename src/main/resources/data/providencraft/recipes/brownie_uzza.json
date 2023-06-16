@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "CCC",
+    "WWW"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "C": {
+      "item": "minecraft:coal"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "result": {
+    "item": "providencraft:brownie_uzza",
+    "count": 1
+  }
+}

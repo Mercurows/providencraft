@@ -7,6 +7,7 @@ import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.text.ITextComponent;
@@ -50,5 +51,10 @@ public class BrownieUzza extends Item {
             player.attackEntityFrom(DamageSourceRegistry.BROWNIE_UZZA, 8.0f);
         }
         return itemStack;
+    }
+
+    @Override
+    public int getBurnTime(ItemStack itemStack, @Nullable IRecipeType<?> recipeType) {
+        return 8000;
     }
 }
