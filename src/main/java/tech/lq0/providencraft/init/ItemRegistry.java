@@ -39,6 +39,7 @@ import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
 import tech.lq0.providencraft.item.providenceOI.rino.ShuRinoKen;
 import tech.lq0.providencraft.item.providenceOI.roky.Xiaolongbao;
 import tech.lq0.providencraft.item.providenceOI.shirako.*;
+import tech.lq0.providencraft.item.providenceOI.shirayuki.ButterflyAnklet;
 import tech.lq0.providencraft.item.providenceOI.shirayuki.FoxFairyFan;
 import tech.lq0.providencraft.item.providenceOI.sorayo.LunarEclipse;
 import tech.lq0.providencraft.item.providenceOI.sorayo.LunaticBow;
@@ -107,6 +108,7 @@ import tech.lq0.providencraft.item.providencethird.yuki.FoxIceCream;
 import tech.lq0.providencraft.item.providencethird.yuki.FoxPudding;
 import tech.lq0.providencraft.tools.Livers;
 
+@SuppressWarnings({"unused"})
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Utils.MOD_ID);
 
@@ -197,6 +199,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> ANCIENT_LOLLIPOP = ITEMS.register("ancient_lollipop", AncientLollipop::new);
     public static final RegistryObject<Item> ISEKAI_LOLLIPOP = ITEMS.register("isekai_lollipop", IsekaiLollipop::new);
     public static final RegistryObject<Item> PAST_SUGAR = ITEMS.register("past_sugar", PastSugar::new);
+    public static final RegistryObject<Item> SATOU_CHESTPLATE = ITEMS.register("satou_chestplate", SatouChestplate::new);
 
     //mumu
     public static final RegistryObject<Item> AYELET_MASK = ITEMS.register("ayelet_mask", AyeletMask::new);
@@ -284,6 +287,7 @@ public class ItemRegistry {
 
     //shirayuki
     public static final RegistryObject<Item> FOX_FAIRY_FAN = ITEMS.register("fox_fairy_fan", FoxFairyFan::new);
+    public static final RegistryObject<Item> BUTTERFLY_ANKLET = ITEMS.register("butterfly_anklet", ButterflyAnklet::new);
 
     //yuri
     public static final RegistryObject<Item> RABBIT_LYCHEE = ITEMS.register("rabbit_lychee", RabbitLychee::new);
@@ -381,11 +385,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> BLACK_EARPHONES = ITEMS.register("black_earphones", BlackEarphones::new);
     public static final RegistryObject<Item> EMERGENCY_ENGINE_POWER = ITEMS.register("emergency_engine_power", EmergencyEnginePower::new);
     public static final RegistryObject<Item> MUSIC_DISC_SONG_OF_AUTUMN = ITEMS.register("music_disc_song_of_autumn", MusicDiscSongOfAutumn::new);
-
-    /**
-     * developer
-     */
-    //public static final RegistryObject<Item> BEAST = ITEMS.register("beast", Beast::new);
 
     /**
      * costume
