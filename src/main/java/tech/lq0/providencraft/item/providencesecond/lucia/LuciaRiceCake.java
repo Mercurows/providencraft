@@ -1,6 +1,8 @@
 package tech.lq0.providencraft.item.providencesecond.lucia;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,6 +12,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.capability.ChaosHelper;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -31,5 +34,14 @@ public class LuciaRiceCake extends Item {
         tooltip.add((new TranslationTextComponent("des.providencraft.lucia_rice_cake_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.lucia_rice_cake_2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.LUCIA);
+    }
+
+    @Override
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+        if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entityLiving;
+            ChaosHelper.setChaos(player, -1);
+        }
+        return super.onItemUseFinish(stack, worldIn, entityLiving);
     }
 }

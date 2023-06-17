@@ -1,27 +1,28 @@
 package tech.lq0.providencraft.capability;
 
-//public class ChaosHelper {
-//    private static final UUID CHAOS_MODIFIER_UUID =  new UUID(AttributeRegistry.CHAOS.hashCode(), 0);
-//
-//    public static void updateChaosAttribute(PlayerEntity player, double amount) {
-//        if(player.world.isRemote){
-//            return;
-//        }
-//
-//        double base = player.getAttribute(AttributeRegistry.CHAOS.get()).getValue();
-//
-//        AttributeModifier modifier = new AttributeModifier(CHAOS_MODIFIER_UUID, "Chaos Modifier",
-//                base + amount, AttributeModifier.Operation.ADDITION);
-//        updateChaosAttributeModifier(player, modifier);
-//    }
-//
-//    private static void updateChaosAttributeModifier(PlayerEntity player, AttributeModifier modifier) {
-//        ModifiableAttributeInstance instance = getChaosAttribute(player);
-//        instance.removeModifier(modifier);
-//        instance.applyPersistentModifier(modifier);
-//    }
-//
-//    private static ModifiableAttributeInstance getChaosAttribute(PlayerEntity player) {
-//        return player.getAttribute(AttributeRegistry.CHAOS.get());
-//    }
-//}
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraftforge.common.util.LazyOptional;
+import tech.lq0.providencraft.init.AttributeRegistry;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class ChaosHelper {
+    public static int getChaos(PlayerEntity player){
+        AtomicInteger chaos = new AtomicInteger();
+        LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
+        chaosCap.ifPresent((l) -> chaos.set((int) (l.getChaos() + (int) player.getAttributeValue(AttributeRegistry.CHAOS.get()))));
+
+        return chaos.get();
+    }
+
+    public static void setChaos(PlayerEntity player, int chaos){
+        LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
+        chaosCap.ifPresent((l) -> l.setChaos(l.getChaos() + chaos));
+    }
+
+    public static void resetChaos(PlayerEntity player){
+        LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
+        chaosCap.ifPresent((l) -> l.setChaos(0));
+    }
+
+}

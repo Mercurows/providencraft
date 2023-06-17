@@ -25,12 +25,10 @@ public class CommonEventHandler {
 
     @SubscribeEvent
     public static void onPlayerCloned(PlayerEvent.Clone event) {
-        if (!event.isWasDeath()) {
-            LazyOptional<IChaosCapability> oldChaosCap = event.getOriginal().getCapability(ModCapability.CHAOS_CAPABILITY);
-            LazyOptional<IChaosCapability> newChaosCap = event.getPlayer().getCapability(ModCapability.CHAOS_CAPABILITY);
-            if (oldChaosCap.isPresent() && newChaosCap.isPresent()) {
-                newChaosCap.ifPresent((newCap) -> oldChaosCap.ifPresent((oldCap) -> newCap.deserializeNBT(oldCap.serializeNBT())));
-            }
+        LazyOptional<IChaosCapability> oldChaosCap = event.getOriginal().getCapability(ModCapability.CHAOS_CAPABILITY);
+        LazyOptional<IChaosCapability> newChaosCap = event.getPlayer().getCapability(ModCapability.CHAOS_CAPABILITY);
+        if (oldChaosCap.isPresent() && newChaosCap.isPresent()) {
+            newChaosCap.ifPresent((newCap) -> oldChaosCap.ifPresent((oldCap) -> newCap.deserializeNBT(oldCap.serializeNBT())));
         }
     }
 }
