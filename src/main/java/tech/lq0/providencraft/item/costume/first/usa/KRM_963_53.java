@@ -45,6 +45,7 @@ public class KRM_963_53 extends ArmorItem {
         super(ArmorMaterial.NETHERITE, EquipmentSlotType.CHEST, new Properties().defaultMaxDamage(963).isImmuneToFire().rarity(Rarity.EPIC).setNoRepair().group(ModGroup.costumegroup));
     }
 
+    @SuppressWarnings("unchecked")
     @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
@@ -138,8 +139,6 @@ public class KRM_963_53 extends ArmorItem {
 
             if (players.contains(playerToString(player))) {
                 if (checkFly(player)) {
-                    //if (!player.isCreative() && !player.isSpectator() && !player.abilities.allowFlying) {
-//                    player.abilities.allowFlying = flag;
                     player.abilities.allowFlying = true;
 
                     if (player.abilities.isFlying) {
@@ -150,9 +149,6 @@ public class KRM_963_53 extends ArmorItem {
                         } else {
                             player.abilities.isFlying = false;
                         }
-//                        if (!flag) {
-//                            player.abilities.isFlying = false;
-//                        }
                     }
                 } else {
                     if (!player.isSpectator() && !player.abilities.isCreativeMode) {

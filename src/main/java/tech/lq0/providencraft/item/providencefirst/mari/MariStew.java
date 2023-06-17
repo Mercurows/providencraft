@@ -15,6 +15,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.capability.ChaosHelper;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.tools.Livers;
@@ -53,6 +54,8 @@ public class MariStew extends Item {
                 player.sendStatusMessage(new TranslationTextComponent("des.providencraft.mari_stew.nothing").mergeStyle(TextFormatting.GRAY), true);
             }
 
+            ChaosHelper.setChaos(player, 10);
+
             if (player.isCreative()) {
                 return itemStack;
             } else {
@@ -67,6 +70,7 @@ public class MariStew extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("des.providencraft.mari_stew")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.mari_stew.warn")).mergeStyle(TextFormatting.RED));
+        TooltipTool.addChaosInfo(tooltip, 10);
         TooltipTool.addLiverInfo(tooltip, Livers.MARI);
     }
 }

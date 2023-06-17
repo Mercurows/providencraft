@@ -33,6 +33,7 @@ public class LuciaRiceCake extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("des.providencraft.lucia_rice_cake_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.lucia_rice_cake_2")).mergeStyle(TextFormatting.GRAY));
+        TooltipTool.addChaosInfo(tooltip, -3);
         TooltipTool.addLiverInfo(tooltip, Livers.LUCIA);
     }
 
@@ -40,7 +41,7 @@ public class LuciaRiceCake extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            ChaosHelper.setChaos(player, -1);
+            ChaosHelper.setChaos(player, -3);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

@@ -52,4 +52,21 @@ public class TooltipTool {
             addHideText(tooltip, new TranslationTextComponent("des.providencraft.group." + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).mergeStyle(TextFormatting.BOLD));
         }
     }
+
+    public static void addChaosInfo(List<ITextComponent> tooltip, int chaos) {
+        TextFormatting textFormatting;
+        StringBuilder builder = new StringBuilder();
+        if(chaos > 0){
+            textFormatting = TextFormatting.BLUE;
+            builder.append("+").append(chaos).append(" ").append(new TranslationTextComponent("des.providencraft.chaos").getString());
+        }else if(chaos < 0){
+            textFormatting = TextFormatting.GREEN;
+            builder.append("-").append(Math.abs(chaos)).append(" ").append(new TranslationTextComponent("des.providencraft.chaos").getString());
+        }else {
+            return;
+        }
+        addHideText(tooltip, new StringTextComponent(""));
+        addHideText(tooltip, new TranslationTextComponent("des.providencraft.chaos.eaten").mergeStyle(TextFormatting.GRAY));
+        addHideText(tooltip, new StringTextComponent(builder.toString()).mergeStyle(textFormatting));
+    }
 }

@@ -10,14 +10,14 @@ public class ChaosHelper {
     public static int getChaos(PlayerEntity player){
         AtomicInteger chaos = new AtomicInteger();
         LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
-        chaosCap.ifPresent((l) -> chaos.set((int) (l.getChaos() + (int) player.getAttributeValue(AttributeRegistry.CHAOS.get()))));
+        chaosCap.ifPresent((l) -> chaos.set((int) Math.max(-100, Math.min(100, l.getChaos() + (int) player.getAttributeValue(AttributeRegistry.CHAOS.get())))));
 
         return chaos.get();
     }
 
     public static void setChaos(PlayerEntity player, int chaos){
         LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
-        chaosCap.ifPresent((l) -> l.setChaos(l.getChaos() + chaos));
+        chaosCap.ifPresent((l) -> l.setChaos((int) Math.max(-100, Math.min(100, l.getChaos() + chaos))));
     }
 
     public static void resetChaos(PlayerEntity player){
