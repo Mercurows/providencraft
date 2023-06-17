@@ -55,6 +55,6 @@ public class BrownieUzza extends Item {
 
     @Override
     public int getBurnTime(ItemStack itemStack, @Nullable IRecipeType<?> recipeType) {
-        return 10800;
+        return 12800;
     }
 }

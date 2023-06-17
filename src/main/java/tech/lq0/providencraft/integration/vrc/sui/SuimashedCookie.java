@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class SuimashedCookie extends Item {
-    private static final Food food = new Food.Builder().fastToEat().setAlwaysEdible().hunger(1).saturation(0.25f).build();
+    private static final Food food = new Food.Builder().fastToEat().setAlwaysEdible().hunger(2).saturation(0.25f).build();
 
     public SuimashedCookie() {
         super(new Properties().group(ModGroup.integrationgroup).food(food));
