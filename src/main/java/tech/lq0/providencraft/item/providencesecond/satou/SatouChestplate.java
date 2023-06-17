@@ -1,6 +1,7 @@
 package tech.lq0.providencraft.item.providencesecond.satou;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
@@ -31,5 +32,24 @@ public class SatouChestplate extends ArmorItem {
 
         tooltip.add((new TranslationTextComponent("des.providencraft.satou_chestplate")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.SATOU);
+    }
+
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if(!world.isRemote){
+            if(player.getFoodStats().needFood()){
+                if(player.ticksExisted % 20 == 0) {
+                    player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel() + 1);
+                    stack.damageItem(1, player, (player1) -> player1.sendBreakAnimation(EquipmentSlotType.CHEST));
+                }
+            }
+
+            if(player.isInWater() || (world.isRaining() && world.canSeeSky(player.getPosition()))){
+                if(player.ticksExisted % 2 == 0){
+                    stack.damageItem(1, player, (player1) -> player1.sendBreakAnimation(EquipmentSlotType.CHEST));
+                }
+            }
+        }
+        super.onArmorTick(stack, world, player);
     }
 }
