@@ -40,6 +40,7 @@ public class SatouChestplate extends ArmorItem {
             if(player.getFoodStats().needFood()){
                 if(player.ticksExisted % 20 == 0) {
                     player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel() + 1);
+                    player.getFoodStats().setFoodSaturationLevel(player.getFoodStats().getSaturationLevel() + 0.5f);
                     stack.damageItem(1, player, (player1) -> player1.sendBreakAnimation(EquipmentSlotType.CHEST));
                 }
             }
