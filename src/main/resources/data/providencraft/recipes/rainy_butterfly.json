@@ -28,7 +28,7 @@
   },
   "conditions": [
     {
-      "modid": "target",
+      "modid": "virtuarealcraft",
       "type": "forge:mod_loaded"
     }
   ]

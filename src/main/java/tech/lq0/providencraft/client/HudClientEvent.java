@@ -39,7 +39,7 @@ public class HudClientEvent {
 
     @SubscribeEvent
     public static void onRainyButterflyHudRender(RenderGameOverlayEvent.Post event) {
-        if(CompatHandler.virtuarealcraft || CompatHandler.target) {
+        if(CompatHandler.virtuarealcraft) {
             if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
                 return;
             }

@@ -12,7 +12,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.integration.CompatHandler;
+import tech.lq0.providencraft.integration.vrc.VirtuaRealCraftRegistry;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
+import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -45,7 +48,26 @@ public class SatouChestplate extends ArmorItem {
                 }
             }
 
-            if(player.isInWater() || (world.isRaining() && world.canSeeSky(player.getPosition()))){
+            if(player.isInWater() || (world.isRaining() && world.canSeeSky(player.getPosition()) && world.getBiome(player.getPosition()).getDownfall() != 0)){
+                if(CompatHandler.virtuarealcraft){
+                    boolean main = player.getHeldItemMainhand().getItem() == VirtuaRealCraftRegistry.RAINY_BUTTERFLY.get();
+                    boolean off = player.getHeldItemOffhand().getItem() == VirtuaRealCraftRegistry.RAINY_BUTTERFLY.get();
+                    ItemStack item;
+                    if(main){
+                        item = player.getHeldItemMainhand();
+                    }else {
+                        item = player.getHeldItemOffhand();
+                    }
+
+                    if(main || off){
+                        if(ItemNBTTool.getBoolean(item, "rainy_butterfly_open", false)){
+                            super.onArmorTick(stack, world, player);
+                            return;
+                        }
+                    }
+                }
+
+
                 if(player.ticksExisted % 2 == 0){
                     stack.damageItem(1, player, (player1) -> player1.sendBreakAnimation(EquipmentSlotType.CHEST));
                 }
