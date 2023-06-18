@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#B#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:beetroot"
+    }
+  },
+  "result": {
+    "item": "providencraft:satou_chestplate",
+    "count": 1
+  }
+}
