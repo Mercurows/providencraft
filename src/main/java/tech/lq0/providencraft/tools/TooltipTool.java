@@ -60,10 +60,11 @@ public class TooltipTool {
             textFormatting = TextFormatting.BLUE;
             builder.append("+").append(chaos).append(" ").append(new TranslationTextComponent("des.providencraft.chaos").getString());
         }else if(chaos < 0){
-            textFormatting = TextFormatting.GREEN;
+            textFormatting = TextFormatting.YELLOW;
             builder.append("-").append(Math.abs(chaos)).append(" ").append(new TranslationTextComponent("des.providencraft.chaos").getString());
         }else {
-            return;
+            textFormatting = TextFormatting.GREEN;
+            builder.append(new TranslationTextComponent("des.providencraft.chaos.reset").getString());
         }
         addHideText(tooltip, new StringTextComponent(""));
         addHideText(tooltip, new TranslationTextComponent("des.providencraft.chaos.eaten").mergeStyle(TextFormatting.GRAY));

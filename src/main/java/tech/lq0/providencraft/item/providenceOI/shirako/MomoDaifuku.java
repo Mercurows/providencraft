@@ -14,6 +14,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.capability.ChaosHelper;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -36,6 +37,7 @@ public class MomoDaifuku extends Item {
         tooltip.add((new TranslationTextComponent("des.providencraft.momo_daifuku_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.momo_daifuku_2")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.momo_daifuku.warn")).mergeStyle(TextFormatting.RED));
+        TooltipTool.addChaosInfo(tooltip, 0);
         TooltipTool.addLiverInfo(tooltip, Livers.SHIRAKO);
     }
 
@@ -52,6 +54,8 @@ public class MomoDaifuku extends Item {
                 player.setFire(10);
                 player.sendStatusMessage(new TranslationTextComponent("des.providencraft.momo_daifuku.fire").mergeStyle(TextFormatting.RED), true);
             }
+
+            ChaosHelper.resetChaos(player);
 
         }
         return itemStack;
