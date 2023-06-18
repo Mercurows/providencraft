@@ -12,7 +12,7 @@ import tech.lq0.providencraft.group.ModGroup;
 
 public class ChaosChecker extends Item {
     public ChaosChecker(){
-        super(new Properties().group(ModGroup.itemgroup));
+        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1));
     }
 
     @Override

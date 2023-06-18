@@ -60,7 +60,9 @@ public class SatouChestplate extends ArmorItem {
                     if(main || off){
                         if(ItemNBTTool.getBoolean(item, "rainy_butterfly_open", false)){
                             super.onArmorTick(stack, world, player);
-                            return;
+                            if(!player.isInWater()) {
+                                return;
+                            }
                         }
                     }
                 }
