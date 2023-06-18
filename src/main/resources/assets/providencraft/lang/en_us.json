@@ -592,6 +592,8 @@
   "item.providencraft.froggy_leggings": "Leggings of Nimble Croaks",
   "item.providencraft.celestial_boots": "Boots of Constellation Changes",
   "item.providencraft.chaos_checker": "Chaos Checker",
+  "des.providencraft.chaos_checker_1": "可以查看自身混沌值的仪器",
+  "des.providencraft.chaos_checker_2": "\"耶！我是一颗土星！\"",
   "biome.providencraft.blue_desert": "Blue Desert",
   "biome.providencraft.harano_plains": "Harano Plains",
   "attribute.chaos": "Value of Chaos",
