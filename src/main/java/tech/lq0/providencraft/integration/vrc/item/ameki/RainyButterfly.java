@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.integration.vrc.ameki;
+package tech.lq0.providencraft.integration.vrc.item.ameki;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;

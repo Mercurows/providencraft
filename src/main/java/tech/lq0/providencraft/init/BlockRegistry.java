@@ -51,4 +51,5 @@ public class BlockRegistry {
     public static final RegistryObject<Block> HARANO_BUTTON = BLOCKS.register("harano_button", HaranoButton::new);
 
     public static final RegistryObject<Block> ELIBOARD = BLOCKS.register("eliboard", Eliboard::new);
+    public static final RegistryObject<Block> MAGIC_MIRROR_BLOCK = BLOCKS.register("magic_mirror_block", MagicMirrorBlock::new);
 }

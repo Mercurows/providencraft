@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.integration.vrc.sui;
+package tech.lq0.providencraft.integration.vrc.item.sui;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Food;

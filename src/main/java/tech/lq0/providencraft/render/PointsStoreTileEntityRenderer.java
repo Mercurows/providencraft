@@ -13,7 +13,7 @@ import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.Utils;
-import tech.lq0.providencraft.entity.tile.PointsStoreTileEntity;
+import tech.lq0.providencraft.block.tile.PointsStoreTileEntity;
 import tech.lq0.providencraft.models.PdCLogoModel;
 
 @OnlyIn(Dist.CLIENT)

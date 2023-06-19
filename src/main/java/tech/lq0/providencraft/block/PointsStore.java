@@ -19,7 +19,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import tech.lq0.providencraft.entity.tile.PointsStoreTileEntity;
+import tech.lq0.providencraft.block.tile.PointsStoreTileEntity;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

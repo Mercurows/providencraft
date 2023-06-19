@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.entity.tile;
+package tech.lq0.providencraft.block.tile;
 
 import net.minecraft.entity.merchant.IMerchant;
 import net.minecraft.entity.player.PlayerEntity;
