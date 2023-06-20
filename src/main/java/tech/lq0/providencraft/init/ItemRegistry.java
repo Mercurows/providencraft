@@ -58,6 +58,7 @@ import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
 import tech.lq0.providencraft.item.providencefirst.haya.HayaSword;
 import tech.lq0.providencraft.item.providencefirst.haya.Hayamen;
 import tech.lq0.providencraft.item.providencefirst.madoka.*;
+import tech.lq0.providencraft.item.providencefirst.mari.IsekaiTuner;
 import tech.lq0.providencraft.item.providencefirst.mari.Machete;
 import tech.lq0.providencraft.item.providencefirst.mari.MagicMirror;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
@@ -131,6 +132,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MACHETE = ITEMS.register("machete", Machete::new);
     public static final RegistryObject<Item> MARI_STEW = ITEMS.register("mari_stew", MariStew::new);
     public static final RegistryObject<Item> MAGIC_MIRROR = ITEMS.register("magic_mirror", MagicMirror::new);
+    public static final RegistryObject<Item> ISEKAI_TUNER = ITEMS.register("isekai_tuner", IsekaiTuner::new);
 
     //mitsuki
     public static final RegistryObject<Item> CROWN = ITEMS.register("crown", Crown::new);

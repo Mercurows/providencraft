@@ -4,13 +4,20 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 import tech.lq0.providencraft.block.tile.MagicMirrorTileEntity;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -40,4 +47,17 @@ public class MagicMirrorBlock extends Block {
         return VoxelShapes.or(Block.makeCuboidShape(0, 0, 0, 16, 8, 16));
     }
 
+    @Override
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        if(!worldIn.isRemote && handIn == Hand.MAIN_HAND){
+            MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) worldIn.getTileEntity(pos);
+
+            if(player.getHeldItemMainhand().getItem() == ItemRegistry.ISEKAI_TUNER.get()){
+                ItemStack tuner = player.getHeldItemMainhand();
+            }
+
+        }
+
+        return ActionResultType.SUCCESS;
+    }
 }
