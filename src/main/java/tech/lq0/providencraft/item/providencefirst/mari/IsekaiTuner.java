@@ -9,7 +9,6 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -18,6 +17,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.block.tile.MagicMirrorTileEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.BlockRegistry;
+import tech.lq0.providencraft.tools.Livers;
+import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -36,9 +37,12 @@ public class IsekaiTuner extends Item {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        TooltipTool.addDevelopingText(tooltip);
         tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner_1").mergeStyle(TextFormatting.GRAY));
-        tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner_2").mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner_2").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         displayPosInfo(stack, tooltip);
+
+        TooltipTool.addLiverInfo(tooltip, Livers.MARI);
     }
 
     @Override
@@ -95,7 +99,12 @@ public class IsekaiTuner extends Item {
         int y = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Y);
         int z = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Z);
         boolean flag = stack.getOrCreateChildTag(TAG).getBoolean(TAG_BIND);
-        tooltip.add(new StringTextComponent("坐标为:" + x + "," + y + "," + z));
-        tooltip.add(new StringTextComponent("是否绑定:" + flag));
+        if(flag) {
+            tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner.bind.true").mergeStyle(TextFormatting.GREEN));
+            tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner.bind", x, y, z).mergeStyle(TextFormatting.WHITE));
+        }else {
+            tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner.bind.false").mergeStyle(TextFormatting.RED));
+        }
+
     }
 }

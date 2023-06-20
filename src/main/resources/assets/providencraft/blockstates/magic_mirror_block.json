@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "providencraft:block/magic_mirror_block",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "providencraft:block/magic_mirror_block"
+    },
+    "facing=south": {
+      "model": "providencraft:block/magic_mirror_block",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "providencraft:block/magic_mirror_block"
+    }
+  }
+}
