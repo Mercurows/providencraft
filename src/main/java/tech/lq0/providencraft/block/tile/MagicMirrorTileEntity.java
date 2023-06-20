@@ -1,13 +1,19 @@
 package tech.lq0.providencraft.block.tile;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalBlock;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.RegistryKey;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import tech.lq0.providencraft.init.TileEntityRegistry;
+
+import java.util.List;
 
 public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEntity {
     private RegistryKey<World> registryKey;
@@ -23,7 +29,29 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
     @Override
     public void tick() {
         //TODO 编写魔镜TileEntity的传送功能
+        if(this.world != null) {
+            if (world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) == null
+            || !(world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) instanceof MagicMirrorTileEntity)) {
+                bind = false;
+                return;
+            }
 
+            Direction direction = getBlockState().get(HorizontalBlock.HORIZONTAL_FACING);
+            AxisAlignedBB axisAlignedBB = getPortalAABB();
+
+            if (!bind) {
+                return;
+            }
+
+            List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, axisAlignedBB);
+            if (!world.isRemote) {
+                for (ItemEntity item : items) {
+                    item.setPosition(teleportPosX + direction.getXOffset() * -0.5f,
+                            teleportPosY + 0.8f, teleportPosZ + direction.getZOffset() * -0.5f);
+                    item.setMotion(direction.getXOffset() * 0.3f, direction.getYOffset() * 0.3f, direction.getZOffset() * 0.3f);
+                }
+            }
+        }
 
     }
 
@@ -75,5 +103,22 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         compound.putInt("teleportPosZ", teleportPosZ);
         compound.putBoolean("bind", bind);
         return super.write(compound);
+    }
+
+    //TODO 修正魔镜的判定范围
+    private AxisAlignedBB getPortalAABB() {
+        Direction direction = getBlockState().get(HorizontalBlock.HORIZONTAL_FACING);
+        AxisAlignedBB aabb;
+        if(direction == Direction.NORTH){
+            aabb = new AxisAlignedBB(pos.add(0, 0, 0.3125), pos.add(1, 2, 0.6875));
+        }else if(direction == Direction.SOUTH){
+            aabb = new AxisAlignedBB(pos.add(0, 0, -0.3125), pos.add(1,2, 0.6875));
+        }else if(direction == Direction.EAST){
+            aabb = new AxisAlignedBB(pos.add(0.3125, 0, -1), pos.add(0.6875, 2, 0));
+        }else {
+            aabb = new AxisAlignedBB(pos.add(-0.3125, 0, -1), pos.add(-0.6875, 2, 0));
+        }
+
+        return aabb;
     }
 }

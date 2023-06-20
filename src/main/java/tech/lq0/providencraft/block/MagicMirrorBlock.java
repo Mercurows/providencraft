@@ -45,7 +45,7 @@ public class MagicMirrorBlock extends Block {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().rotateY());
+        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().rotateY().getOpposite());
     }
 
     @Override
