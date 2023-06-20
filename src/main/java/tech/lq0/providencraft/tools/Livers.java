@@ -34,6 +34,7 @@ public enum Livers {
     YESA("yesa", "poi", "#8EA6F2"),
     ROKY("roky", "poi", "#E1849E"),
     RINO("rino", "poi", "#CBE0DF"),
+    CCELIA("ccelia", "poi", "#CAD855"),
     QIANYUN("qianyun", "connections", "#A33432"),
     MARIA("maria", "first", "#AF4657"),
     MOJUKO("mojuko", "second", "#FFF6F9");
