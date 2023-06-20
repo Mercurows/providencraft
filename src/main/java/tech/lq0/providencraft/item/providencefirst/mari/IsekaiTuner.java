@@ -9,6 +9,7 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -37,6 +38,7 @@ public class IsekaiTuner extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner_1").mergeStyle(TextFormatting.GRAY));
         tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner_2").mergeStyle(TextFormatting.GRAY));
+        displayPosInfo(stack, tooltip);
     }
 
     @Override
@@ -47,31 +49,53 @@ public class IsekaiTuner extends Item {
         ItemStack stack = context.getItem();
 
         BlockState state = world.getBlockState(pos);
-        if(state.getBlock() == BlockRegistry.MAGIC_MIRROR_BLOCK.get() && playerentity != null){
-            if(playerentity.isSneaking()){
-                MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) world.getTileEntity(pos);
-                if(tileEntity != null){
-                    if(!stack.getOrCreateChildTag(TAG).getBoolean(TAG_BIND)){
-                        playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.warn")
-                                .mergeStyle(TextFormatting.WHITE), true);
 
-                        return ActionResultType.FAIL;
-                    }
-
-
-                    BlockPos bindPos = new BlockPos(stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_X),
-                            stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Y), stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Z));
-
-                    tileEntity.setTeleportPos(bindPos);
-                }
-            }else {
+        if(!world.isRemote && state.getBlock() == BlockRegistry.MAGIC_MIRROR_BLOCK.get() && playerentity != null){
+            if(playerentity.isSneaking()) {
                 stack.getOrCreateChildTag(TAG).putInt(TAG_BIND_X, pos.getX());
                 stack.getOrCreateChildTag(TAG).putInt(TAG_BIND_Y, pos.getY());
                 stack.getOrCreateChildTag(TAG).putInt(TAG_BIND_Z, pos.getZ());
                 stack.getOrCreateChildTag(TAG).putBoolean(TAG_BIND, true);
+
+                return ActionResultType.SUCCESS;
+            }else {
+                int x = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_X);
+                int y = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Y);
+                int z = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Z);
+
+                if (!stack.getOrCreateChildTag(TAG).getBoolean(TAG_BIND)) {
+                    playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.fail.null")
+                            .mergeStyle(TextFormatting.WHITE), true);
+
+                    return ActionResultType.FAIL;
+                }
+
+                BlockPos prevPos = new BlockPos(x, y, z);
+                if (prevPos.equals(pos)) {
+                    playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.fail.same"), true);
+                    return ActionResultType.FAIL;
+                }
+
+                MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) world.getTileEntity(prevPos);
+                if (tileEntity != null) {
+
+                    tileEntity.setTeleportPos(pos);
+                    playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.success",
+                            pos.getX(), pos.getY(), pos.getZ()), true);
+                    stack.getOrCreateChildTag(TAG).putBoolean(TAG_BIND, false);
+                }
             }
         }
 
         return super.onItemUse(context);
+    }
+
+    private static void displayPosInfo(ItemStack stack, List<ITextComponent> tooltip){
+        int x = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_X);
+        int y = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Y);
+        int z = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Z);
+        boolean flag = stack.getOrCreateChildTag(TAG).getBoolean(TAG_BIND);
+        tooltip.add(new StringTextComponent("坐标为:" + x + "," + y + "," + z));
+        tooltip.add(new StringTextComponent("是否绑定:" + flag));
     }
 }

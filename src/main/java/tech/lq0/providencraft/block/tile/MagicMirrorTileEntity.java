@@ -1,5 +1,7 @@
 package tech.lq0.providencraft.block.tile;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.RegistryKey;
@@ -9,7 +11,10 @@ import tech.lq0.providencraft.init.TileEntityRegistry;
 
 public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEntity {
     private RegistryKey<World> registryKey;
-    private BlockPos teleportPos;
+    private int teleportPosX;
+    private int teleportPosY;
+    private int teleportPosZ;
+    private boolean bind;
 
     public MagicMirrorTileEntity(){
         super(TileEntityRegistry.MAGIC_MIRROR.get());
@@ -31,10 +36,44 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
     }
 
     public BlockPos getTeleportPos() {
-        return teleportPos;
+        if(isBind()) {
+            return new BlockPos(teleportPosX, teleportPosY, teleportPosZ);
+        }else {
+            return null;
+        }
     }
 
     public void setTeleportPos(BlockPos teleportPos) {
-        this.teleportPos = teleportPos;
+        this.teleportPosX = teleportPos.getX();
+        this.teleportPosY = teleportPos.getY();
+        this.teleportPosZ = teleportPos.getZ();
+        setBind(true);
+        markDirty();
+    }
+
+    public boolean isBind() {
+        return bind;
+    }
+
+    public void setBind(boolean bind) {
+        this.bind = bind;
+    }
+
+    @Override
+    public void read(BlockState state, CompoundNBT nbt) {
+        teleportPosX = nbt.getInt("teleportPosX");
+        teleportPosY = nbt.getInt("teleportPosY");
+        teleportPosZ = nbt.getInt("teleportPosZ");
+        bind = nbt.getBoolean("bind");
+        super.read(state, nbt);
+    }
+
+    @Override
+    public CompoundNBT write(CompoundNBT compound) {
+        compound.putInt("teleportPosX", teleportPosX);
+        compound.putInt("teleportPosY", teleportPosY);
+        compound.putInt("teleportPosZ", teleportPosZ);
+        compound.putBoolean("bind", bind);
+        return super.write(compound);
     }
 }

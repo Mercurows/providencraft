@@ -480,4 +480,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> HARANO_BUTTON = ITEMS.register("harano_button",
             () -> new BlockItem(BlockRegistry.HARANO_BUTTON.get(), new Item.Properties().group(ModGroup.blockgroup)));
     public static final RegistryObject<Item> ELIBOARD = ITEMS.register("eliboard", EliboardBlockItem::new);
+    public static final RegistryObject<Item> MAGIC_MIRROR_BLOCK = ITEMS.register("magic_mirror_block",
+            () -> new BlockItem(BlockRegistry.MAGIC_MIRROR_BLOCK.get(), new Item.Properties().group(ModGroup.blockgroup)));
 }

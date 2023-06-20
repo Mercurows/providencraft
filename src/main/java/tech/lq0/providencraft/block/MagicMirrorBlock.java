@@ -14,10 +14,10 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import tech.lq0.providencraft.block.tile.MagicMirrorTileEntity;
-import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -50,14 +50,20 @@ public class MagicMirrorBlock extends Block {
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if(!worldIn.isRemote && handIn == Hand.MAIN_HAND){
-            MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) worldIn.getTileEntity(pos);
-
-            if(player.getHeldItemMainhand().getItem() == ItemRegistry.ISEKAI_TUNER.get()){
-                ItemStack tuner = player.getHeldItemMainhand();
+            if(player.getHeldItemMainhand() == ItemStack.EMPTY){
+                MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) worldIn.getTileEntity(pos);
+                if(tileEntity != null) {
+                    BlockPos tpPos = tileEntity.getTeleportPos();
+                    if (tpPos != null) {
+                        player.sendStatusMessage(new StringTextComponent(tpPos.toString()), true);
+                    } else {
+                        player.sendStatusMessage(new StringTextComponent("目前还没有绑定！"), true);
+                    }
+                }
             }
 
         }
 
-        return ActionResultType.SUCCESS;
+        return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
     }
 }
