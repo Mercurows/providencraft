@@ -29,6 +29,7 @@ public class IsekaiTuner extends Item {
     public static final String TAG_BIND_Y = "y";
     public static final String TAG_BIND_Z = "z";
     public static final String TAG_BIND = "bind";
+    public static final String TAG_DIMENSION = "dimension";
 
     public IsekaiTuner() {
         super(new Properties().maxStackSize(1).group(ModGroup.itemgroup));
