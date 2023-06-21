@@ -2,9 +2,11 @@ package tech.lq0.providencraft.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -15,6 +17,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import tech.lq0.providencraft.init.BlockRegistry;
+import tech.lq0.providencraft.init.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -31,6 +35,16 @@ public class CommunicationTable extends Block {
     @Nonnull
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (!worldIn.isRemote && handIn == Hand.MAIN_HAND) {
+            ItemStack stack = player.getHeldItemMainhand();
+            if(stack.getItem() == ItemRegistry.MAGIC_MIRROR.get()){
+                BlockItemUseContext context = new BlockItemUseContext(player, handIn, stack, hit);
+                worldIn.setBlockState(pos, BlockRegistry.MAGIC_MIRROR_BLOCK.get().getDefaultState()
+                        .with(HorizontalBlock.HORIZONTAL_FACING, context.getPlacementHorizontalFacing().rotateY().getOpposite()));
+                stack.damageItem(20, player, (player1) -> player1.sendBreakAnimation(Hand.MAIN_HAND));
+
+                return ActionResultType.SUCCESS;
+            }
+
             int random = (int) (Math.random() * 6 + 1);
             switch (random) {
                 case 1:

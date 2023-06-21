@@ -29,8 +29,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 public class MagicMirrorBlock extends Block {
     private static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
-    protected static final VoxelShape SHAPE_NS = Block.makeCuboidShape(5, 0, 0, 11, 10, 16);
-    protected static final VoxelShape SHAPE_EW = Block.makeCuboidShape(0, 0, 5, 16, 10, 11);
+    protected static final VoxelShape SHAPE_NS = Block.makeCuboidShape(5, 0, 0, 11, 8, 16);
+    protected static final VoxelShape SHAPE_EW = Block.makeCuboidShape(0, 0, 5, 16, 8, 11);
 
     public MagicMirrorBlock() {
         super(Properties.create(Material.GLASS).hardnessAndResistance(3.0f).sound(SoundType.GLASS).notSolid());

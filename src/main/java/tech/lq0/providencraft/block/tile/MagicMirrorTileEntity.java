@@ -46,9 +46,9 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
             List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, axisAlignedBB);
             if (!world.isRemote) {
                 for (ItemEntity item : items) {
-                    item.setPosition(teleportPosX + direction.getXOffset() * -0.5f,
-                            teleportPosY + 0.8f, teleportPosZ + direction.getZOffset() * -0.5f);
-                    item.setMotion(direction.getXOffset() * 0.3f, direction.getYOffset() * 0.3f, direction.getZOffset() * 0.3f);
+                    item.setPosition(teleportPosX - 0.5f + direction.getXOffset() * -0.3f,
+                            teleportPosY + 0.8f, teleportPosZ - 0.5f + direction.getZOffset() * -0.3f);
+                    item.setMotion(direction.getXOffset() * -0.3f, direction.getYOffset() * -0.3f, direction.getZOffset() * -0.3f);
                 }
             }
         }
@@ -110,13 +110,13 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         Direction direction = getBlockState().get(HorizontalBlock.HORIZONTAL_FACING);
         AxisAlignedBB aabb;
         if(direction == Direction.NORTH){
-            aabb = new AxisAlignedBB(pos.add(0, 0, 0.3125), pos.add(1, 2, 0.6875));
+            aabb = new AxisAlignedBB(pos.add(0, 0.5, 0.5), pos.add(1, 2, 0.75));
         }else if(direction == Direction.SOUTH){
-            aabb = new AxisAlignedBB(pos.add(0, 0, -0.3125), pos.add(1,2, 0.6875));
+            aabb = new AxisAlignedBB(pos.add(0, 0.5, 0.5), pos.add(1,2, 0.25));
         }else if(direction == Direction.EAST){
-            aabb = new AxisAlignedBB(pos.add(0.3125, 0, -1), pos.add(0.6875, 2, 0));
+            aabb = new AxisAlignedBB(pos.add(0.5, 0.5, 0), pos.add(0.75, 2, 1));
         }else {
-            aabb = new AxisAlignedBB(pos.add(-0.3125, 0, -1), pos.add(-0.6875, 2, 0));
+            aabb = new AxisAlignedBB(pos.add(-0.3125, 0.5, -1), pos.add(0.25, 2, 1));
         }
 
         return aabb;
