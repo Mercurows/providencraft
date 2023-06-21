@@ -33,9 +33,12 @@ import tech.lq0.providencraft.item.material.GNStar;
 import tech.lq0.providencraft.item.material.IdolCloth;
 import tech.lq0.providencraft.item.others.*;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
+import tech.lq0.providencraft.item.providenceOI.ccelia.CraftBeer0322;
 import tech.lq0.providencraft.item.providenceOI.fukami.*;
+import tech.lq0.providencraft.item.providenceOI.lutafia.ElectricWings;
 import tech.lq0.providencraft.item.providenceOI.lutafia.Fiaxe;
 import tech.lq0.providencraft.item.providenceOI.miya.TailPen;
+import tech.lq0.providencraft.item.providenceOI.rino.ClarityAmulet;
 import tech.lq0.providencraft.item.providenceOI.rino.ShuRinoKen;
 import tech.lq0.providencraft.item.providenceOI.roky.Xiaolongbao;
 import tech.lq0.providencraft.item.providenceOI.shirako.*;
@@ -86,6 +89,7 @@ import tech.lq0.providencraft.item.providencemagicros.keroro.FroggyLeggings;
 import tech.lq0.providencraft.item.providencemagicros.keroro.RedNose;
 import tech.lq0.providencraft.item.providencesecond.lecia.DuelWaterGun;
 import tech.lq0.providencraft.item.providencesecond.lecia.ElectricHorn;
+import tech.lq0.providencraft.item.providencesecond.lecia.ElectricTail;
 import tech.lq0.providencraft.item.providencesecond.lecia.MechanicalHorn;
 import tech.lq0.providencraft.item.providencesecond.louise.*;
 import tech.lq0.providencraft.item.providencesecond.lucia.BigFierceOneCoffee;
@@ -124,6 +128,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> RED_AHOGE_HELMET = ITEMS.register("red_ahoge_helmet", RedAhogeHelmet::new);
     public static final RegistryObject<Item> PEACH_BEACH = ITEMS.register("peach_beach", PeachBeach::new);
     public static final RegistryObject<Item> RED_AHOGE_MACHETE = ITEMS.register("red_ahoge_machete", RedAhogeMachete::new);
+    public static final RegistryObject<Item> SNEAKERS = ITEMS.register("sneakers", Sneakers::new);
+
     //ayelet
     public static final RegistryObject<Item> CRYSTAL_HORN = ITEMS.register("crystal_horn", CrystalHorn::new);
     public static final RegistryObject<Item> SLEEP_ROULETTE = ITEMS.register("sleep_roulette", SleepRoulette::new);
@@ -194,6 +200,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> ELECTRIC_HORN = ITEMS.register("electric_horn", ElectricHorn::new);
     public static final RegistryObject<Item> MECHANICAL_HORN = ITEMS.register("mechanical_horn", MechanicalHorn::new);
     public static final RegistryObject<Item> DUEL_WATER_GUN = ITEMS.register("duel_water_gun", DuelWaterGun::new);
+    public static final RegistryObject<Item> ELECTRIC_TAIL = ITEMS.register("electric_tail", ElectricTail::new);
 
     //satou
     public static final RegistryObject<Item> SATOU_KNIFE = ITEMS.register("satou_knife", SatouKnife::new);
@@ -304,6 +311,7 @@ public class ItemRegistry {
 
     //lutafia
     public static final RegistryObject<Item> FIAXE = ITEMS.register("fiaxe", Fiaxe::new);
+    public static final RegistryObject<Item> ELECTRIC_WINGS = ITEMS.register("electric_wings", ElectricWings::new);
 
     //yesa
     public static final RegistryObject<Item> MINT_CHOCOLATE = ITEMS.register("mint_chocolate", MintChocolate::new);
@@ -315,6 +323,10 @@ public class ItemRegistry {
 
     //rino
     public static final RegistryObject<Item> SHU_RINO_KEN = ITEMS.register("shu_rino_ken", ShuRinoKen::new);
+    public static final RegistryObject<Item> CLARITY_AMULET = ITEMS.register("clarity_amulet", ClarityAmulet::new);
+
+    //ccelia
+    public static final RegistryObject<Item> CRAFT_BEER_0322 = ITEMS.register("craft_beer_0322", CraftBeer0322::new);
 
     /**
      * connections
