@@ -10,6 +10,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import tech.lq0.providencraft.init.TileEntityRegistry;
 
@@ -31,7 +32,7 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         //TODO 编写魔镜TileEntity的传送功能
         if(this.world != null) {
             if (world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) == null
-            || !(world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) instanceof MagicMirrorTileEntity)) {
+                    || !(world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) instanceof MagicMirrorTileEntity)) {
                 bind = false;
                 return;
             }
@@ -46,9 +47,12 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
             List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, axisAlignedBB);
             if (!world.isRemote) {
                 for (ItemEntity item : items) {
-                    item.setPosition(teleportPosX - 0.5f + direction.getXOffset() * -0.3f,
-                            teleportPosY + 0.8f, teleportPosZ - 0.5f + direction.getZOffset() * -0.3f);
-                    item.setMotion(direction.getXOffset() * -0.3f, direction.getYOffset() * -0.3f, direction.getZOffset() * -0.3f);
+                    BlockState aimBlockState = world.getBlockState(new BlockPos(teleportPosX, teleportPosY, teleportPosZ));
+                    Direction aimDirection = aimBlockState.get(HorizontalBlock.HORIZONTAL_FACING);
+
+                    item.setPosition(teleportPosX + 0.5f + aimDirection.getXOffset() * 0.3f,
+                            teleportPosY + 0.8f, teleportPosZ + 0.5f + aimDirection.getZOffset() * 0.3f);
+                    item.setMotion(aimDirection.getXOffset() * 0.2f, aimDirection.getYOffset() * 0.2f, aimDirection.getZOffset() * 0.2f);
                 }
             }
         }
@@ -105,20 +109,19 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         return super.write(compound);
     }
 
-    //TODO 修正魔镜的判定范围
     private AxisAlignedBB getPortalAABB() {
         Direction direction = getBlockState().get(HorizontalBlock.HORIZONTAL_FACING);
         AxisAlignedBB aabb;
-        if(direction == Direction.NORTH){
-            aabb = new AxisAlignedBB(pos.add(0, 0.5, 0.5), pos.add(1, 2, 0.75));
-        }else if(direction == Direction.SOUTH){
-            aabb = new AxisAlignedBB(pos.add(0, 0.5, 0.5), pos.add(1,2, 0.25));
-        }else if(direction == Direction.EAST){
-            aabb = new AxisAlignedBB(pos.add(0.5, 0.5, 0), pos.add(0.75, 2, 1));
-        }else {
-            aabb = new AxisAlignedBB(pos.add(-0.3125, 0.5, -1), pos.add(0.25, 2, 1));
-        }
 
+        if(direction == Direction.NORTH){
+            aabb = new AxisAlignedBB(new Vector3d(pos.getX(), pos.getY() + 0.5, pos.getZ() + 0.5), new Vector3d(pos.getX() + 1, pos.getY() + 2, pos.getZ() + 0.25));
+        }else if(direction == Direction.SOUTH){
+            aabb = new AxisAlignedBB(new Vector3d(pos.getX(), pos.getY() + 0.5, pos.getZ() + 0.5), new Vector3d(pos.getX() + 1, pos.getY() + 2, pos.getZ() + 0.75));
+        }else if(direction == Direction.EAST){
+            aabb = new AxisAlignedBB(new Vector3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ()), new Vector3d(pos.getX() + 0.75, pos.getY() + 2, pos.getZ() + 1));
+        }else {
+            aabb = new AxisAlignedBB(new Vector3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ()), new Vector3d(pos.getX() + 0.25, pos.getY() + 2, pos.getZ() + 1));
+        }
         return aabb;
     }
 }

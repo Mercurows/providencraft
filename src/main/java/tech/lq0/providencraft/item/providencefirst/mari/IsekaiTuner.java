@@ -24,11 +24,11 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class IsekaiTuner extends Item {
-    private static final String TAG = "isekaiBind";
-    private static final String TAG_BIND_X = "x";
-    private static final String TAG_BIND_Y = "y";
-    private static final String TAG_BIND_Z = "z";
-    private static final String TAG_BIND = "bind";
+    public static final String TAG = "isekaiBind";
+    public static final String TAG_BIND_X = "x";
+    public static final String TAG_BIND_Y = "y";
+    public static final String TAG_BIND_Z = "z";
+    public static final String TAG_BIND = "bind";
 
     public IsekaiTuner() {
         super(new Properties().maxStackSize(1).group(ModGroup.itemgroup));
