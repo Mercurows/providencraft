@@ -18,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -63,7 +64,8 @@ public class MagicMirrorBlock extends Block {
     @ParametersAreNonnullByDefault
     @Nonnull
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return state.get(FACING) == Direction.NORTH || state.get(FACING) == Direction.SOUTH ? SHAPE_NS : SHAPE_EW;
+//        return state.get(FACING) == Direction.NORTH || state.get(FACING) == Direction.SOUTH ? SHAPE_NS : SHAPE_EW;
+        return VoxelShapes.or(Block.makeCuboidShape(0,0,0,16,8,16));
     }
 
     @Override
@@ -85,4 +87,6 @@ public class MagicMirrorBlock extends Block {
 
         return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
     }
+
+
 }

@@ -12,6 +12,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import tech.lq0.providencraft.init.TileEntityRegistry;
 
 import java.util.List;
@@ -47,12 +50,42 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
             List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, axisAlignedBB);
             if (!world.isRemote) {
                 for (ItemEntity item : items) {
+
                     BlockState aimBlockState = world.getBlockState(new BlockPos(teleportPosX, teleportPosY, teleportPosZ));
                     Direction aimDirection = aimBlockState.get(HorizontalBlock.HORIZONTAL_FACING);
 
-                    item.setPosition(teleportPosX + 0.5f + aimDirection.getXOffset() * 0.3f,
-                            teleportPosY + 0.8f, teleportPosZ + 0.5f + aimDirection.getZOffset() * 0.3f);
-                    item.setMotion(aimDirection.getXOffset() * 0.2f, aimDirection.getYOffset() * 0.2f, aimDirection.getZOffset() * 0.2f);
+                    if(!item.getTags().contains("providencraft_teleport")) {
+                        item.addTag("providencraft_teleport");
+                        item.setPosition(teleportPosX + 0.6f + aimDirection.getXOffset() * 0.3f,
+                                teleportPosY + 1f, teleportPosZ + 0.6f + aimDirection.getZOffset() * 0.3f);
+                        item.setMotion(aimDirection.getXOffset() * 0.2f, aimDirection.getYOffset() * 0.2f, aimDirection.getZOffset() * 0.2f);
+
+                        new Object() {
+                            private int ticks = 0;
+                            private float waitTicks;
+
+                            public void start(int waitTicks) {
+                                this.waitTicks = waitTicks;
+                                MinecraftForge.EVENT_BUS.register(this);
+                            }
+
+                            @SubscribeEvent
+                            public void tick(TickEvent.ServerTickEvent event) {
+                                if (event.phase == TickEvent.Phase.END) {
+                                    this.ticks++;
+                                    if (this.ticks >= this.waitTicks) {
+                                        run();
+                                    }
+                                }
+                            }
+
+                            private void run() {
+                                item.removeTag("providencraft_teleport");
+                                MinecraftForge.EVENT_BUS.unregister(this);
+                            }
+                        }.start((int) 2);
+                    }
+
                 }
             }
         }
