@@ -48,6 +48,7 @@ public class CraftBeer0322 extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("des.providencraft.craft_beer_0322_1")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.craft_beer_0322_2")).mergeStyle(TextFormatting.GRAY));
+        TooltipTool.addChaosInfo(tooltip, 10);
         TooltipTool.addLiverInfo(tooltip, Livers.CCELIA);
     }
 
