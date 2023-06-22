@@ -7,11 +7,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.block.tile.MagicMirrorTileEntity;
@@ -56,17 +61,24 @@ public class IsekaiTuner extends Item {
         BlockState state = world.getBlockState(pos);
 
         if(!world.isRemote && state.getBlock() == BlockRegistry.MAGIC_MIRROR_BLOCK.get() && playerentity != null){
+            //绑定坐标和维度
             if(playerentity.isSneaking()) {
                 stack.getOrCreateChildTag(TAG).putInt(TAG_BIND_X, pos.getX());
                 stack.getOrCreateChildTag(TAG).putInt(TAG_BIND_Y, pos.getY());
                 stack.getOrCreateChildTag(TAG).putInt(TAG_BIND_Z, pos.getZ());
                 stack.getOrCreateChildTag(TAG).putBoolean(TAG_BIND, true);
+                stack.getOrCreateChildTag(TAG).putString(TAG_DIMENSION, world.getDimensionKey().getLocation().toString());
 
                 return ActionResultType.SUCCESS;
             }else {
+                //解析坐标和维度
                 int x = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_X);
                 int y = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Y);
                 int z = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Z);
+                String key = stack.getOrCreateChildTag(TAG).getString(TAG_DIMENSION);
+
+                RegistryKey<World> registryKey = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(key));
+                ServerWorld world1 = world.getServer().getWorld(registryKey);
 
                 if (!stack.getOrCreateChildTag(TAG).getBoolean(TAG_BIND)) {
                     playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.fail.null")
@@ -81,13 +93,30 @@ public class IsekaiTuner extends Item {
                     return ActionResultType.FAIL;
                 }
 
-                MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) world.getTileEntity(prevPos);
-                if (tileEntity != null) {
+                if(world == world1) {
+                    MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) world.getTileEntity(prevPos);
+                    if (tileEntity != null) {
+                        tileEntity.setTeleportPos(pos);
+                        tileEntity.setDimension(key);
+                        tileEntity.setBind(true);
 
-                    tileEntity.setTeleportPos(pos);
-                    playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.success",
-                            pos.getX(), pos.getY(), pos.getZ()), true);
-                    stack.getOrCreateChildTag(TAG).putBoolean(TAG_BIND, false);
+                        playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.success",
+                                pos.getX(), pos.getY(), pos.getZ()), true);
+                        stack.getOrCreateChildTag(TAG).putBoolean(TAG_BIND, false);
+                    }
+                }else {
+                    MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) world1.getTileEntity(prevPos);
+                    if(tileEntity != null){
+                        tileEntity.setTeleportPos(pos);
+                        tileEntity.setDimension(key);
+                        tileEntity.setBind(true);
+
+                        playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.success",
+                                pos.getX(), pos.getY(), pos.getZ()), true);
+                        stack.getOrCreateChildTag(TAG).putBoolean(TAG_BIND, false);
+                    }
+
+                    System.out.println(1145);
                 }
             }
         }
@@ -100,9 +129,11 @@ public class IsekaiTuner extends Item {
         int y = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Y);
         int z = stack.getOrCreateChildTag(TAG).getInt(TAG_BIND_Z);
         boolean flag = stack.getOrCreateChildTag(TAG).getBoolean(TAG_BIND);
+        String dimension = stack.getOrCreateChildTag(TAG).getString(TAG_DIMENSION);
         if(flag) {
             tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner.bind.true").mergeStyle(TextFormatting.GREEN));
             tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner.bind", x, y, z).mergeStyle(TextFormatting.WHITE));
+            tooltip.add(new StringTextComponent("dimension:" + dimension));
         }else {
             tooltip.add(new TranslationTextComponent("des.providencraft.isekai_tuner.bind.false").mergeStyle(TextFormatting.RED));
         }

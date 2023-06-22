@@ -8,10 +8,13 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.RegistryKey;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,7 +23,7 @@ import tech.lq0.providencraft.init.TileEntityRegistry;
 import java.util.List;
 
 public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEntity {
-    private RegistryKey<World> registryKey;
+    private String dimension = "null";
     private int teleportPosX;
     private int teleportPosY;
     private int teleportPosZ;
@@ -32,23 +35,47 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
 
     @Override
     public void tick() {
-        //TODO 编写魔镜TileEntity的传送功能
+        //TODO 修复跨维度传送的问题
         if(this.world != null) {
-            if (world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) == null
-                    || !(world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) instanceof MagicMirrorTileEntity)) {
-                bind = false;
+            String location = dimension;
+            if(dimension.equals("null") || dimension.equals("")){
                 return;
             }
 
-            Direction direction = getBlockState().get(HorizontalBlock.HORIZONTAL_FACING);
+            ResourceLocation resLocation = new ResourceLocation(location);
+            RegistryKey<World> registryKey = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, resLocation);
+            ServerWorld toWorld = ((ServerWorld) this.world).getServer().getWorld(registryKey);
+            if(toWorld == null){
+                System.out.println("world是空的");
+                return;
+            }
+
+            //检测传送位置是否存在魔镜
+            if(world == toWorld) {
+                if (world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) == null
+                        || !(world.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) instanceof MagicMirrorTileEntity)) {
+                    setBind(false);
+                    return;
+                }
+            }else {
+                if (toWorld.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) == null
+                        || !(toWorld.getTileEntity(new BlockPos(teleportPosX, teleportPosY, teleportPosZ)) instanceof MagicMirrorTileEntity)) {
+                    setBind(false);
+                    return;
+                }
+            }
+
             AxisAlignedBB axisAlignedBB = getPortalAABB();
 
-            if (!bind) {
+            if (!isBind()) {
                 return;
             }
 
             List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, axisAlignedBB);
             if (!world.isRemote) {
+
+
+
                 for (ItemEntity item : items) {
 
                     BlockState aimBlockState = world.getBlockState(new BlockPos(teleportPosX, teleportPosY, teleportPosZ));
@@ -56,6 +83,10 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
 
                     if(!item.getTags().contains("providencraft_teleport")) {
                         item.addTag("providencraft_teleport");
+                        if(toWorld != this.world){
+                            item.changeDimension(toWorld);
+                        }
+
                         item.setPosition(teleportPosX + 0.6f + aimDirection.getXOffset() * 0.3f,
                                 teleportPosY + 1f, teleportPosZ + 0.6f + aimDirection.getZOffset() * 0.3f);
                         item.setMotion(aimDirection.getXOffset() * 0.2f, aimDirection.getYOffset() * 0.2f, aimDirection.getZOffset() * 0.2f);
@@ -92,15 +123,18 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
 
     }
 
-    public RegistryKey<World> getRegistryKey() {
-        return registryKey;
+    public String getDimension() {
+        markDirty();
+        return dimension;
     }
 
-    public void setRegistryKey(RegistryKey<World> registryKey) {
-        this.registryKey = registryKey;
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+        markDirty();
     }
 
     public BlockPos getTeleportPos() {
+        markDirty();
         if(isBind()) {
             return new BlockPos(teleportPosX, teleportPosY, teleportPosZ);
         }else {
@@ -112,16 +146,17 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         this.teleportPosX = teleportPos.getX();
         this.teleportPosY = teleportPos.getY();
         this.teleportPosZ = teleportPos.getZ();
-        setBind(true);
         markDirty();
     }
 
     public boolean isBind() {
+        markDirty();
         return bind;
     }
 
     public void setBind(boolean bind) {
         this.bind = bind;
+        markDirty();
     }
 
     @Override
@@ -130,6 +165,7 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         teleportPosY = nbt.getInt("teleportPosY");
         teleportPosZ = nbt.getInt("teleportPosZ");
         bind = nbt.getBoolean("bind");
+        dimension = nbt.getString("dimension");
         super.read(state, nbt);
     }
 
@@ -139,6 +175,7 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         compound.putInt("teleportPosY", teleportPosY);
         compound.putInt("teleportPosZ", teleportPosZ);
         compound.putBoolean("bind", bind);
+        compound.putString("dimension", dimension);
         return super.write(compound);
     }
 
