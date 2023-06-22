@@ -1,25 +1,19 @@
 package tech.lq0.providencraft.client;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import tech.lq0.providencraft.capability.ChaosHelper;
-import tech.lq0.providencraft.gui.ChaosCheckerHUD;
-import tech.lq0.providencraft.gui.EclipseNightHUD;
-import tech.lq0.providencraft.gui.EclipseNightHUD2;
-import tech.lq0.providencraft.gui.RainyButterflyHUD;
+import tech.lq0.providencraft.gui.*;
 import tech.lq0.providencraft.init.EffectRegistry;
-import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.integration.CompatHandler;
 import tech.lq0.providencraft.integration.vrc.VirtuaRealCraftRegistry;
+import tech.lq0.providencraft.item.others.ChaosChecker;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class HudClientEvent {
@@ -80,35 +74,33 @@ public class HudClientEvent {
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public static void onChaosRender(RenderGameOverlayEvent.Post event) {
+    @SubscribeEvent
+    public static void onChaosRender(RenderGameOverlayEvent event) {
         if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
-            return;
-        }
-        if (Minecraft.getInstance().player == null) {
             return;
         }
 
         ClientPlayerEntity player = Minecraft.getInstance().player;
-        if(player.getHeldItemMainhand().getItem() == ItemRegistry.CHAOS_CHECKER.get() ||
-                player.getHeldItemOffhand().getItem() == ItemRegistry.CHAOS_CHECKER.get()) {
+        assert player != null;
+        if(player.isSpectator()){
+            return;
+        }
 
-            if(player.isSpectator()){
-                return;
-            }
+        ItemStack mainStack = player.getHeldItemMainhand();
+        ItemStack offStack = player.getHeldItemOffhand();
+        if(!(mainStack.getItem() instanceof ChaosChecker) && offStack.getItem() instanceof ChaosChecker){
+            mainStack = offStack;
+        }
 
+        if(mainStack.getItem() instanceof ChaosChecker) {
+            int chaos = ChaosChecker.getChaos(mainStack);
+            System.out.println(chaos);
 
             ChaosCheckerHUD checkerHUD = new ChaosCheckerHUD(event.getMatrixStack());
+            ChaosCheckerHUD2 checkerHUD2 = new ChaosCheckerHUD2(event.getMatrixStack(), chaos);
             checkerHUD.render();
-
-            int chaos = ChaosHelper.getChaos(player);
-//            System.out.println(chaos);
-
-            MatrixStack stack = event.getMatrixStack();
-            Minecraft mc = Minecraft.getInstance();
-            Matrix4f matrixBar = stack.getLast().getMatrix();
-
-
+            checkerHUD2.render();
         }
+
     }
 }
