@@ -98,9 +98,6 @@ public class HudClientEvent {
         if (!(mainStack.getItem() instanceof ChaosChecker) && offStack.getItem() instanceof ChaosChecker) {
             mainStack = offStack;
         }
-        // TODO 获取混沌值
-        int chaos = ChaosChecker.getChaos(mainStack);
-//        System.out.println(chaos);
 
         int status;
         if (mainStack.getItem() instanceof ChaosChecker) {
@@ -109,12 +106,26 @@ public class HudClientEvent {
         } else if (player.inventory.hasItemStack(ItemRegistry.CHAOS_CHECKER.get().getDefaultInstance())) {
             // 背包里有检测器
             status = 1;
+
+            int num = -1;
+            for(int i = 0; i < player.inventory.mainInventory.size(); ++i) {
+                if (!player.inventory.mainInventory.get(i).isEmpty() && player.inventory.mainInventory.get(i).getItem() instanceof ChaosChecker){
+                    num = i;
+                }
+            }
+
+            if(num != -1) {
+                mainStack = player.inventory.getStackInSlot(num);
+            }
+
         } else {
             // 无检测器
             status = 0;
         }
+
+        int chaos = ChaosChecker.getChaos(mainStack);
         int tick = Minecraft.getInstance().player.ticksExisted;
-        CheckerHUD.render(event.getMatrixStack(), tick % 200 - 100, status, event.getPartialTicks(), tick == lastTick);
+        CheckerHUD.render(event.getMatrixStack(), chaos, status, event.getPartialTicks(), tick == lastTick);
         lastTick = tick;
 
     }

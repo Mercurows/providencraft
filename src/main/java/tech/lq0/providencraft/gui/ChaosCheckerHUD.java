@@ -9,14 +9,11 @@ import net.minecraft.util.ResourceLocation;
 import tech.lq0.providencraft.Utils;
 
 public class ChaosCheckerHUD extends AbstractGui {
-    private int width;
-    private int height;
-    private Minecraft minecraft;
+    private final Minecraft minecraft;
     private final ResourceLocation HUD = new ResourceLocation(Utils.MOD_ID, "textures/gui/chaos_value.png");
     private final ResourceLocation BAR = new ResourceLocation(Utils.MOD_ID, "textures/gui/chaos_value_bar.png");
     private int lastStatus = 0;
     private float progress = 0;
-    private final float maxProgress = 40;
     private int lastX = 0;
     private int lastY = 0;
     private int lastW = 0;
@@ -30,10 +27,13 @@ public class ChaosCheckerHUD extends AbstractGui {
 
     public void render(MatrixStack matrixStack, int chaos, int status, float partialTick, boolean addTick) {
 
-        width = minecraft.getMainWindow().getScaledWidth() / 2;
-        height = minecraft.getMainWindow().getScaledHeight() / 2;
+        int width = minecraft.getMainWindow().getScaledWidth() / 2;
+        int height = minecraft.getMainWindow().getScaledHeight() / 2;
 
-        if (addTick) progress = Math.min(maxProgress, progress + 1);
+        float maxProgress = 40;
+        if (addTick){
+            progress = Math.min(maxProgress, progress + 1);
+        }
 
         float alpha;
         if (status == 1) {
@@ -90,10 +90,15 @@ public class ChaosCheckerHUD extends AbstractGui {
 
         // 渲染条
         this.minecraft.getTextureManager().bindTexture(BAR);
-        if (is0to1) rate = 1;
+        if (is0to1) {
+            rate = 1;
+        }
+
+        final int start = width - 33 + 30 - 30 * chaos / 100;
+        final int end = width - 66 + 60 - 60 * chaos / 100;
         if (status == 2) {
             if (chaos > 0) {
-                blit(matrixStack, ease(width - 33 + 30 - 30 * chaos / 100, width - 66 + 60 - 60 * chaos / 100, rate),
+                blit(matrixStack, ease(start, end, rate),
                         ease(6, height + 23, rate),
                         ease(30 * chaos / 100, 60 * chaos / 100, rate),
                         ease(4, 6, rate),
@@ -103,7 +108,7 @@ public class ChaosCheckerHUD extends AbstractGui {
             } else if (chaos < 0) {
                 blit(matrixStack, width + ease(3, 6, rate),
                         ease(6, height + 23, rate),
-                        ease(30 + 30 * chaos / 100, 60 + 60 * chaos / 100, rate),
+                        ease(30 * chaos / -100, 60 * chaos / -100, rate),
                         ease(4, 6, rate),
                         0.5f,
                         8,
@@ -111,7 +116,7 @@ public class ChaosCheckerHUD extends AbstractGui {
             }
         } else {
             if (chaos > 0) {
-                blit(matrixStack, ease(width - 66 + 60 - 60 * chaos / 100, width - 33 + 30 - 30 * chaos / 100, rate),
+                blit(matrixStack, ease(end, start, rate),
                         ease(height + 23, 6, rate),
                         ease(60 * chaos / 100, 30 * chaos / 100, rate),
                         ease(6, 4, rate),
@@ -121,7 +126,7 @@ public class ChaosCheckerHUD extends AbstractGui {
             } else if (chaos < 0) {
                 blit(matrixStack, width + ease(6, 3, rate),
                         ease(height + 23, 6, rate),
-                        ease(60 + 60 * chaos / 100, 30 + 30 * chaos / 100, rate),
+                        ease(60 * chaos / -100, 30 * chaos / -100, rate),
                         ease(6, 4, rate),
                         0.5f,
                         ease(7.5f, 8, rate),
