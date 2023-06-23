@@ -96,8 +96,7 @@ public class IsekaiTuner extends Item {
                 if(world == world1) {
                     MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) world.getTileEntity(prevPos);
                     if (tileEntity != null) {
-                        tileEntity.setTeleportPos(pos);
-                        tileEntity.setDimension(key);
+                        tileEntity.setTeleportPos(pos, key);
                         tileEntity.setBind(true);
 
                         playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.success",
@@ -107,8 +106,7 @@ public class IsekaiTuner extends Item {
                 }else {
                     MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) world1.getTileEntity(prevPos);
                     if(tileEntity != null){
-                        tileEntity.setTeleportPos(pos);
-                        tileEntity.setDimension(key);
+                        tileEntity.setTeleportPos(pos, world.getDimensionKey().getLocation().toString());
                         tileEntity.setBind(true);
 
                         playerentity.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.success",

@@ -18,6 +18,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import tech.lq0.providencraft.init.BlockRegistry;
 import tech.lq0.providencraft.init.TileEntityRegistry;
 
 import java.util.List;
@@ -37,6 +38,10 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
     public void tick() {
         //TODO 修复跨维度传送的问题
         if(this.world != null) {
+            if(world.isRemote){
+                return;
+            }
+
             String location = dimension;
             if(dimension.equals("null") || dimension.equals("")){
                 return;
@@ -46,7 +51,6 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
             RegistryKey<World> registryKey = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, resLocation);
             ServerWorld toWorld = ((ServerWorld) this.world).getServer().getWorld(registryKey);
             if(toWorld == null){
-                System.out.println("world是空的");
                 return;
             }
 
@@ -73,18 +77,20 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
 
             List<ItemEntity> items = world.getEntitiesWithinAABB(ItemEntity.class, axisAlignedBB);
             if (!world.isRemote) {
-
-
-
                 for (ItemEntity item : items) {
-
-                    BlockState aimBlockState = world.getBlockState(new BlockPos(teleportPosX, teleportPosY, teleportPosZ));
+                    BlockState aimBlockState = toWorld.getBlockState(new BlockPos(teleportPosX, teleportPosY, teleportPosZ));
+                    if(aimBlockState.getBlock() != BlockRegistry.MAGIC_MIRROR_BLOCK.get()){
+                        return;
+                    }
                     Direction aimDirection = aimBlockState.get(HorizontalBlock.HORIZONTAL_FACING);
 
                     if(!item.getTags().contains("providencraft_teleport")) {
                         item.addTag("providencraft_teleport");
                         if(toWorld != this.world){
-                            item.changeDimension(toWorld);
+                            System.out.println(toWorld.getDimensionKey().getLocation());
+                            //TODO 修复跨维度传送问题
+
+//                            item.changeDimension(toWorld);
                         }
 
                         item.setPosition(teleportPosX + 0.6f + aimDirection.getXOffset() * 0.3f,
@@ -124,13 +130,11 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
     }
 
     public String getDimension() {
-        markDirty();
         return dimension;
     }
 
     public void setDimension(String dimension) {
         this.dimension = dimension;
-        markDirty();
     }
 
     public BlockPos getTeleportPos() {
@@ -142,10 +146,11 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
         }
     }
 
-    public void setTeleportPos(BlockPos teleportPos) {
+    public void setTeleportPos(BlockPos teleportPos, String dimension) {
         this.teleportPosX = teleportPos.getX();
         this.teleportPosY = teleportPos.getY();
         this.teleportPosZ = teleportPos.getZ();
+        this.dimension = dimension;
         markDirty();
     }
 
