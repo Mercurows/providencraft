@@ -44,7 +44,7 @@ public class ChaosChecker extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(entityIn instanceof PlayerEntity){
+        if(entityIn instanceof PlayerEntity && !worldIn.isRemote){
             PlayerEntity player = (PlayerEntity) entityIn;
             int chaos = ChaosHelper.getChaos(player);
 

@@ -1,7 +1,6 @@
 package tech.lq0.providencraft.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -9,7 +8,10 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import tech.lq0.providencraft.gui.*;
+import tech.lq0.providencraft.gui.ChaosCheckerHUD;
+import tech.lq0.providencraft.gui.EclipseNightHUD;
+import tech.lq0.providencraft.gui.EclipseNightHUD2;
+import tech.lq0.providencraft.gui.RainyButterflyHUD;
 import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.integration.CompatHandler;
 import tech.lq0.providencraft.integration.vrc.VirtuaRealCraftRegistry;
@@ -80,7 +82,7 @@ public class HudClientEvent {
             return;
         }
 
-        ClientPlayerEntity player = Minecraft.getInstance().player;
+        PlayerEntity player = Minecraft.getInstance().player;
         assert player != null;
         if(player.isSpectator()){
             return;
@@ -94,12 +96,9 @@ public class HudClientEvent {
 
         if(mainStack.getItem() instanceof ChaosChecker) {
             int chaos = ChaosChecker.getChaos(mainStack);
-            System.out.println(chaos);
 
-            ChaosCheckerHUD checkerHUD = new ChaosCheckerHUD(event.getMatrixStack());
-            ChaosCheckerHUD2 checkerHUD2 = new ChaosCheckerHUD2(event.getMatrixStack(), chaos);
+            ChaosCheckerHUD checkerHUD = new ChaosCheckerHUD(event.getMatrixStack(), chaos);
             checkerHUD.render();
-            checkerHUD2.render();
         }
 
     }
