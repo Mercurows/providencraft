@@ -112,7 +112,7 @@ public class ChaosCheckerHUD extends AbstractGui {
                         ease(4, 6, rate),
                         0.5f,
                         8,
-                        60 + 60 * chaos / 100, 6, 60, 15);
+                        60 * chaos / -100, 6, 60, 15);
             }
         } else {
             if (chaos > 0) {
@@ -130,7 +130,7 @@ public class ChaosCheckerHUD extends AbstractGui {
                         ease(6, 4, rate),
                         0.5f,
                         ease(7.5f, 8, rate),
-                        60 + 60 * chaos / 100, 7, 60, 15);
+                        60 * chaos / -100, 7, 60, 15);
             }
         }
 
