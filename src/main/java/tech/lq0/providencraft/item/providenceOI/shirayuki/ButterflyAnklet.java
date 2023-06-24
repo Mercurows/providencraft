@@ -38,14 +38,12 @@ import java.util.UUID;
 
 public class ButterflyAnklet extends ArmorItem {
     public ButterflyAnklet(){
-        super(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Properties().group(ModGroup.itemgroup).maxDamage(286));
+        super(ArmorMaterial.LEATHER, EquipmentSlotType.FEET, new Properties().group(ModGroup.itemgroup).maxDamage(386));
     }
 
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
         tooltip.add((new TranslationTextComponent("des.providencraft.butterfly_anklet_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("des.providencraft.butterfly_anklet_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.AOI);
