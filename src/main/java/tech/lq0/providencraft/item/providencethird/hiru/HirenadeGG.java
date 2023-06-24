@@ -1,9 +1,7 @@
-package tech.lq0.providencraft.item.providencesecond.lecia;
+package tech.lq0.providencraft.item.providencethird.hiru;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -19,9 +17,9 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class ElectricTail extends ArmorItem {
-    public ElectricTail(){
-        super(ArmorMaterial.IRON, EquipmentSlotType.LEGS, new Properties().group(ModGroup.itemgroup));
+public class HirenadeGG extends Item {
+    public HirenadeGG(){
+        super(new Properties().group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -29,7 +27,7 @@ public class ElectricTail extends ArmorItem {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         TooltipTool.addDevelopingText(tooltip);
 
-        tooltip.add((new TranslationTextComponent("des.providencraft.electric_tail")).mergeStyle(TextFormatting.GRAY));
-        TooltipTool.addLiverInfo(tooltip, Livers.LECIA);
+        tooltip.add((new TranslationTextComponent("des.providencraft.hirenade_gg")).mergeStyle(TextFormatting.GRAY));
+        TooltipTool.addLiverInfo(tooltip, Livers.HIRU);
     }
 }

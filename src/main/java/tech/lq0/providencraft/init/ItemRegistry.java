@@ -103,8 +103,10 @@ import tech.lq0.providencraft.item.providencesecond.satou.*;
 import tech.lq0.providencraft.item.providencethird.beni.LavaCake;
 import tech.lq0.providencraft.item.providencethird.beni.ShuraChin;
 import tech.lq0.providencraft.item.providencethird.beni.Ume;
+import tech.lq0.providencraft.item.providencethird.hiru.HirenadeGG;
 import tech.lq0.providencraft.item.providencethird.hiru.HiruHead;
 import tech.lq0.providencraft.item.providencethird.hiru.HiruTentacles;
+import tech.lq0.providencraft.item.providencethird.hiru.SecondaryCataclysm;
 import tech.lq0.providencraft.item.providencethird.leciel.GiantDiamondRing;
 import tech.lq0.providencraft.item.providencethird.leciel.LecielEarCoverts;
 import tech.lq0.providencraft.item.providencethird.leciel.ReinaFeather;
@@ -258,6 +260,8 @@ public class ItemRegistry {
     //hiru
     public static final RegistryObject<Item> HIRU_HEAD = ITEMS.register("hiru_head", HiruHead::new);
     public static final RegistryObject<Item> HIRU_TENTACLES = ITEMS.register("hiru_tentacles", HiruTentacles::new);
+    public static final RegistryObject<Item> HIRENADE_GG = ITEMS.register("hirenade_gg", HirenadeGG::new);
+    public static final RegistryObject<Item> SECONDARY_CATACLYSM = ITEMS.register("secondary_cataclysm", SecondaryCataclysm::new);
 
     //leciel
     public static final RegistryObject<Item> REINA_WINGS = ITEMS.register("reina_wings", ReinaWings::new);
