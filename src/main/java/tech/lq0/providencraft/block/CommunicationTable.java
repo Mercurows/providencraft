@@ -39,7 +39,7 @@ public class CommunicationTable extends Block {
             if(stack.getItem() == ItemRegistry.MAGIC_MIRROR.get()){
                 BlockItemUseContext context = new BlockItemUseContext(player, handIn, stack, hit);
                 worldIn.setBlockState(pos, BlockRegistry.MAGIC_MIRROR_BLOCK.get().getDefaultState()
-                        .with(HorizontalBlock.HORIZONTAL_FACING, context.getPlacementHorizontalFacing().rotateY().getOpposite()));
+                        .with(HorizontalBlock.HORIZONTAL_FACING, context.getPlacementHorizontalFacing().getOpposite()));
                 stack.damageItem(50, player, (player1) -> player1.sendBreakAnimation(Hand.MAIN_HAND));
 
                 return ActionResultType.SUCCESS;

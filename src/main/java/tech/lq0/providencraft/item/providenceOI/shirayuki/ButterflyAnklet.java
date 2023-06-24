@@ -2,7 +2,10 @@ package tech.lq0.providencraft.item.providenceOI.shirayuki;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -19,9 +22,11 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.AttributeRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.models.ButterflyAnkletModel;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -44,6 +49,20 @@ public class ButterflyAnklet extends ArmorItem {
         tooltip.add((new TranslationTextComponent("des.providencraft.butterfly_anklet_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("des.providencraft.butterfly_anklet_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.AOI);
+    }
+
+    @SuppressWarnings("unchecked")
+    @OnlyIn(Dist.CLIENT)
+    @Nullable
+    @Override
+    public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
+        return (A) new ButterflyAnkletModel<>();
+    }
+
+    @Nullable
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
+        return Utils.MOD_ID + ":textures/models/armor/butterfly_anklet_texture.png";
     }
 
     @Override
