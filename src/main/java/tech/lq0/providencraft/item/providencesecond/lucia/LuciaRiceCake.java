@@ -41,7 +41,7 @@ public class LuciaRiceCake extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            ChaosHelper.setChaos(player, -3);
+            ChaosHelper.addChaos(player, -3);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

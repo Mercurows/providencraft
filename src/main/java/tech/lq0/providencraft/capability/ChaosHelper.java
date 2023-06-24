@@ -15,9 +15,14 @@ public class ChaosHelper {
         return chaos.get();
     }
 
-    public static void setChaos(PlayerEntity player, int chaos){
+    public static void addChaos(PlayerEntity player, int chaos){
         LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
         chaosCap.ifPresent((l) -> l.setChaos((int) Math.max(-100, Math.min(100, l.getChaos() + chaos))));
+    }
+
+    public static void setChaos(PlayerEntity player, int chaos){
+        LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
+        chaosCap.ifPresent((l) -> l.setChaos(Math.max(-100, Math.min(100, chaos))));
     }
 
     public static void resetChaos(PlayerEntity player){

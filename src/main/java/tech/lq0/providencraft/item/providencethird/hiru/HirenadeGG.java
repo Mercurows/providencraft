@@ -45,7 +45,7 @@ public class HirenadeGG extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            ChaosHelper.setChaos(player, 50);
+            ChaosHelper.addChaos(player, 50);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

@@ -41,7 +41,7 @@ public class FoxIceCream extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            ChaosHelper.setChaos(player, -1);
+            ChaosHelper.addChaos(player, -1);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

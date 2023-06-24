@@ -60,7 +60,7 @@ public class CraftBeer0322 extends Item {
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
         if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityLiving;
-            ChaosHelper.setChaos(player, 10);
+            ChaosHelper.addChaos(player, 10);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

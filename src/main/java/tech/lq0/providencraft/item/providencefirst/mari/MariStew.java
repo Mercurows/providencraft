@@ -54,7 +54,7 @@ public class MariStew extends Item {
                 player.sendStatusMessage(new TranslationTextComponent("des.providencraft.mari_stew.nothing").mergeStyle(TextFormatting.GRAY), true);
             }
 
-            ChaosHelper.setChaos(player, 10);
+            ChaosHelper.addChaos(player, 10);
 
             if (player.isCreative()) {
                 return itemStack;
