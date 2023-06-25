@@ -34,9 +34,8 @@ public class HirenadeGG extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
-        tooltip.add((new TranslationTextComponent("des.providencraft.hirenade_gg")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.hirenade_gg_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.hirenade_gg_2")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addChaosInfo(tooltip, 50);
         TooltipTool.addLiverInfo(tooltip, Livers.HIRU);
     }
