@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#P#",
+    "LLL"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "P": {
+      "item": "providencraft:gn_souls"
+    },
+    "L": {
+      "item": "minecraft:prismarine_crystals"
+    }
+  },
+  "result": {
+    "item": "providencraft:hirenade_gg",
+    "count": 16
+  }
+}
