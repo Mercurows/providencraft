@@ -32,8 +32,6 @@ public class ClarityAmulet extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
         tooltip.add((new TranslationTextComponent("des.providencraft.clarity_amulet")).mergeStyle(TextFormatting.GRAY));
         TooltipTool.addLiverInfo(tooltip, Livers.RINO);
     }
@@ -46,18 +44,18 @@ public class ClarityAmulet extends Item {
                 int chaos = ChaosHelper.getChaos(player);
 
                 if(chaos <= -70){
-                    player.addPotionEffect(new EffectInstance(Effects.LUCK, 40, 0, false, false));
-                    player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 40, 2, false, false));
-                    player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 40, 0, false, false));
+                    player.addPotionEffect(new EffectInstance(Effects.LUCK, 100, 0, false, false));
+                    player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 100, 2, false, false));
+                    player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 100, 0, false, false));
                 }else if(chaos <= -30){
-                    player.addPotionEffect(new EffectInstance(Effects.LUCK, 40, 0, false, false));
-                    player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 40, 1, false, false));
+                    player.addPotionEffect(new EffectInstance(Effects.LUCK, 100, 0, false, false));
+                    player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 100, 1, false, false));
                 }else if(chaos < 0){
-                    player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 40, 0, false, false));
+                    player.addPotionEffect(new EffectInstance(EffectRegistry.HOLINESS.get(), 100, 0, false, false));
                 }else if(chaos >= 80){
-                    player.addPotionEffect(new EffectInstance(Effects.HASTE, 40, 0, false, false));
-                    player.addPotionEffect(new EffectInstance(Effects.UNLUCK, 40, 0, false, false));
-                    player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 40, 0, false, false));
+                    player.addPotionEffect(new EffectInstance(Effects.HASTE, 100, 0, false, false));
+                    player.addPotionEffect(new EffectInstance(Effects.UNLUCK, 100, 0, false, false));
+                    player.addPotionEffect(new EffectInstance(Effects.NAUSEA, 300, 0, false, false));
                 }
             }
         }
