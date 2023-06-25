@@ -30,6 +30,7 @@ public class ClientEventHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.CURSED_CAT_DOLL_ENTITY.get(), CursedCatDollEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SHU_RINO_KEN_ENTITY.get(), ShuRinoKenEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.TAIL_BOBBER_ENTITY.get(), TailBobberRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.HIRENADE_GG_ENTITY.get(), HirenadeGGEntityRenderer::new);
 
         event.enqueueWork(() -> ClientRegistry.bindTileEntityRenderer(TileEntityRegistry.POINTS_STORE.get(), PointsStoreTileEntityRenderer::new));
 

@@ -57,4 +57,7 @@ public class EntityRegistry {
                     () -> EntityType.Builder.<TailBobberEntity>create(EntityClassification.MISC)
                             .disableSerialization().trackingRange(4).func_233608_b_(5)
                             .disableSummoning().size(0.25f, 0.25f).setCustomClientFactory(TailBobberEntity::new).build("tail_bobber"));
+    public static final RegistryObject<EntityType<HirenadeGGEntity>> HIRENADE_GG_ENTITY =
+            ENTITY_TYPES.register("hirenade_gg",
+                    () -> EntityType.Builder.<HirenadeGGEntity>create(HirenadeGGEntity::new, EntityClassification.MISC).size(0.4f,0.4f).build("hirenade_gg"));
 }
