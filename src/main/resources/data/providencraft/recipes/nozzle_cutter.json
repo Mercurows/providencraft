@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #S",
+    "i #",
+    " i "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:pink_wool"
+    },
+    "S": {
+      "item": "minecraft:shears"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:nozzle_cutter",
+    "count": 1
+  }
+}

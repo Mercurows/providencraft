@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
@@ -52,17 +53,29 @@ public class NozzleCutter extends ShearsItem {
             BlockPos pos = new BlockPos(entity.getPosX(), entity.getPosY(), entity.getPosZ());
             if (target.isShearable(stack, entity.world, pos)) {
                 double random = Math.random();
-                if(random <= 0.2){
-                    entity.attackEntityFrom(DamageSource.causePlayerDamage(playerIn), 4.0f);
-                }else {
-                    List<ItemStack> drops = target.onSheared(playerIn, stack, entity.world, pos,
-                            EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack));
 
+                List<ItemStack> drops = target.onSheared(playerIn, stack, entity.world, pos,
+                        EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack));
+
+                if(random <= 0.35){
+                    entity.attackEntityFrom(DamageSource.causePlayerDamage(playerIn), 4.0f);
+                    Random rand = new Random();
+
+                    ItemEntity ent = entity.entityDropItem(Items.MUTTON.getDefaultInstance(), 1.0F);
+                    if(ent != null) {
+                        ent.setMotion(ent.getMotion().add((rand.nextFloat() - rand.nextFloat()) * 0.1F, rand.nextFloat() * 0.05F, (rand.nextFloat() - rand.nextFloat()) * 0.1F));
+                    }
+
+                }else {
                     Random rand = new Random();
                     drops.forEach(d -> {
                         ItemEntity ent = entity.entityDropItem(d, 1.0F);
+                        ItemEntity ent2 = entity.entityDropItem(d, 1.0F);
                         if(ent != null) {
                             ent.setMotion(ent.getMotion().add((rand.nextFloat() - rand.nextFloat()) * 0.1F, rand.nextFloat() * 0.05F, (rand.nextFloat() - rand.nextFloat()) * 0.1F));
+                        }
+                        if(ent2 != null) {
+                            ent2.setMotion(ent2.getMotion().add((rand.nextFloat() - rand.nextFloat()) * 0.1F, rand.nextFloat() * 0.05F, (rand.nextFloat() - rand.nextFloat()) * 0.1F));
                         }
                     });
                 }
