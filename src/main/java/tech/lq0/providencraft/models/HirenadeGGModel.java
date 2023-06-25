@@ -27,11 +27,10 @@ public class HirenadeGGModel extends EntityModel<HirenadeGGEntity> {
 		textureHeight = 64;
 
 		main = new ModelRenderer(this);
-		main.setRotationPoint(0.0F, 25.0F, -3.0F);
-		
+		main.setRotationPoint(0.0F, 24.0F, 0.0F);
 
 		body = new ModelRenderer(this);
-		body.setRotationPoint(0.0F, 0.0F, 0.0F);
+		body.setRotationPoint(0.0F, 1.0F, -3.0F);
 		main.addChild(body);
 		body.setTextureOffset(0, 27).addBox(3.0F, -4.0F, -4.0F, 1.0F, 6.0F, 1.0F, 0.0F, false);
 		body.setTextureOffset(0, 0).addBox(-2.0F, -3.0F, -6.0F, 4.0F, 4.0F, 1.0F, 0.0F, false);
@@ -45,9 +44,8 @@ public class HirenadeGGModel extends EntityModel<HirenadeGGEntity> {
 		body.setTextureOffset(4, 27).addBox(-4.0F, -4.0F, -4.0F, 1.0F, 6.0F, 1.0F, 0.0F, false);
 
 		feet = new ModelRenderer(this);
-		feet.setRotationPoint(0.0F, 0.0F, 0.0F);
+		feet.setRotationPoint(0.0F, 1.0F, -3.0F);
 		main.addChild(feet);
-		
 
 		cube_r1 = new ModelRenderer(this);
 		cube_r1.setRotationPoint(0.1F, -3.75F, 13.0F);
@@ -98,12 +96,10 @@ public class HirenadeGGModel extends EntityModel<HirenadeGGEntity> {
 		cube_r8.setTextureOffset(36, 36).addBox(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
 	}
 
+
 	@Override
 	public void setRotationAngles(HirenadeGGEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 		//previously the render function, render code was moved to a method below
-		main.rotateAngleX = limbSwing;
-		main.rotateAngleY = netHeadYaw;
-		main.rotateAngleZ = headPitch;
 	}
 
 	@Override

@@ -32,11 +32,13 @@ public class HirenadeGGEntityRenderer extends EntityRenderer<HirenadeGGEntity> {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         matrixStackIn.push();
 
-        matrixStackIn.scale(0.5f,0.5f,0.5f);
-        matrixStackIn.translate(-1.5f, 0.5f, 0);
         matrixStackIn.rotate(Vector3f.YP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationYaw, entityIn.rotationYaw) - 90.0F));
         matrixStackIn.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, entityIn.prevRotationPitch, entityIn.rotationPitch) + 90.0F));
         matrixStackIn.rotate(Vector3f.XN.rotationDegrees(90.0F));
+
+        matrixStackIn.scale(0.5f,0.5f,0.5f);
+        matrixStackIn.translate(0.0f, -1.5f, 0.0f);
+
 
 
         IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.hirenadeGGEntityEntityModel.getRenderType(this.getEntityTexture(entityIn)));

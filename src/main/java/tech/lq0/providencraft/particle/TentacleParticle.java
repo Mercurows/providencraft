@@ -10,7 +10,7 @@ import java.awt.*;
 public class TentacleParticle extends SpriteTexturedParticle {
     protected TentacleParticle(ClientWorld world, double x, double y, double z, Vector3d speed, Color color, float diameter) {
         super(world, x, y, z, speed.x, speed.y, speed.z);
-        maxAge = 100;
+        maxAge = 10;
         motionX = speed.x;
         motionY = speed.y;
         motionZ = speed.z;

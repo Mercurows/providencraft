@@ -64,10 +64,10 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
                 explode(this, 5.0f);
             }
         } else {
-            if (this.world.isRemote && this.ticksExisted % 4 == 0) {
+            if (this.world.isRemote) {
                 this.world.addParticle(new TentacleParticleData(new Vector3d(0.0f, 0.0f, 0.0f),
                                 new Color(255, 255, 255, 50), 0.3f),
-                        this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), 0.0D, 0.0D, 0.0D);
+                        this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
             }
         }
     }
@@ -133,7 +133,7 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
         explosion.clearAffectedBlockPositions();
 
         for(ServerPlayerEntity player : ((ServerWorld) world).getPlayers()) {
-            if(player.getDistanceSq(entity.getPosX(), entity.getPosY(), entity.getPosZ()) < 1024) {
+            if(player.getDistanceSq(entity.getPosX(), entity.getPosY(), entity.getPosZ()) < 4096) {
                 player.connection.sendPacket(new SExplosionPacket(entity.getPosX(), entity.getPosY(), entity.getPosZ(), radius, explosion.getAffectedBlockPositions(), explosion.getPlayerKnockbackMap().get(player)));
             }
         }
