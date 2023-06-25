@@ -10,13 +10,9 @@ import java.util.function.Supplier;
 
 public enum ModItemTier implements IItemTier {
     RED_AHOGE(2, 1221, 7.0F, 2.0F, 14,
-            () -> {
-                return Ingredient.fromItems(ItemRegistry.RED_AHOGE.get());
-            }),
+            () -> Ingredient.fromItems(ItemRegistry.RED_AHOGE.get())),
     DARK_ELF(4, 39, 50.0F, 1.0F, 20,
-            () -> {
-                return Ingredient.fromItems(ItemRegistry.WHITE_AHOGE.get());
-            });
+            () -> Ingredient.fromItems(ItemRegistry.WHITE_AHOGE.get()));
 
     private final int harvestLevel;
     private final int maxUses;

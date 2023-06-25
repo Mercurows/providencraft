@@ -87,7 +87,7 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
                     if(!item.getTags().contains("providencraft_teleport")) {
                         item.addTag("providencraft_teleport");
                         if(toWorld != this.world){
-                            System.out.println(toWorld.getDimensionKey().getLocation());
+//                            System.out.println(toWorld.getDimensionKey().getLocation());
                             //TODO 修复跨维度传送问题
 
 //                            item.changeDimension(toWorld);
