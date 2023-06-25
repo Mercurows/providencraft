@@ -7,8 +7,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.item.UseAction;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -16,6 +20,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.projectile.HirenadeGGEntity;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -24,6 +30,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class SecondaryCataclysm extends Item {
+    public static final String TAG_AMMO = "Ammo";
+
     public SecondaryCataclysm(){
         super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).rarity(Rarity.EPIC));
     }
@@ -34,7 +42,72 @@ public class SecondaryCataclysm extends Item {
         TooltipTool.addDevelopingText(tooltip);
 
         tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add(new StringTextComponent("Ammo:" + ItemNBTTool.getInt(stack, TAG_AMMO, 0)));
         TooltipTool.addLiverInfo(tooltip, Livers.HIRU);
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemStack stack = playerIn.getHeldItem(handIn);
+        if(ItemNBTTool.getInt(stack, TAG_AMMO, 0) >= 6){
+            return ActionResult.resultFail(stack);
+        }
+
+        playerIn.setActiveHand(handIn);
+        return ActionResult.resultConsume(stack);
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.CROSSBOW;
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 40;
+    }
+
+    @Override
+    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+        if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entityLiving;
+
+            boolean flag2 = ItemNBTTool.getInt(stack, TAG_AMMO, 0) < 6;
+            ItemStack ammo = this.findAmmo(player);
+
+            if(player.abilities.isCreativeMode){
+                ItemNBTTool.setInt(stack, TAG_AMMO, 6);
+                return stack;
+            }
+
+            if (!ammo.isEmpty() || flag2) {
+                int currentCount = ItemNBTTool.getInt(stack, TAG_AMMO, 0);
+                int ammoCount = 6 - currentCount;
+
+                if (ammo.isEmpty()) {
+                    ammo = new ItemStack(ItemRegistry.HIRENADE_GG.get());
+                }
+
+                boolean flag1 = ammo.getItem() instanceof HirenadeGG;
+
+                if (flag1 && !player.abilities.isCreativeMode) {
+                    if(ammo.getCount() >= ammoCount){
+                        ammo.shrink(ammoCount);
+                        ItemNBTTool.setInt(stack, TAG_AMMO, 6);
+                    }else {
+                        int count = ammo.getCount();
+                        ammo.shrink(count);
+                        ItemNBTTool.setInt(stack, TAG_AMMO, Math.min(currentCount + count, 6));
+                    }
+
+                    if (ammo.isEmpty()) {
+                        player.inventory.deleteStack(ammo);
+                    }
+                }
+            }
+        }
+
+        return stack;
     }
 
     @Override
@@ -43,13 +116,18 @@ public class SecondaryCataclysm extends Item {
             PlayerEntity player = (PlayerEntity) entity;
             World world = player.world;
             if(!world.isRemote && !player.getCooldownTracker().hasCooldown(stack.getItem())){
-                HirenadeGGEntity hirenadeGG = new HirenadeGGEntity(world, player);
-                hirenadeGG.setShooter(player);
-                hirenadeGG.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.8f, 0.0f);
+                if(player.abilities.isCreativeMode || ItemNBTTool.getInt(stack, TAG_AMMO, 0) > 0) {
+                    HirenadeGGEntity hirenadeGG = new HirenadeGGEntity(world, player);
+                    hirenadeGG.setShooter(player);
+                    hirenadeGG.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.8f, 0.0f);
 
-                world.addEntity(hirenadeGG);
+                    world.addEntity(hirenadeGG);
 
-                player.getCooldownTracker().setCooldown(stack.getItem(), 10);
+                    player.getCooldownTracker().setCooldown(stack.getItem(), 10);
+                    if(!player.abilities.isCreativeMode){
+                        ItemNBTTool.setInt(stack, TAG_AMMO, ItemNBTTool.getInt(stack, TAG_AMMO, 0) - 1);
+                    }
+                }
             }
         }
 
@@ -58,6 +136,26 @@ public class SecondaryCataclysm extends Item {
 
     @Override
     public boolean canPlayerBreakBlockWhileHolding(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
-        return !player.isCreative();
+        return false;
+    }
+
+    protected ItemStack findAmmo(PlayerEntity player) {
+        if (this.check(player.getHeldItem(Hand.OFF_HAND))) {
+            return player.getHeldItem(Hand.OFF_HAND);
+        } else if (this.check(player.getHeldItem(Hand.MAIN_HAND))) {
+            return player.getHeldItem(Hand.MAIN_HAND);
+        } else {
+            for (int i = 0; i < player.inventory.getSizeInventory(); ++i) {
+                ItemStack itemstack = player.inventory.getStackInSlot(i);
+                if (this.check(itemstack)) {
+                    return itemstack;
+                }
+            }
+            return ItemStack.EMPTY;
+        }
+    }
+
+    protected boolean check(ItemStack stack) {
+        return stack.getItem() instanceof HirenadeGG;
     }
 }
