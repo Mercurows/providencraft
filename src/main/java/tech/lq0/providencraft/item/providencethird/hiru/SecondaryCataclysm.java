@@ -20,7 +20,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.projectile.HirenadeGGEntity;
 import tech.lq0.providencraft.group.ModGroup;
-import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -50,6 +49,10 @@ public class SecondaryCataclysm extends Item {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if(ItemNBTTool.getInt(stack, TAG_AMMO, 0) >= 6){
+            return ActionResult.resultFail(stack);
+        }
+        ItemStack ammo = this.findAmmo(playerIn);
+        if(ammo.isEmpty() && !playerIn.abilities.isCreativeMode){
             return ActionResult.resultFail(stack);
         }
 
@@ -85,7 +88,7 @@ public class SecondaryCataclysm extends Item {
                 int ammoCount = 6 - currentCount;
 
                 if (ammo.isEmpty()) {
-                    ammo = new ItemStack(ItemRegistry.HIRENADE_GG.get());
+                    return stack;
                 }
 
                 boolean flag1 = ammo.getItem() instanceof HirenadeGG;
@@ -161,6 +164,6 @@ public class SecondaryCataclysm extends Item {
 
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        return slotChanged && !oldStack.equals(newStack);
+        return slotChanged;
     }
 }
