@@ -13,6 +13,7 @@ import tech.lq0.providencraft.item.blockitem.PointsStoreBlockItem;
 import tech.lq0.providencraft.item.blockitem.PorcelainThroneBlockItem;
 import tech.lq0.providencraft.item.costume.OI.miya.JellyfishShell;
 import tech.lq0.providencraft.item.costume.cnt.qianyun.MaidCostume;
+import tech.lq0.providencraft.item.costume.first.unia.DMF_777_U;
 import tech.lq0.providencraft.item.costume.first.usa.KRM_963_53;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.chiram.ChiramIdolChestplate;
@@ -67,10 +68,7 @@ import tech.lq0.providencraft.item.providencefirst.mari.MagicMirror;
 import tech.lq0.providencraft.item.providencefirst.mari.MariStew;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.Crown;
 import tech.lq0.providencraft.item.providencefirst.mitsuki.GoodManCard;
-import tech.lq0.providencraft.item.providencefirst.myanna.DarkElfCore;
-import tech.lq0.providencraft.item.providencefirst.myanna.Drill;
-import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
-import tech.lq0.providencraft.item.providencefirst.myanna.Schedule;
+import tech.lq0.providencraft.item.providencefirst.myanna.*;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.niina.BlueSmallBall;
 import tech.lq0.providencraft.item.providencefirst.niina.NozzleCutter;
@@ -163,6 +161,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> DARK_ELF_CORE = ITEMS.register("dark_elf_core", DarkElfCore::new);
     public static final RegistryObject<Item> DRILL = ITEMS.register("drill", Drill::new);
     public static final RegistryObject<Item> SCHEDULE = ITEMS.register("schedule", Schedule::new);
+    public static final RegistryObject<Item> DARK_ELF_GLASSES = ITEMS.register("dark_elf_glasses", DarkElfGlasses::new);
 
     //haya
     public static final RegistryObject<Item> HAYAMEN = ITEMS.register("hayamen", Hayamen::new);
@@ -424,6 +423,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> EKIRA_IDOL_BOOTS = ITEMS.register("ekira_idol_boots", EkiraIdolBoots::new);
     public static final RegistryObject<Item> KRM_963_53 = ITEMS.register("krm_963_53", KRM_963_53::new);
     public static final RegistryObject<Item> MAID_COSTUME = ITEMS.register("maid_costume", MaidCostume::new);
+    public static final RegistryObject<Item> DMF_777_U = ITEMS.register("dmf_777_u", DMF_777_U::new);
 
     /**
      * material

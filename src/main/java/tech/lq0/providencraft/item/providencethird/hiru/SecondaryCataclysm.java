@@ -158,4 +158,9 @@ public class SecondaryCataclysm extends Item {
     protected boolean check(ItemStack stack) {
         return stack.getItem() instanceof HirenadeGG;
     }
+
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged && !oldStack.equals(newStack);
+    }
 }
