@@ -1,6 +1,15 @@
 {
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "providencraft:item/dark_elf_glasses"
+  "loader": "forge:separate-perspective",
+  "gui_light": "front",
+  "base": {
+    "parent": "providencraft:item/dark_elf_glasses_inventory"
+  },
+  "perspectives": {
+    "head": {
+      "parent": "providencraft:item/dark_elf_glasses_model"
+    },
+    "fixed": {
+      "parent": "providencraft:item/dark_elf_glasses_model"
+    }
   }
 }

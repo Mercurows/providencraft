@@ -1,4 +1,4 @@
-package tech.lq0.providencraft.teleporter;
+package tech.lq0.providencraft.block.teleporter;
 
 import net.minecraft.block.PortalInfo;
 import net.minecraft.entity.Entity;

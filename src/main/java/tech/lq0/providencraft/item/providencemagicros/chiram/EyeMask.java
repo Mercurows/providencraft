@@ -17,6 +17,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.CombatRules;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -24,6 +26,9 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.Livers;
@@ -34,6 +39,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EyeMask extends Item {
     public EyeMask(){
         super(new Properties().group(ModGroup.itemgroup).maxDamage(165));
@@ -110,6 +116,21 @@ public class EyeMask extends Item {
                 player.addPotionEffect(new EffectInstance(Effects.SPEED, 3600, 1));
                 player.addPotionEffect(new EffectInstance(Effects.HASTE, 3600, 1));
                 player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 600, 0));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void eyeMaskEffect(LivingHurtEvent event) {
+        if (event.getEntityLiving() instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+            ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.HEAD);
+            DamageSource damageSource = event.getSource();
+
+            if (!stack.isEmpty() && stack.getItem().equals(ItemRegistry.EYE_MASK.get()) && !player.world.isRemote) {
+                if(!damageSource.isUnblockable()) {
+                    stack.damageItem((int) CombatRules.getDamageAfterAbsorb(event.getAmount(), 1, 0), player, (playerEntity) -> playerEntity.sendBreakAnimation(EquipmentSlotType.HEAD));
+                }
             }
         }
     }

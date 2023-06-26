@@ -20,7 +20,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import tech.lq0.providencraft.init.BlockRegistry;
 import tech.lq0.providencraft.init.TileEntityRegistry;
-import tech.lq0.providencraft.teleporter.MirrorTeleporter;
+import tech.lq0.providencraft.block.teleporter.MirrorTeleporter;
 
 import java.util.List;
 
