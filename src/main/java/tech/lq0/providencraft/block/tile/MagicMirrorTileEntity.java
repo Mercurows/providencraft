@@ -20,6 +20,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import tech.lq0.providencraft.init.BlockRegistry;
 import tech.lq0.providencraft.init.TileEntityRegistry;
+import tech.lq0.providencraft.teleporter.MirrorTeleporter;
 
 import java.util.List;
 
@@ -87,12 +88,9 @@ public class MagicMirrorTileEntity extends TileEntity implements ITickableTileEn
                     if(!item.getTags().contains("providencraft_teleport")) {
                         item.addTag("providencraft_teleport");
                         if(toWorld != this.world){
-//                            System.out.println(toWorld.getDimensionKey().getLocation());
-                            //TODO 修复跨维度传送问题
-
-//                            item.changeDimension(toWorld);
+                            item.changeDimension(toWorld,new MirrorTeleporter(new Vector3d(teleportPosX + 0.6f + aimDirection.getXOffset() * 0.3f, teleportPosY + 1f, teleportPosZ + 0.6f + aimDirection.getZOffset() * 0.3f),
+                                    new Vector3d(aimDirection.getXOffset() * 0.2f, aimDirection.getYOffset() * 0.2f, aimDirection.getZOffset() * 0.2f)));
                         }
-
                         item.setPosition(teleportPosX + 0.6f + aimDirection.getXOffset() * 0.3f,
                                 teleportPosY + 1f, teleportPosZ + 0.6f + aimDirection.getZOffset() * 0.3f);
                         item.setMotion(aimDirection.getXOffset() * 0.2f, aimDirection.getYOffset() * 0.2f, aimDirection.getZOffset() * 0.2f);
