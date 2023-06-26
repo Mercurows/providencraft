@@ -16,7 +16,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SExplosionPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
@@ -26,6 +25,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 import tech.lq0.providencraft.init.EntityRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.particle.TentacleParticleData;
 
 import java.awt.*;
@@ -66,11 +66,10 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
             if (!this.world.isRemote) {
                 explode(this, 5.0f);
 
-                ((ServerWorld) world).spawnParticle(ParticleTypes.SMOKE, this.getPosX(), this.getPosY(), this.getPosZ(),
+                ((ServerWorld) world).spawnParticle(ParticleTypes.LARGE_SMOKE, this.getPosX(), this.getPosY(), this.getPosZ(),
                         30, 3.0D, 3.0D,  3.0D, 0.3);
             }else {
-                //TODO 替换音效
-                world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GHAST_SCREAM,
+                world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundRegistry.HIRU_SCREAM.get(),
                         SoundCategory.AMBIENT, 1 + rand.nextFloat() * 0.1f, 0.8f, true);
             }
         } else {

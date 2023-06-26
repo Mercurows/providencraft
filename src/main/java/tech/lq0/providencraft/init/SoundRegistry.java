@@ -25,6 +25,7 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> LECIA_CAST_1 = SOUNDS.register("lecia_cast_1", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "lecia_cast_1")));
     public static final RegistryObject<SoundEvent> LECIA_CAST_2 = SOUNDS.register("lecia_cast_2", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "lecia_cast_2")));
     public static final RegistryObject<SoundEvent> BLOOD_CRYSTAL = SOUNDS.register("blood_crystal", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "blood_crystal")));
+    public static final RegistryObject<SoundEvent> HIRU_SCREAM = SOUNDS.register("hiru_scream", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "hiru_scream")));
 
     //audios
     public static final RegistryObject<SoundEvent> CHIRAM_BOLSTER = SOUNDS.register("chiram_bolster", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/magicros/chiram_bolster")));

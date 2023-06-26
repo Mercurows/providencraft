@@ -1,9 +1,15 @@
 package tech.lq0.providencraft.item.providencethird.hiru;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
@@ -30,9 +36,19 @@ import java.util.List;
 
 public class SecondaryCataclysm extends Item {
     public static final String TAG_AMMO = "Ammo";
+    private final Multimap<Attribute, AttributeModifier> attributeModifiers;
 
     public SecondaryCataclysm(){
         super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).rarity(Rarity.EPIC));
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 9, AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -3.2, AttributeModifier.Operation.ADDITION));
+        this.attributeModifiers = builder.build();
+    }
+
+    @Override
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
+        return equipmentSlot == EquipmentSlotType.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(equipmentSlot, stack);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -40,7 +56,9 @@ public class SecondaryCataclysm extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         TooltipTool.addDevelopingText(tooltip);
 
-        tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
+        tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_3")).mergeStyle(TextFormatting.GRAY));
         tooltip.add(new StringTextComponent("Ammo:" + ItemNBTTool.getInt(stack, TAG_AMMO, 0)));
         TooltipTool.addLiverInfo(tooltip, Livers.HIRU);
     }
