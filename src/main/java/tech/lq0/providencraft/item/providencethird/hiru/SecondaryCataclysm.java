@@ -46,18 +46,37 @@ public class SecondaryCataclysm extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemStack stack = playerIn.getHeldItem(handIn);
-        if(ItemNBTTool.getInt(stack, TAG_AMMO, 0) >= 6){
-            return ActionResult.resultFail(stack);
-        }
-        ItemStack ammo = this.findAmmo(playerIn);
-        if(ammo.isEmpty() && !playerIn.abilities.isCreativeMode){
-            return ActionResult.resultFail(stack);
+    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand handIn) {
+        ItemStack stack = player.getHeldItem(handIn);
+
+        ItemStack ammo = this.findAmmo(player);
+
+        if(ItemNBTTool.getInt(stack, TAG_AMMO, 0) < 6){
+            if(player.isSneaking()) {
+                if(!ammo.isEmpty() || player.abilities.isCreativeMode) {
+                    player.setActiveHand(handIn);
+                }
+                return ActionResult.resultConsume(stack);
+            }
         }
 
-        playerIn.setActiveHand(handIn);
-        return ActionResult.resultConsume(stack);
+        if(!world.isRemote && !player.getCooldownTracker().hasCooldown(stack.getItem()) && !player.isSneaking()){
+            if(player.abilities.isCreativeMode || ItemNBTTool.getInt(stack, TAG_AMMO, 0) > 0) {
+                HirenadeGGEntity hirenadeGG = new HirenadeGGEntity(world, player);
+                hirenadeGG.setShooter(player);
+                hirenadeGG.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.8f, 0.0f);
+
+                world.addEntity(hirenadeGG);
+
+                player.getCooldownTracker().setCooldown(stack.getItem(), 10);
+                if(!player.abilities.isCreativeMode){
+                    ItemNBTTool.setInt(stack, TAG_AMMO, ItemNBTTool.getInt(stack, TAG_AMMO, 0) - 1);
+                }
+                return ActionResult.resultFail(stack);
+            }
+        }
+
+        return ActionResult.resultFail(stack);
     }
 
     @Override
@@ -114,32 +133,8 @@ public class SecondaryCataclysm extends Item {
     }
 
     @Override
-    public boolean onEntitySwing(ItemStack stack, LivingEntity entity) {
-        if(entity instanceof PlayerEntity){
-            PlayerEntity player = (PlayerEntity) entity;
-            World world = player.world;
-            if(!world.isRemote && !player.getCooldownTracker().hasCooldown(stack.getItem())){
-                if(player.abilities.isCreativeMode || ItemNBTTool.getInt(stack, TAG_AMMO, 0) > 0) {
-                    HirenadeGGEntity hirenadeGG = new HirenadeGGEntity(world, player);
-                    hirenadeGG.setShooter(player);
-                    hirenadeGG.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.8f, 0.0f);
-
-                    world.addEntity(hirenadeGG);
-
-                    player.getCooldownTracker().setCooldown(stack.getItem(), 10);
-                    if(!player.abilities.isCreativeMode){
-                        ItemNBTTool.setInt(stack, TAG_AMMO, ItemNBTTool.getInt(stack, TAG_AMMO, 0) - 1);
-                    }
-                }
-            }
-        }
-
-        return true;
-    }
-
-    @Override
     public boolean canPlayerBreakBlockWhileHolding(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
-        return false;
+        return !player.abilities.isCreativeMode;
     }
 
     protected ItemStack findAmmo(PlayerEntity player) {
