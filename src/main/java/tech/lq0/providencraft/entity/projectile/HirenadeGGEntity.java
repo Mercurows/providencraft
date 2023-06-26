@@ -65,7 +65,7 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
             this.remove();
             if (!this.world.isRemote) {
                 explode(this, 5.0f);
-
+                //TODO 解决音频播放和粒子效果问题
                 ((ServerWorld) world).spawnParticle(ParticleTypes.LARGE_SMOKE, this.getPosX(), this.getPosY(), this.getPosZ(),
                         30, 3.0D, 3.0D,  3.0D, 0.3);
             }else {
