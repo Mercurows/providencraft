@@ -14,6 +14,9 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SExplosionPacket;
+import net.minecraft.particles.ParticleTypes;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
@@ -62,11 +65,18 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
             this.remove();
             if (!this.world.isRemote) {
                 explode(this, 5.0f);
+
+                ((ServerWorld) world).spawnParticle(ParticleTypes.SMOKE, this.getPosX(), this.getPosY(), this.getPosZ(),
+                        30, 3.0D, 3.0D,  3.0D, 0.3);
+            }else {
+                //TODO 替换音效
+                world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GHAST_SCREAM,
+                        SoundCategory.AMBIENT, 1 + rand.nextFloat() * 0.1f, 0.8f, true);
             }
         } else {
             if (this.world.isRemote) {
                 this.world.addParticle(new TentacleParticleData(new Vector3d(0.0f, 0.0f, 0.0f),
-                                new Color(255, 255, 255, 50), 0.3f),
+                                new Color(255, 255, 255, 50), 0.3f), true,
                         this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
             }
         }

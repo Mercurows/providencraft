@@ -314,6 +314,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> FRACTURE_DESTINY = ITEMS.register("fracture_destiny", FractureDestiny::new);
     public static final RegistryObject<Item> FUKAMIZU_FISH = ITEMS.register("fukamizu_fish", FukamizuFish::new);
     public static final RegistryObject<Item> FUKAMIZU_BREAD = ITEMS.register("fukamizu_bread", FukamizuBread::new);
+    public static final RegistryObject<Item> FUKAMIZU_TORPEDO = ITEMS.register("fukamizu_torpedo", FukamizuTorpedo::new);
 
     //lutafia
     public static final RegistryObject<Item> FIAXE = ITEMS.register("fiaxe", Fiaxe::new);
