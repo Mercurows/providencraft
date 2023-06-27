@@ -15,7 +15,6 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SExplosionPacket;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
@@ -29,6 +28,7 @@ import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.particle.TentacleParticleData;
 
 import java.awt.*;
+import java.util.Random;
 
 public class HirenadeGGEntity extends ProjectileItemEntity {
     private static final DataParameter<Integer> FUSE = EntityDataManager.createKey(HirenadeGGEntity.class, DataSerializers.VARINT);
@@ -62,15 +62,12 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
         super.tick();
         --this.fuse;
         if (this.fuse <= 0) {
-            this.remove();
 
-            world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundRegistry.HIRU_SCREAM.get(),
-                    SoundCategory.AMBIENT, 1 + rand.nextFloat() * 0.1f, 0.8f, true);
             if (!this.world.isRemote) {
-                ((ServerWorld) world).spawnParticle(ParticleTypes.LARGE_SMOKE, this.getPosX(), this.getPosY(), this.getPosZ(),
-                        50, 5.0D, 5.0D,  5.0D, 0.2);
                 explode(this, 5.0f);
             }
+
+            this.remove();
         } else {
             if (this.world.isRemote) {
                 double x = this.getMotion().x;
@@ -143,6 +140,12 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
         explosion.doExplosionB(true);
 
         explosion.clearAffectedBlockPositions();
+
+        Random random = new Random();
+        entity.playSound(SoundRegistry.HIRU_SCREAM.get(), 0.7f + random.nextFloat(), 1.0f);
+
+        ((ServerWorld) world).spawnParticle(ParticleTypes.FLASH, entity.getPosX(), entity.getPosY(), entity.getPosZ(),
+                10, 1.0D, 1.0D,  1.0D, 0.05);
 
         for(ServerPlayerEntity player : ((ServerWorld) world).getPlayers()) {
             if(player.getDistanceSq(entity.getPosX(), entity.getPosY(), entity.getPosZ()) < 4096) {
