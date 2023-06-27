@@ -99,7 +99,7 @@ public class SecondaryCataclysm extends Item {
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.NONE;
+        return UseAction.BOW;
     }
 
     @Override

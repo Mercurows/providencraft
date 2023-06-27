@@ -68,14 +68,18 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
                     SoundCategory.AMBIENT, 1 + rand.nextFloat() * 0.1f, 0.8f, true);
             if (!this.world.isRemote) {
                 ((ServerWorld) world).spawnParticle(ParticleTypes.LARGE_SMOKE, this.getPosX(), this.getPosY(), this.getPosZ(),
-                        30, 3.0D, 3.0D,  3.0D, 0.3);
+                        50, 5.0D, 5.0D,  5.0D, 0.2);
                 explode(this, 5.0f);
             }
         } else {
             if (this.world.isRemote) {
+                double x = this.getMotion().x;
+                double y = this.getMotion().y;
+                double z = this.getMotion().z;
+
                 this.world.addParticle(new TentacleParticleData(new Vector3d(0.0f, 0.0f, 0.0f),
                                 new Color(255, 255, 255, 50), 0.3f), true,
-                        this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
+                        this.getPosX() + x / 2, this.getPosY() + y / 2, this.getPosZ() + z / 2, 0.0D, 0.0D, 0.0D);
             }
         }
     }
