@@ -64,7 +64,6 @@ public class MagicMirrorBlock extends Block {
     @ParametersAreNonnullByDefault
     @Nonnull
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-//        return state.get(FACING) == Direction.NORTH || state.get(FACING) == Direction.SOUTH ? SHAPE_NS : SHAPE_EW;
         return VoxelShapes.or(Block.makeCuboidShape(0,0,0,16,8,16));
     }
 
@@ -75,14 +74,14 @@ public class MagicMirrorBlock extends Block {
                 MagicMirrorTileEntity tileEntity = (MagicMirrorTileEntity) worldIn.getTileEntity(pos);
                 if(tileEntity != null) {
                     BlockPos tpPos = tileEntity.getTeleportPos();
-                    if (tpPos != null) {
-                        player.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.bind", tpPos.getX(), tpPos.getY(), tpPos.getZ()), true);
+                    String dimension = tileEntity.getDimension();
+                    if (tpPos != null && !dimension.equals("null")) {
+                        player.sendStatusMessage(new TranslationTextComponent("des.providencraft.magic_mirror_block.bind", dimension, tpPos.getX(), tpPos.getY(), tpPos.getZ()), true);
                     } else {
                         player.sendStatusMessage(new TranslationTextComponent("des.providencraft.isekai_tuner.bind.false"), true);
                     }
                 }
             }
-
         }
 
         return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);

@@ -79,7 +79,7 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
 
                 this.world.addParticle(new TentacleParticleData(new Vector3d(0.0f, 0.0f, 0.0f),
                                 new Color(255, 255, 255, 50), 0.3f), true,
-                        this.getPosX() + x / 2, this.getPosY() + y / 2, this.getPosZ() + z / 2, 0.0D, 0.0D, 0.0D);
+                        this.getPosX() - x / 1.5, this.getPosY() - y / 1.5, this.getPosZ() - z / 1.5, 0.0D, 0.0D, 0.0D);
             }
         }
     }
