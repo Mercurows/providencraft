@@ -99,12 +99,12 @@ public class SecondaryCataclysm extends Item {
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.CROSSBOW;
+        return UseAction.NONE;
     }
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return 40;
+        return 30;
     }
 
     @Override

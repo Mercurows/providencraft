@@ -63,14 +63,13 @@ public class HirenadeGGEntity extends ProjectileItemEntity {
         --this.fuse;
         if (this.fuse <= 0) {
             this.remove();
+
+            world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundRegistry.HIRU_SCREAM.get(),
+                    SoundCategory.AMBIENT, 1 + rand.nextFloat() * 0.1f, 0.8f, true);
             if (!this.world.isRemote) {
-                explode(this, 5.0f);
-                //TODO 解决音频播放和粒子效果问题
                 ((ServerWorld) world).spawnParticle(ParticleTypes.LARGE_SMOKE, this.getPosX(), this.getPosY(), this.getPosZ(),
                         30, 3.0D, 3.0D,  3.0D, 0.3);
-            }else {
-                world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), SoundRegistry.HIRU_SCREAM.get(),
-                        SoundCategory.AMBIENT, 1 + rand.nextFloat() * 0.1f, 0.8f, true);
+                explode(this, 5.0f);
             }
         } else {
             if (this.world.isRemote) {
