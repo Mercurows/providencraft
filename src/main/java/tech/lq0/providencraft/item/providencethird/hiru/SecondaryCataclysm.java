@@ -39,7 +39,7 @@ public class SecondaryCataclysm extends Item {
     private final Multimap<Attribute, AttributeModifier> attributeModifiers;
 
     public SecondaryCataclysm(){
-        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).rarity(Rarity.EPIC));
+        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).rarity(Rarity.EPIC).isImmuneToFire());
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 9, AttributeModifier.Operation.ADDITION));
         builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -3.2, AttributeModifier.Operation.ADDITION));

@@ -195,6 +195,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MAGIC_BOOK_THROW = ITEMS.register("magic_book_throw", MagicBookThrow::new);
     public static final RegistryObject<Item> LOUISTEW = ITEMS.register("louistew", Louistew::new);
     public static final RegistryObject<Item> UNI_MILLET = ITEMS.register("uni_millet", UniMillet::new);
+    public static final RegistryObject<Item> MAGIC_BOOK_REVELATION = ITEMS.register("magic_book_revelation", MagicBookRevelation::new);
 
     //mojuko
     public static final RegistryObject<Item> YAGI_STAFF_CARD = ITEMS.register("yagi_staff_card", YagiStaffCard::new);
