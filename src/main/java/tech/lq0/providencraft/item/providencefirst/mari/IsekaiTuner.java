@@ -50,6 +50,11 @@ public class IsekaiTuner extends Item {
     }
 
     @Override
+    public boolean hasEffect(ItemStack stack) {
+        return stack.getOrCreateChildTag(TAG).getBoolean(TAG_BIND);
+    }
+
+    @Override
     public ActionResultType onItemUse(ItemUseContext context) {
         World world = context.getWorld();
         BlockPos pos = context.getPos();
