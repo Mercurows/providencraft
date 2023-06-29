@@ -38,6 +38,9 @@ public class TooltipTool {
             case "third":
                 bgColor = "#0076FE";
                 break;
+            case "fourth":
+                bgColor = "#CC8CBB";
+                break;
             case "poi":
                 bgColor = "#F9F0D8";
                 break;
