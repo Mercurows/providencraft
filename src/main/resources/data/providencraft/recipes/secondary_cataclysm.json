@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#Sn",
+    "IPD",
+    "ISN"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:gn_souls"
+    },
+    "S": {
+      "item": "minecraft:shulker_shell"
+    },
+    "n": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "P": {
+      "item": "providencraft:gn_star"
+    },
+    "D": {
+      "item": "minecraft:dispenser"
+    },
+    "N": {
+      "item": "minecraft:netherite_sword"
+    }
+  },
+  "result": {
+    "item": "providencraft:secondary_cataclysm",
+    "count": 1
+  }
+}
