@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#C#",
+    "GPG",
+    "#C#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:tnt"
+    },
+    "C": {
+      "item": "minecraft:creeper_head"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "P": {
+      "item": "providencraft:magic_book"
+    }
+  },
+  "result": {
+    "item": "providencraft:magic_book_revelation",
+    "count": 1
+  }
+}

@@ -6,6 +6,7 @@ import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResult;
@@ -37,6 +38,11 @@ public class MagicBookRevelation extends Item {
         tooltip.add((new TranslationTextComponent("des.providencraft.magic_book_revelation.func")).mergeStyle(TextFormatting.AQUA));
         tooltip.add((new TranslationTextComponent("des.providencraft.magic_book_revelation")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.LOUISE);
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == Items.GUNPOWDER;
     }
 
     @Override
