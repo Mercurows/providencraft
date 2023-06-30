@@ -6,6 +6,7 @@ import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
@@ -27,16 +28,14 @@ import java.util.List;
 
 public class MagicBookRevelation extends Item {
     public MagicBookRevelation(){
-        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).maxDamage(165));
+        super(new Properties().group(ModGroup.itemgroup).maxStackSize(1).maxDamage(165).rarity(Rarity.RARE));
     }
 
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
         tooltip.add((new TranslationTextComponent("des.providencraft.magic_book_revelation.func")).mergeStyle(TextFormatting.AQUA));
-        tooltip.add((new TranslationTextComponent("des.providencraft.magic_book_revelation")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.magic_book_revelation")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.LOUISE);
     }
 
