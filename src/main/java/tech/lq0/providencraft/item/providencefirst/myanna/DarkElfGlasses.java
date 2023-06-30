@@ -37,7 +37,7 @@ import java.util.List;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DarkElfGlasses extends Item {
     public DarkElfGlasses(){
-        super(new Properties().group(ModGroup.itemgroup).maxDamage(173));
+        super(new Properties().group(ModGroup.itemgroup).maxDamage(173).maxStackSize(1));
     }
 
     @Override
