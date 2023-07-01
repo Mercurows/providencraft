@@ -22,7 +22,6 @@ import tech.lq0.providencraft.item.others.ChaosChecker;
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class HudClientEvent {
     public static final ChaosCheckerHUD CheckerHUD = new ChaosCheckerHUD();
-    private static int lastTick = 0;
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void onOverlayRender(RenderGameOverlayEvent.Post event) {
@@ -108,13 +107,13 @@ public class HudClientEvent {
             status = 1;
 
             int num = -1;
-            for(int i = 0; i < player.inventory.mainInventory.size(); ++i) {
-                if (!player.inventory.mainInventory.get(i).isEmpty() && player.inventory.mainInventory.get(i).getItem() instanceof ChaosChecker){
+            for (int i = 0; i < player.inventory.mainInventory.size(); ++i) {
+                if (!player.inventory.mainInventory.get(i).isEmpty() && player.inventory.mainInventory.get(i).getItem() instanceof ChaosChecker) {
                     num = i;
                 }
             }
 
-            if(num != -1) {
+            if (num != -1) {
                 mainStack = player.inventory.getStackInSlot(num);
             }
 
@@ -124,9 +123,6 @@ public class HudClientEvent {
         }
 
         int chaos = ChaosChecker.getChaos(mainStack);
-        int tick = Minecraft.getInstance().player.ticksExisted;
-        CheckerHUD.render(event.getMatrixStack(), chaos, status, event.getPartialTicks(), tick == lastTick);
-        lastTick = tick;
-
+        CheckerHUD.render(event.getMatrixStack(), chaos, status);
     }
 }

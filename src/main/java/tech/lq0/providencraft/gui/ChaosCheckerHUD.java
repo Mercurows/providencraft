@@ -5,7 +5,12 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldVertexBufferUploader;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Matrix4f;
 import tech.lq0.providencraft.Utils;
 
 public class ChaosCheckerHUD extends AbstractGui {
@@ -13,27 +18,29 @@ public class ChaosCheckerHUD extends AbstractGui {
     private final ResourceLocation HUD = new ResourceLocation(Utils.MOD_ID, "textures/gui/chaos_value.png");
     private final ResourceLocation BAR = new ResourceLocation(Utils.MOD_ID, "textures/gui/chaos_value_bar.png");
     private int lastStatus = 0;
-    private float progress = 0;
-    private int lastX = 0;
-    private int lastY = 0;
-    private int lastW = 0;
-    private int lastH = 0;
+    private long lastChangeTime = 0;
+    private float lastX = 0;
+    private float lastY = 0;
+    private float lastW = 0;
+    private float lastH = 0;
     private float lastAlpha = 0;
     private boolean is0to1 = false;
+
+    private int lastChaos = 0;
+    private long lastChaosChangeTime = 0;
+    private boolean chaosAnimateFinished = true;
 
     public ChaosCheckerHUD() {
         this.minecraft = Minecraft.getInstance();
     }
 
-    public void render(MatrixStack matrixStack, int chaos, int status, float partialTick, boolean addTick) {
+    public void render(MatrixStack matrixStack, int chaos, int status) {
 
-        int width = minecraft.getMainWindow().getScaledWidth() / 2;
-        int height = minecraft.getMainWindow().getScaledHeight() / 2;
+        float width = minecraft.getMainWindow().getScaledWidth() / 2f;
+        float height = minecraft.getMainWindow().getScaledHeight() / 2f;
 
-        float maxProgress = 40;
-        if (addTick){
-            progress = Math.min(maxProgress, progress + 1);
-        }
+        long MAX_PROGRESS = 300;   // 动画持续时间，单位：毫秒
+        float progress = System.currentTimeMillis() - lastChangeTime;
 
         float alpha;
         if (status == 1) {
@@ -60,16 +67,10 @@ public class ChaosCheckerHUD extends AbstractGui {
             }
             if (lastStatus == 0 && status == 1) is0to1 = true;
             lastStatus = status;
+            lastChangeTime = System.currentTimeMillis();
         }
 
-        float rate;
-        if (progress == maxProgress) {
-            rate = 1;
-            is0to1 = false;
-        } else {
-            progress = (int) progress + partialTick;
-            rate = (float) Math.sqrt(Math.sqrt(progress / maxProgress));
-        }
+        float rate = (float) Math.min(1, Math.sqrt(Math.sqrt(progress / MAX_PROGRESS)));
 
         // 设置透明度
         // TODO 修复透明度无效的Bug
@@ -83,9 +84,9 @@ public class ChaosCheckerHUD extends AbstractGui {
         // 渲染外框
         this.minecraft.getTextureManager().bindTexture(HUD);
         if (status == 2) {
-            blit(matrixStack, ease(lastX, width - 101, rate), ease(lastY, height + 10, rate), ease(lastW, 200, rate), ease(lastH, 32, rate), -0.5f, 0, 200, 32, 200, 32);
+            preciseBlit(matrixStack, ease(lastX, width - 101, rate), ease(lastY, height + 10, rate), ease(lastW, 200, rate), ease(lastH, 32, rate), -0.5f, 0, 200, 32, 200, 32);
         } else {
-            blit(matrixStack, ease(lastX, width - 50, rate), ease(lastY, 0, rate), ease(lastW, 100, rate), ease(lastH, 16, rate), -0.5f, 0, 200, 32, 200, 32);
+            preciseBlit(matrixStack, ease(lastX, width - 50, rate), ease(lastY, 0, rate), ease(lastW, 100, rate), ease(lastH, 16, rate), -0.5f, 0, 200, 32, 200, 32);
         }
 
         // 渲染条
@@ -94,44 +95,62 @@ public class ChaosCheckerHUD extends AbstractGui {
             rate = 1;
         }
 
-        final int start = width - 33 + 30 - 30 * chaos / 100;
-        final int end = width - 66 + 60 - 60 * chaos / 100;
+        if (chaosAnimateFinished && chaos != lastChaos) {
+            lastChaosChangeTime = System.currentTimeMillis();
+            chaosAnimateFinished = false;
+        }
+        float msPassed = System.currentTimeMillis() - lastChaosChangeTime;
+
+        float chaosRate = (float) Math.min(1, Math.sqrt(Math.sqrt(msPassed / MAX_PROGRESS)));
+
+        // 动画播放过程中的临时混沌值
+        float tempChaos = ease(lastChaos, chaos, chaosRate);
+        final float start = width - 33 + 30 - 30 * tempChaos / 100f;
+        final float end = width - 66 + 60 - 60 * tempChaos / 100f;
+
         if (status == 2) {
-            if (chaos > 0) {
-                blit(matrixStack, ease(start, end, rate),
+            if (tempChaos > 0) {
+                preciseBlit(matrixStack, ease(start, end, rate),
                         ease(6, height + 23, rate),
-                        ease(30 * chaos / 100, 60 * chaos / 100, rate),
+                        ease(30 * tempChaos / 100f, 60 * tempChaos / 100f, rate),
                         ease(4, 6, rate),
-                        ease(60 - (int) (60 * chaos / 100f), 0.5f + 60 - (int) (60 * chaos / 100f), rate),
+                        ease(60 - (60 * tempChaos / 100f), 0.5f + 60 - (60 * tempChaos / 100f), rate),
                         1,
-                        60 * chaos / 100, 6, 60, 15);
-            } else if (chaos < 0) {
-                blit(matrixStack, width + ease(3, 6, rate),
+                        60 * tempChaos / 100f, 6, 60, 15);
+            } else if (tempChaos < 0) {
+                preciseBlit(matrixStack, width + ease(3, 6, rate),
                         ease(6, height + 23, rate),
-                        ease(30 * chaos / -100, 60 * chaos / -100, rate),
+                        ease(30 * tempChaos / -100f, 60 * tempChaos / -100f, rate),
                         ease(4, 6, rate),
                         0.5f,
                         8,
-                        60 * chaos / -100, 6, 60, 15);
+                        60 * tempChaos / -100f, 6, 60, 15);
             }
         } else {
-            if (chaos > 0) {
-                blit(matrixStack, ease(end, start, rate),
+            if (tempChaos > 0) {
+                preciseBlit(matrixStack, ease(end, start, rate),
                         ease(height + 23, 6, rate),
-                        ease(60 * chaos / 100, 30 * chaos / 100, rate),
+                        ease(60 * tempChaos / 100f, 30 * tempChaos / 100f, rate),
                         ease(6, 4, rate),
-                        ease(0.5f + 60 - (int) (60 * chaos / 100f), 60 - (int) (60 * chaos / 100f), rate),
+                        ease(0.5f + 60 - (60 * tempChaos / 100f), 60 - (60 * tempChaos / 100f), rate),
                         0.5f,
-                        60 * chaos / 100, 7, 60, 15);
-            } else if (chaos < 0) {
-                blit(matrixStack, width + ease(6, 3, rate),
+                        60 * tempChaos / 100f, 7, 60, 15);
+            } else if (tempChaos < 0) {
+                preciseBlit(matrixStack, width + ease(6, 3, rate),
                         ease(height + 23, 6, rate),
-                        ease(60 * chaos / -100, 30 * chaos / -100, rate),
+                        ease(60 * tempChaos / -100f, 30 * tempChaos / -100f, rate),
                         ease(6, 4, rate),
                         0.5f,
                         ease(7.5f, 8, rate),
-                        60 * chaos / -100, 7, 60, 15);
+                        60 * tempChaos / -100f, 7, 60, 15);
             }
+        }
+
+        if (msPassed >= MAX_PROGRESS) {
+            if (!chaosAnimateFinished) {
+                lastChaos = chaos;
+            }
+            chaosAnimateFinished = true;
         }
 
 
@@ -144,11 +163,28 @@ public class ChaosCheckerHUD extends AbstractGui {
 
     }
 
-    private static int ease(int start, int end, float rate) {
-        return (int) (start + (end - start) * rate);
-    }
-
     private static float ease(float start, float end, float rate) {
         return start + (end - start) * rate;
+    }
+
+    // 将参数全部换为float类型的精确blit
+    private static void preciseBlit(MatrixStack matrixStack, float x, float y, float width, float height, float uOffset, float vOffset, float uWidth, float vHeight, float textureWidth, float textureHeight) {
+
+        float x2 = x + width, y2 = y + height;
+        float blitOffset = 0;
+        float minU = uOffset / textureWidth, minV = vOffset / textureHeight;
+        float maxU = (uOffset + uWidth) / textureWidth, maxV = (vOffset + vHeight) / textureHeight;
+
+        Matrix4f matrix = matrixStack.getLast().getMatrix();
+
+        BufferBuilder bufferbuilder = Tessellator.getInstance().getBuffer();
+        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+        bufferbuilder.pos(matrix, x, y2, blitOffset).tex(minU, maxV).endVertex();
+        bufferbuilder.pos(matrix, x2, y2, blitOffset).tex(maxU, maxV).endVertex();
+        bufferbuilder.pos(matrix, x2, y, blitOffset).tex(maxU, minV).endVertex();
+        bufferbuilder.pos(matrix, x, y, blitOffset).tex(minU, minV).endVertex();
+        bufferbuilder.finishDrawing();
+        RenderSystem.enableAlphaTest();
+        WorldVertexBufferUploader.draw(bufferbuilder);
     }
 }
