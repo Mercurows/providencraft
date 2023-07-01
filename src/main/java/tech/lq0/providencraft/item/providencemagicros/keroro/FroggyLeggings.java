@@ -3,6 +3,7 @@ package tech.lq0.providencraft.item.providencemagicros.keroro;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
@@ -40,6 +41,11 @@ public class FroggyLeggings extends ArmorItem {
         TooltipTool.addDevelopingText(tooltip);
 
         TooltipTool.addLiverInfo(tooltip, Livers.KERORO);
+    }
+
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
+        return true;
     }
 
     @Override
