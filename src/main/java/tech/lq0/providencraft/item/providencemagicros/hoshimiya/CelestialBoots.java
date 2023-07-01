@@ -48,9 +48,9 @@ public class CelestialBoots extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.ARMOR_TOUGHNESS,
-                    new AttributeModifier(uuid, "celestial boots modifier", 4.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "pdc armor modifier", 4.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MOVEMENT_SPEED,
-                    new AttributeModifier(uuid, "celestial boots modifier", 0.4f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "pdc armor modifier", 0.4f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }

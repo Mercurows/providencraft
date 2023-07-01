@@ -26,8 +26,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
-public class RippleCrown extends ArmorItem {
-    public RippleCrown(){
+public class BreezeCrown extends ArmorItem {
+    public BreezeCrown(){
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.HEAD, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
     }
@@ -44,13 +44,13 @@ public class RippleCrown extends ArmorItem {
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
         Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
-        UUID uuid = new UUID(ItemRegistry.RIPPLE_CROWN.hashCode() + equipmentSlot.toString().hashCode(), 0);
+        UUID uuid = new UUID(ItemRegistry.BREEZE_CROWN.hashCode() + equipmentSlot.toString().hashCode(), 0);
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.ARMOR_TOUGHNESS,
-                    new AttributeModifier(uuid, "ripple crown modifier", 3.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "pdc armor modifier", 3.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_SPEED,
-                    new AttributeModifier(uuid, "ripple crown modifier", 0.2f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "pdc armor modifier", 0.2f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }

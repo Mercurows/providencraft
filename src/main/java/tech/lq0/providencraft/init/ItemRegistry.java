@@ -228,7 +228,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CHIRAM_LANTERN = ITEMS.register("chiram_lantern", ChiramLantern::new);
     public static final RegistryObject<Item> BOLSTER = ITEMS.register("bolster", Bolster::new);
     public static final RegistryObject<Item> EYE_MASK = ITEMS.register("eye_mask", EyeMask::new);
-    public static final RegistryObject<Item> RIPPLE_CROWN = ITEMS.register("ripple_crown", RippleCrown::new);
+    public static final RegistryObject<Item> BREEZE_CROWN = ITEMS.register("breeze_crown", BreezeCrown::new);
 
     //haine
     public static final RegistryObject<Item> HAI_PLATE = ITEMS.register("hai_plate", HaiPlate::new);

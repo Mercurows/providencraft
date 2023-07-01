@@ -49,9 +49,9 @@ public class FroggyLeggings extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.ARMOR_TOUGHNESS,
-                    new AttributeModifier(uuid, "froggy leggings modifier", 6.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "pdc armor modifier", 6.0f, AttributeModifier.Operation.ADDITION));
             map.put(ForgeMod.SWIM_SPEED.get(),
-                    new AttributeModifier(uuid, "froggy leggings modifier", 0.4f, AttributeModifier.Operation.MULTIPLY_BASE));
+                    new AttributeModifier(uuid, "pdc armor modifier", 0.4f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }

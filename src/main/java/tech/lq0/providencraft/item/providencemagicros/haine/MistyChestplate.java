@@ -48,9 +48,9 @@ public class MistyChestplate extends ArmorItem {
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
             map.put(Attributes.ARMOR_TOUGHNESS,
-                    new AttributeModifier(uuid, "misty chestplate modifier", 7.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "pdc armor modifier", 7.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "misty chestplate modifier", 8.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "pdc armor modifier", 8.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
