@@ -65,7 +65,7 @@ public class ChaosCheckerHUD extends AbstractGui {
                 lastY = height + 10;
                 lastAlpha = 1;
             }
-            if (lastStatus == 0 && status == 1) is0to1 = true;
+            is0to1 = lastStatus == 0 && status == 1;
             lastStatus = status;
             lastChangeTime = System.currentTimeMillis();
         }
