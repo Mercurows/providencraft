@@ -5,6 +5,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldVertexBufferUploader;
@@ -129,6 +130,10 @@ public class ChaosCheckerHUD extends AbstractGui {
                         8,
                         60 * tempChaos / -100f, 6, 60, 15);
             }
+            FontRenderer font = Minecraft.getInstance().fontRenderer;
+            String text = String.format("%.1f", Math.abs(tempChaos));
+            float tempRate = (tempChaos + 100) / 200f;
+            font.drawStringWithShadow(matrixStack, text, width - font.getStringWidth(text) / 2f, height + 36, 0xFF << 16 | ease(0xF9, 0xD0, tempRate) << 8 | ease(0xE1, 0xE5, tempRate));
         } else {
             // 转换到屏幕顶端显示/消失
             if (tempChaos > 0) {
@@ -171,6 +176,10 @@ public class ChaosCheckerHUD extends AbstractGui {
 
     private static float ease(float start, float end, float rate) {
         return start + (end - start) * rate;
+    }
+
+    private static int ease(int start, int end, float rate) {
+        return (int) (start + (end - start) * rate);
     }
 
     // 将参数全部换为float类型的精确blit
