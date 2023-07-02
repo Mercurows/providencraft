@@ -109,7 +109,9 @@ public class ChaosCheckerHUD extends AbstractGui {
         final float end = width - 66 + 60 - 60 * tempChaos / 100f;
 
         if (status == 2) {
+            // 转换到屏幕中间显示
             if (tempChaos > 0) {
+                // 混沌
                 preciseBlit(matrixStack, ease(start, end, rate),
                         ease(6, height + 23, rate),
                         ease(30 * tempChaos / 100f, 60 * tempChaos / 100f, rate),
@@ -118,6 +120,7 @@ public class ChaosCheckerHUD extends AbstractGui {
                         1,
                         60 * tempChaos / 100f, 6, 60, 15);
             } else if (tempChaos < 0) {
+                // 清楚
                 preciseBlit(matrixStack, width + ease(3, 6, rate),
                         ease(6, height + 23, rate),
                         ease(30 * tempChaos / -100f, 60 * tempChaos / -100f, rate),
@@ -127,22 +130,25 @@ public class ChaosCheckerHUD extends AbstractGui {
                         60 * tempChaos / -100f, 6, 60, 15);
             }
         } else {
+            // 转换到屏幕顶端显示/消失
             if (tempChaos > 0) {
-                preciseBlit(matrixStack, ease(end, start, rate),
-                        ease(height + 23, 6, rate),
+                // 混沌
+                preciseBlit(matrixStack, ease(end, start + 0.5f, rate),
+                        ease(height + 23, 6.5f, rate),
                         ease(60 * tempChaos / 100f, 30 * tempChaos / 100f, rate),
-                        ease(6, 4, rate),
+                        ease(6, 3, rate),
                         ease(0.5f + 60 - (60 * tempChaos / 100f), 60 - (60 * tempChaos / 100f), rate),
-                        0.5f,
-                        60 * tempChaos / 100f, 7, 60, 15);
+                        1,
+                        60 * tempChaos / 100f, 6, 60, 15);
             } else if (tempChaos < 0) {
-                preciseBlit(matrixStack, width + ease(6, 3, rate),
-                        ease(height + 23, 6, rate),
+                // 清楚
+                preciseBlit(matrixStack, width + ease(6, 4, rate),
+                        ease(height + 23, 6.5f, rate),
                         ease(60 * tempChaos / -100f, 30 * tempChaos / -100f, rate),
-                        ease(6, 4, rate),
-                        0.5f,
-                        ease(7.5f, 8, rate),
-                        60 * tempChaos / -100f, 7, 60, 15);
+                        ease(6, 3, rate),
+                        1,
+                        8,
+                        60 * tempChaos / -100f, 6, 60, 15);
             }
         }
 
