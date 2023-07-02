@@ -508,10 +508,9 @@
   "hiru_scream": {
     "subtitle": "subtitle.providencraft.hiru_scream",
     "sounds": [
-      {
-        "name": "providencraft:hiru_scream",
-        "stream": true
-      }
+      "providencraft:hiru_scream_1",
+      "providencraft:hiru_scream_2",
+      "providencraft:hiru_scream_3"
     ]
   }
 }
