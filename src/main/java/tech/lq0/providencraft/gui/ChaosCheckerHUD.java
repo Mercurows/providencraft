@@ -6,12 +6,8 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldVertexBufferUploader;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.vector.Matrix4f;
+import tech.lq0.providencraft.tools.RenderTool;
 import tech.lq0.providencraft.Utils;
 
 public class ChaosCheckerHUD extends AbstractGui {
@@ -85,9 +81,9 @@ public class ChaosCheckerHUD extends AbstractGui {
         // 渲染外框
         this.minecraft.getTextureManager().bindTexture(HUD);
         if (status == 2) {
-            preciseBlit(matrixStack, ease(lastX, width - 101, rate), ease(lastY, height + 10, rate), ease(lastW, 200, rate), ease(lastH, 32, rate), -0.5f, 0, 200, 32, 200, 32);
+            RenderTool.preciseBlit(matrixStack, ease(lastX, width - 101, rate), ease(lastY, height + 10, rate), ease(lastW, 200, rate), ease(lastH, 32, rate), -0.5f, 0, 200, 32, 200, 32);
         } else {
-            preciseBlit(matrixStack, ease(lastX, width - 50, rate), ease(lastY, 0, rate), ease(lastW, 100, rate), ease(lastH, 16, rate), -0.5f, 0, 200, 32, 200, 32);
+            RenderTool.preciseBlit(matrixStack, ease(lastX, width - 50, rate), ease(lastY, 0, rate), ease(lastW, 100, rate), ease(lastH, 16, rate), -0.5f, 0, 200, 32, 200, 32);
         }
 
         // 渲染条
@@ -113,7 +109,7 @@ public class ChaosCheckerHUD extends AbstractGui {
             // 转换到屏幕中间显示
             if (tempChaos > 0) {
                 // 混沌
-                preciseBlit(matrixStack, ease(start, end, rate),
+                RenderTool.preciseBlit(matrixStack, ease(start, end, rate),
                         ease(6, height + 23, rate),
                         ease(30 * tempChaos / 100f, 60 * tempChaos / 100f, rate),
                         ease(4, 6, rate),
@@ -122,7 +118,7 @@ public class ChaosCheckerHUD extends AbstractGui {
                         60 * tempChaos / 100f, 6, 60, 15);
             } else if (tempChaos < 0) {
                 // 清楚
-                preciseBlit(matrixStack, width + ease(3, 6, rate),
+                RenderTool.preciseBlit(matrixStack, width + ease(3, 6, rate),
                         ease(6, height + 23, rate),
                         ease(30 * tempChaos / -100f, 60 * tempChaos / -100f, rate),
                         ease(4, 6, rate),
@@ -138,7 +134,7 @@ public class ChaosCheckerHUD extends AbstractGui {
             // 转换到屏幕顶端显示/消失
             if (tempChaos > 0) {
                 // 混沌
-                preciseBlit(matrixStack, ease(end, start + 0.5f, rate),
+                RenderTool.preciseBlit(matrixStack, ease(end, start + 0.5f, rate),
                         ease(height + 23, 6.5f, rate),
                         ease(60 * tempChaos / 100f, 30 * tempChaos / 100f, rate),
                         ease(6, 3, rate),
@@ -147,7 +143,7 @@ public class ChaosCheckerHUD extends AbstractGui {
                         60 * tempChaos / 100f, 6, 60, 15);
             } else if (tempChaos < 0) {
                 // 清楚
-                preciseBlit(matrixStack, width + ease(6, 4, rate),
+                RenderTool.preciseBlit(matrixStack, width + ease(6, 4, rate),
                         ease(height + 23, 6.5f, rate),
                         ease(60 * tempChaos / -100f, 30 * tempChaos / -100f, rate),
                         ease(6, 3, rate),
@@ -171,7 +167,6 @@ public class ChaosCheckerHUD extends AbstractGui {
         RenderSystem.enableAlphaTest();
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-
     }
 
     private static float ease(float start, float end, float rate) {
@@ -180,26 +175,5 @@ public class ChaosCheckerHUD extends AbstractGui {
 
     private static int ease(int start, int end, float rate) {
         return (int) (start + (end - start) * rate);
-    }
-
-    // 将参数全部换为float类型的精确blit
-    private static void preciseBlit(MatrixStack matrixStack, float x, float y, float width, float height, float uOffset, float vOffset, float uWidth, float vHeight, float textureWidth, float textureHeight) {
-
-        float x2 = x + width, y2 = y + height;
-        float blitOffset = 0;
-        float minU = uOffset / textureWidth, minV = vOffset / textureHeight;
-        float maxU = (uOffset + uWidth) / textureWidth, maxV = (vOffset + vHeight) / textureHeight;
-
-        Matrix4f matrix = matrixStack.getLast().getMatrix();
-
-        BufferBuilder bufferbuilder = Tessellator.getInstance().getBuffer();
-        bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-        bufferbuilder.pos(matrix, x, y2, blitOffset).tex(minU, maxV).endVertex();
-        bufferbuilder.pos(matrix, x2, y2, blitOffset).tex(maxU, maxV).endVertex();
-        bufferbuilder.pos(matrix, x2, y, blitOffset).tex(maxU, minV).endVertex();
-        bufferbuilder.pos(matrix, x, y, blitOffset).tex(minU, minV).endVertex();
-        bufferbuilder.finishDrawing();
-        RenderSystem.enableAlphaTest();
-        WorldVertexBufferUploader.draw(bufferbuilder);
     }
 }

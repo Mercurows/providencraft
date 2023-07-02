@@ -30,6 +30,7 @@ import tech.lq0.providencraft.item.providenceOI.shirako.WorldPeaceStaff;
 import tech.lq0.providencraft.item.providenceOI.yesa.YeggyPearl;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
 import tech.lq0.providencraft.tools.ItemNBTTool;
+import tech.lq0.providencraft.tools.RenderTool;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -217,8 +218,8 @@ public class SpecialRender {
             int color2 = new Color(0x6e99dd).getRGB();
             int color3 = new Color(0xc0addb).getRGB();
 
-            GuiUtils.drawGradientRect(matrixBar, 1, (int)left - 43 + 67 * energy / 80, (int) top + 74, (int) left - 43,  (int) top + 72, color1, color1);
-            GuiUtils.drawGradientRect(matrixBar, 1, (int)left - 43 + 67 * energy / 80, (int) top + 75, (int) left - 43,  (int) top + 74, color2, color2);
+            RenderTool.drawGradientRect(matrixBar, 1, left - 42.5f + 67 * energy / 80,  (int)top + 74, (int)left - 43f,  (int)top + 72, color1, color1);
+            RenderTool.drawGradientRect(matrixBar, 1, left - 42.5f + 67 * energy / 80,  (int)top + 75,  (int)left - 43f,  (int)top + 74, color2, color2);
 
             int num1 = (int) times;
             int num2 = (int) (times * 10) % 10;
