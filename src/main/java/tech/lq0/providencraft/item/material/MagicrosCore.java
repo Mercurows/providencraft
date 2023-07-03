@@ -25,6 +25,7 @@ import java.util.List;
 
 public class MagicrosCore extends Item {
     public static final String TAG_CHIRAM = "chiram";
+    public static final String TAG_HAINE = "haine";
 
     public MagicrosCore(){
         super(new Properties().maxStackSize(1).rarity(Rarity.EPIC).group(ModGroup.itemgroup).isImmuneToFire());
@@ -42,6 +43,11 @@ public class MagicrosCore extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        boolean flagChiram = false;
+        boolean flagHaine = false;
+        boolean flagKeroro = false;
+        boolean flagEkira = false;
+
         if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) entityIn;
 
@@ -54,17 +60,40 @@ public class MagicrosCore extends Item {
 //                    player.sendStatusMessage(new StringTextComponent("speed: "+speed + " num:" + ItemNBTTool.getInt(stack,TAG_CHIRAM, 0)), true);
 
                     if (speed > .15 && speed < .6 && player.isPotionActive(Effects.REGENERATION)) {
-                        ItemNBTTool.setInt(stack, TAG_CHIRAM, Math.min(ItemNBTTool.getInt(stack, TAG_CHIRAM, 0) + 1, 600));
-                    } else {
-                        ItemNBTTool.setInt(stack, TAG_CHIRAM, 0);
+                        flagChiram = true;
                     }
-                }else {
-                    ItemNBTTool.setInt(stack, TAG_CHIRAM, 0);
+                }
+
+                //灰音核心判定
+                if (!player.abilities.isFlying){
+                    double posY = player.getPosY();
+
+                    if(posY >= 192 && player.isPotionActive(Effects.LEVITATION)){
+                        long time = worldIn.getDayTime() % 24000;
+                        if(time >= 0 && time <= 450){
+                            flagHaine = true;
+                        }
+                    }
+
                 }
             }
 
+            if(flagChiram){
+                ItemNBTTool.setInt(stack, TAG_CHIRAM, Math.min(ItemNBTTool.getInt(stack, TAG_CHIRAM, 0) + 1, 600));
+            }else {
+                ItemNBTTool.setInt(stack, TAG_CHIRAM, 0);
+            }
             if(ItemNBTTool.getInt(stack, TAG_CHIRAM, 0) >= 600){
                 player.replaceItemInInventory(itemSlot, new ItemStack(ItemRegistry.CHIRAM_CORE.get()));
+            }
+
+            if(flagHaine){
+                ItemNBTTool.setInt(stack, TAG_HAINE, Math.min(ItemNBTTool.getInt(stack, TAG_HAINE, 0) + 1, 400));
+            }else {
+                ItemNBTTool.setInt(stack, TAG_HAINE, 0);
+            }
+            if(ItemNBTTool.getInt(stack, TAG_HAINE, 0) >= 400){
+                player.replaceItemInInventory(itemSlot, new ItemStack(ItemRegistry.HAINE_CORE.get()));
             }
 
         }
