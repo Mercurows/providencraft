@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
@@ -26,6 +27,8 @@ import java.util.List;
 public class MagicrosCore extends Item {
     public static final String TAG_CHIRAM = "chiram";
     public static final String TAG_HAINE = "haine";
+    public static final String TAG_KERORO = "keroro";
+    public static final String TAG_EKIRA = "ekira";
 
     public MagicrosCore(){
         super(new Properties().maxStackSize(1).rarity(Rarity.EPIC).group(ModGroup.itemgroup).isImmuneToFire());
@@ -65,16 +68,29 @@ public class MagicrosCore extends Item {
                 }
 
                 //灰音核心判定
-                if (!player.abilities.isFlying){
+                if (!player.abilities.isFlying) {
                     double posY = player.getPosY();
 
-                    if(posY >= 192 && player.isPotionActive(Effects.LEVITATION)){
+                    if (posY >= 192 && player.isPotionActive(Effects.LEVITATION)) {
                         long time = worldIn.getDayTime() % 24000;
-                        if(time >= 0 && time <= 450){
+                        if (time >= 0 && time <= 450) {
                             flagHaine = true;
                         }
                     }
+                }
 
+                //蛙吹核心判定
+                if (worldIn.isRaining()) {
+                    int count = 0;
+                    for (EffectInstance effect : player.getActivePotionEffects()) {
+                        if(!effect.getPotion().isBeneficial() && effect.getDuration() <= 400){
+                            count++;
+                        }
+                    }
+
+                    if(count > 5){
+                        flagKeroro = true;
+                    }
                 }
             }
 
@@ -94,6 +110,15 @@ public class MagicrosCore extends Item {
             }
             if(ItemNBTTool.getInt(stack, TAG_HAINE, 0) >= 400){
                 player.replaceItemInInventory(itemSlot, new ItemStack(ItemRegistry.HAINE_CORE.get()));
+            }
+
+            if(flagKeroro){
+                ItemNBTTool.setInt(stack, TAG_KERORO, Math.min(ItemNBTTool.getInt(stack, TAG_KERORO, 0) + 1, 200));
+            }else {
+                ItemNBTTool.setInt(stack, TAG_KERORO, 0);
+            }
+            if(ItemNBTTool.getInt(stack, TAG_KERORO, 0) >= 200){
+                player.replaceItemInInventory(itemSlot, new ItemStack(ItemRegistry.KERORO_CORE.get()));
             }
 
         }
