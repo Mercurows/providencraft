@@ -81,7 +81,7 @@ public class MagicrosCore extends Item {
                 }
 
                 //蛙吹核心判定
-                if (worldIn.isRaining()) {
+                if (worldIn.isRaining() && player.isInWater()) {
                     int count = 0;
                     for (EffectInstance effect : player.getActivePotionEffects()) {
                         if(!effect.getPotion().isBeneficial() && effect.getDuration() <= 400){
@@ -89,7 +89,7 @@ public class MagicrosCore extends Item {
                         }
                     }
 
-                    if(count > 5){
+                    if(count >= 8){
                         flagKeroro = true;
                     }
                 }
@@ -140,11 +140,11 @@ public class MagicrosCore extends Item {
             }
 
             if(flagKeroro){
-                ItemNBTTool.setInt(stack, TAG_KERORO, Math.min(ItemNBTTool.getInt(stack, TAG_KERORO, 0) + 1, 200));
+                ItemNBTTool.setInt(stack, TAG_KERORO, Math.min(ItemNBTTool.getInt(stack, TAG_KERORO, 0) + 1, 300));
             }else {
                 ItemNBTTool.setInt(stack, TAG_KERORO, 0);
             }
-            if(ItemNBTTool.getInt(stack, TAG_KERORO, 0) >= 200){
+            if(ItemNBTTool.getInt(stack, TAG_KERORO, 0) >= 300){
                 player.replaceItemInInventory(itemSlot, new ItemStack(ItemRegistry.KERORO_CORE.get()));
             }
 
