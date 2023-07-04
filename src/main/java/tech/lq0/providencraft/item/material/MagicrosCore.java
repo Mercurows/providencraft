@@ -13,9 +13,7 @@ import net.minecraft.tileentity.BeaconTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -56,12 +54,11 @@ public class MagicrosCore extends Item {
             PlayerEntity player = (PlayerEntity) entityIn;
 
             if(isSelected) {
+
                 //倾澜核心判定
                 if (player.isElytraFlying()) {
                     Vector3d vec = player.getMotion();
                     double speed = vec.x * vec.x + vec.y * vec.y + vec.z * vec.z;
-
-//                    player.sendStatusMessage(new StringTextComponent("speed: "+speed + " num:" + ItemNBTTool.getInt(stack,TAG_CHIRAM, 0)), true);
 
                     if (speed > .15 && speed < .6 && player.isPotionActive(Effects.REGENERATION)) {
                         flagChiram = true;
@@ -122,6 +119,7 @@ public class MagicrosCore extends Item {
             }
 
             if(flagChiram){
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.magicros_core.chiram").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#FFECE7"))), true);
                 ItemNBTTool.setInt(stack, TAG_CHIRAM, Math.min(ItemNBTTool.getInt(stack, TAG_CHIRAM, 0) + 1, 600));
             }else {
                 ItemNBTTool.setInt(stack, TAG_CHIRAM, 0);
@@ -131,6 +129,7 @@ public class MagicrosCore extends Item {
             }
 
             if(flagHaine){
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.magicros_core.haine").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#ADDBFF"))), true);
                 ItemNBTTool.setInt(stack, TAG_HAINE, Math.min(ItemNBTTool.getInt(stack, TAG_HAINE, 0) + 1, 400));
             }else {
                 ItemNBTTool.setInt(stack, TAG_HAINE, 0);
@@ -140,6 +139,7 @@ public class MagicrosCore extends Item {
             }
 
             if(flagKeroro){
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.magicros_core.keroro").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#F5FFEA"))), true);
                 ItemNBTTool.setInt(stack, TAG_KERORO, Math.min(ItemNBTTool.getInt(stack, TAG_KERORO, 0) + 1, 300));
             }else {
                 ItemNBTTool.setInt(stack, TAG_KERORO, 0);
@@ -149,6 +149,7 @@ public class MagicrosCore extends Item {
             }
 
             if(flagEkira){
+                player.sendStatusMessage(new TranslationTextComponent("des.providencraft.magicros_core.ekira").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#FFF7EA"))), true);
                 ItemNBTTool.setInt(stack, TAG_EKIRA, Math.min(ItemNBTTool.getInt(stack, TAG_EKIRA, 0) + 1, 1200));
             }else {
                 ItemNBTTool.setInt(stack, TAG_EKIRA, 0);
