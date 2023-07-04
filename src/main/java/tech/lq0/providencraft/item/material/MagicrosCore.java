@@ -1,5 +1,6 @@
 package tech.lq0.providencraft.item.material;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,6 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.tileentity.BeaconTileEntity;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -18,7 +22,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
-import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -38,8 +41,6 @@ public class MagicrosCore extends Item {
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
         tooltip.add(new TranslationTextComponent("des.providencraft.magicros_core_1").mergeStyle(TextFormatting.GRAY));
         tooltip.add(new TranslationTextComponent("des.providencraft.magicros_core_2").mergeStyle(TextFormatting.GRAY));
     }
@@ -92,6 +93,32 @@ public class MagicrosCore extends Item {
                         flagKeroro = true;
                     }
                 }
+
+                //星宫颜核心判定
+                if (!worldIn.isDaytime() && !worldIn.isRaining()){
+                    BlockPos pos = player.getPosition();
+                    int count = 0;
+
+                    boolean flag1 = worldIn.canSeeSky(pos);
+                    boolean flag2 = player.isPotionActive(Effects.GLOWING);
+
+                    for (int i = -5; i <= 5; i++) {
+                        for (int q = -5; q <= 5; q++) {
+                            if (worldIn.getBlockState(pos.add(i, 0, q)).isIn(Blocks.BEACON)) {
+                                TileEntity tileEntity = worldIn.getTileEntity(pos.add(i, 0, q));
+                                if(tileEntity instanceof BeaconTileEntity){
+                                    if(((BeaconTileEntity) tileEntity).getLevels() == 4){
+                                        count++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if(count >= 4 && flag1 && flag2){
+                        flagEkira = true;
+                    }
+                }
             }
 
             if(flagChiram){
@@ -119,6 +146,15 @@ public class MagicrosCore extends Item {
             }
             if(ItemNBTTool.getInt(stack, TAG_KERORO, 0) >= 200){
                 player.replaceItemInInventory(itemSlot, new ItemStack(ItemRegistry.KERORO_CORE.get()));
+            }
+
+            if(flagEkira){
+                ItemNBTTool.setInt(stack, TAG_EKIRA, Math.min(ItemNBTTool.getInt(stack, TAG_EKIRA, 0) + 1, 1200));
+            }else {
+                ItemNBTTool.setInt(stack, TAG_EKIRA, 0);
+            }
+            if(ItemNBTTool.getInt(stack, TAG_EKIRA, 0) >= 1200){
+                player.replaceItemInInventory(itemSlot, new ItemStack(ItemRegistry.EKIRA_CORE.get()));
             }
 
         }
