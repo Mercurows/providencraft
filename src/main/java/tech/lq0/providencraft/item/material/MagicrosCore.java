@@ -1,8 +1,10 @@
 package tech.lq0.providencraft.item.material;
 
+import net.minecraft.block.AirBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -56,7 +58,7 @@ public class MagicrosCore extends Item {
             if(isSelected) {
 
                 //倾澜核心判定
-                if (player.isElytraFlying()) {
+                if (player.isElytraFlying() && !worldIn.isRaining()) {
                     Vector3d vec = player.getMotion();
                     double speed = vec.x * vec.x + vec.y * vec.y + vec.z * vec.z;
 
@@ -69,9 +71,18 @@ public class MagicrosCore extends Item {
                 if (!player.abilities.isFlying) {
                     double posY = player.getPosY();
 
-                    if (posY >= 192 && player.isPotionActive(Effects.LEVITATION)) {
+                    if (posY >= 192 && player.isPotionActive(Effects.LEVITATION) && player.getAttributeValue(Attributes.ARMOR) >= 20) {
+                        boolean flagAir = false;
                         long time = worldIn.getDayTime() % 24000;
-                        if (time >= 0 && time <= 450) {
+
+                        BlockPos pos = player.getPosition();
+                        if(worldIn.getBlockState(pos).getBlock() instanceof AirBlock &&
+                                worldIn.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof AirBlock){
+                            flagAir = true;
+                        }
+
+
+                        if (time >= 0 && time <= 450 && flagAir) {
                             flagHaine = true;
                         }
                     }
@@ -79,14 +90,21 @@ public class MagicrosCore extends Item {
 
                 //蛙吹核心判定
                 if (worldIn.isRaining() && player.isInWater()) {
+                    boolean flagJump = false;
+
                     int count = 0;
                     for (EffectInstance effect : player.getActivePotionEffects()) {
                         if(!effect.getPotion().isBeneficial() && effect.getDuration() <= 400){
                             count++;
                         }
+                        if(effect.getEffectName().equals(Effects.JUMP_BOOST.getName())){
+                            if(effect.getAmplifier() >= 3){
+                                flagJump = true;
+                            }
+                        }
                     }
 
-                    if(count >= 8){
+                    if(count >= 8 && flagJump){
                         flagKeroro = true;
                     }
                 }
@@ -98,6 +116,7 @@ public class MagicrosCore extends Item {
 
                     boolean flag1 = worldIn.canSeeSky(pos);
                     boolean flag2 = player.isPotionActive(Effects.GLOWING);
+                    boolean flag3 = !player.getFoodStats().needFood();
 
                     for (int i = -5; i <= 5; i++) {
                         for (int q = -5; q <= 5; q++) {
@@ -112,7 +131,7 @@ public class MagicrosCore extends Item {
                         }
                     }
 
-                    if(count >= 4 && flag1 && flag2){
+                    if(count >= 4 && flag1 && flag2 && flag3){
                         flagEkira = true;
                     }
                 }
