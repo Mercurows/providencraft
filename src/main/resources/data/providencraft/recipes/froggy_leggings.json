@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#G#",
+    "PBC",
+    "#T#"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:dream_weaving_yarn"
+    },
+    "G": {
+      "item": "minecraft:golden_leggings"
+    },
+    "P": {
+      "item": "providencraft:keroro_idol_helmet"
+    },
+    "B": {
+      "item": "providencraft:keroro_core"
+    },
+    "C": {
+      "item": "providencraft:keroro_idol_boots"
+    },
+    "T": {
+      "item": "providencraft:keroro_idol_chestplate"
+    }
+  },
+  "result": {
+    "item": "providencraft:froggy_leggings",
+    "count": 1
+  }
+}

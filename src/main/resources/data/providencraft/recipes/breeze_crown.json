@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#G#",
+    "PBC",
+    "#T#"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:dream_weaving_yarn"
+    },
+    "G": {
+      "item": "minecraft:golden_helmet"
+    },
+    "P": {
+      "item": "providencraft:chiram_idol_helmet"
+    },
+    "B": {
+      "item": "providencraft:chiram_core"
+    },
+    "C": {
+      "item": "providencraft:chiram_idol_boots"
+    },
+    "T": {
+      "item": "providencraft:chiram_idol_chestplate"
+    }
+  },
+  "result": {
+    "item": "providencraft:breeze_crown",
+    "count": 1
+  }
+}

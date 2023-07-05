@@ -432,6 +432,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> GN_SPIRIT = ITEMS.register("gn_spirit", GNSpirit::new);
     public static final RegistryObject<Item> GN_STAR = ITEMS.register("gn_star", GNStar::new);
     public static final RegistryObject<Item> MAGICROS_CORE = ITEMS.register("magicros_core", MagicrosCore::new);
+    public static final RegistryObject<Item> DREAM_WEAVING_YARN = ITEMS.register("dream_weaving_yarn", DreamWeavingYarn::new);
 
     //BLOCKS
     public static final RegistryObject<Item> RED_AHOGE_BLOCK = ITEMS.register("red_ahoge_block",
