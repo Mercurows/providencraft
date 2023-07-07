@@ -8,7 +8,7 @@
         "damage_multiplier": 1.2,
         "angle": 100,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_right",
+        "animation": "bettercombat:one_handed_punch",
         "swing_sound": {
           "id": "bettercombat:sickle_slash"
         }
@@ -18,7 +18,7 @@
         "damage_multiplier": 1.5,
         "angle": 100,
         "upswing": 0.5,
-        "animation": "bettercombat:one_handed_slash_horizontal_left",
+        "animation": "bettercombat:one_handed_punch",
         "swing_sound": {
           "id": "bettercombat:sickle_slash"
         }
