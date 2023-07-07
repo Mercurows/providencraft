@@ -25,6 +25,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.entity.projectile.HirenadeGGEntity;
 import tech.lq0.providencraft.group.ModGroup;
+import tech.lq0.providencraft.init.SoundRegistry;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
@@ -75,17 +76,21 @@ public class SecondaryCataclysm extends Item {
             }
         }
 
-        if(!world.isRemote && !player.getCooldownTracker().hasCooldown(stack.getItem()) && !player.isSneaking()){
+        if(!player.getCooldownTracker().hasCooldown(stack.getItem()) && !player.isSneaking()){
             if(player.abilities.isCreativeMode || ItemNBTTool.getInt(stack, TAG_AMMO, 0) > 0) {
-                HirenadeGGEntity hirenadeGG = new HirenadeGGEntity(world, player);
-                hirenadeGG.setShooter(player);
-                hirenadeGG.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.8f, 0.0f);
-                world.addEntity(hirenadeGG);
+                if(!world.isRemote) {
+                    HirenadeGGEntity hirenadeGG = new HirenadeGGEntity(world, player);
+                    hirenadeGG.setShooter(player);
+                    hirenadeGG.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.8f, 0.0f);
+                    world.addEntity(hirenadeGG);
 
-                player.getCooldownTracker().setCooldown(stack.getItem(), 10);
-                if(!player.abilities.isCreativeMode){
-                    ItemNBTTool.setInt(stack, TAG_AMMO, ItemNBTTool.getInt(stack, TAG_AMMO, 0) - 1);
+                    player.getCooldownTracker().setCooldown(stack.getItem(), 10);
+                    if (!player.abilities.isCreativeMode) {
+                        ItemNBTTool.setInt(stack, TAG_AMMO, ItemNBTTool.getInt(stack, TAG_AMMO, 0) - 1);
+                    }
                 }
+                player.playSound(SoundRegistry.GRENADE_SHOOT.get(), 1.0f, 1.0f);
+
                 return ActionResult.resultFail(stack);
             }
         }

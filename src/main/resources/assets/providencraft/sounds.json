@@ -512,5 +512,13 @@
       "providencraft:hiru_scream_2",
       "providencraft:hiru_scream_3"
     ]
+  },
+  "grenade_shoot": {
+    "subtitle": "subtitle.providencraft.grenade_shoot",
+    "sounds": [
+      {
+        "name": "providencraft:grenade_shoot"
+      }
+    ]
   }
 }
