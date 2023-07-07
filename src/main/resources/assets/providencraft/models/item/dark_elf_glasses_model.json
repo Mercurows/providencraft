@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "dark_elf_glasses",
 	"texture_size": [32, 32],
 	"textures": {
 		"1": "providencraft:item/dark_elf_glasses_texture"

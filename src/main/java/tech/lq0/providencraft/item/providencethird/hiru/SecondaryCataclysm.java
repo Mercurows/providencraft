@@ -13,7 +13,6 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
-import net.minecraft.item.UseAction;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -54,8 +53,6 @@ public class SecondaryCataclysm extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
         tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_3")).mergeStyle(TextFormatting.GRAY));
@@ -83,7 +80,6 @@ public class SecondaryCataclysm extends Item {
                 HirenadeGGEntity hirenadeGG = new HirenadeGGEntity(world, player);
                 hirenadeGG.setShooter(player);
                 hirenadeGG.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.8f, 0.0f);
-
                 world.addEntity(hirenadeGG);
 
                 player.getCooldownTracker().setCooldown(stack.getItem(), 10);
@@ -95,11 +91,6 @@ public class SecondaryCataclysm extends Item {
         }
 
         return ActionResult.resultFail(stack);
-    }
-
-    @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BOW;
     }
 
     @Override

@@ -42,5 +42,14 @@ public class PropertyRegistry {
                     }
                 })
         );
+        event.enqueueWork(() ->
+                ItemModelsProperties.registerProperty(ItemRegistry.SECONDARY_CATACLYSM.get(), new ResourceLocation("reload"), (heldStack, world, livingEntity) -> {
+                    if (livingEntity == null) {
+                        return 0.0F;
+                    } else {
+                        return livingEntity.getActiveItemStack() != heldStack ? 0.0F : (float) (heldStack.getUseDuration() - livingEntity.getItemInUseCount()) / 30.0f;
+                    }
+                })
+        );
     }
 }

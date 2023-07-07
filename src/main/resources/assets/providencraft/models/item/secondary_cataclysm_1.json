@@ -4,26 +4,6 @@
 	"textures": {
 		"1": "providencraft:item/secondary_cataclysm"
 	},
-	"overrides": [
-		{
-			"predicate": {
-				"reload": 0.1
-			},
-			"model": "providencraft:item/secondary_cataclysm_1"
-		},
-		{
-			"predicate": {
-				"reload": 0.35
-			},
-			"model": "providencraft:item/secondary_cataclysm_2"
-		},
-		{
-			"predicate": {
-				"reload": 0.9
-			},
-			"model": "providencraft:item/secondary_cataclysm_1"
-		}
-	],
 	"elements": [
 		{
 			"from": [3.76955, 7.32204, 6.86617],
@@ -4041,10 +4021,12 @@
 			"scale": [0.9, 0.9, 0.9]
 		},
 		"firstperson_righthand": {
-			"translation": [-3.5, 3.75, -0.5]
+			"rotation": [-16.5, 0, 0],
+			"translation": [-3.5, 2.75, -0.5]
 		},
 		"firstperson_lefthand": {
-			"translation": [-3.5, 3.75, -0.5]
+			"rotation": [-16.5, 0, 0],
+			"translation": [-3.5, 2.75, -0.5]
 		},
 		"ground": {
 			"translation": [0, 2, 0],
