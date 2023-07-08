@@ -2,7 +2,6 @@
   "attributes": {
     "attack_range": 2.5,
     "two_handed": true,
-    "pose": "providencraft:pose_secondary_cataclysm",
     "category": "secondary_cataclysm",
     "attacks": [
       {

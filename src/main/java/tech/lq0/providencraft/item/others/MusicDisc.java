@@ -22,8 +22,8 @@ import java.util.function.Supplier;
 public class MusicDisc extends MusicDiscItem {
     private final Livers liver;
 
-    public MusicDisc(Livers liver, Supplier<SoundEvent> soundSupplier, Item.Properties builder) {
-        super(15, soundSupplier, builder);
+    public MusicDisc(Livers liver, Supplier<SoundEvent> soundSupplier, Item.Properties builder, int value) {
+        super(value, soundSupplier, builder);
         this.liver = liver;
     }
 
