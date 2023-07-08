@@ -71,6 +71,8 @@ public class BreezeCrown extends ArmorItem {
                     new AttributeModifier(uuid, "pdc armor modifier", 3.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_SPEED,
                     new AttributeModifier(uuid, "pdc armor modifier", getAttackSpeedAmount(stack), AttributeModifier.Operation.MULTIPLY_BASE));
+            map.put(Attributes.MAX_HEALTH,
+                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 4.0f : 0.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }

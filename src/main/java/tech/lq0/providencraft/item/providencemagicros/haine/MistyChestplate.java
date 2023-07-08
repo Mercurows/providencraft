@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
@@ -20,6 +21,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
+import tech.lq0.providencraft.tools.ArmorTool;
+import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.Livers;
 import tech.lq0.providencraft.tools.TooltipTool;
 
@@ -29,6 +32,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class MistyChestplate extends ArmorItem {
+    public static final String TAG_SET = "Set";
+
     public MistyChestplate(){
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.CHEST, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
@@ -46,13 +51,17 @@ public class MistyChestplate extends ArmorItem {
     }
 
     @Override
-    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
-        return true;
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if(!world.isRemote){
+            setArmorSet(stack, player);
+
+        }
+
     }
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot) {
-        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot);
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlot, ItemStack stack) {
+        Multimap<Attribute, AttributeModifier> map = super.getAttributeModifiers(equipmentSlot, stack);
         UUID uuid = new UUID(ItemRegistry.MISTY_CHESTPLATE.hashCode() + equipmentSlot.toString().hashCode(), 0);
         if (equipmentSlot == getEquipmentSlot()) {
             map = HashMultimap.create(map);
@@ -60,12 +69,27 @@ public class MistyChestplate extends ArmorItem {
                     new AttributeModifier(uuid, "pdc armor modifier", 7.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MAX_HEALTH,
                     new AttributeModifier(uuid, "pdc armor modifier", 8.0f, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.LUCK,
+                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 4.0f : 0.0f, AttributeModifier.Operation.ADDITION));
         }
         return map;
     }
 
     @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
+        return true;
+    }
+
+    @Override
     public boolean isDamageable() {
         return false;
+    }
+
+    public static void setArmorSet(ItemStack stack, PlayerEntity player){
+        ItemNBTTool.setBoolean(stack, TAG_SET, ArmorTool.hasArmorSet(player));
+    }
+
+    public static boolean hasArmorSet(ItemStack stack){
+        return ItemNBTTool.getBoolean(stack, TAG_SET, false);
     }
 }
