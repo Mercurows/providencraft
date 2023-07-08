@@ -23,6 +23,9 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import tech.lq0.providencraft.entity.projectile.HirenadeGGEntity;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.SoundRegistry;
@@ -90,6 +93,33 @@ public class SecondaryCataclysm extends Item {
                     }
                 }
                 player.playSound(SoundRegistry.GRENADE_SHOOT.get(), 1.0f, 1.0f);
+
+                new Object() {
+                    private int ticks = 0;
+                    private float waitTicks;
+
+                    public void start(int waitTicks) {
+                        this.waitTicks = waitTicks;
+                        ItemNBTTool.setBoolean(stack, "fire", true);
+
+                        MinecraftForge.EVENT_BUS.register(this);
+                    }
+
+                    @SubscribeEvent
+                    public void tick(TickEvent.ServerTickEvent event) {
+                        if (event.phase == TickEvent.Phase.END) {
+                            this.ticks++;
+                            if (this.ticks >= this.waitTicks) {
+                                run();
+                            }
+                        }
+                    }
+
+                    private void run() {
+                        ItemNBTTool.setBoolean(stack, "fire", false);
+                        MinecraftForge.EVENT_BUS.unregister(this);
+                    }
+                }.start(5);
 
                 return ActionResult.resultFail(stack);
             }

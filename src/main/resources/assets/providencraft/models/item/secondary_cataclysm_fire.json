@@ -4011,6 +4011,11 @@
 		}
 	],
 	"gui_light": "front",
+	"overrides": [
+		{"predicate": {"reload": 0.1}, "model": "providencraft:item/secondary_cataclysm_1"},
+		{"predicate": {"reload": 0.35}, "model": "providencraft:item/secondary_cataclysm_2"},
+		{"predicate": {"reload": 0.9}, "model": "providencraft:item/secondary_cataclysm_1"}
+	],
 	"display": {
 		"thirdperson_righthand": {
 			"translation": [0, 1, -2.5],
@@ -4021,12 +4026,12 @@
 			"scale": [0.65, 0.65, 0.65]
 		},
 		"firstperson_righthand": {
-			"rotation": [-16.5, 0, 0],
-			"translation": [-3.5, 2.75, -0.5]
+			"rotation": [1.5, 0, 0],
+			"translation": [-3.5, 3.75, 1.75]
 		},
 		"firstperson_lefthand": {
-			"rotation": [-16.5, 0, 0],
-			"translation": [-3.5, 2.75, -0.5]
+			"rotation": [1.5, 0, 0],
+			"translation": [-3.5, 3.75, 1.75]
 		},
 		"ground": {
 			"translation": [0, 2, 0],

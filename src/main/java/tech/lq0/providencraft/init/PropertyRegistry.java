@@ -51,5 +51,9 @@ public class PropertyRegistry {
                     }
                 })
         );
+        event.enqueueWork(() ->
+                ItemModelsProperties.registerProperty(ItemRegistry.SECONDARY_CATACLYSM.get(), new ResourceLocation("fire"),
+                        (heldStack, world, livingEntity) -> ItemNBTTool.getBoolean(heldStack, "fire", false) ? 1.0F : 0.0F)
+        );
     }
 }
