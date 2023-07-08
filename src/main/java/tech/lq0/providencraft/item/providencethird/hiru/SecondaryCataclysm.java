@@ -92,7 +92,7 @@ public class SecondaryCataclysm extends Item {
                         ItemNBTTool.setInt(stack, TAG_AMMO, ItemNBTTool.getInt(stack, TAG_AMMO, 0) - 1);
                     }
                 }else {
-                    player.playSound(SoundRegistry.GRENADE_SHOOT.get(), 1.0f, 1.0f);
+                    player.playSound(SoundRegistry.GRENADE_SHOOT.get(), 0.9f, 1.0f);
                 }
 
                 new Object() {

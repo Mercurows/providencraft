@@ -6,6 +6,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.integration.vrc.item.ameki.RainyButterfly;
+import tech.lq0.providencraft.integration.vrc.item.chiharu.LittleSpringRoll;
+import tech.lq0.providencraft.integration.vrc.item.koxia.Kuya;
 import tech.lq0.providencraft.integration.vrc.item.sui.SuimashedCookie;
 
 public class VirtuaRealCraftRegistry {
@@ -13,4 +15,6 @@ public class VirtuaRealCraftRegistry {
 
     public static final RegistryObject<Item> RAINY_BUTTERFLY = VRC_ITEMS.register("rainy_butterfly", RainyButterfly::new);
     public static final RegistryObject<Item> SUIMASHED_COOKIE = VRC_ITEMS.register("suimashed_cookie", SuimashedCookie::new);
+    public static final RegistryObject<Item> KUYA = VRC_ITEMS.register("kuya", Kuya::new);
+    public static final RegistryObject<Item> LITTLE_SPRING_ROLL = VRC_ITEMS.register("little_spring_roll", LittleSpringRoll::new);
 }
