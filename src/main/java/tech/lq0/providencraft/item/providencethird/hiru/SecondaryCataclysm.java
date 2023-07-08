@@ -17,7 +17,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
@@ -60,7 +59,7 @@ public class SecondaryCataclysm extends Item {
         tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_1")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add((new TranslationTextComponent("des.providencraft.secondary_cataclysm_3")).mergeStyle(TextFormatting.GRAY));
-        tooltip.add(new StringTextComponent("Ammo:" + ItemNBTTool.getInt(stack, TAG_AMMO, 0)));
+
         TooltipTool.addLiverInfo(tooltip, Livers.HIRU);
     }
 
