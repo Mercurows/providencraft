@@ -91,8 +91,9 @@ public class SecondaryCataclysm extends Item {
                     if (!player.abilities.isCreativeMode) {
                         ItemNBTTool.setInt(stack, TAG_AMMO, ItemNBTTool.getInt(stack, TAG_AMMO, 0) - 1);
                     }
+                }else {
+                    player.playSound(SoundRegistry.GRENADE_SHOOT.get(), 1.0f, 1.0f);
                 }
-                player.playSound(SoundRegistry.GRENADE_SHOOT.get(), 1.0f, 1.0f);
 
                 new Object() {
                     private int ticks = 0;
@@ -119,7 +120,7 @@ public class SecondaryCataclysm extends Item {
                         ItemNBTTool.setBoolean(stack, "fire", false);
                         MinecraftForge.EVENT_BUS.unregister(this);
                     }
-                }.start(5);
+                }.start(3);
 
                 return ActionResult.resultFail(stack);
             }

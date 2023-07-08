@@ -9,10 +9,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import tech.lq0.providencraft.gui.ChaosCheckerHUD;
-import tech.lq0.providencraft.gui.EclipseNightHUD;
-import tech.lq0.providencraft.gui.EclipseNightHUD2;
-import tech.lq0.providencraft.gui.RainyButterflyHUD;
+import tech.lq0.providencraft.gui.*;
 import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.integration.CompatHandler;
@@ -23,6 +20,7 @@ import tech.lq0.providencraft.item.others.ChaosChecker;
 public class HudClientEvent {
     public static final ChaosCheckerHUD CheckerHUD = new ChaosCheckerHUD();
 
+    @SuppressWarnings("ConstantConditions")
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void onOverlayRender(RenderGameOverlayEvent.Post event) {
         if (event.getType() != RenderGameOverlayEvent.ElementType.HELMET) {
@@ -124,5 +122,40 @@ public class HudClientEvent {
 
         int chaos = ChaosChecker.getChaos(mainStack);
         CheckerHUD.render(event.getMatrixStack(), chaos, status);
+    }
+
+    @SubscribeEvent
+    public static void onSecondaryCataclysmRender(RenderGameOverlayEvent.Post event){
+        if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
+            return;
+        }
+        if (Minecraft.getInstance().player == null) {
+            return;
+        }
+
+        PlayerEntity player = Minecraft.getInstance().player;
+
+        if (player.isSpectator() || player.isCreative()) {
+            return;
+        }
+
+        ItemStack stack = null;
+        ItemStack mainhandStack = player.getHeldItemMainhand();
+        ItemStack offhandStack = player.getHeldItemOffhand();
+
+        if (mainhandStack.getItem() == ItemRegistry.SECONDARY_CATACLYSM.get()) {
+            stack = mainhandStack;
+        } else if (offhandStack.getItem() == ItemRegistry.SECONDARY_CATACLYSM.get()) {
+            stack = offhandStack;
+        }
+        if (mainhandStack.getItem() == ItemRegistry.SECONDARY_CATACLYSM.get() &&
+                offhandStack.getItem() == ItemRegistry.SECONDARY_CATACLYSM.get()) {
+            stack = mainhandStack;
+        }
+
+        if (stack != null) {
+            SecondaryCataclysmHUD secondaryCataclysmHUD = new SecondaryCataclysmHUD(event.getMatrixStack(), stack);
+            secondaryCataclysmHUD.render();
+        }
     }
 }
