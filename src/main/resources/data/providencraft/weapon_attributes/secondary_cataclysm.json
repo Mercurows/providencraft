@@ -8,7 +8,7 @@
         "hitbox": "HORIZONTAL_PLANE",
         "damage_multiplier": 1.5,
         "angle": 60,
-        "upswing": 0.5,
+        "upswing": 0.3,
         "animation": "providencraft:secondary_cataclysm_stab",
         "swing_sound": {
           "id": "bettercombat:sickle_slash"
