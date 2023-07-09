@@ -2,6 +2,7 @@ package tech.lq0.providencraft.item.providenceOI.shirako;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -120,7 +121,7 @@ public class MomoPhone extends Item {
                                 item.setDamage(item.getDamage() + 1);
                             }
                             playerIn.getCooldownTracker().setCooldown(item.getItem(), 200);
-                            if (item.getDamage() == item.getMaxDamage()) {
+                            if(item.getDamage() == item.getMaxDamage()) {
                                 ItemNBTTool.setBoolean(item, NBT_BINDING, false);
                             }
                         } else {
@@ -134,6 +135,21 @@ public class MomoPhone extends Item {
             }
         }
         return new ActionResult<>(ActionResultType.FAIL, item);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        if(!worldIn.isRemote){
+            float posX = ItemNBTTool.getFloat(stack, NBT_POS_X, Float.NaN);
+            float posY = ItemNBTTool.getFloat(stack, NBT_POS_Y, Float.NaN);
+            float posZ = ItemNBTTool.getFloat(stack, NBT_POS_Z, Float.NaN);
+
+            if (!(Float.isNaN(posX) || Float.isNaN(posY) || Float.isNaN(posZ))) {
+                if(stack.getDamage() < stack.getMaxDamage()){
+                    ItemNBTTool.setBoolean(stack, NBT_BINDING, true);
+                }
+            }
+        }
     }
 
     @OnlyIn(Dist.CLIENT)
