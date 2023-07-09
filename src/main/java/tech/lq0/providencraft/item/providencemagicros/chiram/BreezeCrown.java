@@ -3,6 +3,7 @@ package tech.lq0.providencraft.item.providencemagicros.chiram;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -12,12 +13,15 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
@@ -31,6 +35,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class BreezeCrown extends ArmorItem {
     public static final String TAG_HEALTH = "Health";
     public static final String TAG_SET = "Set";
@@ -48,17 +53,25 @@ public class BreezeCrown extends ArmorItem {
 
         tooltip.add(new TranslationTextComponent("des.providencraft.breeze_crown_1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add(new TranslationTextComponent("des.providencraft.breeze_crown_2").mergeStyle(TextFormatting.GRAY));
+        if(hasArmorSet(stack)) {
+            tooltip.add(new TranslationTextComponent("des.providencraft.magicros_set").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#E2B578"))));
+        }
+
         TooltipTool.addLiverInfo(tooltip, Livers.CHIRAM);
     }
 
     @Override
-    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if(!world.isRemote){
+    public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
+        if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entityIn;
             setHealthAmount(stack, player);
             setArmorSet(stack, player);
-
         }
+    }
 
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged;
     }
 
     @Override
@@ -110,5 +123,24 @@ public class BreezeCrown extends ArmorItem {
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) {
         return true;
+    }
+
+    @SubscribeEvent
+    public static void breezeCrownEvent(LivingHurtEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+        ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.HEAD);
+        if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
+            PlayerEntity player = (PlayerEntity) livingEntity;
+            if(!player.getCooldownTracker().hasCooldown(ItemRegistry.BREEZE_CROWN.get())) {
+                if (!player.world.isRemote) {
+                    int level = ArmorTool.hasArmorSet(player) ? 4 : 3;
+                    int time = ArmorTool.hasArmorSet(player) ? 50 : 35;
+                    player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 30, level, false, false));
+
+                    player.hurtResistantTime = time;
+                    player.getCooldownTracker().setCooldown(ItemRegistry.BREEZE_CROWN.get(), 160);
+                }
+            }
+        }
     }
 }
