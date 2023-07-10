@@ -124,6 +124,8 @@ public class AncientLollipop extends SwordItem {
             player.getCooldownTracker().setCooldown(stack.getItem(), 70);
             player.playSound(SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, 1.0f, 1.0f);
             ItemNBTTool.setBoolean(stack, TAG_LOLLIPOP, true);
+
+            player.fallDistance = 0;
         }
         return stack;
     }

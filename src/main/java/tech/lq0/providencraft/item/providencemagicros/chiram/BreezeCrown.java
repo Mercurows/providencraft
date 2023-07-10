@@ -129,10 +129,10 @@ public class BreezeCrown extends ArmorItem {
     public static void breezeCrownEvent(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
         ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.HEAD);
-        if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
-            PlayerEntity player = (PlayerEntity) livingEntity;
-            if(!player.getCooldownTracker().hasCooldown(ItemRegistry.BREEZE_CROWN.get())) {
-                if (!player.world.isRemote) {
+        if(!livingEntity.world.isRemote) {
+            if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
+                PlayerEntity player = (PlayerEntity) livingEntity;
+                if (!player.getCooldownTracker().hasCooldown(ItemRegistry.BREEZE_CROWN.get())) {
                     int level = ArmorTool.hasArmorSet(player) ? 4 : 3;
                     int time = ArmorTool.hasArmorSet(player) ? 50 : 35;
                     player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 30, level, false, false));
