@@ -76,6 +76,7 @@ import tech.lq0.providencraft.item.providencefirst.usa.BrownieUzza;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiBoomerang;
 import tech.lq0.providencraft.item.providencefirst.usa.KurumiHalo;
 import tech.lq0.providencraft.item.providencefirst.usa.Plunger;
+import tech.lq0.providencraft.item.providencefourth.choco.StrawberryCake;
 import tech.lq0.providencraft.item.providencemagicros.chiram.*;
 import tech.lq0.providencraft.item.providencemagicros.haine.*;
 import tech.lq0.providencraft.item.providencemagicros.hoshimiya.*;
@@ -340,6 +341,18 @@ public class ItemRegistry {
     //qianyun
     public static final RegistryObject<Item> QIANYUN_HOE = ITEMS.register("qianyun_hoe", QianyunHoe::new);
     public static final RegistryObject<Item> SUITCASE = ITEMS.register("suitcase", Suitcase::new);
+
+    /**
+     * 4th
+     */
+    //choco
+    public static final RegistryObject<Item> STRAWBERRY_CAKE = ITEMS.register("strawberry_cake", StrawberryCake::new);
+
+    //hifumi
+
+
+    //sana
+
 
     /**
      * others
