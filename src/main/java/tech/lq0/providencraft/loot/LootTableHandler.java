@@ -46,6 +46,7 @@ public class LootTableHandler {
             chance = replaceChance;
         }
 
+        @SuppressWarnings("unchecked")
         @Nonnull
         @Override
         protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
