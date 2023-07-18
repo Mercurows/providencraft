@@ -148,8 +148,9 @@ public class SpecialRender {
             Vector3d look = player.getLookVec();
             MatrixStack stack = evt.getMatrixStack();
 
+            int distance = 300;
             Vector3d start = player.getPositionVec().add(0, player.getEyeHeight(), 0);
-            Vector3d end = player.getPositionVec().add(look.x * 200, look.y * 200 + player.getEyeHeight(), look.z * 200);
+            Vector3d end = player.getPositionVec().add(look.x * distance, look.y * distance + player.getEyeHeight(), look.z * distance);
 
             RayTraceContext context = new RayTraceContext(start, end, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, player);
             BlockRayTraceResult result = player.getEntityWorld().rayTraceBlocks(context);
@@ -167,7 +168,7 @@ public class SpecialRender {
                         evt.getPartialTicks(),
                         1, world.getGameTime(),
                         0, 1000, new float[]{1, 0, 0},
-                        0.35f, .1f);
+                        0.35f, .4f);
 
                 stack.pop();
 
