@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
@@ -148,33 +149,35 @@ public class SpecialRender {
             MatrixStack stack = evt.getMatrixStack();
 
             Vector3d start = player.getPositionVec().add(0, player.getEyeHeight(), 0);
-            Vector3d end = player.getPositionVec().add(look.x * 100, look.y * 100 + player.getEyeHeight(), look.z * 100);
+            Vector3d end = player.getPositionVec().add(look.x * 200, look.y * 200 + player.getEyeHeight(), look.z * 200);
 
             RayTraceContext context = new RayTraceContext(start, end, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, player);
             BlockRayTraceResult result = player.getEntityWorld().rayTraceBlocks(context);
 
-            BlockPos pos = result.getPos();
+            // 命中方块再渲染
+            if (!result.getType().equals(RayTraceResult.Type.MISS)) {
+                BlockPos pos = result.getPos();
+                stack.push();
+                // 渲染光柱
+                Vector3d view = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
+                stack.translate(pos.getX() - view.getX(), pos.getY() - view.getY() + 1, pos.getZ() - view.getZ());
+                BeaconTileEntityRenderer.renderBeamSegment(stack,
+                        Minecraft.getInstance().getRenderTypeBuffers().getBufferSource(),
+                        BeaconTileEntityRenderer.TEXTURE_BEACON_BEAM,
+                        evt.getPartialTicks(),
+                        1, world.getGameTime(),
+                        0, 1000, new float[]{1, 0, 0},
+                        0.35f, .1f);
 
-            stack.push();
-            // 渲染光柱
-            Vector3d view = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
-            stack.translate(pos.getX() - view.getX(), pos.getY() - view.getY() + 1, pos.getZ() - view.getZ());
-            BeaconTileEntityRenderer.renderBeamSegment(stack,
-                    Minecraft.getInstance().getRenderTypeBuffers().getBufferSource(),
-                    BeaconTileEntityRenderer.TEXTURE_BEACON_BEAM,
-                    evt.getPartialTicks(),
-                    1, world.getGameTime(),
-                    0, 1000, new float[]{1, 0, 0},
-                    0.4F, 0);
+                stack.pop();
 
-            stack.pop();
-
-            // 十字形方块标识渲染
-            renderBlock(stack, pos, Color.cyan, 0.6f);
-            renderBlock(evt.getMatrixStack(), pos.add(1, 0, 0), Color.cyan, .5f);
-            renderBlock(evt.getMatrixStack(), pos.add(-1, 0, 0), Color.cyan, .5f);
-            renderBlock(evt.getMatrixStack(), pos.add(0, 0, 1), Color.cyan, .5f);
-            renderBlock(evt.getMatrixStack(), pos.add(0, 0, -1), Color.cyan, .5f);
+                // 十字形方块标识渲染
+                renderBlock(stack, pos, Color.cyan, 0.6f);
+                renderBlock(evt.getMatrixStack(), pos.add(1, 0, 0), Color.cyan, .5f);
+                renderBlock(evt.getMatrixStack(), pos.add(-1, 0, 0), Color.cyan, .5f);
+                renderBlock(evt.getMatrixStack(), pos.add(0, 0, 1), Color.cyan, .5f);
+                renderBlock(evt.getMatrixStack(), pos.add(0, 0, -1), Color.cyan, .5f);
+            }
         }
     }
 
