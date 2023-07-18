@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.tileentity.BeaconTileEntityRenderer;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -29,6 +30,7 @@ import tech.lq0.providencraft.item.providenceOI.shirako.MomoPhone;
 import tech.lq0.providencraft.item.providenceOI.shirako.WorldPeaceStaff;
 import tech.lq0.providencraft.item.providenceOI.yesa.YeggyPearl;
 import tech.lq0.providencraft.item.providencefirst.myanna.MountainDestroyer;
+import tech.lq0.providencraft.item.providencesecond.lecia.Leviy;
 import tech.lq0.providencraft.tools.ItemNBTTool;
 import tech.lq0.providencraft.tools.RenderTool;
 
@@ -140,7 +142,40 @@ public class SpecialRender {
             }
         }
 
+        if (item.getItem() instanceof Leviy) {
+            World world = player.getEntityWorld();
+            Vector3d look = player.getLookVec();
+            MatrixStack stack = evt.getMatrixStack();
 
+            Vector3d start = player.getPositionVec().add(0, player.getEyeHeight(), 0);
+            Vector3d end = player.getPositionVec().add(look.x * 100, look.y * 100 + player.getEyeHeight(), look.z * 100);
+
+            RayTraceContext context = new RayTraceContext(start, end, RayTraceContext.BlockMode.COLLIDER, RayTraceContext.FluidMode.NONE, player);
+            BlockRayTraceResult result = player.getEntityWorld().rayTraceBlocks(context);
+
+            BlockPos pos = result.getPos();
+
+            stack.push();
+            // 渲染光柱
+            Vector3d view = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
+            stack.translate(pos.getX() - view.getX(), pos.getY() - view.getY() + 1, pos.getZ() - view.getZ());
+            BeaconTileEntityRenderer.renderBeamSegment(stack,
+                    Minecraft.getInstance().getRenderTypeBuffers().getBufferSource(),
+                    BeaconTileEntityRenderer.TEXTURE_BEACON_BEAM,
+                    evt.getPartialTicks(),
+                    1, world.getGameTime(),
+                    0, 1000, new float[]{1, 0, 0},
+                    0.4F, 0);
+
+            stack.pop();
+
+            // 十字形方块标识渲染
+            renderBlock(stack, pos, Color.cyan, 0.6f);
+            renderBlock(evt.getMatrixStack(), pos.add(1, 0, 0), Color.cyan, .5f);
+            renderBlock(evt.getMatrixStack(), pos.add(-1, 0, 0), Color.cyan, .5f);
+            renderBlock(evt.getMatrixStack(), pos.add(0, 0, 1), Color.cyan, .5f);
+            renderBlock(evt.getMatrixStack(), pos.add(0, 0, -1), Color.cyan, .5f);
+        }
     }
 
     @SubscribeEvent
@@ -188,7 +223,7 @@ public class SpecialRender {
     }
 
     @SubscribeEvent
-    public static void renderYeggyPearl(RenderGameOverlayEvent event){
+    public static void renderYeggyPearl(RenderGameOverlayEvent event) {
         if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
             return;
         }
@@ -218,8 +253,8 @@ public class SpecialRender {
             int color2 = new Color(0x6e99dd).getRGB();
             int color3 = new Color(0xc0addb).getRGB();
 
-            RenderTool.drawGradientRect(matrixBar, 1, left - 42.5f + 67 * energy / 80,  (int)top + 74, (int)left - 43f,  (int)top + 72, color1, color1);
-            RenderTool.drawGradientRect(matrixBar, 1, left - 42.5f + 67 * energy / 80,  (int)top + 75,  (int)left - 43f,  (int)top + 74, color2, color2);
+            RenderTool.drawGradientRect(matrixBar, 1, left - 42.5f + 67 * energy / 80, (int) top + 74, (int) left - 43f, (int) top + 72, color1, color1);
+            RenderTool.drawGradientRect(matrixBar, 1, left - 42.5f + 67 * energy / 80, (int) top + 75, (int) left - 43f, (int) top + 74, color2, color2);
 
             int num1 = (int) times;
             int num2 = (int) (times * 10) % 10;
@@ -240,7 +275,7 @@ public class SpecialRender {
 
 
     @SubscribeEvent
-    public static void renderWPS(RenderGameOverlayEvent event){
+    public static void renderWPS(RenderGameOverlayEvent event) {
         if (event.getType() != RenderGameOverlayEvent.ElementType.ALL) {
             return;
         }
@@ -248,7 +283,7 @@ public class SpecialRender {
         ClientPlayerEntity player = Minecraft.getInstance().player;
         if (player != null && player.getHeldItemMainhand().getItem() == ItemRegistry.WORLD_PEACE_STAFF.get()) {
 
-            if(player.isSpectator()){
+            if (player.isSpectator()) {
                 return;
             }
 
@@ -293,7 +328,7 @@ public class SpecialRender {
             GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top - 15, left - 96, (int) top - 14, color_scale, color_scale);
             GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top - 10, left - 96, (int) top - 9, color_scale, color_scale);
             GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top - 5, left - 96, (int) top - 4, color_scale, color_scale);
-            GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top , left - 91, (int) top + 1, color_scale, color_scale);
+            GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top, left - 91, (int) top + 1, color_scale, color_scale);
             GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top + 5, left - 96, (int) top + 6, color_scale, color_scale);
             GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top + 10, left - 96, (int) top + 11, color_scale, color_scale);
             GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top + 15, left - 96, (int) top + 16, color_scale, color_scale);
@@ -304,7 +339,7 @@ public class SpecialRender {
             GuiUtils.drawGradientRect(matrixBar, 2, left - 98, (int) top + 40, left - 90, (int) top + 41, color_scale, color_scale);
 
             //高光
-            int color_highlight = new Color(255,255,255, 150).getRGB();
+            int color_highlight = new Color(255, 255, 255, 150).getRGB();
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top - 38, left - 95, (int) top - 31, color_highlight, color_highlight);
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top - 31, left - 96, (int) top - 26, color_highlight, color_highlight);
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top - 23, left - 96, (int) top - 22, color_highlight, color_highlight);
@@ -312,13 +347,13 @@ public class SpecialRender {
             GuiUtils.drawGradientRect(matrixBar, 3, left - 97, (int) top + 33, left - 96, (int) top + 34, color_highlight, color_highlight);
 
             //刀边
-            int color_knife1 = new Color(201,201,201).getRGB();
+            int color_knife1 = new Color(201, 201, 201).getRGB();
             GuiUtils.drawGradientRect(matrixBar, 2, left - 100, (int) top - 31, left - 99, (int) top + 32, color_knife1, color_knife1);
             GuiUtils.drawGradientRect(matrixBar, 2, left - 86, (int) top - 31, left - 85, (int) top + 32, color_knife1, color_knife1);
-            int color_knife2 = new Color(0,0,0).getRGB();
+            int color_knife2 = new Color(0, 0, 0).getRGB();
             GuiUtils.drawGradientRect(matrixBar, 2, left - 100, (int) top - 27, left - 99, (int) top + 3, color_knife2, color_knife2);
-            int color_knife3 = new Color(49,49,49).getRGB();
-            for(int i = 0;i < 7;i++){
+            int color_knife3 = new Color(49, 49, 49).getRGB();
+            for (int i = 0; i < 7; i++) {
                 GuiUtils.drawGradientRect(matrixBar, 2, left - 101, (int) top - 26 + i * 3, left - 100, (int) top - 25 + i * 3, color_knife3, color_knife3);
                 GuiUtils.drawGradientRect(matrixBar, 2, left - 102, (int) top - 25 + i * 3, left - 101, (int) top - 24 + i * 3, color_knife3, color_knife3);
                 GuiUtils.drawGradientRect(matrixBar, 2, left - 102, (int) top - 24 + i * 3, left - 101, (int) top - 23 + i * 3, color_knife2, color_knife2);
@@ -402,15 +437,15 @@ public class SpecialRender {
             drawNumber(matrixBar, 4, left - 105, (int) top + 38, num_4, color_blood);
 
             /* 兔子 */
-            int color_usagi1 = new Color(255,255,255).getRGB(); //ffffff
-            int color_usagi2 = new Color(241,241,241).getRGB(); //f1f1f1
-            int color_usagi3 = new Color(247,247,247).getRGB(); //f7f7f7
-            int color_usagi4 = new Color(226,226,226).getRGB(); //e2e2e2
+            int color_usagi1 = new Color(255, 255, 255).getRGB(); //ffffff
+            int color_usagi2 = new Color(241, 241, 241).getRGB(); //f1f1f1
+            int color_usagi3 = new Color(247, 247, 247).getRGB(); //f7f7f7
+            int color_usagi4 = new Color(226, 226, 226).getRGB(); //e2e2e2
 
-            int color_usagi_border1 = new Color(161,161,161).getRGB(); //a1a1a1
-            int color_usagi_border2 = new Color(168,168,168).getRGB(); //a8a8a8
-            int color_usagi_border3 = new Color(157,157,157).getRGB(); //9d9d9d
-            int color_usagi_border4 = new Color(137,137,137).getRGB(); //898989
+            int color_usagi_border1 = new Color(161, 161, 161).getRGB(); //a1a1a1
+            int color_usagi_border2 = new Color(168, 168, 168).getRGB(); //a8a8a8
+            int color_usagi_border3 = new Color(157, 157, 157).getRGB(); //9d9d9d
+            int color_usagi_border4 = new Color(137, 137, 137).getRGB(); //898989
 
             //脸部
             GuiUtils.drawGradientRect(matrixBar, 2, left - 112, (int) top - 5, left - 110, (int) top + 4, color_usagi1, color_usagi1);
@@ -463,7 +498,7 @@ public class SpecialRender {
             int eye_r = (int) Math.min(255, color_eye1.getRed() + (color_eye2.getRed() - color_eye1.getRed()) * blood / 500);
             int eye_g = (int) Math.min(255, color_eye1.getGreen() + (color_eye2.getGreen() - color_eye1.getGreen()) * blood / 500);
             int eye_b = (int) Math.min(255, color_eye1.getBlue() + (color_eye2.getBlue() - color_eye1.getBlue()) * blood / 500);
-            int color_eye = new Color(eye_r,eye_g,eye_b).getRGB();
+            int color_eye = new Color(eye_r, eye_g, eye_b).getRGB();
 
             GuiUtils.drawGradientRect(matrixBar, 3, left - 108, (int) top - 1, left - 107, (int) top + 1, color_eye, color_eye);
             GuiUtils.drawGradientRect(matrixBar, 3, left - 111, (int) top - 1, left - 110, (int) top + 1, color_eye, color_eye);
@@ -472,7 +507,7 @@ public class SpecialRender {
             int color_usagi_awaken1 = new Color(15542894).getRGB();
             int color_usagi_awaken2 = new Color(14752865).getRGB();
 
-            if(player.isHandActive() && blood >= 5.0f){
+            if (player.isHandActive() && blood >= 5.0f) {
                 GuiUtils.drawGradientRect(matrixBar, 4, left - 113, (int) top - 5, left - 112, (int) top - 2, color_usagi_awaken1, color_usagi_awaken1);
                 GuiUtils.drawGradientRect(matrixBar, 4, left - 112, (int) top - 6, left - 110, (int) top - 5, color_usagi_awaken1, color_usagi_awaken1);
                 GuiUtils.drawGradientRect(matrixBar, 4, left - 114, (int) top - 2, left - 113, (int) top - 1, color_usagi_awaken1, color_usagi_awaken1);
@@ -495,8 +530,8 @@ public class SpecialRender {
         }
     }
 
-    private static void drawNumber(Matrix4f matrix, int level, int left, int top, int num, int color){
-        switch (num){
+    private static void drawNumber(Matrix4f matrix, int level, int left, int top, int num, int color) {
+        switch (num) {
             case 0:
                 GuiUtils.drawGradientRect(matrix, level, left, top, left + 1, top + 5, color, color);
                 GuiUtils.drawGradientRect(matrix, level, left + 2, top, left + 3, top + 5, color, color);
@@ -522,7 +557,7 @@ public class SpecialRender {
                 break;
             case 4:
                 GuiUtils.drawGradientRect(matrix, level, left, top, left + 1, top + 3, color, color);
-                GuiUtils.drawGradientRect(matrix, level,left + 1, top + 2, left + 2, top + 3, color, color);
+                GuiUtils.drawGradientRect(matrix, level, left + 1, top + 2, left + 2, top + 3, color, color);
                 GuiUtils.drawGradientRect(matrix, level, left + 2, top, left + 3, top + 5, color, color);
                 break;
             case 5:
@@ -623,6 +658,10 @@ public class SpecialRender {
     }
 
     private static void renderBlock(MatrixStack matrix, BlockPos pos, Color color) {
+        renderBlock(matrix, pos, color, .2f);
+    }
+
+    private static void renderBlock(MatrixStack matrix, BlockPos pos, Color color, float alpha) {
         net.minecraft.client.renderer.IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource();
 
         Vector3d view = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
@@ -645,7 +684,6 @@ public class SpecialRender {
             Matrix4f matrix4f = matrix.getLast().getMatrix();
             float red = color.getRed() / 255f, green = color.getGreen() / 255f, blue = color.getBlue() / 255f;
 
-            float alpha = .2f;
             float startX = 0, startY = 0, startZ = -1, endX = 1, endY = 1, endZ = 0;
             //down
             builder.pos(matrix4f, startX, startY, startZ).color(red, green, blue, alpha).endVertex();
