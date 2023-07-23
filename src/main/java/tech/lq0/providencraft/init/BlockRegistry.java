@@ -52,4 +52,5 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> ELIBOARD = BLOCKS.register("eliboard", Eliboard::new);
     public static final RegistryObject<Block> MAGIC_MIRROR_BLOCK = BLOCKS.register("magic_mirror_block", MagicMirrorBlock::new);
+    public static final RegistryObject<Block> JELLYFISH_BOTTLE = BLOCKS.register("jellyfish_bottle", JellyfishBottleBlock::new);
 }
