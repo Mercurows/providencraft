@@ -407,7 +407,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MUSIC_DISC_DARAKUDATENSHI = ITEMS.register("music_disc_darakudatenshi", () -> new MusicDisc(Livers.USA, SoundRegistry.DARAKUDATENSHI, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 1));
     public static final RegistryObject<Item> MUSIC_DISC_AROUND_THE_TRAVEL = ITEMS.register("music_disc_around_the_travel", () -> new MusicDisc(Livers.SHIRAKO, SoundRegistry.AROUND_THE_TRAVEL, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.EPIC), 2));
     public static final RegistryObject<Item> MUSIC_DISC_SONG_OF_QINGQIU = ITEMS.register("music_disc_song_of_qingqiu", () -> new MusicDisc(Livers.AOI, SoundRegistry.SONG_OF_QINGQIU, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 3));
-    public static final RegistryObject<Item> MUSIC_DISC_DREAMING_FAIRY = ITEMS.register("music_disc_dreaming_fairy", () -> new MusicDisc(Livers.UNIA, SoundRegistry.DARAKUDATENSHI, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 4));
+    public static final RegistryObject<Item> MUSIC_DISC_DREAMING_FAIRY = ITEMS.register("music_disc_dreaming_fairy", () -> new MusicDisc(Livers.UNIA, SoundRegistry.DREAMING_FAIRY, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 4));
 
     /**
      * donate

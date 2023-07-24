@@ -520,5 +520,14 @@
         "name": "providencraft:grenade_shoot"
       }
     ]
+  },
+  "song/dreaming_fairy": {
+    "subtitle": "subtitle.providencraft.dreaming_fairy",
+    "sounds": [
+      {
+        "name": "providencraft:song/dreaming_fairy",
+        "stream": true
+      }
+    ]
   }
 }
