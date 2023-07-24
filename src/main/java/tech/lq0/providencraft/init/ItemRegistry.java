@@ -69,6 +69,7 @@ import tech.lq0.providencraft.item.providencefirst.myanna.*;
 import tech.lq0.providencraft.item.providencefirst.niina.BananaMilk;
 import tech.lq0.providencraft.item.providencefirst.niina.BlueSmallBall;
 import tech.lq0.providencraft.item.providencefirst.niina.NozzleCutter;
+import tech.lq0.providencraft.item.providencefirst.unia.ElfWings;
 import tech.lq0.providencraft.item.providencefirst.unia.EnchantedUnigiri;
 import tech.lq0.providencraft.item.providencefirst.unia.TaroIceCream;
 import tech.lq0.providencraft.item.providencefirst.unia.Unigiri;
@@ -170,6 +171,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> TARO_ICE_CREAM = ITEMS.register("taro_ice_cream", TaroIceCream::new);
     public static final RegistryObject<Item> UNIGIRI = ITEMS.register("unigiri", Unigiri::new);
     public static final RegistryObject<Item> ENCHANTED_UNIGIRI = ITEMS.register("enchanted_unigiri", EnchantedUnigiri::new);
+    public static final RegistryObject<Item> ELF_WINGS = ITEMS.register("elf_wings", ElfWings::new);
 
     /**
      * 2nd
@@ -405,6 +407,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> MUSIC_DISC_DARAKUDATENSHI = ITEMS.register("music_disc_darakudatenshi", () -> new MusicDisc(Livers.USA, SoundRegistry.DARAKUDATENSHI, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 1));
     public static final RegistryObject<Item> MUSIC_DISC_AROUND_THE_TRAVEL = ITEMS.register("music_disc_around_the_travel", () -> new MusicDisc(Livers.SHIRAKO, SoundRegistry.AROUND_THE_TRAVEL, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.EPIC), 2));
     public static final RegistryObject<Item> MUSIC_DISC_SONG_OF_QINGQIU = ITEMS.register("music_disc_song_of_qingqiu", () -> new MusicDisc(Livers.AOI, SoundRegistry.SONG_OF_QINGQIU, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 3));
+    public static final RegistryObject<Item> MUSIC_DISC_DREAMING_FAIRY = ITEMS.register("music_disc_dreaming_fairy", () -> new MusicDisc(Livers.UNIA, SoundRegistry.DARAKUDATENSHI, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 4));
 
     /**
      * donate
