@@ -17,7 +17,7 @@ public class LootTableRegistry {
 
     private static LootTableRegistry registry;
 
-    private Map<ResourceLocation, ResourceLocation> lootTables = new HashMap<>();
+    private final Map<ResourceLocation, ResourceLocation> lootTables = new HashMap<>();
 
     private LootTableRegistry(){
         init();

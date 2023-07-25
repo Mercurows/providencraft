@@ -48,6 +48,7 @@ public class CrystalHorn extends ArmorItem {
         super(ModArmorMaterial.CRYSTAL, EquipmentSlotType.HEAD, new Properties().group(ModGroup.itemgroup));
     }
 
+    @SuppressWarnings("unchecked")
     @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
