@@ -48,7 +48,7 @@ public class JellyfishBottleBlock extends Block implements IWaterLoggable {
     }
 
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        Direction direction = Direction.UP;
+        Direction direction = Direction.DOWN;
         return Block.hasEnoughSolidSide(worldIn, pos.offset(direction), direction.getOpposite());
     }
 }
