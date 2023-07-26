@@ -46,7 +46,7 @@ public class LeviyRenderer {
             if (!result.getType().equals(RayTraceResult.Type.MISS)) {
                 BlockPos pos = result.getPos();
 
-                int animationTime = 500;
+                int animationTime = 300;
                 long timePassed = animationTime;
                 if (pos.getX() != lastX || pos.getY() != lastY || pos.getZ() != lastZ) {
                     timePassed = System.currentTimeMillis() - lastChangeTime;
