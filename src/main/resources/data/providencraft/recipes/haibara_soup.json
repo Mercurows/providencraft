@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "PMP",
+    " B "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:sugar"
+    },
+    "P": {
+      "item": "providencraft:marshaimallow"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "B": {
+      "item": "minecraft:bowl"
+    }
+  },
+  "result": {
+    "item": "providencraft:haibara_soup",
+    "count": 1
+  }
+}
