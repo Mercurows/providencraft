@@ -3,6 +3,7 @@ package tech.lq0.providencraft.item.providencesecond.lecia;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class Leviy extends Item {
     public Leviy() {
-        super(new Properties().group(ModGroup.itemgroup));
+        super(new Properties().group(ModGroup.itemgroup).rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
     }
 
     @OnlyIn(Dist.CLIENT)
