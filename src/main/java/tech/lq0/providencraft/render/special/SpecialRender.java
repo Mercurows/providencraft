@@ -105,11 +105,17 @@ public class SpecialRender {
     }
 
     public static void renderLandmark(MatrixStack matrix, BlockPos pos, Color color) {
+        float x = pos.getX();
+        float y = pos.getY();
+        float z = pos.getZ();
+        renderLandmark(matrix, x, y, z, color);
+    }
+
+    public static void renderLandmark(MatrixStack matrix, float x, float y, float z, Color color) {
         net.minecraft.client.renderer.IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource();
 
         Vector3d view = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
 
-        int posX = pos.getX(), posY = pos.getY(), posZ = pos.getZ();
         matrix.push();
         matrix.translate(-view.x, 0, -view.z);
 
@@ -118,11 +124,11 @@ public class SpecialRender {
 
         {
             matrix.push();
-            matrix.translate(posX, posY, posZ);
+            matrix.translate(x, y, z);
             matrix.translate(-0.005f, -0.005f, -0.005f);
             matrix.scale(1.01f, 1.01f, 1.01f);
             matrix.rotate(Vector3f.YP.rotationDegrees(-90.0F));
-            matrix.translate(0, -posY, 0);
+            matrix.translate(0, -y, 0);
 
             Matrix4f matrix4f = matrix.getLast().getMatrix();
             float red = color.getRed() / 255f, green = color.getGreen() / 255f, blue = color.getBlue() / 255f, alpha = .5f;
@@ -165,11 +171,17 @@ public class SpecialRender {
     }
 
     public static void renderBlock(MatrixStack matrix, BlockPos pos, Color color, float alpha) {
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
+        renderBlock(matrix, x, y, z, color, alpha);
+    }
+
+    public static void renderBlock(MatrixStack matrix, float x, float y, float z, Color color, float alpha) {
         net.minecraft.client.renderer.IRenderTypeBuffer.Impl buffer = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource();
 
         Vector3d view = Minecraft.getInstance().gameRenderer.getActiveRenderInfo().getProjectedView();
 
-        int posX = pos.getX(), posY = pos.getY(), posZ = pos.getZ();
         matrix.push();
         matrix.translate(-view.x, -view.y, -view.z);
 
@@ -178,7 +190,7 @@ public class SpecialRender {
 
         {
             matrix.push();
-            matrix.translate(posX, posY, posZ);
+            matrix.translate(x, y, z);
             matrix.translate(-0.0001f, -0.0001f, -0.0001f);
             matrix.scale(1.0001f, 1.0001f, 1.0001f);
             matrix.rotate(Vector3f.YP.rotationDegrees(-90.0F));
