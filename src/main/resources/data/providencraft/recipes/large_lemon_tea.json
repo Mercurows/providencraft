@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "GIG",
+    "GGG"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:lemon_tea"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "I": {
+      "item": "minecraft:ice"
+    }
+  },
+  "result": {
+    "item": "providencraft:large_lemon_tea",
+    "count": 1
+  }
+}

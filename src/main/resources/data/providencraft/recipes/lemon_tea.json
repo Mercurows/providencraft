@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "I",
+    "G"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:lime_dye"
+    },
+    "I": {
+      "item": "minecraft:ice"
+    },
+    "G": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "result": {
+    "item": "providencraft:lemon_tea",
+    "count": 1
+  }
+}

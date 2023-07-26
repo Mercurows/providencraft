@@ -24,7 +24,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class LemonTea extends Item {
-    public static final Food food = (new Food.Builder()).saturation(0.25f).hunger(4).setAlwaysEdible()
+    public static final Food food = (new Food.Builder()).saturation(0.25f).hunger(3).setAlwaysEdible()
             .effect(() -> new EffectInstance(Effects.SLOWNESS, 40, 1), 1.0f)
             .build();
 
