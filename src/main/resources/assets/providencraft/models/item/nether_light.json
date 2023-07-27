@@ -1,0 +1,15 @@
+{
+  "loader": "forge:separate-perspective",
+  "gui_light": "front",
+  "base": {
+  	"parent": "providencraft:item/nether_light_default"
+  },
+  "perspectives": {
+    "third_person_left_hand": {
+      "parent": "providencraft:item/nether_light_reverse"
+    },
+    "first_person_left_hand": {
+      "parent": "providencraft:item/nether_light_reverse"
+    }
+  }
+}
