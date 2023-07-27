@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#P#",
+    "#N#",
+    "LiL"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:red_wool"
+    },
+    "P": {
+      "item": "providencraft:red_ahoge"
+    },
+    "N": {
+      "item": "minecraft:piston"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "providencraft:crimson_impact",
+    "count": 1
+  }
+}
