@@ -21,6 +21,8 @@ public class Kuya extends Item {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        TooltipTool.addDevelopingText(tooltip);
+
         tooltip.add((new TranslationTextComponent("des.providencraft.kuya")).mergeStyle(TextFormatting.GRAY));
 
         TooltipTool.addHideText(tooltip, new StringTextComponent(""));
