@@ -259,6 +259,8 @@
   "des.providencraft.orange_tracker_1": "Looks like some brands of tracker, but did not buy it actually (Too expensive!)",
   "des.providencraft.orange_tracker_2": "Be more flexible in Minecraft when wearing it XD",
   "des.providencraft.orange_tracker_3": "Warning: It doesn't work sometimes :(",
+  "des.providencraft.orange_tracker.enable": "已启用吸取功能",
+  "des.providencraft.orange_tracker.disable": "已停用吸取功能",
   "effect.providencraft.overload": "Overload",
   "death.attack.overload": "%1$s has been overloaded",
   "death.attack.overload.player": "%1$s has been overloaded when fleeing from %2$s",

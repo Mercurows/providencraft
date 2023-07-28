@@ -18,6 +18,8 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -32,6 +34,7 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.models.OrangeTrackerModel;
+import tech.lq0.providencraft.tools.ItemNBTTool;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -41,10 +44,13 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class OrangeTracker extends ArmorItem {
+    public static final String TAG_ABLE = "able";
+
     public OrangeTracker() {
         super(ArmorMaterial.CHAIN, EquipmentSlotType.LEGS, new Properties().group(ModGroup.donategroup).defaultMaxDamage(2022));
     }
 
+    @SuppressWarnings("unchecked")
     @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
@@ -68,16 +74,32 @@ public class OrangeTracker extends ArmorItem {
     }
 
     @Override
-    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        int r = 5;
-        AxisAlignedBB area = new AxisAlignedBB(player.getPosition().add(-r, -r, -r), player.getPosition().add(r, r, r));
+    @ParametersAreNonnullByDefault
+    @Nonnull
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
+        ItemStack stack = playerIn.getHeldItem(handIn);
+        if (!worldIn.isRemote && playerIn.isSneaking()) {
+            boolean flag = ItemNBTTool.getBoolean(stack, TAG_ABLE, false);
+            ItemNBTTool.setBoolean(stack, TAG_ABLE, !flag);
+            playerIn.sendStatusMessage(!flag ? new TranslationTextComponent("des.providencraft.orange_tracker.enable") :
+                    new TranslationTextComponent("des.providencraft.orange_tracker.disable"), true);
+        }
+        return ActionResult.resultFail(stack);
+    }
 
-        List<ItemEntity> items = player.world.getEntitiesWithinAABB(EntityType.ITEM, area,
-                item -> item.isAlive() && (player.world.isRemote || item.ticksExisted > 1) &&
-                        (item.getThrowerId() == null || !item.getThrowerId().equals(player.getUniqueID()) || !item.cannotPickup()) &&
-                        !item.getItem().isEmpty()
-        );
-        items.forEach(item -> item.setPosition(player.getPosX(), player.getPosY(), player.getPosZ()));
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if(ItemNBTTool.getBoolean(stack, TAG_ABLE, false)) {
+            int r = 5;
+            AxisAlignedBB area = new AxisAlignedBB(player.getPosition().add(-r, -r, -r), player.getPosition().add(r, r, r));
+
+            List<ItemEntity> items = player.world.getEntitiesWithinAABB(EntityType.ITEM, area,
+                    item -> item.isAlive() && (player.world.isRemote || item.ticksExisted > 1) &&
+                            (item.getThrowerId() == null || !item.getThrowerId().equals(player.getUniqueID()) || !item.cannotPickup()) &&
+                            !item.getItem().isEmpty()
+            );
+            items.forEach(item -> item.setPosition(player.getPosX(), player.getPosY(), player.getPosZ()));
+        }
 
         player.addPotionEffect(new EffectInstance(Effects.SPEED, 300, 1, true, false));
         player.addPotionEffect(new EffectInstance(Effects.STRENGTH, 300, 1, true, false));

@@ -259,6 +259,8 @@
   "des.providencraft.orange_tracker_1": "外形很像某品牌的追踪器，但实际上并没有买（太贵了）",
   "des.providencraft.orange_tracker_2": "穿上它，就能在Minecraft里面更灵活（确信）",
   "des.providencraft.orange_tracker_3": "注意，有的时候会不起作用（丢追）",
+  "des.providencraft.orange_tracker.enable": "已启用吸取功能",
+  "des.providencraft.orange_tracker.disable": "已停用吸取功能",
   "effect.providencraft.overload": "过载",
   "death.attack.overload": "%1$s的身体过载了",
   "death.attack.overload.player": "%1$s在逃离%2$s时过载了",
