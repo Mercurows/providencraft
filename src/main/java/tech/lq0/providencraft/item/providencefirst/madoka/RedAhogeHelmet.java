@@ -37,6 +37,7 @@ public class RedAhogeHelmet extends ArmorItem {
         super(ModArmorMaterial.RED_AHOGE, EquipmentSlotType.HEAD, new Properties().group(ModGroup.itemgroup));
     }
 
+    @SuppressWarnings("unchecked")
     @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override

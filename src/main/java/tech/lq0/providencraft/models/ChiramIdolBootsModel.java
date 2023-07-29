@@ -11,6 +11,7 @@ import net.minecraft.entity.LivingEntity;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ChiramIdolBootsModel<T extends LivingEntity> extends BipedModel<T> {
     private final ModelRenderer main;
     private final ModelRenderer left;
