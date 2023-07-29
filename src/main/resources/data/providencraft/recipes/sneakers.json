@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "WLW",
+    "PDP"
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:red_ahoge"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "P": {
+      "item": "minecraft:purple_wool"
+    },
+    "D": {
+      "item": "minecraft:diamond_boots"
+    }
+  },
+  "result": {
+    "item": "providencraft:sneakers",
+    "count": 1
+  }
+}
