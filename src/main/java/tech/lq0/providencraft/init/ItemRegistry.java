@@ -30,6 +30,7 @@ import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.*;
 import tech.lq0.providencraft.item.others.*;
+import tech.lq0.providencraft.item.providenceOI.ayu.DelicateMirage;
 import tech.lq0.providencraft.item.providenceOI.ayu.GravityRestraintDevice;
 import tech.lq0.providencraft.item.providenceOI.ccelia.CraftBeer0322;
 import tech.lq0.providencraft.item.providenceOI.fukami.*;
@@ -306,6 +307,7 @@ public class ItemRegistry {
 
     //ayu
     public static final RegistryObject<Item> GRAVITY_RESTRAINT_DEVICE = ITEMS.register("gravity_restraint_device", GravityRestraintDevice::new);
+    public static final RegistryObject<Item> DELICATE_MIRAGE = ITEMS.register("delicate_mirage", DelicateMirage::new);
 
     //shirayuki
     public static final RegistryObject<Item> FOX_FAIRY_FAN = ITEMS.register("fox_fairy_fan", FoxFairyFan::new);
