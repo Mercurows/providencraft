@@ -15,6 +15,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.capability.ChaosHelper;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.EffectRegistry;
 import tech.lq0.providencraft.init.ItemRegistry;
@@ -61,23 +62,27 @@ public class IsekaiLollipop extends Item {
         }else if(checkEnchantments(stack) > 10){
             tooltip.add((new TranslationTextComponent("des.providencraft.isekai_lollipop_3")).mergeStyle(TextFormatting.LIGHT_PURPLE).mergeStyle(TextFormatting.ITALIC));
         }
+        TooltipTool.addChaosInfo(tooltip, -50);
         TooltipTool.addLiverInfo(tooltip, Livers.SATOU);
     }
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        if(!worldIn.isRemote){
+        if(!worldIn.isRemote && entityLiving instanceof PlayerEntity){
+            PlayerEntity player = (PlayerEntity) entityLiving;
+
             int level = checkEnchantments(stack);
             if(level > 10){
                 int random = (int)(Math.random() * 100) + 1;
                 if(random <= (level - 10) * 5){
-                    entityLiving.attackEntityFrom(DamageSource.MAGIC, 5.0f);
-                    entityLiving.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 200, 0));
+                    player.attackEntityFrom(DamageSource.MAGIC, 5.0f);
+                    player.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 200, 0));
 
-                    return entityLiving instanceof PlayerEntity && ((PlayerEntity)entityLiving).abilities.isCreativeMode ?
-                            stack : new ItemStack(ItemRegistry.PAST_SUGAR.get());
+                    return player.abilities.isCreativeMode ? stack : new ItemStack(ItemRegistry.PAST_SUGAR.get());
                 }
             }
+
+            ChaosHelper.addChaos(player, -50);
         }
         return super.onItemUseFinish(stack, worldIn, entityLiving);
     }

@@ -13,6 +13,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import tech.lq0.providencraft.capability.ChaosHelper;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.DamageSourceRegistry;
 import tech.lq0.providencraft.tools.Livers;
@@ -37,6 +38,8 @@ public class LavaCake extends Item {
         ItemStack itemStack = super.onItemUseFinish(stack, worldIn, entityLiving);
         if (entityLiving instanceof PlayerEntity && !worldIn.isRemote) {
             PlayerEntity player = (PlayerEntity) entityLiving;
+            ChaosHelper.addChaos(player, 30);
+
             player.attackEntityFrom(DamageSourceRegistry.BENI_CAKE, 20.0f);
         }
         return itemStack;
@@ -47,6 +50,7 @@ public class LavaCake extends Item {
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         tooltip.add((new TranslationTextComponent("des.providencraft.lava_cake")).mergeStyle(TextFormatting.GRAY));
         tooltip.add((new TranslationTextComponent("des.providencraft.lava_cake.warn")).mergeStyle(TextFormatting.RED));
+        TooltipTool.addChaosInfo(tooltip, 30);
         TooltipTool.addLiverInfo(tooltip, Livers.BENI);
     }
 }
