@@ -101,13 +101,13 @@ public class DelicateMirage extends Item {
                 if(rand < prob){
                     player.attackEntityFrom(DamageSource.MAGIC, player.getHealth() * 0.1f);
 
-                    ChaosHelper.setChaos(player, Math.max(0, ChaosHelper.getChaos(player) - 5));
+                    ChaosHelper.setChaos(player, Math.max(0, ChaosHelper.getPureChaos(player) - 5));
                 }
             }
             //清楚时，攻击生物有概率造成二次伤害
             if(chaos <= 0){
                 if(rand < prob){
-                    ChaosHelper.setChaos(player, Math.min(0, ChaosHelper.getChaos(player) + 5));
+                    ChaosHelper.setChaos(player, Math.min(0, ChaosHelper.getPureChaos(player) + 5));
 
                     new Object() {
                         private int ticks = 0;

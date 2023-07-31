@@ -30,4 +30,12 @@ public class ChaosHelper {
         chaosCap.ifPresent((l) -> l.setChaos(0));
     }
 
+    public static int getPureChaos(PlayerEntity player){
+        AtomicInteger chaos = new AtomicInteger();
+        LazyOptional<IChaosCapability> chaosCap = player.getCapability(ModCapability.CHAOS_CAPABILITY);
+        chaosCap.ifPresent((l) -> chaos.set((int) Math.max(-100, Math.min(100, l.getChaos()))));
+
+        return chaos.get();
+    }
+
 }
