@@ -15,6 +15,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.Rarity;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.DamageSource;
@@ -95,16 +96,17 @@ public class DelicateMirage extends Item {
             float damage = 50 - level * 5.0f;
 
             //混沌时，攻击生物有概率对自己造成伤害
-            if(chaos >= 0){
-                if(rand < prob){
+            if (chaos >= 0) {
+                if (rand < prob) {
                     player.attackEntityFrom(DamageSource.MAGIC, player.getHealth() * 0.1f);
 
                     ChaosHelper.setChaos(player, Math.max(0, ChaosHelper.getPureChaos(player) - 5));
                 }
             }
+
             //清楚时，攻击生物有概率造成二次伤害
-            if(chaos <= 0){
-                if(rand < prob){
+            if (chaos <= 0) {
+                if (rand < prob) {
                     ChaosHelper.setChaos(player, Math.min(0, ChaosHelper.getPureChaos(player) + 5));
 
                     new Object() {
@@ -162,6 +164,11 @@ public class DelicateMirage extends Item {
     @Override
     public boolean canPlayerBreakBlockWhileHolding(BlockState state, World worldIn, BlockPos pos, PlayerEntity player) {
         return !player.isCreative();
+    }
+
+    @Override
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == Items.DIAMOND;
     }
 
     @Override
