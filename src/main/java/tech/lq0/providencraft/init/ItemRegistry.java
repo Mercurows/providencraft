@@ -27,6 +27,7 @@ import tech.lq0.providencraft.item.costume.magicros.hoshimiya.EkiraIdolHelmet;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolBoots;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolChestplate;
 import tech.lq0.providencraft.item.costume.magicros.keroro.KeroroIdolHelmet;
+import tech.lq0.providencraft.item.costume.third.yuki.PurpleBadminton;
 import tech.lq0.providencraft.item.donate.*;
 import tech.lq0.providencraft.item.material.*;
 import tech.lq0.providencraft.item.others.*;
@@ -50,11 +51,13 @@ import tech.lq0.providencraft.item.providenceOI.yesa.MintChocolate;
 import tech.lq0.providencraft.item.providenceOI.yesa.TailFishingRod;
 import tech.lq0.providencraft.item.providenceOI.yesa.YeggyPearl;
 import tech.lq0.providencraft.item.providenceOI.yuri.RabbitLychee;
+import tech.lq0.providencraft.item.providenceOI.yuri.TampingHammer;
 import tech.lq0.providencraft.item.providenceconnections.qianyun.QianyunHoe;
 import tech.lq0.providencraft.item.providenceconnections.qianyun.Suitcase;
 import tech.lq0.providencraft.item.providencefirst.akumaria.FluffBall;
 import tech.lq0.providencraft.item.providencefirst.akumaria.Plate;
 import tech.lq0.providencraft.item.providencefirst.ayelet.CrystalHorn;
+import tech.lq0.providencraft.item.providencefirst.ayelet.DevilJacket;
 import tech.lq0.providencraft.item.providencefirst.ayelet.SleepRoulette;
 import tech.lq0.providencraft.item.providencefirst.haya.BigSpoon;
 import tech.lq0.providencraft.item.providencefirst.haya.HayaSword;
@@ -131,6 +134,7 @@ public class ItemRegistry {
     //ayelet
     public static final RegistryObject<Item> CRYSTAL_HORN = ITEMS.register("crystal_horn", CrystalHorn::new);
     public static final RegistryObject<Item> SLEEP_ROULETTE = ITEMS.register("sleep_roulette", SleepRoulette::new);
+    public static final RegistryObject<Item> DEVIL_JACKET = ITEMS.register("devil_jacket", DevilJacket::new);
 
     //mari
     public static final RegistryObject<Item> MACHETE = ITEMS.register("machete", Machete::new);
@@ -315,6 +319,7 @@ public class ItemRegistry {
 
     //yuri
     public static final RegistryObject<Item> RABBIT_LYCHEE = ITEMS.register("rabbit_lychee", RabbitLychee::new);
+    public static final RegistryObject<Item> TAMPING_HAMMER = ITEMS.register("tamping_hammer", TampingHammer::new);
 
     //fukami
     public static final RegistryObject<Item> FUKAMIZU_RING = ITEMS.register("fukamizu_ring", FukamizuRing::new);
@@ -447,6 +452,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> KRM_963_53 = ITEMS.register("krm_963_53", KRM_963_53::new);
     public static final RegistryObject<Item> MAID_COSTUME = ITEMS.register("maid_costume", MaidCostume::new);
     public static final RegistryObject<Item> DMF_777_U = ITEMS.register("dmf_777_u", DMF_777_U::new);
+    public static final RegistryObject<Item> PURPLE_BADMINTON = ITEMS.register("purple_badminton", PurpleBadminton::new);
 
     /**
      * material
