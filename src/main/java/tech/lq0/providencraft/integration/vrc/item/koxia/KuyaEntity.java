@@ -17,10 +17,12 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.Direction;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 import tech.lq0.providencraft.integration.vrc.VirtuaRealCraftRegistry;
 
@@ -62,7 +64,7 @@ public class KuyaEntity extends ProjectileItemEntity {
             }
         } else {
             if (this.world.isRemote) {
-                this.world.addParticle(ParticleTypes.DAMAGE_INDICATOR, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), 0.0D, 0.0D, 0.0D);
+                this.world.addParticle(ParticleTypes.FIREWORK, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), 0.0D, 0.0D, 0.0D);
             }
         }
 
@@ -138,13 +140,18 @@ public class KuyaEntity extends ProjectileItemEntity {
             return;
         }
 
+        ((ServerWorld) world).spawnParticle(ParticleTypes.EXPLOSION, entity.getPosX(), entity.getPosY(), entity.getPosZ(), 10, 1.0D, 0.0D, 0.0D, 0.1);
+        ((ServerWorld) world).spawnParticle(ParticleTypes.HEART, entity.getPosX(), entity.getPosY(), entity.getPosZ(), 30,3.0D, 3.0D, 3.0D, 0.2);
+
+        entity.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 2.0F, 1.0f);
+
         AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ());
-        areaEffectCloud.addEffect(new EffectInstance(Effects.WEAKNESS, 100, 2));
-        areaEffectCloud.addEffect(new EffectInstance(Effects.SLOWNESS, 100, 2));
-        areaEffectCloud.addEffect(new EffectInstance(Effects.WITHER, 100, 0));
-        areaEffectCloud.setRadius(1.0f);
+        areaEffectCloud.addEffect(new EffectInstance(Effects.SPEED, 100, 0));
+        areaEffectCloud.addEffect(new EffectInstance(Effects.REGENERATION, 100, 2));
+        areaEffectCloud.addEffect(new EffectInstance(Effects.INSTANT_HEALTH, 100, 0));
+        areaEffectCloud.setRadius(10.0f);
         areaEffectCloud.setDuration(180);
-        areaEffectCloud.setRadiusPerTick(0.05f);
+        areaEffectCloud.setRadiusPerTick(-0.05f);
 
         world.addEntity(areaEffectCloud);
     }
