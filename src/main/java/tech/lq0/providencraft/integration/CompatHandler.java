@@ -20,6 +20,7 @@ public class CompatHandler {
         getIntegration();
         if(virtuarealcraft){
             VirtuaRealCraftRegistry.VRC_ITEMS.register(eventBus);
+            VirtuaRealCraftRegistry.ENTITY_TYPES.register(eventBus);
         }
     }
 

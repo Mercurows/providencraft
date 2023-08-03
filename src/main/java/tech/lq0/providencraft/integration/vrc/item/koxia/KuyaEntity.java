@@ -1,11 +1,10 @@
-package tech.lq0.providencraft.entity.projectile;
+package tech.lq0.providencraft.integration.vrc.item.koxia;
 
 import io.netty.buffer.Unpooled;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundNBT;
@@ -14,7 +13,6 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.network.play.server.SExplosionPacket;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -22,28 +20,25 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
-import tech.lq0.providencraft.init.EntityRegistry;
-import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.integration.vrc.VirtuaRealCraftRegistry;
 
-public class CursedCatDollEntity extends ProjectileItemEntity {
-    private static final DataParameter<Integer> FUSE = EntityDataManager.createKey(CursedCatDollEntity.class, DataSerializers.VARINT);
+public class KuyaEntity extends ProjectileItemEntity {
+    private static final DataParameter<Integer> FUSE = EntityDataManager.createKey(KuyaEntity.class, DataSerializers.VARINT);
     private int fuse = 100;
 
-    public CursedCatDollEntity(EntityType<? extends CursedCatDollEntity> type, World world){
+    public KuyaEntity(EntityType<? extends KuyaEntity> type, World world){
         super(type, world);
     }
 
-    public CursedCatDollEntity(World world, LivingEntity entity){
-        super(EntityRegistry.CURSED_CAT_DOLL_ENTITY.get(), entity, world);
+    public KuyaEntity(World world, LivingEntity entity){
+        super(VirtuaRealCraftRegistry.KUYA_ENTITY.get(), entity, world);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return ItemRegistry.CURSED_MARSHAIMALLOW.get();
+        return VirtuaRealCraftRegistry.KUYA.get();
     }
 
     @Override
@@ -63,7 +58,7 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
         if (this.fuse <= 0) {
             this.remove();
             if (!this.world.isRemote) {
-                explode(this, 10.0f);
+                explode(this);
             }
         } else {
             if (this.world.isRemote) {
@@ -97,7 +92,7 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
                 }
             } else {
                 this.remove();
-                explode(this, 10.0f);
+                explode(this);
             }
         }
     }
@@ -134,30 +129,13 @@ public class CursedCatDollEntity extends ProjectileItemEntity {
 
     @Override
     protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
-        explode(this, 10.0f);
+        explode(this);
     }
 
-    public static void explode(Entity entity, float radius) {
+    public static void explode(Entity entity) {
         World world = entity.world;
         if(world.isRemote()) {
             return;
-        }
-
-        Explosion explosion = new Explosion(world, entity, null, null, entity.getPosX(), entity.getPosY(), entity.getPosZ(), radius, false, Explosion.Mode.NONE);
-
-        if(net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion)) {
-            return;
-        }
-
-        explosion.doExplosionA();
-        explosion.doExplosionB(true);
-
-        explosion.clearAffectedBlockPositions();
-
-        for(ServerPlayerEntity player : ((ServerWorld) world).getPlayers()) {
-            if(player.getDistanceSq(entity.getPosX(), entity.getPosY(), entity.getPosZ()) < 4096) {
-                player.connection.sendPacket(new SExplosionPacket(entity.getPosX(), entity.getPosY(), entity.getPosZ(), radius, explosion.getAffectedBlockPositions(), explosion.getPlayerKnockbackMap().get(player)));
-            }
         }
 
         AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, entity.getPosX(), entity.getPosY(), entity.getPosZ());
