@@ -19,7 +19,7 @@ import net.minecraft.world.IWorldReader;
 
 public class JellyfishBottleBlock extends Block implements IWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    protected static final VoxelShape GROUNDED_SHAPE = VoxelShapes.or(Block.makeCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 7.0D, 11.0D), Block.makeCuboidShape(6.0D, 7.0D, 6.0D, 10.0D, 9.0D, 10.0D));
+    protected static final VoxelShape GROUNDED_SHAPE = VoxelShapes.or(Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D), Block.makeCuboidShape(6.0D, 7.0D, 6.0D, 10.0D, 9.0D, 10.0D));
 
     public JellyfishBottleBlock() {
         super(AbstractBlock.Properties.create(Material.GLASS).hardnessAndResistance(2.0F).sound(SoundType.LANTERN).setLightLevel((state) -> 15).notSolid());
