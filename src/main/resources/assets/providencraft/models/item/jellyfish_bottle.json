@@ -1,3 +1,6 @@
 {
-  "parent": "providencraft:block/jellyfish_bottle"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "providencraft:item/jellyfish_bottle"
+  }
 }
