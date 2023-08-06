@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#P#",
+    "/i/",
+    " Q "
+  ],
+  "key": {
+    "#": {
+      "item": "providencraft:idol_cloth"
+    },
+    "P": {
+      "item": "minecraft:pink_wool"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Q": {
+      "item": "minecraft:quartz_block"
+    }
+  },
+  "result": {
+    "item": "providencraft:qinglan_umbrella",
+    "count": 1
+  }
+}
