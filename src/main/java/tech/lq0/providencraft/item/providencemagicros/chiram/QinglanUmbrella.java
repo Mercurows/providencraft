@@ -35,8 +35,6 @@ public class QinglanUmbrella extends Item {
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        TooltipTool.addDevelopingText(tooltip);
-
         tooltip.add(new TranslationTextComponent("des.providencraft.qinglan_umbrella_1").mergeStyle(TextFormatting.GRAY));
         tooltip.add(new TranslationTextComponent("des.providencraft.qinglan_umbrella_2").mergeStyle(TextFormatting.GRAY));
 
