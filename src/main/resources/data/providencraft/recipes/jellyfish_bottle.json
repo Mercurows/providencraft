@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " _ ",
+    "GHG",
+    "GLG"
+  ],
+  "key": {
+    "_": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "H": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "L": {
+      "item": "minecraft:light_blue_dye"
+    }
+  },
+  "result": {
+    "item": "providencraft:jellyfish_bottle",
+    "count": 1
+  }
+}
