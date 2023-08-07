@@ -8,6 +8,8 @@ import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.tileentity.BeaconTileEntityRenderer;
+import net.minecraft.client.world.ClientWorld;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.*;
@@ -16,11 +18,14 @@ import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import tech.lq0.providencraft.entity.LeviyBeamEntity;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.item.providencesecond.lecia.Leviy;
 
 import java.awt.*;
+import java.util.Random;
 
 public class LeviyRenderer {
     private static float lastX, lastY, lastZ;
@@ -75,7 +80,7 @@ public class LeviyRenderer {
                         evt.getPartialTicks(),
                         1, world.getGameTime(),
                         0, 1000, new float[]{1, 0, 0},
-                        0.35f, .4f, 0.5f);
+                        0.35f, .35f, 0.5f);
 
                 stack.pop();
 
@@ -85,6 +90,33 @@ public class LeviyRenderer {
                 SpecialRender.renderBlock(evt.getMatrixStack(), x - 1, y, z, Color.cyan, .5f);
                 SpecialRender.renderBlock(evt.getMatrixStack(), x, y, z + 1, Color.cyan, .5f);
                 SpecialRender.renderBlock(evt.getMatrixStack(), x, y, z - 1, Color.cyan, .5f);
+            }
+        }
+    }
+
+    public static void shake(EntityViewRenderEvent.CameraSetup evt) {
+        ClientPlayerEntity player = Minecraft.getInstance().player;
+        assert player != null;
+        ClientWorld world = player.connection.getWorld();
+
+        for (Entity entity : world.getAllEntities()) {
+            if (entity instanceof LeviyBeamEntity) {
+                LeviyBeamEntity beam = (LeviyBeamEntity) entity;
+                double xDiff = player.getPosX() - beam.getPosX();
+                double yDiff = player.getPosY() - beam.getPosY();
+                double zDiff = player.getPosZ() - beam.getPosZ();
+                double distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff + zDiff * zDiff);
+
+                float beamAffectRadius = ease(0, beam.getRadius(), (float) beam.ticksExisted / beam.getDuration()) * 8;
+
+                if (distance <= beamAffectRadius) {
+                    // TODO 修改为更合理的晃动
+                    float shakeRate = ease(0, 20, (float) Math.pow((beamAffectRadius - distance) / beamAffectRadius, 2));
+                    Random random = new Random();
+                    evt.setYaw(evt.getYaw() - shakeRate * 0.5f + random.nextFloat() * shakeRate);
+                    evt.setPitch(evt.getPitch() - shakeRate * 0.5f + random.nextFloat() * shakeRate);
+                    evt.setRoll(evt.getRoll() - shakeRate * 0.5f + random.nextFloat() * shakeRate);
+                }
             }
         }
     }
@@ -115,7 +147,7 @@ public class LeviyRenderer {
         float f14 = 1.0F;
         float f15 = -1.0F + f2;
         float f16 = (float) height * textureScale * (0.5F / beamRadius) + f15;
-        renderPart(matrixStackIn, bufferIn.getBuffer(RenderType.getBeaconBeam(textureLocation, true)), r, g, b, alpha, yOffset, i, 0.0F, beamRadius, beamRadius, 0.0F, f9, 0.0F, 0.0F, f12, 0.0F, 1.0F, f16, f15);
+        renderPart(matrixStackIn, bufferIn.getBuffer(RenderType.getEntityTranslucent(textureLocation)), r, g, b, alpha, yOffset, i, 0.0F, beamRadius, beamRadius, 0.0F, f9, 0.0F, 0.0F, f12, 0.0F, 1.0F, f16, f15);
         matrixStackIn.pop();
         f6 = -glowRadius;
         float f7 = -glowRadius;
@@ -124,7 +156,7 @@ public class LeviyRenderer {
         f13 = 0.0F;
         f15 = -1.0F + f2;
         f16 = (float) height * textureScale + f15;
-        renderPart(matrixStackIn, bufferIn.getBuffer(RenderType.getBeaconBeam(textureLocation, true)), r, g, b, 0.125F * alpha, yOffset, i, f6, f7, glowRadius, f8, f9, glowRadius, glowRadius, glowRadius, 0.0F, 1.0F, f16, f15);
+        renderPart(matrixStackIn, bufferIn.getBuffer(RenderType.getEntityTranslucent(textureLocation)), r, g, b, 0.125F * alpha, yOffset, i, f6, f7, glowRadius, f8, f9, glowRadius, glowRadius, glowRadius, 0.0F, 1.0F, f16, f15);
         matrixStackIn.pop();
     }
 

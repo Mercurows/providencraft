@@ -9,6 +9,7 @@ import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,6 +32,11 @@ public class SpecialRender {
         NiitCarRenderer.render(evt);
         YeggyPearlRenderer.render(evt);
         WorldPeaceStaffRenderer.render(evt);
+    }
+
+    @SubscribeEvent
+    public static void cameraShake(EntityViewRenderEvent.CameraSetup event) {
+        LeviyRenderer.shake(event);
     }
 
     public static void drawNumber(Matrix4f matrix, int level, int left, int top, int num, int color) {
