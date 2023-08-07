@@ -43,6 +43,7 @@ public class Leviy extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
         if (worldIn.isRemote) {
+            ItemStack stack = playerIn.getHeldItem(handIn);
             Vector3d look = playerIn.getLookVec();
             int distance = 300;
             Vector3d start = playerIn.getPositionVec().add(0, playerIn.getEyeHeight(), 0);
@@ -55,11 +56,15 @@ public class Leviy extends Item {
             if (!result.getType().equals(RayTraceResult.Type.MISS)) {
                 BlockPos pos = result.getPos();
                 PdcNetwork.CHANNEL.sendToServer(new LeviyLaunchPacket(pos.getX(), pos.getY(), pos.getZ()));
+
+                // TODO 修改为正确的冷却时间
+                playerIn.getCooldownTracker().setCooldown(this, 100);
+                return ActionResult.resultSuccess(stack);
             } else {
                 playerIn.sendStatusMessage(new TranslationTextComponent("des.providencraft.leviy.invalid_select"), true);
+                return ActionResult.resultFail(stack);
             }
         }
-
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 }
