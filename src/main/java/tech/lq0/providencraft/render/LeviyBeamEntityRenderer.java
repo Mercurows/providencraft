@@ -24,6 +24,7 @@ public class LeviyBeamEntityRenderer extends EntityRenderer<LeviyBeamEntity> {
 
     @Override
     public void render(LeviyBeamEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+        matrixStackIn.push();
         float radius = entityIn.getRadius();
         float ticksExisted = entityIn.ticksExisted + partialTicks;
         float duration = entityIn.getDuration();
@@ -31,7 +32,6 @@ public class LeviyBeamEntityRenderer extends EntityRenderer<LeviyBeamEntity> {
         float r = ease(0, radius, ticksExisted / duration);
 
         // 渲染光柱
-        matrixStackIn.translate(.5f, 0, .5f);
         LeviyRenderer.renderBeamSegment(matrixStackIn,
                 bufferIn,
                 TEXTURE,
@@ -39,7 +39,8 @@ public class LeviyBeamEntityRenderer extends EntityRenderer<LeviyBeamEntity> {
                 1, entityIn.getEntityWorld().getGameTime(),
                 0, 5000, new float[]{1, 0, 0},
                 r, r + .5f, 1);
-
+        matrixStackIn.pop();
+        matrixStackIn.translate(.5f, 0, .5f);
     }
 
 
