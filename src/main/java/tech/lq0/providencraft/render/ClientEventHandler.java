@@ -31,6 +31,7 @@ public class ClientEventHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.SHU_RINO_KEN_ENTITY.get(), ShuRinoKenEntityRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.TAIL_BOBBER_ENTITY.get(), TailBobberRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.HIRENADE_GG_ENTITY.get(), HirenadeGGEntityRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.LEVIY_BEAM_ENTITY.get(), LeviyBeamEntityRenderer::new);
 
         event.enqueueWork(() -> ClientRegistry.bindTileEntityRenderer(TileEntityRegistry.POINTS_STORE.get(), PointsStoreTileEntityRenderer::new));
 

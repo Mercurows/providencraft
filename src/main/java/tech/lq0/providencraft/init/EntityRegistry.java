@@ -6,7 +6,10 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import tech.lq0.providencraft.Utils;
-import tech.lq0.providencraft.entity.*;
+import tech.lq0.providencraft.entity.LeviyBeamEntity;
+import tech.lq0.providencraft.entity.NiitCarEntity;
+import tech.lq0.providencraft.entity.SeatEntity;
+import tech.lq0.providencraft.entity.TailBobberEntity;
 import tech.lq0.providencraft.entity.projectile.*;
 
 public class EntityRegistry {
@@ -48,7 +51,7 @@ public class EntityRegistry {
                     () -> EntityType.Builder.<BloodCrystalEntity>create(BloodCrystalEntity::new, EntityClassification.MISC).size(0.1f, 0.1f).build("blood_crystal"));
     public static final RegistryObject<EntityType<CursedCatDollEntity>> CURSED_CAT_DOLL_ENTITY =
             ENTITY_TYPES.register("cursed_cat_doll",
-                    () -> EntityType.Builder.<CursedCatDollEntity>create(CursedCatDollEntity::new, EntityClassification.MISC).size(0.3f,0.3f).build("cursed_cat_doll"));
+                    () -> EntityType.Builder.<CursedCatDollEntity>create(CursedCatDollEntity::new, EntityClassification.MISC).size(0.3f, 0.3f).build("cursed_cat_doll"));
     public static final RegistryObject<EntityType<ShuRinoKenEntity>> SHU_RINO_KEN_ENTITY =
             ENTITY_TYPES.register("shu_rino_ken",
                     () -> EntityType.Builder.<ShuRinoKenEntity>create(ShuRinoKenEntity::new, EntityClassification.MISC).size(0.5f, 0.2f).build("shu_rino_ken"));
@@ -59,5 +62,9 @@ public class EntityRegistry {
                             .disableSummoning().size(0.25f, 0.25f).setCustomClientFactory(TailBobberEntity::new).build("tail_bobber"));
     public static final RegistryObject<EntityType<HirenadeGGEntity>> HIRENADE_GG_ENTITY =
             ENTITY_TYPES.register("hirenade_gg",
-                    () -> EntityType.Builder.<HirenadeGGEntity>create(HirenadeGGEntity::new, EntityClassification.MISC).size(0.4f,0.4f).build("hirenade_gg"));
+                    () -> EntityType.Builder.<HirenadeGGEntity>create(HirenadeGGEntity::new, EntityClassification.MISC).size(0.4f, 0.4f).build("hirenade_gg"));
+
+    public static final RegistryObject<EntityType<LeviyBeamEntity>> LEVIY_BEAM_ENTITY =
+            ENTITY_TYPES.register("leviy_beam",
+                    () -> EntityType.Builder.create(LeviyBeamEntity::new, EntityClassification.MISC).size(1, 100).disableSerialization().trackingRange(300).func_233608_b_(Integer.MAX_VALUE).build("leviy_beam"));
 }
