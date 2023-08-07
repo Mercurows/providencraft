@@ -17,6 +17,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
+import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.item.providencesecond.lecia.Leviy;
 
 import java.awt.*;
@@ -30,7 +31,7 @@ public class LeviyRenderer {
         assert player != null;
         ItemStack item = player.getHeldItemMainhand();
 
-        if (item.getItem() instanceof Leviy) {
+        if (item.getItem() instanceof Leviy && !player.getCooldownTracker().hasCooldown(ItemRegistry.LEVIY.get())) {
             World world = player.getEntityWorld();
             Vector3d look = player.getLookVec();
             MatrixStack stack = evt.getMatrixStack();
