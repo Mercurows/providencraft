@@ -111,11 +111,11 @@ public class LeviyRenderer {
 
                 if (distance <= beamAffectRadius) {
                     // TODO 修改为更合理的晃动
-                    float shakeRate = ease(0, 20, (float) Math.pow((beamAffectRadius - distance) / beamAffectRadius, 2));
+                    float shakeRate = ease(1, 10, (float) Math.pow((beamAffectRadius - distance) / beamAffectRadius, 2));
                     Random random = new Random();
-                    evt.setYaw(evt.getYaw() - shakeRate * 0.5f + random.nextFloat() * shakeRate);
-                    evt.setPitch(evt.getPitch() - shakeRate * 0.5f + random.nextFloat() * shakeRate);
-                    evt.setRoll(evt.getRoll() - shakeRate * 0.5f + random.nextFloat() * shakeRate);
+                    evt.setYaw(evt.getYaw() - shakeRate * 0.3f + random.nextFloat() * shakeRate);
+                    evt.setPitch(evt.getPitch() - shakeRate * 0.18f + random.nextFloat() * shakeRate);
+                    evt.setRoll(evt.getRoll() - shakeRate * 0.3f + random.nextFloat() * shakeRate);
                 }
             }
         }

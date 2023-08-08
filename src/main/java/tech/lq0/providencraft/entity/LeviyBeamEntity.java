@@ -54,6 +54,17 @@ public class LeviyBeamEntity extends Entity {
         }
     }
 
+    public float getCurrentRadius() {
+        return getCurrentRadius(0);
+    }
+
+    public float getCurrentRadius(float partialTicks) {
+        float radius = getRadius();
+        float ticksExisted = this.ticksExisted + partialTicks;
+        float duration = getDuration();
+
+        return ease(0, radius, ticksExisted / duration);
+    }
 
     @Override
     protected void registerData() {
@@ -85,5 +96,9 @@ public class LeviyBeamEntity extends Entity {
         pack.writeUniqueId(getUniqueID());
 
         return NetworkHooks.getEntitySpawningPacket(this);
+    }
+
+    private static float ease(float start, float end, float rate) {
+        return start + (end - start) * rate;
     }
 }
