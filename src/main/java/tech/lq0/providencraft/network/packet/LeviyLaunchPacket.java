@@ -19,7 +19,7 @@ public class LeviyLaunchPacket {
     private int duration;
 
     public LeviyLaunchPacket(int x, int y, int z) {
-        this(x, y, z, 8, 10, 100);
+        this(x, y, z, 6, 10, 100);
     }
 
     public LeviyLaunchPacket(int x, int y, int z, float power) {
@@ -54,20 +54,23 @@ public class LeviyLaunchPacket {
             ServerPlayerEntity player = ctx.get().getSender();
             if (player != null) {
                 World world = player.world;
+
+                double xDiff = player.getPosX() - packet.x;
+                double zDiff = player.getPosZ() - packet.z;
+
+                double d = Math.sqrt(xDiff * xDiff + zDiff * zDiff);
+
+                if (d > 512) return;
+
                 LeviyBeamEntity beam = EntityRegistry.LEVIY_BEAM_ENTITY.get().create(player.world);
 
                 assert beam != null;
                 beam.setPosition(packet.x, packet.y, packet.z);
-
-                System.out.println(packet.x + ", " + packet.y + ", " + packet.z);
-
                 beam.setPower(packet.power);
                 beam.setRadius(packet.radius);
                 beam.setDuration(packet.duration);
                 beam.setOwner(player);
                 world.addEntity(beam);
-
-                System.out.println("beam created");
             }
         });
         ctx.get().setPacketHandled(true);

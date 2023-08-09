@@ -45,7 +45,7 @@ public class Leviy extends Item {
         if (worldIn.isRemote) {
             ItemStack stack = playerIn.getHeldItem(handIn);
             Vector3d look = playerIn.getLookVec();
-            int distance = 300;
+            int distance = 512;
             Vector3d start = playerIn.getPositionVec().add(0, playerIn.getEyeHeight(), 0);
             Vector3d end = playerIn.getPositionVec().add(look.x * distance, look.y * distance + playerIn.getEyeHeight(), look.z * distance);
 

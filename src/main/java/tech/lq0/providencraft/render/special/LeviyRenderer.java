@@ -41,7 +41,7 @@ public class LeviyRenderer {
             Vector3d look = player.getLookVec();
             MatrixStack stack = evt.getMatrixStack();
 
-            int distance = 300;
+            int distance = 512;
             Vector3d start = player.getPositionVec().add(0, player.getEyeHeight(), 0);
             Vector3d end = player.getPositionVec().add(look.x * distance, look.y * distance + player.getEyeHeight(), look.z * distance);
 

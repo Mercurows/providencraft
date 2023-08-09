@@ -49,7 +49,7 @@ public class LeviyBeamEntity extends Entity {
 
     public LeviyBeamEntity(EntityType<?> entityTypeIn, World worldIn) {
         super(entityTypeIn, worldIn);
-        this.power = 8;
+        this.power = 6;
         this.radius = 10;
         this.duration = 100;
     }
@@ -61,18 +61,16 @@ public class LeviyBeamEntity extends Entity {
             if (this.ticksExisted >= this.duration) {
                 this.remove();
             }
-            if (this.ticksExisted % 2 == 0) {
-                float r = getCurrentRadius();
-                List<LivingEntity> targets = this.world.getEntitiesWithinAABB(LivingEntity.class, this.getBoundingBox().grow(r, 0, r));
-                if (!targets.isEmpty()) {
-                    for (LivingEntity target : targets) {
-                        if (target.getUniqueID().equals(this.ownerUniqueId))
-                            continue;
-                        double d = this.getDistance(target);
-                        float damage = getDamage(d, r);
-                        target.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.getOwner()), damage);
-                        target.hurtResistantTime = 0;
-                    }
+            float r = getCurrentRadius();
+            List<LivingEntity> targets = this.world.getEntitiesWithinAABB(LivingEntity.class, this.getBoundingBox().grow(r, 0, r));
+            if (!targets.isEmpty()) {
+                for (LivingEntity target : targets) {
+                    if (target.getUniqueID().equals(this.ownerUniqueId))
+                        continue;
+                    double d = this.getDistance(target);
+                    float damage = getDamage(d, r);
+                    target.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.getOwner()), damage);
+                    target.hurtResistantTime = 0;
                 }
             }
         }
@@ -122,10 +120,6 @@ public class LeviyBeamEntity extends Entity {
 
         return ease(0, radius, ticksExisted / duration);
     }
-
-//    public EntitySize getSize(Pose poseIn) {
-//        return EntitySize.flexible(this.getRadius() + 1, 100F);
-//    }
 
     @Override
     protected void registerData() {
