@@ -19,7 +19,7 @@ public class LeviyLaunchPacket {
     private int duration;
 
     public LeviyLaunchPacket(int x, int y, int z) {
-        this(x, y, z, 0.5f, 10, 100);
+        this(x, y, z, 8, 10, 100);
     }
 
     public LeviyLaunchPacket(int x, int y, int z, float power) {
@@ -64,6 +64,7 @@ public class LeviyLaunchPacket {
                 beam.setPower(packet.power);
                 beam.setRadius(packet.radius);
                 beam.setDuration(packet.duration);
+                beam.setOwner(player);
                 world.addEntity(beam);
 
                 System.out.println("beam created");

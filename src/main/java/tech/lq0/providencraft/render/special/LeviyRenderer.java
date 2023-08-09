@@ -80,7 +80,7 @@ public class LeviyRenderer {
                         evt.getPartialTicks(),
                         1, world.getGameTime(),
                         0, 1000, new float[]{1, 0, 0},
-                        0.35f, .35f, 0.5f);
+                        0.35f, .35f, 0.2f);
 
                 stack.pop();
 
