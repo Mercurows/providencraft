@@ -7,6 +7,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -65,10 +67,18 @@ public class LeviyBeamEntity extends Entity {
             List<LivingEntity> targets = this.world.getEntitiesWithinAABB(LivingEntity.class, this.getBoundingBox().grow(r, 0, r));
             if (!targets.isEmpty()) {
                 for (LivingEntity target : targets) {
-                    if (target.getUniqueID().equals(this.ownerUniqueId))
+                    if (target.getUniqueID().equals(this.ownerUniqueId) || getOwner() != null && target.isOnSameTeam(getOwner()))
                         continue;
-                    double d = this.getDistance(target);
+                    double xDiff = target.getPosX() - this.getPosX();
+                    double zDiff = target.getPosZ() - this.getPosZ();
+                    double d = Math.sqrt(xDiff * xDiff + zDiff * zDiff);
+
                     float damage = getDamage(d, r);
+
+                    target.setMotion(target.getMotion().x, target.getMotion().y - .2, target.getMotion().z);
+                    target.forceFireTicks(1);
+                    target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 1));
+
                     target.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.getOwner()), damage);
                     target.hurtResistantTime = 0;
                 }
