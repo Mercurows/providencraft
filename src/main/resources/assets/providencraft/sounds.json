@@ -520,13 +520,5 @@
         "stream": true
       }
     ]
-  },
-  "heal": {
-    "subtitle": "subtitle.providencraft.heal",
-    "sounds": [
-      {
-        "name": "providencraft:heal"
-      }
-    ]
   }
 }

@@ -8,9 +8,4 @@ public class ModGroup {
     public static final ProvidencraftCostumeGroup costumegroup = new ProvidencraftCostumeGroup();
     public static final ProvidencraftDonateGroup donategroup = new ProvidencraftDonateGroup();
     public static final ProvidencraftTapeGroup tapegroup = new ProvidencraftTapeGroup();
-    public static ProvidencraftIntegrationGroup integrationgroup;
-
-    public static void initIntegrationGroup() {
-        integrationgroup = new ProvidencraftIntegrationGroup();
-    }
 }
