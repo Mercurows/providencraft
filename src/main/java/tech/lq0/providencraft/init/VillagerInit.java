@@ -109,8 +109,7 @@ public class VillagerInit {
                 new ItemsForEmeraldsTrade(ItemRegistry.ELIBOARD.get(), 3,8, 16, 3)
         };
         VillagerTrades.ITrade[] ruozhiLevel5 = new VillagerTrades.ITrade[]{
-                new ItemsForEmeraldsTrade(ItemRegistry.ELECTRIC_HORN.get(), 50, 1, 1, 35),
-                new ItemsForPointsTrade(ItemRegistry.AUDIO_TAPE_ELIFAUS.get(), 24, 1, 1, 3, 50)
+                new ItemsForEmeraldsTrade(ItemRegistry.ELECTRIC_HORN.get(), 50, 1, 1, 35)
         };
 
         VillagerTrades.VILLAGER_DEFAULT_TRADES.put(RUOZHI.get(),

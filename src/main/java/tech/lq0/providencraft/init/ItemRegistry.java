@@ -405,8 +405,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AUDIO_TAPE_USA_2 = ITEMS.register("audio_tape_usa_2", () -> new AudioTape(Livers.USA, SoundRegistry.USA_BOOMERANG, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
     public static final RegistryObject<Item> AUDIO_TAPE_USA_3 = ITEMS.register("audio_tape_usa_3", () -> new AudioTape(Livers.USA, SoundRegistry.USA_GUNDAM, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1))));
 
-    public static final RegistryObject<Item> AUDIO_TAPE_ELIFAUS = ITEMS.register("audio_tape_elifaus", () -> new BrokenAudioTape(SoundRegistry.ELIFAUS, (new Item.Properties().group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.UNCOMMON))));
-
     public static final RegistryObject<Item> MUSIC_DISC_DARAKUDATENSHI = ITEMS.register("music_disc_darakudatenshi", () -> new MusicDisc(Livers.USA, SoundRegistry.DARAKUDATENSHI, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 1));
     public static final RegistryObject<Item> MUSIC_DISC_AROUND_THE_TRAVEL = ITEMS.register("music_disc_around_the_travel", () -> new MusicDisc(Livers.SHIRAKO, SoundRegistry.AROUND_THE_TRAVEL, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.EPIC), 2));
     public static final RegistryObject<Item> MUSIC_DISC_SONG_OF_QINGQIU = ITEMS.register("music_disc_song_of_qingqiu", () -> new MusicDisc(Livers.AOI, SoundRegistry.SONG_OF_QINGQIU, (new Item.Properties()).group(ModGroup.tapegroup).maxStackSize(1).rarity(Rarity.RARE), 3));

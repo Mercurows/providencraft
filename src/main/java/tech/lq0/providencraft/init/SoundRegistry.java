@@ -67,8 +67,6 @@ public class SoundRegistry {
     public static final RegistryObject<SoundEvent> USA_BOOMERANG = SOUNDS.register("usa_boomerang", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/zero/usa_boomerang")));
     public static final RegistryObject<SoundEvent> USA_GUNDAM = SOUNDS.register("usa_gundam", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/zero/usa_gundam")));
 
-    public static final RegistryObject<SoundEvent> ELIFAUS = SOUNDS.register("elifaus", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "audio/other/elifaus")));
-
     //songs
     public static final RegistryObject<SoundEvent> DARAKUDATENSHI = SOUNDS.register("darakudatenshi", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/darakudatenshi")));
     public static final RegistryObject<SoundEvent> AROUND_THE_TRAVEL = SOUNDS.register("around_the_travel", () -> new SoundEvent(new ResourceLocation(Utils.MOD_ID, "song/around_the_travel")));

@@ -297,15 +297,6 @@
       }
     ]
   },
-  "audio/other/elifaus": {
-    "subtitle": "subtitle.providencraft.elifaus",
-    "sounds": [
-      {
-        "name": "providencraft:audio/other/elifaus",
-        "stream": true
-      }
-    ]
-  },
   "blood_crystal": {
     "subtitle": "subtitle.providencraft.blood_crystal",
     "sounds": [
