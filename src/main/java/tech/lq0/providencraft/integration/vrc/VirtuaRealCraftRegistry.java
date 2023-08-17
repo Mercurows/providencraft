@@ -10,12 +10,10 @@ import tech.lq0.providencraft.Utils;
 import tech.lq0.providencraft.integration.vrc.item.chiharu.LittleSpringRoll;
 import tech.lq0.providencraft.integration.vrc.item.koxia.Kuya;
 import tech.lq0.providencraft.integration.vrc.item.koxia.KuyaEntity;
-import tech.lq0.providencraft.integration.vrc.item.sui.SuimashedCookie;
 
 public class VirtuaRealCraftRegistry {
     public static final DeferredRegister<Item> VRC_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Utils.MOD_ID);
 
-    public static final RegistryObject<Item> SUIMASHED_COOKIE = VRC_ITEMS.register("suimashed_cookie", SuimashedCookie::new);
     public static final RegistryObject<Item> KUYA = VRC_ITEMS.register("kuya", Kuya::new);
     public static final RegistryObject<Item> LITTLE_SPRING_ROLL = VRC_ITEMS.register("little_spring_roll", LittleSpringRoll::new);
 
