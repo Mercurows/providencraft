@@ -34,7 +34,7 @@ credits="翻译:勇气之赤" #optional
 authors="Light_Quanta,有点白的黑米饭" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Providence企划同人Minecraft Mod, 好评更新中!
+Providence企划同人Minecraft Mod, 希望我们还能再次相遇
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.providencraft]] #optional
