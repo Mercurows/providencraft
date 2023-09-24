@@ -36,7 +36,9 @@ public class Leviy extends Item {
     @OnlyIn(Dist.CLIENT)
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add((new TranslationTextComponent("des.providencraft.leviy")).mergeStyle(TextFormatting.GRAY));
+        TooltipTool.addDevelopingText(tooltip);
+        tooltip.add((new TranslationTextComponent("des.providencraft.leviy_1")).mergeStyle(TextFormatting.GRAY));
+        tooltip.add((new TranslationTextComponent("des.providencraft.leviy_2")).mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         TooltipTool.addLiverInfo(tooltip, Livers.LECIA);
     }
 
