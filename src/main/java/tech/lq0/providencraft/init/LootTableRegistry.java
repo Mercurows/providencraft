@@ -14,6 +14,7 @@ public class LootTableRegistry {
     public static final ResourceLocation PDC_CHEST = new ResourceLocation(Utils.MOD_ID, "chests/pdc_chest");
     public static final ResourceLocation PDC_DISC_CHEST = new ResourceLocation(Utils.MOD_ID, "chests/pdc_disc_chest");
     public static final ResourceLocation PDC_IGLOO_CHEST = new ResourceLocation(Utils.MOD_ID, "chests/pdc_igloo_chest");
+    public static final ResourceLocation PDC_ELF_CHEST = new ResourceLocation(Utils.MOD_ID, "chests/pdc_elf_chest");
 
     private static LootTableRegistry registry;
 
@@ -29,6 +30,8 @@ public class LootTableRegistry {
         lootTables.put(LootTables.CHESTS_ABANDONED_MINESHAFT, PDC_CHEST);
         lootTables.put(LootTables.CHESTS_END_CITY_TREASURE, PDC_DISC_CHEST);
         lootTables.put(LootTables.CHESTS_IGLOO_CHEST, PDC_IGLOO_CHEST);
+        lootTables.put(LootTables.CHESTS_JUNGLE_TEMPLE, PDC_ELF_CHEST);
+        lootTables.put(LootTables.CHESTS_WOODLAND_MANSION, PDC_ELF_CHEST);
     }
 
     public static LootTableRegistry getRegistry(){
