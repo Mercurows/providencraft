@@ -4,7 +4,7 @@
     "item": "providencraft:crystal_ball"
   },
   "addition": {
-    "item": "minecraft:nether_star"
+    "item": "minecraft:end_crystal"
   },
   "result": {
     "item": "providencraft:enchanted_crystal_ball",

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "tag": "minecraft:music_discs"
+  },
+  "addition": {
+    "item": "providencraft:elf_wings"
+  },
+  "result": {
+    "item": "providencraft:music_disc_dreaming_fairy",
+    "count": 1
+  }
+}
