@@ -42,6 +42,19 @@ import java.util.List;
 import java.util.UUID;
 
 public class MountainDestroyer extends PickaxeItem {
+    public static final List<Material> MATERIALS = new ArrayList<>();
+
+    static {
+        MATERIALS.add(Material.ROCK);
+        MATERIALS.add(Material.EARTH);
+        MATERIALS.add(Material.SAND);
+        MATERIALS.add(Material.ORGANIC);
+        MATERIALS.add(Material.ICE);
+        MATERIALS.add(Material.PACKED_ICE);
+        MATERIALS.add(Material.IRON);
+        MATERIALS.add(Material.ANVIL);
+        MATERIALS.add(Material.SHULKER);
+    }
 
     public static final String TAG_MULTIMINE = "multimine";
 
@@ -57,20 +70,15 @@ public class MountainDestroyer extends PickaxeItem {
             return i >= blockIn.getHarvestLevel();
         }
         Material material = blockIn.getMaterial();
-        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND ||
-                material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE ||
-                material == Material.IRON || blockIn.getBlock().getTags().contains(new ResourceLocation("forge:ores"))
-        );
+        return MATERIALS.contains(material) || blockIn.getBlock().getTags().contains(new ResourceLocation("forge:ores"));
     }
 
     @Override
     @ParametersAreNonnullByDefault
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         Material material = state.getMaterial();
-        return (material == Material.ROCK || material == Material.EARTH || material == Material.SAND ||
-                material == Material.ORGANIC || material == Material.ICE || material == Material.PACKED_ICE ||
-                material == Material.IRON || state.getBlock().getTags().contains(new ResourceLocation("forge:ores"))
-        ) ? this.efficiency : super.getDestroySpeed(stack, state);
+        return MATERIALS.contains(material) || state.getBlock().getTags().contains(new ResourceLocation("forge:ores")) ?
+                this.efficiency : super.getDestroySpeed(stack, state);
     }
 
     @Override
@@ -91,9 +99,7 @@ public class MountainDestroyer extends PickaxeItem {
     @Override
     @ParametersAreNonnullByDefault
     public boolean onBlockDestroyed(ItemStack stack, World worldIn, BlockState state, BlockPos pos, LivingEntity entityLiving) {
-        if ((state.getMaterial() == Material.ROCK || state.getMaterial() == Material.EARTH ||
-                state.getMaterial() == Material.SAND || state.getMaterial() == Material.ORGANIC ||
-                state.getMaterial() == Material.ICE || state.getMaterial() == Material.PACKED_ICE)
+        if ((MATERIALS.contains(state.getMaterial()) || state.getBlock().getTags().contains(new ResourceLocation("forge:ores")))
                 && !worldIn.isRemote && entityLiving instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityLiving;
             stack.damageItem(-1, player, (playerEntity) -> playerEntity.sendBreakAnimation(player.getActiveHand()));
