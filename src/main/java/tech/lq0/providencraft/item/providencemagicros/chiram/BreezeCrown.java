@@ -19,6 +19,7 @@ import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -144,6 +145,19 @@ public class BreezeCrown extends ArmorItem {
                         player.getCooldownTracker().setCooldown(ItemRegistry.BREEZE_CROWN.get(), 160);
                     }
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void breezeCrownHealEvent(LivingHealEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+        ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.HEAD);
+        float heal = event.getAmount();
+
+        if (!livingEntity.world.isRemote) {
+            if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
+                event.setAmount(heal * 1.2f);
             }
         }
     }

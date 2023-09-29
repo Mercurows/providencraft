@@ -13,6 +13,8 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -32,6 +34,8 @@ import java.util.UUID;
 
 public class MistyChestplate extends ArmorItem {
     public static final String TAG_SET = "Set";
+    public static final String TAG_SHIELD = "Shield";
+    public static final String TAG_SHIELD_TIME = "ShieldTime";
 
     public MistyChestplate() {
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.CHEST, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
@@ -58,6 +62,27 @@ public class MistyChestplate extends ArmorItem {
         if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             setArmorSet(stack, player);
+
+            //生成护盾
+            int maxCount = hasArmorSet(stack) ? 2 : 1;
+
+            if (getShieldCount(stack) < maxCount) {
+                if (player.ticksExisted % 20 == 0) {
+                    setShieldTime(stack, Math.min(getShieldTime(stack) + 1, 60));
+                }
+            } else {
+                setShieldTime(stack, 0);
+            }
+
+            if (getShieldTime(stack) >= 60) {
+                setShieldTime(stack, 0);
+                setShieldCount(stack, getShieldCount(stack) + 1);
+            }
+
+            //空中抗性
+            if (!player.isOnGround()) {
+                player.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 40, hasArmorSet(stack) ? 1 : 0, false, false));
+            }
         }
     }
 
@@ -75,7 +100,7 @@ public class MistyChestplate extends ArmorItem {
             map.put(Attributes.ARMOR_TOUGHNESS,
                     new AttributeModifier(uuid, "pdc armor modifier", 7.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 20.0f : 10.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "pdc armor modifier", 10.0f + getShieldCount(stack) * 10.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_DAMAGE,
                     new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 0.1f : 0.0f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
@@ -98,5 +123,21 @@ public class MistyChestplate extends ArmorItem {
 
     public static boolean hasArmorSet(ItemStack stack) {
         return ItemNBTTool.getBoolean(stack, TAG_SET, false);
+    }
+
+    public static void setShieldCount(ItemStack stack, int count) {
+        ItemNBTTool.setInt(stack, TAG_SHIELD, Math.max(0, count));
+    }
+
+    public static int getShieldCount(ItemStack stack) {
+        return ItemNBTTool.getInt(stack, TAG_SHIELD, 0);
+    }
+
+    public static void setShieldTime(ItemStack stack, int time) {
+        ItemNBTTool.setInt(stack, TAG_SHIELD_TIME, time);
+    }
+
+    public static int getShieldTime(ItemStack stack) {
+        return ItemNBTTool.getInt(stack, TAG_SHIELD_TIME, 0);
     }
 }
