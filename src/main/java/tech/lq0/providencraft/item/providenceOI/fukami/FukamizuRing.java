@@ -144,4 +144,9 @@ public class FukamizuRing extends Item {
         return enchantment.type == EnchantmentType.ARMOR_HEAD || enchantment.type == EnchantmentType.BREAKABLE ||
                 enchantment.type == EnchantmentType.ARMOR;
     }
+
+    @Override
+    public boolean isDamageable() {
+        return false;
+    }
 }
