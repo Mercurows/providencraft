@@ -33,7 +33,7 @@ import java.util.UUID;
 public class MistyChestplate extends ArmorItem {
     public static final String TAG_SET = "Set";
 
-    public MistyChestplate(){
+    public MistyChestplate() {
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.CHEST, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
     }
@@ -46,7 +46,7 @@ public class MistyChestplate extends ArmorItem {
 
         tooltip.add(new TranslationTextComponent("des.providencraft.misty_chestplate_1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add(new TranslationTextComponent("des.providencraft.misty_chestplate_2").mergeStyle(TextFormatting.GRAY));
-        if(hasArmorSet(stack)) {
+        if (hasArmorSet(stack)) {
             tooltip.add(new TranslationTextComponent("des.providencraft.magicros_set").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#E2B578"))));
         }
 
@@ -55,7 +55,7 @@ public class MistyChestplate extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
+        if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             setArmorSet(stack, player);
         }
@@ -75,9 +75,9 @@ public class MistyChestplate extends ArmorItem {
             map.put(Attributes.ARMOR_TOUGHNESS,
                     new AttributeModifier(uuid, "pdc armor modifier", 7.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "pdc armor modifier", 8.0f, AttributeModifier.Operation.ADDITION));
-            map.put(Attributes.LUCK,
-                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 4.0f : 0.0f, AttributeModifier.Operation.ADDITION));
+                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 20.0f : 10.0f, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 0.1f : 0.0f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
@@ -92,11 +92,11 @@ public class MistyChestplate extends ArmorItem {
         return false;
     }
 
-    public static void setArmorSet(ItemStack stack, PlayerEntity player){
+    public static void setArmorSet(ItemStack stack, PlayerEntity player) {
         ItemNBTTool.setBoolean(stack, TAG_SET, ArmorTool.hasArmorSet(player));
     }
 
-    public static boolean hasArmorSet(ItemStack stack){
+    public static boolean hasArmorSet(ItemStack stack) {
         return ItemNBTTool.getBoolean(stack, TAG_SET, false);
     }
 }

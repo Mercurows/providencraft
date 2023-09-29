@@ -33,7 +33,7 @@ import java.util.UUID;
 public class CelestialBoots extends ArmorItem {
     public static final String TAG_SET = "Set";
 
-    public CelestialBoots(){
+    public CelestialBoots() {
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.FEET, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
     }
@@ -46,7 +46,7 @@ public class CelestialBoots extends ArmorItem {
 
         tooltip.add(new TranslationTextComponent("des.providencraft.celestial_boots_1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add(new TranslationTextComponent("des.providencraft.celestial_boots_2").mergeStyle(TextFormatting.GRAY));
-        if(hasArmorSet(stack)) {
+        if (hasArmorSet(stack)) {
             tooltip.add(new TranslationTextComponent("des.providencraft.magicros_set").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#E2B578"))));
         }
 
@@ -55,7 +55,7 @@ public class CelestialBoots extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
+        if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             setArmorSet(stack, player);
         }
@@ -76,8 +76,8 @@ public class CelestialBoots extends ArmorItem {
                     new AttributeModifier(uuid, "pdc armor modifier", 4.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.MOVEMENT_SPEED,
                     new AttributeModifier(uuid, "pdc armor modifier", 0.4f, AttributeModifier.Operation.MULTIPLY_BASE));
-            map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 4.0f : 0.0f, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 0.1f : 0.0f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
@@ -92,11 +92,11 @@ public class CelestialBoots extends ArmorItem {
         return false;
     }
 
-    public static void setArmorSet(ItemStack stack, PlayerEntity player){
+    public static void setArmorSet(ItemStack stack, PlayerEntity player) {
         ItemNBTTool.setBoolean(stack, TAG_SET, ArmorTool.hasArmorSet(player));
     }
 
-    public static boolean hasArmorSet(ItemStack stack){
+    public static boolean hasArmorSet(ItemStack stack) {
         return ItemNBTTool.getBoolean(stack, TAG_SET, false);
     }
 }

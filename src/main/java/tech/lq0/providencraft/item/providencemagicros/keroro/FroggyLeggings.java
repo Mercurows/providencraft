@@ -34,7 +34,7 @@ import java.util.UUID;
 public class FroggyLeggings extends ArmorItem {
     public static final String TAG_SET = "Set";
 
-    public FroggyLeggings(){
+    public FroggyLeggings() {
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.LEGS, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
     }
@@ -47,7 +47,7 @@ public class FroggyLeggings extends ArmorItem {
 
         tooltip.add(new TranslationTextComponent("des.providencraft.froggy_leggings_1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add(new TranslationTextComponent("des.providencraft.froggy_leggings_2").mergeStyle(TextFormatting.GRAY));
-        if(hasArmorSet(stack)) {
+        if (hasArmorSet(stack)) {
             tooltip.add(new TranslationTextComponent("des.providencraft.magicros_set").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#E2B578"))));
         }
 
@@ -56,7 +56,7 @@ public class FroggyLeggings extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
+        if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             setArmorSet(stack, player);
         }
@@ -77,8 +77,8 @@ public class FroggyLeggings extends ArmorItem {
                     new AttributeModifier(uuid, "pdc armor modifier", 6.0f, AttributeModifier.Operation.ADDITION));
             map.put(ForgeMod.SWIM_SPEED.get(),
                     new AttributeModifier(uuid, "pdc armor modifier", 0.4f, AttributeModifier.Operation.MULTIPLY_BASE));
-            map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 4.0f : 0.0f, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 0.1f : 0.0f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
@@ -93,11 +93,11 @@ public class FroggyLeggings extends ArmorItem {
         return false;
     }
 
-    public static void setArmorSet(ItemStack stack, PlayerEntity player){
+    public static void setArmorSet(ItemStack stack, PlayerEntity player) {
         ItemNBTTool.setBoolean(stack, TAG_SET, ArmorTool.hasArmorSet(player));
     }
 
-    public static boolean hasArmorSet(ItemStack stack){
+    public static boolean hasArmorSet(ItemStack stack) {
         return ItemNBTTool.getBoolean(stack, TAG_SET, false);
     }
 }

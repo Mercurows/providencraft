@@ -40,7 +40,7 @@ public class BreezeCrown extends ArmorItem {
     public static final String TAG_HEALTH = "Health";
     public static final String TAG_SET = "Set";
 
-    public BreezeCrown(){
+    public BreezeCrown() {
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.HEAD, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
                 .rarity(Rarity.create("PROVIDENCRAFT_LEGENDARY", TextFormatting.GOLD)));
     }
@@ -53,7 +53,7 @@ public class BreezeCrown extends ArmorItem {
 
         tooltip.add(new TranslationTextComponent("des.providencraft.breeze_crown_1").mergeStyle(TextFormatting.GRAY).mergeStyle(TextFormatting.ITALIC));
         tooltip.add(new TranslationTextComponent("des.providencraft.breeze_crown_2").mergeStyle(TextFormatting.GRAY));
-        if(hasArmorSet(stack)) {
+        if (hasArmorSet(stack)) {
             tooltip.add(new TranslationTextComponent("des.providencraft.magicros_set").mergeStyle(TextFormatting.ITALIC).mergeStyle(Style.EMPTY.setColor(Color.fromHex("#E2B578"))));
         }
 
@@ -62,7 +62,7 @@ public class BreezeCrown extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
-        if(!worldIn.isRemote && entityIn instanceof PlayerEntity){
+        if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             setHealthAmount(stack, player);
             setArmorSet(stack, player);
@@ -84,8 +84,8 @@ public class BreezeCrown extends ArmorItem {
                     new AttributeModifier(uuid, "pdc armor modifier", 3.0f, AttributeModifier.Operation.ADDITION));
             map.put(Attributes.ATTACK_SPEED,
                     new AttributeModifier(uuid, "pdc armor modifier", getAttackSpeedAmount(stack), AttributeModifier.Operation.MULTIPLY_BASE));
-            map.put(Attributes.MAX_HEALTH,
-                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 4.0f : 0.0f, AttributeModifier.Operation.ADDITION));
+            map.put(Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(uuid, "pdc armor modifier", hasArmorSet(stack) ? 0.1f : 0.0f, AttributeModifier.Operation.MULTIPLY_BASE));
         }
         return map;
     }
@@ -95,11 +95,11 @@ public class BreezeCrown extends ArmorItem {
         return false;
     }
 
-    public static void setHealthAmount(ItemStack stack, PlayerEntity player){
+    public static void setHealthAmount(ItemStack stack, PlayerEntity player) {
         ItemNBTTool.setFloat(stack, TAG_HEALTH, player.getHealth());
     }
 
-    public static float getAttackSpeedAmount(ItemStack stack){
+    public static float getAttackSpeedAmount(ItemStack stack) {
         float times = hasArmorSet(stack) ? 0.025f : 0.02f;
         float max = hasArmorSet(stack) ? 1.5f : 1.0f;
         float min = hasArmorSet(stack) ? 0.4f : 0.2f;
@@ -108,15 +108,15 @@ public class BreezeCrown extends ArmorItem {
         return Math.min(max, Math.max(spd, min));
     }
 
-    public static float getHealthAmount(ItemStack stack){
+    public static float getHealthAmount(ItemStack stack) {
         return ItemNBTTool.getFloat(stack, TAG_HEALTH, 0.0f);
     }
 
-    public static void setArmorSet(ItemStack stack, PlayerEntity player){
+    public static void setArmorSet(ItemStack stack, PlayerEntity player) {
         ItemNBTTool.setBoolean(stack, TAG_SET, ArmorTool.hasArmorSet(player));
     }
 
-    public static boolean hasArmorSet(ItemStack stack){
+    public static boolean hasArmorSet(ItemStack stack) {
         return ItemNBTTool.getBoolean(stack, TAG_SET, false);
     }
 
@@ -129,16 +129,20 @@ public class BreezeCrown extends ArmorItem {
     public static void breezeCrownEvent(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
         ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.HEAD);
-        if(!livingEntity.world.isRemote) {
-            if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
-                PlayerEntity player = (PlayerEntity) livingEntity;
-                if (!player.getCooldownTracker().hasCooldown(ItemRegistry.BREEZE_CROWN.get())) {
-                    int level = ArmorTool.hasArmorSet(player) ? 4 : 3;
-                    int time = ArmorTool.hasArmorSet(player) ? 50 : 35;
-                    player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 30, level, false, false));
+        float damage = event.getAmount();
 
-                    player.hurtResistantTime = time;
-                    player.getCooldownTracker().setCooldown(ItemRegistry.BREEZE_CROWN.get(), 160);
+        if (damage > 0f) {
+            if (!livingEntity.world.isRemote) {
+                if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
+                    PlayerEntity player = (PlayerEntity) livingEntity;
+                    if (!player.getCooldownTracker().hasCooldown(ItemRegistry.BREEZE_CROWN.get())) {
+                        int level = ArmorTool.hasArmorSet(player) ? 4 : 3;
+                        int time = ArmorTool.hasArmorSet(player) ? 50 : 35;
+                        player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 30, level, false, false));
+
+                        player.hurtResistantTime = time;
+                        player.getCooldownTracker().setCooldown(ItemRegistry.BREEZE_CROWN.get(), 160);
+                    }
                 }
             }
         }
