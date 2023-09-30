@@ -147,13 +147,10 @@ public class MistyChestplate extends ArmorItem {
                 if (count > 0) {
                     if (damage <= maxDamage) {
                         event.setCanceled(true);
-                        return;
                     } else {
                         setShieldCount(itemStack, --count);
                     }
                 }
-
-                System.out.println(damage + " count= " + count);
             }
         }
     }

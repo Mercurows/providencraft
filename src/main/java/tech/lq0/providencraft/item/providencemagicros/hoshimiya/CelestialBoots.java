@@ -13,6 +13,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -31,6 +32,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class CelestialBoots extends ArmorItem {
+    private static final int[] HUNGER_TIME = new int[]{320, 240, 160, 160};
+
     public static final String TAG_SET = "Set";
 
     public CelestialBoots() {
@@ -65,6 +68,21 @@ public class CelestialBoots extends ArmorItem {
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if (!world.isRemote) {
             setArmorSet(stack, player);
+
+            int times = getEnhanceTimes(player, hasArmorSet(stack));
+            if (times == 4) {
+                if (player.getFoodStats().getFoodLevel() >= 20) {
+                    if (player.ticksExisted % 80 == 0) {
+                        player.getFoodStats().addStats(2, 0.75f);
+                    }
+                } else {
+                    if (player.ticksExisted % 160 == 0) {
+                        player.getFoodStats().addStats(2, 0.5f);
+                    }
+                }
+            } else if (player.ticksExisted % HUNGER_TIME[times - 1] == 0) {
+                player.getFoodStats().addStats(1, 0.5f);
+            }
         }
     }
 
@@ -105,5 +123,32 @@ public class CelestialBoots extends ArmorItem {
 
     public static boolean hasArmorSet(ItemStack stack) {
         return ItemNBTTool.getBoolean(stack, TAG_SET, false);
+    }
+
+    private static int getEnhanceTimes(PlayerEntity player, boolean flag) {
+        //套装效果，强化变为4次
+        if (flag) {
+            return 4;
+        }
+
+        //普通情况，倍率为1
+        int times = 1;
+
+        World world = player.world;
+        BlockPos pos = player.getPosition();
+
+        if (!world.isRemote) {
+            //可见天空，倍率为2
+            if (world.canSeeSky(pos)) {
+                times = 2;
+
+                //可见星空，倍率为3
+                if (!world.isRaining() && world.isNightTime()) {
+                    times = 3;
+                }
+            }
+        }
+
+        return times;
     }
 }
