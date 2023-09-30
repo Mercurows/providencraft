@@ -62,6 +62,13 @@ public class CelestialBoots extends ArmorItem {
     }
 
     @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if (!world.isRemote) {
+            setArmorSet(stack, player);
+        }
+    }
+
+    @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return slotChanged;
     }

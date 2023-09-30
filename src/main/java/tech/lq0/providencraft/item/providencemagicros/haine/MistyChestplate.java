@@ -40,7 +40,6 @@ import java.util.UUID;
 public class MistyChestplate extends ArmorItem {
     public static final String TAG_SET = "Set";
     public static final String TAG_SHIELD = "Shield";
-    public static final String TAG_SHIELD_TIME = "ShieldTime";
 
     public MistyChestplate() {
         super(ModArmorMaterial.MAGICROS, EquipmentSlotType.CHEST, new Properties().group(ModGroup.itemgroup).isImmuneToFire().setNoRepair()
@@ -67,24 +66,29 @@ public class MistyChestplate extends ArmorItem {
         if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
             setArmorSet(stack, player);
+        }
+    }
 
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if (!world.isRemote) {
             //生成护盾
             int maxCount = hasArmorSet(stack) ? 2 : 1;
 
             if (getShieldCount(stack) < maxCount) {
                 if (player.ticksExisted % 20 == 0) {
-                    setShieldTime(stack, Math.min(getShieldTime(stack) + 1, 60));
+                    setShieldTime(player, Math.min(getShieldTime(player) + 1, 60));
                 }
             } else {
-                setShieldTime(stack, 0);
+                setShieldTime(player, 0);
 
                 if (getShieldCount(stack) > maxCount) {
                     setShieldCount(stack, maxCount);
                 }
             }
 
-            if (getShieldTime(stack) >= 60) {
-                setShieldTime(stack, 0);
+            if (getShieldTime(player) >= 60) {
+                setShieldTime(player, 0);
                 setShieldCount(stack, getShieldCount(stack) + 1);
             }
 
@@ -126,6 +130,7 @@ public class MistyChestplate extends ArmorItem {
 
         if (!livingEntity.world.isRemote) {
             if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.MISTY_CHESTPLATE.get())) {
+
                 if (source.isProjectile()) {
                     double rand = Math.random();
 
@@ -179,11 +184,11 @@ public class MistyChestplate extends ArmorItem {
         return Math.min(hasArmorSet(stack) ? 2 : 1, ItemNBTTool.getInt(stack, TAG_SHIELD, 0));
     }
 
-    public static void setShieldTime(ItemStack stack, int time) {
-        ItemNBTTool.setInt(stack, TAG_SHIELD_TIME, time);
+    public static void setShieldTime(PlayerEntity player, int time) {
+        player.getPersistentData().putInt("MistyTime", time);
     }
 
-    public static int getShieldTime(ItemStack stack) {
-        return ItemNBTTool.getInt(stack, TAG_SHIELD_TIME, 0);
+    public static int getShieldTime(PlayerEntity player) {
+        return player.getPersistentData().getInt("MistyTime");
     }
 }

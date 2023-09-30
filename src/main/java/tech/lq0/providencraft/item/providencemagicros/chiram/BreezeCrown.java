@@ -65,8 +65,14 @@ public class BreezeCrown extends ArmorItem {
     public void inventoryTick(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         if (!worldIn.isRemote && entityIn instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) entityIn;
-            setHealthAmount(stack, player);
             setArmorSet(stack, player);
+        }
+    }
+
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if (!world.isRemote) {
+            setHealthAmount(stack, player);
         }
     }
 
