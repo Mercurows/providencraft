@@ -13,11 +13,20 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
@@ -31,6 +40,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class FroggyLeggings extends ArmorItem {
     public static final String TAG_SET = "Set";
 
@@ -66,6 +76,52 @@ public class FroggyLeggings extends ArmorItem {
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
         if (!world.isRemote) {
             setArmorSet(stack, player);
+
+            if (player.isSneaking()) {
+                player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 40, hasArmorSet(stack) ? 2 : 1, false, false));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void froggyJump(LivingEvent.LivingJumpEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+
+        if (livingEntity instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) livingEntity;
+            if (player.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.FROGGY_LEGGINGS.get()) {
+                Vector3d base = player.getMotion().add(0, 0.275, 0);
+
+                if (player.isSprinting()) {
+                    float f1 = livingEntity.rotationYaw * ((float) Math.PI / 180F);
+                    base = base.add(-MathHelper.sin(f1) * 0.45F, 0.0D, MathHelper.cos(f1) * 0.45F);
+                }
+
+                player.setMotion(base);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void froggyDamage(LivingAttackEvent event) {
+        if (event.getEntityLiving() instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) event.getEntityLiving();
+
+            ItemStack stack = player.getItemStackFromSlot(EquipmentSlotType.LEGS);
+            String type = event.getSource().damageType;
+
+            if (stack.getItem() == ItemRegistry.FROGGY_LEGGINGS.get()) {
+                if (type.equals(DamageSource.FALL.damageType)) {
+                    event.setCanceled(true);
+                }
+
+                if (hasArmorSet(stack)) {
+                    if (type.equals(DamageSource.IN_FIRE.damageType) || type.equals(DamageSource.ON_FIRE.damageType)
+                            || type.equals(DamageSource.LAVA.damageType) || type.equals(DamageSource.HOT_FLOOR.damageType)) {
+                        event.setCanceled(true);
+                    }
+                }
+            }
         }
     }
 

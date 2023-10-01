@@ -83,27 +83,31 @@ public class Sneakers extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void onFalling(LivingHurtEvent event){
+    public static void onFalling(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
-        if(livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.SNEAKERS.get() &&
-                event.getSource() == DamageSource.FALL){
+        if (livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.SNEAKERS.get() &&
+                event.getSource() == DamageSource.FALL) {
             event.setAmount(event.getAmount() / 2.0f);
         }
     }
 
     @SubscribeEvent
-    public static void onLivingFall(LivingFallEvent event){
+    public static void onLivingFall(LivingFallEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
-        if(livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.SNEAKERS.get()){
+        if (livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.SNEAKERS.get()) {
             event.setDistance(Math.max(0, event.getDistance() - 6));
         }
     }
 
     @SubscribeEvent
-    public static void onLivingJump(LivingEvent.LivingJumpEvent event){
+    public static void onLivingJump(LivingEvent.LivingJumpEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
-        if(livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.SNEAKERS.get()){
+        if (livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.SNEAKERS.get()) {
             livingEntity.setMotion(livingEntity.getMotion().add(0, 0.175, 0));
         }
+//
+//        if (livingEntity.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.FROGGY_LEGGINGS.get()) {
+//            livingEntity.setMotion(livingEntity.getMotion().add(0, 0.3, 0));
+//        }
     }
 }

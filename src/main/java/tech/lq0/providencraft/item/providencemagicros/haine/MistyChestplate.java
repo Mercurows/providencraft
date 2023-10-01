@@ -20,7 +20,7 @@ import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
@@ -121,7 +121,7 @@ public class MistyChestplate extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void mistyChestplateEvent(LivingDamageEvent event) {
+    public static void mistyChestplateEvent(LivingAttackEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
         ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.CHEST);
         float damage = event.getAmount();
