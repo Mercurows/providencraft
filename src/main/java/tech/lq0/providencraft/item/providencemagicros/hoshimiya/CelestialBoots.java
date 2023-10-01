@@ -13,11 +13,17 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
 import tech.lq0.providencraft.init.ItemRegistry;
 import tech.lq0.providencraft.tiers.ModArmorMaterial;
@@ -31,6 +37,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.UUID;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CelestialBoots extends ArmorItem {
     private static final int[] HUNGER_TIME = new int[]{320, 240, 160, 160};
 
@@ -151,4 +158,38 @@ public class CelestialBoots extends ArmorItem {
 
         return times;
     }
+
+    @SubscribeEvent
+    public static void celestialBootsEvent(LivingHurtEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+        ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET);
+        DamageSource source = event.getSource();
+        Entity entity = source.getTrueSource();
+
+        if (!livingEntity.world.isRemote) {
+            if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.CELESTIAL_BOOTS.get())) {
+                PlayerEntity player = (PlayerEntity) livingEntity;
+
+                if (!player.getCooldownTracker().hasCooldown(ItemRegistry.CELESTIAL_BOOTS.get())) {
+                    int times = getEnhanceTimes(player, hasArmorSet(itemStack));
+
+                    if (entity instanceof LivingEntity) {
+                        LivingEntity target = (LivingEntity) entity;
+
+                        target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 50, times - 1));
+                        target.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 50, 0));
+
+                        if (times == 4) {
+                            target.addPotionEffect(new EffectInstance(Effects.GLOWING, 50, 0));
+                        }
+                    }
+
+                    player.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 50 + Math.min(3, times) * 50, times == 4 ? 1 : 0));
+
+                    player.getCooldownTracker().setCooldown(itemStack.getItem(), 120);
+                }
+            }
+        }
+    }
+
 }
