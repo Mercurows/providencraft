@@ -105,9 +105,5 @@ public class Sneakers extends ArmorItem {
         if (livingEntity.getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemRegistry.SNEAKERS.get()) {
             livingEntity.setMotion(livingEntity.getMotion().add(0, 0.175, 0));
         }
-//
-//        if (livingEntity.getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemRegistry.FROGGY_LEGGINGS.get()) {
-//            livingEntity.setMotion(livingEntity.getMotion().add(0, 0.3, 0));
-//        }
     }
 }

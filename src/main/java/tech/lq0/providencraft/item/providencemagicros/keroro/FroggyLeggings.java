@@ -14,6 +14,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.EffectType;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.MathHelper;
@@ -37,6 +38,7 @@ import tech.lq0.providencraft.tools.TooltipTool;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -77,8 +79,37 @@ public class FroggyLeggings extends ArmorItem {
         if (!world.isRemote) {
             setArmorSet(stack, player);
 
+            boolean set = hasArmorSet(stack);
+
             if (player.isSneaking()) {
-                player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 40, hasArmorSet(stack) ? 2 : 1, false, false));
+                player.addPotionEffect(new EffectInstance(Effects.JUMP_BOOST, 40, set ? 2 : 1, false, false));
+            }
+
+            //净化
+            if (player.isSwimming() || world.isRaining() || set) {
+                int time = set ? 300 : 600;
+
+                List<EffectInstance> effectList = new ArrayList<>(player.getActivePotionEffects());
+
+                if (player.ticksExisted % time == 0) {
+                    if (!effectList.isEmpty()) {
+                        for (EffectInstance effectInstance : effectList) {
+                            if (effectInstance.getPotion().getEffectType().equals(EffectType.HARMFUL)) {
+                                player.removePotionEffect(effectInstance.getPotion());
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //生命恢复
+            if (player.isSwimming() || world.isRaining()) {
+                if (player.ticksExisted % 40 == 0) {
+                    player.heal(1);
+                }
+
+                player.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 300, 0, false, false));
             }
         }
     }

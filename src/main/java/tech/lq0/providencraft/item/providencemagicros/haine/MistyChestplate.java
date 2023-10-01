@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
@@ -121,24 +122,13 @@ public class MistyChestplate extends ArmorItem {
     }
 
     @SubscribeEvent
-    public static void mistyChestplateEvent(LivingAttackEvent event) {
+    public static void mistyChestplateEvent(LivingDamageEvent event) {
         LivingEntity livingEntity = event.getEntityLiving();
         ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.CHEST);
         float damage = event.getAmount();
 
-        DamageSource source = event.getSource();
-
         if (!livingEntity.world.isRemote) {
             if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.MISTY_CHESTPLATE.get())) {
-
-                if (source.isProjectile()) {
-                    double rand = Math.random();
-
-                    if (rand < .17) {
-                        event.setCanceled(true);
-                        return;
-                    }
-                }
 
                 int maxDamage = hasArmorSet(itemStack) ? 8 : 5;
 
@@ -149,6 +139,26 @@ public class MistyChestplate extends ArmorItem {
                         event.setCanceled(true);
                     } else {
                         setShieldCount(itemStack, --count);
+                    }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void mistyChestplateProjectileEvent(LivingAttackEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+        ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.CHEST);
+
+        DamageSource source = event.getSource();
+
+        if (!livingEntity.world.isRemote) {
+            if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.MISTY_CHESTPLATE.get())) {
+                if (source.isProjectile()) {
+                    double rand = Math.random();
+
+                    if (rand < .17) {
+                        event.setCanceled(true);
                     }
                 }
             }
