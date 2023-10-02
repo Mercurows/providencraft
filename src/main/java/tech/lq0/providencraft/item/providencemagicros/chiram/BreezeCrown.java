@@ -139,17 +139,18 @@ public class BreezeCrown extends ArmorItem {
         float damage = event.getAmount();
 
         if (damage > 0f) {
-            if (!livingEntity.world.isRemote) {
-                if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
-                    PlayerEntity player = (PlayerEntity) livingEntity;
-                    if (!player.getCooldownTracker().hasCooldown(ItemRegistry.BREEZE_CROWN.get())) {
-                        int level = ArmorTool.hasArmorSet(player) ? 4 : 3;
-                        int time = ArmorTool.hasArmorSet(player) ? 50 : 35;
-                        player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 30, level, false, false));
+            if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
+                PlayerEntity player = (PlayerEntity) livingEntity;
+                if (!player.getCooldownTracker().hasCooldown(ItemRegistry.BREEZE_CROWN.get())) {
+                    int level = ArmorTool.hasArmorSet(player) ? 4 : 3;
+                    int time = ArmorTool.hasArmorSet(player) ? 50 : 35;
 
-                        player.hurtResistantTime = time;
-                        player.getCooldownTracker().setCooldown(ItemRegistry.BREEZE_CROWN.get(), 160);
+                    if (!livingEntity.world.isRemote) {
+                        player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 30, level, false, false));
                     }
+
+                    player.hurtResistantTime = time;
+                    player.getCooldownTracker().setCooldown(ItemRegistry.BREEZE_CROWN.get(), 160);
                 }
             }
         }
