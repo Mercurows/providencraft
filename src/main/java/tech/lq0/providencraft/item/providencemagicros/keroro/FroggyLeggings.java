@@ -124,7 +124,7 @@ public class FroggyLeggings extends ArmorItem {
                 Vector3d base = player.getMotion().add(0, 0.275, 0);
 
                 if (player.isSprinting()) {
-                    float f1 = livingEntity.rotationYaw * ((float) Math.PI / 180F);
+                    float f1 = player.rotationYaw * ((float) Math.PI / 180F);
                     base = base.add(-MathHelper.sin(f1) * 0.45F, 0.0D, MathHelper.cos(f1) * 0.45F);
                 }
 
