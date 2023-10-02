@@ -176,11 +176,13 @@ public class CelestialBoots extends ArmorItem {
                     if (entity instanceof LivingEntity) {
                         LivingEntity target = (LivingEntity) entity;
 
-                        target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 50, times - 1));
-                        target.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 50, 0));
+                        if (target != player) {
+                            target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 50, times - 1));
+                            target.addPotionEffect(new EffectInstance(Effects.BLINDNESS, 50, 0));
 
-                        if (times == 4) {
-                            target.addPotionEffect(new EffectInstance(Effects.GLOWING, 50, 0));
+                            if (times == 4) {
+                                target.addPotionEffect(new EffectInstance(Effects.GLOWING, 50, 0));
+                            }
                         }
                     }
 

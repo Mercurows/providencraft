@@ -15,10 +15,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -149,9 +152,27 @@ public class BreezeCrown extends ArmorItem {
                         player.addPotionEffect(new EffectInstance(Effects.REGENERATION, 30, level, false, false));
                     }
 
-                    player.hurtResistantTime = time;
+//                    player.hurtResistantTime = time;
+                    player.getPersistentData().putInt("BreezeInvincible", time);
                     player.getCooldownTracker().setCooldown(ItemRegistry.BREEZE_CROWN.get(), 160);
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void breezeInvincibleEvent(LivingAttackEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+        ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.HEAD);
+        DamageSource source = event.getSource();
+
+        if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
+            PlayerEntity player = (PlayerEntity) livingEntity;
+
+            int time = player.getPersistentData().getInt("BreezeInvincible");
+
+            if (!source.canHarmInCreative() && time > 0) {
+                event.setCanceled(true);
             }
         }
     }
@@ -165,6 +186,18 @@ public class BreezeCrown extends ArmorItem {
         if (!livingEntity.world.isRemote) {
             if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
                 event.setAmount(heal * 1.2f);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void breezeCrownTickEvent(TickEvent.PlayerTickEvent event) {
+        if (event.side.isServer() && event.phase == TickEvent.Phase.END) {
+            PlayerEntity player = event.player;
+            int time = player.getPersistentData().getInt("BreezeInvincible");
+
+            if (time > 0) {
+                player.getPersistentData().putInt("BreezeInvincible", --time);
             }
         }
     }
