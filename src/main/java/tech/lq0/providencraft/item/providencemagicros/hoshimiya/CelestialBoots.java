@@ -78,9 +78,9 @@ public class CelestialBoots extends ArmorItem {
 
             int times = getEnhanceTimes(player, hasArmorSet(stack));
             if (times == 4) {
-                if (player.getFoodStats().getFoodLevel() >= 20) {
+                if (player.getFoodStats().getFoodLevel() > 10) {
                     if (player.ticksExisted % 80 == 0) {
-                        player.getFoodStats().addStats(2, 0.75f);
+                        player.getFoodStats().addStats(2, 1.0f);
                     }
                 } else {
                     if (player.ticksExisted % 160 == 0) {
