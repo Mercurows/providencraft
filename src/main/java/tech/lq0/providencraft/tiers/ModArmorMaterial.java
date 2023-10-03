@@ -20,7 +20,7 @@ public enum ModArmorMaterial implements IArmorMaterial {
     RED_AHOGE("red_ahoge", 18, new int[]{3, 5, 5, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.fromItems(ItemRegistry.RED_AHOGE.get())),
     CRYSTAL("crystal", 22, new int[]{4, 5, 4, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.fromItems(Items.EMERALD)),
     IDOL_COSTUME("idol_costume", 15, new int[]{2, 3, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.fromItems(ItemRegistry.IDOL_CLOTH.get())),
-    MAGICROS("magicros", 40, new int[]{7, 8, 10, 5}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.25F, () -> Ingredient.fromItems(ItemRegistry.IDOL_CLOTH.get())),
+    MAGICROS("magicros", 40, new int[]{7, 8, 10, 5}, 24, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.25F, () -> Ingredient.fromItems(ItemRegistry.IDOL_CLOTH.get())),
     SATOU("satou", 5, new int[]{1, 2, 3, 1}, 12, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, () -> Ingredient.fromItems(Items.SUGAR));
 
 

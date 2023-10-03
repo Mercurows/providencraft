@@ -3,6 +3,8 @@ package tech.lq0.providencraft.item.providencemagicros.chiram;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -200,5 +202,21 @@ public class BreezeCrown extends ArmorItem {
                 player.getPersistentData().putInt("BreezeInvincible", --time);
             }
         }
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.type == EnchantmentType.ARMOR_HEAD || enchantment.type == EnchantmentType.BREAKABLE ||
+                enchantment.type == EnchantmentType.ARMOR;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getItemEnchantability() {
+        return 24;
     }
 }
