@@ -48,8 +48,7 @@ public class TooltipTool {
                 bgColor = "#B2453F";
                 break;
         }
-        if (liver.getName().equals("maria") || liver.getName().equals("mojuko") || liver.getName().equals("shirako")
-        || liver.getName().equals("lutafia")) {
+        if (!liver.isActive()) {
             addHideText(tooltip, new TranslationTextComponent("des.providencraft.group." + gen).mergeStyle(Style.EMPTY.setColor(Color.fromHex(bgColor))).
                     mergeStyle(TextFormatting.BOLD).mergeStyle(TextFormatting.STRIKETHROUGH));
         } else {

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "providencraft:craft_beer_0322"
+    },
+    "title": {
+      "translate": "providencraft.advancement.drink_craft_beer_0322"
+    },
+    "description": {
+      "translate": "providencraft.advancement.drink_craft_beer_0322_des"
+    },
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "providencraft:main/shu_rino_ken",
+  "criteria": {
+    "drink_craft_beer_0322": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "item":"providencraft:craft_beer_0322"
+        }
+      }
+    }
+  }
+}

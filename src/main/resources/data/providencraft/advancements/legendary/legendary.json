@@ -15,12 +15,20 @@
     "hidden": true
   },
   "criteria": {
-    "fracture_destiny": {
-      "trigger": "minecraft:inventory_changed",
+    "requirement": {
+      "trigger": "minecraft:tick",
       "conditions": {
-        "items":[
+        "player": [
           {
-            "item":"providencraft:fracture_destiny"
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "player": {
+                "advancements": {
+                  "providencraft:main/providencraft": true
+                }
+              }
+            }
           }
         ]
       }
