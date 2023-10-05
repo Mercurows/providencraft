@@ -48,6 +48,7 @@ public class ReinaWings extends ArmorItem {
         return repair.getItem() == ItemRegistry.REINA_FEATHER.get();
     }
 
+    @SuppressWarnings("unchecked")
     @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
@@ -105,6 +106,6 @@ public class ReinaWings extends ArmorItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return enchantment.type == EnchantmentType.ARMOR_CHEST || enchantment.type == EnchantmentType.BREAKABLE;
+        return enchantment.type == EnchantmentType.ARMOR_CHEST || enchantment.type == EnchantmentType.BREAKABLE || enchantment.type == EnchantmentType.ARMOR;
     }
 }

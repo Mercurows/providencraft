@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:ancient_lollipop"
+      "item": "providencraft:breeze_crown"
     },
     "title": {
-      "translate": "providencraft.advancement.ancient_lollipop"
+      "translate": "providencraft.advancement.breeze_crown"
     },
     "description": {
-      "translate": "providencraft.advancement.ancient_lollipop_des"
+      "translate": "providencraft.advancement.breeze_crown_des"
     },
     "frame": "challenge",
     "show_toast": true,
@@ -15,12 +15,12 @@
   },
   "parent": "providencraft:legendary/legendary",
   "criteria": {
-    "ancient_lollipop": {
+    "breeze_crown": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:ancient_lollipop"
+            "item":"providencraft:breeze_crown"
           }
         ]
       }

@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:ancient_lollipop"
+      "item": "providencraft:froggy_leggings"
     },
     "title": {
-      "translate": "providencraft.advancement.ancient_lollipop"
+      "translate": "providencraft.advancement.froggy_leggings"
     },
     "description": {
-      "translate": "providencraft.advancement.ancient_lollipop_des"
+      "translate": "providencraft.advancement.froggy_leggings_des"
     },
     "frame": "challenge",
     "show_toast": true,
@@ -15,12 +15,12 @@
   },
   "parent": "providencraft:legendary/legendary",
   "criteria": {
-    "ancient_lollipop": {
+    "froggy_leggings": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:ancient_lollipop"
+            "item":"providencraft:froggy_leggings"
           }
         ]
       }

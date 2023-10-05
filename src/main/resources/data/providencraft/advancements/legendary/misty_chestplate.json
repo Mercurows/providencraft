@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:ancient_lollipop"
+      "item": "providencraft:misty_chestplate"
     },
     "title": {
-      "translate": "providencraft.advancement.ancient_lollipop"
+      "translate": "providencraft.advancement.misty_chestplate"
     },
     "description": {
-      "translate": "providencraft.advancement.ancient_lollipop_des"
+      "translate": "providencraft.advancement.misty_chestplate_des"
     },
     "frame": "challenge",
     "show_toast": true,
@@ -15,12 +15,12 @@
   },
   "parent": "providencraft:legendary/legendary",
   "criteria": {
-    "ancient_lollipop": {
+    "misty_chestplate": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:ancient_lollipop"
+            "item":"providencraft:misty_chestplate"
           }
         ]
       }

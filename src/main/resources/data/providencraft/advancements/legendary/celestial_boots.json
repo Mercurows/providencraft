@@ -1,13 +1,13 @@
 {
   "display": {
     "icon": {
-      "item": "providencraft:ancient_lollipop"
+      "item": "providencraft:celestial_boots"
     },
     "title": {
-      "translate": "providencraft.advancement.ancient_lollipop"
+      "translate": "providencraft.advancement.celestial_boots"
     },
     "description": {
-      "translate": "providencraft.advancement.ancient_lollipop_des"
+      "translate": "providencraft.advancement.celestial_boots_des"
     },
     "frame": "challenge",
     "show_toast": true,
@@ -15,12 +15,12 @@
   },
   "parent": "providencraft:legendary/legendary",
   "criteria": {
-    "ancient_lollipop": {
+    "celestial_boots": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items":[
           {
-            "item":"providencraft:ancient_lollipop"
+            "item":"providencraft:celestial_boots"
           }
         ]
       }

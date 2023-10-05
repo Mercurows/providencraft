@@ -110,7 +110,9 @@ public class FroggyLeggings extends ArmorItem {
                 if (player.ticksExisted % 40 == 0) {
                     player.heal(1);
                 }
+            }
 
+            if (player.isInWater()) {
                 player.addPotionEffect(new EffectInstance(Effects.WATER_BREATHING, 300, 0, false, false));
             }
         }

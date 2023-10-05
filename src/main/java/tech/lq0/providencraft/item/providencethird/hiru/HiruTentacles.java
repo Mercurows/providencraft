@@ -11,6 +11,7 @@ import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
+import net.minecraft.entity.monster.GuardianEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.SnowGolemEntity;
@@ -55,6 +56,7 @@ public class HiruTentacles extends ArmorItem {
         super(ArmorMaterial.LEATHER, EquipmentSlotType.CHEST, new Properties().maxDamage(913).group(ModGroup.itemgroup));
     }
 
+    @SuppressWarnings("unchecked")
     @OnlyIn(Dist.CLIENT)
     @Nullable
     @Override
@@ -75,22 +77,24 @@ public class HiruTentacles extends ArmorItem {
 
     @SubscribeEvent
     public static void tentacleEffect(LivingHurtEvent event) {
-        if (event.getEntityLiving() instanceof PlayerEntity) {
+        LivingEntity living = event.getEntityLiving();
+        DamageSource source = event.getSource();
+
+        if (source.getTrueSource() instanceof GuardianEntity) {
+            return;
+        }
+
+        if (living instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) event.getEntityLiving();
             ItemStack chestplate = player.getItemStackFromSlot(EquipmentSlotType.CHEST);
             int count = 0;
-            if (!chestplate.isEmpty() && chestplate.getItem().equals(ItemRegistry.HIRU_TENTACLES.get())) {
-                for (LivingEntity livingentity : player.getEntityWorld().getEntitiesWithinAABB(LivingEntity.class, player.getBoundingBox().grow(20.0D, 20.0D, 20.0D))) {
-                    if (
-                        player.getDistanceSq(livingentity) < 400.0f &&
-                        !player.isOnSameTeam(livingentity) &&
-                        !livingentity.hasCustomName() &&
-                        !(livingentity instanceof AnimalEntity) &&
-                        !(livingentity instanceof VillagerEntity) &&
-                        !(livingentity instanceof IronGolemEntity) &&
-                        !(livingentity instanceof SnowGolemEntity) &&
-                        livingentity instanceof MobEntity
-                    ) {
+
+            if (!player.world.isRemote && !chestplate.isEmpty() && chestplate.getItem().equals(ItemRegistry.HIRU_TENTACLES.get())) {
+                for (MobEntity mobEntity : player.getEntityWorld().getEntitiesWithinAABB(MobEntity.class, player.getBoundingBox().grow(20.0D, 20.0D, 20.0D))) {
+                    if (player.getDistanceSq(mobEntity) < 400.0f && !player.isOnSameTeam(mobEntity) && !mobEntity.hasCustomName() &&
+                            !(mobEntity instanceof AnimalEntity) && !(mobEntity instanceof VillagerEntity) &&
+                            !(mobEntity instanceof IronGolemEntity) && !(mobEntity instanceof SnowGolemEntity)) {
+
                         double[] px = {player.getPosX() + 0.95f * MathHelper.cos(player.getHorizontalFacing().getHorizontalAngle()),
                                 player.getPosX() - 0.95f * MathHelper.cos(player.getHorizontalFacing().getHorizontalAngle()),
                                 player.getPosX() + 0.65f * MathHelper.cos(player.getHorizontalFacing().getHorizontalAngle()),
@@ -100,19 +104,19 @@ public class HiruTentacles extends ArmorItem {
                                 player.getPosZ() + 0.95f * MathHelper.sin(player.getHorizontalFacing().getHorizontalAngle()),
                                 player.getPosZ() + 0.95f * MathHelper.sin(player.getHorizontalFacing().getHorizontalAngle()),
                                 player.getPosZ() + 0.95f * MathHelper.sin(player.getHorizontalFacing().getHorizontalAngle())};
-                        double tx = livingentity.getPosX();
-                        double ty = livingentity.getPosY() + 0.5f;
-                        double tz = livingentity.getPosZ();
+                        double tx = mobEntity.getPosX();
+                        double ty = mobEntity.getPosY() + 0.5f;
+                        double tz = mobEntity.getPosZ();
 
                         int j = (int) (Math.random() * 4);
 
-                        livingentity.attackEntityFrom(DamageSource.causePlayerDamage(player), 4);
-                        livingentity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
+                        mobEntity.attackEntityFrom(DamageSource.causePlayerDamage(player), 4);
+                        mobEntity.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 200, 4));
 
-                        if (livingentity.getEntityWorld() instanceof ServerWorld) {
+                        if (player.getEntityWorld() instanceof ServerWorld) {
                             IParticleData iParticleData = new TentacleParticleData(new Vector3d(0.0f, 0.0f, 0.0f), new Color(255, 255, 255, 50), 0.3f);
                             for (int i = 0; i < 20; i++) {
-                                ((ServerWorld) livingentity.getEntityWorld()).spawnParticle(iParticleData, px[j] + (tx - px[j]) * (i / 20.0),
+                                ((ServerWorld) player.getEntityWorld()).spawnParticle(iParticleData, px[j] + (tx - px[j]) * (i / 20.0),
                                         py[j] + (ty - py[j]) * (i / 20.0), pz[j] + (tz - pz[j]) * (i / 20.0), 0, 0.0, 0.0, 0.0, 0.0D);
                             }
                         }
