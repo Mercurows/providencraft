@@ -216,4 +216,9 @@ public class MistyChestplate extends ArmorItem {
     public int getItemEnchantability() {
         return 24;
     }
+
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return false;
+    }
 }

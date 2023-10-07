@@ -26,6 +26,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import tech.lq0.providencraft.group.ModGroup;
@@ -112,8 +113,8 @@ public class BreezeCrown extends ArmorItem {
     }
 
     public static float getAttackSpeedAmount(ItemStack stack) {
-        float times = hasArmorSet(stack) ? 0.025f : 0.02f;
-        float max = hasArmorSet(stack) ? 1.5f : 1.0f;
+        float times = hasArmorSet(stack) ? 0.03f : 0.02f;
+        float max = 1.0f;
         float min = hasArmorSet(stack) ? 0.4f : 0.2f;
 
         float spd = (getHealthAmount(stack) - 20) * times + min;
@@ -187,7 +188,7 @@ public class BreezeCrown extends ArmorItem {
 
         if (!livingEntity.world.isRemote) {
             if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
-                event.setAmount(heal * 1.2f);
+                event.setAmount(heal * 1.3f);
             }
         }
     }
@@ -200,6 +201,20 @@ public class BreezeCrown extends ArmorItem {
 
             if (time > 0) {
                 player.getPersistentData().putInt("BreezeInvincible", --time);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void breezeCrownCriticalEvent(CriticalHitEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+        ItemStack itemStack = livingEntity.getItemStackFromSlot(EquipmentSlotType.HEAD);
+
+        if (!livingEntity.world.isRemote) {
+            if (livingEntity instanceof PlayerEntity && !itemStack.isEmpty() && itemStack.getItem().equals(ItemRegistry.BREEZE_CROWN.get())) {
+                if (hasArmorSet(itemStack)) {
+                    event.setDamageModifier(event.getDamageModifier() * 1.5f);
+                }
             }
         }
     }
@@ -218,5 +233,10 @@ public class BreezeCrown extends ArmorItem {
     @Override
     public int getItemEnchantability() {
         return 24;
+    }
+
+    @Override
+    public boolean hasEffect(ItemStack stack) {
+        return false;
     }
 }
