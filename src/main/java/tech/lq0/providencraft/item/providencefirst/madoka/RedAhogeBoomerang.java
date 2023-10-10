@@ -24,6 +24,10 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 public class RedAhogeBoomerang extends SwordItem {
+    public RedAhogeBoomerang() {
+        super(ModItemTier.RED_AHOGE, 3, -2, new Item.Properties().group(ModGroup.itemgroup));
+    }
+
     @Override
     @ParametersAreNonnullByDefault
     @Nonnull
@@ -41,10 +45,6 @@ public class RedAhogeBoomerang extends SwordItem {
         }
 
         return new ActionResult<>(ActionResultType.SUCCESS, item);
-    }
-
-    public RedAhogeBoomerang() {
-        super(ModItemTier.RED_AHOGE, 3, -2, new Item.Properties().group(ModGroup.itemgroup));
     }
 
     @OnlyIn(Dist.CLIENT)

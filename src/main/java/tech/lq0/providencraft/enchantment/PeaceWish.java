@@ -6,25 +6,30 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import tech.lq0.providencraft.init.EffectRegistry;
 
-public class UniHusk extends Enchantment {
+public class PeaceWish extends Enchantment {
     private static final EquipmentSlotType[] CHEST = new EquipmentSlotType[]{EquipmentSlotType.CHEST};
 
-    public UniHusk() {
-        super(Rarity.RARE, EnchantmentType.ARMOR_CHEST, CHEST);
+    public PeaceWish() {
+        super(Rarity.VERY_RARE, EnchantmentType.ARMOR_CHEST, CHEST);
     }
 
     public int getMinEnchantability(int level) {
-        return 8 + 6 * level;
+        return 20 + 9 * level;
     }
 
     public int getMaxEnchantability(int level) {
-        return super.getMinEnchantability(level) + 20;
+        return super.getMinEnchantability(level) + 10;
     }
 
     public int getMaxLevel() {
-        return 3;
+        return 1;
+    }
+
+    @Override
+    public boolean isTreasureEnchantment() {
+        return true;
     }
 
     @Override
@@ -33,7 +38,7 @@ public class UniHusk extends Enchantment {
             if (attacker instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity) attacker;
 
-                livingEntity.addPotionEffect(new EffectInstance(Effects.POISON, 100, level));
+                livingEntity.addPotionEffect(new EffectInstance(EffectRegistry.BLEEDING.get(), 100, level - 1));
             }
         }
     }

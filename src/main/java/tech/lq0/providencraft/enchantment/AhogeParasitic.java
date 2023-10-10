@@ -7,7 +7,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SwordItem;
 import tech.lq0.providencraft.init.ItemRegistry;
+import tech.lq0.providencraft.tiers.ModItemTier;
 
 public class AhogeParasitic extends Enchantment {
     private static final EquipmentSlotType[] MAINHAND = new EquipmentSlotType[]{EquipmentSlotType.MAINHAND};
@@ -49,10 +51,11 @@ public class AhogeParasitic extends Enchantment {
             if (!helmet.isEmpty() && helmet.getItem().equals(ItemRegistry.RED_AHOGE_HELMET.get())) {
                 times++;
             }
-            if (heldItem.getItem().equals(ItemRegistry.RED_AHOGE_SWORD.get()) ||
-                    heldItem.getItem().equals(ItemRegistry.RED_AHOGE_BOOMERANG.get()) ||
-            heldItem.getItem().equals(ItemRegistry.RED_AHOGE_MACHETE.get())) {
-                times++;
+            if (heldItem.getItem() instanceof SwordItem) {
+                SwordItem swordItem = (SwordItem) heldItem.getItem();
+                if (swordItem.getTier().equals(ModItemTier.RED_AHOGE)) {
+                    times++;
+                }
             }
 
             player.heal(level * times / 2.0f);
